@@ -144,6 +144,19 @@ message R2C_Login // IResponse
 	int64 GateId = 3;
 }
 
+message C2R_JoinGuild // IRequest
+{
+	int32 RpcId = 90;
+	int64 Id = 1;
+}
+
+message R2C_JoinGuild // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 //ResponseType R2C_SearchGuild
 message C2R_SearchGuild // IRequest
 {

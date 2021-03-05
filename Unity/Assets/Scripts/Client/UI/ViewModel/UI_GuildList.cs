@@ -8,15 +8,17 @@ namespace Client.UI.ViewModel
 {
     public class UI_GuildList : UIBase<View_ChuangJianGongHui>
     {
-        private R2C_SearchGuild SearchResults { get; };
+        private List<SearchGuildResult> SearchResults { get; } = new List<SearchGuildResult>();
+        private Session Session; 
         public override async void OnEnable(IUIParams p, bool refresh)
         {
             base.OnEnable(p, refresh);
             InitList();
             var networkLoad = Manager.Create<UI_NetworkLoad>().OutOfTime(5);
-            var kcp = Game.Scene.Get(1).GetComponent<NetKcpComponent>();
-            var response = (R2C_SearchGuild) await ClientHandler.Inst.Call(new SearchGuildRequest {param = new SearchGuildRequest.SearchGuildParams {MaxNum = 20, IsNewSearch = true}});
-            SearchResults.AddRange(response.result);
+            Session = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
+            
+            var response = (R2C_SearchGuild) await Session.Call(new C2R_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
             networkLoad.CloseMySelf();
             RefreshList();
@@ -36,10 +38,10 @@ namespace Client.UI.ViewModel
             footer.Desc.text = "查看更多内容";
             footer.c1.selectedPage = "WaitNet";
             footer.t0.Play();
-            var response = (SearchGuildResponse) await ClientHandler.Inst.Call(new SearchGuildRequest {param = new SearchGuildRequest.SearchGuildParams {MaxNum = 20}});
-            SearchResults.AddRange(response.result);
+            var response = (R2C_SearchGuild) await Session.Call(new C2R_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
-            if (response.result.Count == 0)
+            if (response.Results.Count == 0)
             {
                 footer.Desc.text = "没有更多内容";
                 footer.c1.selectedPage = "WithoutAnyData";
@@ -63,10 +65,10 @@ namespace Client.UI.ViewModel
             item.Join.data = data;
             item.Join.onClick.Set(async t1 =>
             {
-                var result = (SearchGuildResponse.SearchGuildResult) ((GComponent) t1.sender).data;
+                var result = (SearchGuildResult) ((GComponent) t1.sender).data;
                 Manager.Create<UI_NetworkLoad>().OutOfTime(5);
-                var response = (JoinGuildResponse)await ClientHandler.Inst.Call(new JoinGuildRequest {id = result.Id});
-                if (response.result == (ushort) StateCode.Success)
+                var response = (R2C_JoinGuild)await Session.Call(new C2R_JoinGuild() {Id = result.Id});
+                if (response.Error == ErrorCode.ERR_LogicError)
                 {
                     CloseMySelf();
                     Manager.Create<UI_GuildHome>();

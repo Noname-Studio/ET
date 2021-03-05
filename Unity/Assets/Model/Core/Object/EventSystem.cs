@@ -617,12 +617,18 @@ namespace ET
 			{
 				try
 				{
-					if (!(obj is AEvent<T> aEvent))
+					using(var list = ListComponent<ETTask>.Create())
 					{
-						Log.Error($"event error: {obj.GetType().Name}");
-						continue;
+						if (!(obj is AEvent<T> aEvent))
+						{
+							Log.Error($"event error: {obj.GetType().Name}");
+							continue;
+						}
+
+						list.List.Add(aEvent.Handle(a));
+
+						await ETTaskHelper.WaitAll(list.List);
 					}
-					await aEvent.Run(a);
 				}
 				catch (Exception e)
 				{

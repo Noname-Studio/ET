@@ -34,7 +34,7 @@ public class GameEntry : MonoBehaviour
         await RegisterDatabaseSaveSystem();
         //开始游戏
         await UniTask.SwitchToMainThread();
-        //new StartGame();
+        new StartGame();
     }
 
     /// <summary>
