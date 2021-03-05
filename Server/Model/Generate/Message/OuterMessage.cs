@@ -340,7 +340,7 @@ namespace ET
 		public int MinLevel { get; set; }
 
 		[ProtoMember(4)]
-		public int Language { get; set; }
+		public short Language { get; set; }
 
 		[ProtoMember(5)]
 		public int TimeZone { get; set; }
@@ -368,6 +368,107 @@ namespace ET
 
 		[ProtoMember(1)]
 		public List<SearchGuildResult> Results = new List<SearchGuildResult>();
+
+	}
+
+	[Message(OuterOpcode.R2C_GuildUpdate)]
+	[ProtoContract]
+	public partial class R2C_GuildUpdate: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public string Frame { get; set; }
+
+		[ProtoMember(4)]
+		public string Outer { get; set; }
+
+		[ProtoMember(5)]
+		public int MaxLevel { get; set; }
+
+		[ProtoMember(6)]
+		public bool IsPublic { get; set; }
+
+		[ProtoMember(7)]
+		public short Language { get; set; }
+
+		[ProtoMember(8)]
+		public string Desc { get; set; }
+
+		[ProtoMember(9)]
+		public int MinLevel { get; set; }
+
+		[ProtoMember(10)]
+		public string OwnerId { get; set; }
+
+		[ProtoMember(11)]
+		public List<MemberInfo> Members = new List<MemberInfo>();
+
+		[ProtoMember(12)]
+		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
+
+		[ProtoMember(13)]
+		public uint CreateTime { get; set; }
+
+	}
+
+	[Message(OuterOpcode.ApplicationInfo)]
+	[ProtoContract]
+	public partial class ApplicationInfo
+	{
+		[ProtoMember(1)]
+		public uint Time { get; set; }
+
+		[ProtoMember(2)]
+		public string Id { get; set; }
+
+	}
+
+	[Message(OuterOpcode.MemberInfo{)]
+	[ProtoContract]
+	public partial class MemberInfo{
+		[ProtoMember(1)]
+		public string Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public int Level { get; set; }
+
+		[ProtoMember(4)]
+		public uint LastLogin { get; set; }
+
+		[ProtoMember(5)]
+		public uint JoinTime { get; set; }
+
+		[ProtoMember(6)]
+		public short Language { get; set; }
+
+		[ProtoMember(7)]
+		public int TimeZone { get; set; }
+
+		[ProtoMember(8)]
+		public string Icon { get; set; }
+
+		[ProtoMember(9)]
+		public List<int> DressUp = new List<int>();
+
+		[ProtoMember(10)]
+		public int Hornor { get; set; }
 
 	}
 

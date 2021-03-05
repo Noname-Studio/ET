@@ -64,6 +64,6 @@ public class StartGame
     private void Start()
     {
         //mManager.Create<UI_FirstGameLoading>();
-        UIKit.Inst.Create<Client.UI.ViewModel.UI_GuildList>();
+        UIKit.Inst.Create<Client.UI.ViewModel.UI_NotJoinGuild>();
     }
 }

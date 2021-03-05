@@ -24,7 +24,7 @@ public class PlayerManager : IPlayer
             return null;
         }
     }
-    
+
     public int GetCoin(RestaurantKey rest = null)
     {
         if(rest == null)

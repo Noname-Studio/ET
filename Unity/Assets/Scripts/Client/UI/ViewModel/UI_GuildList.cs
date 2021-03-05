@@ -6,15 +6,22 @@ using TheGuild;
 
 namespace Client.UI.ViewModel
 {
-    public class UI_GuildList : UIBase<View_ChuangJianGongHui>
+    public class UI_GuildList
     {
         private List<SearchGuildResult> SearchResults { get; } = new List<SearchGuildResult>();
-        private Session Session; 
-        public override async void OnEnable(IUIParams p, bool refresh)
+        private Session Session;
+        private View_GongHuiLieBiao View;
+        private UI_NotJoinGuild Parent;
+        public UI_GuildList(View_GongHuiLieBiao guildList,UI_NotJoinGuild parent)
         {
-            base.OnEnable(p, refresh);
+            View = guildList;
+            Parent = parent;
+        }
+        
+        public async void OnEnable()
+        {
             InitList();
-            var networkLoad = Manager.Create<UI_NetworkLoad>().OutOfTime(5);
+            var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
             Session = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
             
             var response = (R2C_SearchGuild) await Session.Call(new C2R_SearchGuild() {MaxNum = 20, IsNewSearch = true});
@@ -66,16 +73,16 @@ namespace Client.UI.ViewModel
             item.Join.onClick.Set(async t1 =>
             {
                 var result = (SearchGuildResult) ((GComponent) t1.sender).data;
-                Manager.Create<UI_NetworkLoad>().OutOfTime(5);
+                UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
                 var response = (R2C_JoinGuild)await Session.Call(new C2R_JoinGuild() {Id = result.Id});
-                if (response.Error == ErrorCode.ERR_LogicError)
+                if (response.Error == 0)
                 {
-                    CloseMySelf();
-                    Manager.Create<UI_GuildHome>();
+                    this.Parent.CloseMySelf();
+                    UIKit.Inst.Create<UI_GuildHome>();
                 }
                 else
                 {
-                    Manager.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
+                    UIKit.Inst.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
                 }
             });
         }

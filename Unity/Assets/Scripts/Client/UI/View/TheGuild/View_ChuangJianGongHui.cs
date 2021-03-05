@@ -7,12 +7,6 @@ namespace TheGuild
 {
     public partial class View_ChuangJianGongHui : GComponent
     {
-        public Controller c1;
-        public GButton bg;
-        public GTextInput SearchBar;
-        public GList List;
-        public GButton SearchParam;
-        public GButton Search;
         public GLoader frame;
         public GComboBox UnionRestSelect;
         public GTextInput UnionName;
@@ -23,10 +17,7 @@ namespace TheGuild
         public GButton IsPublic;
         public GComboBox LangSelect;
         public GGroup chuangjian;
-        public GList Menu;
-        public GButton Close;
-        public GGroup BG;
-        public const string URL = "ui://nvat1mjsh7udj8";
+        public const string URL = "ui://nvat1mjsvlkhw2d";
 
         public static View_ChuangJianGongHui CreateInstance()
         {
@@ -37,12 +28,6 @@ namespace TheGuild
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
-            SearchBar = (GTextInput)GetChild("SearchBar");
-            List = (GList)GetChild("List");
-            SearchParam = (GButton)GetChild("SearchParam");
-            Search = (GButton)GetChild("Search");
             frame = (GLoader)GetChild("frame");
             UnionRestSelect = (GComboBox)GetChild("UnionRestSelect");
             UnionName = (GTextInput)GetChild("UnionName");
@@ -53,9 +38,6 @@ namespace TheGuild
             IsPublic = (GButton)GetChild("IsPublic");
             LangSelect = (GComboBox)GetChild("LangSelect");
             chuangjian = (GGroup)GetChild("chuangjian");
-            Menu = (GList)GetChild("Menu");
-            Close = (GButton)GetChild("Close");
-            BG = (GGroup)GetChild("BG");
         }
     }
 }
