@@ -1,0 +1,1827 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 203,
+        "height": 176.72,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_poachedegg_13"
+    },
+    "bones": [
+        {
+            "x": 20.5456,
+            "y": -15.8206,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 58.3832,
+            "y": 20.4945,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "x": -3.12,
+            "y": -11.0848,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 1.913,
+            "y": 15.7425,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -30.4018,
+            "y": 39.0357,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 1.6864,
+            "y": 22.7919,
+            "scaleX": 4.01,
+            "scaleY": 5.2,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 41.3676,
+            "y": 40.2145,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": -12.0377,
+            "y": 81.6802,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "y": -56.0379,
+            "scaleX": 0.8,
+            "scaleY": 0.8,
+            "name": "base",
+            "parent": "root"
+        },
+        {
+            "x": -33.4928,
+            "y": 115.8038,
+            "scaleX": 0.95,
+            "scaleY": 0.95,
+            "name": "egg_w",
+            "parent": "base"
+        },
+        {
+            "x": 31.2648,
+            "y": 132.7619,
+            "rotation": -163.4657,
+            "scaleX": 1.4,
+            "scaleY": 1.4,
+            "name": "working_smoke",
+            "parent": "base"
+        },
+        {
+            "x": -33.3327,
+            "y": 141.7176,
+            "rotation": 21.164,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "working_smoke1",
+            "parent": "base"
+        },
+        {
+            "x": -28.1682,
+            "y": 125.5224,
+            "name": "burnsmoke1",
+            "parent": "base"
+        },
+        {
+            "x": 26.9274,
+            "y": 158.3545,
+            "name": "burnsmoke2",
+            "parent": "base"
+        },
+        {
+            "x": 18.3858,
+            "y": 119.8486,
+            "name": "cover_streamegg",
+            "parent": "base"
+        },
+        {
+            "x": 35.5236,
+            "y": 115.9712,
+            "name": "egg_w1",
+            "parent": "base"
+        },
+        {
+            "x": 1.0047,
+            "y": 92.4444,
+            "name": "egg_w2",
+            "parent": "base"
+        },
+        {
+            "y": 0.55,
+            "scaleY": 1.25,
+            "name": "egg_y1",
+            "parent": "egg_w1"
+        },
+        {
+            "y": 0.55,
+            "scaleY": 1.25,
+            "name": "egg_y",
+            "parent": "egg_w"
+        },
+        {
+            "y": 0.55,
+            "scaleY": 1.25,
+            "name": "egg_y2",
+            "parent": "egg_w2"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_waffle"
+        },
+        {
+            "name": "streamegg",
+            "bone": "base",
+            "attachment": "steamegg3/streamegg3"
+        },
+        {
+            "name": "glassbroken",
+            "bone": "cover_streamegg",
+            "color": "FFFFFF00",
+            "attachment": "glassbroken"
+        },
+        {
+            "name": "cover_streamegg",
+            "bone": "cover_streamegg",
+            "attachment": "steamegg3/cover_streamegg3"
+        },
+        {
+            "name": "burnsmoke2",
+            "bone": "burnsmoke2",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke1"
+        },
+        {
+            "name": "working_smoke1",
+            "bone": "working_smoke1",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "burnsmoke1",
+            "bone": "burnsmoke1",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke3"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "size_sandwich"
+        },
+        {
+            "name": "egg_y",
+            "bone": "egg_y",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_y"
+        },
+        {
+            "name": "egg_w",
+            "bone": "egg_w",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_w"
+        },
+        {
+            "name": "egg_y1",
+            "bone": "egg_y1",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_y"
+        },
+        {
+            "name": "egg_w1",
+            "bone": "egg_w1",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_w"
+        },
+        {
+            "name": "egg_y2",
+            "bone": "egg_y2",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_y"
+        },
+        {
+            "name": "egg_w2",
+            "bone": "egg_w2",
+            "color": "FFFFFF00",
+            "attachment": "egg/egg_w"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "burnsmoke1": {
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "x": 2.56,
+                    "y": 9.24,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51,
+                    "y": 9.84
+                },
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48,
+                    "y": 9.08
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44,
+                    "y": 7.55
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54,
+                    "y": 12.08
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48,
+                    "y": 14.36
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47,
+                    "y": 10.57
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59,
+                    "x": 2.25,
+                    "y": 9.82,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                }
+            },
+            "egg_y": {
+                "egg/egg_y": {
+                    "name": "egg/egg_y",
+                    "width": 33,
+                    "height": 15,
+                    "x": -0.3,
+                    "y": -0.66
+                }
+            },
+            "working_smoke1": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "burnsmoke2": {
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47
+                },
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "y": 10.57
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107,
+                    "x": -0.11,
+                    "y": 0.18
+                }
+            },
+            "egg_w2": {
+                "egg/egg_w": {
+                    "name": "egg/egg_w",
+                    "width": 54,
+                    "height": 27,
+                    "x": 0.2,
+                    "y": -0.11
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "streamegg": {
+                "steamegg/streamegg": {
+                    "name": "steamegg/streamegg",
+                    "width": 142,
+                    "height": 133,
+                    "x": -0.56,
+                    "y": 77.72
+                },
+                "steamegg2/streamegg2": {
+                    "name": "steamegg2/streamegg2",
+                    "width": 201,
+                    "height": 132,
+                    "x": 1.12,
+                    "y": 86.17
+                },
+                "steamegg3/streamegg3": {
+                    "name": "steamegg3/streamegg3",
+                    "width": 203,
+                    "height": 133,
+                    "x": 4.79,
+                    "y": 68.96
+                }
+            },
+            "egg_w1": {
+                "egg/egg_w": {
+                    "name": "egg/egg_w",
+                    "width": 54,
+                    "height": 27,
+                    "x": 0.2,
+                    "y": -0.11
+                }
+            },
+            "working_smoke": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "size": {
+                "size_waffle": {
+                    "name": "size_waffle",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size_poachedegg"
+                }
+            },
+            "egg_w": {
+                "egg/egg_w": {
+                    "name": "egg/egg_w",
+                    "width": 54,
+                    "height": 27,
+                    "x": 0.2,
+                    "y": -0.11
+                }
+            },
+            "glassbroken": {
+                "glassbroken": {
+                    "name": "glassbroken",
+                    "width": 57,
+                    "height": 84,
+                    "x": -30.26,
+                    "y": 6.27,
+                    "scaleX": 1.1765,
+                    "scaleY": 1.1765
+                }
+            },
+            "clock": {
+                "size_sandwich": {
+                    "name": "size_sandwich",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size_poachedegg"
+                }
+            },
+            "cover_streamegg": {
+                "steamegg/cover_streamegg": {
+                    "name": "steamegg/cover_streamegg",
+                    "width": 143,
+                    "height": 113,
+                    "x": -19.95,
+                    "y": 6.78
+                },
+                "steamegg2/cover_streamegg2": {
+                    "name": "steamegg2/cover_streamegg2",
+                    "width": 168,
+                    "height": 114,
+                    "x": -17.76,
+                    "y": 0.73
+                },
+                "steamegg3/cover_streamegg3": {
+                    "name": "steamegg3/cover_streamegg3",
+                    "width": 164,
+                    "height": 111,
+                    "x": -18.59,
+                    "y": -0.98
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "egg_y2": {
+                "egg/egg_y": {
+                    "name": "egg/egg_y",
+                    "width": 33,
+                    "height": 15,
+                    "x": -0.3,
+                    "y": -0.66
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "egg_y1": {
+                "egg/egg_y": {
+                    "name": "egg/egg_y",
+                    "width": 33,
+                    "height": 15,
+                    "x": -0.3,
+                    "y": -0.66
+                }
+            }
+        }
+    }],
+    "animations": {
+        "3work": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.7667,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.9667,
+                            "x": 1,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1,
+                            "y": 0.85
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 11.96,
+                            "y": -16.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.6667,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.8667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9667,
+                            "angle": 10.48
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1.84,
+                            "y": 1.24
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.6667
+                        },
+                        {
+                            "time": 0.8667
+                        },
+                        {
+                            "time": 0.9667
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.55,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.85,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.6666,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.8499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.0832,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.1332,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        },
+                        {
+                            "time": 0.6666
+                        },
+                        {
+                            "time": 0.8499
+                        },
+                        {
+                            "time": 0.9499
+                        },
+                        {
+                            "time": 1.0832
+                        },
+                        {
+                            "time": 1.1332
+                        }
+                    ]
+                },
+                "cover_streamegg": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 0.84
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 0.4,
+                            "y": 41.08
+                        },
+                        {
+                            "time": 0.5667,
+                            "y": 0.84
+                        },
+                        {
+                            "time": 0.7667
+                        },
+                        {
+                            "time": 0.9667,
+                            "y": 41.08
+                        },
+                        {
+                            "time": 1.1334,
+                            "y": 0.84
+                        }
+                    ]
+                },
+                "egg_y": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 0.9833,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 1.1166
+                        }
+                    ]
+                },
+                "egg_y1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 0.9833,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 1.1166
+                        }
+                    ]
+                },
+                "egg_y2": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 0.9833,
+                            "y": 3.99
+                        },
+                        {
+                            "time": 1.1166
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.2833,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.55,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6667,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.85,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9667,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5501,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5668,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.6668,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.8335,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8502,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9502,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.1169,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "egg_w": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.8167,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF1A"
+                        }
+                    ]
+                },
+                "egg_y": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_y1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.8167,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF1A"
+                        }
+                    ]
+                },
+                "egg_y2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.8167,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF1A"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "slots": {
+                "glassbroken": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFB5"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.55,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5501,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5668,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "FFFFFFB3"
+                        }
+                    ]
+                },
+                "egg_y": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_y1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "FFFFFFB3"
+                        }
+                    ]
+                },
+                "egg_y2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "FFFFFFB3"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "burnsmoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 8.56
+                        },
+                        {
+                            "time": 0.3,
+                            "y": 1.53
+                        },
+                        {
+                            "time": 0.5833,
+                            "y": 8.56
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.5,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.5,
+                            "y": 1.7
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1.5,
+                            "y": 2
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 7.77,
+                            "y": 15.54
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": -1.3,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -1.3,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": -1.3,
+                            "y": 1.7
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "burnsmoke1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke3"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke8"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke8"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke3"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "757575BF"
+                        }
+                    ]
+                },
+                "egg_y": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_y1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "757575BF"
+                        }
+                    ]
+                },
+                "egg_y2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "egg_w2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "757575BF"
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

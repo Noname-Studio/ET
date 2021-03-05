@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Bacon_Sandwiches
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 9d117911ecd5b43da9387dd1c3f6bd6a, type: 3}
+  mKey: F_Bacon_Sandwiches
+  mTexture: Image/Food/Breakfast/tex_bacon_sandwiches
+  mRestId: Breakfast
+  mWaitTime: 0
+  mEditorCookware: {fileID: 11400000, guid: 6463eae1eacbcd34f9b3bff074ab521b, type: 2}
+  mEditorFinalIngredients:
+  - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
+  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  mLevels:
+  - mLevel: 1
+    mUnlockLv: 9
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 10
+  - mLevel: 2
+    mUnlockLv: 9
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 20
+  mBasePatient: 100
+  mCookware: k2_worktable
+  mAllIngredients:
+  - F_Toast
+  - F_Bacon

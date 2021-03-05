@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
+  m_Name: k2_oven
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 0e639ea849c4a5e48bbba5181a5f1d1d, type: 3}
+  mKey: k2_oven
+  EDITORKey: oven
+  mRestId: Breakfast
+  mFoodKey:
+  - {fileID: 11400000, guid: 04a900ca0826b934f82d5e491c9490ff, type: 2}
+  - {fileID: 11400000, guid: c2eff24040060f94ba812a553bbf2671, type: 2}
+  mFunType: 0
+  mDisPosList:
+  - Start: 0
+    End: 0
+    Pos: {x: 1.62, y: 0.058, z: 0}
+    mLevel: 0
+    mRestaurant: Breakfast
+  - Start: 0
+    End: 0
+    Pos: {x: 3.27, y: 0.116, z: 0}
+    mLevel: 0
+    mRestaurant: Breakfast
+  mLevels:
+  - mLevel: 1
+    mEditorTexture: {fileID: 2800000, guid: 0e639ea849c4a5e48bbba5181a5f1d1d, type: 3}
+    mWorkTime: 3
+    mBurnTime: 9
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 66cc3c172c714ff46a37e100ce015cb2, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_oven_11.icon
+  - mLevel: 2
+    mEditorTexture: {fileID: 2800000, guid: 4883d38dedc7a6541929959121f5df71, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 614c0941f13f25c41b39627a11f58aef, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_oven_12.icon
+  - mLevel: 3
+    mEditorTexture: {fileID: 2800000, guid: bba74f74f72ef774fa7f94114e142703, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 2
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 08792dd908daed44aa8ec5a1a1b49612, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_oven_13.icon

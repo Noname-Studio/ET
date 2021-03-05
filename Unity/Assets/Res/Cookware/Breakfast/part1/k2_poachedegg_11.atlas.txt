@@ -1,0 +1,153 @@
+
+k2_poachedegg_11.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_poachedegg
+  rotate: false
+  xy: 1, 324
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+steamegg/streamegg
+  rotate: false
+  xy: 1, 136
+  size: 142, 133
+  orig: 142, 133
+  offset: 0, 0
+  index: -1
+steamegg3/streamegg3
+  rotate: false
+  xy: 1, 1
+  size: 203, 133
+  orig: 203, 133
+  offset: 0, 0
+  index: -1
+steamegg2/streamegg2
+  rotate: false
+  xy: 206, 1
+  size: 201, 132
+  orig: 201, 132
+  offset: 0, 0
+  index: -1
+glassbroken
+  rotate: false
+  xy: 145, 136
+  size: 57, 84
+  orig: 57, 84
+  offset: 0, 0
+  index: -1
+steamegg/cover_streamegg
+  rotate: false
+  xy: 311, 251
+  size: 143, 113
+  orig: 144, 113
+  offset: 1, 0
+  index: -1
+steamegg3/cover_streamegg3
+  rotate: false
+  xy: 145, 251
+  size: 164, 111
+  orig: 164, 111
+  offset: 0, 0
+  index: -1
+steamegg2/cover_streamegg2
+  rotate: false
+  xy: 206, 135
+  size: 168, 114
+  orig: 168, 114
+  offset: 0, 0
+  index: -1
+burnsmoke8
+  rotate: false
+  xy: 1, 271
+  size: 37, 51
+  orig: 40, 53
+  offset: 1, 1
+  index: -1
+burnsmoke6
+  rotate: false
+  xy: 1, 364
+  size: 36, 44
+  orig: 40, 47
+  offset: 1, 2
+  index: -1
+burnsmoke5
+  rotate: false
+  xy: 456, 362
+  size: 38, 54
+  orig: 40, 56
+  offset: 0, 2
+  index: -1
+burnsmoke2
+  rotate: false
+  xy: 456, 244
+  size: 51, 59
+  orig: 54, 62
+  offset: 1, 2
+  index: -1
+burnsmoke4
+  rotate: false
+  xy: 40, 320
+  size: 37, 48
+  orig: 40, 50
+  offset: 1, 1
+  index: -1
+burnsmoke1
+  rotate: false
+  xy: 456, 305
+  size: 45, 55
+  orig: 48, 58
+  offset: 1, 2
+  index: -1
+burnsmoke3
+  rotate: false
+  xy: 40, 271
+  size: 39, 47
+  orig: 40, 49
+  offset: 0, 2
+  index: -1
+burnsmoke7
+  rotate: false
+  xy: 81, 271
+  size: 37, 48
+  orig: 40, 51
+  offset: 1, 2
+  index: -1
+waffleworking_smoke
+  rotate: false
+  xy: 409, 91
+  size: 49, 32
+  orig: 56, 42
+  offset: 2, 8
+  index: -1
+materialbg
+  rotate: false
+  xy: 409, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 376, 135
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1
+egg/egg_y
+  rotate: false
+  xy: 460, 91
+  size: 33, 15
+  orig: 33, 15
+  offset: 0, 0
+  index: -1
+egg/egg_w
+  rotate: false
+  xy: 145, 222
+  size: 54, 27
+  orig: 56, 29
+  offset: 1, 1
+  index: -1

@@ -1,0 +1,33 @@
+{
+    "name": "PantheaFW.Core",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:bebd02018e98e44409a761968a7cbcd9",
+        "GUID:ac145e6b8c6034cdbadc8c6e26aedbcf",
+        "GUID:1e8e55397bd004beaba78a667566665f",
+        "GUID:b7179b7ed593e634091add66d9405318",
+        "GUID:a3beee000661b42419d72602ddd2c32e",
+        "GUID:68765d262e2128e4ab49c983f3411946",
+        "GUID:656c2c43d3cfe4855bd40e058874b0be",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:efa45043feb7e4147a305b73b5cea642",
+        "GUID:151ffa7394ba57e499fb69568860d524",
+        "GUID:997f003cfffd9ec4fae70c0ac9b0ec2b",
+        "GUID:f7aec9df9b7212e448c697d7ebf558a3",
+        "GUID:703e1d0810996ed4b9064f1041de8bdc",
+        "GUID:9296492e57c1dab41b26cf0e69d84828",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:de4e6084e6d474788bb8c799d6b461eb",
+        "GUID:f4059aaf6c60a4a58a177a2609feb769"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

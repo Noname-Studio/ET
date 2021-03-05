@@ -1,0 +1,118 @@
+
+k2_cuttingboard_13.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 1, 361
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+salacut3/salad_glass3
+  rotate: false
+  xy: 1, 1
+  size: 146, 96
+  orig: 146, 96
+  offset: 0, 0
+  index: -1
+piece1_cut
+  rotate: false
+  xy: 1, 422
+  size: 20, 26
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+piece6_cut
+  rotate: false
+  xy: 1, 389
+  size: 22, 31
+  orig: 22, 31
+  offset: 0, 0
+  index: -1
+piece5_cut
+  rotate: false
+  xy: 23, 422
+  size: 24, 14
+  orig: 24, 14
+  offset: 0, 0
+  index: -1
+piece3_cut
+  rotate: false
+  xy: 25, 389
+  size: 24, 13
+  orig: 24, 14
+  offset: 0, 1
+  index: -1
+piece4_cut
+  rotate: false
+  xy: 240, 17
+  size: 11, 17
+  orig: 11, 17
+  offset: 0, 0
+  index: -1
+piece2_cut
+  rotate: false
+  xy: 240, 1
+  size: 15, 14
+  orig: 15, 14
+  offset: 0, 0
+  index: -1
+salacut3/salad_hl3
+  rotate: false
+  xy: 156, 91
+  size: 92, 80
+  orig: 92, 80
+  offset: 0, 0
+  index: -1
+salacut3/salad_cut3
+  rotate: false
+  xy: 1, 99
+  size: 153, 85
+  orig: 153, 85
+  offset: 0, 0
+  index: -1
+tomatoos
+  rotate: false
+  xy: 1, 295
+  size: 60, 64
+  orig: 60, 64
+  offset: 0, 0
+  index: -1
+salacut3/saladclosecover3
+  rotate: false
+  xy: 111, 186
+  size: 133, 67
+  orig: 133, 67
+  offset: 0, 0
+  index: -1
+salacut3/saladcover3
+  rotate: false
+  xy: 111, 255
+  size: 144, 38
+  orig: 144, 38
+  offset: 0, 0
+  index: -1
+cuteffection
+  rotate: false
+  xy: 1, 450
+  size: 26, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 149, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 1, 186
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

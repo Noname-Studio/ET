@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826ce8479b2174b48977a0991d531d5c, type: 3}
+  m_Name: 2000003
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mId: 2000003
+  mLevel: 3
+  mRestaurantId: Breakfast
+  mOrderMode: 1
+  mType: 8
+  mDifType: 1
+  mSection: 0
+  mCoinLevelEnable: 1
+  mMaxOrder: 0
+  mRequirements:
+    AllowBurn: 1
+    AllowLostCustomer: 1
+    AllowUseTrash: 1
+    RequiredCoin: 89
+    LikeCount: 0
+    FixedTime: 0
+    LostCustomer: 0
+    NumberOfCustomerService: 6
+    NumberOfCompletedOrders: 5
+  mOrders:
+  - mCustomer: Journalist
+    mFoods:
+    - F_Omelette
+    EDITOR_Customer: {fileID: 11400000, guid: 6b3e3ca87fa1baa469536ec1d1800153, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 0997e57ce6d5b0145bee864995f1c309, type: 2}
+  - mCustomer: OfficeLady
+    mFoods:
+    - F_Bacon
+    EDITOR_Customer: {fileID: 11400000, guid: 430e8efc946445a419056b772685912f, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  - mCustomer: ModelGirl
+    mFoods:
+    - F_Fried_Eggs
+    EDITOR_Customer: {fileID: 11400000, guid: 582bf839be83ba14c85b136da20fca04, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 8d34ae689c3e0b242b051e4207fc0157, type: 2}
+  - mCustomer: FatMan
+    mFoods:
+    - F_Iced_Coffee
+    EDITOR_Customer: {fileID: 11400000, guid: c39663f59e9fe2d4694c26ef387894b3, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: b5d4d7bc082272645a8f9a4e2d37d7ca, type: 2}
+  - mCustomer: GenerousMan
+    mFoods:
+    - F_Bacon
+    EDITOR_Customer: {fileID: 11400000, guid: 4bb2101571385b44aa8c50b2cc2e1915, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  mRewards: []
+  mSecretCustomers: []
+  mOrderInterval:
+    Min: 1.86
+    Max: 2.79
+  mLitterInterval:
+    Min: 0
+    Max: 0
+  mOrderDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mWaitingDecay:
+    Interval: 1
+    Rate: 7
+    Limit: 7
+  mFirstArrivals: []
+  mMaxCustomerNumber: 2
+  mCookingDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mBurnDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mExtendCustomers: []
+  mComboCfg:
+    Interval: 5
+    Gain: 0.35

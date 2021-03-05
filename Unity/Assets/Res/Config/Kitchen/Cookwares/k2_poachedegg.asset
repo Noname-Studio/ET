@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
+  m_Name: k2_poachedegg
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 6b3c019282458434e8c6d5dfc5aa62e6, type: 3}
+  mKey: k2_poachedegg
+  EDITORKey: poachedegg
+  mRestId: Breakfast
+  mFoodKey: []
+  mFunType: 0
+  mDisPosList: []
+  mLevels:
+  - mLevel: 1
+    mEditorTexture: {fileID: 2800000, guid: 6b3c019282458434e8c6d5dfc5aa62e6, type: 3}
+    mWorkTime: 3
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 2d942919c3f2051488261ee652adc8d9, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_poachedegg_11.icon
+  - mLevel: 2
+    mEditorTexture: {fileID: 2800000, guid: 453ed8d6bce70c54d8738af1a2297d11, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: e27d1a0a220dc27479006d5171f2e8c6, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_poachedegg_12.icon
+  - mLevel: 3
+    mEditorTexture: {fileID: 2800000, guid: 624b330b50ba9c54f84e3208015d96a8, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 1c30ff622387a324cbfc1e86bb4442b2, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_poachedegg_13.icon

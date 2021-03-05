@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: c8f247cd7f6b96b44a3378d9a9b2140f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: k1_oldyinying015
+    100004: k1_oldyinying017
+    100006: k1_oldyinying018
+    100008: k1_oldyinying072
+    100010: oldbreakfasttable003
+    100012: oldcashregister1
+    100014: oldcashregister2
+    100016: oldcashregister3
+    100018: oldcashregister5
+    100020: oldcashregister6
+    100022: Plane1029
+    100024: cc_counterdoor
+    100026: cc_oldbreakfasttable003
+    100028: cc_oldcashregister6
+    100030: cc_oldcashregister6_yy
+    100032: counterdoor_00
+    100034: counterdoor_01
+    100036: counterdoor_02
+    100038: counterdoor_yy_00
+    100040: counterdoor_yy_01
+    100042: oldbreakfasttable003_yy
+    100044: oldcashregister6_00
+    100046: oldcashregister6_01
+    100048: oldcashregister6_02
+    100050: cs_counterdoor
+    100052: cs_oldbreakfasttable003
+    400000: //RootNode
+    400002: k1_oldyinying015
+    400004: k1_oldyinying017
+    400006: k1_oldyinying018
+    400008: k1_oldyinying072
+    400010: oldbreakfasttable003
+    400012: oldcashregister1
+    400014: oldcashregister2
+    400016: oldcashregister3
+    400018: oldcashregister5
+    400020: oldcashregister6
+    400022: Plane1029
+    400024: cc_counterdoor
+    400026: cc_oldbreakfasttable003
+    400028: cc_oldcashregister6
+    400030: cc_oldcashregister6_yy
+    400032: counterdoor_00
+    400034: counterdoor_01
+    400036: counterdoor_02
+    400038: counterdoor_yy_00
+    400040: counterdoor_yy_01
+    400042: oldbreakfasttable003_yy
+    400044: oldcashregister6_00
+    400046: oldcashregister6_01
+    400048: oldcashregister6_02
+    400050: cs_counterdoor
+    400052: cs_oldbreakfasttable003
+    2100000: 'Material #3487'
+    2100002: 'Material #3868'
+    2100004: 'Material #3866'
+    2100006: 'Material #3869'
+    2100008: 'Material #3962'
+    2100010: 'Material #3318'
+    2100012: guizi
+    2100014: yiying
+    2100016: K1_oldcupboard
+    2100018: xishoutai
+    2300000: k1_oldyinying015
+    2300002: k1_oldyinying017
+    2300004: k1_oldyinying018
+    2300006: k1_oldyinying072
+    2300008: oldbreakfasttable003
+    2300010: oldcashregister1
+    2300012: oldcashregister2
+    2300014: oldcashregister3
+    2300016: oldcashregister5
+    2300018: oldcashregister6
+    2300020: Plane1029
+    2300022: cc_oldcashregister6_yy
+    2300024: counterdoor_00
+    2300026: counterdoor_01
+    2300028: counterdoor_02
+    2300030: counterdoor_yy_00
+    2300032: counterdoor_yy_01
+    2300034: oldbreakfasttable003_yy
+    2300036: oldcashregister6_00
+    2300038: oldcashregister6_01
+    2300040: oldcashregister6_02
+    3300000: k1_oldyinying015
+    3300002: k1_oldyinying017
+    3300004: k1_oldyinying018
+    3300006: k1_oldyinying072
+    3300008: oldbreakfasttable003
+    3300010: oldcashregister1
+    3300012: oldcashregister2
+    3300014: oldcashregister3
+    3300016: oldcashregister5
+    3300018: oldcashregister6
+    3300020: Plane1029
+    3300022: cc_oldcashregister6_yy
+    3300024: counterdoor_00
+    3300026: counterdoor_01
+    3300028: counterdoor_02
+    3300030: counterdoor_yy_00
+    3300032: counterdoor_yy_01
+    3300034: oldbreakfasttable003_yy
+    3300036: oldcashregister6_00
+    3300038: oldcashregister6_01
+    3300040: oldcashregister6_02
+    4300000: oldbreakfasttable003
+    4300002: oldcashregister5
+    4300004: Plane1029
+    4300006: k1_oldyinying015
+    4300008: oldcashregister6
+    4300010: oldcashregister3
+    4300012: oldcashregister1
+    4300014: oldcashregister2
+    4300016: k1_oldyinying017
+    4300018: k1_oldyinying018
+    4300020: k1_oldyinying072
+    4300022: counterdoor_01
+    4300024: counterdoor_yy_00
+    4300026: counterdoor_02
+    4300028: counterdoor_00
+    4300030: counterdoor_yy_01
+    4300032: oldbreakfasttable003_yy
+    4300034: oldcashregister6_01
+    4300036: oldcashregister6_00
+    4300038: oldcashregister6_02
+    4300040: cc_oldcashregister6_yy
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

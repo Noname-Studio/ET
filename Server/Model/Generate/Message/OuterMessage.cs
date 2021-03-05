@@ -3,7 +3,7 @@ using ProtoBuf;
 using System.Collections.Generic;
 namespace ET
 {
-	[ResponseType(typeof(M2C_TestResponse))]
+	[ResponseType(typeof(M2C_TestResponse))]
 	[Message(OuterOpcode.C2M_TestRequest)]
 	[ProtoContract]
 	public partial class C2M_TestRequest: IActorLocationRequest
@@ -37,7 +37,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(Actor_TransferResponse))]
+	[ResponseType(typeof(Actor_TransferResponse))]
 	[Message(OuterOpcode.Actor_TransferRequest)]
 	[ProtoContract]
 	public partial class Actor_TransferRequest: IActorLocationRequest
@@ -68,7 +68,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_EnterMap))]
+	[ResponseType(typeof(G2C_EnterMap))]
 	[Message(OuterOpcode.C2G_EnterMap)]
 	[ProtoContract]
 	public partial class C2G_EnterMap: IRequest
@@ -190,7 +190,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_Ping))]
+	[ResponseType(typeof(G2C_Ping))]
 	[Message(OuterOpcode.C2G_Ping)]
 	[ProtoContract]
 	public partial class C2G_Ping: IRequest
@@ -224,7 +224,7 @@ namespace ET
 	{
 	}
 
-	[ResponseType(typeof(M2C_Reload))]
+	[ResponseType(typeof(M2C_Reload))]
 	[Message(OuterOpcode.C2M_Reload)]
 	[ProtoContract]
 	public partial class C2M_Reload: IRequest
@@ -255,7 +255,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(R2C_Login))]
+	[ResponseType(typeof(R2C_Login))]
 	[Message(OuterOpcode.C2R_Login)]
 	[ProtoContract]
 	public partial class C2R_Login: IRequest
@@ -295,7 +295,77 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_LoginGate))]
+	[ResponseType(typeof(R2C_SearchGuild))]
+	[Message(OuterOpcode.C2R_SearchGuild)]
+	[ProtoContract]
+	public partial class C2R_SearchGuild: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Name { get; set; }
+
+		[ProtoMember(2)]
+		public long Id { get; set; }
+
+		[ProtoMember(3)]
+		public int MinLevel { get; set; }
+
+		[ProtoMember(4)]
+		public int Language { get; set; }
+
+		[ProtoMember(5)]
+		public int TimeZone { get; set; }
+
+		[ProtoMember(6)]
+		public int MaxNum { get; set; }
+
+		[ProtoMember(7)]
+		public bool IsNewSearch { get; set; }
+
+	}
+
+	[Message(OuterOpcode.R2C_SearchGuild)]
+	[ProtoContract]
+	public partial class R2C_SearchGuild: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<SearchGuildResult> Results = new List<SearchGuildResult>();
+
+	}
+
+	[Message(OuterOpcode.SearchGuildResult)]
+	[ProtoContract]
+	public partial class SearchGuildResult
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public string Desc { get; set; }
+
+		[ProtoMember(4)]
+		public string Outer { get; set; }
+
+		[ProtoMember(5)]
+		public string Frame { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_LoginGate))]
 	[Message(OuterOpcode.C2G_LoginGate)]
 	[ProtoContract]
 	public partial class C2G_LoginGate: IRequest
@@ -338,7 +408,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(M2C_TestActorResponse))]
+	[ResponseType(typeof(M2C_TestActorResponse))]
 	[Message(OuterOpcode.C2M_TestActorRequest)]
 	[ProtoContract]
 	public partial class C2M_TestActorRequest: IActorLocationRequest
@@ -381,7 +451,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_PlayerInfo))]
+	[ResponseType(typeof(G2C_PlayerInfo))]
 	[Message(OuterOpcode.C2G_PlayerInfo)]
 	[ProtoContract]
 	public partial class C2G_PlayerInfo: IRequest

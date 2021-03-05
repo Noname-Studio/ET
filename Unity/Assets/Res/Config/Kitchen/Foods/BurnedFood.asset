@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: BurnedFood
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 378bde90e904e9f4b944798fbfdb37ae, type: 3}
+  mKey: F_BurnedFood
+  mTexture: Image/Food/tex_burn_food
+  mRestId: FoodTruck
+  mWaitTime: 0
+  mEditorCookware: {fileID: 0}
+  mEditorFinalIngredients: []
+  mLevels: []
+  mBasePatient: 100
+  mCookware: 
+  mAllIngredients: []

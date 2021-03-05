@@ -1,0 +1,118 @@
+
+k2_oven2.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 140, 739
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+ovenbox2
+  rotate: false
+  xy: 1, 217
+  size: 191, 232
+  orig: 191, 232
+  offset: 0, 0
+  index: -1
+ovenbox3
+  rotate: false
+  xy: 246, 1
+  size: 194, 231
+  orig: 195, 232
+  offset: 0, 1
+  index: -1
+brk_ovenbox
+  rotate: false
+  xy: 194, 234
+  size: 191, 232
+  orig: 191, 232
+  offset: 0, 0
+  index: -1
+brk_ovenboxT
+  rotate: false
+  xy: 1, 451
+  size: 185, 230
+  orig: 191, 232
+  offset: 3, 0
+  index: -1
+working_smoke
+  rotate: false
+  xy: 140, 710
+  size: 44, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+brk_worklight2
+  rotate: false
+  xy: 1, 1
+  size: 243, 214
+  orig: 245, 215
+  offset: 0, 0
+  index: -1
+brk_worklight1
+  rotate: false
+  xy: 1, 683
+  size: 137, 167
+  orig: 137, 167
+  offset: 0, 0
+  index: -1
+brk_worklightT
+  rotate: false
+  xy: 1, 852
+  size: 130, 145
+  orig: 130, 145
+  offset: 0, 0
+  index: -1
+brk_Baker
+  rotate: false
+  xy: 140, 683
+  size: 164, 25
+  orig: 164, 25
+  offset: 0, 0
+  index: -1
+handleT
+  rotate: false
+  xy: 188, 710
+  size: 124, 31
+  orig: 124, 32
+  offset: 0, 1
+  index: -1
+brk_handle
+  rotate: false
+  xy: 297, 976
+  size: 144, 29
+  orig: 144, 29
+  offset: 0, 0
+  index: -1
+handle3
+  rotate: false
+  xy: 243, 942
+  size: 164, 32
+  orig: 167, 32
+  offset: 0, 0
+  index: -1
+handle2
+  rotate: false
+  xy: 133, 976
+  size: 162, 32
+  orig: 163, 32
+  offset: 1, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 133, 852
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 243, 852
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1

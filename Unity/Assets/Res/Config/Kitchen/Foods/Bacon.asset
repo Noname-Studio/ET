@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Bacon
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
+  mKey: F_Bacon
+  mTexture: Image/Food/Breakfast/tex_bacon
+  mRestId: Breakfast
+  mWaitTime: 0
+  mEditorCookware: {fileID: 11400000, guid: 07f92347c5077874b970d3bc2d8f1a48, type: 2}
+  mEditorFinalIngredients:
+  - {fileID: 11400000, guid: ad8bf79d89b62d140bfbf392f65e048b, type: 2}
+  mLevels:
+  - mLevel: 1
+    mUnlockLv: 0
+    mPrice:
+      Coin: 100
+      Gem: 0
+    mTips: 20
+  - mLevel: 2
+    mUnlockLv: 0
+    mPrice:
+      Coin: 300
+      Gem: 0
+    mTips: 30
+  mBasePatient: 100
+  mCookware: k2_grillPan
+  mAllIngredients:
+  - I_SmokedMeat

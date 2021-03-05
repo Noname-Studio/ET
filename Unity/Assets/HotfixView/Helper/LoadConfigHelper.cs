@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Panthea.Asset;
 using UnityEngine;
 
 namespace ET
@@ -8,13 +9,16 @@ namespace ET
     {
         public static void LoadAllConfigBytes(Dictionary<string, byte[]> output)
         {
-            Dictionary<string, UnityEngine.Object> keys = ResourcesComponent.Instance.GetBundleAll("config.unity3d");
+            Dictionary<string, List<UnityEngine.Object>> keys = AssetsKit.Inst.LoadAllSync("Config/Server");
 
             foreach (var kv in keys)
             {
-                TextAsset v = kv.Value as TextAsset;
-                string key = kv.Key;
-                output[key] = v.bytes;
+                foreach (var obj in kv.Value)
+                {
+                    TextAsset v = obj as TextAsset;
+                    string key = kv.Key;
+                    output[key] = v.bytes;
+                }
             }
         }
     }

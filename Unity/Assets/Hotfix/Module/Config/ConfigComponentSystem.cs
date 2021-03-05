@@ -24,21 +24,28 @@ namespace ET
 	{
 		public static async ETTask LoadAsync(this ConfigComponent self)
 		{
-			self.AllConfig.Clear();
-			HashSet<Type> types = Game.EventSystem.GetTypes(typeof (ConfigAttribute));
-			
-			Dictionary<string, byte[]> configBytes = new Dictionary<string, byte[]>();
-			ConfigComponent.GetAllConfigBytes(configBytes);
-
-			List<Task> listTasks = new List<Task>();
-
-			foreach (Type type in types)
+			try
 			{
-				Task task = Task.Run(() => self.LoadOneInThread(type, configBytes));
-				listTasks.Add(task);
-			}
+				self.AllConfig.Clear();
+				HashSet<Type> types = Game.EventSystem.GetTypes(typeof (ConfigAttribute));
 
-			await Task.WhenAll(listTasks.ToArray());
+				Dictionary<string, byte[]> configBytes = new Dictionary<string, byte[]>();
+				ConfigComponent.GetAllConfigBytes(configBytes);
+
+				List<Task> listTasks = new List<Task>();
+
+				foreach (Type type in types)
+				{
+					Task task = Task.Run(() => self.LoadOneInThread(type, configBytes));
+					listTasks.Add(task);
+				}
+
+				await Task.WhenAll(listTasks.ToArray());
+			}
+			catch(Exception e)
+			{
+				Log.Error(e);
+			}
 		}
 
 		private static void LoadOneInThread(this ConfigComponent self, Type configType, Dictionary<string, byte[]> configBytes)

@@ -1,0 +1,583 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 207.25,
+        "height": 162.9,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_waffletable_21"
+    },
+    "bones": [
+        {
+            "x": 31.1429,
+            "y": -42.3029,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 3.06,
+            "y": 97.1129,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": -21.2456,
+            "y": 34.5686,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -69.5087,
+            "y": 37.985,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": -38.4297,
+            "y": 25.5525,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 45.0433,
+            "y": 25.5525,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "rotation": 5,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "x": -58.2098,
+            "y": 49.4716,
+            "name": "juicewaffle",
+            "parent": "bone"
+        },
+        {
+            "x": -39.907,
+            "y": 33.2145,
+            "name": "butterwaffle",
+            "parent": "bone"
+        },
+        {
+            "length": 42,
+            "x": 63.4631,
+            "y": 23.7693,
+            "rotation": 136.5077,
+            "name": "waffleknife1",
+            "parent": "bone"
+        },
+        {
+            "x": -3.094,
+            "y": 27.6035,
+            "scaleX": 5.75,
+            "scaleY": 3.5,
+            "name": "size",
+            "parent": "bone"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_worktable"
+        },
+        {
+            "name": "waffleboard1",
+            "bone": "bone",
+            "attachment": "waffleboard1/waffleboard1"
+        },
+        {
+            "name": "waffleknifeshadow1",
+            "bone": "waffleknife1",
+            "attachment": "waffleboard1/waffleknifeshadow1"
+        },
+        {
+            "name": "waffleknife2",
+            "bone": "waffleknife1",
+            "attachment": "waffleboard1/waffleknife2"
+        },
+        {
+            "name": "wafflecake2",
+            "bone": "bone",
+            "color": "FFFFFF00",
+            "attachment": "waffleboard1/wafflecake2"
+        },
+        {
+            "name": "waffleknife1",
+            "bone": "waffleknife1",
+            "color": "FFFFFF00",
+            "attachment": "waffleboard1/waffleknife1"
+        },
+        {
+            "name": "wafflecake1",
+            "bone": "bone",
+            "color": "FFFFFF00",
+            "attachment": "waffleboard1/wafflecake1"
+        },
+        {
+            "name": "waffleboard11",
+            "bone": "bone",
+            "color": "FFFFFF00",
+            "attachment": "waffleboard1"
+        },
+        {
+            "name": "juicewaffle",
+            "bone": "juicewaffle",
+            "attachment": "waffleboard1/juicewaffle"
+        },
+        {
+            "name": "butterwaffle",
+            "bone": "butterwaffle",
+            "attachment": "waffleboard1/butterwaffle"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "wafflecake2": {
+                "waffleboard1/wafflecake2": {
+                    "name": "waffleboard1/wafflecake2",
+                    "width": 69,
+                    "height": 51,
+                    "x": 32.96,
+                    "y": 48.47,
+                    "rotation": -5
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "wafflecake1": {
+                "waffleboard1/wafflecake1": {
+                    "name": "waffleboard1/wafflecake1",
+                    "width": 75,
+                    "height": 53,
+                    "x": 6.19,
+                    "y": 40.78,
+                    "rotation": -5
+                }
+            },
+            "juicewaffle": {
+                "waffleboard1/juicewaffle": {
+                    "name": "waffleboard1/juicewaffle",
+                    "width": 30,
+                    "height": 32,
+                    "x": 0.01,
+                    "y": -4.57,
+                    "rotation": -5
+                },
+                "waffleboard2/juicewaffle2": {
+                    "name": "waffleboard2/juicewaffle2",
+                    "width": 38,
+                    "height": 29,
+                    "x": -4.44,
+                    "y": 0.69,
+                    "rotation": -5
+                },
+                "waffleboard3/juicewaffle3": {
+                    "name": "waffleboard3/juicewaffle3",
+                    "width": 40,
+                    "height": 35,
+                    "x": -4.35,
+                    "y": 0.52,
+                    "rotation": -5
+                }
+            },
+            "waffleboard1": {
+                "waffleboard1/waffleboard1": {
+                    "name": "waffleboard1/waffleboard1",
+                    "width": 194,
+                    "height": 98,
+                    "x": -0.94,
+                    "y": 33.87,
+                    "rotation": -5
+                },
+                "waffleboard2/waffleboard2": {
+                    "name": "waffleboard2/waffleboard2",
+                    "width": 197,
+                    "height": 97,
+                    "x": 0.01,
+                    "y": 32.13,
+                    "rotation": -5
+                },
+                "waffleboard3/waffleboard3": {
+                    "name": "waffleboard3/waffleboard3",
+                    "width": 196,
+                    "height": 103,
+                    "x": 0.65,
+                    "y": 32.41,
+                    "rotation": -5
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "waffleknife2": {
+                "waffleboard1/waffleknife2": {
+                    "name": "waffleboard1/waffleknife2",
+                    "width": 89,
+                    "height": 60,
+                    "x": 43.9,
+                    "y": 4.31,
+                    "rotation": -141.51
+                },
+                "waffleboard2/waffleknife22": {
+                    "name": "waffleboard2/waffleknife22",
+                    "width": 92,
+                    "height": 60,
+                    "x": 40.12,
+                    "y": 0.86,
+                    "rotation": -141.51
+                },
+                "waffleboard3/waffleknife23": {
+                    "name": "waffleboard3/waffleknife23",
+                    "width": 95,
+                    "height": 59,
+                    "x": 41.26,
+                    "y": 0.06,
+                    "rotation": -141.51
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "waffleknife1": {
+                "waffleboard1/waffleknife1": {
+                    "name": "waffleboard1/waffleknife1",
+                    "width": 88,
+                    "height": 72,
+                    "x": 46.16,
+                    "y": -0.71,
+                    "rotation": -141.51
+                },
+                "waffleboard2/waffleknife12": {
+                    "name": "waffleboard2/waffleknife12",
+                    "width": 88,
+                    "height": 72,
+                    "x": 46.16,
+                    "y": -0.71,
+                    "rotation": -141.51
+                },
+                "waffleboard3/waffleknife13": {
+                    "name": "waffleboard3/waffleknife13",
+                    "width": 88,
+                    "height": 72,
+                    "x": 46.16,
+                    "y": -0.71,
+                    "rotation": -141.51
+                }
+            },
+            "clock": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "waffleboard11": {
+                "waffleboard1": {
+                    "name": "waffleboard1",
+                    "width": 55,
+                    "height": 29,
+                    "x": 13.13,
+                    "y": 41.91
+                }
+            },
+            "size": {
+                "size_worktable": {
+                    "name": "size_worktable",
+                    "width": 29,
+                    "height": 26
+                }
+            },
+            "butterwaffle": {
+                "waffleboard1/butterwaffle": {
+                    "name": "waffleboard1/butterwaffle",
+                    "width": 31,
+                    "height": 24,
+                    "x": 0.18,
+                    "y": -0.97,
+                    "rotation": -5
+                },
+                "waffleboard2/butterwaffle2": {
+                    "name": "waffleboard2/butterwaffle2",
+                    "width": 39,
+                    "height": 28,
+                    "x": -2.31,
+                    "y": -1.91,
+                    "rotation": -5
+                },
+                "waffleboard3/butterwaffle3": {
+                    "name": "waffleboard3/butterwaffle3",
+                    "width": 39,
+                    "height": 35,
+                    "x": -1.09,
+                    "y": -0.67,
+                    "rotation": -5
+                }
+            },
+            "waffleknifeshadow1": {
+                "waffleboard1/waffleknifeshadow1": {
+                    "name": "waffleboard1/waffleknifeshadow1",
+                    "width": 88,
+                    "height": 59,
+                    "x": 39.37,
+                    "y": 5.18,
+                    "rotation": -141.51
+                },
+                "waffleboard3/waffleknifeshadow3": {
+                    "name": "waffleboard3/waffleknifeshadow3",
+                    "width": 89,
+                    "height": 51,
+                    "x": 37.6,
+                    "y": 2.25,
+                    "rotation": -141.51
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            }
+        }
+    }],
+    "animations": {
+        "1normal":{},
+        "3work": {
+            "bones": {
+                "waffleknife1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -13
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": 26.94,
+                            "y": -34.28
+                        },
+                        {
+                            "time": 0.3334,
+                            "y": -13
+                        },
+                        {
+                            "time": 0.5001,
+                            "x": 26.94,
+                            "y": -34.28
+                        },
+                        {
+                            "time": 0.8334,
+                            "x": 29.1,
+                            "y": 1.05
+                        }
+                    ]
+                },
+                "juicewaffle": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 1
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": 75.81,
+                            "y": 51.02
+                        },
+                        {
+                            "time": 1.6666,
+                            "x": 54.09,
+                            "y": 39.37
+                        },
+                        {
+                            "time": 1.9999,
+                            "x": 75.81,
+                            "y": 51.02
+                        },
+                        {
+                            "time": 2.3499
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.3333,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.6666,
+                            "angle": -35.3
+                        },
+                        {
+                            "time": 1.9999,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 1.3333
+                        },
+                        {
+                            "time": 1.6666
+                        },
+                        {
+                            "time": 1.9999
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "waffleknifeshadow1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "waffleknife2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "wafflecake2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "waffleknife1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "wafflecake1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "waffleboard11": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.3333,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.6666,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

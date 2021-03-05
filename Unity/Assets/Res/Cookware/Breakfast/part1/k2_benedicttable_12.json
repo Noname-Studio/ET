@@ -1,0 +1,1095 @@
+{
+    "skeleton": {
+        "spine": "3.8.33-beta",
+        "width": 237.87,
+        "height": 198.77,
+        "hash": " ",
+        "name": "k2_benedicttable_12"
+    },
+    "bones": [
+        {
+            "x": 28.1291,
+            "y": 3.2013,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 3.06,
+            "y": 97.1129,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 33.207,
+            "y": 22.3421,
+            "rotation": 0.1032,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -96.5427,
+            "y": 6.1201,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": 42.3669,
+            "y": 20.1761,
+            "rotation": 0.0493,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": -41.321,
+            "y": 20.6975,
+            "rotation": 0.0493,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "scaleX": -1,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "length": 44,
+            "x": 87.65,
+            "y": 46.7138,
+            "rotation": -119.9059,
+            "name": "spoon1",
+            "parent": "bone"
+        },
+        {
+            "y": -14.0475,
+            "name": "benedicttable",
+            "parent": "bone"
+        },
+        {
+            "x": -1.774,
+            "y": 13.0835,
+            "scaleX": 5.75,
+            "scaleY": 5.4,
+            "name": "size",
+            "parent": "bone"
+        },
+        {
+            "length": 62,
+            "x": -29.6,
+            "y": 23.6638,
+            "rotation": 90,
+            "name": "bottle_benedict1",
+            "parent": "bone"
+        },
+        {
+            "length": 64,
+            "x": 62.2825,
+            "y": -8.9758,
+            "rotation": -177.7412,
+            "name": "sauce_flow",
+            "parent": "bottle_benedict1"
+        },
+        {
+            "x": 67.95,
+            "rotation": -90,
+            "name": "cover_benedict1",
+            "parent": "bottle_benedict1"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_worktable"
+        },
+        {
+            "name": "benedicttable1",
+            "bone": "benedicttable",
+            "attachment": "benedict2/benedicttable2"
+        },
+        {
+            "name": "shadow_bottle",
+            "bone": "benedicttable",
+            "color": "FFFFFF00",
+            "attachment": "benedict1/shadow_bottle"
+        },
+        {
+            "name": "bottle_benedict1",
+            "bone": "bottle_benedict1",
+            "color": "FFFFFF00",
+            "attachment": "benedict1/bottle_benedict1"
+        },
+        {
+            "name": "cover_benedict1",
+            "bone": "cover_benedict1",
+            "color": "FFFFFF00",
+            "attachment": "benedict1/cover_benedict1"
+        },
+        {
+            "name": "pancake_benedict1",
+            "bone": "benedicttable",
+            "color": "FFFFFF00",
+            "attachment": "benedict1/pancake_benedict1"
+        },
+        {
+            "name": "spoon2",
+            "bone": "spoon1",
+            "attachment": "benedict2/spoon2"
+        },
+        {
+            "name": "spoon1",
+            "bone": "spoon1",
+            "color": "FFFFFF00",
+            "attachment": "benedict2/spoon1"
+        },
+        {
+            "name": "poached_egg",
+            "bone": "benedicttable",
+            "color": "FFFFFF00",
+            "attachment": "poached_egg"
+        },
+        {
+            "name": "sauce_spray",
+            "bone": "benedicttable",
+            "color": "FFFFFF00",
+            "attachment": "sauce_flow/sauce_spray"
+        },
+        {
+            "name": "sauce_flow",
+            "bone": "sauce_flow",
+            "color": "FFFFFF00",
+            "attachment": "sauce_flow/sauce_flow"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "benedict3/bottle_benedict3",
+            "bone": "spoon1",
+            "color": "FFFFFF00",
+            "attachment": "benedict3/bottle_benedict3"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "benedicttable1": {
+                "benedict1/benedicttable1": {
+                    "name": "benedict1/benedicttable1",
+                    "width": 173,
+                    "height": 107,
+                    "y": 17.71
+                },
+                "benedict2/benedicttable2": {
+                    "name": "benedict2/benedicttable2",
+                    "width": 203,
+                    "height": 130,
+                    "x": 4.19,
+                    "y": 21.68
+                },
+                "benedict3/benedicttable3": {
+                    "name": "benedict3/benedicttable3",
+                    "width": 198,
+                    "height": 117,
+                    "x": 3.72,
+                    "y": 13.84
+                }
+            },
+            "clock": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "poached_egg": {
+                "poached_egg": {
+                    "name": "poached_egg",
+                    "width": 51,
+                    "height": 39,
+                    "x": -15.54,
+                    "y": 18.52
+                }
+            },
+            "bottle_benedict1": {
+                "benedict1/bottle_benedict1": {
+                    "name": "benedict1/bottle_benedict1",
+                    "width": 59,
+                    "height": 85,
+                    "x": 35.5,
+                    "y": 0.09,
+                    "rotation": -90
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "spoon1": {
+                "benedict2/spoon1": {
+                    "name": "benedict2/spoon1",
+                    "width": 38,
+                    "height": 51,
+                    "x": 24.3,
+                    "y": -0.98,
+                    "rotation": 119.91
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "sauce_spray": {
+                "sauce_flow/sauce_spray": {
+                    "name": "sauce_flow/sauce_spray",
+                    "width": 86,
+                    "height": 54,
+                    "hull": 27,
+                    "triangles": [
+                        15,
+                        14,
+                        16,
+                        14,
+                        17,
+                        16,
+                        14,
+                        13,
+                        17,
+                        13,
+                        18,
+                        17,
+                        12,
+                        18,
+                        13,
+                        12,
+                        11,
+                        19,
+                        12,
+                        19,
+                        18,
+                        10,
+                        20,
+                        19,
+                        11,
+                        10,
+                        19,
+                        10,
+                        21,
+                        20,
+                        9,
+                        22,
+                        10,
+                        10,
+                        22,
+                        21,
+                        0,
+                        26,
+                        25,
+                        24,
+                        0,
+                        25,
+                        24,
+                        23,
+                        0,
+                        23,
+                        1,
+                        0,
+                        8,
+                        23,
+                        9,
+                        9,
+                        23,
+                        22,
+                        2,
+                        1,
+                        23,
+                        8,
+                        2,
+                        23,
+                        3,
+                        2,
+                        8,
+                        5,
+                        4,
+                        6,
+                        6,
+                        4,
+                        8,
+                        4,
+                        3,
+                        8,
+                        7,
+                        6,
+                        8
+                    ],
+                    "uvs": [
+                        0.47035,
+                        1.00093,
+                        0.275,
+                        0.95278,
+                        0.15988,
+                        0.875,
+                        0.04942,
+                        0.73981,
+                        0.00058,
+                        0.60833,
+                        0.01512,
+                        0.44259,
+                        0.11802,
+                        0.36019,
+                        0.20698,
+                        0.37037,
+                        0.22849,
+                        0.42407,
+                        0.3814,
+                        0.34259,
+                        0.47907,
+                        0.28889,
+                        0.52616,
+                        0.13889,
+                        0.60523,
+                        0.05556,
+                        0.77674,
+                        0,
+                        0.91977,
+                        0,
+                        1,
+                        0.075,
+                        1,
+                        0.23056,
+                        0.91105,
+                        0.32315,
+                        0.70291,
+                        0.38056,
+                        0.63023,
+                        0.42407,
+                        0.59419,
+                        0.53611,
+                        0.53023,
+                        0.60833,
+                        0.4436,
+                        0.62222,
+                        0.37733,
+                        0.71204,
+                        0.45756,
+                        0.74907,
+                        0.54302,
+                        0.81296,
+                        0.55116,
+                        0.93704
+                    ],
+                    "edges": [
+                        0,
+                        2,
+                        2,
+                        4,
+                        4,
+                        6,
+                        6,
+                        8,
+                        8,
+                        10,
+                        10,
+                        12,
+                        12,
+                        14,
+                        14,
+                        16,
+                        16,
+                        18,
+                        18,
+                        20,
+                        20,
+                        22,
+                        22,
+                        24,
+                        24,
+                        26,
+                        26,
+                        28,
+                        28,
+                        30,
+                        30,
+                        32,
+                        32,
+                        34,
+                        34,
+                        36,
+                        36,
+                        38,
+                        38,
+                        40,
+                        40,
+                        42,
+                        42,
+                        44,
+                        44,
+                        46,
+                        46,
+                        48,
+                        48,
+                        50,
+                        50,
+                        52,
+                        52,
+                        0
+                    ],
+                    "vertices": [
+                        -14.56,
+                        -4.34,
+                        -31.36,
+                        -1.74,
+                        -41.26,
+                        2.46,
+                        -50.76,
+                        9.76,
+                        -54.96,
+                        16.86,
+                        -53.71,
+                        25.81,
+                        -44.86,
+                        30.26,
+                        -37.21,
+                        29.71,
+                        -35.36,
+                        26.81,
+                        -22.21,
+                        31.21,
+                        -13.81,
+                        34.11,
+                        -9.76,
+                        42.21,
+                        -2.96,
+                        46.71,
+                        11.79,
+                        49.71,
+                        24.09,
+                        49.71,
+                        30.99,
+                        45.66,
+                        30.99,
+                        37.26,
+                        23.34,
+                        32.26,
+                        5.44,
+                        29.16,
+                        -0.81,
+                        26.81,
+                        -3.91,
+                        20.76,
+                        -9.41,
+                        16.86,
+                        -16.86,
+                        16.11,
+                        -22.56,
+                        11.26,
+                        -15.66,
+                        9.26,
+                        -8.31,
+                        5.81,
+                        -7.61,
+                        -0.89
+                    ],
+                    "type": "mesh"
+                }
+            },
+            "spoon2": {
+                "benedict2/spoon2": {
+                    "name": "benedict2/spoon2",
+                    "width": 35,
+                    "height": 43,
+                    "x": 20.09,
+                    "y": -1.67,
+                    "rotation": 119.91
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "shadow_bottle": {
+                "benedict1/shadow_bottle": {
+                    "name": "benedict1/shadow_bottle",
+                    "width": 62,
+                    "height": 35,
+                    "x": -28.5,
+                    "y": 39.21
+                }
+            },
+            "cover_benedict1": {
+                "benedict1/cover_benedict1": {
+                    "name": "benedict1/cover_benedict1",
+                    "width": 49,
+                    "height": 35,
+                    "x": -0.4,
+                    "y": -3.45
+                }
+            },
+            "pancake_benedict1": {
+                "benedict1/pancake_benedict1": {
+                    "name": "benedict1/pancake_benedict1",
+                    "width": 83,
+                    "height": 59,
+                    "x": 1,
+                    "y": 25.21
+                }
+            },
+            "benedict3/bottle_benedict3": {
+                "benedict3/bottle_benedict3": {
+                    "name": "benedict3/bottle_benedict3",
+                    "width": 81,
+                    "height": 67,
+                    "x": 38.66,
+                    "y": -0.18,
+                    "rotation": 119.91
+                }
+            },
+            "sauce_flow": {
+                "sauce_flow/sauce_flow": {
+                    "name": "sauce_flow/sauce_flow",
+                    "width": 19,
+                    "height": 72,
+                    "x": 30.98,
+                    "y": -2.95,
+                    "rotation": 89.64
+                }
+            },
+            "size": {
+                "size_worktable": {
+                    "name": "size_worktable",
+                    "width": 29,
+                    "height": 26
+                }
+            }
+        }
+    }],
+    "animations": {
+        "3work": {
+            "bones": {
+                "bottle_benedict1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": -14.8,
+                            "y": 23.3
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": -57.58,
+                            "y": 25.16
+                        },
+                        {
+                            "time": 0.9999,
+                            "x": -11.51,
+                            "y": 32.35
+                        },
+                        {
+                            "time": 1.3332,
+                            "y": 28.59
+                        },
+                        {
+                            "time": 1.6665
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5,
+                            "angle": -41.58
+                        },
+                        {
+                            "time": 0.6667,
+                            "angle": -65.4
+                        },
+                        {
+                            "time": 1,
+                            "angle": -54.99
+                        },
+                        {
+                            "time": 1.3333,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333
+                        },
+                        {
+                            "time": 0.5
+                        },
+                        {
+                            "time": 0.6667
+                        },
+                        {
+                            "time": 1
+                        },
+                        {
+                            "time": 1.3333
+                        }
+                    ]
+                },
+                "cover_benedict1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333
+                        },
+                        {
+                            "time": 0.5,
+                            "x": 26.4,
+                            "y": -5.3
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": 26.4,
+                            "y": -5.3
+                        },
+                        {
+                            "time": 1.6666
+                        }
+                    ]
+                },
+                "sauce_flow": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6,
+                            "x": 4.98,
+                            "y": -5.04
+                        },
+                        {
+                            "time": 1,
+                            "x": 4.98,
+                            "y": -5.04
+                        },
+                        {
+                            "time": 1.0667,
+                            "x": -2.35,
+                            "y": -28.44
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped",
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.6,
+                            "angle": 56.08
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "curve": "stepped",
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.6,
+                            "x": 0.3,
+                            "y": -1
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1,
+                            "y": -1
+                        },
+                        {
+                            "time": 0.8,
+                            "x": 0.85,
+                            "y": -1
+                        },
+                        {
+                            "time": 1,
+                            "x": 0.92,
+                            "y": -1
+                        },
+                        {
+                            "time": 1.0667,
+                            "x": 0.3,
+                            "y": -1
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6
+                        }
+                    ]
+                },
+                "spoon1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3333,
+                            "y": 34.38
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": -81.28,
+                            "y": 58.86
+                        },
+                        {
+                            "time": 0.9999,
+                            "x": -40.19,
+                            "y": 74.75
+                        },
+                        {
+                            "time": 1.5332
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "pancake_benedict1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "sauce_spray": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.7334,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.5334,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.6667,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "sauce_flow": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6667,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.0667,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "spoon1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1333,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.4666,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.5333,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "poached_egg": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3334,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.5334,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.6667,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            },
+            "deform": {
+                "default": {
+                    "sauce_spray": {
+                        "sauce_flow/sauce_spray": [
+                            {
+                                "time": 0,
+                                "curve": "stepped",
+                                "offset": 53,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 0.6667,
+                                "vertices": [
+                                    -8,
+                                    7.25,
+                                    3.95,
+                                    5.35,
+                                    8.55,
+                                    5.35,
+                                    15.9,
+                                    0,
+                                    15.9,
+                                    0,
+                                    15.9,
+                                    0,
+                                    8.5,
+                                    -3.15,
+                                    4.6,
+                                    -1.7,
+                                    4.6,
+                                    0,
+                                    0,
+                                    0,
+                                    -7.6,
+                                    -2.1,
+                                    -10.15,
+                                    -8.3,
+                                    -14.8,
+                                    -11.05,
+                                    -28.15,
+                                    -13.3,
+                                    -35.15,
+                                    -13.3,
+                                    -35.15,
+                                    -13.3,
+                                    -35.15,
+                                    -13.3,
+                                    -28.15,
+                                    -13.3,
+                                    -14.8,
+                                    -11.05,
+                                    -10.15,
+                                    -8.3,
+                                    -7.6,
+                                    -2.1,
+                                    -3.8,
+                                    0,
+                                    0,
+                                    0,
+                                    3.35,
+                                    1.9,
+                                    -2.65,
+                                    0,
+                                    -8.65,
+                                    1.85,
+                                    -9.3,
+                                    5.75
+                                ]
+                            },
+                            {
+                                "time": 1,
+                                "offset": 53,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 1.3333,
+                                "offset": 1,
+                                "vertices": [
+                                    -3.65,
+                                    0,
+                                    -3.65,
+                                    -10,
+                                    0,
+                                    -4.85,
+                                    -0.1,
+                                    -8.45,
+                                    0,
+                                    -8.35,
+                                    -3.05,
+                                    -13.6,
+                                    -6.1,
+                                    0,
+                                    -2.45,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    5.35,
+                                    0.05,
+                                    1.95,
+                                    -1.9
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

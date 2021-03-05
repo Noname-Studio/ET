@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: e38e36b8927587440a9692bd495e397b
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: k1_streetlight_0004
+    100004: k1_streetlight_006
+    100006: k1_streetlight_007
+    100008: k1_streetlight_008
+    100010: k1_streetlight_009
+    100012: k1_zacao_2562
+    100014: k1_zacao_2563
+    100016: k1_zacao_2564
+    100018: k1_zacao_2565
+    100020: k1_zacao_2594
+    100022: k1_zacao_2595
+    100024: k1_zacao_2596
+    100026: k1_zacao_2597
+    100028: k1_zacao_2603
+    100030: k1_zacao_2628
+    100032: k1_zacao_2671
+    100034: cc_streetight
+    100036: cs_zacao03
+    100038: cs_streetlight_bad
+    400000: //RootNode
+    400002: k1_streetlight_0004
+    400004: k1_streetlight_006
+    400006: k1_streetlight_007
+    400008: k1_streetlight_008
+    400010: k1_streetlight_009
+    400012: k1_zacao_2562
+    400014: k1_zacao_2563
+    400016: k1_zacao_2564
+    400018: k1_zacao_2565
+    400020: k1_zacao_2594
+    400022: k1_zacao_2595
+    400024: k1_zacao_2596
+    400026: k1_zacao_2597
+    400028: k1_zacao_2603
+    400030: k1_zacao_2628
+    400032: k1_zacao_2671
+    400034: cc_streetight
+    400036: cs_zacao03
+    400038: cs_streetlight_bad
+    2100000: yingying
+    2100002: k1_za4
+    2100004: K1_liba
+    2100006: k1_za3
+    2100008: k1_za1
+    2100010: 'Material #3975'
+    2300000: k1_streetlight_0004
+    2300002: k1_streetlight_006
+    2300004: k1_streetlight_007
+    2300006: k1_streetlight_008
+    2300008: k1_streetlight_009
+    2300010: k1_zacao_2562
+    2300012: k1_zacao_2563
+    2300014: k1_zacao_2564
+    2300016: k1_zacao_2565
+    2300018: k1_zacao_2594
+    2300020: k1_zacao_2595
+    2300022: k1_zacao_2596
+    2300024: k1_zacao_2597
+    2300026: k1_zacao_2603
+    2300028: k1_zacao_2628
+    2300030: k1_zacao_2671
+    2300032: cs_streetlight_bad
+    3300000: k1_streetlight_0004
+    3300002: k1_streetlight_006
+    3300004: k1_streetlight_007
+    3300006: k1_streetlight_008
+    3300008: k1_streetlight_009
+    3300010: k1_zacao_2562
+    3300012: k1_zacao_2563
+    3300014: k1_zacao_2564
+    3300016: k1_zacao_2565
+    3300018: k1_zacao_2594
+    3300020: k1_zacao_2595
+    3300022: k1_zacao_2596
+    3300024: k1_zacao_2597
+    3300026: k1_zacao_2603
+    3300028: k1_zacao_2628
+    3300030: k1_zacao_2671
+    3300032: cs_streetlight_bad
+    4300000: k1_streetlight_0004
+    4300002: k1_zacao_2562
+    4300004: k1_zacao_2563
+    4300006: k1_zacao_2564
+    4300008: k1_zacao_2565
+    4300010: k1_zacao_2594
+    4300012: k1_zacao_2595
+    4300014: k1_zacao_2596
+    4300016: k1_zacao_2597
+    4300018: k1_zacao_2603
+    4300020: k1_zacao_2628
+    4300022: k1_zacao_2671
+    4300024: k1_streetlight_006
+    4300026: k1_streetlight_007
+    4300028: k1_streetlight_008
+    4300030: k1_streetlight_009
+    4300032: cs_streetlight_bad
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

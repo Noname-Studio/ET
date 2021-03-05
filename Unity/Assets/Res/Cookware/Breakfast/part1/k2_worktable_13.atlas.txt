@@ -1,0 +1,83 @@
+
+k2_worktable_13.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 451, 1
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+worktable_12
+  rotate: false
+  xy: 192, 1
+  size: 166, 95
+  orig: 166, 95
+  offset: 0, 0
+  index: -1
+k2_worktable_11
+  rotate: false
+  xy: 1, 116
+  size: 159, 83
+  orig: 159, 83
+  offset: 0, 0
+  index: -1
+worktable_13
+  rotate: false
+  xy: 192, 98
+  size: 160, 92
+  orig: 160, 92
+  offset: 0, 0
+  index: -1
+toast
+  rotate: false
+  xy: 1, 1
+  size: 189, 113
+  orig: 219, 117
+  offset: 18, 2
+  index: -1
+toast_butter
+  rotate: false
+  xy: 382, 224
+  size: 61, 44
+  orig: 61, 44
+  offset: 0, 0
+  index: -1
+knife_butter
+  rotate: false
+  xy: 162, 192
+  size: 109, 30
+  orig: 109, 30
+  offset: 0, 0
+  index: -1
+knife_butter2
+  rotate: false
+  xy: 1, 201
+  size: 109, 27
+  orig: 109, 30
+  offset: 0, 3
+  index: -1
+knife_butter3
+  rotate: false
+  xy: 273, 207
+  size: 107, 27
+  orig: 109, 30
+  offset: 0, 3
+  index: -1
+materialbg
+  rotate: false
+  xy: 360, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 354, 98
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 1d01f88700bac4e4a8fea70fbfc15ab7
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: k1_langandizuo1
+    100004: K1_langandizuo2
+    100006: langan_011
+    100008: langan_012
+    100010: langan_013
+    100012: langan_014
+    100014: langan_015
+    100016: langan_016
+    100018: langan_017
+    100020: langan_018
+    100022: cs_langandizuo
+    100024: K1_ornament38_1
+    400000: //RootNode
+    400002: k1_langandizuo1
+    400004: K1_langandizuo2
+    400006: langan_011
+    400008: langan_012
+    400010: langan_013
+    400012: langan_014
+    400014: langan_015
+    400016: langan_016
+    400018: langan_017
+    400020: langan_018
+    400022: cs_langandizuo
+    400024: K1_ornament38_1
+    2100000: K1_gangqing
+    2100002: K1_longtable
+    2300000: K1_langandizuo2
+    2300002: langan_011
+    2300004: langan_012
+    2300006: langan_013
+    2300008: langan_014
+    2300010: langan_015
+    2300012: langan_016
+    2300014: langan_017
+    2300016: langan_018
+    2300018: K1_ornament38_1
+    3300000: K1_langandizuo2
+    3300002: langan_011
+    3300004: langan_012
+    3300006: langan_013
+    3300008: langan_014
+    3300010: langan_015
+    3300012: langan_016
+    3300014: langan_017
+    3300016: langan_018
+    3300018: K1_ornament38_1
+    4300000: langan_011
+    4300002: langan_012
+    4300004: langan_013
+    4300006: langan_014
+    4300008: langan_015
+    4300010: langan_016
+    4300012: langan_017
+    4300014: langan_018
+    4300016: K1_langandizuo2
+    4300018: K1_ornament38_1
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

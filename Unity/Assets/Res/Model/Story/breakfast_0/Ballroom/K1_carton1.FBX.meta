@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: 1b271c6b563478f4794db9b5dd105e4c
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: carton03
+    100002: carton04
+    100004: carton05
+    100006: carton06
+    100008: carton07
+    100010: carton08
+    100012: carton09
+    100014: carton10
+    100016: carton11
+    100018: carton12
+    100020: carton13
+    100022: carton14
+    100024: carton15
+    100026: carton16
+    100028: carton17
+    100030: carton18
+    100032: carton19
+    100034: carton20
+    100036: carton21
+    100038: carton22
+    100040: carton23
+    100042: carton24
+    100044: carton25
+    100046: cc_carton2
+    100048: //RootNode
+    100050: carton03_yy
+    100052: carton07_yy
+    100054: carton11_yy
+    100056: carton_yy_00
+    100058: carton_yy_01
+    100060: carton_yy_02
+    100062: carton_yy_03
+    100064: carton_yy_04
+    100066: carton_yy_05
+    400000: carton03
+    400002: carton04
+    400004: carton05
+    400006: carton06
+    400008: carton07
+    400010: carton08
+    400012: carton09
+    400014: carton10
+    400016: carton11
+    400018: carton12
+    400020: carton13
+    400022: carton14
+    400024: carton15
+    400026: carton16
+    400028: carton17
+    400030: carton18
+    400032: carton19
+    400034: carton20
+    400036: carton21
+    400038: carton22
+    400040: carton23
+    400042: carton24
+    400044: carton25
+    400046: cc_carton2
+    400048: //RootNode
+    400050: carton03_yy
+    400052: carton07_yy
+    400054: carton11_yy
+    400056: carton_yy_00
+    400058: carton_yy_01
+    400060: carton_yy_02
+    400062: carton_yy_03
+    400064: carton_yy_04
+    400066: carton_yy_05
+    2100000: wj
+    2100002: K1_zw3
+    2100004: K1_cupcarton
+    2100006: K1_yuanzuozi
+    2100008: K1_gangqing
+    2100010: 22 - Default
+    2100012: yinying
+    2100014: wt
+    2100016: xiangzi
+    2100018: 'Material #3567'
+    2300000: carton03
+    2300002: carton04
+    2300004: carton05
+    2300006: carton06
+    2300008: carton07
+    2300010: carton08
+    2300012: carton09
+    2300014: carton10
+    2300016: carton11
+    2300018: carton12
+    2300020: carton13
+    2300022: carton14
+    2300024: carton15
+    2300026: carton16
+    2300028: carton17
+    2300030: carton18
+    2300032: carton19
+    2300034: carton20
+    2300036: carton21
+    2300038: carton22
+    2300040: carton23
+    2300042: carton24
+    2300044: carton25
+    2300046: carton03_yy
+    2300048: carton07_yy
+    2300050: carton11_yy
+    2300052: carton_yy_00
+    2300054: carton_yy_01
+    2300056: carton_yy_02
+    2300058: carton_yy_03
+    2300060: carton_yy_04
+    2300062: carton_yy_05
+    3300000: carton03
+    3300002: carton04
+    3300004: carton05
+    3300006: carton06
+    3300008: carton07
+    3300010: carton08
+    3300012: carton09
+    3300014: carton10
+    3300016: carton11
+    3300018: carton12
+    3300020: carton13
+    3300022: carton14
+    3300024: carton15
+    3300026: carton16
+    3300028: carton17
+    3300030: carton18
+    3300032: carton19
+    3300034: carton20
+    3300036: carton21
+    3300038: carton22
+    3300040: carton23
+    3300042: carton24
+    3300044: carton25
+    3300046: carton03_yy
+    3300048: carton07_yy
+    3300050: carton11_yy
+    3300052: carton_yy_00
+    3300054: carton_yy_01
+    3300056: carton_yy_02
+    3300058: carton_yy_03
+    3300060: carton_yy_04
+    3300062: carton_yy_05
+    4300000: carton03
+    4300002: carton04
+    4300004: carton05
+    4300006: carton06
+    4300008: carton07
+    4300010: carton19
+    4300012: carton20
+    4300014: carton21
+    4300016: carton22
+    4300018: carton08
+    4300020: carton09
+    4300022: carton10
+    4300024: carton11
+    4300026: carton12
+    4300028: carton15
+    4300030: carton16
+    4300032: carton17
+    4300034: carton18
+    4300036: carton13
+    4300038: carton14
+    4300040: carton23
+    4300042: carton24
+    4300044: carton25
+    4300046: carton11_yy
+    4300048: carton03_yy
+    4300050: carton07_yy
+    4300052: carton_yy_05
+    4300054: carton_yy_00
+    4300056: carton_yy_02
+    4300058: carton_yy_03
+    4300060: carton_yy_01
+    4300062: carton_yy_04
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: K1_zw3
+    second: {fileID: 2100000, guid: 66f0df6b1feb6fa499674872e88a8071, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yinying
+    second: {fileID: 2100000, guid: dc0d5a90b879ebd4b8df0b0d2b062c05, type: 2}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

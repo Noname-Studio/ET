@@ -10,7 +10,7 @@ namespace ET
             zoneScene.AddComponent<UnitComponent>();
             
             // UI层的初始化
-            await Game.EventSystem.Publish(new EventType.AfterCreateZoneScene() {ZoneScene = zoneScene});
+            //await Game.EventSystem.Publish(new EventType.AfterCreateZoneScene() {ZoneScene = zoneScene});
             
             return zoneScene;
         }

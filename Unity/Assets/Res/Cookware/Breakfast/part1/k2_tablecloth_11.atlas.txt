@@ -1,0 +1,76 @@
+
+k2_tablecloth_11.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 472, 141
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+tablecloth11/k2_tablecloth_11
+  rotate: false
+  xy: 1, 115
+  size: 190, 114
+  orig: 190, 114
+  offset: 0, 0
+  index: -1
+k2_tablecloth_13/k2_tablecloth_13
+  rotate: false
+  xy: 1, 1
+  size: 216, 112
+  orig: 216, 112
+  offset: 0, 0
+  index: -1
+tablecloth_12
+  rotate: false
+  xy: 219, 1
+  size: 195, 123
+  orig: 195, 123
+  offset: 0, 0
+  index: -1
+tablecloth11/slice_tablecloth
+  rotate: false
+  xy: 388, 163
+  size: 68, 23
+  orig: 68, 23
+  offset: 0, 0
+  index: -1
+eggs_cook1
+  rotate: false
+  xy: 416, 91
+  size: 85, 48
+  orig: 85, 48
+  offset: 0, 0
+  index: -1
+eggs_cook3
+  rotate: false
+  xy: 388, 141
+  size: 82, 20
+  orig: 83, 20
+  offset: 1, 0
+  index: -1
+eggs_cook2
+  rotate: false
+  xy: 303, 126
+  size: 83, 40
+  orig: 83, 40
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 416, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 193, 126
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

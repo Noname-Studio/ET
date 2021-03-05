@@ -1,0 +1,55 @@
+
+k2_Milkshake_33.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 223, 1
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+base_Milkshake_3
+  rotate: false
+  xy: 1, 1
+  size: 175, 124
+  orig: 175, 124
+  offset: 0, 0
+  index: -1
+cup_Milkshake_3
+  rotate: false
+  xy: 178, 1
+  size: 43, 69
+  orig: 43, 69
+  offset: 0, 0
+  index: -1
+top_Milkshake_3
+  rotate: false
+  xy: 1, 127
+  size: 131, 107
+  orig: 131, 107
+  offset: 0, 0
+  index: -1
+working_smoke
+  rotate: false
+  xy: 178, 72
+  size: 44, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 236
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 134, 127
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

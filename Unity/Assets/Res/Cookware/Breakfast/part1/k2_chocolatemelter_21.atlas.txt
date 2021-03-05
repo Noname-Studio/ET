@@ -1,0 +1,153 @@
+
+k2_chocolatemelter_21.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_saucepot
+  rotate: false
+  xy: 232, 257
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+chocolate1/chocolate_back1
+  rotate: false
+  xy: 1, 1
+  size: 267, 127
+  orig: 267, 127
+  offset: 0, 0
+  index: -1
+chocolatemelter2/chocolate_back2
+  rotate: false
+  xy: 270, 231
+  size: 224, 99
+  orig: 224, 99
+  offset: 0, 0
+  index: -1
+chocolate3/chocolate_back3
+  rotate: false
+  xy: 1, 257
+  size: 178, 83
+  orig: 178, 83
+  offset: 0, 0
+  index: -1
+potburn2
+  rotate: false
+  xy: 115, 416
+  size: 51, 20
+  orig: 51, 21
+  offset: 0, 1
+  index: -1
+chocolate_sauce/chocolate_sauce
+  rotate: false
+  xy: 1, 432
+  size: 112, 60
+  orig: 112, 60
+  offset: 0, 0
+  index: -1
+chocolatemelter2/chocolate2
+  rotate: false
+  xy: 115, 441
+  size: 107, 60
+  orig: 107, 60
+  offset: 0, 0
+  index: -1
+saucepiece2
+  rotate: false
+  xy: 157, 404
+  size: 15, 7
+  orig: 15, 7
+  offset: 0, 0
+  index: -1
+saucepiece1
+  rotate: false
+  xy: 157, 390
+  size: 13, 12
+  orig: 13, 14
+  offset: 0, 1
+  index: -1
+sauceturnner
+  rotate: false
+  xy: 115, 375
+  size: 40, 39
+  orig: 40, 42
+  offset: 0, 0
+  index: -1
+suacemix
+  rotate: false
+  xy: 181, 319
+  size: 21, 11
+  orig: 21, 11
+  offset: 0, 0
+  index: -1
+boilbubble
+  rotate: false
+  xy: 157, 375
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+chocolatemelter2/chocolate_hl
+  rotate: false
+  xy: 227, 290
+  size: 30, 31
+  orig: 30, 31
+  offset: 0, 0
+  index: -1
+chocolate3/chocolate_frt3
+  rotate: false
+  xy: 270, 1
+  size: 219, 120
+  orig: 219, 120
+  offset: 0, 0
+  index: -1
+chocolate1/chocolate_frt1
+  rotate: false
+  xy: 1, 130
+  size: 267, 125
+  orig: 267, 125
+  offset: 0, 0
+  index: -1
+chocolatemelter2/chocolate_frt2
+  rotate: false
+  xy: 270, 123
+  size: 237, 106
+  orig: 237, 106
+  offset: 0, 0
+  index: -1
+working_smoke2
+  rotate: false
+  xy: 181, 257
+  size: 49, 31
+  orig: 56, 42
+  offset: 2, 9
+  index: -1
+working_smoke
+  rotate: false
+  xy: 181, 290
+  size: 44, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+potburn1
+  rotate: false
+  xy: 115, 342
+  size: 63, 31
+  orig: 72, 39
+  offset: 6, 4
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 342
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 181, 332
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

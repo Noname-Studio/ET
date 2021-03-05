@@ -1,0 +1,118 @@
+
+k2_benedicttable_13.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 406, 91
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+benedict1/benedicttable1
+  rotate: false
+  xy: 206, 120
+  size: 173, 107
+  orig: 173, 107
+  offset: 0, 0
+  index: -1
+benedict2/benedicttable2
+  rotate: false
+  xy: 1, 1
+  size: 203, 130
+  orig: 203, 130
+  offset: 0, 0
+  index: -1
+benedict3/benedicttable3
+  rotate: false
+  xy: 206, 1
+  size: 198, 117
+  orig: 198, 117
+  offset: 0, 0
+  index: -1
+benedict1/shadow_bottle
+  rotate: false
+  xy: 174, 229
+  size: 62, 35
+  orig: 62, 35
+  offset: 0, 0
+  index: -1
+benedict1/bottle_benedict1
+  rotate: false
+  xy: 84, 133
+  size: 59, 85
+  orig: 59, 85
+  offset: 0, 0
+  index: -1
+benedict1/cover_benedict1
+  rotate: false
+  xy: 145, 174
+  size: 49, 35
+  orig: 49, 35
+  offset: 0, 0
+  index: -1
+benedict1/pancake_benedict1
+  rotate: false
+  xy: 1, 220
+  size: 83, 59
+  orig: 83, 59
+  offset: 0, 0
+  index: -1
+poached_egg
+  rotate: false
+  xy: 145, 133
+  size: 51, 39
+  orig: 51, 39
+  offset: 0, 0
+  index: -1
+benedict2/spoon2
+  rotate: false
+  xy: 174, 266
+  size: 35, 43
+  orig: 35, 43
+  offset: 0, 0
+  index: -1
+benedict2/spoon1
+  rotate: false
+  xy: 238, 229
+  size: 38, 51
+  orig: 38, 51
+  offset: 0, 0
+  index: -1
+sauce_flow/sauce_spray
+  rotate: false
+  xy: 86, 220
+  size: 86, 54
+  orig: 86, 54
+  offset: 0, 0
+  index: -1
+benedict3/bottle_benedict3
+  rotate: false
+  xy: 1, 133
+  size: 81, 67
+  orig: 81, 67
+  offset: 0, 0
+  index: -1
+sauce_flow/sauce_flow
+  rotate: false
+  xy: 211, 266
+  size: 19, 72
+  orig: 19, 72
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 406, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 381, 120
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

@@ -1,11 +1,11 @@
 using System;
-
+using Cysharp.Threading.Tasks;
 
 namespace ET
 {
     public static class LoginHelper
     {
-        public static async ETVoid Login(Scene zoneScene, string address, string account)
+        public static async UniTask Login(Scene zoneScene, string address, string account)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace ET
 
                 Log.Info("登陆gate成功!");
 
-                await Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
+                //await Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
             }
             catch (Exception e)
             {

@@ -144,6 +144,36 @@ message R2C_Login // IResponse
 	int64 GateId = 3;
 }
 
+//ResponseType R2C_SearchGuild
+message C2R_SearchGuild // IRequest
+{
+	int32 RpcId = 90;
+	string Name = 1;
+	int64 Id = 2;
+	int32 MinLevel = 3;
+	int32 Language = 4;
+	int32 TimeZone = 5;
+	int32 MaxNum = 6;
+	bool IsNewSearch = 7;
+}
+
+message R2C_SearchGuild // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SearchGuildResult Results = 1;
+}
+
+message SearchGuildResult
+{
+	int64 Id = 1;
+	string Name = 2;
+	string Desc = 3;
+	string Outer = 4;
+	string Frame = 5;
+}
+
 //ResponseType G2C_LoginGate
 message C2G_LoginGate // IRequest
 {

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8707fbc39515489c6324d6aab70f9, type: 3}
+  m_Name: Feeder
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mKey: Feeder
+  mType: 0
+  mIconTexture: {fileID: 2800000, guid: b4d12f37e731c465bb2894b17915ebc3, type: 3}
+  mModelObject: {fileID: 1852610837105974, guid: f7af2c8ee43714d33a08d013beec037b,
+    type: 3}
+  mModelPath: Model/Customer/feeder/feeder
+  mMoveSpeed: 0

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5ccd9f92bdf7f4d8293c91fffef1e7, type: 3}
+  m_Name: Potato
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: a1ccc416e9f3b4e18851d53c78cd4d6a, type: 3}
+  mKey: I_Potato
+  mTexture: Image/Ingredient/tex_potato
+  mDisPosList:
+  - Start: 0
+    End: 0
+    Pos: {x: 4.59, y: 0.84, z: 0}
+    mLevel: 0
+    mRestaurant: Breakfast

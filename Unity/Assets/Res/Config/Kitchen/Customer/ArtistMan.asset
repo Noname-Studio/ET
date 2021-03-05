@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8707fbc39515489c6324d6aab70f9, type: 3}
+  m_Name: ArtistMan
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mKey: ArtistMan
+  mType: 0
+  mIconTexture: {fileID: 2800000, guid: 3b09a0059268f4261b81e73cd793a45b, type: 3}
+  mModelObject: {fileID: 1358710846522024, guid: 6f51c2dfc175e4c2ebc004a1f8f18f62,
+    type: 3}
+  mModelPath: Model/Customer/artist_man/artist_man
+  mMoveSpeed: 0

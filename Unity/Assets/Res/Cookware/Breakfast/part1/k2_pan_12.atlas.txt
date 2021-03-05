@@ -1,0 +1,195 @@
+
+k2_pan_12.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 474, 275
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+shadow_pan1
+  rotate: false
+  xy: 1, 518
+  size: 86, 33
+  orig: 89, 35
+  offset: 2, 1
+  index: -1
+firedown
+  rotate: false
+  xy: 273, 448
+  size: 124, 60
+  orig: 126, 61
+  offset: 1, 0
+  index: -1
+brk_pan3
+  rotate: false
+  xy: 1, 357
+  size: 270, 159
+  orig: 270, 160
+  offset: 0, 0
+  index: -1
+brk_pan2
+  rotate: false
+  xy: 1, 191
+  size: 269, 164
+  orig: 270, 164
+  offset: 0, 0
+  index: -1
+brk_panT
+  rotate: false
+  xy: 1, 1
+  size: 247, 188
+  orig: 260, 189
+  offset: 8, 1
+  index: -1
+brk_pan1
+  rotate: false
+  xy: 250, 1
+  size: 259, 170
+  orig: 260, 171
+  offset: 1, 0
+  index: -1
+piece1_pan
+  rotate: false
+  xy: 250, 173
+  size: 13, 14
+  orig: 13, 14
+  offset: 0, 0
+  index: -1
+piece4_pan
+  rotate: false
+  xy: 499, 303
+  size: 11, 17
+  orig: 11, 17
+  offset: 0, 0
+  index: -1
+burningpan5
+  rotate: false
+  xy: 406, 432
+  size: 94, 80
+  orig: 116, 81
+  offset: 15, 0
+  index: -1
+burningpan6
+  rotate: false
+  xy: 406, 349
+  size: 94, 81
+  orig: 116, 81
+  offset: 15, 0
+  index: -1
+burningpan2
+  rotate: false
+  xy: 429, 173
+  size: 69, 70
+  orig: 116, 81
+  offset: 22, 6
+  index: -1
+burningpan7
+  rotate: false
+  xy: 273, 510
+  size: 92, 80
+  orig: 116, 81
+  offset: 8, 1
+  index: -1
+youza2
+  rotate: false
+  xy: 172, 518
+  size: 73, 27
+  orig: 73, 28
+  offset: 0, 1
+  index: -1
+youza1
+  rotate: false
+  xy: 367, 514
+  size: 85, 46
+  orig: 85, 46
+  offset: 0, 0
+  index: -1
+youza3
+  rotate: false
+  xy: 367, 562
+  size: 77, 42
+  orig: 77, 42
+  offset: 0, 0
+  index: -1
+piece3_pan
+  rotate: false
+  xy: 474, 324
+  size: 28, 15
+  orig: 28, 29
+  offset: 0, 5
+  index: -1
+piece2_pan
+  rotate: false
+  xy: 474, 245
+  size: 28, 28
+  orig: 28, 29
+  offset: 0, 0
+  index: -1
+piece5_pan
+  rotate: false
+  xy: 474, 303
+  size: 23, 19
+  orig: 28, 29
+  offset: 1, 1
+  index: -1
+oil
+  rotate: false
+  xy: 89, 518
+  size: 81, 28
+  orig: 81, 28
+  offset: 0, 0
+  index: -1
+oilbuble
+  rotate: false
+  xy: 383, 349
+  size: 9, 10
+  orig: 9, 11
+  offset: 0, 0
+  index: -1
+fireup
+  rotate: false
+  xy: 273, 368
+  size: 131, 78
+  orig: 131, 78
+  offset: 0, 0
+  index: -1
+burnquickpan1
+  rotate: false
+  xy: 272, 173
+  size: 155, 84
+  orig: 155, 84
+  offset: 0, 0
+  index: -1
+turner
+  rotate: false
+  xy: 454, 514
+  size: 51, 57
+  orig: 74, 65
+  offset: 9, 5
+  index: -1
+working_smoke
+  rotate: false
+  xy: 446, 573
+  size: 45, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 383, 259
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 273, 259
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

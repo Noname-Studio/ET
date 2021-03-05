@@ -1,0 +1,2049 @@
+{
+    "skeleton": {
+        "spine": "3.8.33-beta",
+        "width": 197.54,
+        "height": 187.37,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_toastoven_12"
+    },
+    "bones": [
+        {
+            "x": -8.3337,
+            "y": 14.433,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 58.3832,
+            "y": 20.4945,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "x": -11.8304,
+            "y": -23.8507,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 37.7852,
+            "y": 7.7935,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -57.5519,
+            "y": 48.2556,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": -1.7336,
+            "y": 17.8019,
+            "scaleX": 5.8,
+            "scaleY": 6.4,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 37.6217,
+            "y": 49.4343,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": 78.9436,
+            "y": 32.5912,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": 4.7325,
+            "y": -56.0379,
+            "scaleX": -0.85,
+            "scaleY": 0.75,
+            "name": "base",
+            "parent": "root"
+        },
+        {
+            "x": 26.9274,
+            "y": 158.3545,
+            "name": "burnsmoke2",
+            "parent": "base"
+        },
+        {
+            "x": -33.3327,
+            "y": 141.7176,
+            "rotation": 21.164,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "working_smoke1",
+            "parent": "base"
+        },
+        {
+            "x": -28.1682,
+            "y": 125.5224,
+            "name": "burnsmoke1",
+            "parent": "base"
+        },
+        {
+            "x": 31.2648,
+            "y": 132.7619,
+            "rotation": -163.4657,
+            "scaleX": 1.4,
+            "scaleY": 1.4,
+            "name": "working_smoke",
+            "parent": "base"
+        },
+        {
+            "x": 31.05,
+            "y": 134.6697,
+            "name": "break_toast",
+            "parent": "base"
+        },
+        {
+            "x": -44.9449,
+            "y": 3.9056,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "buttonlight",
+            "parent": "base"
+        },
+        {
+            "x": 6.9879,
+            "y": 142.2683,
+            "name": "break_toast1",
+            "parent": "base"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_waffle"
+        },
+        {
+            "name": "toast3_bck3",
+            "bone": "base",
+            "color": "FFFFFF00",
+            "attachment": "k2_toastoven_13/toast3_bck3"
+        },
+        {
+            "name": "toast2_bck2",
+            "bone": "base",
+            "attachment": "k2_toastoven_12/toast2_bck2"
+        },
+        {
+            "name": "toast1_c_bread1",
+            "bone": "break_toast1",
+            "attachment": "k2_toastoven_11/toast1_c_bread"
+        },
+        {
+            "name": "toast1_bread1",
+            "bone": "break_toast1",
+            "attachment": "k2_toastoven_11/toast1_bread"
+        },
+        {
+            "name": "toast1_bck",
+            "bone": "base",
+            "attachment": "k2_toastoven_12/toast1_bck1"
+        },
+        {
+            "name": "burnsmoke2",
+            "bone": "burnsmoke2",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke1"
+        },
+        {
+            "name": "working_smoke1",
+            "bone": "working_smoke1",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "toast1_c_bread",
+            "bone": "break_toast",
+            "attachment": "k2_toastoven_11/toast1_c_bread"
+        },
+        {
+            "name": "toast1_bread",
+            "bone": "break_toast",
+            "attachment": "k2_toastoven_11/toast1_bread"
+        },
+        {
+            "name": "burnsmoke1",
+            "bone": "burnsmoke1",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke3"
+        },
+        {
+            "name": "toast1_frt",
+            "bone": "base",
+            "attachment": "k2_toastoven_12/toast2_frt"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "buttonlight",
+            "bone": "buttonlight",
+            "color": "FFFFFF00",
+            "attachment": "waffle buttonlight"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "size_sandwich"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "working_smoke": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "working_smoke1": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "toast3_bck3": {
+                "k2_toastoven_13/toast3_bck3": {
+                    "name": "k2_toastoven_13/toast3_bck3",
+                    "width": 88,
+                    "height": 46,
+                    "x": -38.01,
+                    "y": 138.12
+                }
+            },
+            "toast1_bck": {
+                "k2_toastoven_11/toast1_bck": {
+                    "name": "k2_toastoven_11/toast1_bck",
+                    "width": 125,
+                    "height": 48,
+                    "x": 3.43,
+                    "y": 141.02
+                },
+                "k2_toastoven_12/toast1_bck1": {
+                    "name": "k2_toastoven_12/toast1_bck1",
+                    "width": 117,
+                    "height": 58,
+                    "x": 14.21,
+                    "y": 134.92
+                },
+                "k2_toastoven_13/toast3_bck1": {
+                    "name": "k2_toastoven_13/toast3_bck1",
+                    "width": 91,
+                    "height": 48,
+                    "x": 26.99,
+                    "y": 117.12
+                }
+            },
+            "toast1_bread1": {
+                "k2_toastoven_11/toast1_bread": {
+                    "name": "k2_toastoven_11/toast1_bread",
+                    "width": 97,
+                    "height": 115,
+                    "x": -11.86,
+                    "y": -13.36
+                }
+            },
+            "burnsmoke2": {
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47
+                },
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "y": 10.57
+                }
+            },
+            "clock": {
+                "size_sandwich": {
+                    "name": "size_sandwich",
+                    "width": 29,
+                    "height": 26
+                }
+            },
+            "buttonlight": {
+                "waffle buttonlight": {
+                    "name": "waffle buttonlight",
+                    "width": 16,
+                    "height": 14,
+                    "x": -0.24,
+                    "y": 1.2
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107,
+                    "x": -0.11,
+                    "y": 0.18
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "toast1_frt": {
+                "k2_toastoven_11/toast1_frt": {
+                    "name": "k2_toastoven_11/toast1_frt",
+                    "width": 143,
+                    "height": 126,
+                    "x": 7.52,
+                    "y": 70.02
+                },
+                "k2_toastoven_12/toast2_frt": {
+                    "name": "k2_toastoven_12/toast2_frt",
+                    "width": 172,
+                    "height": 169,
+                    "x": 5.07,
+                    "y": 69.22
+                },
+                "k2_toastoven_13/toast3_frt": {
+                    "name": "k2_toastoven_13/toast3_frt",
+                    "width": 220,
+                    "height": 177,
+                    "x": 2.49,
+                    "y": 53.12
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "toast1_bread": {
+                "k2_toastoven_11/toast1_bread": {
+                    "name": "k2_toastoven_11/toast1_bread",
+                    "width": 97,
+                    "height": 115,
+                    "x": -11.86,
+                    "y": -13.36
+                }
+            },
+            "toast1_c_bread1": {
+                "k2_toastoven_11/toast1_c_bread": {
+                    "name": "k2_toastoven_11/toast1_c_bread",
+                    "width": 96,
+                    "height": 115,
+                    "x": -12.36,
+                    "y": -13.36
+                }
+            },
+            "toast2_bck2": {
+                "k2_toastoven_12/toast2_bck2": {
+                    "name": "k2_toastoven_12/toast2_bck2",
+                    "width": 104,
+                    "height": 53,
+                    "x": -2.92,
+                    "y": 143.26
+                },
+                "k2_toastoven_13/toast3_bck2": {
+                    "name": "k2_toastoven_13/toast3_bck2",
+                    "width": 91,
+                    "height": 51,
+                    "x": -25.01,
+                    "y": 128.12
+                }
+            },
+            "burnsmoke1": {
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "x": 2.56,
+                    "y": 9.24,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51,
+                    "y": 9.84
+                },
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48,
+                    "y": 9.08
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44,
+                    "y": 7.55
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54,
+                    "y": 12.08
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48,
+                    "y": 14.36
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47,
+                    "y": 10.57
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59,
+                    "x": 2.25,
+                    "y": 9.82,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                }
+            },
+            "toast1_c_bread": {
+                "k2_toastoven_11/toast1_c_bread": {
+                    "name": "k2_toastoven_11/toast1_c_bread",
+                    "width": 96,
+                    "height": 115,
+                    "x": -12.36,
+                    "y": -13.36
+                }
+            },
+            "size": {
+                "size_waffle": {
+                    "name": "size_waffle",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size_sandwich"
+                }
+            }
+        }
+    }],
+    "animations": {
+        "1normal": {
+            "slots": {
+                "toast1_c_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_c_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "3work": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.7667,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.9667,
+                            "x": 1,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1,
+                            "y": 0.85
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -6.67,
+                            "y": 15
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 11.96,
+                            "y": -16.85
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 11.96,
+                            "y": -16.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.6667,
+                            "angle": 10.48
+                        },
+                        {
+                            "time": 0.8667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9667,
+                            "angle": 10.48
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 1.84,
+                            "y": 1.24
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1.84,
+                            "y": 1.24
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.6667
+                        },
+                        {
+                            "time": 0.8667
+                        },
+                        {
+                            "time": 0.9667
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.55,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.85,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.6666,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.8499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.0832,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.1332,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        },
+                        {
+                            "time": 0.6666
+                        },
+                        {
+                            "time": 0.8499
+                        },
+                        {
+                            "time": 0.9499
+                        },
+                        {
+                            "time": 1.0832
+                        },
+                        {
+                            "time": 1.1332
+                        }
+                    ]
+                },
+                "break_toast": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 15.22
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 0.4,
+                            "y": 27.04
+                        },
+                        {
+                            "time": 0.5667,
+                            "y": 15.22
+                        },
+                        {
+                            "time": 0.7667
+                        },
+                        {
+                            "time": 0.9667,
+                            "y": 38.02
+                        },
+                        {
+                            "time": 1.1334,
+                            "y": 15.22
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.7667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9667,
+                            "angle": -6.31
+                        },
+                        {
+                            "time": 1.1334,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.7667
+                        },
+                        {
+                            "time": 0.9667
+                        },
+                        {
+                            "time": 1.1334
+                        }
+                    ]
+                },
+                "break_toast1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 15.22
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 0.4,
+                            "y": 42.89
+                        },
+                        {
+                            "time": 0.6167,
+                            "y": 15.22
+                        },
+                        {
+                            "time": 0.7667
+                        },
+                        {
+                            "time": 0.9667,
+                            "y": 21.35
+                        },
+                        {
+                            "time": 1.1334,
+                            "y": 15.22
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.2,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": -8.98
+                        },
+                        {
+                            "time": 0.6167,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.6167
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.2833,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.55,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6667,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 0.85,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9667,
+                            "color": "FFFFFFA6"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5501,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5668,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.6668,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.8335,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8502,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9502,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.1169,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.7667,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.7667,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "bones": {
+                "burnsmoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 8.56
+                        },
+                        {
+                            "time": 0.3,
+                            "y": 1.53
+                        },
+                        {
+                            "time": 0.5833,
+                            "y": 8.56
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.5,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.5,
+                            "y": 1.7
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1.5,
+                            "y": 2
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 7.77,
+                            "y": -0.79
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": -1.3,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -1.3,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": -1.3,
+                            "y": 1.7
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "burnsmoke1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke3"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke8"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke8"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke3"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast1_bck": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "8F8F8FFF"
+                        }
+                    ]
+                },
+                "toast1_c_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_frt": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "8F8F8FFF"
+                        }
+                    ]
+                },
+                "toast2_bck2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "8F8F8FFF"
+                        }
+                    ]
+                },
+                "toast1_c_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 10
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.55,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5501,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5668,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast1_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "base": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 10
+                        }
+                    ]
+                },
+                "burnsmoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 8.56
+                        },
+                        {
+                            "time": 0.3,
+                            "y": 1.53
+                        },
+                        {
+                            "time": 0.5833,
+                            "y": 8.56
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.5,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.5,
+                            "y": 1.7
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1.5,
+                            "y": 2
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 7.77,
+                            "y": 15.54
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": -1.3,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -1.3,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": -1.3,
+                            "y": 1.7
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "burnsmoke1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke3"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke8"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke8"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke3"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast1_bck": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "EBD4D4FF"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "B88F8FFF"
+                        },
+                        {
+                            "time": 0.5833,
+                            "color": "EBD4D4FF"
+                        }
+                    ]
+                },
+                "toast1_c_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "A1A1A1FF"
+                        }
+                    ]
+                },
+                "toast1_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_frt": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "EBD4D4FF"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "E0B8B8FF"
+                        },
+                        {
+                            "time": 0.5833,
+                            "color": "EBD4D4FF"
+                        }
+                    ]
+                },
+                "toast2_bck2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "E8D1D1FF"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "DEB5B5FF"
+                        },
+                        {
+                            "time": 0.5833,
+                            "color": "E8D1D1FF"
+                        }
+                    ]
+                },
+                "toast1_c_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "A1A1A1FF"
+                        }
+                    ]
+                },
+                "toast1_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast1_c_bread": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast1_c_bread1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

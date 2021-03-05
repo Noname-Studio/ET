@@ -1,0 +1,809 @@
+{
+    "skeleton": {
+        "spine": "3.8.33-beta",
+        "width": 278.9,
+        "height": 257.67,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_oven1"
+    },
+    "bones": [
+        {
+            "x": 1.5,
+            "rotation": 0.0409,
+            "scaleX": 1.25,
+            "name": "root"
+        },
+        {
+            "x": -65.7441,
+            "y": -36.15,
+            "rotation": 0.0409,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 16.3254,
+            "y": -25.3134,
+            "rotation": 0.0409,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": -11.0032,
+            "y": 21.2127,
+            "rotation": 0.0409,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -34.9343,
+            "y": 43.7535,
+            "rotation": 0.0409,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": -86.2091,
+            "y": -87.7528,
+            "rotation": 0.0409,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": -31.4504,
+            "y": 13.2129,
+            "rotation": 0.0409,
+            "scaleX": 6.3253,
+            "scaleY": 7.5,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 25.2956,
+            "y": 76.048,
+            "rotation": 0.0409,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "rotation": 0.0409,
+            "scaleX": 0.9,
+            "scaleY": 0.9,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "x": -33.95,
+            "y": 19.55,
+            "rotation": 0.0409,
+            "name": "ovenbox",
+            "parent": "bone"
+        },
+        {
+            "x": -34.15,
+            "y": 4,
+            "rotation": 0.0409,
+            "name": "glass",
+            "parent": "bone"
+        },
+        {
+            "x": -39.25,
+            "y": 54.7,
+            "rotation": 0.0409,
+            "name": "working_smoke",
+            "parent": "bone"
+        },
+        {
+            "x": -11.55,
+            "y": -38.85,
+            "rotation": 26.7293,
+            "name": "Baker",
+            "parent": "glass"
+        },
+        {
+            "x": -10.1,
+            "y": 25.05,
+            "rotation": 0.0409,
+            "name": "workinglight1",
+            "parent": "glass"
+        },
+        {
+            "x": -8.25,
+            "y": 25.05,
+            "rotation": 0.0409,
+            "name": "workinglight2",
+            "parent": "glass"
+        },
+        {
+            "x": -9.0645,
+            "y": 37.4597,
+            "rotation": 23.7771,
+            "name": "handle",
+            "parent": "glass"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size"
+        },
+        {
+            "name": "ovenbox",
+            "bone": "ovenbox",
+            "attachment": "brk_ovenbox"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "color": "FFFFFF00",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "workinglight2",
+            "bone": "workinglight2",
+            "color": "FFFFFF00",
+            "attachment": "brk_worklight2"
+        },
+        {
+            "name": "workinglight1",
+            "bone": "workinglight1",
+            "color": "FFFFFF00",
+            "attachment": "brk_worklight1"
+        },
+        {
+            "name": "Baker",
+            "bone": "Baker",
+            "attachment": "brk_Baker"
+        },
+        {
+            "name": "handle",
+            "bone": "handle",
+            "attachment": "brk_handle"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "workclock"
+        },
+        {
+            "name": "repair",
+            "bone": "repair",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [
+        {
+            "name":"default",
+            "attachments":{
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "working_smoke": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 44,
+                    "height": 27,
+                    "x": 0.67,
+                    "y": 9.3
+                }
+            },
+            "workinglight2": {
+                "brk_worklight2": {
+                    "name": "brk_worklight2",
+                    "width": 243,
+                    "height": 214,
+                    "x": 50.09,
+                    "y": -27.28
+                }
+            },
+            "clock": {
+                "workclock": {
+                    "name": "workclock",
+                    "width": 89,
+                    "height": 88,
+                    "x": 3.57,
+                    "path": "materialbg"
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "size": {
+                "size": {
+                    "name": "size",
+                    "width": 29,
+                    "height": 26
+                }
+            },
+            "repair": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "y": -3.57
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107,
+                    "y": -1.79
+                }
+            },
+            "Baker": {
+                "brk_Baker": {
+                    "name": "brk_Baker",
+                    "width": 164,
+                    "height": 25
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "workinglight1": {
+                "brk_worklight1": {
+                    "name": "brk_worklight1",
+                    "width": 137,
+                    "height": 167,
+                    "x": -2.17,
+                    "y": -22.13
+                },
+                "brk_worklightT": {
+                    "name": "brk_worklightT",
+                    "width": 130,
+                    "height": 145,
+                    "x": 4.65,
+                    "y": -38.84
+                }
+            },
+            "ovenbox": {
+                "brk_ovenbox": {
+                    "name": "brk_ovenbox",
+                    "width": 191,
+                    "height": 232,
+                    "x": -3.55,
+                    "y": -8.55
+                },
+                "ovenbox2": {
+                    "name": "ovenbox2",
+                    "width": 191,
+                    "height": 232,
+                    "x": -3.55,
+                    "y": -8.55
+                },
+                "ovenbox3": {
+                    "name": "ovenbox3",
+                    "width": 194,
+                    "height": 231,
+                    "x": -3.55,
+                    "y": -8.55
+                },
+                "brk_ovenboxT": {
+                    "name": "brk_ovenboxT",
+                    "width": 185,
+                    "height": 230,
+                    "x": -3.55,
+                    "y": -8.55
+                }
+            },
+            "handle": {
+                "brk_handle": {
+                    "name": "brk_handle",
+                    "width": 144,
+                    "height": 29
+                },
+                "handle2": {
+                    "name": "handle2",
+                    "width": 162,
+                    "height": 32,
+                    "x": 2.51,
+                    "y": 1.4,
+                    "rotation": 1.11
+                },
+                "handle3": {
+                    "name": "handle3",
+                    "width": 164,
+                    "height": 32,
+                    "x": 5.41,
+                    "y": 1.25,
+                    "rotation": 1.57
+                },
+                "handleT": {
+                    "name": "handleT",
+                    "width": 124,
+                    "height": 31,
+                    "x": 4.24,
+                    "y": 5.32,
+                    "rotation": 2.39
+                }
+            }
+        }
+    }
+    ],
+    "animations": {
+        "1normal":{},
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            },
+            "drawOrder": [
+                {
+                    "time": 0,
+                    "offsets": [
+                        {
+                            "slot": "m1",
+                            "offset": 2
+                        },
+                        {
+                            "slot": "m2",
+                            "offset": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        "3work": {
+            "bones": {
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.9333,
+                            "y": 33.72
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.5,
+                            "x": 1.85,
+                            "y": 1.85
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": 3.35,
+                            "y": 2.75
+                        }
+                    ]
+                },
+                "glass": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1.9,
+                            "y": -0.19
+                        },
+                        {
+                            "time": 0.8
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFF4F"
+                        },
+                        {
+                            "time": 0.9333,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "workinglight1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFFF5"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "workinglight2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": -11.1,
+                            "y": 55.91
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5,
+                            "angle": 20
+                        },
+                        {
+                            "time": 0.9333,
+                            "angle": 11.49
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.5,
+                            "x": 2.4,
+                            "y": 2.4
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": 3.35,
+                            "y": 2.75
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.5
+                        },
+                        {
+                            "time": 0.9333
+                        }
+                    ]
+                },
+                "glass": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1.9,
+                            "y": -0.19
+                        },
+                        {
+                            "time": 0.8
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "42424200"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "4242428A"
+                        },
+                        {
+                            "time": 0.9333,
+                            "color": "42424200"
+                        }
+                    ]
+                },
+                "workinglight1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFF7F"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "workinglight1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFFF5"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "workinglight2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "FFFFFF8A"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "bones": {
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 22.71,
+                            "y": -85.06
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": 22.24,
+                            "y": 38.72
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 22.24,
+                            "y": 18.85
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5,
+                            "angle": 20
+                        },
+                        {
+                            "time": 0.9333,
+                            "angle": 11.49
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.5,
+                            "x": 2.4,
+                            "y": 2.4
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": 3.35,
+                            "y": 2.75
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.5
+                        },
+                        {
+                            "time": 0.9333
+                        }
+                    ]
+                },
+                "glass": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -13.13
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 3.95
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 0.65
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                },
+                "handle": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -0.84,
+                            "y": -18.67
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -27.84
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.85,
+                            "y": 2
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "ovenbox": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "858585FF"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "42424200"
+                        },
+                        {
+                            "time": 0.5,
+                            "color": "4242428A"
+                        },
+                        {
+                            "time": 0.9333,
+                            "color": "42424200"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

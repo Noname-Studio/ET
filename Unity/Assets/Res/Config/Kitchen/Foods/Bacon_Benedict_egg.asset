@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Bacon_Benedict_egg
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 9cd4eab811a6d4cfa9757e7b3ff4632d, type: 3}
+  mKey: F_Bacon_Benedict_egg
+  mTexture: Image/Food/Breakfast/tex_bacon_eggs_benedict
+  mRestId: Breakfast
+  mWaitTime: 0
+  mEditorCookware: {fileID: 11400000, guid: 14407f73af204e84b9a5c012064c59ce, type: 2}
+  mEditorFinalIngredients:
+  - {fileID: 11400000, guid: 964e36a63982b5c4b8bb75586132bd0a, type: 2}
+  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  mLevels:
+  - mLevel: 1
+    mUnlockLv: 85
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 20
+  - mLevel: 2
+    mUnlockLv: 0
+    mPrice:
+      Coin: 85
+      Gem: 0
+    mTips: 40
+  mBasePatient: 100
+  mCookware: k2_benedicttable
+  mAllIngredients:
+  - F_Poached_egg

@@ -1,0 +1,125 @@
+
+k2_cuttingboard_11.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 210, 90
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+saladcut/saladboard
+  rotate: false
+  xy: 111, 1
+  size: 118, 87
+  orig: 118, 87
+  offset: 0, 0
+  index: -1
+saladcut/saladboal_back
+  rotate: false
+  xy: 130, 269
+  size: 97, 56
+  orig: 97, 56
+  offset: 0, 0
+  index: -1
+piece6_cut
+  rotate: false
+  xy: 231, 1
+  size: 22, 31
+  orig: 22, 31
+  offset: 0, 0
+  index: -1
+piece1_cut
+  rotate: false
+  xy: 231, 34
+  size: 20, 26
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+piece5_cut
+  rotate: false
+  xy: 231, 62
+  size: 24, 14
+  orig: 24, 14
+  offset: 0, 0
+  index: -1
+piece3_cut
+  rotate: false
+  xy: 210, 135
+  size: 24, 13
+  orig: 24, 14
+  offset: 0, 1
+  index: -1
+piece4_cut
+  rotate: false
+  xy: 210, 150
+  size: 11, 17
+  orig: 11, 17
+  offset: 0, 0
+  index: -1
+piece2_cut
+  rotate: false
+  xy: 236, 135
+  size: 15, 14
+  orig: 15, 14
+  offset: 0, 0
+  index: -1
+saladcut/saladboal4
+  rotate: false
+  xy: 111, 90
+  size: 97, 90
+  orig: 97, 90
+  offset: 0, 0
+  index: -1
+saladcut/knifesalad
+  rotate: false
+  xy: 1, 269
+  size: 127, 44
+  orig: 127, 44
+  offset: 0, 0
+  index: -1
+saladcut/saladboal3
+  rotate: false
+  xy: 172, 182
+  size: 75, 83
+  orig: 75, 83
+  offset: 0, 0
+  index: -1
+saladcut/saladboal2
+  rotate: false
+  xy: 92, 182
+  size: 78, 85
+  orig: 78, 85
+  offset: 0, 0
+  index: -1
+saladcut/saladboal1
+  rotate: false
+  xy: 1, 315
+  size: 62, 73
+  orig: 62, 73
+  offset: 0, 0
+  index: -1
+cuteffection
+  rotate: false
+  xy: 210, 118
+  size: 26, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 110
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 1, 1
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

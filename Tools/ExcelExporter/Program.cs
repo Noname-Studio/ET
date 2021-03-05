@@ -48,7 +48,7 @@ namespace ET
         
         private const string jsonDir = "./{0}/Json";
         
-        private const string clientProtoDir = "../../../Unity/Assets/Bundles/Config";
+        private const string clientProtoDir = "../../../Unity/Assets/Res/Config/Server";
         private const string serverProtoDir = "../../../Config";
 
         private static string GetProtoDir(ConfigType configType)

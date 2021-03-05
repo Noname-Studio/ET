@@ -1,0 +1,139 @@
+
+k2_steakboard_31.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 220, 39
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+k2_steakboard_33/steakboard_33
+  rotate: false
+  xy: 1, 1
+  size: 164, 111
+  orig: 180, 119
+  offset: 9, 1
+  index: -1
+k2_steakboard_31/steakboard_31
+  rotate: false
+  xy: 1, 220
+  size: 160, 102
+  orig: 170, 107
+  offset: 6, 1
+  index: -1
+k2_steakboard_32/steakboard_32
+  rotate: false
+  xy: 1, 114
+  size: 164, 104
+  orig: 180, 112
+  offset: 9, 1
+  index: -1
+beef/juice_down
+  rotate: false
+  xy: 167, 1
+  size: 66, 36
+  orig: 66, 36
+  offset: 0, 0
+  index: -1
+beef/beef_cut2
+  rotate: false
+  xy: 163, 310
+  size: 63, 45
+  orig: 63, 45
+  offset: 0, 0
+  index: -1
+beef/juice_flow
+  rotate: false
+  xy: 167, 111
+  size: 35, 53
+  orig: 35, 53
+  offset: 0, 0
+  index: -1
+k2_steakboard_31/cupshadow1
+  rotate: false
+  xy: 111, 324
+  size: 33, 17
+  orig: 33, 17
+  offset: 0, 0
+  index: -1
+k2_steakboard_32/cupshadow2
+  rotate: false
+  xy: 111, 343
+  size: 30, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+k2_steakboard_33/cupshadow3
+  rotate: false
+  xy: 204, 138
+  size: 38, 15
+  orig: 38, 15
+  offset: 0, 0
+  index: -1
+k2_steakboard_32/juicebeef2
+  rotate: false
+  xy: 207, 194
+  size: 32, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+k2_steakboard_31/juicebeef
+  rotate: false
+  xy: 204, 111
+  size: 29, 25
+  orig: 29, 25
+  offset: 0, 0
+  index: -1
+k2_steakboard_33/juicebeef3
+  rotate: false
+  xy: 167, 194
+  size: 38, 23
+  orig: 38, 23
+  offset: 0, 0
+  index: -1
+k2_steakboard_33/beefknife3
+  rotate: false
+  xy: 167, 166
+  size: 68, 26
+  orig: 68, 26
+  offset: 0, 0
+  index: -1
+k2_steakboard_32/beefknife2
+  rotate: false
+  xy: 167, 82
+  size: 71, 27
+  orig: 71, 27
+  offset: 0, 0
+  index: -1
+k2_steakboard_31/beefknife1
+  rotate: false
+  xy: 1, 433
+  size: 68, 25
+  orig: 68, 25
+  offset: 0, 0
+  index: -1
+beef/beef_cut1
+  rotate: false
+  xy: 167, 39
+  size: 51, 41
+  orig: 51, 41
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 163, 220
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 1, 324
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

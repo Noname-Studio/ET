@@ -1,0 +1,1100 @@
+{
+    "skeleton": {
+        "spine": "3.8.33-beta",
+        "width": 185.77,
+        "height": 177.21,
+        "fps": 50,
+        "hash": " ",
+        "name": "k2_coffee_machine_11"
+    },
+    "bones": [
+        {
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": -39.9694,
+            "y": 68.3874,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 60.3069,
+            "y": 68.3917,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": 12.0524,
+            "y": -17.8881,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 3.8067,
+            "y": 29.5515,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -10.1347,
+            "y": 81.4864,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": -14.9594,
+            "y": -7.7385,
+            "name": "working_smoke",
+            "parent": "root"
+        },
+        {
+            "x": 3.3222,
+            "y": 32.3026,
+            "rotation": -180,
+            "shearY": 180,
+            "scaleX": 4.0536,
+            "scaleY": 5.85,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "length": 143,
+            "x": -12.8485,
+            "y": -34.7654,
+            "rotation": 88.9634,
+            "shearY": -180,
+            "scaleX": 0.95,
+            "scaleY": 0.95,
+            "name": "machine",
+            "parent": "root"
+        },
+        {
+            "x": -31.4835,
+            "y": -2.9955,
+            "rotation": -169.3691,
+            "shearY": 180,
+            "scaleX": 0.9,
+            "scaleY": 0.9,
+            "name": "working_smoke1",
+            "parent": "root"
+        },
+        {
+            "x": -24.0616,
+            "y": 2.942,
+            "rotation": -180,
+            "shearY": 180,
+            "scaleX": 0.9,
+            "scaleY": 0.9,
+            "name": "working_smoke2",
+            "parent": "root"
+        },
+        {
+            "x": -48.0283,
+            "y": 3.2697,
+            "rotation": -180,
+            "shearY": 180,
+            "scaleX": 0.9,
+            "scaleY": 0.9,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "x": 36.6412,
+            "y": -7.2785,
+            "rotation": -91.0366,
+            "name": "cap",
+            "parent": "machine"
+        },
+        {
+            "x": 96.8924,
+            "y": -9.0572,
+            "rotation": -91.1296,
+            "shearY": 0.17839999999999634,
+            "scaleX": 0.9588,
+            "scaleY": 1.0449,
+            "name": "tap",
+            "parent": "machine"
+        },
+        {
+            "x": -0.45,
+            "y": 10.1,
+            "name": "capback",
+            "parent": "cap"
+        },
+        {
+            "x": -2.55,
+            "y": -24.8546,
+            "name": "shui",
+            "parent": "tap"
+        },
+        {
+            "x": -0.75,
+            "y": 15.1,
+            "name": "coffe",
+            "parent": "cap"
+        },
+        {
+            "x": 1.3,
+            "y": -11.45,
+            "name": "shadow",
+            "parent": "cap"
+        },
+        {
+            "length": 40,
+            "x": 2.6958,
+            "y": -20.5512,
+            "rotation": -177.6438,
+            "shearY": 180,
+            "scaleX": -1.1111,
+            "scaleY": 1.1111,
+            "name": "brk_coffeebar1",
+            "parent": "tap"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_fryer"
+        },
+        {
+            "name": "brk_machine",
+            "bone": "machine",
+            "attachment": "brk_machine1"
+        },
+        {
+            "name": "shadow",
+            "bone": "shadow",
+            "color": "FFFFFF00",
+            "attachment": "coffeeshadow"
+        },
+        {
+            "name": "capback",
+            "bone": "capback",
+            "color": "FFFFFF00",
+            "attachment": "brk_capback"
+        },
+        {
+            "name": "coffe",
+            "bone": "coffe",
+            "color": "FFFFFF00",
+            "attachment": "brk_coffe"
+        },
+        {
+            "name": "shui",
+            "bone": "shui",
+            "color": "FFFFFF00",
+            "attachment": "coffeeshui"
+        },
+        {
+            "name": "brk_tap",
+            "bone": "tap",
+            "attachment": "brk_tap1"
+        },
+        {
+            "name": "cap",
+            "bone": "cap",
+            "color": "FFFFFF00",
+            "attachment": "brk_cap"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "color": "FFFFFF00",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "working_smoke1",
+            "bone": "working_smoke1",
+            "color": "FFFFFF00",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "brk_coffeebar1",
+            "bone": "brk_coffeebar1",
+            "attachment": "brk_coffeebar1"
+        },
+        {
+            "name": "working_smoke2",
+            "bone": "working_smoke2",
+            "color": "FFFFFF00",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "workclock"
+        },
+        {
+            "name": "repair",
+            "bone": "repair",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [
+        {
+            "name":"default",
+            "attachments": {
+            "working_smoke2": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 44,
+                    "height": 27,
+                    "y": 3.15
+                }
+            },
+            "brk_coffeebar1": {
+                "brk_coffeebar1": {
+                    "name": "brk_coffeebar1",
+                    "width": 46,
+                    "height": 18,
+                    "x": 20.03,
+                    "y": 0.86,
+                    "rotation": 2.36
+                }
+            },
+            "brk_machine": {
+                "brk_machine": {
+                    "name": "brk_machine",
+                    "width": 136,
+                    "height": 181,
+                    "x": 75.02,
+                    "y": 17.23,
+                    "rotation": -91.04
+                },
+                "coffe2broken": {
+                    "name": "coffe2broken",
+                    "width": 136,
+                    "height": 184,
+                    "x": 75.02,
+                    "y": 17.23,
+                    "rotation": -91.04
+                },
+                "brk_machine1": {
+                    "name": "brk_machine1",
+                    "width": 131,
+                    "height": 176,
+                    "x": 74.29,
+                    "y": 6.56,
+                    "rotation": -91.04
+                },
+                "brk_machine3": {
+                    "name": "brk_machine3",
+                    "width": 139,
+                    "height": 184,
+                    "x": 79.02,
+                    "y": 9.16,
+                    "rotation": -91.04
+                },
+                "coffe1broken": {
+                    "name": "coffe1broken",
+                    "width": 131,
+                    "height": 175,
+                    "x": 74.29,
+                    "y": 6.56,
+                    "rotation": -91.04
+                },
+                "coffe3broken": {
+                    "name": "coffe3broken",
+                    "width": 137,
+                    "height": 179,
+                    "x": 79.02,
+                    "y": 9.16,
+                    "rotation": -91.04
+                }
+            },
+            "coffe": {
+                "brk_coffe": {
+                    "name": "brk_coffe",
+                    "width": 37,
+                    "height": 19,
+                    "x": 0.63,
+                    "y": -5.17
+                }
+            },
+            "cap": {
+                "brk_cap": {
+                    "name": "brk_cap",
+                    "width": 47,
+                    "height": 31,
+                    "x": 3.18,
+                    "y": -3.78
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "y": 14.5
+                }
+            },
+            "shui": {
+                "coffeeshui": {
+                    "name": "coffeeshui",
+                    "width": 5,
+                    "height": 27,
+                    "x": 0.71,
+                    "y": -10.21
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": 9
+                }
+            },
+            "size": {
+                "size_fryer": {
+                    "name": "size_fryer",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size"
+                }
+            },
+            "capback": {
+                "brk_capback": {
+                    "name": "brk_capback",
+                    "width": 40,
+                    "height": 20,
+                    "x": 0.05,
+                    "y": 0.56
+                }
+            },
+            "shadow": {
+                "coffeeshadow": {
+                    "name": "coffeeshadow",
+                    "width": 57,
+                    "height": 61,
+                    "x": 1.16,
+                    "y": 11.59
+                }
+            },
+            "repair": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "working_smoke1": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 44,
+                    "height": 27,
+                    "y": 3.15
+                }
+            },
+            "working_smoke": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 44,
+                    "height": 27,
+                    "y": 3.15
+                }
+            },
+            "clock": {
+                "workclock": {
+                    "name": "workclock",
+                    "width": 89,
+                    "height": 88,
+                    "path": "materialbg"
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "brk_tap": {
+                "brk_tap": {
+                    "name": "brk_tap",
+                    "width": 32,
+                    "height": 32,
+                    "x": -0.09,
+                    "y": -12.03
+                },
+                "brk_tap1": {
+                    "name": "brk_tap1",
+                    "width": 28,
+                    "height": 24,
+                    "x": -0.8,
+                    "y": -16.9
+                },
+                "brk_tap3": {
+                    "name": "brk_tap3",
+                    "width": 45,
+                    "height": 27,
+                    "x": -0.09,
+                    "y": -12.03
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -5.5
+                }
+            }
+        }
+    }
+    ],
+    "animations": {
+        "1normal": {
+            "bones": {
+                "m1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 19.95,
+                            "y": -0.7
+                        }
+                    ]
+                },
+                "m3": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 8,
+                            "y": 15.5
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "3work": {
+            "bones": {
+                "machine": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 0.95,
+                            "y": 1.05
+                        },
+                        {
+                            "time": 0.42,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.64,
+                            "x": 1.05,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 0.86,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.06,
+                            "x": 0.95,
+                            "y": 1.05
+                        },
+                        {
+                            "time": 1.28,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.5,
+                            "x": 1.05,
+                            "y": 0.95
+                        },
+                        {
+                            "time": 1.7,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "shui": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1
+                        },
+                        {
+                            "time": 1.4,
+                            "y": -20.52
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1.21
+                        },
+                        {
+                            "time": 1,
+                            "x": 1,
+                            "y": 0.99
+                        },
+                        {
+                            "time": 1.4,
+                            "x": 1,
+                            "y": 0.1
+                        }
+                    ]
+                },
+                "coffe": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -16.06
+                        },
+                        {
+                            "time": 1.2
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.6,
+                            "y": 8.29
+                        },
+                        {
+                            "time": 1.4,
+                            "x": 2.14,
+                            "y": 32.52
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped",
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.6,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.4,
+                            "angle": 6.79
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.6,
+                            "x": 2.2,
+                            "y": 2.2
+                        },
+                        {
+                            "time": 1.4,
+                            "x": 3.4,
+                            "y": 3.4
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.6
+                        },
+                        {
+                            "time": 1.4
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.9,
+                            "y": 8.29
+                        },
+                        {
+                            "time": 1.7,
+                            "x": 2.14,
+                            "y": 32.52
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "curve": "stepped",
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9,
+                            "angle": 15.8
+                        },
+                        {
+                            "time": 1.7,
+                            "angle": 6.79
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.9,
+                            "x": 1.8,
+                            "y": 2.9
+                        },
+                        {
+                            "time": 1.7,
+                            "x": 3.4,
+                            "y": 3.4
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.9
+                        },
+                        {
+                            "time": 1.7
+                        }
+                    ]
+                },
+                "working_smoke2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -12.51,
+                            "y": 12.52
+                        },
+                        {
+                            "time": 0.8,
+                            "x": -20.47,
+                            "y": 32.52
+                        },
+                        {
+                            "time": 1.1,
+                            "x": -9.52
+                        },
+                        {
+                            "time": 1.7,
+                            "x": -12.51,
+                            "y": 12.52
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 15.27
+                        },
+                        {
+                            "time": 0.8,
+                            "angle": 20.7
+                        },
+                        {
+                            "time": 1.1,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.7,
+                            "angle": 15.27
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 2.2,
+                            "y": 2.2
+                        },
+                        {
+                            "time": 0.8,
+                            "x": 3.4,
+                            "y": 3.4
+                        },
+                        {
+                            "time": 1.1,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.7,
+                            "x": 2.2,
+                            "y": 2.2
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.8
+                        },
+                        {
+                            "time": 1.1
+                        },
+                        {
+                            "time": 1.7
+                        }
+                    ]
+                },
+                "brk_coffeebar1": {
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.2,
+                            "angle": 19.75
+                        },
+                        {
+                            "time": 1,
+                            "angle": 19.75
+                        },
+                        {
+                            "time": 1.2,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 1
+                        },
+                        {
+                            "time": 1.2
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "shadow": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "capback": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "coffe": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "shui": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.4,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.7,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6,
+                            "color": "FFFFFF66"
+                        },
+                        {
+                            "time": 1.4,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9,
+                            "color": "FFFFFF66"
+                        },
+                        {
+                            "time": 1.7,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF66"
+                        },
+                        {
+                            "time": 0.8,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.1,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.7,
+                            "color": "FFFFFF66"
+                        }
+                    ]
+                },
+                "cap": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "capback": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "coffe": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "cap": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "capback": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "coffe": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "cap": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "bones": {
+                "tap": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -86.09,
+                            "y": 16.56
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 171.65
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "brk_machine": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "coffe1broken"
+                        }
+                    ]
+                },
+                "brk_tap": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "brk_coffeebar1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

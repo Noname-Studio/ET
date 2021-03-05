@@ -1,0 +1,167 @@
+
+k2_waffletable_21.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 353, 301
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+waffleboard1/waffleboard1
+  rotate: false
+  xy: 199, 100
+  size: 194, 98
+  orig: 194, 98
+  offset: 0, 0
+  index: -1
+waffleboard3/waffleboard3
+  rotate: false
+  xy: 1, 1
+  size: 196, 103
+  orig: 196, 103
+  offset: 0, 0
+  index: -1
+waffleboard2/waffleboard2
+  rotate: false
+  xy: 199, 1
+  size: 197, 97
+  orig: 197, 97
+  offset: 0, 0
+  index: -1
+waffleboard1/waffleknifeshadow1
+  rotate: false
+  xy: 1, 254
+  size: 88, 59
+  orig: 88, 59
+  offset: 0, 0
+  index: -1
+waffleboard3/waffleknifeshadow3
+  rotate: false
+  xy: 282, 200
+  size: 89, 51
+  orig: 89, 51
+  offset: 0, 0
+  index: -1
+waffleboard3/waffleknife23
+  rotate: false
+  xy: 91, 180
+  size: 95, 59
+  orig: 95, 59
+  offset: 0, 0
+  index: -1
+waffleboard2/waffleknife22
+  rotate: false
+  xy: 188, 200
+  size: 92, 60
+  orig: 92, 60
+  offset: 0, 0
+  index: -1
+waffleboard1/waffleknife2
+  rotate: false
+  xy: 91, 241
+  size: 89, 60
+  orig: 89, 60
+  offset: 0, 0
+  index: -1
+waffleboard1/wafflecake2
+  rotate: false
+  xy: 282, 253
+  size: 69, 51
+  orig: 69, 51
+  offset: 0, 0
+  index: -1
+waffleboard2/waffleknife12
+  rotate: false
+  xy: 1, 106
+  size: 88, 72
+  orig: 88, 72
+  offset: 0, 0
+  index: -1
+waffleboard3/waffleknife13
+  rotate: false
+  xy: 1, 180
+  size: 88, 72
+  orig: 88, 72
+  offset: 0, 0
+  index: -1
+waffleboard1/waffleknife1
+  rotate: false
+  xy: 91, 106
+  size: 88, 72
+  orig: 88, 72
+  offset: 0, 0
+  index: -1
+waffleboard1/wafflecake1
+  rotate: false
+  xy: 373, 209
+  size: 75, 53
+  orig: 75, 53
+  offset: 0, 0
+  index: -1
+waffleboard1
+  rotate: false
+  xy: 450, 209
+  size: 55, 29
+  orig: 55, 29
+  offset: 0, 0
+  index: -1
+waffleboard1/juicewaffle
+  rotate: false
+  xy: 394, 295
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+waffleboard3/juicewaffle3
+  rotate: false
+  xy: 450, 240
+  size: 40, 35
+  orig: 40, 35
+  offset: 0, 0
+  index: -1
+waffleboard2/juicewaffle2
+  rotate: false
+  xy: 394, 264
+  size: 38, 29
+  orig: 38, 29
+  offset: 0, 0
+  index: -1
+waffleboard2/butterwaffle2
+  rotate: false
+  xy: 434, 277
+  size: 39, 28
+  orig: 39, 28
+  offset: 0, 0
+  index: -1
+waffleboard3/butterwaffle3
+  rotate: false
+  xy: 353, 264
+  size: 39, 35
+  orig: 39, 35
+  offset: 0, 0
+  index: -1
+waffleboard1/butterwaffle
+  rotate: false
+  xy: 475, 277
+  size: 31, 24
+  orig: 31, 24
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 398, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 395, 100
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

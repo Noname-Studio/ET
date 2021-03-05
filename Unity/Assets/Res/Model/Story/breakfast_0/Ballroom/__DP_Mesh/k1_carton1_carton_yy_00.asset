@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &4300000
+Mesh:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: k1_carton1_carton_yy_00
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 54
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 16
+    localAABB:
+      m_Center: {x: -34.18786, y: 5.5970154, z: -0.000046694073}
+      m_Extent: {x: 77.190125, y: 196.54526, z: 0.000025213947}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000010002000000020003000400000003000400030005000600040005000600050007000800030002000800020009000a00080009000a000b0008000c0008000b000c00050003000c00030008000c000b000d000e000c000d000e000f000c000f00070005000f0005000c00
+  m_Skin: []
+  m_VertexData:
+    m_CurrentChannels: 137
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 20
+      format: 0
+      dimension: 4
+    m_DataSize: 576
+    _typelessdata: 4eca2642eb1baa429c7628b81dcba63c0040623f0000803f00000000000000000000803f52022c42f0084a431be7d6b7b901803a0040623f0000803f00000000000000000000803f000546bfb84b46434cf6d3b7b502803affa1673f0000803f00000000000000000000803fa07a534051a0c942d44018b8ae10a83c36ab673f0000803f00000000000000000000803f1ea11d420d7acdc2d5cf87b833f2343d0040623f0000803f00000000000000000000803fe898164183c6fec2882992b81e6e343dcda8673f0000803f00000000000000000000803f1ca11d4242cb39c353cd96b83d817f3d0040623f0000803f00000000000000000000803fc0c1044036ae33c3aadd92b80600803dffa1673f0000803f00000000000000000000803faff0a2c24786bc42705915b8ac10a83ca4ca6d3f0000803f00000000000000000000803f5f2a89c20a4a4643b070cfb7d801803a35dc6d3f0000803f00000000000000000000803f87c1dec26c244a433830b4b79a01803a0040723f0000803f00000000000000000000803fcf50dec289c8bb4274f00eb81dcba63cff3f723f0000803f00000000000000000000803f0d509dc24b48ffc2b11f8eb82555343da4ca6d3f0000803f00000000000000000000803fab9dddc28a28e7c2349c87b8c4eb343dff3f723f0000803f00000000000000000000803f4154ddc2c0f23ec368d092b8b9777e3dff3f723f0000803f00000000000000000000803fb5f28ec23e8134c386d990b8b9777e3d35dc6d3f0000803f00000000000000000000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: -34.18786, y: 5.5970154, z: -0.000046694073}
+    m_Extent: {x: 77.190125, y: 196.54526, z: 0.000025213947}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshOptimized: 1

@@ -1,0 +1,15 @@
+{
+    "name": "AssetBundleTest",
+    "references": [
+        "GUID:b7179b7ed593e634091add66d9405318"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

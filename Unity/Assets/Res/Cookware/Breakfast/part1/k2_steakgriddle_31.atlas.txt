@@ -1,0 +1,125 @@
+
+k2_steakgriddle_31.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_worktable
+  rotate: false
+  xy: 305, 345
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_32/k2_steakgriddle_32
+  rotate: false
+  xy: 192, 117
+  size: 182, 113
+  orig: 214, 113
+  offset: 11, 0
+  index: -1
+k2_steakgriddle_33/k2_steakgriddle_33
+  rotate: false
+  xy: 192, 1
+  size: 190, 114
+  orig: 193, 115
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_31/k2_steakgriddle_31
+  rotate: false
+  xy: 1, 1
+  size: 189, 115
+  orig: 203, 117
+  offset: 3, 2
+  index: -1
+k2_steakgriddle_33/griddle_light33
+  rotate: false
+  xy: 374, 341
+  size: 68, 25
+  orig: 68, 25
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_31/griddle_light31
+  rotate: false
+  xy: 340, 232
+  size: 156, 74
+  orig: 156, 74
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_32/steaknet_32
+  rotate: false
+  xy: 172, 232
+  size: 166, 73
+  orig: 166, 73
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_31/steaknet_31
+  rotate: false
+  xy: 1, 224
+  size: 169, 79
+  orig: 169, 79
+  offset: 0, 0
+  index: -1
+k2_steakgriddle_33/steaknet_33
+  rotate: false
+  xy: 1, 305
+  size: 160, 75
+  orig: 160, 75
+  offset: 0, 0
+  index: -1
+chickengriddle_3/hot_iron
+  rotate: false
+  xy: 1, 118
+  size: 181, 104
+  orig: 181, 104
+  offset: 0, 0
+  index: -1
+beef/beef_fresh
+  rotate: false
+  xy: 163, 307
+  size: 70, 46
+  orig: 70, 46
+  offset: 0, 0
+  index: -1
+chickengriddle_3/smoke_straigh
+  rotate: false
+  xy: 486, 1
+  size: 14, 116
+  orig: 14, 116
+  offset: 0, 0
+  index: -1
+beef/beef_cook1
+  rotate: false
+  xy: 374, 308
+  size: 69, 31
+  orig: 69, 31
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 384, 1
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 376, 117
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1
+beef/beef_cook3
+  rotate: false
+  xy: 305, 308
+  size: 67, 35
+  orig: 67, 35
+  offset: 0, 0
+  index: -1
+beef/beef_cook2
+  rotate: false
+  xy: 235, 307
+  size: 68, 37
+  orig: 68, 37
+  offset: 0, 0
+  index: -1

@@ -2,20 +2,19 @@
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ET
 {
-	public class Init : MonoBehaviour
+	public class Init 
 	{
-		private void Start()
+		public static async ETTask StartNet()
 		{
 			try
 			{
-				SynchronizationContext.SetSynchronizationContext(ThreadSynchronizationContext.Instance);
+				//SynchronizationContext.SetSynchronizationContext(ThreadSynchronizationContext.Instance);
 				
-				DontDestroyOnLoad(gameObject);
-
 				string[] assemblyNames = { "Unity.Model.dll", "Unity.Hotfix.dll", "Unity.ModelView.dll", "Unity.HotfixView.dll" };
 				
 				foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -32,7 +31,11 @@ namespace ET
 				
 				Game.Options = new Options();
 				
-				Game.EventSystem.Publish(new EventType.AppStart());
+				await Game.EventSystem.Publish(new EventType.AppStart());
+				
+				UnityLifeCycleKit.Inst.AddUpdate(Update);
+				UnityLifeCycleKit.Inst.AddLateUpdate(LateUpdate);
+				UnityLifeCycleKit.Inst.ApplicationQuitEvent += OnApplicationQuit;
 			}
 			catch (Exception e)
 			{
@@ -40,18 +43,20 @@ namespace ET
 			}
 		}
 
-		private void Update()
+		private static float Update()
 		{
 			ThreadSynchronizationContext.Instance.Update();
 			Game.EventSystem.Update();
+			return 0;
 		}
 
-		private void LateUpdate()
+		private static float LateUpdate()
 		{
 			Game.EventSystem.LateUpdate();
+			return 0;
 		}
 
-		private void OnApplicationQuit()
+		private static void OnApplicationQuit()
 		{
 			Game.Close();
 		}

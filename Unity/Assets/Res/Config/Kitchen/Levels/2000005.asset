@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826ce8479b2174b48977a0991d531d5c, type: 3}
+  m_Name: 2000005
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mId: 2000005
+  mLevel: 5
+  mRestaurantId: Breakfast
+  mOrderMode: 1
+  mType: 2
+  mDifType: 1
+  mSection: 0
+  mCoinLevelEnable: 1
+  mMaxOrder: 0
+  mRequirements:
+    AllowBurn: 1
+    AllowLostCustomer: 1
+    AllowUseTrash: 1
+    RequiredCoin: 43
+    LikeCount: 0
+    FixedTime: 0
+    LostCustomer: 0
+    NumberOfCustomerService: 6
+    NumberOfCompletedOrders: 5
+  mOrders:
+  - mCustomer: Feeder
+    mFoods:
+    - F_Black_Coffee
+    EDITOR_Customer: {fileID: 11400000, guid: d5b83cef20a534c4789257fa576cdddc, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
+  - mCustomer: OfficeLady
+    mFoods:
+    - F_Caesar_Salad
+    - F_Caesar_Salad
+    EDITOR_Customer: {fileID: 11400000, guid: 430e8efc946445a419056b772685912f, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
+    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
+  - mCustomer: StudentGirl
+    mFoods:
+    - F_Toast
+    EDITOR_Customer: {fileID: 11400000, guid: 86666d10bba19c04daaea8d60619a348, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
+  - mCustomer: Thief
+    mFoods:
+    - F_Black_Coffee
+    - F_Bacon
+    EDITOR_Customer: {fileID: 11400000, guid: 940e2135f3fd1f04285530b3ffdb3654, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
+  - mCustomer: StudentGirl
+    mFoods:
+    - F_Caesar_Salad
+    EDITOR_Customer: {fileID: 11400000, guid: 86666d10bba19c04daaea8d60619a348, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
+  - mCustomer: SailorMan
+    mFoods:
+    - F_Black_Coffee
+    - F_Bacon
+    EDITOR_Customer: {fileID: 11400000, guid: 2026d07361d9504458392dfcffb12ec4, type: 2}
+    EDITOR_Foods:
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
+  mRewards: []
+  mSecretCustomers: []
+  mOrderInterval:
+    Min: 1.8467574
+    Max: 2.770136
+  mLitterInterval:
+    Min: 0
+    Max: 0
+  mOrderDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mWaitingDecay:
+    Interval: 1
+    Rate: 7.66213
+    Limit: 7.66213
+  mFirstArrivals: []
+  mMaxCustomerNumber: 2
+  mCookingDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mBurnDecay:
+    Interval: 0
+    Rate: 0
+    Limit: 0
+  mExtendCustomers: []
+  mComboCfg:
+    Interval: 5
+    Gain: 0.35

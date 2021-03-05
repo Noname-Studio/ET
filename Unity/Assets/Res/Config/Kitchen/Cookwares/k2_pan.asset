@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
+  m_Name: k2_pan
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 0674f7ca5d7bff64cb64bef4d11af2f6, type: 3}
+  mKey: k2_pan
+  EDITORKey: pan
+  mRestId: Breakfast
+  mFoodKey:
+  - {fileID: 11400000, guid: cb1000fc4bc01c84485d496c9336e75a, type: 2}
+  mFunType: 0
+  mDisPosList:
+  - Start: 0
+    End: 0
+    Pos: {x: -2.38, y: -0.07, z: -0}
+    mLevel: 0
+    mRestaurant: Breakfast
+  mLevels:
+  - mLevel: 1
+    mEditorTexture: {fileID: 2800000, guid: 0674f7ca5d7bff64cb64bef4d11af2f6, type: 3}
+    mWorkTime: 3
+    mBurnTime: 9
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 383bac7de2c1de74eb81fe4aa478af2d, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_pan_11.icon
+  - mLevel: 2
+    mEditorTexture: {fileID: 2800000, guid: 6c3598627ad37474abd3a8557a7d8cd5, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 9642a8d459a7fd748bbec2a8a00a7457, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_pan_12.icon
+  - mLevel: 3
+    mEditorTexture: {fileID: 2800000, guid: dc1db64d3c5541840ab4c25692bde922, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 0c976ee07e244f748b97e5a6115bc39f, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_pan_13.icon

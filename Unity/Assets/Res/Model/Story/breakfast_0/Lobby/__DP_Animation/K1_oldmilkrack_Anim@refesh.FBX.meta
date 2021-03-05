@@ -1,0 +1,244 @@
+fileFormatVersion: 2
+guid: 45918df4c933efe44a3e6d82f3c68d90
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: zaguizi01
+    100004: zaguizi02
+    100006: zaguizi03
+    100008: zaguizi04
+    100010: zaguizi05
+    100012: zaguizi06
+    100014: zaguizi07
+    100016: zaguizi08
+    100018: zaguizi09
+    100020: zaguizi10
+    100022: zaguizi11
+    100024: zaguizi12
+    100026: zaguizi13
+    100028: zaguizi14
+    100030: zaguizi15
+    100032: zaguizi16
+    100034: zaguizi17
+    100036: zaguizi18
+    100038: zaguizi19
+    100040: zaguizi20
+    100042: zaguizi21
+    100044: cc_oldmaikrack
+    100046: zaguizi016
+    100048: zaguizi017
+    100050: zaguizi018
+    100052: zaguizi01900
+    100054: zaguizi01901
+    100056: zaguizi01902
+    100058: zaguizi_yy
+    100060: waikuang_yy006
+    400000: //RootNode
+    400002: zaguizi01
+    400004: zaguizi02
+    400006: zaguizi03
+    400008: zaguizi04
+    400010: zaguizi05
+    400012: zaguizi06
+    400014: zaguizi07
+    400016: zaguizi08
+    400018: zaguizi09
+    400020: zaguizi10
+    400022: zaguizi11
+    400024: zaguizi12
+    400026: zaguizi13
+    400028: zaguizi14
+    400030: zaguizi15
+    400032: zaguizi16
+    400034: zaguizi17
+    400036: zaguizi18
+    400038: zaguizi19
+    400040: zaguizi20
+    400042: zaguizi21
+    400044: cc_oldmaikrack
+    400046: zaguizi016
+    400048: zaguizi017
+    400050: zaguizi018
+    400052: zaguizi01900
+    400054: zaguizi01901
+    400056: zaguizi01902
+    400058: zaguizi_yy
+    400060: waikuang_yy006
+    2100000: 'Material #3335'
+    2100002: 'Material #131'
+    2100004: 'Material #3932'
+    2100006: 'Material #3866'
+    2100008: zawu
+    2100010: 04 - Default
+    2100012: 'Material #3962'
+    2100014: oldZW
+    2100016: guizi2
+    2100018: yiying
+    2300000: zaguizi02
+    2300002: zaguizi03
+    2300004: zaguizi04
+    2300006: zaguizi05
+    2300008: zaguizi06
+    2300010: zaguizi07
+    2300012: zaguizi08
+    2300014: zaguizi09
+    2300016: zaguizi10
+    2300018: zaguizi11
+    2300020: zaguizi12
+    2300022: zaguizi13
+    2300024: zaguizi14
+    2300026: zaguizi15
+    2300028: zaguizi16
+    2300030: zaguizi17
+    2300032: zaguizi18
+    2300034: zaguizi19
+    2300036: zaguizi20
+    2300038: zaguizi21
+    2300040: zaguizi016
+    2300042: zaguizi017
+    2300044: zaguizi018
+    2300046: zaguizi01900
+    2300048: zaguizi01901
+    2300050: zaguizi01902
+    2300052: zaguizi_yy
+    2300054: waikuang_yy006
+    3300000: zaguizi02
+    3300002: zaguizi03
+    3300004: zaguizi04
+    3300006: zaguizi05
+    3300008: zaguizi06
+    3300010: zaguizi07
+    3300012: zaguizi08
+    3300014: zaguizi09
+    3300016: zaguizi10
+    3300018: zaguizi11
+    3300020: zaguizi12
+    3300022: zaguizi13
+    3300024: zaguizi14
+    3300026: zaguizi15
+    3300028: zaguizi16
+    3300030: zaguizi17
+    3300032: zaguizi18
+    3300034: zaguizi19
+    3300036: zaguizi20
+    3300038: zaguizi21
+    3300040: zaguizi016
+    3300042: zaguizi017
+    3300044: zaguizi018
+    3300046: zaguizi01900
+    3300048: zaguizi01901
+    3300050: zaguizi01902
+    3300052: zaguizi_yy
+    3300054: waikuang_yy006
+    4300000: zaguizi16
+    4300002: zaguizi17
+    4300004: zaguizi18
+    4300006: zaguizi21
+    4300008: zaguizi20
+    4300010: zaguizi19
+    4300012: zaguizi15
+    4300014: zaguizi14
+    4300016: zaguizi13
+    4300018: zaguizi12
+    4300020: zaguizi03
+    4300022: zaguizi04
+    4300024: zaguizi05
+    4300026: zaguizi06
+    4300028: zaguizi07
+    4300030: zaguizi08
+    4300032: zaguizi09
+    4300034: zaguizi10
+    4300036: zaguizi11
+    4300038: zaguizi02
+    4300040: zaguizi_yy
+    4300042: zaguizi016
+    4300044: zaguizi017
+    4300046: zaguizi018
+    4300048: zaguizi01902
+    4300050: zaguizi01901
+    4300052: zaguizi01900
+    4300054: waikuang_yy006
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

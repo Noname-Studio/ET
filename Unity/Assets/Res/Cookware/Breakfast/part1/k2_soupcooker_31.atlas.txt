@@ -1,0 +1,153 @@
+
+k2_soupcooker_31.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 92, 400
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+firedown
+  rotate: false
+  xy: 92, 444
+  size: 124, 60
+  orig: 126, 61
+  offset: 1, 0
+  index: -1
+soupcooker1/soupcooker_down
+  rotate: false
+  xy: 189, 90
+  size: 145, 85
+  orig: 145, 85
+  offset: 0, 0
+  index: -1
+soupcooker2/soupcooker_down2
+  rotate: false
+  xy: 189, 1
+  size: 155, 87
+  orig: 155, 87
+  offset: 0, 0
+  index: -1
+soupcooker3/soupcooker_down3
+  rotate: false
+  xy: 336, 171
+  size: 155, 76
+  orig: 155, 76
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 1, 178
+  size: 144, 75
+  orig: 146, 77
+  offset: 1, 1
+  index: -1
+wave
+  rotate: false
+  xy: 410, 249
+  size: 82, 45
+  orig: 82, 45
+  offset: 0, 0
+  index: -1
+waterboil1
+  rotate: false
+  xy: 136, 286
+  size: 126, 80
+  orig: 126, 80
+  offset: 0, 0
+  index: -1
+waterboil3
+  rotate: false
+  xy: 1, 336
+  size: 130, 62
+  orig: 131, 64
+  offset: 0, 1
+  index: -1
+waterboil2
+  rotate: false
+  xy: 218, 444
+  size: 123, 58
+  orig: 123, 58
+  offset: 0, 0
+  index: -1
+stockpotsmoke2
+  rotate: false
+  xy: 275, 177
+  size: 49, 32
+  orig: 56, 42
+  offset: 2, 8
+  index: -1
+stockpotsmoke1
+  rotate: false
+  xy: 275, 211
+  size: 45, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+soupcooker2/soupcover-2
+  rotate: false
+  xy: 1, 255
+  size: 133, 79
+  orig: 133, 79
+  offset: 0, 0
+  index: -1
+soupcooker1/soupcover-1
+  rotate: false
+  xy: 275, 249
+  size: 133, 76
+  orig: 133, 76
+  offset: 0, 0
+  index: -1
+soupcooker3/soupcover-3
+  rotate: false
+  xy: 136, 368
+  size: 133, 74
+  orig: 133, 74
+  offset: 0, 0
+  index: -1
+soupcooker3/soupcooker_up3
+  rotate: false
+  xy: 1, 100
+  size: 162, 76
+  orig: 162, 76
+  offset: 0, 0
+  index: -1
+soupcooker2/soupcooker_up
+  rotate: false
+  xy: 346, 1
+  size: 155, 86
+  orig: 155, 86
+  offset: 0, 0
+  index: -1
+soupcooker1/soupcooker_up
+  rotate: false
+  xy: 346, 89
+  size: 155, 80
+  orig: 155, 80
+  offset: 0, 0
+  index: -1
+brk_stkpotburn
+  rotate: false
+  xy: 1, 1
+  size: 186, 97
+  orig: 186, 112
+  offset: 0, 3
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 400
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 165, 177
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

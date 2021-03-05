@@ -19,13 +19,16 @@ namespace ET
 		 public const ushort M2C_Reload = 20015;
 		 public const ushort C2R_Login = 20016;
 		 public const ushort R2C_Login = 20017;
-		 public const ushort C2G_LoginGate = 20018;
-		 public const ushort G2C_LoginGate = 20019;
-		 public const ushort G2C_TestHotfixMessage = 20020;
-		 public const ushort C2M_TestActorRequest = 20021;
-		 public const ushort M2C_TestActorResponse = 20022;
-		 public const ushort PlayerInfo = 20023;
-		 public const ushort C2G_PlayerInfo = 20024;
-		 public const ushort G2C_PlayerInfo = 20025;
+		 public const ushort C2R_SearchGuild = 20018;
+		 public const ushort R2C_SearchGuild = 20019;
+		 public const ushort SearchGuildResult = 20020;
+		 public const ushort C2G_LoginGate = 20021;
+		 public const ushort G2C_LoginGate = 20022;
+		 public const ushort G2C_TestHotfixMessage = 20023;
+		 public const ushort C2M_TestActorRequest = 20024;
+		 public const ushort M2C_TestActorResponse = 20025;
+		 public const ushort PlayerInfo = 20026;
+		 public const ushort C2G_PlayerInfo = 20027;
+		 public const ushort G2C_PlayerInfo = 20028;
 	}
 }

@@ -1,0 +1,209 @@
+
+k2_waffle_21.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_waffle
+  rotate: false
+  xy: 336, 555
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+waffle_23/waffle_base3
+  rotate: false
+  xy: 1, 1
+  size: 230, 216
+  orig: 240, 236
+  offset: 0, 10
+  index: -1
+waffle_23/waffle_maker3
+  rotate: false
+  xy: 367, 435
+  size: 133, 100
+  orig: 133, 100
+  offset: 0, 0
+  index: -1
+waffle_21/waffle_maker1
+  rotate: false
+  xy: 193, 435
+  size: 172, 118
+  orig: 172, 118
+  offset: 0, 0
+  index: -1
+k2_waffle21/waffle_maker
+  rotate: false
+  xy: 233, 1
+  size: 237, 162
+  orig: 237, 162
+  offset: 0, 0
+  index: -1
+wafflecake
+  rotate: false
+  xy: 197, 555
+  size: 137, 48
+  orig: 137, 48
+  offset: 0, 0
+  index: -1
+k2_waffle21/wafflie_cake3
+  rotate: false
+  xy: 348, 685
+  size: 50, 43
+  orig: 50, 48
+  offset: 0, 0
+  index: -1
+k2_waffle21/wafflie_cake
+  rotate: false
+  xy: 197, 605
+  size: 100, 60
+  orig: 100, 60
+  offset: 0, 0
+  index: -1
+k2_waffle21/wafflie_cake1
+  rotate: false
+  xy: 352, 646
+  size: 78, 37
+  orig: 80, 37
+  offset: 2, 0
+  index: -1
+waffleworking_smoke
+  rotate: false
+  xy: 439, 749
+  size: 49, 32
+  orig: 56, 42
+  offset: 2, 8
+  index: -1
+waffle_21/waffle_cover_c1
+  rotate: false
+  xy: 1, 337
+  size: 190, 115
+  orig: 190, 115
+  offset: 0, 0
+  index: -1
+k2_waffle21/waffle_cover_c
+  rotate: false
+  xy: 233, 165
+  size: 254, 147
+  orig: 254, 147
+  offset: 0, 0
+  index: -1
+waffle_23/waffle3_cover_c3
+  rotate: false
+  xy: 233, 314
+  size: 187, 119
+  orig: 187, 119
+  offset: 0, 0
+  index: -1
+waffle_23/waffle_base_frt
+  rotate: false
+  xy: 299, 666
+  size: 47, 57
+  orig: 47, 57
+  offset: 0, 0
+  index: -1
+waffle_23/waffle_cover_o3
+  rotate: false
+  xy: 1, 555
+  size: 194, 80
+  orig: 194, 80
+  offset: 0, 0
+  index: -1
+waffle_21/waffle_cover_o1
+  rotate: false
+  xy: 1, 454
+  size: 190, 85
+  orig: 190, 85
+  offset: 0, 0
+  index: -1
+k2_waffle21/waffle_cover_o
+  rotate: false
+  xy: 1, 219
+  size: 230, 116
+  orig: 230, 116
+  offset: 0, 0
+  index: -1
+burnsmoke8
+  rotate: false
+  xy: 472, 1
+  size: 37, 51
+  orig: 40, 53
+  offset: 1, 1
+  index: -1
+burnsmoke2
+  rotate: false
+  xy: 299, 605
+  size: 51, 59
+  orig: 54, 62
+  offset: 1, 2
+  index: -1
+burnsmoke7
+  rotate: false
+  xy: 400, 703
+  size: 37, 48
+  orig: 40, 51
+  offset: 1, 2
+  index: -1
+burnsmoke1
+  rotate: false
+  xy: 432, 646
+  size: 45, 55
+  orig: 48, 58
+  offset: 1, 2
+  index: -1
+burnsmoke4
+  rotate: false
+  xy: 472, 103
+  size: 37, 48
+  orig: 40, 50
+  offset: 1, 1
+  index: -1
+burnsmoke5
+  rotate: false
+  xy: 193, 337
+  size: 38, 54
+  orig: 40, 56
+  offset: 0, 2
+  index: -1
+burnsmoke3
+  rotate: false
+  xy: 472, 54
+  size: 39, 47
+  orig: 40, 49
+  offset: 0, 2
+  index: -1
+burnsmoke6
+  rotate: false
+  xy: 439, 703
+  size: 36, 44
+  orig: 40, 47
+  offset: 1, 2
+  index: -1
+waffle buttonlight
+  rotate: false
+  xy: 400, 685
+  size: 16, 14
+  orig: 21, 19
+  offset: 2, 2
+  index: -1
+materialbg
+  rotate: false
+  xy: 422, 314
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 367, 537
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1
+waffle_23/waffle_bearing_frt
+  rotate: false
+  xy: 336, 583
+  size: 17, 18
+  orig: 17, 18
+  offset: 0, 0
+  index: -1

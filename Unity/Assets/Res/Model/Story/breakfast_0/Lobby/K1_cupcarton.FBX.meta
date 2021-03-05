@@ -1,0 +1,349 @@
+fileFormatVersion: 2
+guid: 4e81db9cad6353d48b23b1fe5a582e14
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: book1
+    100002: book10
+    100004: book11
+    100006: book12
+    100008: book2
+    100010: book3
+    100012: book4
+    100014: book5
+    100016: book6
+    100018: book7
+    100020: book8
+    100022: book9
+    100024: Box191
+    100026: cupcarton1
+    100028: cupcarton2
+    100030: cupcarton3
+    100032: cupcarton4
+    100034: cupcarton5
+    100036: Dummy001
+    100038: Dummy003
+    100040: //RootNode
+    100042: k1_oldyinying007
+    100044: k1_oldyinying2
+    100046: k1_oldyinying3
+    100048: k1_oldyinying4
+    100050: Object001
+    100052: Object002
+    100054: Object003
+    100056: Object004
+    100058: olddesk2
+    100060: olddesk3
+    100062: cc_cupcarton
+    100064: cupcarton_guizi
+    100066: cupcarton_xiangzi
+    100068: cupcarton_YY_00
+    100070: cupcarton_YY_01
+    100072: cupcarton_YY_02
+    100074: cupcarton_YY_03
+    100076: daxiangzi
+    100078: Oxiangz_00
+    100080: Oxiangz_01
+    100082: Oxiangz_02
+    100084: Oxiangz_03
+    100086: Oxiangz_04
+    100088: daxiangzi_yy
+    400000: book1
+    400002: book10
+    400004: book11
+    400006: book12
+    400008: book2
+    400010: book3
+    400012: book4
+    400014: book5
+    400016: book6
+    400018: book7
+    400020: book8
+    400022: book9
+    400024: Box191
+    400026: cupcarton1
+    400028: cupcarton2
+    400030: cupcarton3
+    400032: cupcarton4
+    400034: cupcarton5
+    400036: Dummy001
+    400038: Dummy003
+    400040: //RootNode
+    400042: k1_oldyinying007
+    400044: k1_oldyinying2
+    400046: k1_oldyinying3
+    400048: k1_oldyinying4
+    400050: Object001
+    400052: Object002
+    400054: Object003
+    400056: Object004
+    400058: olddesk2
+    400060: olddesk3
+    400062: cc_cupcarton
+    400064: cupcarton_guizi
+    400066: cupcarton_xiangzi
+    400068: cupcarton_YY_00
+    400070: cupcarton_YY_01
+    400072: cupcarton_YY_02
+    400074: cupcarton_YY_03
+    400076: daxiangzi
+    400078: Oxiangz_00
+    400080: Oxiangz_01
+    400082: Oxiangz_02
+    400084: Oxiangz_03
+    400086: Oxiangz_04
+    400088: daxiangzi_yy
+    2100000: 'Material #3335'
+    2100002: 'Material #3866'
+    2100004: 'Material #130'
+    2100006: 'Material #131'
+    2100008: 'Material #3'
+    2100010: 'Material #3962'
+    2100012: zawu
+    2100014: K1_zawu3
+    2100016: K1_cupcarton
+    2100018: yiying
+    2100020: k1_shuben
+    2300000: book1
+    2300002: book10
+    2300004: book11
+    2300006: book12
+    2300008: book2
+    2300010: book3
+    2300012: book4
+    2300014: book5
+    2300016: book6
+    2300018: book7
+    2300020: book8
+    2300022: book9
+    2300024: Box191
+    2300026: cupcarton1
+    2300028: cupcarton2
+    2300030: cupcarton3
+    2300032: cupcarton4
+    2300034: cupcarton5
+    2300036: k1_oldyinying007
+    2300038: k1_oldyinying2
+    2300040: k1_oldyinying3
+    2300042: k1_oldyinying4
+    2300044: Object001
+    2300046: Object002
+    2300048: Object003
+    2300050: Object004
+    2300052: olddesk2
+    2300054: olddesk3
+    2300056: cupcarton_YY_00
+    2300058: cupcarton_YY_01
+    2300060: cupcarton_YY_02
+    2300062: cupcarton_YY_03
+    2300064: daxiangzi
+    2300066: Oxiangz_00
+    2300068: Oxiangz_01
+    2300070: Oxiangz_02
+    2300072: Oxiangz_03
+    2300074: Oxiangz_04
+    2300076: daxiangzi_yy
+    3300000: book1
+    3300002: book10
+    3300004: book11
+    3300006: book12
+    3300008: book2
+    3300010: book3
+    3300012: book4
+    3300014: book5
+    3300016: book6
+    3300018: book7
+    3300020: book8
+    3300022: book9
+    3300024: Box191
+    3300026: cupcarton1
+    3300028: cupcarton2
+    3300030: cupcarton3
+    3300032: cupcarton4
+    3300034: cupcarton5
+    3300036: k1_oldyinying007
+    3300038: k1_oldyinying2
+    3300040: k1_oldyinying3
+    3300042: k1_oldyinying4
+    3300044: Object001
+    3300046: Object002
+    3300048: Object003
+    3300050: Object004
+    3300052: olddesk2
+    3300054: olddesk3
+    3300056: cupcarton_YY_00
+    3300058: cupcarton_YY_01
+    3300060: cupcarton_YY_02
+    3300062: cupcarton_YY_03
+    3300064: daxiangzi
+    3300066: Oxiangz_00
+    3300068: Oxiangz_01
+    3300070: Oxiangz_02
+    3300072: Oxiangz_03
+    3300074: Oxiangz_04
+    3300076: daxiangzi_yy
+    4300000: cupcarton1
+    4300002: k1_oldyinying007
+    4300004: cupcarton3
+    4300006: Object001
+    4300008: Object003
+    4300010: Object004
+    4300012: Object002
+    4300014: k1_oldyinying2
+    4300016: cupcarton2
+    4300018: k1_oldyinying3
+    4300020: book6
+    4300022: book7
+    4300024: book8
+    4300026: book5
+    4300028: book4
+    4300030: book11
+    4300032: book12
+    4300034: book2
+    4300036: book1
+    4300038: book3
+    4300040: book9
+    4300042: Box191
+    4300044: olddesk3
+    4300046: olddesk2
+    4300048: book10
+    4300050: cupcarton5
+    4300052: cupcarton4
+    4300054: k1_oldyinying4
+    4300056: Oxiangz_04
+    4300058: Oxiangz_03
+    4300060: Oxiangz_01
+    4300062: Oxiangz_00
+    4300064: Oxiangz_02
+    4300066: cupcarton_YY_02
+    4300068: cupcarton_YY_01
+    4300070: daxiangzi
+    4300072: cupcarton_YY_03
+    4300074: cupcarton_YY_00
+    4300076: daxiangzi_yy
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #131'
+    second: {fileID: 2100000, guid: 679f7c8fa03b3334686baf4a93cfcdd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3'
+    second: {fileID: 2100000, guid: 629fe16ef73cbe4409eb63eb7168bb13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zawu
+    second: {fileID: 2100000, guid: 5f2ed7e73b6c40a49b29b6192d214ebc, type: 2}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: refesh
+      takeName: refesh
+      firstFrame: 0
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

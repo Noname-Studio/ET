@@ -1,0 +1,125 @@
+
+k2_cuttingboard_12.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 63, 110
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+saladboal2/boal2_bck
+  rotate: false
+  xy: 111, 1
+  size: 125, 71
+  orig: 125, 71
+  offset: 0, 0
+  index: -1
+piece6_cut
+  rotate: false
+  xy: 232, 157
+  size: 22, 31
+  orig: 22, 31
+  offset: 0, 0
+  index: -1
+piece1_cut
+  rotate: false
+  xy: 232, 190
+  size: 20, 26
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+piece5_cut
+  rotate: false
+  xy: 219, 237
+  size: 24, 14
+  orig: 24, 14
+  offset: 0, 0
+  index: -1
+piece3_cut
+  rotate: false
+  xy: 219, 253
+  size: 24, 13
+  orig: 24, 14
+  offset: 0, 1
+  index: -1
+salacut2/sczer_cut2
+  rotate: false
+  xy: 128, 227
+  size: 89, 62
+  orig: 89, 62
+  offset: 0, 0
+  index: -1
+salacut2/sczer_cut1
+  rotate: false
+  xy: 202, 74
+  size: 43, 81
+  orig: 43, 81
+  offset: 0, 0
+  index: -1
+piece4_cut
+  rotate: false
+  xy: 94, 110
+  size: 11, 17
+  orig: 11, 17
+  offset: 0, 0
+  index: -1
+piece2_cut
+  rotate: false
+  xy: 91, 138
+  size: 15, 14
+  orig: 15, 14
+  offset: 0, 0
+  index: -1
+salacut2/sczer_springs
+  rotate: false
+  xy: 232, 218
+  size: 20, 17
+  orig: 20, 17
+  offset: 0, 0
+  index: -1
+salacut2/sczer_handle2
+  rotate: false
+  xy: 128, 164
+  size: 102, 61
+  orig: 102, 61
+  offset: 0, 0
+  index: -1
+salacut2/sczer_handle1
+  rotate: false
+  xy: 1, 110
+  size: 60, 51
+  orig: 60, 51
+  offset: 0, 0
+  index: -1
+saladboal2/boal2_frt
+  rotate: false
+  xy: 1, 164
+  size: 125, 62
+  orig: 125, 62
+  offset: 0, 0
+  index: -1
+cuteffection
+  rotate: false
+  xy: 63, 138
+  size: 26, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 111, 74
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 1, 1
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

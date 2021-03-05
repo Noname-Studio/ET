@@ -1,0 +1,1357 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 240.48,
+        "height": 148.05,
+        "fps": 40,
+        "hash": " ",
+        "name": "k2_soupcooker_31"
+    },
+    "bones": [
+        {
+            "x": -3.2787,
+            "y": -1.6393,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 12.5408,
+            "y": 41.8608,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -40.1065,
+            "y": 54.8067,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 6.9155,
+            "y": 8.9573,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": -85.12,
+            "y": 43.8584,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": 43.9383,
+            "y": 54.3649,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": 1.2084,
+            "y": 21.9,
+            "scaleX": 5.44,
+            "scaleY": 5.3926,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 64.9998,
+            "y": 18.8589,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "scaleX": 0.8,
+            "scaleY": 0.8,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "length": 1,
+            "x": 9.8291,
+            "y": -30.2099,
+            "name": "soupcooker_down",
+            "parent": "bone"
+        },
+        {
+            "x": -0.4245,
+            "y": 18.2661,
+            "rotation": 172.9485,
+            "scaleX": 1.5,
+            "scaleY": 1.5,
+            "name": "smoke",
+            "parent": "bone"
+        },
+        {
+            "x": -0.1401,
+            "y": 71.3297,
+            "rotation": 1.1151,
+            "scaleX": 1.5,
+            "scaleY": 1.5,
+            "name": "smoke1",
+            "parent": "bone"
+        },
+        {
+            "y": 3.975,
+            "name": "stockpotburn",
+            "parent": "soupcooker_down"
+        },
+        {
+            "y": 6.5223,
+            "scaleX": 1.1,
+            "scaleY": 1.1,
+            "name": "firedown",
+            "parent": "soupcooker_down"
+        },
+        {
+            "length": 1,
+            "x": -1,
+            "y": 56.025,
+            "rotation": 90,
+            "name": "soupcooker_up",
+            "parent": "soupcooker_down"
+        },
+        {
+            "y": 63.0136,
+            "scaleX": 1.2,
+            "scaleY": 1.35,
+            "name": "water",
+            "parent": "soupcooker_down"
+        },
+        {
+            "y": 3.975,
+            "name": "burnquick",
+            "parent": "soupcooker_down"
+        },
+        {
+            "x": 0.8839,
+            "y": 119.9795,
+            "scaleX": 1.25,
+            "scaleY": 1.25,
+            "name": "soupcover-1",
+            "parent": "soupcooker_down"
+        },
+        {
+            "x": 2,
+            "y": 26,
+            "name": "wave",
+            "parent": "water"
+        },
+        {
+            "y": -6.7832,
+            "name": "waterboil",
+            "parent": "water"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_stockpot"
+        },
+        {
+            "name": "firedown",
+            "bone": "firedown",
+            "color": "FFFFFF00",
+            "attachment": "firedown"
+        },
+        {
+            "name": "soupcooker_down",
+            "bone": "soupcooker_down",
+            "attachment": "soupcooker1/soupcooker_down"
+        },
+        {
+            "name": "water",
+            "bone": "water",
+            "color": "FFFFFF00",
+            "attachment": "water"
+        },
+        {
+            "name": "wave",
+            "bone": "wave",
+            "color": "FFFFFF00",
+            "attachment": "wave"
+        },
+        {
+            "name": "waterboil",
+            "bone": "waterboil",
+            "color": "FFFFFF00",
+            "attachment": "waterboil1"
+        },
+        {
+            "name": "stockpotsmoke11",
+            "bone": "smoke1",
+            "color": "FFFFFF00",
+            "attachment": "stockpotsmoke1"
+        },
+        {
+            "name": "soupcover-1",
+            "bone": "soupcover-1",
+            "attachment": "soupcooker1/soupcover-1"
+        },
+        {
+            "name": "soupcooker_up",
+            "bone": "soupcooker_up",
+            "attachment": "soupcooker1/soupcooker_up"
+        },
+        {
+            "name": "stockpotburn",
+            "bone": "stockpotburn",
+            "color": "FFFFFF00",
+            "attachment": "stockpotburn"
+        },
+        {
+            "name": "burnquick",
+            "bone": "burnquick",
+            "color": "FFFFFF00",
+            "attachment": "stockpotburn"
+        },
+        {
+            "name": "stockpotsmoke1",
+            "bone": "smoke",
+            "color": "FFFFFF00",
+            "attachment": "stockpotsmoke1"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "workclock"
+        },
+        {
+            "name": "repair",
+            "bone": "repair",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "waterboil": {
+                "waterboil1": {
+                    "name": "waterboil1",
+                    "width": 126,
+                    "height": 80,
+                    "x": -3,
+                    "y": 27
+                },
+                "waterboil2": {
+                    "name": "waterboil2",
+                    "width": 123,
+                    "height": 58,
+                    "x": 1.5,
+                    "y": 26
+                },
+                "waterboil3": {
+                    "name": "waterboil3",
+                    "width": 130,
+                    "height": 62,
+                    "x": -1.5,
+                    "y": 27
+                }
+            },
+            "size": {
+                "size_stockpot": {
+                    "name": "size_stockpot",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size"
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "burnquick": {
+                "stockpotburn": {
+                    "name": "stockpotburn",
+                    "width": 186,
+                    "height": 97,
+                    "x": -4,
+                    "y": 40.37,
+                    "path": "brk_stkpotburn"
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "soupcooker_up": {
+                "soupcooker1/soupcooker_up": {
+                    "name": "soupcooker1/soupcooker_up",
+                    "width": 155,
+                    "height": 80,
+                    "x": -4.19,
+                    "y": -7.68,
+                    "rotation": -90,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                },
+                "soupcooker2/soupcooker_up": {
+                    "name": "soupcooker2/soupcooker_up",
+                    "width": 155,
+                    "height": 86,
+                    "x": -4.19,
+                    "y": -3.94,
+                    "rotation": -90,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                },
+                "soupcooker3/soupcooker_up3": {
+                    "name": "soupcooker3/soupcooker_up3",
+                    "width": 162,
+                    "height": 76,
+                    "x": -4.19,
+                    "y": 4.87,
+                    "rotation": -90,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "water": {
+                "water": {
+                    "name": "water",
+                    "width": 144,
+                    "height": 75,
+                    "x": 1,
+                    "y": 15.5
+                }
+            },
+            "stockpotsmoke11": {
+                "stockpotsmoke2": {
+                    "name": "stockpotsmoke2",
+                    "width": 49,
+                    "height": 32
+                },
+                "stockpotsmoke1": {
+                    "name": "stockpotsmoke1",
+                    "width": 45,
+                    "height": 27,
+                    "x": 1.69,
+                    "y": 7.62
+                }
+            },
+            "firedown": {
+                "firedown": {
+                    "name": "firedown",
+                    "width": 124,
+                    "height": 60,
+                    "y": 18.23
+                }
+            },
+            "repair": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "clock": {
+                "workclock": {
+                    "name": "workclock",
+                    "width": 89,
+                    "height": 88,
+                    "x": 0.83,
+                    "y": 6.64,
+                    "path": "materialbg"
+                }
+            },
+            "stockpotsmoke1": {
+                "stockpotsmoke1": {
+                    "name": "stockpotsmoke1",
+                    "width": 45,
+                    "height": 27,
+                    "x": 1.69,
+                    "y": 7.62
+                },
+                "stockpotsmoke2": {
+                    "name": "stockpotsmoke2",
+                    "width": 49,
+                    "height": 32,
+                    "x": 1.69,
+                    "y": 7.62
+                }
+            },
+            "soupcooker_down": {
+                "soupcooker1/soupcooker_down": {
+                    "name": "soupcooker1/soupcooker_down",
+                    "width": 145,
+                    "height": 85,
+                    "x": -0.03,
+                    "y": 106.17,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                },
+                "soupcooker2/soupcooker_down2": {
+                    "name": "soupcooker2/soupcooker_down2",
+                    "width": 155,
+                    "height": 87,
+                    "x": -5.72,
+                    "y": 106.17,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                },
+                "soupcooker3/soupcooker_down3": {
+                    "name": "soupcooker3/soupcooker_down3",
+                    "width": 155,
+                    "height": 76,
+                    "x": 10.28,
+                    "y": 98.22,
+                    "scaleX": 1.25,
+                    "scaleY": 1.25
+                }
+            },
+            "stockpotburn": {
+                "stockpotburn": {
+                    "name": "stockpotburn",
+                    "width": 186,
+                    "height": 97,
+                    "x": 1.48,
+                    "y": 41.44,
+                    "path": "brk_stkpotburn"
+                }
+            },
+            "wave": {
+                "wave": {
+                    "name": "wave",
+                    "width": 82,
+                    "height": 45,
+                    "x": -1,
+                    "y": -3.5
+                }
+            },
+            "soupcover-1": {
+                "soupcooker1/soupcover-1": {
+                    "name": "soupcooker1/soupcover-1",
+                    "width": 133,
+                    "height": 76,
+                    "x": -1.39,
+                    "y": -13.02,
+                    "rotation": 0.79
+                },
+                "soupcooker2/soupcover-2": {
+                    "name": "soupcooker2/soupcover-2",
+                    "width": 133,
+                    "height": 79,
+                    "x": -1.39,
+                    "y": -13.02,
+                    "rotation": 0.79,
+                    "scaleX": 0.9586,
+                    "scaleY": 0.9586
+                },
+                "soupcooker3/soupcover-3": {
+                    "name": "soupcooker3/soupcover-3",
+                    "width": 133,
+                    "height": 74,
+                    "x": -1.39,
+                    "y": -13.02,
+                    "rotation": 0.79,
+                    "scaleX": 0.9586,
+                    "scaleY": 0.9586
+                }
+            }
+        }
+    }],
+    "animations": {
+        "1normal":{},
+        "2layout": {
+            "bones": {
+                "clock": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -20.18
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "3work": {
+            "bones": {
+                "soupcooker_down": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.225,
+                            "x": 1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ]
+                },
+                "smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.25,
+                            "y": -3.65
+                        },
+                        {
+                            "time": 0.45,
+                            "y": -15.22
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.25,
+                            "angle": 3.84
+                        },
+                        {
+                            "time": 0.45,
+                            "angle": 2.45
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.25,
+                            "x": 1.51,
+                            "y": 1.51
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 1.73,
+                            "y": 1.73
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.25
+                        },
+                        {
+                            "time": 0.45
+                        }
+                    ]
+                },
+                "smoke1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.25,
+                            "y": 51.48
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.25,
+                            "x": 1.6,
+                            "y": 1.6
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 2.48,
+                            "y": 2.48
+                        }
+                    ]
+                },
+                "soupcover-1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                        
+                        },
+                        {
+                            "time": 0.225,
+                            
+                            "x": -1.43,
+                            "y": 7.34
+                        },
+                        {
+                            "time": 0.45
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.125,
+                            "angle": 10.1
+                        },
+                        {
+                            "time": 0.225,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.325,
+                            "angle": -9.84
+                        },
+                        {
+                            "time": 0.45,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.125
+                        },
+                        {
+                            "time": 0.225
+                        },
+                        {
+                            "time": 0.325
+                        },
+                        {
+                            "time": 0.45
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "firedown": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFFB3"
+                        },
+                        {
+                            "time": 0.45,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "water": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "A1A1A1FF"
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.05,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.15,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.25,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.3,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.35,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.4,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.45,
+                            "name": "waterboil1"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "stockpotsmoke1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "stockpotsmoke1"
+                        },
+                        {
+                            "time": 0.25,
+                            "name": "stockpotsmoke2"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.45,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "stockpotsmoke11": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "stockpotsmoke1"
+                        },
+                        {
+                            "time": 0.25,
+                            "name": "stockpotsmoke2"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.45,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "soupcooker_down": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.25,
+                            "x": 1,
+                            "y": 1.05
+                        },
+                        {
+                            "time": 0.525,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "wave": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.84
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.05,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.125,
+                            "curve": "stepped",
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.15,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.275,
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.35,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.425,
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 0.8,
+                            "y": 0.5
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "firedown": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFFB3"
+                        },
+                        {
+                            "time": 0.525,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "water": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF7F"
+                        }
+                    ]
+                },
+                "wave": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.125,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.15,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.175,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.275,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.325,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.425,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.45,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.475,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.075,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.15,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.225,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.275,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.325,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.375,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.425,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.475,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.525,
+                            "name": "waterboil1"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "soupcover-1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "soupcooker_down": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.25,
+                            "x": 1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 0.525,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "stockpotburn": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 19.72
+                        }
+                    ]
+                },
+                "wave": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 4.84
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.05,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.125,
+                            "curve": "stepped",
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.15,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.275,
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.8,
+                            "y": 0.5
+                        },
+                        {
+                            "time": 0.35,
+                            "x": 1,
+                            "y": 0.8
+                        },
+                        {
+                            "time": 0.425,
+                            "x": 1.5,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 0.8,
+                            "y": 0.5
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "firedown": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFFB3"
+                        },
+                        {
+                            "time": 0.525,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "water": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "E3BA5E7F"
+                        }
+                    ]
+                },
+                "wave": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.125,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.15,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.175,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.275,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.325,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.425,
+                            "curve": "stepped",
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.45,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.475,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "waterboil": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.075,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.15,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.225,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.275,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.325,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.375,
+                            "name": "waterboil1"
+                        },
+                        {
+                            "time": 0.425,
+                            "name": "waterboil2"
+                        },
+                        {
+                            "time": 0.475,
+                            "name": "waterboil3"
+                        },
+                        {
+                            "time": 0.525,
+                            "name": "waterboil1"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "stockpotburn": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF40"
+                        },
+                        {
+                            "time": 0.25,
+                            "color": "FFFFFF73"
+                        },
+                        {
+                            "time": 0.525,
+                            "color": "FFFFFF40"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "soupcover-1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "slots": {
+                "soupcooker_down": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "ADADADFF"
+                        }
+                    ]
+                },
+                "soupcooker_up": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "ADADADFF"
+                        }
+                    ]
+                },
+                "soupcover-1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

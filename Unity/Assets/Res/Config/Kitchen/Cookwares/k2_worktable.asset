@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
+  m_Name: k2_worktable
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: c3522aa4e45a2934f9b6c3f6db1adadf, type: 3}
+  mKey: k2_worktable
+  EDITORKey: worktable
+  mRestId: Breakfast
+  mFoodKey: []
+  mFunType: 0
+  mDisPosList:
+  - Start: 0
+    End: 0
+    Pos: {x: -1.47, y: -2.35, z: 0}
+    mLevel: 0
+    mRestaurant: Breakfast
+  mLevels:
+  - mLevel: 1
+    mEditorTexture: {fileID: 2800000, guid: c3522aa4e45a2934f9b6c3f6db1adadf, type: 3}
+    mWorkTime: 3
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: d1410e7e1361ccc4aabda98d608e142e, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_worktable_11.icon
+  - mLevel: 2
+    mEditorTexture: {fileID: 2800000, guid: 958b855b2561cf248ac60438db2dbad7, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 9e8f24a3229c597438b11cdcb0600e6f, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_worktable_12.icon
+  - mLevel: 3
+    mEditorTexture: {fileID: 2800000, guid: e6fa7a64be08c204fb4baaabfc8b1133, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 42fa164c516a13d4289f20fa7ff81129, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_worktable_13.icon

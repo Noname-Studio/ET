@@ -5,7 +5,10 @@
         "Unity.ThirdParty",
         "Unity.ModelView",
         "Unity.Hotfix",
-        "Unity.HotfixView"
+        "Unity.HotfixView",
+        "PantheaFW.Core",
+        "Panthea.Editor.Asset",
+        "Panthea.Utils"
     ],
     "includePlatforms": [
         "Editor"

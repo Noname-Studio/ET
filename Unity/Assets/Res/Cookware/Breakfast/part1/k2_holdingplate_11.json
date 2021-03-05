@@ -1,0 +1,159 @@
+{
+    "skeleton": {
+        "spine": "3.8.33-beta",
+        "width": 150,
+        "height": 121.02,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_holdingplate_11"
+    },
+    "bones": [
+        {
+            "x": 6.4748,
+            "y": -28.0576,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 3.1541,
+            "y": 23.7503,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": 0.1251,
+            "y": 38.8922,
+            "scaleX": 4.4,
+            "scaleY": 6.2,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 11.0838,
+            "y": 40.3749,
+            "name": "sheftglass",
+            "parent": "root"
+        },
+        {
+            "x": 10.5838,
+            "y": -13.4251,
+            "name": "sheftdown",
+            "parent": "root"
+        },
+        {
+            "x": -4.6,
+            "y": 47.3,
+            "name": "sheftup",
+            "parent": "sheftdown"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "sizeshelf"
+        },
+        {
+            "name": "sheftdown",
+            "bone": "sheftdown",
+            "attachment": "sheft/sheft1down"
+        },
+        {
+            "name": "sheftglass",
+            "bone": "sheftglass",
+            "attachment": "sheft/sheft1glass"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "sheftdown": {
+                "sheft/sheft1down": {
+                    "name": "sheft/sheft1down",
+                    "width": 150,
+                    "height": 80,
+                    "x": -10.01,
+                    "y": 23.28
+                }
+            },
+            "sheftglass": {
+                "sheft/sheft1glass": {
+                    "name": "sheft/sheft1glass",
+                    "width": 131,
+                    "height": 112,
+                    "x": -9.52,
+                    "y": -5.49
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "size": {
+                "sizeshelf": {
+                    "name": "sizeshelf",
+                    "width": 31,
+                    "height": 25
+                }
+            }
+        }
+    }],
+    "animations": {
+        "1normal":{},
+        "2work": {
+            "bones": {
+                "sheftglass": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2333,
+                            "x": 0.19,
+                            "y": 31.55
+                        },
+                        {
+                            "time": 0.4166,
+                            "x": 0.19,
+                            "y": 31.55
+                        },
+                        {
+                            "time": 0.6499
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "3done": {
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

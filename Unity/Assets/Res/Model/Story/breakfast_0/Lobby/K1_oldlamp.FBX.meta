@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: a12ccf06e60c4a8498556ce4231ab3b6
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: oldlamp1
+    100004: oldlamp2
+    100006: oldlamp3
+    100008: oldlamp4
+    100010: oldornament8
+    100012: oldornament9
+    100014: cc_oldlamp_00
+    100016: cc_oldlamp_01
+    100018: cc_oldlamp_02
+    100020: cc_oldlamp_03
+    100022: cc_oldlamp_04
+    400000: //RootNode
+    400002: oldlamp1
+    400004: oldlamp2
+    400006: oldlamp3
+    400008: oldlamp4
+    400010: oldornament8
+    400012: oldornament9
+    400014: cc_oldlamp_00
+    400016: cc_oldlamp_01
+    400018: cc_oldlamp_02
+    400020: cc_oldlamp_03
+    400022: cc_oldlamp_04
+    2100000: 'Material #3336'
+    2100002: 13 - Default
+    2100004: K1_zawu3
+    2300000: oldlamp1
+    2300002: oldlamp2
+    2300004: oldlamp3
+    2300006: oldlamp4
+    2300008: oldornament8
+    2300010: oldornament9
+    2300012: cc_oldlamp_00
+    2300014: cc_oldlamp_01
+    2300016: cc_oldlamp_02
+    2300018: cc_oldlamp_03
+    2300020: cc_oldlamp_04
+    3300000: oldlamp1
+    3300002: oldlamp2
+    3300004: oldlamp3
+    3300006: oldlamp4
+    3300008: oldornament8
+    3300010: oldornament9
+    3300012: cc_oldlamp_00
+    3300014: cc_oldlamp_01
+    3300016: cc_oldlamp_02
+    3300018: cc_oldlamp_03
+    3300020: cc_oldlamp_04
+    4300000: oldornament8
+    4300002: oldlamp3
+    4300004: oldlamp2
+    4300006: oldlamp4
+    4300008: oldlamp1
+    4300010: oldornament9
+    4300012: cc_oldlamp_01
+    4300014: cc_oldlamp_03
+    4300016: cc_oldlamp_02
+    4300018: cc_oldlamp_04
+    4300020: cc_oldlamp_00
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3336'
+    second: {fileID: 2100000, guid: 3cba1e668989a604d9d336676482a7b4, type: 2}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: refesh
+      takeName: refesh
+      firstFrame: 0
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

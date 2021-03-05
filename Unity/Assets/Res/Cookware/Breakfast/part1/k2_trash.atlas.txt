@@ -1,0 +1,41 @@
+
+k2_trash.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bindedownside
+  rotate: false
+  xy: 1, 133
+  size: 89, 75
+  orig: 90, 75
+  offset: 0, 0
+  index: -1
+bincover1
+  rotate: false
+  xy: 92, 133
+  size: 80, 64
+  orig: 80, 64
+  offset: 0, 0
+  index: -1
+drop_bin
+  rotate: false
+  xy: 92, 199
+  size: 78, 30
+  orig: 80, 34
+  offset: 1, 0
+  index: -1
+binupside
+  rotate: false
+  xy: 1, 1
+  size: 100, 130
+  orig: 100, 147
+  offset: 0, 2
+  index: -1
+size_bin
+  rotate: false
+  xy: 1, 210
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1

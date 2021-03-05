@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
+  m_Name: k2_omelette
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: 64ec7f5ab5089e4479bd0babe3a8a23c, type: 3}
+  mKey: k2_omelette
+  EDITORKey: omelette
+  mRestId: Breakfast
+  mFoodKey: []
+  mFunType: 0
+  mDisPosList:
+  - Start: 0
+    End: 0
+    Pos: {x: 3.48, y: -2.32, z: 0}
+    mLevel: 0
+    mRestaurant: Breakfast
+  mLevels:
+  - mLevel: 1
+    mEditorTexture: {fileID: 2800000, guid: 64ec7f5ab5089e4479bd0babe3a8a23c, type: 3}
+    mWorkTime: 3
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 8b703ebab6c91e742a462f613a2ad63c, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_omelette_11.icon
+  - mLevel: 2
+    mEditorTexture: {fileID: 2800000, guid: 262fa90c578d162419dd883aa690b6c7, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: 89683afc7241be34e9915a34da2c9676, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_omelette_12.icon
+  - mLevel: 3
+    mEditorTexture: {fileID: 2800000, guid: eadd3dd067e98ea4f9d4a008e95baa0e, type: 3}
+    mWorkTime: 0
+    mBurnTime: 0
+    mMakeCount: 1
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mSpineData: {fileID: 11400000, guid: c912f8f8a3f1ba743bdba2590ac74ec6, type: 2}
+    mEffectPath: {fileID: 0}
+    mUnlockLv: 0
+    mTexture: Cookware/Breakfast/part1/k2_omelette_13.icon

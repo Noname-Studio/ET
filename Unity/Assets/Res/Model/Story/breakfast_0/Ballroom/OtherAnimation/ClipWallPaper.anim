@@ -1,0 +1,417 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ClipWallPaper
+  serializedVersion: 6
+  m_Legacy: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.0077041807, y: 0.011653164, z: 0.06552158}
+        inSlope: {x: -8.8123945e-17, y: -0.000000052302383, z: 0.00000067984}
+        outSlope: {x: -8.8123945e-17, y: -0.000000052302383, z: 0.00000067984}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: {x: -0.11, y: 0.057983935, z: -0.65264714}
+        inSlope: {x: -3.7767412e-17, y: 0.2667052, z: -4.134167}
+        outSlope: {x: -3.7767412e-17, y: 0.2667052, z: -4.134167}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: {x: -0.11, y: 0, z: -1.546898}
+        inSlope: {x: 0, y: -0.36621433, z: -4.544383}
+        outSlope: {x: 0, y: -0.36621433, z: -4.544383}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.93333334
+        value: {x: 0, y: -0.2, z: -2.8}
+        inSlope: {x: -3.7767445e-17, y: -0.000002026938, z: -0.000022661088}
+        outSlope: {x: -3.7767445e-17, y: -0.000002026938, z: -0.000022661088}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cs_wallpaper01_anim/K1_bizhi01
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -1.4546207, y: -3.0741389, z: -1.4546207}
+        inSlope: {x: 0.13533354, y: 0, z: 0.16863583}
+        outSlope: {x: 0.13533354, y: 0, z: 0.16863583}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: {x: -0.76841736, y: -3.0741389, z: -0.65625256}
+        inSlope: {x: 2.0381036, y: 0, z: 2.1908498}
+        outSlope: {x: 2.0381036, y: 0, z: 2.1908498}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8333334
+        value: {x: -0.19973625, y: -3.0741389, z: -0.16093676}
+        inSlope: {x: 1.0550638, y: 0, z: 0.32837653}
+        outSlope: {x: 1.0550638, y: 0, z: 0.32837653}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.86666673
+        value: {x: -0.16777018, y: -3.0741389, z: -0.15531552}
+        inSlope: {x: 0.72930944, y: 0, z: -0.26101914}
+        outSlope: {x: 0.72930944, y: 0, z: -0.26101914}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: {x: -0.15111561, y: -3.0741389, z: -0.178338}
+        inSlope: {x: 0.2855435, y: 0, z: -0.6906738}
+        outSlope: {x: 0.2855435, y: 0, z: -0.6906738}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: {x: -0.14873396, y: -3.0741389, z: -0.20136043}
+        inSlope: {x: 0.07144952, y: 0, z: -0.6906723}
+        outSlope: {x: 0.07144952, y: 0, z: -0.6906723}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: cs_wallpaper01_anim/K1_bizhi01
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: 1
+        inSlope: -0
+        outSlope: -0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: 0
+        inSlope: -29.999975
+        outSlope: -29.999975
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 25
+    script: {fileID: 0}
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.9333334
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -0.0077041807
+        inSlope: -8.8123945e-17
+        outSlope: -8.8123945e-17
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: -0.11
+        inSlope: -3.7767412e-17
+        outSlope: -3.7767412e-17
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -0.11
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.93333334
+        value: 0
+        inSlope: -3.7767445e-17
+        outSlope: -3.7767445e-17
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.011653164
+        inSlope: -0.000000052302383
+        outSlope: -0.000000052302383
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: 0.057983935
+        inSlope: 0.2667052
+        outSlope: 0.2667052
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 0
+        inSlope: -0.36621433
+        outSlope: -0.36621433
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.93333334
+        value: -0.2
+        inSlope: -0.000002026938
+        outSlope: -0.000002026938
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.06552158
+        inSlope: 0.00000067984
+        outSlope: 0.00000067984
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: -0.65264714
+        inSlope: -4.134167
+        outSlope: -4.134167
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.93333334
+        value: -2.8
+        inSlope: -0.000022661088
+        outSlope: -0.000022661088
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -1.4546207
+        inSlope: 0.13533354
+        outSlope: 0.13533354
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -0.76841736
+        inSlope: 2.0381036
+        outSlope: 2.0381036
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8333334
+        value: -0.19973625
+        inSlope: 1.0550638
+        outSlope: 1.0550638
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.86666673
+        value: -0.16777018
+        inSlope: 0.72930944
+        outSlope: 0.72930944
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: -0.15111561
+        inSlope: 0.2855435
+        outSlope: 0.2855435
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: -0.14873396
+        inSlope: 0.07144952
+        outSlope: 0.07144952
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8333334
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.86666673
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: -3.0741389
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -1.4546207
+        inSlope: 0.16863583
+        outSlope: 0.16863583
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: -0.65625256
+        inSlope: 2.1908498
+        outSlope: 2.1908498
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8333334
+        value: -0.16093676
+        inSlope: 0.32837653
+        outSlope: 0.32837653
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.86666673
+        value: -0.15531552
+        inSlope: -0.26101914
+        outSlope: -0.26101914
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: -0.178338
+        inSlope: -0.6906738
+        outSlope: -0.6906738
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: -0.20136043
+        inSlope: -0.6906723
+        outSlope: -0.6906723
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.90000004
+        value: 1
+        inSlope: -0
+        outSlope: -0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9333334
+        value: 0
+        inSlope: -29.999975
+        outSlope: -29.999975
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: cs_wallpaper01_anim/K1_bizhi01
+    classID: 25
+    script: {fileID: 0}
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []

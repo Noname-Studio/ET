@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Caesar_Salad
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: b2ae73c74161547b5ac44475c0ab728d, type: 3}
+  mKey: F_Caesar_Salad
+  mTexture: Image/Food/Breakfast/tex_caesar_salad
+  mRestId: Breakfast
+  mWaitTime: 0
+  mEditorCookware: {fileID: 11400000, guid: 303b7fcfec478e042a14148b43cd5d6c, type: 2}
+  mEditorFinalIngredients:
+  - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
+  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  mLevels:
+  - mLevel: 1
+    mUnlockLv: 5
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 8
+  - mLevel: 2
+    mUnlockLv: 5
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 15
+  mBasePatient: 100
+  mCookware: k2_cuttingboard
+  mAllIngredients:
+  - F_Toast
+  - F_Bacon

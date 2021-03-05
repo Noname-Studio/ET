@@ -1,0 +1,174 @@
+
+k2_toastoven_11.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size_sandwich
+  rotate: false
+  xy: 52, 360
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+k2_toastoven_13/toast3_bck3
+  rotate: false
+  xy: 128, 180
+  size: 88, 46
+  orig: 88, 46
+  offset: 0, 0
+  index: -1
+k2_toastoven_13/toast3_bck2
+  rotate: false
+  xy: 397, 118
+  size: 91, 51
+  orig: 91, 51
+  offset: 0, 0
+  index: -1
+k2_toastoven_12/toast2_bck2
+  rotate: false
+  xy: 1, 230
+  size: 104, 53
+  orig: 104, 53
+  offset: 0, 0
+  index: -1
+k2_toastoven_13/toast3_bck1
+  rotate: false
+  xy: 107, 230
+  size: 91, 48
+  orig: 91, 48
+  offset: 0, 0
+  index: -1
+k2_toastoven_12/toast1_bck1
+  rotate: false
+  xy: 1, 300
+  size: 117, 58
+  orig: 117, 58
+  offset: 0, 0
+  index: -1
+k2_toastoven_11/toast1_bck
+  rotate: false
+  xy: 1, 180
+  size: 125, 48
+  orig: 125, 48
+  offset: 0, 0
+  index: -1
+burnsmoke6
+  rotate: false
+  xy: 131, 447
+  size: 36, 44
+  orig: 40, 47
+  offset: 1, 2
+  index: -1
+burnsmoke5
+  rotate: false
+  xy: 466, 338
+  size: 38, 54
+  orig: 40, 56
+  offset: 0, 2
+  index: -1
+burnsmoke3
+  rotate: false
+  xy: 173, 280
+  size: 39, 47
+  orig: 40, 49
+  offset: 0, 2
+  index: -1
+burnsmoke2
+  rotate: false
+  xy: 120, 280
+  size: 51, 59
+  orig: 54, 62
+  offset: 1, 2
+  index: -1
+burnsmoke4
+  rotate: false
+  xy: 92, 447
+  size: 37, 48
+  orig: 40, 50
+  offset: 1, 1
+  index: -1
+burnsmoke7
+  rotate: false
+  xy: 92, 360
+  size: 37, 48
+  orig: 40, 51
+  offset: 1, 2
+  index: -1
+burnsmoke1
+  rotate: false
+  xy: 466, 281
+  size: 45, 55
+  orig: 48, 58
+  offset: 1, 2
+  index: -1
+burnsmoke8
+  rotate: false
+  xy: 466, 394
+  size: 37, 51
+  orig: 40, 53
+  offset: 1, 1
+  index: -1
+waffleworking_smoke
+  rotate: false
+  xy: 1, 360
+  size: 49, 32
+  orig: 56, 42
+  offset: 2, 8
+  index: -1
+k2_toastoven_11/toast1_c_bread
+  rotate: false
+  xy: 368, 281
+  size: 96, 115
+  orig: 96, 115
+  offset: 0, 0
+  index: -1
+k2_toastoven_11/toast1_bread
+  rotate: false
+  xy: 397, 1
+  size: 97, 115
+  orig: 97, 115
+  offset: 0, 0
+  index: -1
+k2_toastoven_13/toast3_frt
+  rotate: false
+  xy: 1, 1
+  size: 220, 177
+  orig: 220, 177
+  offset: 0, 0
+  index: -1
+k2_toastoven_12/toast2_frt
+  rotate: false
+  xy: 223, 1
+  size: 172, 169
+  orig: 172, 169
+  offset: 0, 0
+  index: -1
+k2_toastoven_11/toast1_frt
+  rotate: false
+  xy: 223, 172
+  size: 143, 126
+  orig: 143, 126
+  offset: 0, 0
+  index: -1
+waffle buttonlight
+  rotate: false
+  xy: 200, 228
+  size: 16, 14
+  orig: 21, 19
+  offset: 2, 2
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 398
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 368, 172
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

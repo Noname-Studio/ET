@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Omelette
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mEditorTexture: {fileID: 2800000, guid: afaa1f133896548978305e825121d125, type: 3}
+  mKey: F_Omelette
+  mTexture: Image/Food/Breakfast/tex_omelette
+  mRestId: Breakfast
+  mWaitTime: 0
+  mEditorCookware: {fileID: 11400000, guid: 31e5bf3898f748142b6cd101cd536397, type: 2}
+  mEditorFinalIngredients: []
+  mLevels:
+  - mLevel: 1
+    mUnlockLv: 0
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 0
+  mBasePatient: 100
+  mCookware: k2_omelette
+  mAllIngredients: []

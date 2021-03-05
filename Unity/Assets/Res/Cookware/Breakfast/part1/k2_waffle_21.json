@@ -1,0 +1,1888 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 240,
+        "height": 236,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_waffle_21"
+    },
+    "bones": [
+        {
+            "x": 15,
+            "y": 15.3425,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 58.3832,
+            "y": 20.4945,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "x": -5.5875,
+            "y": -20.2361,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 26.5786,
+            "y": 5.1054,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -56.9669,
+            "y": 50.8717,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 45.9512,
+            "y": 52.0504,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": -65.2873,
+            "y": 14.0852,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": 2.1142,
+            "y": -41.2179,
+            "scaleX": -0.72,
+            "scaleY": 0.72,
+            "name": "waffle_maker",
+            "parent": "root"
+        },
+        {
+            "x": -3.4292,
+            "y": 15.9036,
+            "scaleX": 5.45,
+            "scaleY": 6.0132,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "length": 96,
+            "x": 61.3336,
+            "y": 87.5944,
+            "rotation": -0.3879,
+            "scaleX": -1,
+            "name": "waffle_cover_o",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -69.1183,
+            "y": 80.5002,
+            "rotation": 21.164,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "working_smoke1",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -3.6226,
+            "y": 8.9176,
+            "name": "cake",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -79.1322,
+            "y": 2.8684,
+            "rotation": -180,
+            "shearY": 180,
+            "scaleX": -1.2,
+            "scaleY": 1.2,
+            "name": "buttonlight",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": 16.9548,
+            "y": 44.9564,
+            "name": "burnsmoke1",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -0.0627,
+            "y": 21.8679,
+            "scaleX": -1,
+            "name": "wafflie_cake",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": 51.0086,
+            "y": 16.4391,
+            "rotation": 16.5343,
+            "shearY": -180,
+            "scaleX": -1.4,
+            "scaleY": 1.4,
+            "name": "working_smoke",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -24.7847,
+            "y": 94.9097,
+            "name": "burnsmoke2",
+            "parent": "waffle_maker"
+        },
+        {
+            "length": 112,
+            "x": 23.1373,
+            "y": 84.3679,
+            "rotation": 34.7593,
+            "scaleX": -1,
+            "name": "waffle_cover_c",
+            "parent": "waffle_maker"
+        },
+        {
+            "x": -43.995,
+            "y": 45.1516,
+            "scaleX": -1,
+            "name": "wafflie_cake1",
+            "parent": "waffle_maker"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_waffle"
+        },
+        {
+            "name": "waffle_base3",
+            "bone": "waffle_maker",
+            "color": "FFFFFF00",
+            "attachment": "waffle_23/waffle_base3"
+        },
+        {
+            "name": "waffle_maker",
+            "bone": "waffle_maker",
+            "attachment": "waffle_21/waffle_maker1"
+        },
+        {
+            "name": "cake",
+            "bone": "cake",
+            "color": "FFFFFF00",
+            "attachment": "wafflecake"
+        },
+        {
+            "name": "wafflie_cake1",
+            "bone": "wafflie_cake1",
+            "attachment": "k2_waffle21/wafflie_cake3"
+        },
+        {
+            "name": "wafflie_cake",
+            "bone": "wafflie_cake",
+            "attachment": "k2_waffle21/wafflie_cake1"
+        },
+        {
+            "name": "working_smoke1",
+            "bone": "working_smoke1",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "color": "FFFFFF00",
+            "attachment": "waffleworking_smoke"
+        },
+        {
+            "name": "waffle_cover_c",
+            "bone": "waffle_cover_c",
+            "color": "FFFFFF00",
+            "attachment": "waffle_21/waffle_cover_c1"
+        },
+        {
+            "name": "waffle_base_frt",
+            "bone": "waffle_maker",
+            "color": "FFFFFF00",
+            "attachment": "waffle_23/waffle_base_frt"
+        },
+        {
+            "name": "waffle_cover_o",
+            "bone": "waffle_cover_o",
+            "attachment": "waffle_21/waffle_cover_o1"
+        },
+        {
+            "name": "burnsmoke2",
+            "bone": "burnsmoke2",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke1"
+        },
+        {
+            "name": "buttonlight",
+            "bone": "buttonlight",
+            "color": "FFFFFF00",
+            "attachment": "waffle buttonlight"
+        },
+        {
+            "name": "burnsmoke1",
+            "bone": "burnsmoke1",
+            "color": "FFFFFF00",
+            "attachment": "burnsmoke3"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "size_sandwich"
+        },
+        {
+            "name": "repair",
+            "bone": "repair",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "waffle_bearing_frt",
+            "bone": "waffle_maker",
+            "color": "FFFFFF00",
+            "attachment": "waffle_23/waffle_bearing_frt"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "burnsmoke2": {
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47
+                },
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "y": 10.57
+                }
+            },
+            "wafflie_cake": {
+                "k2_waffle21/wafflie_cake": {
+                    "name": "k2_waffle21/wafflie_cake",
+                    "width": 100,
+                    "height": 60,
+                    "x": 0.88,
+                    "y": -0.16
+                },
+                "k2_waffle21/wafflie_cake1": {
+                    "name": "k2_waffle21/wafflie_cake1",
+                    "width": 78,
+                    "height": 37,
+                    "x": -2.52,
+                    "y": 11.58,
+                    "scaleX": 1.4,
+                    "scaleY": 1.4
+                }
+            },
+            "waffle_bearing_frt": {
+                "waffle_23/waffle_bearing_frt": {
+                    "name": "waffle_23/waffle_bearing_frt",
+                    "width": 17,
+                    "height": 18,
+                    "x": -17.69,
+                    "y": 89.77,
+                    "scaleX": -1
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107,
+                    "x": -0.11,
+                    "y": 0.18
+                }
+            },
+            "cake": {
+                "wafflecake": {
+                    "name": "wafflecake",
+                    "width": 137,
+                    "height": 48,
+                    "x": -9,
+                    "y": 7.73
+                }
+            },
+            "working_smoke": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "waffle_base_frt": {
+                "waffle_23/waffle_base_frt": {
+                    "name": "waffle_23/waffle_base_frt",
+                    "width": 47,
+                    "height": 57,
+                    "x": -24.18,
+                    "y": 36.48,
+                    "scaleX": -1
+                }
+            },
+            "size": {
+                "size_waffle": {
+                    "name": "size_waffle",
+                    "width": 29,
+                    "height": 26
+                }
+            },
+            "clock": {
+                "size_sandwich": {
+                    "name": "size_sandwich",
+                    "width": 29,
+                    "height": 26,
+                    "path": "size_waffle"
+                }
+            },
+            "working_smoke1": {
+                "waffleworking_smoke": {
+                    "name": "waffleworking_smoke",
+                    "width": 49,
+                    "height": 32,
+                    "x": 4.18,
+                    "y": -2.23
+                }
+            },
+            "repair": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "waffle_base3": {
+                "waffle_23/waffle_base3": {
+                    "name": "waffle_23/waffle_base3",
+                    "width": 230,
+                    "height": 216,
+                    "x": 6.32,
+                    "y": 52.48,
+                    "scaleX": -1
+                }
+            },
+            "buttonlight": {
+                "waffle buttonlight": {
+                    "name": "waffle buttonlight",
+                    "width": 16,
+                    "height": 14,
+                    "x": -0.24,
+                    "y": 1.2
+                }
+            },
+            "burnsmoke1": {
+                "burnsmoke1": {
+                    "name": "burnsmoke1",
+                    "width": 45,
+                    "height": 55,
+                    "x": 2.56,
+                    "y": 9.24,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                },
+                "burnsmoke8": {
+                    "name": "burnsmoke8",
+                    "width": 37,
+                    "height": 51,
+                    "y": 9.84
+                },
+                "burnsmoke7": {
+                    "name": "burnsmoke7",
+                    "width": 37,
+                    "height": 48,
+                    "y": 9.08
+                },
+                "burnsmoke6": {
+                    "name": "burnsmoke6",
+                    "width": 36,
+                    "height": 44,
+                    "y": 7.55
+                },
+                "burnsmoke5": {
+                    "name": "burnsmoke5",
+                    "width": 38,
+                    "height": 54,
+                    "y": 12.08
+                },
+                "burnsmoke4": {
+                    "name": "burnsmoke4",
+                    "width": 37,
+                    "height": 48,
+                    "y": 14.36
+                },
+                "burnsmoke3": {
+                    "name": "burnsmoke3",
+                    "width": 39,
+                    "height": 47,
+                    "y": 10.57
+                },
+                "burnsmoke2": {
+                    "name": "burnsmoke2",
+                    "width": 51,
+                    "height": 59,
+                    "x": 2.25,
+                    "y": 9.82,
+                    "scaleX": 0.85,
+                    "scaleY": 0.85
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": -0.61,
+                    "y": 0.64
+                }
+            },
+            "waffle_maker": {
+                "k2_waffle21/waffle_maker": {
+                    "name": "k2_waffle21/waffle_maker",
+                    "width": 237,
+                    "height": 162,
+                    "x": 1.56,
+                    "y": 33.71,
+                    "scaleX": -1
+                },
+                "waffle_23/waffle_maker3": {
+                    "name": "waffle_23/waffle_maker3",
+                    "width": 133,
+                    "height": 100,
+                    "x": 26.82,
+                    "y": 87.48,
+                    "scaleX": -1
+                },
+                "waffle_21/waffle_maker1": {
+                    "name": "waffle_21/waffle_maker1",
+                    "width": 172,
+                    "height": 118,
+                    "x": -6.08,
+                    "y": 38.51,
+                    "scaleX": -1
+                }
+            },
+            "waffle_cover_c": {
+                "k2_waffle21/waffle_cover_c": {
+                    "name": "k2_waffle21/waffle_cover_c",
+                    "width": 254,
+                    "height": 147,
+                    "x": 44.24,
+                    "y": 1.29,
+                    "rotation": 34.76
+                },
+                "waffle_23/waffle3_cover_c3": {
+                    "name": "waffle_23/waffle3_cover_c3",
+                    "width": 187,
+                    "height": 119,
+                    "x": 18.99,
+                    "y": 18.79,
+                    "rotation": 34.76
+                },
+                "waffle_21/waffle_cover_c1": {
+                    "name": "waffle_21/waffle_cover_c1",
+                    "width": 190,
+                    "height": 115,
+                    "x": 26.57,
+                    "y": 3.93,
+                    "rotation": 34.76
+                }
+            },
+            "wafflie_cake1": {
+                "k2_waffle21/wafflie_cake": {
+                    "name": "k2_waffle21/wafflie_cake",
+                    "width": 100,
+                    "height": 60,
+                    "x": 0.88,
+                    "y": -0.16
+                },
+                "k2_waffle21/wafflie_cake3": {
+                    "name": "k2_waffle21/wafflie_cake3",
+                    "width": 50,
+                    "height": 43,
+                    "x": -11.88,
+                    "y": 12.77,
+                    "scaleX": 1.4,
+                    "scaleY": 1.4
+                }
+            },
+            "waffle_cover_o": {
+                "k2_waffle21/waffle_cover_o": {
+                    "name": "k2_waffle21/waffle_cover_o",
+                    "width": 230,
+                    "height": 116,
+                    "x": 56.48,
+                    "y": 7.06,
+                    "rotation": -0.39
+                },
+                "waffle_23/waffle_cover_o3": {
+                    "name": "waffle_23/waffle_cover_o3",
+                    "width": 194,
+                    "height": 80,
+                    "x": 63.43,
+                    "y": 38.78,
+                    "rotation": -0.39
+                },
+                "waffle_21/waffle_cover_o1": {
+                    "name": "waffle_21/waffle_cover_o1",
+                    "width": 190,
+                    "height": 85,
+                    "x": 61.46,
+                    "y": 5.77,
+                    "rotation": -0.39,
+                    "scaleX": 0.95,
+                    "scaleY": 0.95
+                }
+            }
+        }
+    }],
+    "animations": {
+        "1normal":{},
+        "3work": {
+            "bones": {
+                "waffle_maker": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.7667,
+                            "x": 1,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.9667,
+                            "x": 1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.3334,
+                            "x": 1,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 1.5334,
+                            "x": 1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 1.7001,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 0.29,
+                            "y": -0.58
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 0.8499
+                        },
+                        {
+                            "time": 0.9499,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 1.0832,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 1.1332,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.2332,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 1.4165
+                        },
+                        {
+                            "time": 1.5165,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 1.6498,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 1.6998,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.6666,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.8499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.0832,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.1332,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 1.2332,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 1.4165,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.5165,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.6498,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.6998,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.6666,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.8499,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.9499,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 1.0832,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 1.1332,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 1.2332,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 1.4165,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.5165,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 1.6498,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 1.6998,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        },
+                        {
+                            "time": 0.6666
+                        },
+                        {
+                            "time": 0.8499
+                        },
+                        {
+                            "time": 0.9499
+                        },
+                        {
+                            "time": 1.0832
+                        },
+                        {
+                            "time": 1.1332
+                        },
+                        {
+                            "time": 1.2332
+                        },
+                        {
+                            "time": 1.4165
+                        },
+                        {
+                            "time": 1.5165
+                        },
+                        {
+                            "time": 1.6498
+                        },
+                        {
+                            "time": 1.6998
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.55,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.85,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.4167,
+                            "x": -25.7,
+                            "y": 9.23
+                        },
+                        {
+                            "time": 1.4334,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 1.6834,
+                            "x": -36.67,
+                            "y": 5.12
+                        },
+                        {
+                            "time": 1.7001,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.6666,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.8499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.9499,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.0832,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.1332,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 1.2332,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 1.4165,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.5165,
+                            "angle": 0
+                        },
+                        {
+                            "time": 1.6498,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 1.6998,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.55,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.85,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1167,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.1334,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 1.2334,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 1.4167,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 1.5167,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.6834,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 1.7001,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        },
+                        {
+                            "time": 0.6666
+                        },
+                        {
+                            "time": 0.8499
+                        },
+                        {
+                            "time": 0.9499
+                        },
+                        {
+                            "time": 1.0832
+                        },
+                        {
+                            "time": 1.1332
+                        },
+                        {
+                            "time": 1.2332
+                        },
+                        {
+                            "time": 1.4165
+                        },
+                        {
+                            "time": 1.5165
+                        },
+                        {
+                            "time": 1.6498
+                        },
+                        {
+                            "time": 1.6998
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.6667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8334,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8501,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 0.9501,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.1334,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 1.2334,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.4001,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.4168,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 1.5168,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.7001,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5501,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5668,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.6668,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 0.8335,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8502,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.9502,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.1169,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.1336,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 1.2336,
+                            "color": "FFFFFF75"
+                        },
+                        {
+                            "time": 1.4003,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.417,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.517,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 1.6837,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.7004,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "waffle_cover_c": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "waffle_cover_o": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "slots": {
+                "cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "403333A6"
+                        }
+                    ]
+                },
+                "wafflie_cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "3B3838FF"
+                        }
+                    ]
+                },
+                "wafflie_cake1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "3B3838FF"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "waffle_maker": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -0.64
+                        }
+                    ]
+                },
+                "cake": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.65,
+                            "y": 1
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 2.62,
+                            "y": -10.47
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 6.22,
+                            "y": -21.37
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.8,
+                            "y": -1.03
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 0.82,
+                            "y": -5.01
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 2.62,
+                            "y": -10.47
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 12.69
+                        },
+                        {
+                            "time": 0.1,
+                            "angle": 9.51
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5166,
+                            "angle": 14.29
+                        },
+                        {
+                            "time": 0.5666,
+                            "angle": 12.69
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.19,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.3,
+                            "y": 1.2
+                        },
+                        {
+                            "time": 0.2833,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3833,
+                            "x": 1.07,
+                            "y": 1.07
+                        },
+                        {
+                            "time": 0.5166,
+                            "x": 1.14,
+                            "y": 1.14
+                        },
+                        {
+                            "time": 0.5666,
+                            "x": 1.19,
+                            "y": 1.16
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.3833
+                        },
+                        {
+                            "time": 0.5166
+                        },
+                        {
+                            "time": 0.5666
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF2B"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "FFFFFF4D"
+                        },
+                        {
+                            "time": 0.3834,
+                            "color": "FFFFFF7F"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF2B"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "waffle_maker": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1,
+                            "y": 1.04
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                },
+                "buttonlight": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 0.09
+                        }
+                    ]
+                },
+                "cake": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.65,
+                            "y": 1
+                        }
+                    ]
+                },
+                "burnsmoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": 8.56
+                        },
+                        {
+                            "time": 0.3,
+                            "y": 1.53
+                        },
+                        {
+                            "time": 0.5833,
+                            "y": 8.56
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.5,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 1.5,
+                            "y": 1.7
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": 1.5,
+                            "y": 2
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": 7.77,
+                            "y": 15.54
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": -1.3,
+                            "y": 1.3
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -1.3,
+                            "y": 1.5
+                        },
+                        {
+                            "time": 0.5833,
+                            "x": -1.3,
+                            "y": 1.7
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "423636FF"
+                        },
+                        {
+                            "time": 0.2,
+                            "color": "543838FF"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "5C3B3BFF"
+                        },
+                        {
+                            "time": 0.3667,
+                            "color": "523636FF"
+                        },
+                        {
+                            "time": 0.5834,
+                            "color": "423636FF"
+                        }
+                    ]
+                },
+                "burnsmoke1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke3"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke8"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "burnsmoke2": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burnsmoke4"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "burnsmoke5"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "burnsmoke6"
+                        },
+                        {
+                            "time": 0.2499,
+                            "name": "burnsmoke7"
+                        },
+                        {
+                            "time": 0.3332,
+                            "name": "burnsmoke8"
+                        },
+                        {
+                            "time": 0.4165,
+                            "name": "burnsmoke1"
+                        },
+                        {
+                            "time": 0.4998,
+                            "name": "burnsmoke2"
+                        },
+                        {
+                            "time": 0.5831,
+                            "name": "burnsmoke3"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "wafflie_cake": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "523636FF"
+                        }
+                    ]
+                },
+                "wafflie_cake1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "523636FF"
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

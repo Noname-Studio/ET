@@ -1,0 +1,838 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 219.26,
+        "height": 165.5,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_worktable_12"
+    },
+    "bones": [
+        {
+            "x": 24,
+            "y": -35.1638,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "x": 3.06,
+            "y": 97.1129,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": 3.9476,
+            "y": 45.7779,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": -5.2356,
+            "y": 100.4469,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": -38.4297,
+            "y": 25.5525,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": 45.0433,
+            "y": 25.5525,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "scaleX": -1,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "x": -5.2113,
+            "y": 52.2143,
+            "name": "toast1",
+            "parent": "bone"
+        },
+        {
+            "x": -9.387,
+            "y": 44.0931,
+            "name": "toast_butter",
+            "parent": "bone"
+        },
+        {
+            "length": 55,
+            "x": 1.4702,
+            "y": 29.9334,
+            "rotation": 168.5392,
+            "name": "knife_butter",
+            "parent": "bone"
+        },
+        {
+            "x": -4.587,
+            "y": 42.0431,
+            "name": "toast",
+            "parent": "bone"
+        },
+        {
+            "x": -3.094,
+            "y": 27.6035,
+            "scaleX": 5.75,
+            "scaleY": 3.5,
+            "name": "size",
+            "parent": "bone"
+        },
+        {
+            "y": -14.0475,
+            "name": "workingtable",
+            "parent": "bone"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_worktable"
+        },
+        {
+            "name": "k2_worktable_11",
+            "bone": "bone",
+            "attachment": "worktable_12"
+        },
+        {
+            "name": "toast",
+            "bone": "toast",
+            "attachment": "toast"
+        },
+        {
+            "name": "toast_butter",
+            "bone": "toast_butter",
+            "attachment": "toast_butter"
+        },
+        {
+            "name": "toast1",
+            "bone": "toast1",
+            "color": "FFFFFF00",
+            "attachment": "toast"
+        },
+        {
+            "name": "knife_butter",
+            "bone": "knife_butter",
+            "attachment": "knife_butter2"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "size": {
+                "size_worktable": {
+                    "name": "size_worktable",
+                    "width": 29,
+                    "height": 26
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "k2_worktable_11": {
+                "k2_worktable_11": {
+                    "name": "k2_worktable_11",
+                    "width": 159,
+                    "height": 83,
+                    "y": 26.46
+                },
+                "worktable_12": {
+                    "name": "worktable_12",
+                    "width": 166,
+                    "height": 95,
+                    "y": 26.46,
+                    "scaleX": 1.15,
+                    "scaleY": 1.15
+                },
+                "worktable_13": {
+                    "name": "worktable_13",
+                    "width": 160,
+                    "height": 92,
+                    "x": -3.64,
+                    "y": 35.18
+                }
+            },
+            "toast1": {
+                "toast": {
+                    "name": "toast",
+                    "width": 189,
+                    "height": 113,
+                    "x": -1.42,
+                    "y": 0.78,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                }
+            },
+            "clock": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "toast_butter": {
+                "toast_butter": {
+                    "name": "toast_butter",
+                    "width": 61,
+                    "height": 44,
+                    "hull": 18,
+                    "triangles": [
+                        4,
+                        22,
+                        3,
+                        3,
+                        22,
+                        2,
+                        22,
+                        1,
+                        2,
+                        5,
+                        22,
+                        4,
+                        22,
+                        21,
+                        1,
+                        21,
+                        0,
+                        1,
+                        21,
+                        17,
+                        0,
+                        6,
+                        7,
+                        5,
+                        7,
+                        21,
+                        5,
+                        21,
+                        22,
+                        5,
+                        7,
+                        20,
+                        21,
+                        8,
+                        20,
+                        7,
+                        20,
+                        17,
+                        21,
+                        8,
+                        9,
+                        20,
+                        9,
+                        19,
+                        20,
+                        20,
+                        16,
+                        17,
+                        9,
+                        18,
+                        19,
+                        19,
+                        16,
+                        20,
+                        19,
+                        15,
+                        16,
+                        10,
+                        18,
+                        9,
+                        18,
+                        13,
+                        19,
+                        13,
+                        14,
+                        19,
+                        14,
+                        15,
+                        19,
+                        12,
+                        13,
+                        18,
+                        10,
+                        11,
+                        18,
+                        11,
+                        12,
+                        18
+                    ],
+                    "uvs": [
+                        0.81311,
+                        0.94318,
+                        0.94016,
+                        0.79545,
+                        0.97541,
+                        0.65909,
+                        0.97541,
+                        0.49773,
+                        0.94016,
+                        0.34886,
+                        0.84508,
+                        0.25455,
+                        0.75328,
+                        0.08409,
+                        0.61393,
+                        0.05682,
+                        0.45082,
+                        0.05682,
+                        0.2918,
+                        0.16705,
+                        0.14836,
+                        0.25227,
+                        0.08115,
+                        0.29318,
+                        0.06475,
+                        0.47045,
+                        0.04918,
+                        0.67955,
+                        0.10902,
+                        0.86136,
+                        0.22377,
+                        0.94318,
+                        0.40738,
+                        0.94318,
+                        0.60246,
+                        0.94318,
+                        0.19875,
+                        0.44141,
+                        0.32497,
+                        0.58687,
+                        0.46924,
+                        0.63232,
+                        0.67416,
+                        0.6255,
+                        0.84629,
+                        0.50959
+                    ],
+                    "edges": [
+                        0,
+                        2,
+                        2,
+                        4,
+                        4,
+                        6,
+                        6,
+                        8,
+                        8,
+                        10,
+                        10,
+                        12,
+                        12,
+                        14,
+                        14,
+                        16,
+                        16,
+                        18,
+                        18,
+                        20,
+                        20,
+                        22,
+                        22,
+                        24,
+                        24,
+                        26,
+                        26,
+                        28,
+                        28,
+                        30,
+                        30,
+                        32,
+                        32,
+                        34,
+                        34,
+                        0
+                    ],
+                    "vertices": [
+                        8.83,
+                        -8.87,
+                        12.7,
+                        -5.62,
+                        13.78,
+                        -2.62,
+                        13.78,
+                        0.93,
+                        12.7,
+                        4.21,
+                        9.8,
+                        6.28,
+                        7,
+                        10.03,
+                        2.75,
+                        10.63,
+                        -2.22,
+                        10.63,
+                        -7.07,
+                        8.21,
+                        -11.45,
+                        6.33,
+                        -13.5,
+                        5.43,
+                        -14,
+                        1.53,
+                        -14.47,
+                        -3.07,
+                        -12.65,
+                        -7.07,
+                        -9.15,
+                        -8.87,
+                        -3.55,
+                        -8.87,
+                        2.4,
+                        -8.87,
+                        -9.91,
+                        2.17,
+                        -6.06,
+                        -1.03,
+                        -1.66,
+                        -2.03,
+                        4.59,
+                        -1.88,
+                        9.84,
+                        0.67
+                    ],
+                    "type": "mesh"
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "toast": {
+                "toast": {
+                    "name": "toast",
+                    "width": 189,
+                    "height": 113,
+                    "x": -1.42,
+                    "y": 0.78,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                }
+            },
+            "knife_butter": {
+                "knife_butter": {
+                    "name": "knife_butter",
+                    "width": 109,
+                    "height": 30,
+                    "x": 7.43,
+                    "y": 1.59,
+                    "rotation": -168.54
+                },
+                "knife_butter2": {
+                    "name": "knife_butter2",
+                    "width": 109,
+                    "height": 27,
+                    "x": 7.43,
+                    "y": 1.59,
+                    "rotation": -168.54
+                },
+                "knife_butter3": {
+                    "name": "knife_butter3",
+                    "width": 107,
+                    "height": 27,
+                    "x": 7.43,
+                    "y": 1.59,
+                    "rotation": -168.54
+                }
+            },
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            }
+        }
+    }],
+    "animations": {
+        "3work": {
+            "bones": {
+                "knife_butter": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -12.08
+                        },
+                        {
+                            "time": 0.5333,
+                            "x": 44.62,
+                            "y": 8.87
+                        },
+                        {
+                            "time": 1.0666,
+                            "y": -12.08
+                        },
+                        {
+                            "time": 1.3333,
+                            "x": -15.16,
+                            "y": -18.11
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -23.88
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                },
+                "toast1": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 1.3333,
+                            "y": 28.01
+                        },
+                        {
+                            "time": 1.4,
+                            "y": 28.01
+                        },
+                        {
+                            "time": 1.6667
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "toast1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.3333,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 1.4,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.9833,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 2,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            },
+            "deform": {
+                "default": {
+                    "toast_butter": {
+                        "toast_butter": [
+                            {
+                                "time": 0,
+                                "offset": 45,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 0.5333,
+                                "offset": 2,
+                                "vertices": [
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -1.35,
+                                    15.05,
+                                    1.25
+                                ]
+                            },
+                            {
+                                "time": 0.8333,
+                                "offset": 2,
+                                "vertices": [
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -1.35,
+                                    15.05,
+                                    1.25
+                                ]
+                            },
+                            {
+                                "time": 1.3333,
+                                "offset": 2,
+                                "vertices": [
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    4.35,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    20.25,
+                                    6.05,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -7,
+                                    -4.3,
+                                    -7,
+                                    -4.3,
+                                    -7,
+                                    -4.3,
+                                    -7,
+                                    -4.3,
+                                    -7,
+                                    -4.3,
+                                    -7,
+                                    -4.65,
+                                    -7,
+                                    -4.3,
+                                    -8.3,
+                                    -7.2,
+                                    -8.15,
+                                    -7.95,
+                                    -7,
+                                    -7.75,
+                                    -3.85,
+                                    -5.65,
+                                    16.65,
+                                    1.25
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "1normal": {
+            "slots": {
+                "toast": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast_butter": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "2layout": {
+            "slots": {
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "toast_butter": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "knife_butter": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "y": -16.36
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "toast1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

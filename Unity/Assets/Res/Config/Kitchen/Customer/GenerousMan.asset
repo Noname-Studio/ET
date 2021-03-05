@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8707fbc39515489c6324d6aab70f9, type: 3}
+  m_Name: GenerousMan
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mKey: GenerousMan
+  mType: 0
+  mIconTexture: {fileID: 2800000, guid: 880c8da76bb4943edb94ee354b9a39d9, type: 3}
+  mModelObject: {fileID: 1540726531227060, guid: 6731be19845424f34acf358f702cf24a,
+    type: 3}
+  mModelPath: Model/Customer/generous_man/generous_man
+  mMoveSpeed: 0

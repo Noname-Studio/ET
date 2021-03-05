@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf8707fbc39515489c6324d6aab70f9, type: 3}
+  m_Name: HoopMan
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mKey: HoopMan
+  mType: 0
+  mIconTexture: {fileID: 2800000, guid: a6f085db689b04757a217cdb203ec17b, type: 3}
+  mModelObject: {fileID: 1632681083048554, guid: 41cb3d478f7ec43fcb95ee19c4d8a9fc,
+    type: 3}
+  mModelPath: Model/Customer/hoopman/hoopman
+  mMoveSpeed: 0

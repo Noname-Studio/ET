@@ -2,7 +2,8 @@
     "name": "Unity.ModelView",
     "references": [
         "GUID:997f003cfffd9ec4fae70c0ac9b0ec2b",
-        "GUID:bebd02018e98e44409a761968a7cbcd9"
+        "GUID:bebd02018e98e44409a761968a7cbcd9",
+        "GUID:151ffa7394ba57e499fb69568860d524"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

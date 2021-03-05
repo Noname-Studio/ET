@@ -1,0 +1,174 @@
+
+k2_grillpan_13.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 425, 438
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+grill1broken
+  rotate: false
+  xy: 1, 375
+  size: 210, 120
+  orig: 210, 120
+  offset: 0, 0
+  index: -1
+grill1broken2
+  rotate: false
+  xy: 213, 375
+  size: 210, 116
+  orig: 210, 116
+  offset: 0, 0
+  index: -1
+brk_grillpan2
+  rotate: false
+  xy: 196, 122
+  size: 227, 116
+  orig: 227, 116
+  offset: 0, 0
+  index: -1
+brk_grillpan1
+  rotate: false
+  xy: 196, 1
+  size: 225, 119
+  orig: 225, 119
+  offset: 0, 0
+  index: -1
+brk_grillpan3
+  rotate: false
+  xy: 1, 1
+  size: 193, 140
+  orig: 193, 140
+  offset: 0, 0
+  index: -1
+grill1broken3
+  rotate: false
+  xy: 194, 240
+  size: 193, 133
+  orig: 193, 133
+  offset: 0, 0
+  index: -1
+brk_grillpanT
+  rotate: false
+  xy: 1, 143
+  size: 191, 135
+  orig: 191, 135
+  offset: 0, 0
+  index: -1
+burningpan5
+  rotate: false
+  xy: 213, 493
+  size: 94, 80
+  orig: 116, 81
+  offset: 15, 0
+  index: -1
+burningpan2
+  rotate: false
+  xy: 423, 1
+  size: 69, 70
+  orig: 116, 81
+  offset: 22, 6
+  index: -1
+piece1_grillpan
+  rotate: false
+  xy: 425, 407
+  size: 28, 29
+  orig: 28, 29
+  offset: 0, 0
+  index: -1
+burningpan7
+  rotate: false
+  xy: 309, 493
+  size: 92, 80
+  orig: 116, 81
+  offset: 8, 1
+  index: -1
+burningpan6
+  rotate: false
+  xy: 92, 280
+  size: 94, 81
+  orig: 116, 81
+  offset: 15, 0
+  index: -1
+piece4_grillpan
+  rotate: false
+  xy: 389, 349
+  size: 11, 17
+  orig: 11, 17
+  offset: 0, 0
+  index: -1
+youza3
+  rotate: false
+  xy: 425, 121
+  size: 77, 42
+  orig: 77, 42
+  offset: 0, 0
+  index: -1
+youza1
+  rotate: false
+  xy: 423, 73
+  size: 85, 46
+  orig: 85, 46
+  offset: 0, 0
+  index: -1
+youza2
+  rotate: false
+  xy: 425, 349
+  size: 73, 27
+  orig: 73, 28
+  offset: 0, 1
+  index: -1
+piece2_grillpan
+  rotate: false
+  xy: 425, 165
+  size: 75, 39
+  orig: 75, 39
+  offset: 0, 0
+  index: -1
+oil
+  rotate: false
+  xy: 425, 206
+  size: 81, 28
+  orig: 81, 28
+  offset: 0, 0
+  index: -1
+oilbuble
+  rotate: false
+  xy: 502, 165
+  size: 9, 10
+  orig: 9, 11
+  offset: 0, 0
+  index: -1
+turner
+  rotate: false
+  xy: 403, 493
+  size: 51, 57
+  orig: 74, 65
+  offset: 9, 5
+  index: -1
+working_smoke
+  rotate: false
+  xy: 425, 378
+  size: 45, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 1, 280
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 389, 240
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1

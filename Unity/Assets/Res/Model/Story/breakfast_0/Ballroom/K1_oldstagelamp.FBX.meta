@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: f962a7aa1b54e6749a7d78080ecfc573
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box738
+    100002: Box739
+    100004: cs_oldstagelamp
+    100006: //RootNode
+    100008: Plane1079
+    100010: Plane1080
+    100012: Plane1081
+    100014: Plane1082
+    100016: Plane1083
+    100018: Plane1084
+    100020: cc_oldstagelamp
+    100022: oldstagelamp_01
+    100024: oldstagelamp_02
+    100026: oldstagelamp_03
+    100028: oldstagelamp_04
+    100030: oldstagelamp_05
+    100032: oldstagelamp_06
+    100034: oldstagelamp_07
+    400000: Box738
+    400002: Box739
+    400004: cs_oldstagelamp
+    400006: //RootNode
+    400008: Plane1079
+    400010: Plane1080
+    400012: Plane1081
+    400014: Plane1082
+    400016: Plane1083
+    400018: Plane1084
+    400020: cc_oldstagelamp
+    400022: oldstagelamp_01
+    400024: oldstagelamp_02
+    400026: oldstagelamp_03
+    400028: oldstagelamp_04
+    400030: oldstagelamp_05
+    400032: oldstagelamp_06
+    400034: oldstagelamp_07
+    2100000: wt
+    2300000: Box738
+    2300002: Box739
+    2300004: Plane1079
+    2300006: Plane1080
+    2300008: Plane1081
+    2300010: Plane1082
+    2300012: Plane1083
+    2300014: Plane1084
+    2300016: oldstagelamp_01
+    2300018: oldstagelamp_02
+    2300020: oldstagelamp_03
+    2300022: oldstagelamp_04
+    2300024: oldstagelamp_05
+    2300026: oldstagelamp_06
+    2300028: oldstagelamp_07
+    3300000: Box738
+    3300002: Box739
+    3300004: Plane1079
+    3300006: Plane1080
+    3300008: Plane1081
+    3300010: Plane1082
+    3300012: Plane1083
+    3300014: Plane1084
+    3300016: oldstagelamp_01
+    3300018: oldstagelamp_02
+    3300020: oldstagelamp_03
+    3300022: oldstagelamp_04
+    3300024: oldstagelamp_05
+    3300026: oldstagelamp_06
+    3300028: oldstagelamp_07
+    4300000: Box738
+    4300002: Box739
+    4300004: Plane1079
+    4300006: Plane1080
+    4300008: Plane1081
+    4300010: Plane1082
+    4300012: Plane1083
+    4300014: Plane1084
+    4300016: oldstagelamp_01
+    4300018: oldstagelamp_02
+    4300020: oldstagelamp_03
+    4300022: oldstagelamp_04
+    4300024: oldstagelamp_05
+    4300026: oldstagelamp_06
+    4300028: oldstagelamp_07
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 1
+    animationPositionError: 1
+    animationScaleError: 1
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

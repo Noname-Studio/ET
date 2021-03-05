@@ -1,0 +1,4662 @@
+{
+    "skeleton": {
+        "spine":"3.8.33-beta",
+        "width": 331.89,
+        "height": 252.91,
+        "fps": 60,
+        "hash": " ",
+        "name": "k2_grillpan_13"
+    },
+    "bones": [
+        {
+            "x": 3.1946,
+            "y": 13.1478,
+            "rotation": 5,
+            "name": "root"
+        },
+        {
+            "scaleX": 0.9,
+            "scaleY": 0.9,
+            "name": "bone",
+            "parent": "root"
+        },
+        {
+            "x": -15.69,
+            "y": -18.48,
+            "name": "food",
+            "parent": "root"
+        },
+        {
+            "x": 11.3746,
+            "y": 22.9628,
+            "name": "m1",
+            "parent": "root"
+        },
+        {
+            "x": -31.5363,
+            "y": -37.6441,
+            "name": "m2",
+            "parent": "root"
+        },
+        {
+            "x": 53.5426,
+            "y": -36.2144,
+            "name": "m3",
+            "parent": "root"
+        },
+        {
+            "x": -68.3197,
+            "y": 1.1305,
+            "name": "repair",
+            "parent": "root"
+        },
+        {
+            "x": 96.404,
+            "y": -14.1682,
+            "name": "clock",
+            "parent": "root"
+        },
+        {
+            "x": 13.248,
+            "y": -8.9873,
+            "scaleX": 6.72,
+            "scaleY": 5.2445,
+            "name": "size",
+            "parent": "root"
+        },
+        {
+            "x": 21.3229,
+            "y": -13.7536,
+            "scaleX": -1.2,
+            "scaleY": 1.2,
+            "name": "jian",
+            "parent": "bone"
+        },
+        {
+            "length": 128,
+            "x": 30.58,
+            "y": -0.03,
+            "rotation": -141.9597,
+            "name": "pan",
+            "parent": "bone"
+        },
+        {
+            "length": 12,
+            "x": 10.8,
+            "y": -1.15,
+            "rotation": 90,
+            "name": "working_smoke",
+            "parent": "jian"
+        },
+        {
+            "x": 49.55,
+            "y": 81.1,
+            "scaleX": 1.2,
+            "scaleY": 1.32,
+            "name": "meat",
+            "parent": "jian"
+        },
+        {
+            "x": 131.05,
+            "y": 4.6,
+            "rotation": 1.2999,
+            "name": "oilbuble2",
+            "parent": "jian"
+        },
+        {
+            "length": 76,
+            "x": 184.532,
+            "y": 11.9092,
+            "rotation": -140.0502,
+            "scaleX": 1.4,
+            "scaleY": 1.4,
+            "name": "turner",
+            "parent": "jian"
+        },
+        {
+            "x": 184.3,
+            "y": -104.65,
+            "scaleY": 0.9,
+            "name": "youza1",
+            "parent": "jian"
+        },
+        {
+            "x": 134.05,
+            "y": 24.1,
+            "name": "oilbuble3",
+            "parent": "jian"
+        },
+        {
+            "length": 12,
+            "x": 29.8839,
+            "y": -15.0339,
+            "rotation": 90,
+            "scaleX": 0.0396,
+            "scaleY": 0.0409,
+            "name": "working_smoke1",
+            "parent": "jian"
+        },
+        {
+            "x": 77.5903,
+            "y": 77.1309,
+            "scaleY": 1.1,
+            "name": "meat1",
+            "parent": "jian"
+        },
+        {
+            "x": 83.1074,
+            "y": 91.3637,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "meat2",
+            "parent": "jian"
+        },
+        {
+            "x": 41.3779,
+            "y": 80.2737,
+            "rotation": 0.0841,
+            "scaleX": 1.2,
+            "scaleY": 1.2,
+            "name": "meat3",
+            "parent": "jian"
+        },
+        {
+            "x": 142.2307,
+            "y": 77.2184,
+            "name": "oil",
+            "parent": "jian"
+        },
+        {
+            "x": 195.3737,
+            "y": 44.2908,
+            "name": "oilbuble1",
+            "parent": "jian"
+        }
+    ],
+    "slots": [
+        {
+            "name": "size",
+            "bone": "size",
+            "attachment": "size_pan"
+        },
+        {
+            "name": "pan",
+            "bone": "pan",
+            "attachment": "brk_grillpan3"
+        },
+        {
+            "name": "meat1",
+            "bone": "meat1",
+            "color": "FFFFFF00",
+            "attachment": "piece4_pan"
+        },
+        {
+            "name": "youza1",
+            "bone": "youza1",
+            "attachment": "youza3"
+        },
+        {
+            "name": "meat2",
+            "bone": "meat2",
+            "color": "FFFFFF00",
+            "attachment": "piece1_pan"
+        },
+        {
+            "name": "meat3",
+            "bone": "meat3",
+            "color": "FFFFFF00",
+            "attachment": "piece2_pan"
+        },
+        {
+            "name": "meat",
+            "bone": "meat",
+            "attachment": "piece1_pan"
+        },
+        {
+            "name": "oil",
+            "bone": "oil",
+            "color": "FFFFFF9E",
+            "attachment": "oil"
+        },
+        {
+            "name": "oilbuble2",
+            "bone": "oilbuble2",
+            "attachment": "oilbuble"
+        },
+        {
+            "name": "oilbuble3",
+            "bone": "oilbuble3",
+            "attachment": "oilbuble"
+        },
+        {
+            "name": "oilbuble1",
+            "bone": "oilbuble1",
+            "attachment": "oilbuble"
+        },
+        {
+            "name": "turner",
+            "bone": "turner",
+            "attachment": "turner"
+        },
+        {
+            "name": "working_smoke",
+            "bone": "working_smoke",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "working_smoke1",
+            "bone": "working_smoke1",
+            "attachment": "working_smoke"
+        },
+        {
+            "name": "m1",
+            "bone": "m1",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m2",
+            "bone": "m2",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "m3",
+            "bone": "m3",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        },
+        {
+            "name": "food",
+            "bone": "food",
+            "color": "FFFFFF00",
+            "attachment": "foodcookedbg"
+        },
+        {
+            "name": "clock",
+            "bone": "clock",
+            "color": "FFFFFF00",
+            "attachment": "workclock"
+        },
+        {
+            "name": "repair",
+            "bone": "repair",
+            "color": "FFFFFF00",
+            "attachment": "materialbg"
+        }
+    ],
+    "skins": [{
+        "name":"default",
+        "attachments":{
+            "m2": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "oilbuble2": {
+                "oilbuble": {
+                    "name": "oilbuble",
+                    "width": 9,
+                    "height": 10
+                }
+            },
+            "youza1": {
+                "youza1": {
+                    "name": "youza1",
+                    "width": 85,
+                    "height": 46,
+                    "x": -5,
+                    "y": 7.25
+                },
+                "youza2": {
+                    "name": "youza2",
+                    "width": 73,
+                    "height": 27
+                },
+                "youza3": {
+                    "name": "youza3",
+                    "width": 77,
+                    "height": 42
+                }
+            },
+            "meat": {
+                "burningpan2": {
+                    "name": "burningpan2",
+                    "width": 69,
+                    "height": 70,
+                    "x": 1.66,
+                    "y": 30.79,
+                    "scaleX": 1.2,
+                    "scaleY": 1.2
+                },
+                "burningpan6": {
+                    "name": "burningpan6",
+                    "width": 94,
+                    "height": 81,
+                    "y": 22.85
+                },
+                "burningpan5": {
+                    "name": "burningpan5",
+                    "width": 94,
+                    "height": 80,
+                    "y": 21.52
+                },
+                "burningpan7": {
+                    "name": "burningpan7",
+                    "width": 92,
+                    "height": 80,
+                    "x": 12.17,
+                    "y": 21.57
+                },
+                "piece1_pan": {
+                    "name": "piece1_pan",
+                    "width": 28,
+                    "height": 29,
+                    "scaleX": 0.6256,
+                    "scaleY": 0.6256,
+                    "path": "piece1_grillpan"
+                }
+            },
+            "size": {
+                "size_pan": {
+                    "name": "size_pan",
+                    "width": 29,
+                    "height": 26,
+                    "x": -1.97,
+                    "path": "size"
+                }
+            },
+            "repair": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88,
+                    "x": 8.66
+                }
+            },
+            "clock": {
+                "workclock": {
+                    "name": "workclock",
+                    "width": 89,
+                    "height": 88,
+                    "x": -15.96,
+                    "y": 8.33,
+                    "path": "materialbg"
+                }
+            },
+            "oilbuble1": {
+                "oilbuble": {
+                    "name": "oilbuble",
+                    "width": 9,
+                    "height": 10,
+                    "x": 1,
+                    "y": 0.5
+                }
+            },
+            "meat1": {
+                "burningpan7": {
+                    "name": "burningpan7",
+                    "width": 92,
+                    "height": 80
+                },
+                "burningpan5": {
+                    "name": "burningpan5",
+                    "width": 94,
+                    "height": 80
+                },
+                "piece1_pan": {
+                    "name": "piece1_pan",
+                    "width": 28,
+                    "height": 29,
+                    "path": "piece1_grillpan"
+                },
+                "burningpan6": {
+                    "name": "burningpan6",
+                    "width": 94,
+                    "height": 81
+                },
+                "burningpan2": {
+                    "name": "burningpan2",
+                    "width": 69,
+                    "height": 70,
+                    "scaleX": 2,
+                    "scaleY": 2
+                },
+                "piece4_pan": {
+                    "name": "piece4_pan",
+                    "width": 11,
+                    "height": 17,
+                    "rotation": -58.45,
+                    "path": "piece4_grillpan"
+                }
+            },
+            "m3": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "m1": {
+                "materialbg": {
+                    "name": "materialbg",
+                    "width": 89,
+                    "height": 88
+                }
+            },
+            "oil": {
+                "oil": {
+                    "name": "oil",
+                    "width": 81,
+                    "height": 28,
+                    "x": -1.5,
+                    "y": -1
+                }
+            },
+            "working_smoke1": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 45,
+                    "height": 27,
+                    "hull": 35,
+                    "triangles": [
+                        30,
+                        29,
+                        31,
+                        29,
+                        26,
+                        31,
+                        26,
+                        3,
+                        31,
+                        34,
+                        33,
+                        32,
+                        1,
+                        34,
+                        32,
+                        31,
+                        3,
+                        32,
+                        3,
+                        1,
+                        32,
+                        4,
+                        3,
+                        26,
+                        27,
+                        26,
+                        29,
+                        28,
+                        27,
+                        29,
+                        34,
+                        0,
+                        33,
+                        3,
+                        2,
+                        1,
+                        22,
+                        7,
+                        23,
+                        7,
+                        5,
+                        4,
+                        7,
+                        4,
+                        26,
+                        23,
+                        7,
+                        26,
+                        22,
+                        9,
+                        7,
+                        25,
+                        23,
+                        26,
+                        10,
+                        9,
+                        22,
+                        7,
+                        6,
+                        5,
+                        24,
+                        23,
+                        25,
+                        18,
+                        10,
+                        22,
+                        21,
+                        18,
+                        22,
+                        9,
+                        8,
+                        7,
+                        14,
+                        12,
+                        18,
+                        18,
+                        12,
+                        11,
+                        19,
+                        18,
+                        20,
+                        18,
+                        11,
+                        10,
+                        20,
+                        18,
+                        21,
+                        14,
+                        13,
+                        12,
+                        15,
+                        14,
+                        18,
+                        16,
+                        15,
+                        17,
+                        17,
+                        15,
+                        18
+                    ],
+                    "uvs": [
+                        0.94778,
+                        0.91296,
+                        0.88222,
+                        0.95741,
+                        0.78889,
+                        0.97778,
+                        0.73111,
+                        0.94074,
+                        0.69889,
+                        0.92778,
+                        0.66,
+                        0.96481,
+                        0.61667,
+                        0.99444,
+                        0.50889,
+                        0.99444,
+                        0.37333,
+                        1,
+                        0.31,
+                        0.92037,
+                        0.28333,
+                        0.89259,
+                        0.19111,
+                        0.91296,
+                        0.09556,
+                        0.85926,
+                        0.03222,
+                        0.76296,
+                        0.00333,
+                        0.62407,
+                        0.00333,
+                        0.41111,
+                        0.05,
+                        0.27593,
+                        0.12333,
+                        0.22778,
+                        0.17111,
+                        0.23704,
+                        0.19111,
+                        0.08148,
+                        0.25,
+                        0.01667,
+                        0.33444,
+                        0,
+                        0.47111,
+                        0,
+                        0.59,
+                        0.01667,
+                        0.68889,
+                        0.04074,
+                        0.74556,
+                        0.14259,
+                        0.76444,
+                        0.2,
+                        0.84,
+                        0.1963,
+                        0.90667,
+                        0.23704,
+                        0.95444,
+                        0.31296,
+                        0.98889,
+                        0.40741,
+                        1,
+                        0.52963,
+                        1,
+                        0.7537,
+                        0.97667,
+                        0.86852,
+                        0.94667,
+                        0.91296
+                    ],
+                    "edges": [
+                        0,
+                        66,
+                        2,
+                        4,
+                        2,
+                        68,
+                        4,
+                        6,
+                        6,
+                        8,
+                        8,
+                        10,
+                        10,
+                        12,
+                        12,
+                        14,
+                        14,
+                        16,
+                        16,
+                        18,
+                        18,
+                        20,
+                        20,
+                        22,
+                        22,
+                        24,
+                        24,
+                        26,
+                        26,
+                        28,
+                        28,
+                        30,
+                        30,
+                        32,
+                        32,
+                        34,
+                        34,
+                        36,
+                        36,
+                        38,
+                        38,
+                        40,
+                        40,
+                        42,
+                        42,
+                        44,
+                        44,
+                        46,
+                        46,
+                        48,
+                        48,
+                        50,
+                        50,
+                        52,
+                        52,
+                        54,
+                        54,
+                        56,
+                        56,
+                        58,
+                        58,
+                        60,
+                        60,
+                        62,
+                        62,
+                        64,
+                        64,
+                        66,
+                        68,
+                        0
+                    ],
+                    "vertices": [
+                        -5.4,
+                        -20.65,
+                        -6.6,
+                        -17.7,
+                        -7.15,
+                        -13.5,
+                        -6.15,
+                        -10.9,
+                        -5.8,
+                        -9.45,
+                        -6.8,
+                        -7.7,
+                        -7.6,
+                        -5.75,
+                        -7.6,
+                        -0.9,
+                        -7.75,
+                        5.2,
+                        -5.6,
+                        8.05,
+                        -4.85,
+                        9.25,
+                        -5.4,
+                        13.4,
+                        -3.95,
+                        17.7,
+                        -1.35,
+                        20.55,
+                        2.4,
+                        21.85,
+                        8.15,
+                        21.85,
+                        11.8,
+                        19.75,
+                        13.1,
+                        16.45,
+                        12.85,
+                        14.3,
+                        17.05,
+                        13.4,
+                        18.8,
+                        10.75,
+                        19.25,
+                        6.95,
+                        19.25,
+                        0.8,
+                        18.8,
+                        -4.55,
+                        18.15,
+                        -9,
+                        15.4,
+                        -11.55,
+                        13.85,
+                        -12.4,
+                        13.95,
+                        -15.8,
+                        12.85,
+                        -18.8,
+                        10.8,
+                        -20.95,
+                        8.25,
+                        -22.5,
+                        4.95,
+                        -23,
+                        -1.1,
+                        -23,
+                        -4.2,
+                        -21.95,
+                        -5.4,
+                        -20.6
+                    ],
+                    "type": "mesh"
+                }
+            },
+            "working_smoke": {
+                "working_smoke": {
+                    "name": "working_smoke",
+                    "width": 45,
+                    "height": 27,
+                    "hull": 27,
+                    "triangles": [
+                        23,
+                        22,
+                        24,
+                        22,
+                        21,
+                        24,
+                        24,
+                        21,
+                        25,
+                        21,
+                        3,
+                        25,
+                        3,
+                        2,
+                        25,
+                        25,
+                        2,
+                        26,
+                        2,
+                        1,
+                        26,
+                        1,
+                        0,
+                        26,
+                        5,
+                        4,
+                        21,
+                        19,
+                        18,
+                        21,
+                        18,
+                        5,
+                        21,
+                        4,
+                        3,
+                        21,
+                        20,
+                        19,
+                        21,
+                        18,
+                        6,
+                        5,
+                        8,
+                        6,
+                        18,
+                        17,
+                        8,
+                        18,
+                        15,
+                        8,
+                        17,
+                        8,
+                        7,
+                        6,
+                        14,
+                        12,
+                        15,
+                        15,
+                        12,
+                        8,
+                        16,
+                        15,
+                        17,
+                        12,
+                        11,
+                        8,
+                        11,
+                        9,
+                        8,
+                        13,
+                        12,
+                        14,
+                        11,
+                        10,
+                        9
+                    ],
+                    "uvs": [
+                        0.97556,
+                        0.93889,
+                        0.90889,
+                        0.96667,
+                        0.76889,
+                        0.98519,
+                        0.70333,
+                        0.94815,
+                        0.61778,
+                        0.99444,
+                        0.54333,
+                        1,
+                        0.4,
+                        1,
+                        0.30778,
+                        0.95741,
+                        0.26,
+                        0.88519,
+                        0.17556,
+                        0.93889,
+                        0.07667,
+                        0.9037,
+                        0.04,
+                        0.79259,
+                        0.00111,
+                        0.59259,
+                        0.00111,
+                        0.27963,
+                        0.07667,
+                        0.19815,
+                        0.15333,
+                        0.13333,
+                        0.20889,
+                        0.00556,
+                        0.33889,
+                        0,
+                        0.48889,
+                        0,
+                        0.64222,
+                        0,
+                        0.78222,
+                        0.0963,
+                        0.81556,
+                        0.20741,
+                        0.92889,
+                        0.20741,
+                        0.97556,
+                        0.27222,
+                        1,
+                        0.39815,
+                        1,
+                        0.5463,
+                        1,
+                        0.76667
+                    ],
+                    "edges": [
+                        0,
+                        2,
+                        2,
+                        4,
+                        4,
+                        6,
+                        6,
+                        8,
+                        8,
+                        10,
+                        10,
+                        12,
+                        12,
+                        14,
+                        14,
+                        16,
+                        16,
+                        18,
+                        18,
+                        20,
+                        20,
+                        22,
+                        22,
+                        24,
+                        24,
+                        26,
+                        26,
+                        28,
+                        28,
+                        30,
+                        30,
+                        32,
+                        32,
+                        34,
+                        34,
+                        36,
+                        36,
+                        38,
+                        38,
+                        40,
+                        40,
+                        42,
+                        42,
+                        44,
+                        44,
+                        46,
+                        46,
+                        48,
+                        48,
+                        50,
+                        50,
+                        52,
+                        52,
+                        0
+                    ],
+                    "vertices": [
+                        -6.1,
+                        -21.9,
+                        -6.85,
+                        -18.9,
+                        -7.35,
+                        -12.6,
+                        -6.35,
+                        -9.65,
+                        -7.6,
+                        -5.8,
+                        -7.75,
+                        -2.45,
+                        -7.75,
+                        4,
+                        -6.6,
+                        8.15,
+                        -4.65,
+                        10.3,
+                        -6.1,
+                        14.1,
+                        -5.15,
+                        18.55,
+                        -2.15,
+                        20.2,
+                        3.25,
+                        21.95,
+                        11.7,
+                        21.95,
+                        13.9,
+                        18.55,
+                        15.65,
+                        15.1,
+                        19.1,
+                        12.6,
+                        19.25,
+                        6.75,
+                        19.25,
+                        0,
+                        19.25,
+                        -6.9,
+                        16.65,
+                        -13.2,
+                        13.65,
+                        -14.7,
+                        13.65,
+                        -19.8,
+                        11.9,
+                        -21.9,
+                        8.5,
+                        -23,
+                        4.5,
+                        -23,
+                        -1.45,
+                        -23
+                    ],
+                    "type": "mesh"
+                }
+            },
+            "meat3": {
+                "burningpan2": {
+                    "name": "burningpan2",
+                    "width": 69,
+                    "height": 70
+                },
+                "burningpan7": {
+                    "name": "burningpan7",
+                    "width": 92,
+                    "height": 80
+                },
+                "burningpan5": {
+                    "name": "burningpan5",
+                    "width": 94,
+                    "height": 80
+                },
+                "burningpan6": {
+                    "name": "burningpan6",
+                    "width": 94,
+                    "height": 81
+                },
+                "piece1_pan": {
+                    "name": "piece1_pan",
+                    "width": 28,
+                    "height": 29,
+                    "x": -0.73,
+                    "y": -3.4,
+                    "rotation": 4.79,
+                    "scaleX": 1.2,
+                    "scaleY": 1.2,
+                    "path": "piece1_grillpan"
+                },
+                "piece2_pan": {
+                    "name": "piece2_pan",
+                    "width": 75,
+                    "height": 39,
+                    "scaleX": 0.7,
+                    "scaleY": 0.7,
+                    "path": "piece2_grillpan"
+                }
+            },
+            "turner": {
+                "turner": {
+                    "name": "turner",
+                    "width": 51,
+                    "height": 57,
+                    "x": 37.13,
+                    "y": 1.51,
+                    "rotation": 140.05
+                }
+            },
+            "meat2": {
+                "burningpan7": {
+                    "name": "burningpan7",
+                    "width": 92,
+                    "height": 80
+                },
+                "burningpan5": {
+                    "name": "burningpan5",
+                    "width": 94,
+                    "height": 80
+                },
+                "piece1_pan": {
+                    "name": "piece1_pan",
+                    "width": 28,
+                    "height": 29,
+                    "x": -0.73,
+                    "y": -3.4,
+                    "rotation": 4.79,
+                    "scaleX": 0.5352,
+                    "scaleY": 0.5352,
+                    "path": "piece1_grillpan"
+                },
+                "burningpan6": {
+                    "name": "burningpan6",
+                    "width": 94,
+                    "height": 81
+                },
+                "burningpan2": {
+                    "name": "burningpan2",
+                    "width": 69,
+                    "height": 70,
+                    "scaleX": 2,
+                    "scaleY": 2
+                }
+            },
+            "food": {
+                "foodcookedbg": {
+                    "name": "foodcookedbg",
+                    "width": 108,
+                    "height": 107
+                }
+            },
+            "oilbuble3": {
+                "oilbuble": {
+                    "name": "oilbuble",
+                    "width": 9,
+                    "height": 10
+                }
+            },
+            "pan": {
+                "brk_grillpan1": {
+                    "name": "brk_grillpan1",
+                    "width": 225,
+                    "height": 119,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                },
+                "grill1broken": {
+                    "name": "grill1broken",
+                    "width": 210,
+                    "height": 120,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                },
+                "brk_grillpan2": {
+                    "name": "brk_grillpan2",
+                    "width": 227,
+                    "height": 116,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                },
+                "brk_grillpan3": {
+                    "name": "brk_grillpan3",
+                    "width": 193,
+                    "height": 140,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                },
+                "grill1broken2": {
+                    "name": "grill1broken2",
+                    "width": 210,
+                    "height": 116,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                },
+                "grill1broken3": {
+                    "name": "grill1broken3",
+                    "width": 193,
+                    "height": 133,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 137.33
+                },
+                "brk_grillpanT": {
+                    "name": "brk_grillpanT",
+                    "width": 191,
+                    "height": 135,
+                    "x": 36.08,
+                    "y": -8.37,
+                    "rotation": 141.96
+                }
+            }
+        }
+    }],
+    "animations": {
+        "3work": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -109.37,
+                            "y": 57.08
+                        },
+                        {
+                            "time": 0.2,
+                            "x": -109.59,
+                            "y": 61.91
+                        },
+                        {
+                            "time": 0.4167,
+                            "x": -104.83,
+                            "y": 47.94
+                        },
+                        {
+                            "time": 0.7,
+                            "x": -85.96,
+                            "y": 39.3
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -109.37,
+                            "y": 57.08
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -4.4
+                        },
+                        {
+                            "time": 0.2,
+                            "angle": -7.76
+                        },
+                        {
+                            "time": 0.4167,
+                            "angle": -13.22
+                        },
+                        {
+                            "time": 0.7,
+                            "angle": -20.91
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": -4.4
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.95,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.7,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 0.95,
+                            "y": 1
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2
+                        },
+                        {
+                            "time": 0.4167
+                        },
+                        {
+                            "time": 0.7
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "pan": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -0.63,
+                            "y": 5
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 4.38,
+                            "y": 5
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": 0.13
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 0.13
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": 0
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -148.01,
+                            "y": -50.99
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -147.76,
+                            "y": -49.74
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -149.39,
+                            "y": -44.99
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -148.76,
+                            "y": -41.49
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -141.76,
+                            "y": -44.99
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.27,
+                            "y": 0.27
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.64,
+                            "y": 0.64
+                        },
+                        {
+                            "time": 0.35,
+                            "x": 1.1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 0.71,
+                            "y": 0.71
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -128.16,
+                            "y": -67.29
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -128.78,
+                            "y": -60.92
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -122.28,
+                            "y": -60.92
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -127.47,
+                            "y": -66.31
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": 0.13
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 0.13
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": -0.64
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.18,
+                            "y": 1.16
+                        },
+                        {
+                            "time": 0.35,
+                            "x": 1.29,
+                            "y": 1.29
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "meat": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -81.97,
+                            "y": -78.21
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -76.54,
+                            "y": -73.69
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -71.7,
+                            "y": -74.56
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -65.21,
+                            "y": -73.69
+                        },
+                        {
+                            "time": 0.75,
+                            "x": -67.5,
+                            "y": -77.78
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -81.97,
+                            "y": -77.61
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 2.33
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.75,
+                            "angle": -0.74
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": 0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.8,
+                            "y": 0.8
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.75
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -124.13,
+                            "y": -14
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": -124.13,
+                            "y": -13.25
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -125.09,
+                            "y": -9.99
+                        },
+                        {
+                            "time": 0.4,
+                            "x": -121.97,
+                            "y": -9.27
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -104.79,
+                            "y": 8.99
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -101.89,
+                            "y": 7.23
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.22,
+                            "y": 0.22
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": 0.19,
+                            "y": 0.19
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.55,
+                            "y": 0.55
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1.02,
+                            "y": 1.02
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 0.42,
+                            "y": 0.42
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 0.51,
+                            "y": 0.51
+                        },
+                        {
+                            "time": 0.7,
+                            "x": 0.83,
+                            "y": 0.83
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -97.5,
+                            "y": -27.75
+                        },
+                        {
+                            "time": 0.2667,
+                            "x": -97.5,
+                            "y": -27.75
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.3501,
+                            "x": -99.5,
+                            "y": -22.75
+                        },
+                        {
+                            "time": 0.4001,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.5168,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.5668,
+                            "x": -91.88,
+                            "y": -22.75
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5167,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.21,
+                            "y": 0.21
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 0.45,
+                            "y": 0.45
+                        },
+                        {
+                            "time": 0.2667,
+                            "x": 1.11,
+                            "y": 1.11
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": 0.16,
+                            "y": 0.16
+                        },
+                        {
+                            "time": 0.3501,
+                            "x": 0.85,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.4001,
+                            "x": 0.4,
+                            "y": 0.4
+                        },
+                        {
+                            "time": 0.5168,
+                            "x": 0.85,
+                            "y": 0.85
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.5167
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "youza1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -171.12,
+                            "y": 108.72
+                        },
+                        {
+                            "time": 0.1,
+                            "x": -171.62,
+                            "y": 110.75
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -170.62,
+                            "y": 114.72
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -164.62,
+                            "y": 113.22
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -171.12,
+                            "y": 108.72
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "x": -1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -0.8,
+                            "y": 13.2
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 2.24,
+                            "y": 2.25
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 3.29,
+                            "y": 3.49
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -14.95,
+                            "y": 13.6
+                        },
+                        {
+                            "time": 0.45,
+                            "x": -19.95,
+                            "y": 33.6
+                        },
+                        {
+                            "time": 0.6167,
+                            "x": -11.25,
+                            "y": 27.6
+                        },
+                        {
+                            "time": 0.65,
+                            "x": -10.5,
+                            "y": 17.65
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -14.95,
+                            "y": 13.6
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.02,
+                            "y": 0.87
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 1.17,
+                            "y": 0.99
+                        },
+                        {
+                            "time": 0.6167,
+                            "x": 1.18,
+                            "y": 0.99
+                        },
+                        {
+                            "time": 0.65,
+                            "x": 0.31,
+                            "y": 0.3
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 0.78,
+                            "y": 0.66
+                        }
+                    ]
+                },
+                "meat1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -34.09,
+                            "y": -73.91
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -39,
+                            "y": -65.37
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -29.64,
+                            "y": -68.58
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -22.5,
+                            "y": -67.72
+                        },
+                        {
+                            "time": 0.75,
+                            "x": -26.73,
+                            "y": -71.81
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -34.09,
+                            "y": -71.64
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -8.07
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 11.72
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -17.66
+                        },
+                        {
+                            "time": 0.75,
+                            "angle": -10.54
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": 0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.8,
+                            "y": 0.8
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.75
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "meat2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -45.97,
+                            "y": -70.91
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -44.58,
+                            "y": -66.39
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -33.85,
+                            "y": -69.1
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -28.1,
+                            "y": -66.39
+                        },
+                        {
+                            "time": 0.75,
+                            "x": -25.98,
+                            "y": -70.48
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -45.97,
+                            "y": -70.91
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 2.33
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -27
+                        },
+                        {
+                            "time": 0.75,
+                            "angle": -0.74
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": 0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.65,
+                            "y": 0.65
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.75
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "meat3": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -24.82,
+                            "y": -73.86
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -36.72,
+                            "y": -66.64
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -28.43,
+                            "y": -67.26
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -22.68,
+                            "y": -64.56
+                        },
+                        {
+                            "time": 0.75,
+                            "x": -20.55,
+                            "y": -68.64
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": -24.82,
+                            "y": -73.86
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -2.03
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 2.42
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -1.36
+                        },
+                        {
+                            "time": 0.75,
+                            "angle": -0.65
+                        },
+                        {
+                            "time": 0.9333,
+                            "angle": -2.12
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.05,
+                            "y": 1.05
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.75
+                        },
+                        {
+                            "time": 0.9333
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF66"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF9E"
+                        },
+                        {
+                            "time": 0.1167,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.35,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFFAB"
+                        },
+                        {
+                            "time": 0.7,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFFB0"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFCF"
+                        },
+                        {
+                            "time": 0.5167,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "youza1"
+                        },
+                        {
+                            "time": 0.0833,
+                            "name": "youza2"
+                        },
+                        {
+                            "time": 0.1666,
+                            "name": "youza3"
+                        },
+                        {
+                            "time": 0.2666,
+                            "name": "youza2"
+                        },
+                        {
+                            "time": 0.3833,
+                            "name": "youza1"
+                        },
+                        {
+                            "time": 0.4666,
+                            "name": "youza3"
+                        },
+                        {
+                            "time": 0.5499,
+                            "name": "youza2"
+                        },
+                        {
+                            "time": 0.6832,
+                            "name": "youza3"
+                        },
+                        {
+                            "time": 0.7665,
+                            "name": "youza1"
+                        },
+                        {
+                            "time": 0.8165,
+                            "name": "youza2"
+                        },
+                        {
+                            "time": 0.8832,
+                            "name": "youza3"
+                        },
+                        {
+                            "time": 0.9499,
+                            "name": "youza1"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFC9"
+                        },
+                        {
+                            "time": 0.0833,
+                            "color": "FFFFFF8F"
+                        },
+                        {
+                            "time": 0.1666,
+                            "color": "FFFFFFB5"
+                        },
+                        {
+                            "time": 0.2666,
+                            "color": "FFFFFFA1"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF26"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.7333,
+                            "color": "FFFFFF0D"
+                        },
+                        {
+                            "time": 0.95,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.6167,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.65,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.8167,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.95,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "meat1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFB0"
+                        }
+                    ]
+                },
+                "meat2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "meat3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFBA"
+                        }
+                    ]
+                }
+            }
+        },
+        "1normal": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -108.75,
+                            "y": 52.75
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.72,
+                            "y": 0.72
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "meat": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": ""
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "turner": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                }
+            }
+        },
+        "5burn": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -83,
+                            "y": 63
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -45,
+                            "y": -32
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -137.1,
+                            "y": -78.85
+                        }
+                    ]
+                },
+                "meat": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -44.58,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.2333,
+                            "curve": "stepped",
+                            "x": -44.58,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.2666,
+                            "x": -35.05,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.4499,
+                            "curve": "stepped",
+                            "x": -33.93,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.4666,
+                            "x": -44.58,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.6999,
+                            "curve": "stepped",
+                            "x": -44.58,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.7332,
+                            "x": -35.05,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.9665,
+                            "curve": "stepped",
+                            "x": -33.93,
+                            "y": -79.96
+                        },
+                        {
+                            "time": 0.9998,
+                            "x": -44.58,
+                            "y": -79.96
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 1.64
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.08,
+                            "y": 0.98
+                        },
+                        {
+                            "time": 0.2333,
+                            "curve": "stepped",
+                            "x": 1.08,
+                            "y": 0.98
+                        },
+                        {
+                            "time": 0.2666,
+                            "x": -1.08,
+                            "y": 0.98
+                        },
+                        {
+                            "time": 0.4499,
+                            "curve": "stepped",
+                            "x": -1.08,
+                            "y": 0.98
+                        },
+                        {
+                            "time": 0.4666,
+                            "x": 1.08,
+                            "y": 0.82
+                        },
+                        {
+                            "time": 0.6999,
+                            "curve": "stepped",
+                            "x": 0.83,
+                            "y": 0.98
+                        },
+                        {
+                            "time": 0.7332,
+                            "x": -1,
+                            "y": 0.82
+                        },
+                        {
+                            "time": 0.9665,
+                            "curve": "stepped",
+                            "x": -1,
+                            "y": 0.82
+                        },
+                        {
+                            "time": 0.9998,
+                            "x": 1,
+                            "y": 0.82
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -45,
+                            "y": -32
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -45,
+                            "y": -32
+                        }
+                    ]
+                },
+                "youza1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -174.6,
+                            "y": 108.3
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.1167
+                        },
+                        {
+                            "time": 0.1334,
+                            "y": -12.95
+                        },
+                        {
+                            "time": 0.3334
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 4.05,
+                            "y": 4.05
+                        },
+                        {
+                            "time": 0.1167,
+                            "x": 4.5,
+                            "y": 4.5
+                        },
+                        {
+                            "time": 0.1334,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.3334,
+                            "x": 1.94,
+                            "y": 1.94
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 3.23,
+                            "y": 3.23
+                        },
+                        {
+                            "time": 0.8834,
+                            "x": 4.05,
+                            "y": 4.05
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -20,
+                            "y": 8
+                        },
+                        {
+                            "time": 0.2667,
+                            "curve": "stepped",
+                            "x": -20,
+                            "y": 16
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": -16.3,
+                            "y": 6.75
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -20,
+                            "y": 8
+                        },
+                        {
+                            "time": 0.6834,
+                            "x": -20,
+                            "y": 8
+                        },
+                        {
+                            "time": 0.7334,
+                            "curve": "stepped",
+                            "x": -17.23,
+                            "y": 7.06
+                        },
+                        {
+                            "time": 0.7501,
+                            "x": -16.3,
+                            "y": 6.75
+                        },
+                        {
+                            "time": 0.8834,
+                            "x": -20,
+                            "y": 8
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.2667,
+                            "curve": "stepped",
+                            "x": 1.29,
+                            "y": 1.29
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": 0.76,
+                            "y": 0.76
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 1.25,
+                            "y": 1.25
+                        },
+                        {
+                            "time": 0.6834,
+                            "x": 1.57,
+                            "y": 1.57
+                        },
+                        {
+                            "time": 0.7334,
+                            "curve": "stepped",
+                            "x": 1.97,
+                            "y": 2.21
+                        },
+                        {
+                            "time": 0.7501,
+                            "x": 0.76,
+                            "y": 0.76
+                        },
+                        {
+                            "time": 0.8834,
+                            "x": 1,
+                            "y": 1
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "meat": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "burningpan6"
+                        },
+                        {
+                            "time": 0.0667,
+                            "name": "burningpan5"
+                        },
+                        {
+                            "time": 0.1334,
+                            "name": "burningpan7"
+                        },
+                        {
+                            "time": 0.2001,
+                            "name": "burningpan2"
+                        },
+                        {
+                            "time": 0.2668,
+                            "name": "burningpan6"
+                        },
+                        {
+                            "time": 0.3335,
+                            "name": "burningpan5"
+                        },
+                        {
+                            "time": 0.4002,
+                            "name": "burningpan7"
+                        },
+                        {
+                            "time": 0.4669,
+                            "name": "burningpan6"
+                        },
+                        {
+                            "time": 0.5336,
+                            "name": "burningpan5"
+                        },
+                        {
+                            "time": 0.6003,
+                            "name": "burningpan7"
+                        },
+                        {
+                            "time": 0.667,
+                            "name": "burningpan2"
+                        },
+                        {
+                            "time": 0.7337,
+                            "name": "burningpan6"
+                        },
+                        {
+                            "time": 0.8004,
+                            "name": "burningpan5"
+                        },
+                        {
+                            "time": 0.8671,
+                            "name": "burningpan7"
+                        },
+                        {
+                            "time": 0.9338,
+                            "name": "burningpan2"
+                        },
+                        {
+                            "time": 1.0005,
+                            "name": "burningpan6"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.0667,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.1334,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.1834,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.2001,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.2668,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.3335,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.4002,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.4502,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.4669,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.5336,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.6003,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.6503,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.667,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.7337,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.8004,
+                            "color": "E0C2C2FF"
+                        },
+                        {
+                            "time": 0.8671,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.9171,
+                            "color": "DEBFBFFF"
+                        },
+                        {
+                            "time": 0.9338,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 1.0005,
+                            "color": "E0C2C2FF"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "turner": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "615E5E54"
+                        },
+                        {
+                            "time": 0.1167,
+                            "curve": "stepped",
+                            "color": "615E5E0A"
+                        },
+                        {
+                            "time": 0.1334,
+                            "color": "615E5E00"
+                        },
+                        {
+                            "time": 0.3334,
+                            "color": "615E5E4F"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "615E5ECF"
+                        },
+                        {
+                            "time": 0.8834,
+                            "color": "615E5E54"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "615E5E8A"
+                        },
+                        {
+                            "time": 0.1667,
+                            "color": "615E5E7F"
+                        },
+                        {
+                            "time": 0.2667,
+                            "curve": "stepped",
+                            "color": "615E5E00"
+                        },
+                        {
+                            "time": 0.2834,
+                            "color": "615E5E00"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "615E5E5E"
+                        },
+                        {
+                            "time": 0.6834,
+                            "color": "615E5E26"
+                        },
+                        {
+                            "time": 0.7334,
+                            "curve": "stepped",
+                            "color": "615E5E00"
+                        },
+                        {
+                            "time": 0.7501,
+                            "color": "615E5E9E"
+                        },
+                        {
+                            "time": 0.8834,
+                            "color": "615E5E8A"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            },
+            "deform": {
+                "default": {
+                    "working_smoke": {
+                        "working_smoke": [
+                            {
+                                "time": 0,
+                                "offset": 4,
+                                "vertices": [
+                                    1.13,
+                                    -0.15,
+                                    2.54,
+                                    0.76,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -0.58,
+                                    -3.16,
+                                    0,
+                                    0,
+                                    -3.63,
+                                    -1.96,
+                                    -3.42,
+                                    -2.69,
+                                    -1.6,
+                                    -2.65,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.98,
+                                    -1.09,
+                                    0,
+                                    0,
+                                    -5.89,
+                                    3.85,
+                                    -2.11,
+                                    0.25,
+                                    -1.89,
+                                    1.78,
+                                    -1.93,
+                                    1.71,
+                                    -1.85,
+                                    0.11,
+                                    -1.64,
+                                    1.56
+                                ]
+                            },
+                            {
+                                "time": 0.1333,
+                                "offset": 53,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 0.3333,
+                                "offset": 4,
+                                "vertices": [
+                                    1.13,
+                                    -0.15,
+                                    2.54,
+                                    0.76,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -0.58,
+                                    -3.16,
+                                    0,
+                                    0,
+                                    -3.63,
+                                    -1.96,
+                                    -3.42,
+                                    -2.69,
+                                    -1.6,
+                                    -2.65,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.98,
+                                    -1.09,
+                                    0,
+                                    0,
+                                    -5.89,
+                                    3.85,
+                                    -2.11,
+                                    0.25,
+                                    -1.89,
+                                    1.78,
+                                    -1.93,
+                                    1.71,
+                                    -1.85,
+                                    0.11,
+                                    -1.64,
+                                    1.56
+                                ]
+                            },
+                            {
+                                "time": 0.5666,
+                                "vertices": [
+                                    1.27,
+                                    2.24,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -1.83,
+                                    0.4,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -0.23,
+                                    3.95,
+                                    -1.96,
+                                    0.51,
+                                    0,
+                                    0,
+                                    -2.95,
+                                    -2.03,
+                                    -1.69,
+                                    -0.89,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.59,
+                                    0.34,
+                                    5.51,
+                                    -0.55,
+                                    7.13,
+                                    -2.95,
+                                    2.28,
+                                    -1.46,
+                                    3.1,
+                                    -0.32,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0.61,
+                                    1.75
+                                ]
+                            },
+                            {
+                                "time": 0.8833,
+                                "offset": 4,
+                                "vertices": [
+                                    1.13,
+                                    -0.15,
+                                    2.54,
+                                    0.76,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -0.58,
+                                    -3.16,
+                                    0,
+                                    0,
+                                    -3.63,
+                                    -1.96,
+                                    -3.42,
+                                    -2.69,
+                                    -1.6,
+                                    -2.65,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.98,
+                                    -1.09,
+                                    0,
+                                    0,
+                                    -5.89,
+                                    3.85,
+                                    -2.11,
+                                    0.25,
+                                    -1.89,
+                                    1.78,
+                                    -1.93,
+                                    1.71,
+                                    -1.85,
+                                    0.11,
+                                    -1.64,
+                                    1.56
+                                ]
+                            }
+                        ]
+                    },
+                    "working_smoke1": {
+                        "working_smoke": [
+                            {
+                                "time": 0,
+                                "offset": 69,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 0.15,
+                                "offset": 24,
+                                "vertices": [
+                                    0.61,
+                                    -2.32,
+                                    0.31,
+                                    -3.37,
+                                    -0.46,
+                                    -2.43,
+                                    -2.01,
+                                    -2.24,
+                                    -1.35,
+                                    -1.59,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1.54,
+                                    0.48,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.08,
+                                    -1.17,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1.35,
+                                    -0.59,
+                                    0,
+                                    0,
+                                    -0.31,
+                                    1.35,
+                                    0,
+                                    0,
+                                    3.92,
+                                    1.03,
+                                    -0.15,
+                                    2.61
+                                ]
+                            },
+                            {
+                                "time": 0.2667,
+                                "vertices": [
+                                    -0.57,
+                                    2.98,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0.06,
+                                    -4.9,
+                                    0.35,
+                                    -4.32,
+                                    0,
+                                    -1.66,
+                                    0,
+                                    0,
+                                    -1.97,
+                                    0.68,
+                                    0,
+                                    0,
+                                    -3.6,
+                                    -2.52,
+                                    0,
+                                    0,
+                                    -1.46,
+                                    -0.2,
+                                    1.25,
+                                    1.37,
+                                    0,
+                                    0,
+                                    2.57,
+                                    -0.39,
+                                    6.19,
+                                    -2.72,
+                                    5.96,
+                                    -4.81,
+                                    1.48,
+                                    -3.59,
+                                    -0.72,
+                                    2.62,
+                                    0,
+                                    0,
+                                    -1.86,
+                                    2.57,
+                                    -2.28,
+                                    -0.19,
+                                    -0.57,
+                                    2.16,
+                                    0.38,
+                                    3.71
+                                ]
+                            },
+                            {
+                                "time": 0.45,
+                                "offset": 24,
+                                "vertices": [
+                                    0.61,
+                                    -2.32,
+                                    0.31,
+                                    -3.37,
+                                    -0.46,
+                                    -2.43,
+                                    -2.01,
+                                    -2.24,
+                                    -1.35,
+                                    -1.59,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1.54,
+                                    0.48,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    2.08,
+                                    -1.17,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1.35,
+                                    -0.59,
+                                    0,
+                                    0,
+                                    -0.31,
+                                    1.35,
+                                    0,
+                                    0,
+                                    3.92,
+                                    1.03,
+                                    -0.15,
+                                    2.61
+                                ]
+                            },
+                            {
+                                "time": 0.6833,
+                                "offset": 69,
+                                "vertices": [
+                                    0
+                                ]
+                            },
+                            {
+                                "time": 0.7333,
+                                "vertices": [
+                                    -0.57,
+                                    2.98,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0.06,
+                                    -4.9,
+                                    0.35,
+                                    -4.32,
+                                    0,
+                                    -1.66,
+                                    0,
+                                    0,
+                                    1.22,
+                                    2.03,
+                                    0,
+                                    0,
+                                    -1.86,
+                                    -2.29,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    3.82,
+                                    -0.11,
+                                    0,
+                                    0,
+                                    2.57,
+                                    -0.39,
+                                    3.4,
+                                    -0.63,
+                                    3.5,
+                                    -2.22,
+                                    2.01,
+                                    -1.45,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    -0.84,
+                                    2.52,
+                                    -1.38,
+                                    2.21,
+                                    0.05,
+                                    3.47,
+                                    0.38,
+                                    3.71
+                                ]
+                            },
+                            {
+                                "time": 0.8833,
+                                "offset": 69,
+                                "vertices": [
+                                    0
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "2layout": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -108.75,
+                            "y": 52.75
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.72,
+                            "y": 0.72
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "meat": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": ""
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "turner": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "m1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                },
+                "m3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "4done": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -126.33,
+                            "y": 42.5
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": -4.4
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.95,
+                            "y": 1
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -148.01,
+                            "y": -50.99
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -147.76,
+                            "y": -49.74
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -149.39,
+                            "y": -44.99
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -148.76,
+                            "y": -41.49
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -141.76,
+                            "y": -44.99
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.27,
+                            "y": 0.27
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.64,
+                            "y": 0.64
+                        },
+                        {
+                            "time": 0.35,
+                            "x": 1.1,
+                            "y": 1.1
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 0.71,
+                            "y": 0.71
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -133.75,
+                            "y": -78.13
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 0.98
+                        }
+                    ]
+                },
+                "meat": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -51.55,
+                            "y": -83.55
+                        },
+                        {
+                            "time": 0.35,
+                            "x": -46.11,
+                            "y": -79.03
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -41.28,
+                            "y": -79.9
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -34.79,
+                            "y": -79.03
+                        },
+                        {
+                            "time": 0.75,
+                            "x": -37.08,
+                            "y": -83.12
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -51.55,
+                            "y": -82.95
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 2.33
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -2.12
+                        },
+                        {
+                            "time": 0.75,
+                            "angle": -0.74
+                        },
+                        {
+                            "time": 0.95,
+                            "angle": 0
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.8,
+                            "y": 0.8
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        },
+                        {
+                            "time": 0.75
+                        },
+                        {
+                            "time": 0.95
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -124.13,
+                            "y": -14
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": -124.13,
+                            "y": -13.25
+                        },
+                        {
+                            "time": 0.3,
+                            "x": -125.09,
+                            "y": -9.99
+                        },
+                        {
+                            "time": 0.4,
+                            "x": -121.97,
+                            "y": -9.27
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": -104.79,
+                            "y": 8.99
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": -101.89,
+                            "y": 7.23
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4667,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.22,
+                            "y": 0.22
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": 0.19,
+                            "y": 0.19
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.55,
+                            "y": 0.55
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1.02,
+                            "y": 1.02
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 0.42,
+                            "y": 0.42
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 0.51,
+                            "y": 0.51
+                        },
+                        {
+                            "time": 0.7,
+                            "x": 0.83,
+                            "y": 0.83
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.3
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.4667
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -97.5,
+                            "y": -27.75
+                        },
+                        {
+                            "time": 0.2667,
+                            "x": -97.5,
+                            "y": -27.75
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.3501,
+                            "x": -99.5,
+                            "y": -22.75
+                        },
+                        {
+                            "time": 0.4001,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.5168,
+                            "x": -98.88,
+                            "y": -19.25
+                        },
+                        {
+                            "time": 0.5668,
+                            "x": -91.88,
+                            "y": -22.75
+                        }
+                    ],
+                    "rotate": [
+                        {
+                            "time": 0,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.2833,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.35,
+                            "angle": -5.38
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5167,
+                            "angle": 0
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": -5.38
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.21,
+                            "y": 0.21
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 0.45,
+                            "y": 0.45
+                        },
+                        {
+                            "time": 0.2667,
+                            "x": 1.11,
+                            "y": 1.11
+                        },
+                        {
+                            "time": 0.2834,
+                            "x": 0.16,
+                            "y": 0.16
+                        },
+                        {
+                            "time": 0.3501,
+                            "x": 0.85,
+                            "y": 0.85
+                        },
+                        {
+                            "time": 0.4001,
+                            "x": 0.4,
+                            "y": 0.4
+                        },
+                        {
+                            "time": 0.5168,
+                            "x": 0.85,
+                            "y": 0.85
+                        }
+                    ],
+                    "shear": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.2833
+                        },
+                        {
+                            "time": 0.35
+                        },
+                        {
+                            "time": 0.4
+                        },
+                        {
+                            "time": 0.5167
+                        },
+                        {
+                            "time": 0.5667
+                        }
+                    ]
+                },
+                "youza1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -174.75,
+                            "y": 105.5
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "translate": [
+                        {
+                            "time": 0
+                        },
+                        {
+                            "time": 0.4,
+                            "x": -1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -0.8,
+                            "y": 13.2
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1,
+                            "y": 1
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 2.24,
+                            "y": 2.25
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 3.29,
+                            "y": 3.49
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -14.95,
+                            "y": 13.6
+                        },
+                        {
+                            "time": 0.45,
+                            "x": -19.95,
+                            "y": 33.6
+                        },
+                        {
+                            "time": 0.6167,
+                            "x": -11.25,
+                            "y": 27.6
+                        },
+                        {
+                            "time": 0.65,
+                            "x": -10.5,
+                            "y": 17.65
+                        },
+                        {
+                            "time": 0.95,
+                            "x": -14.95,
+                            "y": 13.6
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 1.02,
+                            "y": 0.87
+                        },
+                        {
+                            "time": 0.45,
+                            "x": 1.17,
+                            "y": 0.99
+                        },
+                        {
+                            "time": 0.6167,
+                            "x": 1.18,
+                            "y": 0.99
+                        },
+                        {
+                            "time": 0.65,
+                            "x": 0.31,
+                            "y": 0.3
+                        },
+                        {
+                            "time": 0.95,
+                            "x": 0.78,
+                            "y": 0.66
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF66"
+                        }
+                    ]
+                },
+                "meat": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF9E"
+                        },
+                        {
+                            "time": 0.1167,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.35,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF99"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "turner": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.3,
+                            "color": "FFFFFFFF"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.5667,
+                            "color": "FFFFFFAB"
+                        },
+                        {
+                            "time": 0.7,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.1,
+                            "color": "FFFFFFB0"
+                        },
+                        {
+                            "time": 0.2667,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFFCF"
+                        },
+                        {
+                            "time": 0.5167,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "youza1"
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.4,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.7333,
+                            "color": "FFFFFF0D"
+                        },
+                        {
+                            "time": 0.95,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.65,
+                            "color": "FFFFFF00"
+                        },
+                        {
+                            "time": 0.8167,
+                            "color": "FFFFFF1A"
+                        },
+                        {
+                            "time": 0.95,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "food": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFFFF"
+                        }
+                    ]
+                }
+            }
+        },
+        "6broken": {
+            "bones": {
+                "turner": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -108.75,
+                            "y": 52.75
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "oil": {
+                    "translate": [
+                        {
+                            "time": 0,
+                            "x": -78.25,
+                            "y": -32
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "scale": [
+                        {
+                            "time": 0,
+                            "x": 0.72,
+                            "y": 0.72
+                        }
+                    ]
+                }
+            },
+            "slots": {
+                "oil": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "meat": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": ""
+                        }
+                    ],
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "turner": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble2": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "oilbuble3": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "youza1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "working_smoke1": {
+                    "color": [
+                        {
+                            "time": 0,
+                            "color": "FFFFFF00"
+                        }
+                    ]
+                },
+                "pan": {
+                    "attachment": [
+                        {
+                            "time": 0,
+                            "name": "grill1broken3"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

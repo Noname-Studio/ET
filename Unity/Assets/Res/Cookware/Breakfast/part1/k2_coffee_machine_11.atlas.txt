@@ -1,0 +1,139 @@
+
+k2_coffee_machine_11.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+size
+  rotate: false
+  xy: 129, 469
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+coffe2broken
+  rotate: false
+  xy: 1, 187
+  size: 136, 184
+  orig: 136, 184
+  offset: 0, 0
+  index: -1
+coffe3broken
+  rotate: false
+  xy: 142, 1
+  size: 137, 179
+  orig: 138, 179
+  offset: 0, 0
+  index: -1
+brk_machine3
+  rotate: false
+  xy: 1, 1
+  size: 139, 184
+  orig: 139, 184
+  offset: 0, 0
+  index: -1
+brk_machine
+  rotate: false
+  xy: 139, 187
+  size: 136, 181
+  orig: 136, 181
+  offset: 0, 0
+  index: -1
+brk_machine1
+  rotate: false
+  xy: 277, 182
+  size: 131, 176
+  orig: 131, 176
+  offset: 0, 0
+  index: -1
+coffe1broken
+  rotate: false
+  xy: 281, 1
+  size: 131, 175
+  orig: 132, 175
+  offset: 1, 0
+  index: -1
+coffeeshadow
+  rotate: false
+  xy: 387, 450
+  size: 57, 61
+  orig: 59, 72
+  offset: 1, 10
+  index: -1
+brk_capback
+  rotate: false
+  xy: 81, 489
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+brk_coffe
+  rotate: false
+  xy: 160, 489
+  size: 37, 19
+  orig: 37, 19
+  offset: 0, 0
+  index: -1
+coffeeshui
+  rotate: false
+  xy: 493, 483
+  size: 5, 27
+  orig: 5, 27
+  offset: 0, 0
+  index: -1
+brk_tap
+  rotate: false
+  xy: 47, 469
+  size: 32, 32
+  orig: 36, 32
+  offset: 4, 0
+  index: -1
+brk_tap3
+  rotate: false
+  xy: 446, 483
+  size: 45, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+brk_tap1
+  rotate: false
+  xy: 199, 469
+  size: 28, 24
+  orig: 28, 24
+  offset: 0, 0
+  index: -1
+brk_cap
+  rotate: false
+  xy: 446, 450
+  size: 47, 31
+  orig: 47, 31
+  offset: 0, 0
+  index: -1
+working_smoke
+  rotate: false
+  xy: 1, 469
+  size: 44, 27
+  orig: 45, 27
+  offset: 0, 0
+  index: -1
+brk_coffeebar1
+  rotate: false
+  xy: 81, 469
+  size: 46, 18
+  orig: 46, 18
+  offset: 0, 0
+  index: -1
+materialbg
+  rotate: false
+  xy: 387, 360
+  size: 89, 88
+  orig: 89, 88
+  offset: 0, 0
+  index: -1
+foodcookedbg
+  rotate: false
+  xy: 277, 360
+  size: 108, 107
+  orig: 108, 107
+  offset: 0, 0
+  index: -1
