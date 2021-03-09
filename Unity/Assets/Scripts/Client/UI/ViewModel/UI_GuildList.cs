@@ -6,6 +6,9 @@ using TheGuild;
 
 namespace Client.UI.ViewModel
 {
+    /// <summary>
+    /// 公会列表
+    /// </summary>
     public class UI_GuildList
     {
         private List<SearchGuildResult> SearchResults { get; } = new List<SearchGuildResult>();
@@ -24,7 +27,7 @@ namespace Client.UI.ViewModel
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
             Session = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
             
-            var response = (R2C_SearchGuild) await Session.Call(new C2R_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            var response = (G2C_SearchGuild) await Session.Call(new C2G_SearchGuild() {MaxNum = 20, IsNewSearch = true});
             SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
             networkLoad.CloseMySelf();
@@ -45,7 +48,7 @@ namespace Client.UI.ViewModel
             footer.Desc.text = "查看更多内容";
             footer.c1.selectedPage = "WaitNet";
             footer.t0.Play();
-            var response = (R2C_SearchGuild) await Session.Call(new C2R_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            var response = (G2C_SearchGuild) await Session.Call(new C2G_SearchGuild() {MaxNum = 20, IsNewSearch = true});
             SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
             if (response.Results.Count == 0)
@@ -74,7 +77,7 @@ namespace Client.UI.ViewModel
             {
                 var result = (SearchGuildResult) ((GComponent) t1.sender).data;
                 UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
-                var response = (R2C_JoinGuild)await Session.Call(new C2R_JoinGuild() {Id = result.Id});
+                var response = (G2C_JoinGuild)await Session.Call(new C2G_JoinGuild() {Id = result.Id});
                 if (response.Error == 0)
                 {
                     this.Parent.CloseMySelf();

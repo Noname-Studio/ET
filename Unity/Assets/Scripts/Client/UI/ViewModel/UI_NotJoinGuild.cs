@@ -15,6 +15,7 @@ namespace Client.UI.ViewModel
         {
             base.OnInit(p);
             this.View.c1.onChanged.Add(MenuChanged);
+            this.View.c1.onChanged.Call();
         }
 
         private void MenuChanged()

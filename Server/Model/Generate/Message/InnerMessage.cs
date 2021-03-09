@@ -6,7 +6,7 @@ namespace ET
 /// <summary>
 /// 传送unit
 /// </summary>
-	[ResponseType(typeof(M2M_TrasferUnitResponse))]
+	[ResponseType(typeof(M2M_TrasferUnitResponse))]
 	[Message(InnerOpcode.M2M_TrasferUnitRequest)]
 	[ProtoContract]
 	public partial class M2M_TrasferUnitRequest: IActorRequest
@@ -40,7 +40,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(A2M_Reload))]
+	[ResponseType(typeof(A2M_Reload))]
 	[Message(InnerOpcode.M2A_Reload)]
 	[ProtoContract]
 	public partial class M2A_Reload: IActorRequest
@@ -68,7 +68,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2G_LockResponse))]
+	[ResponseType(typeof(G2G_LockResponse))]
 	[Message(InnerOpcode.G2G_LockRequest)]
 	[ProtoContract]
 	public partial class G2G_LockRequest: IActorRequest
@@ -102,7 +102,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2G_LockReleaseResponse))]
+	[ResponseType(typeof(G2G_LockReleaseResponse))]
 	[Message(InnerOpcode.G2G_LockReleaseRequest)]
 	[ProtoContract]
 	public partial class G2G_LockReleaseRequest: IActorRequest
@@ -136,7 +136,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(ObjectAddResponse))]
+	[ResponseType(typeof(ObjectAddResponse))]
 	[Message(InnerOpcode.ObjectAddRequest)]
 	[ProtoContract]
 	public partial class ObjectAddRequest: IActorRequest
@@ -170,7 +170,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(ObjectLockResponse))]
+	[ResponseType(typeof(ObjectLockResponse))]
 	[Message(InnerOpcode.ObjectLockRequest)]
 	[ProtoContract]
 	public partial class ObjectLockRequest: IActorRequest
@@ -207,7 +207,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(ObjectUnLockResponse))]
+	[ResponseType(typeof(ObjectUnLockResponse))]
 	[Message(InnerOpcode.ObjectUnLockRequest)]
 	[ProtoContract]
 	public partial class ObjectUnLockRequest: IActorRequest
@@ -244,7 +244,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(ObjectRemoveResponse))]
+	[ResponseType(typeof(ObjectRemoveResponse))]
 	[Message(InnerOpcode.ObjectRemoveRequest)]
 	[ProtoContract]
 	public partial class ObjectRemoveRequest: IActorRequest
@@ -275,7 +275,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(ObjectGetResponse))]
+	[ResponseType(typeof(ObjectGetResponse))]
 	[Message(InnerOpcode.ObjectGetRequest)]
 	[ProtoContract]
 	public partial class ObjectGetRequest: IActorRequest
@@ -309,7 +309,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2R_GetLoginKey))]
+	[ResponseType(typeof(G2R_GetLoginKey))]
 	[Message(InnerOpcode.R2G_GetLoginKey)]
 	[ProtoContract]
 	public partial class R2G_GetLoginKey: IActorRequest
@@ -346,7 +346,7 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(M2G_CreateUnit))]
+	[ResponseType(typeof(M2G_CreateUnit))]
 	[Message(InnerOpcode.G2M_CreateUnit)]
 	[ProtoContract]
 	public partial class G2M_CreateUnit: IActorRequest

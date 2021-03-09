@@ -1,5 +1,0 @@
-CD到当前目录
-执行命令 dotnet CrossPlatformGenerator StartServer 你的Excel目录
-
-
-就可以了

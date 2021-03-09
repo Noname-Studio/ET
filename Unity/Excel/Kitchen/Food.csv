@@ -1,0 +1,70 @@
+﻿食物ID,食物Key值,价格,小费,制作厨具, 模具ID,制作时间（秒),保鲜时间(S),顾客等待时间(S),顾客思考时间(S),最佳价格时间,烧焦时间（秒）,恢复耐心值,制作原料,纹理名称,升级消耗,多语言Key
+Id,Key,price,tips,cookware_type,mould_id,cook_time,fresh_time,wait_time,consider_time,best_price_time,burn_time,recoveryPatienceVal,ingredients,texture,UpgradeCost,dis_name_key
+int,string,int,int,string,int,int,float,int,int,int,int,int,List<string>,string,List<Price>,string
+30000,Burn food,0,0,0,,0,,,,,0,,,gaming/tex_burn_food,,fd_burn_food
+39999,anyfood,0,0,0,,0,,,,,0,,,Food/icon_any_dish,,fd_anyfood
+30001,Salad,14,0,K1CuttingBoard,,5,2,30,,12,,,"Tomato,Lettuce",Food/food_truck/tex_salad,"[{coin:30,gem:0}]",fd_salad
+30002,Coke,6,0,K1ColaMachine,,5,2,20,,12,,,,Food/food_truck/tex_cola,"[{coin:30,gem:0}]",fd_coke
+30003,Fried sausage,12,0,K1FryingPan,,5,2,30,,12,10,,Sausage,Food/food_truck/tex_fried_sausage,"[{coin:30,gem:0}]",fd_fried_sausage
+30004,Hot dog,28,0,K1WorkTable,,5,2,60,,12,,,"Fried sausage,Hotdogbuns",Food/food_truck/tex_hot_dog,"[{coin:200,gem:0}]",fd_hot_dog
+30005,Burgers,12,0,K1FryingPan,,5,2,30,,12,10,,Meat pie,Food/food_truck/tex_patty,"[{coin:50,gem:0}]",fd_burgers
+30006,Raw chips,0,,K1CuttingBoard,,5,,,,,,,Potato,Food/food_truck/tex_raw_potato_strips,,fd_raw_chips
+30007,Chips,18,0,K1Fryer,,5,2,60,,12,11,,Raw chips,Food/food_truck/tex_french_fries,"[{coin:150,gem:0}]",fd_chips
+30008,Hambuger,30,0,K1WorkTable,,5,2,60,,12,,,"Burgers,Lettuce,Burgerbuns",Food/food_truck/tex_hambuger,"[{coin:50,gem:0}]",fd_hambuger
+30009,Fried eggs,8,0,K2FryingPan1,,4,2,30,,12,9,,Egg,Food/breakfast/tex_fried_eggs,"[{coin:800,gem:0}]",fd_fried_eggs
+30010,Poached egg,8,0,K2EggMachine1,,5,1,20,,12,,,Egg,Food/breakfast/tex_poached_egg,"[{coin:4500,gem:0}]",fd_poached_egg
+30011,Asparagus Omelette,18,0,K2WorkTable1,,6,1,60,,12,10,,"Roasted Asparagus,Omelette",Food/breakfast/tex_asparagus_omelette,"[{coin:3500,gem:0}]",fd_asparagus_omelette
+30012,Bacon Omelette,20,0,K2WorkTable1,,6,1,60,,12,10,,"Omelette,Bacon",Food/breakfast/tex_bacon_omelette,"[{coin:2700,gem:0}]",fd_bacon_omelette
+30013,Bacon,8,0,K2GrillPan1,,6,1,30,,12,9,,Smoked meat,Food/breakfast/tex_bacon,"[{coin:400,gem:0}]",fd_bacon
+30014,Roasted Asparagus,8,0,K2Oven1,,6,,,,,10,,Asparagus,Food/breakfast/tex_roasted_asparagus,"[{coin:2000,gem:0}]",fd_roasted_asparagus
+30015,Fried egg sandwich,18,0,K2SandwichPlate1,,6,1,60,,12,9,,"Toast,Fried eggs",Food/breakfast/tex_fried_egg_sandwich,"[{coin:1200,gem:0}]",fd_fried_egg_sandwich
+30016,Black Coffee,8,0,K2CoffeeMachine1,,8,1,25,,12,,,,Food/breakfast/tex_black_coffee,"[{coin:300,gem:0}]",fd_black_coffee
+30017,Caesar salad,18,0,K2CuttingBoard1,,6,1,60,,12,,,"Lettuce,Toast",Food/breakfast/tex_caesar_salad,"[{coin:450,gem:0}]",fd_caesar_salad
+30018,Tomato cucumber salad,10,0,K2CuttingBoard1,,6,1,25,,12,,,"Tomato,Cucumber",Food/breakfast/tex_tomato_cucumber_salad,"[{coin:100,gem:0}]",fd_tomato_cucumber_salad
+30019,Smoked salmon cobb,16,0,K2CuttingBoard1,,6,1,45,,12,,,"Salmon,Poached egg",Food/breakfast/tex_smoked_salmon_cobb,"[{coin:5200,gem:0}]",fd_smoked_salmon_cobb
+30020,Roasted Tomatoes,12,0,K2Oven1,,6,1.5,30,,12,10,,"Tomato,Cheese",Food/breakfast/tex_roasted_tomatoes,"[{coin:1600,gem:0}]",fd_roasted_tomatoes
+30021,Toast,7,0,K2BreadMaker1,,6,1,20,,12,,,,Food/breakfast/tex_toast,"[{coin:400,gem:0}]",fd_toast
+30022,Bacon sandwiches,20,0,K2SandwichPlate1,,6,1,60,,12,9,,"Bacon,Toast",Food/breakfast/tex_bacon_sandwiches,"[{coin:450,gem:0}]",fd_bacon_sandwiches
+30023,Omelette,8,0,K2EggrollMachine1,,6,1,20,,12,,,,Food/breakfast/tex_omelette,"[{coin:1800,gem:0}]",fd_omelette
+30024,Avocado omelet salad,20,0,K2CuttingBoard1,,6,1,45,,12,,,"Omelette,Avocado",Food/breakfast/tex_avocado_omelet_salad,"[{coin:3900,gem:0}]",fd_avocado_omelet_salad
+30025,Bacon Benedict egg,30,0,K2BenedictBoard1,,6,1,55,,12,,,"Poached egg,Bacon",Food/breakfast/tex_bacon_eggs_benedict,"[{coin:5900,gem:0}]",fd_bacon_benedict_egg
+30026,Tomato Benedict egg,30,0,K2BenedictBoard1,,6,1,55,,12,,,"Poached egg,Tomato",Food/breakfast/tex_eggs_benedict_with_tomato,"[{coin:6100,gem:0}]",fd_tomato_benedict_egg
+30027,Avocado Bacon,12,0,K2Oven1,,6,1.5,30,,12,10,,"Avocado,Smoked meat",Food/breakfast/tex_avocado_bacon,"[{coin:4300,gem:0}]",fd_avocado_bacon
+30028,Waffle,12,0,K2Waffle2,,6,1,20,,12,,,,Food/breakfast/tex_waffle,"[{coin:1200,gem:0}]",fd_waffle
+30029,Strawberry Waffle,28,0,K2WaffleWorkTable2,,6,1,50,,12,,,"Waffle,Strawberry",Food/breakfast/tex_strawberry_waffle,"[{coin:4200,gem:0}]",fd_strawberry_waffle
+30030,Blueberry Waffle,28,0,K2WaffleWorkTable2,,6,1,50,,12,,,"Waffle,Blueberry",Food/breakfast/tex_blueberry_waffle,"[{coin:3200,gem:0}]",fd_blueberry_waffle
+30031,Chocolate Waffle,28,0,K2ChocolateFurnace2,,6,1,45,,12,,,Waffle,Food/breakfast/tex_chocolate_waffle,"[{coin:2800,gem:0}]",fd_chocolate_waffle
+30032,Juice,12,0,K2Blender2,,6,1,15,,12,,,,Food/breakfast/tex_juice,"[{coin:2800,gem:0}]",fd_juice
+30033,Potato cake,15,0,K2Fryer2,,6,1,20,,12,,,Raw potatocake,Food/breakfast/tex_potato_cake,"[{coin:3100,gem:0}]",fd_potato_cake
+30034,Tomato soup,15,0,K2StockPot2,,6,1,20,,12,,,Tomato,Food/breakfast/tex_tomato_soup,"[{coin:1400,gem:0}]",fd_tomato_soup
+30035,Strawberry pie,20,0,K2Oven2,,6,1,25,,12,,,"Strawberry,Pie crust",Food/breakfast/tex_strawberry_pie,"[{coin:8700,gem:0}]",fd_strawberry_pie
+30036,Blueberry pie,20,0,K2Oven2,,6,1,25,,12,,,"Blueberry,Pie crust",Food/breakfast/tex_blueberry_pie,"[{coin:2200,gem:0}]",fd_blueberry_pie
+30037,Oatmeal,15,0,K2StockPot2,,6,1,25,,12,,,Oatmeal_i,Food/breakfast/tex_oatmeal_porridge,"[{coin:3200,gem:0}]",fd_oatmeal
+30038,Milk corn,12,0,K2CornFlakeMachine2,,6,1,20,,12,,,,Food/breakfast/tex_milk_corn,"[{coin:2800,gem:0}]",fd_milk_corn
+30039,Strawberry milk corn,32,0,K2MilkWorkTable2,,6,1,50,,12,,,"Milk corn,Strawberry",Food/breakfast/tex_strawberry_milk,"[{coin:8800,gem:0}]",fd_strawberry_milk_corn
+30040,Blueberry milk corn,32,0,K2MilkWorkTable2,,6,1,50,,12,,,"Milk corn,Blueberry",Food/breakfast/tex_blueberry_milk,"[{coin:4300,gem:0}]",fd_blueberry_milk_corn
+30041,Chocolate milk corn,25,0,K2ChocolateFurnace2,,6,1,45,,12,,,Milk corn,Food/breakfast/tex_chocolate_milk,"[{coin:7600,gem:0}]",fd_chocolate_milk_corn
+30042,Muffin,12,0,K2MuffinMachine2,,6,1,20,,12,,,,Food/breakfast/tex_muffin,"[{coin:4200,gem:0}]",fd_muffin
+30043,Strawberry Muffin,35,0,K2MuffinWorkTable2,,6,1,50,,12,,,"Muffin,Strawberry",Food/breakfast/tex_strawberry_muffin,"[{coin:5500,gem:0}]",fd_strawberry_muffin
+30044,Banana Muffin,35,0,K2MuffinWorkTable2,,6,1,50,,12,,,"Muffin,Banana",Food/breakfast/tex_Banana_muffin,"[{coin:5300,gem:0}]",fd_banana_muffin
+30045,Chocolate Muffin,28,0,K2ChocolateFurnace2,,6,1,45,,12,,,Muffin,Food/breakfast/tex_chocolate_muffin,"[{coin:10600,gem:0}]",fd_chocolate_muffin
+30046,Baked Oatmeal,18,0,K2Oven2,,6,1,25,,12,,,"Oatmeal_i,Syrup",Food/breakfast/tex_baked_oatmeal,"[{coin:3000,gem:0}]",fd_baked_oatmeal
+30047,Baked ham,15,0,K2Fryer2,,6,1,20,,12,,,"Ham slices,Butter",Food/breakfast/tex_baked_ham,"[{coin:6400,gem:0}]",fd_baked_ham
+30048,Grilled chicken,18,0,K2BakingFurnace3,,6,1,20,,12,,,Chicken breast,Food/breakfast/tex_grilled_chicken,"[{coin:6000,gem:0}]",fd_grilled_chicken
+30049,Milkshake,18,0,K2MilkshakeMachine3,,6,1,18,,12,,,,Food/breakfast/tex_milkshake,"[{coin:4500,gem:0}]",fd_milkshake
+30050,Clam soup,22,0,K2Stewpan3,,6,1,22,,12,,,"Clam,Milk",Food/breakfast/tex_clam_soup,"[{coin:10200,gem:0}]",fd_clam_soup
+30051,Fried broccoli,18,0,K2SquarePan3,,6,1,20,,12,,,Broccoli,Food/breakfast/tex_fried_broccoli,"[{coin:3200,gem:0}]",fd_fried_broccoli
+30052,Grilled corn,18,0,K2Oven3,,6,1,22,,12,,,Corn,Food/breakfast/tex_grilled_corn,"[{coin:1800,gem:0}]",fd_grilled_corn
+30053,Chicken with tomato,35,0,K2CuttingBoard3,,6,1,45,,12,,,"Grilled chicken,Tomato",Food/breakfast/tex_chicken_with_tomato,"[{coin:9600,gem:0}]",fd_chicken_with_tomato
+30054,Chicken with broccoli,38,0,K2CuttingBoard3,,6,1,55,,12,,,"Grilled chicken,Fried broccoli",Food/breakfast/tex_chicken_with_broccoli,"[{coin:9200,gem:0}]",fd_chicken_with_broccoli
+30055,Chicken sandwich,35,0,K2WorkTable3,,6,1,45,,12,,,"Grilled chicken,Long bread",Food/breakfast/tex_chicken_sandwich,"[{coin:8300,gem:0}]",fd_chicken_sandwich
+30056,Cooked lobster,20,0,K2Steamer3,,6,1,18,,12,,,,Food/breakfast/tex_cooked_lobster,"[{coin:2200,gem:0}]",fd_cooked_lobster
+30057,Lobster with broccoli,42,0,K2ShrimpDish3,,6,1,55,,12,,,"Cooked lobster,Fried broccoli",Food/breakfast/tex_lobster_with_broccoli,"[{coin:6000,gem:0}]",fd_lobster_with_broccoli
+30058,Lobster with corn,42,0,K2ShrimpDish3,,6,1,55,,12,,,"Cooked lobster,Grilled corn",Food/breakfast/tex_lobster_with_corn,"[{coin:6500,gem:0}]",fd_lobster_with_corn
+30059,Lobster roll,38,0,K2WorkTable3,,6,1,40,,12,,,"Cooked lobster,Long bread",Food/breakfast/tex_lobster_roll,"[{coin:4500,gem:0}]",fd_lobster_roll
+30060,Baked potato,22,0,K2Oven3,,6,1,22,,12,,,Potato,Food/breakfast/tex_baked_potato,"[{coin:8200,gem:0}]",fd_baked_potato
+30061,Fried steak,22,0,K2Griddle3,,6,1,18,,12,,,Raw steak,Food/breakfast/tex_fried_steak,"[{coin:8800,gem:0}]",fd_fried_steak
+30062,Steak with broccoli,46,0,K2SteakPlate3,,6,1,50,,12,,,"Fried steak,Fried broccoli",Food/breakfast/tex_steak_with_broccoli,"[{coin:18000,gem:0}]",fd_steak_with_broccoli
+30063,Steak with tomato,42,0,K2SteakPlate3,,6,1,40,,12,,,"Fried steak,Tomato",Food/breakfast/tex_steak_with_tomato,"[{coin:13500,gem:0}]",fd_steak_with_tomato
+30064,Steak sandwich,42,0,K2WorkTable3,,6,1,40,,12,,,"Fried steak,Long bread",Food/breakfast/tex_steak_sandwich,"[{coin:16500,gem:0}]",fd_steak_sandwich
+30065,Lobster soup,25,0,K2Stewpan3,,6,1,24,,12,,,"Lobster,Milk",Food/breakfast/tex_lobster_soup,"[{coin:4800,gem:0}]",fd_lobster_soup

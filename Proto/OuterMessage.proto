@@ -144,21 +144,22 @@ message R2C_Login // IResponse
 	int64 GateId = 3;
 }
 
-message C2R_JoinGuild // IRequest
+//ResponseType G2C_JoinGuild
+message C2G_JoinGuild // IRequest
 {
 	int32 RpcId = 90;
 	int64 Id = 1;
 }
 
-message R2C_JoinGuild // IResponse
+message G2C_JoinGuild // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 }
 
-//ResponseType R2C_SearchGuild
-message C2R_SearchGuild // IRequest
+//ResponseType G2C_SearchGuild
+message C2G_SearchGuild // IRequest
 {
 	int32 RpcId = 90;
 	string Name = 1;
@@ -170,7 +171,7 @@ message C2R_SearchGuild // IRequest
 	bool IsNewSearch = 7;
 }
 
-message R2C_SearchGuild // IResponse
+message G2C_SearchGuild // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
@@ -178,16 +179,50 @@ message R2C_SearchGuild // IResponse
 	repeated SearchGuildResult Results = 1;
 }
 
-message R2C_GuildUpdate // IResponse
+//ResponseType G2C_CreateGuild
+message C2G_CreateGuild //IRequest
+{
+	int32 RpcId = 90;
+	string Name = 1;
+	int32 Frame = 2;
+	int32 Inside = 3;
+	bool IsPublic = 4;
+	int16 Language = 5;
+	string Desc = 6;
+	int32 MinLevel = 7;
+}
+
+message G2C_CreateGuild //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_GuildUpdate
+message C2G_GuildUpdate //IRequest
+{
+	int32 RpcId = 90;
+	string Name = 2;
+	int32 Frame = 3;
+	int32 Inside = 4;
+	bool IsPublic = 5;
+	int16 Language = 6;
+	string Desc = 7;
+	int32 MinLevel = 8;
+	string OwnerId = 9;
+}
+
+message G2C_GuildUpdate // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 	int64 Id = 1;
 	string Name = 2;
-	string Frame = 3;
-	string Outer = 4;
-	int32 MaxLevel = 5;
+	int32 Frame = 3;
+	int32 Inside = 4;
+	uint32 CreateTime = 5;
 	bool IsPublic = 6;
 	int16 Language = 7;
 	string Desc = 8;
@@ -195,7 +230,6 @@ message R2C_GuildUpdate // IResponse
 	string OwnerId = 10;
 	repeated MemberInfo Members = 11;
 	repeated ApplicationInfo ApplicationList = 12;
-	uint32 CreateTime = 13;
 }
 
 message ApplicationInfo
@@ -204,7 +238,8 @@ message ApplicationInfo
 	string Id = 2;
 }
 
-message MemberInfo{
+message MemberInfo
+{
 	string Id = 1;
 	string Name = 2;
 	int32 Level = 3;

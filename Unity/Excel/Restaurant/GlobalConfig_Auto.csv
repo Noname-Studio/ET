@@ -1,0 +1,20 @@
+﻿Id,备注,具体参数
+Id,*Remark,Value
+string,string,string
+COUNT_FREE_STAR_IN_GAME,每日低保,2
+FREE_STAR_RANDOM_MIN,小游戏-每日随机的最小值,8
+FREE_STAR_RANDOM_MAX,小游戏-每日随机的最大值 不包含,11
+ID_START_FESTIVAL_MAP,节日地图的起始ID 101开始,100
+FECTH_TIME_INTER,1个小时主动获取一次,3600
+CharacterTopPart,角色换装上衣部件,"xiong,yao,upperarm,leftarm"
+CharacterSkirtPart,角色换装围裙部件,"skirtfrt,skirtdown,skirtback"
+CharacterBottomPart,角色换装下装部件,"thrighl,legl,thrighr,legr"
+CharacterShoesPart,角色换装鞋子部件,"footr,bootr,shoetier,shoetiel,footl,bootl"
+CharacterEarringPart,角色换装耳环部件,earring
+CharacterHairPart,角色换装头发部件,"frthair,hair,hairtail,hairback,hairshadow"
+CharacterFacePart,角色换装脸型,face
+CharacterEyebrowPart,角色换装眉毛,"eyebrowl,eyebrowr"
+CharacterEyeballPart,角色换装瞳孔,"eyeball,eyeballr,eyel,eyer,eyeuplbase,eyeuprbase,eyeupl,eyeupr,eyedownl,eyedownr"
+CharacterRougePart,角色换装腮红,rouge
+CharacterMouthPart,角色换装嘴唇,"mouth,mouthbase"
+CharacterNosePart,角色换装鼻子,nose

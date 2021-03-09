@@ -1,0 +1,102 @@
+{
+  "10001": {
+    "Id": 10001,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame1"
+  },
+  "10002": {
+    "Id": 10002,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame2"
+  },
+  "10003": {
+    "Id": 10003,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame3"
+  },
+  "10004": {
+    "Id": 10004,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame4"
+  },
+  "10005": {
+    "Id": 10005,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame5"
+  },
+  "10006": {
+    "Id": 10006,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame6"
+  },
+  "10007": {
+    "Id": 10007,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame7"
+  },
+  "10008": {
+    "Id": 10008,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame8"
+  },
+  "10009": {
+    "Id": 10009,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame9"
+  },
+  "10010": {
+    "Id": 10010,
+    "Type": "Frame",
+    "Url": "ui://Guild/Frame10"
+  },
+  "20001": {
+    "Id": 20001,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside1"
+  },
+  "20002": {
+    "Id": 20002,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside2"
+  },
+  "20003": {
+    "Id": 20003,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside3"
+  },
+  "20004": {
+    "Id": 20004,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside4"
+  },
+  "20005": {
+    "Id": 20005,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside5"
+  },
+  "20006": {
+    "Id": 20006,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside6"
+  },
+  "20007": {
+    "Id": 20007,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside7"
+  },
+  "20008": {
+    "Id": 20008,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside8"
+  },
+  "20009": {
+    "Id": 20009,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside9"
+  },
+  "20010": {
+    "Id": 20010,
+    "Type": "Inside",
+    "Url": "ui://Guild/Inside10"
+  }
+}

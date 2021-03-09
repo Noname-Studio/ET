@@ -14,7 +14,7 @@
         [MenuItem("Tools/Test")]
         private static void Test()
         {
-            var path = "Assets/Res/DB/Kitchen/Levels/1.asset";
+            var path = "Assets/Res/Config/Kitchen/Levels/1.asset";
             var fileName = Path.GetFileNameWithoutExtension(path);
                 var dir = Path.GetDirectoryName(path);
         }
@@ -31,7 +31,7 @@
             var tree = new OdinMenuTree(false);
             tree.DefaultMenuStyle.IconSize = 28.00f;
             tree.Config.DrawSearchToolbar = true;
-            tree.Add("关卡全局配置",AssetDatabase.LoadAssetAtPath<KitchenConfigProperty>( "Assets/Res/DB/Kitchen/KitchenConfig.asset"));
+            tree.Add("关卡全局配置",AssetDatabase.LoadAssetAtPath<KitchenConfigProperty>( "Assets/Res/Config/Kitchen/KitchenConfig.asset"));
             Dictionary<string,int> dupFilter = new Dictionary<string,int>();
 
             foreach (var node in RestaurantKey.All)
@@ -39,7 +39,7 @@
                 tree.Add("关卡/" + node.Key, AssetDatabase.LoadAssetAtPath<EditorLevelGenerator>($"Assets/Editor/LevelEditor/{node.Key}LevelGeneratorAssets.asset"));
             }
             
-            foreach (string node in Directory.GetFiles(Application.dataPath + "/Res/DB/Kitchen/Levels/", "*.asset", SearchOption.TopDirectoryOnly))
+            foreach (string node in Directory.GetFiles(Application.dataPath + "/Res/Config/Kitchen/Levels/", "*.asset", SearchOption.TopDirectoryOnly))
             {
                 var property = AssetDatabase.LoadAssetAtPath<LevelProperty>(PathUtils.FullPathToUnityPath(node));
                 if (property == null)
@@ -65,7 +65,7 @@
             }
 
             
-            tree.AddAllAssetsAtPath("食物", "Assets/Res/DB/Kitchen/Foods/", typeof(FoodProperty), true, true).AddIcons(t1=>
+            tree.AddAllAssetsAtPath("食物", "Assets/Res/Config/Kitchen/Foods/", typeof(FoodProperty), true, true).AddIcons(t1=>
             {
                 var value = t1.Value as FoodProperty;
                 if (value != null)
@@ -76,7 +76,7 @@
                 return null;
             }).SortMenuItemsByName();
 
-            tree.AddAllAssetsAtPath("食材", "Assets/Res/DB/Kitchen/Ingredient/", typeof(IngredientProperty), true, true).AddIcons(t1=>
+            tree.AddAllAssetsAtPath("食材", "Assets/Res/Config/Kitchen/Ingredient/", typeof(IngredientProperty), true, true).AddIcons(t1=>
             {
                 var value = t1.Value as IngredientProperty;
                 if (value != null)
@@ -87,7 +87,7 @@
             });
 
             dupFilter.Clear();
-            foreach (string node in Directory.GetFiles(Application.dataPath + "/Res/DB/Kitchen/Cookwares/", "*", SearchOption.TopDirectoryOnly))
+            foreach (string node in Directory.GetFiles(Application.dataPath + "/Res/Config/Kitchen/Cookwares/", "*", SearchOption.TopDirectoryOnly))
             {
                 var property = AssetDatabase.LoadAssetAtPath<CookwareProperty>(PathUtils.FullPathToUnityPath(node));
                 if (property == null)
@@ -114,7 +114,7 @@
                 }
             }
 
-            tree.AddAllAssetsAtPath("顾客", "Assets/Res/DB/Kitchen/Customer/", typeof(CustomerProperty), true, true).AddIcons(t1 =>
+            tree.AddAllAssetsAtPath("顾客", "Assets/Res/Config/Kitchen/Customer/", typeof(CustomerProperty), true, true).AddIcons(t1 =>
             {
                 var value = t1.Value as CustomerProperty;
                 if (value != null)
@@ -166,7 +166,7 @@
 
                 if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建关卡")))
                 {
-                    ScriptableObjectCreator.ShowDialog<LevelProperty>("Assets/Res/DB/Kitchen/Levels", obj =>
+                    ScriptableObjectCreator.ShowDialog<LevelProperty>("Assets/Res/Config/Kitchen/Levels", obj =>
                     {
                         base.TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                     });
@@ -174,7 +174,7 @@
 
                 if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建食物")))
                 {
-                    ScriptableObjectCreator.ShowDialog<FoodProperty>("Assets/Res/DB/Kitchen/Foods", obj =>
+                    ScriptableObjectCreator.ShowDialog<FoodProperty>("Assets/Res/Config/Kitchen/Foods", obj =>
                     {
                         base.TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                     });
@@ -182,7 +182,7 @@
                 
                 if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建食材")))
                 {
-                    ScriptableObjectCreator.ShowDialog<IngredientProperty>("Assets/Res/DB/Kitchen/Ingredient", obj =>
+                    ScriptableObjectCreator.ShowDialog<IngredientProperty>("Assets/Res/Config/Kitchen/Ingredient", obj =>
                     {
                         base.TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                     });
@@ -190,7 +190,7 @@
                 
                 if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建厨具")))
                 {
-                    ScriptableObjectCreator.ShowDialog<CookwareProperty>("Assets/Res/DB/Kitchen/Cookwares", obj =>
+                    ScriptableObjectCreator.ShowDialog<CookwareProperty>("Assets/Res/Config/Kitchen/Cookwares", obj =>
                     {
                         base.TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                     });
@@ -198,7 +198,7 @@
                 
                 if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建顾客")))
                 {
-                    ScriptableObjectCreator.ShowDialog<CustomerProperty>("Assets/Res/DB/Kitchen/Customer", obj =>
+                    ScriptableObjectCreator.ShowDialog<CustomerProperty>("Assets/Res/Config/Kitchen/Customer", obj =>
                     {
                         base.TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                     });

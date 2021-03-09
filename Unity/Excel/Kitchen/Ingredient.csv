@@ -1,0 +1,89 @@
+﻿食材ID,食材Key值,食物ID,价格,纹理名称,多语言Key,快餐车显示位置,早餐厅显示位置
+Id,Key,food_id,price,texture,dis_name_key,dp_food_truck,dp_breakfast
+int,string,int,int,string,string,"Dictionary<string,string>","Dictionary<string,string>"
+20001,Egg,,2,Ingredient/tex_egg,ing_egg,,"1-120:ing13,default:ing4,"
+20002,Sausage,,4,Ingredient/tex_sausage,ing_sausage,default:ing4,
+20003,Lettuce,,2,Ingredient/tex_lettuce,ing_lettuce,default:ing2,"1-120:ing9,default:ing4,"
+20004,Tomato,,3,Ingredient/tex_tomato,ing_tomato,default:ing3,"241-360:ing1,121-240:ing8,1-120:ing5,default:ing4,"
+20005,Hotdogbuns,,3,Ingredient/tex_hotdog_buns,ing_hotdogbuns,default:ing7,
+20006,Meat pie,,5,Ingredient/tex_meat_pie,ing_meat_pie,default:ing6,
+20007,Potato,,3,Ingredient/tex_potato,ing_potato,default:ing8,"241-360:ing5,121-240:ing1,default:ing4,"
+20008,Burgerbuns,,2,Ingredient/tex_burger_buns,ing_burgerbuns,default:ing1,
+20009,Ketchup,,2,Ingredient/tex_keychup,ing_ketchup,,
+20010,Milk,,2,Ingredient/tex_milk,ing_milk,,"241-360:ing8,default:ing4,"
+20011,Smoked meat,,4,Ingredient/tex_smoked_meat,ing_smoked_meat,,"1-120:ing11,default:ing11,"
+20012,Ham slices,,5,Ingredient/tex_ham_slices,ing_ham_slices,,"121-240:ing8,default:ing4,"
+20013,Orange,,3,Ingredient/tex_orange,ing_orange,,
+20014,Blueberry,,3,Ingredient/tex_blueberry,ing_blueberry,,"121-240:ing4,default:ing4,"
+20015,Strawberry,,3,Ingredient/tex_strawberry,ing_strawberry,,"121-240:ing2,default:ing4,"
+20016,Banana,,3,Ingredient/tex_banana,ing_banana,,"121-240:ing5,default:ing4,"
+20017,Kiwi,,3,Ingredient/tex_kiwi,ing_kiwi,,
+20018,Cheese,,3,Ingredient/tex_cheese,ing_cheese,,"1-120:ing4,default:ing11,"
+20019,Flour,,2,Ingredient/tex_flour,ing_flour,,
+20020,Oatmeal_i,,4,Ingredient/tex_oatmeal,ing_oatmeal_i,,"121-240:ing9,default:ing4,"
+20021,Yeaset,,2,Ingredient/tex_yeaset,ing_yeaset,,
+20022,Asparagus,,3,Ingredient/tex_asparagus,ing_asparagus,,"1-120:ing1,default:ing11,"
+20023,Sliced Bread,,4,Ingredient/tex_sliced_bread,ing_sliced_bread,,
+20024,Chocolate,,5,Ingredient/tex_chocolate,ing_chocolate,,
+20025,Corn crepes,,4,Ingredient/tex_corn_crepes,ing_corn_crepes,,
+20026,Butter,,3,Ingredient/tex_butter,ing_butter,,"241-360:ing5,121-240:ing11,default:ing4,"
+20027,Onion,,5,Ingredient/tex_onion,ing_onion,,
+20028,Shrimp,,5,Ingredient/tex_shrimp,ing_shrimp,,
+20029,Salmon,,5,Ingredient/tex_smoked_salmon,ing_salmon,,"1-120:ing9,default:ing11,"
+20030,Cucumber,,5,Ingredient/tex_cucumber,ing_cucumber,,
+20031,Avocado,,5,Ingredient/tex_avocado,ing_avocado,,"1-120:ing8,default:ing11,"
+20032,Pie crust,,5,Ingredient/tex_pie_crust,ing_pie_crust,,"121-240:ing1,default:ing4,"
+20033,Raw potatocake,,5,Ingredient/tex_raw_patatocake,ing_raw_potatocake,,"121-240:ing11,default:ing4,"
+20034,Syrup,,5,Ingredient/tex_syrup,ing_syrup,,"121-240:ing13,default:ing4,"
+20035,Chicken breast,,5,Ingredient/tex_chicken_breast,ing_chicken_breast,,"241-360:ing1,default:ing4,"
+20036,Clam,,5,Ingredient/tex_clam,ing_clam,,"241-360:ing6,default:ing4,"
+20037,Corn,,5,Ingredient/tex_corn,ing_corn,,"241-360:ing3,default:ing4,"
+20038,Broccoli,,5,Ingredient/tex_broccoli,ing_broccoli,,"241-360:ing3,default:ing4,"
+20039,Long bread,,5,Ingredient/tex_long_bread,ing_long_bread,,"241-360:ing4,default:ing4,"
+20040,Lobster,,5,Ingredient/tex_lobster,ing_lobster,,"241-360:ing8,default:ing4,"
+20041,Raw steak,,5,Ingredient/tex_raw_steak,ing_raw_steak,,"241-360:ing2,default:ing4,"
+20042,Raw croissants,,5,Ingredient/tex_raw_croissants,ing_raw_croissants,,
+20043,Raw squid,,5,Ingredient/tex_raw_squid,ing_raw_squid,,
+20044,Chocolate sauce,,5,Ingredient/tex_chocolate_sauce,ing_chocolate_sauce,,
+20045,Ice,,5,Ingredient/tex_ice,ing_ice,,
+20046,Cake batter,,5,Ingredient/tex_cake_batter,ing_cake_batter,,
+20047,Raisins,,5,Ingredient/tex_raisins,ing_raisins,,
+20048,Lemon,,5,Ingredient/tex_lemon,ing_lemon,,
+20049,Raw cinnamon rolls,,5,Ingredient/tex_raw_cinnamon_rolls,ing_raw_cinnamon_rolls,,
+20050,Donuts,,5,Ingredient/tex_donuts,ing_donuts,,
+20051,Jam,,5,Ingredient/tex_jam,ing_jam,,
+20052,Mushroom slices,,5,Ingredient/tex_mushroom_slices,ing_mushroom_slices,,
+20053,Corn kernels,,5,Ingredient/tex_corn_kernels,ing_corn_kernels,,
+20054,Cherry Tomatoes,,5,Ingredient/tex_cherry_tomatoes,ing_cherry_tomatoes,,
+20055,Pancakes,,5,Ingredient/tex_pancakes,ing_pancakes,,
+20056,Cupcakes,,5,Ingredient/tex_cupcakes,ing_cupcakes,,
+20057,Almond,,5,Ingredient/tex_almond,ing_almond,,
+20058,Pecan,,5,Ingredient/tex_pecan,ing_pecan,,
+20059,Cream,,5,Ingredient/tex_cream,ing_cream,,
+20060,Apple,,5,Ingredient/tex_apple,ing_apple,,
+20061,Pineapple,,5,Ingredient/tex_pineapple,ing_pineapple,,
+20062,Jelly beans,,5,Ingredient/tex_jelly_beans,ing_jelly_beans,,
+20063,Candy bar,,5,Ingredient/tex_candy_bar,ing_candy_bar,,
+20064,Turkey,,5,Ingredient/tex_turkey,ing_turkey,,
+20065,Cranberry sauce,,5,Ingredient/tex_cranberry_sauce,ing_cranberry_sauce,,
+20066,Carrot,,5,Ingredient/tex_carrot,ing_carrot,,
+20067,Raw lasagna,,5,Ingredient/tex_raw_lasagna,ing_raw_lasagna,,
+20068,Raw pizza,,5,Ingredient/tex_raw_pizza,ing_raw_pizza,,
+20069,Dumplings,,5,Ingredient/tex_dumplings,ing_dumplings,,
+20070,Cooked shrimp,,5,Ingredient/tex_cooked_shrimp,ing_cooked_shrimp,,
+20071,Grilled asparagus,,5,Ingredient/tex_grilled_asparagus,ing_grilled_asparagus,,
+20072,Roast eggplant,,5,Ingredient/tex_roast_eggplant,ing_roast_eggplant,,
+20073,Raw tempura,,5,Ingredient/tex_raw_tempura,ing_raw_tempura,,
+20074,Dough,,5,Ingredient/tex_pancakes,ing_dough,,
+20075,Raw tofu ball,,5,Ingredient/tex_raw_tofu_ball,ing_raw_tofu_ball,,
+20076,Red bean paste,,5,Ingredient/tex_red_bean_paste,ing_red_bean_paste,,
+20077,Roast beef,,5,Ingredient/tex_roast_beef,ing_roast_beef,,
+20078,Shredded vegetables,,5,Ingredient/tex_shredded_vegetables,ing_shredded_vegetables,,
+20079,Seaweed,,5,Ingredient/tex_seaweed,ing_seaweed,,
+20080,Sashimi,,5,Ingredient/tex_smoked_salmon,ing_sashimi,,
+20081,Prunes,,5,Ingredient/tex_prunes,ing_prunes,,
+20082,Red pepper,,5,Ingredient/tex_red_peppe,ing_red_pepper,,
+20083,Have bread,,5,Ingredient/tex_have_bread,ing_have_bread,,
+20084,Tripe,,5,Ingredient/tex_tripe,ing_tripe,,
+20085,Mayonnaise,,5,Ingredient/tex_mayonnaise,ing_mayonnaise,,
+20086,Seasoning,,5,Ingredient/tex_seasoning,ing_seasoning,,
