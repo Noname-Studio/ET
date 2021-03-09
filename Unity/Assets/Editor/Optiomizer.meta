@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity/Assets/Editor/Optiomizer.meta
 guid: 4ec4f0926b58fed49a22f0cb41cc741b
+=======
+guid: daf158bc563a309438e4f90016ac2761
+>>>>>>> remotes/xiongmao/master:Unity/Assets/Editor/RecastNavDataExporter.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
