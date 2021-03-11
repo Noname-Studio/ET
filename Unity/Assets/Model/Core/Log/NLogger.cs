@@ -1,4 +1,5 @@
 ﻿#if NOT_CLIENT
+using System;
 using NLog;
 
 namespace ET
@@ -19,7 +20,9 @@ namespace ET
 
         public void Warning(string message)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             this.logger.Warn(message);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Info(string message)
@@ -34,7 +37,9 @@ namespace ET
 
         public void Error(string message)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             this.logger.Error(message);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Fatal(string message)
@@ -49,7 +54,9 @@ namespace ET
 
         public void Warning(string message, params object[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             this.logger.Warn(message, args);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Info(string message, params object[] args)
@@ -64,7 +71,9 @@ namespace ET
 
         public void Error(string message, params object[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             this.logger.Error(message, args);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void Fatal(string message, params object[] args)

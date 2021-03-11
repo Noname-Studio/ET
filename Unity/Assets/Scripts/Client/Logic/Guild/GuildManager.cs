@@ -6,7 +6,7 @@ public class GuildManager : Singleton<GuildManager>
     /// <summary>
     /// 公会的大部分信息的封装
     /// </summary>
-    public G2C_GuildUpdate Data;
+    public M2C_GuildUpdate Data;
 
     public bool IsJoined()
     {

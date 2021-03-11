@@ -16,7 +16,7 @@ namespace ET
 			// 向gate请求一个key,客户端可以拿着这个key连接gate
 			G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey) await ActorMessageSenderComponent.Instance.Call(
 				config.SceneId, new R2G_GetLoginKey() {Account = request.Account});
-
+			Log.Debug("收到了Gatekey:" + g2RGetLoginKey.Key);
 			response.Address = config.OuterIPPort.ToString();
 			response.Key = g2RGetLoginKey.Key;
 			response.GateId = g2RGetLoginKey.GateId;

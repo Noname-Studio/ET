@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace ET
 {
+    //我们先通过Relam获取Gate服务器(即网关服务器)通过网关服务器.我们做登录验证.判断玩家的登录是否合法.然后我们在进入Map即逻辑服务器.
     public static class LoginHelper
     {
         public static async UniTask Login(Scene zoneScene, string address, string account)
@@ -26,6 +27,7 @@ namespace ET
 
                 Log.Info("登陆gate成功!");
 
+                //G2C_EnterMap g2CEnterMap = await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
                 //await Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
             }
             catch (Exception e)

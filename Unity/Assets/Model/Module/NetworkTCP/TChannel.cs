@@ -249,6 +249,7 @@ namespace ET
 
 			if (e.BytesTransferred == 0)
 			{
+				//断开连接都时候字节都是0.所以不要打印
 				this.OnError(ErrorCode.ERR_PeerDisconnect);
 				return;
 			}

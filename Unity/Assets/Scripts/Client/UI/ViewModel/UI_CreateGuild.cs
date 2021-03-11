@@ -19,13 +19,13 @@ namespace Client.UI.ViewModel
         private Combo_SelectRestaurant SelectRestaurant { get; }
         private Combo_SelectLanguage SelectLanguage { get; }
         private UI_NotJoinGuild mParent { get; }
-        private C2G_CreateGuild CreateGuildRequest { get; }
+        private C2M_CreateGuild CreateGuildRequest { get; }
         public UI_CreateGuild(View_ChuangJianGongHui view,UI_NotJoinGuild parent)
         {
             this.View = view;
             this.mParent = parent;
             mSession = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
-            this.CreateGuildRequest = new C2G_CreateGuild();
+            this.CreateGuildRequest = new C2M_CreateGuild();
             this.NameInput = new NameInput(this.View.UnionName);
             this.SelectRestaurant = new Combo_SelectRestaurant(this.View.UnionRestSelect);
             this.SelectLanguage = new Combo_SelectLanguage(this.View.LangSelect);

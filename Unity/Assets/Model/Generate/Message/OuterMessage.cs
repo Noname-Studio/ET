@@ -295,10 +295,10 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_JoinGuild))]
-	[Message(OuterOpcode.C2G_JoinGuild)]
+	[ResponseType(typeof(M2C_JoinGuild))]
+	[Message(OuterOpcode.C2M_JoinGuild)]
 	[ProtoContract]
-	public partial class C2G_JoinGuild: IRequest
+	public partial class C2M_JoinGuild: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -308,9 +308,9 @@ namespace ET
 
 	}
 
-	[Message(OuterOpcode.G2C_JoinGuild)]
+	[Message(OuterOpcode.M2C_JoinGuild)]
 	[ProtoContract]
-	public partial class G2C_JoinGuild: IResponse
+	public partial class M2C_JoinGuild: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -323,10 +323,10 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_SearchGuild))]
-	[Message(OuterOpcode.C2G_SearchGuild)]
+	[ResponseType(typeof(M2C_SearchGuild))]
+	[Message(OuterOpcode.C2M_SearchGuild)]
 	[ProtoContract]
-	public partial class C2G_SearchGuild: IRequest
+	public partial class C2M_SearchGuild: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -352,11 +352,14 @@ namespace ET
 		[ProtoMember(7)]
 		public bool IsNewSearch { get; set; }
 
+		[ProtoMember(8)]
+		public int Cursor { get; set; }
+
 	}
 
-	[Message(OuterOpcode.G2C_SearchGuild)]
+	[Message(OuterOpcode.M2C_SearchGuild)]
 	[ProtoContract]
-	public partial class G2C_SearchGuild: IResponse
+	public partial class M2C_SearchGuild: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -370,12 +373,15 @@ namespace ET
 		[ProtoMember(1)]
 		public List<SearchGuildResult> Results = new List<SearchGuildResult>();
 
+		[ProtoMember(2)]
+		public int TotalPage { get; set; }
+
 	}
 
-	[ResponseType(typeof(G2C_CreateGuild))]
-	[Message(OuterOpcode.C2G_CreateGuild)]
+	[ResponseType(typeof(M2C_CreateGuild))]
+	[Message(OuterOpcode.C2M_CreateGuild)]
 	[ProtoContract]
-	public partial class C2G_CreateGuild: IRequest
+	public partial class C2M_CreateGuild: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -403,9 +409,9 @@ namespace ET
 
 	}
 
-	[Message(OuterOpcode.G2C_CreateGuild)]
+	[Message(OuterOpcode.M2C_CreateGuild)]
 	[ProtoContract]
-	public partial class G2C_CreateGuild: IResponse
+	public partial class M2C_CreateGuild: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -418,10 +424,10 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(G2C_GuildUpdate))]
-	[Message(OuterOpcode.C2G_GuildUpdate)]
+	[ResponseType(typeof(M2C_GuildUpdate))]
+	[Message(OuterOpcode.C2M_GuildUpdate)]
 	[ProtoContract]
-	public partial class C2G_GuildUpdate: IRequest
+	public partial class C2M_GuildUpdate: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -452,9 +458,9 @@ namespace ET
 
 	}
 
-	[Message(OuterOpcode.G2C_GuildUpdate)]
+	[Message(OuterOpcode.M2C_GuildUpdate)]
 	[ProtoContract]
-	public partial class G2C_GuildUpdate: IResponse
+	public partial class M2C_GuildUpdate: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }

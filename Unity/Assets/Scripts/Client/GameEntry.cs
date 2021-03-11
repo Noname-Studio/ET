@@ -18,6 +18,12 @@ public class GameEntry : MonoBehaviour
 {
     void Start()
     {
+        //Todo 先放在这里
+        {
+            if (Application.isEditor)
+                Application.runInBackground = true;
+        }
+
         DoProcess();
     }
     

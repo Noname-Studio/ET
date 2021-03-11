@@ -195,9 +195,11 @@
      <Compile Include="Assets\Model\Module\UnityWebRequest\UnityWebRequestAsync.cs" />
      <Compile Include="Assets\Model\Module\UnityWebRequest\UnityWebRequestRenewalAsync.cs" />
      <Compile Include="Assets\Model\Session\SessionComponent.cs" />
+     <Compile Include="Assets\Model\Unit\MoveComponent.cs" />
      <Compile Include="Assets\Model\Unit\TurnComponent.cs" />
      <Compile Include="Assets\Model\Unit\Unit.cs" />
      <Compile Include="Assets\Model\Unit\UnitComponent.cs" />
+     <Compile Include="Assets\Model\Unit\UnitPathComponent.cs" />
      <None Include="Assets\Model\Unity.Model.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

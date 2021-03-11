@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Model.Module.DB.ActualTable;
 
 namespace ET
 {
-	public class PlayerComponentSystem : AwakeSystem<PlayerComponent>
+	public class Data_PlayerInfoComponentSystem : AwakeSystem<PlayerComponent>
 	{
 		public override void Awake(PlayerComponent self)
 		{
@@ -15,23 +16,23 @@ namespace ET
 	{
 		public static PlayerComponent Instance { get; private set; }
 
-		public Player MyPlayer;
+		public Data_PlayerInfo MyData_PlayerInfo;
 		
-		private readonly Dictionary<long, Player> idPlayers = new Dictionary<long, Player>();
+		private readonly Dictionary<long, Data_PlayerInfo> idPlayers = new Dictionary<long, Data_PlayerInfo>();
 
 		public void Awake()
 		{
 			Instance = this;
 		}
 		
-		public void Add(Player player)
+		public void Add(Data_PlayerInfo Data_PlayerInfo)
 		{
-			this.idPlayers.Add(player.Id, player);
+			this.idPlayers.Add(Data_PlayerInfo.Id, Data_PlayerInfo);
 		}
 
-		public Player Get(long id)
+		public Data_PlayerInfo Get(long id)
 		{
-			this.idPlayers.TryGetValue(id, out Player gamer);
+			this.idPlayers.TryGetValue(id, out Data_PlayerInfo gamer);
 			return gamer;
 		}
 
@@ -48,7 +49,7 @@ namespace ET
 			}
 		}
 
-		public Player[] GetAll()
+		public Data_PlayerInfo[] GetAll()
 		{
 			return this.idPlayers.Values.ToArray();
 		}
@@ -62,9 +63,9 @@ namespace ET
 			
 			base.Dispose();
 
-			foreach (Player player in this.idPlayers.Values)
+			foreach (Data_PlayerInfo Data_PlayerInfo in this.idPlayers.Values)
 			{
-				player.Dispose();
+				Data_PlayerInfo.Dispose();
 			}
 
 			Instance = null;

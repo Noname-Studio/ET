@@ -66,9 +66,11 @@
      <Compile Include="Assets\Hotfix\Scene\MapHelper.cs" />
      <Compile Include="Assets\Hotfix\Session\SessionComponentSystem.cs" />
      <Compile Include="Assets\Hotfix\Unit\M2C_CreateUnitsHandler.cs" />
+     <Compile Include="Assets\Hotfix\Unit\MoveComponentSystem.cs" />
      <Compile Include="Assets\Hotfix\Unit\TurnComponentSystem.cs" />
      <Compile Include="Assets\Hotfix\Unit\UnitComponent.cs" />
      <Compile Include="Assets\Hotfix\Unit\UnitFactory.cs" />
+     <Compile Include="Assets\Hotfix\Unit\UnitPathComponentSystem.cs" />
      <None Include="Assets\Hotfix\Unity.Hotfix.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

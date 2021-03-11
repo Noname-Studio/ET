@@ -91,6 +91,7 @@
      <Compile Include="Assets\Editor\Optiomizer\StorySceneFBXOptiomizer.cs" />
      <Compile Include="Assets\Editor\Proto2CsEditor\InnerProto2CS.cs" />
      <Compile Include="Assets\Editor\Proto2CsEditor\Proto2CSEditor.cs" />
+     <Compile Include="Assets\Editor\RecastNavDataExporter\NavMeshExporter.cs" />
      <Compile Include="Assets\Editor\ReferenceCollectorEditor\ReferenceCollectorEditor.cs" />
      <Compile Include="Assets\Editor\RsyncEditor\RsyncConfig.cs" />
      <Compile Include="Assets\Editor\RsyncEditor\RsyncEditor.cs" />

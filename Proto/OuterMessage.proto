@@ -144,22 +144,22 @@ message R2C_Login // IResponse
 	int64 GateId = 3;
 }
 
-//ResponseType G2C_JoinGuild
-message C2G_JoinGuild // IRequest
+//ResponseType M2C_JoinGuild
+message C2M_JoinGuild // IRequest
 {
 	int32 RpcId = 90;
 	int64 Id = 1;
 }
 
-message G2C_JoinGuild // IResponse
+message M2C_JoinGuild // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 }
 
-//ResponseType G2C_SearchGuild
-message C2G_SearchGuild // IRequest
+//ResponseType M2C_SearchGuild
+message C2M_SearchGuild // IRequest
 {
 	int32 RpcId = 90;
 	string Name = 1;
@@ -169,18 +169,20 @@ message C2G_SearchGuild // IRequest
 	int32 TimeZone = 5;
 	int32 MaxNum = 6;
 	bool IsNewSearch = 7;
+	int32 Cursor = 8;
 }
 
-message G2C_SearchGuild // IResponse
+message M2C_SearchGuild // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 	repeated SearchGuildResult Results = 1;
+	int32 TotalPage = 2;
 }
 
-//ResponseType G2C_CreateGuild
-message C2G_CreateGuild //IRequest
+//ResponseType M2C_CreateGuild
+message C2M_CreateGuild //IRequest
 {
 	int32 RpcId = 90;
 	string Name = 1;
@@ -192,15 +194,15 @@ message C2G_CreateGuild //IRequest
 	int32 MinLevel = 7;
 }
 
-message G2C_CreateGuild //IResponse
+message M2C_CreateGuild //IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 }
 
-//ResponseType G2C_GuildUpdate
-message C2G_GuildUpdate //IRequest
+//ResponseType M2C_GuildUpdate
+message C2M_GuildUpdate //IRequest
 {
 	int32 RpcId = 90;
 	string Name = 2;
@@ -213,7 +215,7 @@ message C2G_GuildUpdate //IRequest
 	string OwnerId = 9;
 }
 
-message G2C_GuildUpdate // IResponse
+message M2C_GuildUpdate // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
