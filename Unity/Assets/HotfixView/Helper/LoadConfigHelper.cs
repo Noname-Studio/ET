@@ -9,7 +9,7 @@ namespace ET
     {
         public static void LoadAllConfigBytes(Dictionary<string, byte[]> output)
         {
-            Dictionary<string, List<UnityEngine.Object>> keys = AssetsKit.Inst.LoadAllSync("Config/Server");
+            Dictionary<string, List<UnityEngine.Object>> keys = AssetsKit.Inst.LoadAllSync("Config/Server" + AssetsConfig.Suffix);
 
             foreach (var kv in keys)
             {

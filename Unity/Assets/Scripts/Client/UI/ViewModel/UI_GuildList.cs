@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using ET;
 using FairyGUI;
+using RestaurantPreview.Config;
 using TheGuild;
 
 namespace Client.UI.ViewModel
@@ -15,23 +17,36 @@ namespace Client.UI.ViewModel
         private Session Session;
         private View_GongHuiLieBiao View;
         private UI_NotJoinGuild Parent;
+        private int Cursor { get; set; } = 1;
         public UI_GuildList(View_GongHuiLieBiao guildList,UI_NotJoinGuild parent)
         {
             View = guildList;
             Parent = parent;
         }
-        
-        public async void OnEnable()
+
+        public async UniTask Init()
         {
             InitList();
+            this.View.Search.onClick.Add(Search_OnClick);
+
+            await FetchGuildList();
+            
+            RefreshList();
+        }
+
+        private void Search_OnClick()
+        {
+            FetchGuildList();
+        }
+
+        private async UniTask FetchGuildList(string name = "",int id = 0)
+        {
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
             Session = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
-            
-            var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() { Name = name, Id = id, MaxNum = 20, IsNewSearch = true });
             SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
             networkLoad.CloseMySelf();
-            RefreshList();
         }
 
         private void InitList()
@@ -48,7 +63,7 @@ namespace Client.UI.ViewModel
             footer.Desc.text = "查看更多内容";
             footer.c1.selectedPage = "WaitNet";
             footer.t0.Play();
-            var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() {MaxNum = 20, IsNewSearch = true});
+            var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() { MaxNum = 20, IsNewSearch = false, Cursor = Cursor });
             SearchResults.AddRange(response.Results);
             await UniTask.SwitchToMainThread();
             if (response.Results.Count == 0)
@@ -56,6 +71,10 @@ namespace Client.UI.ViewModel
                 footer.Desc.text = "没有更多内容";
                 footer.c1.selectedPage = "WithoutAnyData";
                 await UniTask.Delay(1500, true);
+            }
+            else
+            {
+                Cursor++;
             }
             RefreshList();
             View.List.scrollPane.LockFooter(0);
@@ -68,25 +87,27 @@ namespace Client.UI.ViewModel
         {
             var item = (View_JiaRuGongHuiZuJian) obj;
             var data = SearchResults[index];
-            item.frame.icon = "ui://TheGuild/" + data.Outer;
-            item.inside.icon = "ui://TheGuild/" + data.Frame;
+            item.inside.icon = GuildIconProperty.Read(data.Inside)?.Url ?? GuildIconProperty.DefaultInside.Url;
+            item.frame.icon = GuildIconProperty.Read(data.Frame)?.Url ?? GuildIconProperty.DefaultFrame.Url;
             item.UnionName.text = data.Name;
             item.UnionDesc.text = data.Desc;
             item.Join.data = data;
             item.Join.onClick.Set(async t1 =>
             {
                 var result = (SearchGuildResult) ((GComponent) t1.sender).data;
-                UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
-                var response = (M2C_JoinGuild)await Session.Call(new C2M_JoinGuild() {Id = result.Id});
-                if (response.Error == 0)
+                var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
+                try
                 {
+                    var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
                     this.Parent.CloseMySelf();
-                    UIKit.Inst.Create<UI_GuildHome>();
+                    UIKit.Inst.Create<UI_JoinedGuild>();
                 }
-                else
+                catch(Exception e)
                 {
                     UIKit.Inst.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
+                    Log.Error(e.Message);
                 }
+                networkLoad.CloseMySelf();
             });
         }
 

@@ -16,11 +16,11 @@ namespace Client.UI.ViewModel
         private Session mSession { get; set; }
         public View_ChuangJianGongHui View { get; }
         private NameInput NameInput { get; }
-        private Combo_SelectRestaurant SelectRestaurant { get; }
-        private Combo_SelectLanguage SelectLanguage { get; }
-        private UI_NotJoinGuild mParent { get; }
+        public Combo_SelectRestaurant SelectRestaurant { get; }
+        public Combo_SelectLanguage SelectLanguage { get; }
+        private UIBase mParent { get; }
         private C2M_CreateGuild CreateGuildRequest { get; }
-        public UI_CreateGuild(View_ChuangJianGongHui view,UI_NotJoinGuild parent)
+        public UI_CreateGuild(View_ChuangJianGongHui view,UIBase parent)
         {
             this.View = view;
             this.mParent = parent;
@@ -34,6 +34,8 @@ namespace Client.UI.ViewModel
             this.View.frame.data = GuildIconProperty.DefaultFrame.Id;
             this.View.inside.url = GuildIconProperty.DefaultInside.Url;
             this.View.inside.data = GuildIconProperty.DefaultInside.Id;
+            this.SelectLanguage.Component.dropdown.sortingOrder = this.mParent.GComponent.sortingOrder;
+            this.SelectRestaurant.Component.dropdown.sortingOrder = this.mParent.GComponent.sortingOrder;
         }
 
         private async void CreateUnion_OnClick(EventContext context)

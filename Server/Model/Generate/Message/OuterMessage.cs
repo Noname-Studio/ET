@@ -3,6 +3,49 @@ using ProtoBuf;
 using System.Collections.Generic;
 namespace ET
 {
+	[Message(OuterOpcode.G2C_TestHotfixMessage)]
+	[ProtoContract]
+	public partial class G2C_TestHotfixMessage: IMessage
+	{
+		[ProtoMember(1)]
+		public string Info { get; set; }
+
+	}
+
+	[ResponseType(typeof(M2C_TestActorResponse))]
+	[Message(OuterOpcode.C2M_TestActorRequest)]
+	[ProtoContract]
+	public partial class C2M_TestActorRequest: IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public long ActorId { get; set; }
+
+		[ProtoMember(1)]
+		public string Info { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_TestActorResponse)]
+	[ProtoContract]
+	public partial class M2C_TestActorResponse: IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public string Info { get; set; }
+
+	}
+
 	[ResponseType(typeof(M2C_TestResponse))]
 	[Message(OuterOpcode.C2M_TestRequest)]
 	[ProtoContract]
@@ -424,10 +467,10 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(M2C_GuildUpdate))]
-	[Message(OuterOpcode.C2M_GuildUpdate)]
+	[ResponseType(typeof(M2C_ModifyGuild))]
+	[Message(OuterOpcode.C2M_ModifyGuild)]
 	[ProtoContract]
-	public partial class C2M_GuildUpdate: IRequest
+	public partial class C2M_ModifyGuild: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -454,13 +497,13 @@ namespace ET
 		public int MinLevel { get; set; }
 
 		[ProtoMember(9)]
-		public string OwnerId { get; set; }
+		public long OwnerId { get; set; }
 
 	}
 
-	[Message(OuterOpcode.M2C_GuildUpdate)]
+	[Message(OuterOpcode.M2C_ModifyGuild)]
 	[ProtoContract]
-	public partial class M2C_GuildUpdate: IResponse
+	public partial class M2C_ModifyGuild: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -470,90 +513,6 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
-
-		[ProtoMember(1)]
-		public long Id { get; set; }
-
-		[ProtoMember(2)]
-		public string Name { get; set; }
-
-		[ProtoMember(3)]
-		public int Frame { get; set; }
-
-		[ProtoMember(4)]
-		public int Inside { get; set; }
-
-		[ProtoMember(5)]
-		public uint CreateTime { get; set; }
-
-		[ProtoMember(6)]
-		public bool IsPublic { get; set; }
-
-		[ProtoMember(7)]
-		public short Language { get; set; }
-
-		[ProtoMember(8)]
-		public string Desc { get; set; }
-
-		[ProtoMember(9)]
-		public int MinLevel { get; set; }
-
-		[ProtoMember(10)]
-		public string OwnerId { get; set; }
-
-		[ProtoMember(11)]
-		public List<MemberInfo> Members = new List<MemberInfo>();
-
-		[ProtoMember(12)]
-		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
-
-	}
-
-	[Message(OuterOpcode.ApplicationInfo)]
-	[ProtoContract]
-	public partial class ApplicationInfo
-	{
-		[ProtoMember(1)]
-		public uint Time { get; set; }
-
-		[ProtoMember(2)]
-		public string Id { get; set; }
-
-	}
-
-	[Message(OuterOpcode.MemberInfo)]
-	[ProtoContract]
-	public partial class MemberInfo
-	{
-		[ProtoMember(1)]
-		public string Id { get; set; }
-
-		[ProtoMember(2)]
-		public string Name { get; set; }
-
-		[ProtoMember(3)]
-		public int Level { get; set; }
-
-		[ProtoMember(4)]
-		public uint LastLogin { get; set; }
-
-		[ProtoMember(5)]
-		public uint JoinTime { get; set; }
-
-		[ProtoMember(6)]
-		public short Language { get; set; }
-
-		[ProtoMember(7)]
-		public int TimeZone { get; set; }
-
-		[ProtoMember(8)]
-		public string Icon { get; set; }
-
-		[ProtoMember(9)]
-		public List<int> DressUp = new List<int>();
-
-		[ProtoMember(10)]
-		public int Hornor { get; set; }
 
 	}
 
@@ -571,10 +530,10 @@ namespace ET
 		public string Desc { get; set; }
 
 		[ProtoMember(4)]
-		public string Outer { get; set; }
+		public int Inside { get; set; }
 
 		[ProtoMember(5)]
-		public string Frame { get; set; }
+		public int Frame { get; set; }
 
 	}
 
@@ -609,49 +568,6 @@ namespace ET
 
 		[ProtoMember(1)]
 		public long PlayerId { get; set; }
-
-	}
-
-	[Message(OuterOpcode.G2C_TestHotfixMessage)]
-	[ProtoContract]
-	public partial class G2C_TestHotfixMessage: IMessage
-	{
-		[ProtoMember(1)]
-		public string Info { get; set; }
-
-	}
-
-	[ResponseType(typeof(M2C_TestActorResponse))]
-	[Message(OuterOpcode.C2M_TestActorRequest)]
-	[ProtoContract]
-	public partial class C2M_TestActorRequest: IActorLocationRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public long ActorId { get; set; }
-
-		[ProtoMember(1)]
-		public string Info { get; set; }
-
-	}
-
-	[Message(OuterOpcode.M2C_TestActorResponse)]
-	[ProtoContract]
-	public partial class M2C_TestActorResponse: IActorLocationResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-		[ProtoMember(1)]
-		public string Info { get; set; }
 
 	}
 
@@ -701,6 +617,108 @@ namespace ET
 
 		[ProtoMember(5)]
 		public List<long> TestRepeatedInt64 = new List<long>();
+
+	}
+
+	[Message(OuterOpcode.M2C_GuildUpdate)]
+	[ProtoContract]
+	public partial class M2C_GuildUpdate: IActorMessage,IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public int Frame { get; set; }
+
+		[ProtoMember(4)]
+		public int Inside { get; set; }
+
+		[ProtoMember(5)]
+		public long CreateTime { get; set; }
+
+		[ProtoMember(6)]
+		public bool IsPublic { get; set; }
+
+		[ProtoMember(7)]
+		public short Language { get; set; }
+
+		[ProtoMember(8)]
+		public string Desc { get; set; }
+
+		[ProtoMember(9)]
+		public int MinLevel { get; set; }
+
+		[ProtoMember(10)]
+		public long OwnerId { get; set; }
+
+		[ProtoMember(11)]
+		public List<MemberInfo> Members = new List<MemberInfo>();
+
+		[ProtoMember(12)]
+		public List<MemberInfo> RemoveMembers = new List<MemberInfo>();
+
+		[ProtoMember(13)]
+		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
+
+		[ProtoMember(14)]
+		public int MaxMemberNum { get; set; }
+
+	}
+
+	[Message(OuterOpcode.ApplicationInfo)]
+	[ProtoContract]
+	public partial class ApplicationInfo
+	{
+		[ProtoMember(1)]
+		public long Time { get; set; }
+
+		[ProtoMember(2)]
+		public long Id { get; set; }
+
+	}
+
+	[Message(OuterOpcode.MemberInfo)]
+	[ProtoContract]
+	public partial class MemberInfo
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public int Level { get; set; }
+
+		[ProtoMember(4)]
+		public long LastLogin { get; set; }
+
+		[ProtoMember(5)]
+		public long JoinTime { get; set; }
+
+		[ProtoMember(6)]
+		public short Language { get; set; }
+
+		[ProtoMember(7)]
+		public string Icon { get; set; }
+
+		[ProtoMember(8)]
+		public List<int> DressUp = new List<int>();
+
+		[ProtoMember(9)]
+		public int Hornor { get; set; }
 
 	}
 

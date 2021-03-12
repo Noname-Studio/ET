@@ -13,7 +13,6 @@ namespace TheGuild
         public GLoader Creator;
         public GList Menu;
         public GButton Close;
-        public GGroup BG;
         public const string URL = "ui://nvat1mjsh7udj8";
 
         public static View_WeiJiaRuGongHui CreateInstance()
@@ -31,7 +30,6 @@ namespace TheGuild
             Creator = (GLoader)GetChild("Creator");
             Menu = (GList)GetChild("Menu");
             Close = (GButton)GetChild("Close");
-            BG = (GGroup)GetChild("BG");
         }
     }
 }

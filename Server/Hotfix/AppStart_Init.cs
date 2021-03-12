@@ -16,7 +16,8 @@ namespace ET
             StartProcessConfig processConfig = StartProcessConfigCategory.Instance.Get(Game.Options.Process);
             
             Game.Scene.AddComponent<TimerComponent>();
-            Game.Scene.AddComponent<DBComponent>();
+            var zoneConfig = StartZoneConfigCategory.Instance.Get(1);
+            Game.Scene.AddComponent<DBComponent, string, string>(zoneConfig.DBConnection, zoneConfig.DBName);
             Game.Scene.AddComponent<OpcodeTypeComponent>();
             Game.Scene.AddComponent<MessageDispatcherComponent>();
             Game.Scene.AddComponent<CoroutineLockComponent>();

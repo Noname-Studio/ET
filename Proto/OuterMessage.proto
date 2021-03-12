@@ -1,6 +1,27 @@
 syntax = "proto3";
 package ET;
 
+message G2C_TestHotfixMessage // IMessage
+{
+	string Info = 1;
+}
+
+//ResponseType M2C_TestActorResponse
+message C2M_TestActorRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Info = 1;
+}
+
+message M2C_TestActorResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Info = 1;
+}
+
 //ResponseType M2C_TestResponse
 message C2M_TestRequest // IActorLocationRequest
 {
@@ -201,8 +222,8 @@ message M2C_CreateGuild //IResponse
 	string Message = 92;
 }
 
-//ResponseType M2C_GuildUpdate
-message C2M_GuildUpdate //IRequest
+//ResponseType M2C_ModifyGuild
+message C2M_ModifyGuild //IRequest
 {
 	int32 RpcId = 90;
 	string Name = 2;
@@ -212,46 +233,14 @@ message C2M_GuildUpdate //IRequest
 	int16 Language = 6;
 	string Desc = 7;
 	int32 MinLevel = 8;
-	string OwnerId = 9;
+	int64 OwnerId = 9;
 }
 
-message M2C_GuildUpdate // IResponse
+message M2C_ModifyGuild // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	int64 Id = 1;
-	string Name = 2;
-	int32 Frame = 3;
-	int32 Inside = 4;
-	uint32 CreateTime = 5;
-	bool IsPublic = 6;
-	int16 Language = 7;
-	string Desc = 8;
-	int32 MinLevel = 9;
-	string OwnerId = 10;
-	repeated MemberInfo Members = 11;
-	repeated ApplicationInfo ApplicationList = 12;
-}
-
-message ApplicationInfo
-{
-	uint32 Time = 1;
-	string Id = 2;
-}
-
-message MemberInfo
-{
-	string Id = 1;
-	string Name = 2;
-	int32 Level = 3;
-	uint32 LastLogin = 4;
-	uint32 JoinTime = 5;
-	int16 Language = 6;
-	int32 TimeZone = 7;
-	string Icon = 8;
-	repeated int32 DressUp = 9;
-	int32 Hornor = 10;
 }
 
 message SearchGuildResult
@@ -259,8 +248,8 @@ message SearchGuildResult
 	int64 Id = 1;
 	string Name = 2;
 	string Desc = 3;
-	string Outer = 4;
-	string Frame = 5;
+	int32 Inside = 4;
+	int32 Frame = 5;
 }
 
 //ResponseType G2C_LoginGate
@@ -277,27 +266,6 @@ message G2C_LoginGate // IResponse
 	int32 Error = 91;
 	string Message = 92;
 	int64 PlayerId = 1;
-}
-
-message G2C_TestHotfixMessage // IMessage
-{
-	string Info = 1;
-}
-
-//ResponseType M2C_TestActorResponse
-message C2M_TestActorRequest // IActorLocationRequest
-{
-	int32 RpcId = 90;
-	int64 ActorId = 91;
-	string Info = 1;
-}
-
-message M2C_TestActorResponse // IActorLocationResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-	string Info = 1;
 }
 
 message PlayerInfo // IMessage
@@ -321,4 +289,44 @@ message G2C_PlayerInfo // IResponse
     repeated string TestRepeatedString = 3;
     repeated int32 TestRepeatedInt32 = 4;
     repeated int64 TestRepeatedInt64 = 5;
+}
+
+message M2C_GuildUpdate // IActorMessage,IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Id = 1;
+	string Name = 2;
+	int32 Frame = 3;
+	int32 Inside = 4;
+	int64 CreateTime = 5;
+	bool IsPublic = 6;
+	int16 Language = 7;
+	string Desc = 8;
+	int32 MinLevel = 9;
+	int64 OwnerId = 10;
+	repeated MemberInfo Members = 11;
+	repeated MemberInfo RemoveMembers = 12;
+	repeated ApplicationInfo ApplicationList = 13;
+	int32 MaxMemberNum = 14;
+}
+
+message ApplicationInfo
+{
+	int64 Time = 1;
+	int64 Id = 2;
+}
+
+message MemberInfo
+{
+	int64 Id = 1;
+	string Name = 2;
+	int32 Level = 3;
+	int64 LastLogin = 4;
+	int64 JoinTime = 5;
+	int16 Language = 6;
+	string Icon = 7;
+	repeated int32 DressUp = 8;
+	int32 Hornor = 9;
 }

@@ -1,4 +1,4 @@
-﻿using UI.Story.WithoutHot;
+﻿using InternalResources;
 using UnityEngine;
 
 namespace Client.UI.ViewModel

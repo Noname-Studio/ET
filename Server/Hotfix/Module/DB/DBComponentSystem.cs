@@ -12,8 +12,9 @@ namespace ET
 		{
 			self.mongoClient = new MongoClient(dbConnection);
 			self.database = self.mongoClient.GetDatabase(dbName);
-			
+			var collectionNames = self.database.ListCollectionNames().ToList();
 			self.Transfers.Clear();
+			
 			foreach (Type type in Game.EventSystem.GetTypes())
 			{
 				if (type == typeof (IDBCollection))
@@ -25,8 +26,9 @@ namespace ET
 					continue;
 				}
 				self.Transfers.Add(type.Name);
+				if(!collectionNames.Contains(type.Name))
+					self.database.CreateCollection(type.Name);
 			}
-			
 			DBComponent.Instance = self;
 		}
 	}
@@ -126,30 +128,33 @@ namespace ET
 	    {
 		    using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.DB, RandomHelper.RandInt64() % DBComponent.TaskCount))
 		    {
-			    var countFacet = AggregateFacet.Create("count",
+			    AggregateFacet<TDocument,AggregateCountResult> countFacet = AggregateFacet.Create("count",
 				    PipelineDefinition<TDocument, AggregateCountResult>.Create(new[] { PipelineStageDefinitionBuilder.Count<TDocument>() }));
 
-			    var dataFacet = AggregateFacet.Create("data",
+			    AggregateFacet<TDocument, TDocument> dataFacet = AggregateFacet.Create("data",
 				    PipelineDefinition<TDocument, TDocument>.Create(new[]
 				    {
 					    PipelineStageDefinitionBuilder.Sort(sortDefinition),
-					    PipelineStageDefinitionBuilder.Skip<TDocument>((page - 1) * pageSize),
+					    PipelineStageDefinitionBuilder.Skip<TDocument>(page * pageSize),
 					    PipelineStageDefinitionBuilder.Limit<TDocument>(pageSize),
 				    }));
 
 
-			    var collection = self.GetCollection<TDocument>();
-			    var aggregation = await collection.Aggregate()
+			    IMongoCollection<TDocument> collection = self.GetCollection<TDocument>();
+			    List<AggregateFacetResults> aggregation = await collection.Aggregate()
 					    .Match(filterDefinition)
 					    .Facet(countFacet, dataFacet)
 					    .ToListAsync();
 
-			    var count = aggregation.First()
+			    long? count = aggregation.First()
 					    .Facets.First(x => x.Name == "count")
 					    .Output<AggregateCountResult>()
 					    ?.FirstOrDefault()
 					    ?.Count;
-
+			    if (!count.HasValue)
+			    {
+				    return (0, new List<TDocument>());
+			    }
 			    var totalPages = (int) Math.Ceiling((double) count / pageSize);
 
 			    var data = aggregation.First()
@@ -221,7 +226,7 @@ namespace ET
 		    }
 	    }
 
-	    public static async ETTask Save(this DBComponent self, long id, List<Entity> entities)
+	    public static async ETTask Save<T>(this DBComponent self, long id, List<T> entities) where T : Entity
 	    {
 		    if (entities == null)
 		    {

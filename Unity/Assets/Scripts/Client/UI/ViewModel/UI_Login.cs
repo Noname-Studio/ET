@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
-using UI.Story.Log_in;
+using Log_in;
+using UnityEngine;
 
 namespace Client.UI.ViewModel
 {
@@ -13,6 +14,15 @@ namespace Client.UI.ViewModel
         {
             base.OnInit(p);
             View.ButtonUp.onClick.Add(EnterGame);
+            this.View.FacebookButton.onClick.Add(() =>
+            {
+                Log.Print("开始登录");
+
+                Social.localUser.Authenticate(b =>
+                {
+                    Log.Print("登录成功");
+                });
+            });
         }
 
         private async void EnterGame()

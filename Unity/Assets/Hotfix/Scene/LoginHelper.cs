@@ -27,7 +27,8 @@ namespace ET
 
                 Log.Info("登陆gate成功!");
 
-                //G2C_EnterMap g2CEnterMap = await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
+                G2C_EnterMap g2CEnterMap = await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
+
                 //await Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
             }
             catch (Exception e)

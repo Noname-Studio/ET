@@ -98,7 +98,6 @@ namespace Common
             UIObjectFactory.SetPackageItemExtension(View_MoreCoin_Button.URL, typeof(View_MoreCoin_Button));
             UIObjectFactory.SetPackageItemExtension(View_giftblue_effect.URL, typeof(View_giftblue_effect));
             UIObjectFactory.SetPackageItemExtension(View_blue_button_Icon2.URL, typeof(View_blue_button_Icon2));
-            UIObjectFactory.SetPackageItemExtension(View_GridDisplay.URL, typeof(View_GridDisplay));
             UIObjectFactory.SetPackageItemExtension(View_tipboard_autoSize.URL, typeof(View_tipboard_autoSize));
             UIObjectFactory.SetPackageItemExtension(View_RecommendTags_effect.URL, typeof(View_RecommendTags_effect));
             UIObjectFactory.SetPackageItemExtension(View_RongYuZhiZuJian.URL, typeof(View_RongYuZhiZuJian));

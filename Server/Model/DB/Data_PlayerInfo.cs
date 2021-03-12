@@ -1,4 +1,5 @@
-﻿using ET;
+﻿using System.Collections.Generic;
+using ET;
 
 namespace Model.Module.DB.ActualTable
 {
@@ -8,15 +9,16 @@ namespace Model.Module.DB.ActualTable
         {
         }
     }
-    public class Data_PlayerInfo : Entity
+    public class Data_PlayerInfo : Entity, IDBCollection
     {
+        public string Name = "Player";
+        public short Language = -1;
+        public string Icon;
         public long GuildId;
-        //暂时没有理解ET使用UnitID做为Actor ID的意图.所以这里我暂时返回Entity Id
-        public long UnitId { get
-        {
-            return Id;
-        } }
 
-        public int CurLevel;
+        public List<int> DressUp = new List<int>();
+        public long UnitId { get; set; }
+
+        public int CurLevel = 1000000;
     }
 }

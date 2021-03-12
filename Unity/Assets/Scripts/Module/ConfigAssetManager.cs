@@ -32,11 +32,11 @@ namespace Config.ConfigCore
         /// </summary>
         protected static List<T> Values;
 
-        public static async UniTask Load(IAssetsLocator locator,string path)
+        public static async UniTask Load(string path)
         {
             Type = typeof(T);
             string json;
-            json = (await locator.Load<TextAsset>(path)).text;
+            json = (await AssetsKit.Inst.Load<TextAsset>(path)).text;
             if (string.IsNullOrEmpty(json))
             {
                 return;

@@ -1,6 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using UI.Story.WithoutHot;
+using InternalResources;
 using UnityEngine;
 
 namespace Client.UI.ViewModel

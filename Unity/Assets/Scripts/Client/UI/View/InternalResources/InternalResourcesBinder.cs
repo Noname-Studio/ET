@@ -20,6 +20,10 @@ namespace InternalResources
             UIObjectFactory.SetPackageItemExtension(View_NewUpdate.URL, typeof(View_NewUpdate));
             UIObjectFactory.SetPackageItemExtension(View_Tips.URL, typeof(View_Tips));
             UIObjectFactory.SetPackageItemExtension(View_InTheLink.URL, typeof(View_InTheLink));
+            UIObjectFactory.SetPackageItemExtension(View_TestGrid.URL, typeof(View_TestGrid));
+            UIObjectFactory.SetPackageItemExtension(View_MoveBuild.URL, typeof(View_MoveBuild));
+            UIObjectFactory.SetPackageItemExtension(View_GridDisplay.URL, typeof(View_GridDisplay));
+            UIObjectFactory.SetPackageItemExtension(View_Grid.URL, typeof(View_Grid));
             UIObjectFactory.SetPackageItemExtension(View_Download_Tips.URL, typeof(View_Download_Tips));
         }
     }

@@ -8,6 +8,11 @@ public class GuildManager : Singleton<GuildManager>
     /// </summary>
     public M2C_GuildUpdate Data;
 
+    private GuildManager()
+    {
+        
+    }
+    
     public bool IsJoined()
     {
         if (Data == null || this.Data.Id == 0)

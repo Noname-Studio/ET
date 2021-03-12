@@ -12,13 +12,18 @@ namespace ET
 		{
 			Data_PlayerInfo player = session.GetComponent<SessionPlayerComponent>().Player;
 			// 在map服务器上创建战斗Unit
-			/*long mapInstanceId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map").SceneId;
+			long mapInstanceId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map").SceneId;
 			M2G_CreateUnit createUnit = (M2G_CreateUnit)await ActorMessageSenderComponent.Instance.Call(
-				mapInstanceId, new G2M_CreateUnit() { PlayerId = player.Id, GateSessionId = session.InstanceId });*/
-			//player.UnitId = createUnit.UnitId;
+				mapInstanceId, new G2M_CreateUnit() { PlayerId = player.Id, GateSessionId = session.InstanceId });
+			player.UnitId = createUnit.UnitId;
 			response.UnitId = player.Id;
+			var guild = await DBComponent.Instance.Query<Data_Guild>(player.GuildId);
+			if (guild != null)
+			{
+				var proto = guild.CreateGuildUpdateProto();
+				session.Send(proto);
+			}
 			reply();
-			
 		}
 	}
 }

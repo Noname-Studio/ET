@@ -14,6 +14,7 @@ namespace Client.UI.ViewModel
 
         public UI_Tips AddButton(string title, Action<UI_Tips> callback = null)
         {
+            this.View.ButtonState.selectedIndex = 1; 
             var button = (GButton)View.ButtonList.AddItemFromPool();
             button.title = title;
             if(callback != null)

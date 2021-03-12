@@ -1,4 +1,5 @@
 ﻿using System;
+using Client.UI.ViewModel;
 using Cysharp.Threading.Tasks;
 using FairyGUI;
 using Panthea.Asset;
@@ -64,6 +65,10 @@ public class StartGame
     private void Start()
     {
         //mManager.Create<UI_FirstGameLoading>();
-        UIKit.Inst.Create<Client.UI.ViewModel.UI_NotJoinGuild>();
+        /*if(GuildManager.Inst.Data == null)
+            UIKit.Inst.Create<Client.UI.ViewModel.UI_NotJoinGuild>();
+        else
+            UIKit.Inst.Create<Client.UI.ViewModel.UI_JoinedGuild>();*/
+        UIKit.Inst.Create<UI_Login>();
     }
 }

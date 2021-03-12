@@ -9,9 +9,9 @@ namespace ET
 		protected override async ETTask Run(Scene scene, G2M_CreateUnit request, M2G_CreateUnit response, Action reply)
 		{
 			Unit unit = EntityFactory.CreateWithId<Unit>(scene, IdGenerater.Instance.GenerateId());
-			unit.AddComponent<MoveComponent>();
+			/*unit.AddComponent<MoveComponent>();
 			unit.AddComponent<UnitPathComponent>();
-			unit.Position = new Vector3(-10, 0, -10);
+			unit.Position = new Vector3(-10, 0, -10);*/
 
 			unit.AddComponent<MailBoxComponent>();
 			await unit.AddLocation();
@@ -20,7 +20,7 @@ namespace ET
 			response.UnitId = unit.Id;
 			
 			
-			// 广播创建的unit
+			/*// 广播创建的unit
 			M2C_CreateUnits createUnits = new M2C_CreateUnits();
 			Unit[] units = scene.GetComponent<UnitComponent>().GetAll();
 			foreach (Unit u in units)
@@ -32,7 +32,7 @@ namespace ET
 				unitInfo.UnitId = u.Id;
 				createUnits.Units.Add(unitInfo);
 			}
-			MessageHelper.Broadcast(unit, createUnits);
+			MessageHelper.Broadcast(unit, createUnits);*/
 			
 			reply();
 		}

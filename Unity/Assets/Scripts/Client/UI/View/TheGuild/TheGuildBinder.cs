@@ -45,6 +45,7 @@ namespace TheGuild
             UIObjectFactory.SetPackageItemExtension(View_XiTongTiShiDaiJiangLi.URL, typeof(View_XiTongTiShiDaiJiangLi));
             UIObjectFactory.SetPackageItemExtension(View_XiTongXiaoXi.URL, typeof(View_XiTongXiaoXi));
             UIObjectFactory.SetPackageItemExtension(View_LiaoTianZuJian.URL, typeof(View_LiaoTianZuJian));
+            UIObjectFactory.SetPackageItemExtension(View_BianJiGongHuiXinXi.URL, typeof(View_BianJiGongHuiXinXi));
             UIObjectFactory.SetPackageItemExtension(View_WoDeGongHuiZuJian.URL, typeof(View_WoDeGongHuiZuJian));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiLieBiao.URL, typeof(View_GongHuiLieBiao));
             UIObjectFactory.SetPackageItemExtension(View_ChuangJianGongHui.URL, typeof(View_ChuangJianGongHui));

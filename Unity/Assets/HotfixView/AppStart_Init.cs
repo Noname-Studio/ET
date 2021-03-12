@@ -17,11 +17,11 @@ namespace ET
                 //await BundleHelper.DownloadBundle("1111");
 
                 // 加载配置
-                await AssetsKit.Inst.LoadAll("Config/Server");
+                await AssetsKit.Inst.LoadAll("Config/Server" + AssetsConfig.Suffix);
                 Game.Scene.AddComponent<ConfigComponent>();
                 ConfigComponent.GetAllConfigBytes = LoadConfigHelper.LoadAllConfigBytes;
                 await ConfigComponent.Instance.LoadAsync();
-                AssetsKit.Inst.ReleaseAssetBundleFromABKey("Config/Server");
+                AssetsKit.Inst.ReleaseAssetBundleFromABKey("Config/Server" + AssetsConfig.Suffix);
 
                 Game.Scene.AddComponent<OpcodeTypeComponent>();
                 Game.Scene.AddComponent<MessageDispatcherComponent>();

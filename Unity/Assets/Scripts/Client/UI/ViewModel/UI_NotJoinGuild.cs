@@ -18,7 +18,7 @@ namespace Client.UI.ViewModel
             this.View.c1.onChanged.Call();
         }
 
-        private void MenuChanged()
+        private async void MenuChanged()
         {
             if (this.View.c1.selectedPage == "加入公会")
             {
@@ -27,22 +27,22 @@ namespace Client.UI.ViewModel
                 if (!this.mSubPanel.TryGetValue("join guild", out var obj))
                 {
                     obj = new UI_GuildList((View_GongHuiLieBiao)this.View.GuildList.component,this);
+                    await ((UI_GuildList) obj).Init();
                     mSubPanel.Add("join guild", obj);
                 }
                 panel = (UI_GuildList) obj;
-                panel.OnEnable();
             }
             else if(this.View.c1.selectedPage == "创建公会")
             {
-                this.View.GuildList.url = View_ChuangJianGongHui.URL;
-                UI_GuildList panel;
-                if (!this.mSubPanel.TryGetValue("join guild", out var obj))
+                this.View.Creator.url = View_ChuangJianGongHui.URL;
+                UI_CreateGuild panel;
+                if (!this.mSubPanel.TryGetValue("create guild", out var obj))
                 {
-                    obj = new UI_GuildList((View_GongHuiLieBiao)this.View.GuildList.component,this);
-                    mSubPanel.Add("join guild", obj);
+                    obj = new UI_CreateGuild((View_ChuangJianGongHui)this.View.Creator.component,this);
+                    ((UI_CreateGuild)obj).Init();
+                    mSubPanel.Add("create guild", obj);
                 }
-                panel = (UI_GuildList) obj;
-                panel.OnEnable();
+                panel = (UI_CreateGuild) obj;
             }
         }
     }

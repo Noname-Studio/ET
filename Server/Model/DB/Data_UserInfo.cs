@@ -2,9 +2,8 @@
 
 namespace Model.Module.DB.ActualTable
 {
-    public class Data_UserInfo : Entity
+    public class Data_UserInfo : Entity, IDBCollection
     {
-        public string Name = "Player";
-        public int Language = -1;
+
     }
 }

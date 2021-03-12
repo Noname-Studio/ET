@@ -2,101 +2,101 @@
   "10001": {
     "Id": 10001,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame1"
+    "Url": "ui://TheGuild/Frame1"
   },
   "10002": {
     "Id": 10002,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame2"
+    "Url": "ui://TheGuild/Frame2"
   },
   "10003": {
     "Id": 10003,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame3"
+    "Url": "ui://TheGuild/Frame3"
   },
   "10004": {
     "Id": 10004,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame4"
+    "Url": "ui://TheGuild/Frame4"
   },
   "10005": {
     "Id": 10005,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame5"
+    "Url": "ui://TheGuild/Frame5"
   },
   "10006": {
     "Id": 10006,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame6"
+    "Url": "ui://TheGuild/Frame6"
   },
   "10007": {
     "Id": 10007,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame7"
+    "Url": "ui://TheGuild/Frame7"
   },
   "10008": {
     "Id": 10008,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame8"
+    "Url": "ui://TheGuild/Frame8"
   },
   "10009": {
     "Id": 10009,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame9"
+    "Url": "ui://TheGuild/Frame9"
   },
   "10010": {
     "Id": 10010,
     "Type": "Frame",
-    "Url": "ui://Guild/Frame10"
+    "Url": "ui://TheGuild/Frame10"
   },
   "20001": {
     "Id": 20001,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside1"
+    "Url": "ui://TheGuild/Inside1"
   },
   "20002": {
     "Id": 20002,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside2"
+    "Url": "ui://TheGuild/Inside2"
   },
   "20003": {
     "Id": 20003,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside3"
+    "Url": "ui://TheGuild/Inside3"
   },
   "20004": {
     "Id": 20004,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside4"
+    "Url": "ui://TheGuild/Inside4"
   },
   "20005": {
     "Id": 20005,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside5"
+    "Url": "ui://TheGuild/Inside5"
   },
   "20006": {
     "Id": 20006,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside6"
+    "Url": "ui://TheGuild/Inside6"
   },
   "20007": {
     "Id": 20007,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside7"
+    "Url": "ui://TheGuild/Inside7"
   },
   "20008": {
     "Id": 20008,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside8"
+    "Url": "ui://TheGuild/Inside8"
   },
   "20009": {
     "Id": 20009,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside9"
+    "Url": "ui://TheGuild/Inside9"
   },
   "20010": {
     "Id": 20010,
     "Type": "Inside",
-    "Url": "ui://Guild/Inside10"
+    "Url": "ui://TheGuild/Inside10"
   }
 }

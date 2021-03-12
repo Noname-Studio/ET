@@ -3,6 +3,7 @@ using Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+[UIWidget(Depth = UIDeepEnum.NetworkLoading)]
 public class UI_NetworkLoad : UIBase<View_NetworkLoad>
 {
     private Func<bool> CloseCallback;

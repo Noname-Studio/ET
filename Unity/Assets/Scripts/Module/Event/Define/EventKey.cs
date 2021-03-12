@@ -22,5 +22,5 @@ public struct EventKey
     public static EventKey AdsSkipped = new EventKey(nameof(AdsSkipped));
     public static EventKey AdsFailed = new EventKey(nameof(AdsFailed));
     public static EventKey AdsReady = new EventKey(nameof(AdsReady));
-
+    public static EventKey GuildChanged = new EventKey(nameof(GuildChanged));
 }

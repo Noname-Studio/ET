@@ -5,7 +5,7 @@ using MongoDB.Driver;
 namespace ET
 {
     [MessageHandler]
-    public class C2G_SearchGuildHandler : AMRpcHandler<C2M_SearchGuild, M2C_SearchGuild>
+    public class C2M_SearchGuildHandler : AMRpcHandler<C2M_SearchGuild, M2C_SearchGuild>
     {
         public const int GuildMaxMemberCount = 20;
 
@@ -31,11 +31,11 @@ namespace ET
                         Frame = node.Frame,
                         Id = node.Id,
                         Name = node.Name,
-                        Outer = node.Outer,
+                        Inside = node.Inside,
                     });
                 }
             }
-            else if (request.Id > 10000)
+            else if (request.Id != 0)
             {
                 var data = await db.Query<Data_Guild>(request.Id);
                 var result = new SearchGuildResult
@@ -44,16 +44,17 @@ namespace ET
                     Frame = data.Frame,
                     Id = data.Id,
                     Name = data.Name,
-                    Outer = data.Outer
+                    Inside = data.Inside
                 };
                 list.Add(result);
+                response.TotalPage = 1;
             }
             else
             {
                 var userInfo = session.GetComponent<SessionPlayerComponent>().Player;
                 //我们根据玩家的自身条件筛选一些符合玩家条件的公会推送给玩家
                 //如果超出我们筛选的列表.则随机发送公会列表
-                var result = await db.QueryPage(new ExpressionFilterDefinition<Data_Guild>(guild => userInfo.CurLevel > guild.MinLevel),new SortDefinitionBuilder<Data_Guild>().Ascending(t1=>t1.Name),request.Cursor,maxNum);
+                var result = await db.QueryPage(new ExpressionFilterDefinition<Data_Guild>(guild => userInfo.CurLevel >= guild.MinLevel),new SortDefinitionBuilder<Data_Guild>().Ascending(t1=>t1.Name),request.Cursor,maxNum);
                 response.TotalPage = result.totalPages;
                 foreach (var node in result.data)
                 {
@@ -63,10 +64,13 @@ namespace ET
                         Frame = node.Frame,
                         Id = node.Id,
                         Name = node.Name,
-                        Outer = node.Outer,
+                        Inside = node.Inside,
                     });
                 }
             }
+
+            response.Results = list;
+            reply();
         }
     }
 }

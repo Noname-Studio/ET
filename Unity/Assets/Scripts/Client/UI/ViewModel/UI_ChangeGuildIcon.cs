@@ -13,28 +13,32 @@ namespace Client.UI.ViewModel
         private Session mSession { get; set; }
         public delegate UniTask Apply(UI_ChangeGuildIcon panel);
         public event Apply ApplyCallback;
+        
+        private string InitFrame { get; set; }
+        private string InitInside { get; set; }
         public override void OnInit(IUIParams p)
         {
             base.OnInit(p);
             if (GuildManager.Inst.IsJoined())
             {
-                this.View.frame.url = GuildIconProperty.Read(GuildManager.Inst.Data.Frame)?.Url ?? GuildIconProperty.DefaultFrame.Url;
-                this.View.inside.url = GuildIconProperty.Read(GuildManager.Inst.Data.Inside)?.Url ?? GuildIconProperty.DefaultInside.Url;
+                InitFrame = this.View.frame.url = GuildIconProperty.Read(GuildManager.Inst.Data.Frame)?.Url ?? GuildIconProperty.DefaultFrame.Url;
+                InitInside = this.View.inside.url = GuildIconProperty.Read(GuildManager.Inst.Data.Inside)?.Url ?? GuildIconProperty.DefaultInside.Url;
             }
             else
             {
                 var data = GuildIconProperty.DefaultFrame;
-                this.View.frame.url = data.Url;
+                InitFrame = this.View.frame.url = data.Url;
                 this.View.frame.data = data;
                 
                 data = GuildIconProperty.DefaultInside;
-                this.View.inside.url = data.Url;
+                InitInside = this.View.inside.url = data.Url;
                 this.View.inside.data = data;
             }
             mSession = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
             
             this.View.List.onClickItem.Add(this.ClickItem);
             this.View.c1.onChanged.Add(MenuChanged);
+            MenuChanged(null);
             //重设Close点击事件.关闭的时候我们需要弹出弹框告诉玩家是否放弃修改
             this.View.Close.onClick.Set(this.Close_OnClick);
             this.View.Confirm.onClick.Set(this.Confirm_OnClick);
@@ -47,6 +51,8 @@ namespace Client.UI.ViewModel
             else if (this.View.inside.data == null)
                 this.View.inside.data = 20001;
             await ApplyCallback(this);
+            this.InitFrame = this.View.frame.url;
+            this.InitInside = this.View.inside.url;
             /*var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>();
             if (this.View.frame != null && this.View.inside != null)
             {
@@ -71,10 +77,17 @@ namespace Client.UI.ViewModel
 
         private void Close_OnClick()
         {
-            var tips = UIKit.Inst.Create<UI_Tips>();
-            tips.SetContent(LocalizationProperty.Read("ClosePanelDontApply"));
-            tips.AddButton(LocalizationProperty.Read("Close"), t1 => this.CloseMySelf());
-            tips.AddButton(LocalizationProperty.Read("Cancel"));
+            if (this.InitInside != this.View.inside.url || this.InitFrame != this.View.frame.url)
+            {
+                var tips = UIKit.Inst.Create<UI_Tips>();
+                tips.SetContent(LocalizationProperty.Read("ClosePanelDontApply"));
+                tips.AddButton(LocalizationProperty.Read("Close"), t1 => this.CloseMySelf());
+                tips.AddButton(LocalizationProperty.Read("Cancel"));
+            }
+            else
+            {
+                this.CloseMySelf();
+            }
         }
 
         private void MenuChanged(EventContext context)
@@ -103,6 +116,7 @@ namespace Client.UI.ViewModel
 
         private void InitFrameList()
         {
+            int i = 0;
             this.View.List.RemoveChildrenToPool();
             foreach (var node in GuildIconProperty.ReadDict())
             {
@@ -112,12 +126,16 @@ namespace Client.UI.ViewModel
                     var button = (GButton) this.View.List.AddItemFromPool();
                     button.icon = property.Url;
                     button.data = property;
+                    if (this.InitFrame == property.Url)
+                        this.View.List.selectedIndex = i;
+                    i++;
                 }
             }
         }
 
         private void InitInsideList()
         {
+            int i = 0;
             this.View.List.RemoveChildrenToPool();
             foreach (var node in GuildIconProperty.ReadDict())
             {
@@ -127,6 +145,9 @@ namespace Client.UI.ViewModel
                     var button = (GButton) this.View.List.AddItemFromPool();
                     button.icon = property.Url;
                     button.data = property;
+                    if (this.InitInside == property.Url)
+                        this.View.List.selectedIndex = i;
+                    i++;
                 }
             }
         }

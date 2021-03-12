@@ -189,3 +189,4 @@ message G2M_SessionDisconnect // IActorLocationMessage
     int32 RpcId = 90;
     int64 ActorId = 94;
 }
+

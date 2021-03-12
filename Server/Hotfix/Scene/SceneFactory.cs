@@ -28,6 +28,9 @@ namespace ET
                 case SceneType.Gate:
                     scene.AddComponent<NetKcpComponent, IPEndPoint>(startSceneConfig.OuterIPPort);
                     scene.AddComponent<PlayerComponent>();
+                    ETTaskCompletionSource tcs = new ETTaskCompletionSource();
+                    scene.AddComponent<GuildComponent,ETTaskCompletionSource>(tcs);
+                    await tcs.Task;
                     scene.AddComponent<GateSessionKeyComponent>();
                     break;
                 case SceneType.Map:

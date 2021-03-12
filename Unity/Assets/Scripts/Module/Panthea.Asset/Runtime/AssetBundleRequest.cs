@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -75,6 +76,7 @@ namespace Panthea.Asset
         public Object LoadAssetSync(string name, Type type)
         {
             List<Object> obj;
+            name = Path.GetFileNameWithoutExtension(name);
             if (this.mLoadedObjects.TryGetValue(name, out obj))
             {
                 if (obj != null)
@@ -108,6 +110,7 @@ namespace Panthea.Asset
         public T LoadAssetSync<T>(string name) where T : Object
         {
             List<Object> obj;
+            name = Path.GetFileNameWithoutExtension(name);
             if (this.mLoadedObjects.TryGetValue(name, out obj))
             {
                 foreach (var node in obj)
@@ -174,6 +177,7 @@ namespace Panthea.Asset
         public async UniTask<Object> LoadAssetAsync(string name,Type type)
         {
             List<Object> obj;
+            name = Path.GetFileNameWithoutExtension(name);
             if (this.mLoadedObjects.TryGetValue(name, out obj))
             {
                 if (obj != null)
@@ -201,6 +205,7 @@ namespace Panthea.Asset
         public async UniTask<T> LoadAssetAsync<T>(string name) where T : Object
         {
             List<Object> obj;
+            name = Path.GetFileNameWithoutExtension(name);
             if (this.mLoadedObjects.TryGetValue(name, out obj))
             {
                 foreach (var node in obj)

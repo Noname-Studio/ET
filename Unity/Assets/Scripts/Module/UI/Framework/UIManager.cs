@@ -84,6 +84,8 @@ public class UIManager
             tasks.Add(LoadPackage("UI/Common/Common","Common"));
             tasks.Add(LoadPackage("UI/Common/GameBegins","GameBegins"));
             tasks.Add(LoadPackage("UI/Kitchen/GamingUI","GamingUI"));
+            tasks.Add(LoadPackage("UI/Common/Log_in","Log_in"));
+
             await UniTask.WhenAll(tasks);
         }
     }

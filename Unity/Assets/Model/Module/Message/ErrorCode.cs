@@ -9,6 +9,9 @@ namespace ET
         // 100000-109999是Core层的错误
         // 110000 以上，避免跟SocketError冲突
         public const int ERR_LogicError = 110000;
+        public const int ERR_DuplicateNames = 110001;
+        public const int ERR_JoinedGuild = 110002;
+        public const int ERR_MissingGuild = 110003;
         
         public const int ERR_KcpConnectTimeout = 100205;
         public const int ERR_PeerDisconnect = 100208;

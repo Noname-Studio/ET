@@ -14,6 +14,10 @@ namespace Client.UI.ViewComponent
             {
                 return Component.value;
             }
+            set
+            {
+                this.Component.value = value;
+            }
         }
         
         private static string[] CacheItems;

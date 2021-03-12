@@ -1,5 +1,5 @@
 ﻿using FairyGUI;
-using UI.Story.WithoutHot;
+using InternalResources;
 
 namespace Client.UI.ViewModel
 {

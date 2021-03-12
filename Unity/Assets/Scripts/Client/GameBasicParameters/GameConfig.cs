@@ -5,11 +5,11 @@ using UnityEngine;
 
 public static class GameConfig 
 {
-    public const string LevelConfigPath = "DB/Kitchen/Levels/";
-    public const string IngredientConfigPath = "DB/Kitchen/Ingredient/";
-    public const string FoodConfigPath = "DB/Kitchen/Foods/";
-    public const string CustomerConfigPath = "DB/Kitchen/Customer/";
-    public const string CookwareConfigPath = "DB/Kitchen/Cookwares/";
+    public const string LevelConfigPath = "Config/Kitchen/Levels/";
+    public const string IngredientConfigPath = "Config/Kitchen/Ingredient/";
+    public const string FoodConfigPath = "Config/Kitchen/Foods/";
+    public const string CustomerConfigPath = "Config/Kitchen/Customer/";
+    public const string CookwareConfigPath = "Config/Kitchen/Cookwares/";
     public static string PersistentDataPath { get; } = AssetsConfig.PersistentDataPath;
     public static bool MobileRuntime
     {

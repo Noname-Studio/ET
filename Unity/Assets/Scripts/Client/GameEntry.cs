@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Client.UI.ViewModel;
+using Config.ConfigCore;
 using Cysharp.Threading.Tasks;
 using ET;
 using FairyGUI;
 using Panthea.Asset;
+using RestaurantPreview.Config;
 using Sirenix.OdinInspector;
 #if UNITY_ANDROID || UNITY_IOS
 using NotificationSamples;
@@ -130,6 +132,9 @@ public class GameEntry : MonoBehaviour
         var tasks = new List<UniTask>
         {
             //ConfigAssetManager<ItemProperty>.Load(assetsManager, "DB/Item"),
+            ConfigAssetManager<LocalizationProperty>.Load("Config/Restaurant/Localization"),
+            ConfigAssetManager<GuildIconProperty>.Load("Config/Restaurant/GuildIcon"),
+
         };
         await UniTask.WhenAll(tasks);
     }

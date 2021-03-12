@@ -27,7 +27,7 @@ namespace ET
 		
 		public void Add(Data_PlayerInfo Data_PlayerInfo)
 		{
-			this.idPlayers.Add(Data_PlayerInfo.Id, Data_PlayerInfo);
+			this.idPlayers[Data_PlayerInfo.Id] = Data_PlayerInfo;
 		}
 
 		public Data_PlayerInfo Get(long id)
