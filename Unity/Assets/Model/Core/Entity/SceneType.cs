@@ -9,7 +9,7 @@
 		Http = 4,
 		Location = 5,
 		Map = 6,
-
+		Chat = 7,
 		// 客户端Model层
 		Client = 30,
 		Zone = 31,

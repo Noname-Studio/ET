@@ -184,6 +184,46 @@ message M2G_CreateUnit // IActorResponse
     repeated UnitInfo Units = 2;
 }
 
+//ResponseType CS2G_AddPlayerToChatServer
+message G2CS_AddPlayerToChatServer // IActorRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GateSessionId = 1;
+}
+
+message CS2G_AddPlayerToChatServer //IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    // 自己的unit id
+    int64 UnitId = 1;
+}
+
+//ResponseType CS2G_AddPlayerToChatServer
+message G2CS_AddPlayerToChatServer // IActorRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GateSessionId = 1;
+}
+
+message G2CS_SendGuildMessage // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GuildId = 1;
+	int64 SenderId = 2;
+	string SenderName = 3;
+	string SenderMsg = 4;
+	int64 Time = 5;
+}
+
 message G2M_SessionDisconnect // IActorLocationMessage
 {
     int32 RpcId = 90;

@@ -312,14 +312,31 @@ message M2C_GuildUpdate // IActorMessage,IActorLocationMessage
 	int32 MaxMemberNum = 14;
 }
 
-message M2C_GuildChatMessage // IActorMessage,IActorLocationMessage
+//ResponseType G2C_ChatMessage
+message C2G_ChatMessage // IRequest
+{
+	int32 RpcId = 90;
+	string SendMessage = 1;
+	int32 Type = 2;//0:世界频道,1:公会频道,2:私聊频道
+	int32 Id = 3;//如果是私聊频道发送额外的Id
+}
+
+message G2C_ChatMessage // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message CS2C_GuildMessageChanged //IActorMessage
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 	int64 SenderId = 1;
 	string SenderName = 2;
-	string SendMessage = 3;
+	string SenderMsg = 3;
+	int64 Time = 4;
 }
 
 message ApplicationInfo

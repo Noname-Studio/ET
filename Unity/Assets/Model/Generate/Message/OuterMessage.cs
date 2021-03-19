@@ -677,6 +677,67 @@ namespace ET
 
 	}
 
+	[ResponseType(typeof(G2C_ChatMessage))]
+	[Message(OuterOpcode.C2G_ChatMessage)]
+	[ProtoContract]
+	public partial class C2G_ChatMessage: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string SendMessage { get; set; }
+
+		[ProtoMember(2)]
+		public int Type { get; set; }
+
+		[ProtoMember(3)]
+		public int Id { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_ChatMessage)]
+	[ProtoContract]
+	public partial class G2C_ChatMessage: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.CS2C_GuildMessageChanged)]
+	[ProtoContract]
+	public partial class CS2C_GuildMessageChanged: IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long SenderId { get; set; }
+
+		[ProtoMember(2)]
+		public string SenderName { get; set; }
+
+		[ProtoMember(3)]
+		public string SenderMsg { get; set; }
+
+		[ProtoMember(4)]
+		public long Time { get; set; }
+
+	}
+
 	[Message(OuterOpcode.ApplicationInfo)]
 	[ProtoContract]
 	public partial class ApplicationInfo

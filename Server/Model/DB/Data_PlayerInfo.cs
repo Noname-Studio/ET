@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ET;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Model.Module.DB.ActualTable
 {
@@ -17,8 +18,10 @@ namespace Model.Module.DB.ActualTable
         public long GuildId;
 
         public List<int> DressUp = new List<int>();
+        [BsonIgnore]
         public long UnitId { get; set; }
-
+        [BsonIgnore]
+        public long ChatId { get; set; }
         public int CurLevel = 1000000;
     }
 }

@@ -15,7 +15,10 @@ namespace ET
 			long mapInstanceId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map").SceneId;
 			M2G_CreateUnit createUnit = (M2G_CreateUnit)await ActorMessageSenderComponent.Instance.Call(
 				mapInstanceId, new G2M_CreateUnit() { PlayerId = player.Id, GateSessionId = session.InstanceId });
+			CS2G_AddPlayerToChatServer createChat = (CS2G_AddPlayerToChatServer)await ActorMessageSenderComponent.Instance.Call(
+				mapInstanceId, new G2CS_AddPlayerToChatServer() { GateSessionId = session.InstanceId });
 			player.UnitId = createUnit.UnitId;
+			player.ChatId = createChat.UnitId;
 			response.UnitId = player.Id;
 			var guild = await DBComponent.Instance.Query<Data_Guild>(player.GuildId);
 			if (guild != null)

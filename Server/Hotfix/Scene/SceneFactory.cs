@@ -37,6 +37,9 @@ namespace ET
                     scene.AddComponent<UnitComponent>();
                     scene.AddComponent<RecastPathComponent>();
                     break;
+                case SceneType.Chat:
+                    scene.AddComponent<ChatUnitComponent>();
+                    break;
                 case SceneType.Location:
                     scene.AddComponent<LocationComponent>();
                     break;

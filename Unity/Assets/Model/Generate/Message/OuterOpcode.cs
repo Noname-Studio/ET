@@ -37,7 +37,10 @@ namespace ET
 		 public const ushort C2G_PlayerInfo = 20033;
 		 public const ushort G2C_PlayerInfo = 20034;
 		 public const ushort M2C_GuildUpdate = 20035;
-		 public const ushort ApplicationInfo = 20036;
-		 public const ushort MemberInfo = 20037;
+		 public const ushort C2G_ChatMessage = 20036;
+		 public const ushort G2C_ChatMessage = 20037;
+		 public const ushort CS2C_GuildMessageChanged = 20038;
+		 public const ushort ApplicationInfo = 20039;
+		 public const ushort MemberInfo = 20040;
 	}
 }

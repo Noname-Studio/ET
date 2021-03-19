@@ -390,6 +390,94 @@ namespace ET
 
 	}
 
+	[ResponseType(typeof(CS2G_AddPlayerToChatServer))]
+	[Message(InnerOpcode.G2CS_AddPlayerToChatServer)]
+	[ProtoContract]
+	public partial class G2CS_AddPlayerToChatServer: IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GateSessionId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_AddPlayerToChatServer)]
+	[ProtoContract]
+	public partial class CS2G_AddPlayerToChatServer: IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+// 自己的unit id
+// 自己的unit id
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_AddPlayerToChatServer))]
+	[Message(InnerOpcode.G2CS_AddPlayerToChatServer)]
+	[ProtoContract]
+	public partial class G2CS_AddPlayerToChatServer: IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GateSessionId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2CS_SendGuildMessage)]
+	[ProtoContract]
+	public partial class G2CS_SendGuildMessage: IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+		[ProtoMember(2)]
+		public long SenderId { get; set; }
+
+		[ProtoMember(3)]
+		public string SenderName { get; set; }
+
+		[ProtoMember(4)]
+		public string SenderMsg { get; set; }
+
+		[ProtoMember(5)]
+		public long Time { get; set; }
+
+	}
+
 	[Message(InnerOpcode.G2M_SessionDisconnect)]
 	[ProtoContract]
 	public partial class G2M_SessionDisconnect: IActorLocationMessage
