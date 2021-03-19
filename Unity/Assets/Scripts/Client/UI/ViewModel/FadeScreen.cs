@@ -7,9 +7,13 @@ using FairyGUI;
 public class FadeScreen : IEffect
 {
     private View_FadeScreen mFadeScreen;
+    public void Do()
+    {
+    }
+
     public bool IsPlaying => mFadeScreen.t0.playing;
 
-    public void Do()
+    public FadeScreen()
     {
         mFadeScreen = View_FadeScreen.CreateInstance();
         GRoot.inst.AddChild(mFadeScreen);

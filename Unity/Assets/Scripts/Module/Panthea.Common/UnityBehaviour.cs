@@ -192,7 +192,8 @@ public class UnityBehaviour : MonoBehaviour
     
     private void OnApplicationQuit()
     {
-        this.ApplicationQuitEvent();
+        if(this.ApplicationQuitEvent != null)
+            this.ApplicationQuitEvent();
     }
 }
 

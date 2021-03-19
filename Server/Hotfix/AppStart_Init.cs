@@ -17,7 +17,7 @@ namespace ET
             
             Game.Scene.AddComponent<TimerComponent>();
             var zoneConfig = StartZoneConfigCategory.Instance.Get(1);
-            Game.Scene.AddComponent<DBComponent, string, string>(zoneConfig.DBConnection, zoneConfig.DBName);
+            //Game.Scene.AddComponent<DBComponent, string, string>(zoneConfig.DBConnection, zoneConfig.DBName);
             Game.Scene.AddComponent<OpcodeTypeComponent>();
             Game.Scene.AddComponent<MessageDispatcherComponent>();
             Game.Scene.AddComponent<CoroutineLockComponent>();

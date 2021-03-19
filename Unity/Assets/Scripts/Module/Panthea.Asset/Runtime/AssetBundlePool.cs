@@ -144,7 +144,8 @@ namespace Panthea.Asset
             List<AssetBundleRequest> temp = new List<AssetBundleRequest>(this.Lookup.Keys);
             foreach (var node in temp)
             {
-                this.Release(node);
+                if(!node.Persistence)
+                    this.Release(node);
             }
         }
 

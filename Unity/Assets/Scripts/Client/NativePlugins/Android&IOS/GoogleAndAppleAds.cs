@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class GoogleAndAppleAds : IUnityAdsListener,IAdsHandler
 {
 #if UNITY_IOS
-    private string gameId = "1486551";
+    private string gameId = "4053332";
 #elif UNITY_ANDROID
-    private string gameId = "1486550";
+    private string gameId = "4053333";
 #endif
     private string RewardVideoPlacementId = "rewardedVideo";
     private MessageKit mEventManager;

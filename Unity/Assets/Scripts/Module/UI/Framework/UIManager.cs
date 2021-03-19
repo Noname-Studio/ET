@@ -85,7 +85,7 @@ public class UIManager
             tasks.Add(LoadPackage("UI/Common/GameBegins","GameBegins"));
             tasks.Add(LoadPackage("UI/Kitchen/GamingUI","GamingUI"));
             tasks.Add(LoadPackage("UI/Common/Log_in","Log_in"));
-
+            tasks.Add(LoadPackage("UI/Common/Effect","Effect"));
             await UniTask.WhenAll(tasks);
         }
     }
@@ -95,6 +95,7 @@ public class UIManager
         path = path.ToLower();
         name = name.ToLower();
         AssetBundleRequest ab = await mAssetsLocator.LoadAssetBundleFromABKey(path + AssetsConfig.Suffix);
+        ab.MarkPersistence(true);
         path += "/";
         var text = await ab.LoadAssetAsync<TextAsset>(path + name + "_fui");
         UIPackage.AddPackage(text.bytes,"", (string file, string extension, Type type, out DestroyMethod method) =>

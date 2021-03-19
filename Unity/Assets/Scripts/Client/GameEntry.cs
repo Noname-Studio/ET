@@ -34,11 +34,11 @@ public class GameEntry : MonoBehaviour
         RegisterUniTaskModule();
         RegisterUpdateModule();
         RegisterAssetBundleModule();
-        RegisterAds();
+        //RegisterAds();
         RegisterNotify();
         await RegisterGameConfigure();
         await RegisterUIModule();
-        await RegisterNetworkModule();
+        //await RegisterNetworkModule();
         await RegisterDatabaseSaveSystem();
         //开始游戏
         await UniTask.SwitchToMainThread();

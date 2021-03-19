@@ -312,6 +312,16 @@ message M2C_GuildUpdate // IActorMessage,IActorLocationMessage
 	int32 MaxMemberNum = 14;
 }
 
+message M2C_GuildChatMessage // IActorMessage,IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 SenderId = 1;
+	string SenderName = 2;
+	string SendMessage = 3;
+}
+
 message ApplicationInfo
 {
 	int64 Time = 1;

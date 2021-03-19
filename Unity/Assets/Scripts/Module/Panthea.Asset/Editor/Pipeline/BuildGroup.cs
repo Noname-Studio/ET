@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using NPOI.SS.Formula.Functions;
 using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
@@ -71,6 +72,22 @@ namespace Panthea.Editor.Asset
                     {
                         var entry = this.AddressableBuilder.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(PathUtils.FullPathToUnityPath(file)), group, false, false);
                         entry.SetAddress(Path.GetFileNameWithoutExtension(file).ToLower(), false);
+                    }
+                }
+
+                for (int index = this.AddressableBuilder.groups.Count - 1; index >= 0; index--)
+                {
+                    var node = this.AddressableBuilder.groups[index];
+                    if (!mapping.ContainsKey(node.name.Replace("-", "/")))
+                    {
+                        if (node.Default)
+                            continue;
+                        if (node.ReadOnly)
+                            continue;
+                        this.AddressableBuilder.RemoveGroup(node);
+#if DEBUG_ADDRESSABLE
+                        Debug.Log("Remove Group " + node.Name);
+#endif
                     }
                 }
             }

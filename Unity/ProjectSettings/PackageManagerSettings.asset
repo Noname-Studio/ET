@@ -20,24 +20,41 @@ MonoBehaviour:
   m_Registries:
   - m_Id: main
     m_Name: 
-    m_Url: https://packages.unity.cn
+    m_Url: https://packages.unity.com
     m_Scopes: []
     m_IsDefault: 1
     m_Capabilities: 7
+  - m_Id: scoped:A* Pathfinding Project
+    m_Name: A* Pathfinding Project
+    m_Url: https://arongranberg.com/packages/420d4942a9fac6b50a686940b0c32a0b5f0fb420aa947
+    m_Scopes:
+    - com.arongranberg.astar
+    m_IsDefault: 0
+    m_Capabilities: 0
+  - m_Id: scoped:package.openupm.com
+    m_Name: package.openupm.com
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.alelievr.node-graph-processor
+    - com.cysharp.unitask
+    - com.openupm
+    m_IsDefault: 0
+    m_Capabilities: 0
   m_UserSelectedRegistryName: 
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_ErrorMessage: 
     m_Original:
-      m_Id: 
-      m_Name: 
-      m_Url: 
-      m_Scopes: []
+      m_Id: scoped:A* Pathfinding Project
+      m_Name: A* Pathfinding Project
+      m_Url: https://arongranberg.com/packages/420d4942a9fac6b50a686940b0c32a0b5f0fb420aa947
+      m_Scopes:
+      - com.arongranberg.astar
       m_IsDefault: 0
       m_Capabilities: 0
     m_Modified: 0
-    m_Name: 
-    m_Url: 
+    m_Name: A* Pathfinding Project
+    m_Url: https://arongranberg.com/packages/420d4942a9fac6b50a686940b0c32a0b5f0fb420aa947
     m_Scopes:
-    - 
+    - com.arongranberg.astar
     m_SelectedScopeIndex: 0

@@ -1,4 +1,8 @@
-﻿using InternalResources;
+﻿using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using InternalResources;
+using Panthea.Asset;
 using UnityEngine;
 
 namespace Client.UI.ViewModel
@@ -15,12 +19,44 @@ namespace Client.UI.ViewModel
             get => View.Loading.value;
             set => View.Loading.TweenValue(value, 0.3f);
         }
+
+        private List<UniTask> mLoadQueue = new List<UniTask>();
         
-        public override void OnInit(IUIParams p)
+        public override async void OnInit(IUIParams p)
         {
             base.OnInit(p);
-            //TODO 实现这个类该有的功能
-            //Manager.Create<>()           
+            if (Application.internetReachability == NetworkReachability.NotReachable && GameConfig.MobileRuntime)
+            {
+                this.mLoadQueue.Add(this.FetchUpdateList());
+                this.mLoadQueue.Add(this.FetchUpdateList());
+            }
+            else
+            {
+                
+            }
+        }
+
+        /// <summary>
+        /// 下载资源
+        /// </summary>
+        /// <returns></returns>
+        public async UniTask FetchUpdateList()
+        {
+            var assetMgr = (AssetsManager) AssetsKit.Inst;
+            var downloadList = await assetMgr.FetchDownloadList();
+            await assetMgr.Download(downloadList);
+        }
+
+        /// <summary>
+        /// 检查SDK初始化是否正常
+        /// </summary>
+        /// <returns></returns>
+        public async UniTask CheckSdkInitialize()
+        {
+            Social.localUser.Authenticate(b =>
+            {
+                Debug.LogError("初始化完成");
+            });
         }
 
         public override void Update()

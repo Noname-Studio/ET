@@ -17,10 +17,10 @@ namespace Client.UI.ViewModel
             this.View.FacebookButton.onClick.Add(() =>
             {
                 Log.Print("开始登录");
-
-                Social.localUser.Authenticate(b =>
+                Social.Active.localUser.Authenticate(b =>
                 {
-                    Log.Print("登录成功");
+                    Log.Print(b? "登录成功" : "登录失败");
+                    Log.Print(Social.localUser.id + "    " + Social.localUser.userName);
                 });
             });
         }
@@ -33,9 +33,12 @@ namespace Client.UI.ViewModel
             {
                 await UniTask.NextFrame();
             }
+            this.CloseMySelf();
             //这里我们做一些初始化的工作
             fadeEffect.PlayWhite();
             //进入实际场景了.
+            fadeEffect.Dispose();
+            
         }
     }
 }

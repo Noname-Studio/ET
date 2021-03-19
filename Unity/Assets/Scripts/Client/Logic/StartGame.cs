@@ -42,7 +42,7 @@ public class StartGame
                     {
                         var customerProperty = obj as CustomerProperty;
                         if (customerProperty != null) 
-                            await assetsLocator.Load<GameObject>(customerProperty.ModelPath);
+                            await assetsLocator.Load<GameObject>(customerreProperty.ModelPath);
                     }
                 }*/
             }
@@ -69,6 +69,6 @@ public class StartGame
             UIKit.Inst.Create<Client.UI.ViewModel.UI_NotJoinGuild>();
         else
             UIKit.Inst.Create<Client.UI.ViewModel.UI_JoinedGuild>();*/
-        UIKit.Inst.Create<UI_Login>();
+        UIKit.Inst.Create<UI_FirstGameLoading>();
     }
 }
