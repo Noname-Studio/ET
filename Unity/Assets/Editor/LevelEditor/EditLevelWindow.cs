@@ -20,7 +20,10 @@
                 var path = PathUtils.FullPathToUnityPath(node);
                 var customerProperty = AssetDatabase.LoadAssetAtPath<CustomerProperty>(path);
                 customerProperty.UpdatePath();
+                EditorUtility.SetDirty(customerProperty);
             }
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
         
         [MenuItem("Tools/Restaurant/Kitchen/Open Edit Level Window")]
