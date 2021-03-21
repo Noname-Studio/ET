@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: d58f614939fa11c48aafb433c051325d
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bip01
+    100002: Bip01 Head
+    100004: Bip01 Neck
+    100006: Bip01 Pelvis
+    100008: Bip01 Spine
+    100010: Bip01 Spine1
+    100012: hair01
+    100014: //RootNode
+    100016: hairbone00
+    100018: hairbone01
+    100020: hairbone02
+    100022: hairbone03
+    100024: hairbone04
+    100026: hairbone05
+    100028: hairbox
+    100030: hairfront001
+    100032: hairfront002
+    100034: shadowhair
+    100036: hair
+    400000: Bip01
+    400002: Bip01 Head
+    400004: Bip01 Neck
+    400006: Bip01 Pelvis
+    400008: Bip01 Spine
+    400010: Bip01 Spine1
+    400012: hair01
+    400014: //RootNode
+    400016: hairbone00
+    400018: hairbone01
+    400020: hairbone02
+    400022: hairbone03
+    400024: hairbone04
+    400026: hairbone05
+    400028: hairbox
+    400030: hairfront001
+    400032: hairfront002
+    400034: shadowhair
+    400036: hair
+    2100000: hair
+    2100002: shadowhair
+    2300000: shadowhair
+    3300000: shadowhair
+    4300000: hair01
+    4300002: shadowhair
+    4300004: hair
+    9500000: //RootNode
+    13700000: hair01
+    13700002: hair
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: 7f4a9e4af870a2e4493c569cb1f24308, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shadowhair
+    second: {fileID: 2100000, guid: 69ae3e49a98e18748b0681055b5607e8, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

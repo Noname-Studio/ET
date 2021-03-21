@@ -1,0 +1,732 @@
+fileFormatVersion: 2
+guid: 8d60977df717cfa429e6b95b15d32df8
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 001
+    100002: 002
+    100004: Bip01
+    100006: Bip01 Head
+    100008: Bip01 HeadNub
+    100010: Bip01 L Calf
+    100012: Bip01 L Clavicle
+    100014: Bip01 L Finger0
+    100016: Bip01 L Finger01
+    100018: Bip01 L Finger02
+    100020: Bip01 L Finger0Nub
+    100022: Bip01 L Finger1
+    100024: Bip01 L Finger11
+    100026: Bip01 L Finger12
+    100028: Bip01 L Finger1Nub
+    100030: Bip01 L Finger2
+    100032: Bip01 L Finger21
+    100034: Bip01 L Finger22
+    100036: Bip01 L Finger2Nub
+    100038: Bip01 L Finger3
+    100040: Bip01 L Finger31
+    100042: Bip01 L Finger32
+    100044: Bip01 L Finger3Nub
+    100046: Bip01 L Finger4
+    100048: Bip01 L Finger41
+    100050: Bip01 L Finger42
+    100052: Bip01 L Finger4Nub
+    100054: Bip01 L Foot
+    100056: Bip01 L Forearm
+    100058: Bip01 L Hand
+    100060: Bip01 L Thigh
+    100062: Bip01 L Toe0
+    100064: Bip01 L Toe0Nub
+    100066: Bip01 L UpperArm
+    100068: Bip01 Neck
+    100070: Bip01 Pelvis
+    100072: Bip01 R Calf
+    100074: Bip01 R Clavicle
+    100076: Bip01 R Finger0
+    100078: Bip01 R Finger01
+    100080: Bip01 R Finger02
+    100082: Bip01 R Finger0Nub
+    100084: Bip01 R Finger1
+    100086: Bip01 R Finger11
+    100088: Bip01 R Finger12
+    100090: Bip01 R Finger1Nub
+    100092: Bip01 R Finger2
+    100094: Bip01 R Finger21
+    100096: Bip01 R Finger22
+    100098: Bip01 R Finger2Nub
+    100100: Bip01 R Finger3
+    100102: Bip01 R Finger31
+    100104: Bip01 R Finger32
+    100106: Bip01 R Finger3Nub
+    100108: Bip01 R Finger4
+    100110: Bip01 R Finger41
+    100112: Bip01 R Finger42
+    100114: Bip01 R Finger4Nub
+    100116: Bip01 R Foot
+    100118: Bip01 R Forearm
+    100120: Bip01 R Hand
+    100122: Bip01 R Thigh
+    100124: Bip01 R Toe0
+    100126: Bip01 R Toe0Nub
+    100128: Bip01 R UpperArm
+    100130: Bip01 Spine
+    100132: Bip01 Spine1
+    100134: Bone001
+    100136: Bone002
+    100138: Bone003
+    100140: Bone004
+    100142: Bone005
+    100144: Bone006
+    100146: Bone028
+    100148: Bone029
+    100150: Bone030
+    100152: Bone031
+    100154: Bone032
+    100156: Bone033
+    100158: Bone034
+    100160: Bone035
+    100162: Bone036
+    100164: Bone037
+    100166: Bone038
+    100168: Bone039
+    100170: Bone040
+    100172: Bone041
+    100174: Bone042
+    100176: Bone096
+    100178: Bone097
+    100180: Bone098
+    100182: Bone099
+    100184: Bone100
+    100186: Bone101
+    100188: c1_bi
+    100190: c1_mabu
+    100192: Cylinder003
+    100194: Cylinder006
+    100196: Cylinder011
+    100198: Cylinder016
+    100200: Cylinder017
+    100202: //RootNode
+    100204: dianhua
+    100206: dianhua00
+    100208: Dummy001
+    100210: Dummy003
+    100212: Left_ltem
+    100214: Line002
+    100216: Line003
+    100218: Line004
+    100220: mabu00
+    100222: mabu01
+    100224: mabu02
+    100226: mabu03
+    100228: mabu04
+    100230: mabu05
+    100232: Object001
+    100234: Object002
+    100236: Object003
+    100238: Object011
+    100240: Object012
+    100242: Object013
+    100244: Object014
+    100246: Object014 1
+    100248: Right_ltem
+    100250: saoba
+    100252: saoba00
+    100254: saoba01
+    100256: saoba02
+    100258: saoba03
+    100260: shu
+    100262: weeder
+    100264: "\u5BF9\u8C61001"
+    100266: "\u5BF9\u8C61015"
+    100268: book00
+    100270: book01
+    100272: book37
+    100274: book38
+    100276: book39
+    100278: book40
+    100280: book41
+    100282: book42
+    100284: book43
+    100286: c1_015
+    100288: c1_book1
+    100290: c1_bookcover
+    100292: c1_bookin
+    100294: c1_Cylinder003
+    100296: c1_Cylinder006
+    100298: c1_Cylinder011
+    100300: c1_Cylinder016
+    100302: c1_Cylinder017
+    100304: c1_dianhua
+    100306: c1_Line002
+    100308: c1_Line003
+    100310: c1_Line004
+    100312: c1_Object014
+    100314: c1_saoba
+    100316: c1_shu
+    100318: c1_cupdish
+    100320: c1_cupL
+    100322: c1_cupR
+    100324: c1_shuihu
+    100326: qipaokuang
+    100328: shuihu001
+    100330: shuihu002
+    100332: c1_autograph
+    100334: c1_autograph001
+    100336: picture00
+    100338: picture007
+    100340: picture008
+    100342: picture009
+    100344: picture01
+    100346: picture010
+    100348: picture011
+    100350: picture012
+    100352: picture013
+    100354: picture02
+    100356: picture03
+    100358: picture04
+    100360: picture05
+    100362: picture06
+    100364: Dummy004
+    100366: hairbox
+    100368: shoes1
+    100370: shadowhair
+    100372: backside_head
+    100374: earrings
+    100376: glass
+    100378: glass 1
+    100380: necklace
+    400000: 001
+    400002: 002
+    400004: Bip01
+    400006: Bip01 Head
+    400008: Bip01 HeadNub
+    400010: Bip01 L Calf
+    400012: Bip01 L Clavicle
+    400014: Bip01 L Finger0
+    400016: Bip01 L Finger01
+    400018: Bip01 L Finger02
+    400020: Bip01 L Finger0Nub
+    400022: Bip01 L Finger1
+    400024: Bip01 L Finger11
+    400026: Bip01 L Finger12
+    400028: Bip01 L Finger1Nub
+    400030: Bip01 L Finger2
+    400032: Bip01 L Finger21
+    400034: Bip01 L Finger22
+    400036: Bip01 L Finger2Nub
+    400038: Bip01 L Finger3
+    400040: Bip01 L Finger31
+    400042: Bip01 L Finger32
+    400044: Bip01 L Finger3Nub
+    400046: Bip01 L Finger4
+    400048: Bip01 L Finger41
+    400050: Bip01 L Finger42
+    400052: Bip01 L Finger4Nub
+    400054: Bip01 L Foot
+    400056: Bip01 L Forearm
+    400058: Bip01 L Hand
+    400060: Bip01 L Thigh
+    400062: Bip01 L Toe0
+    400064: Bip01 L Toe0Nub
+    400066: Bip01 L UpperArm
+    400068: Bip01 Neck
+    400070: Bip01 Pelvis
+    400072: Bip01 R Calf
+    400074: Bip01 R Clavicle
+    400076: Bip01 R Finger0
+    400078: Bip01 R Finger01
+    400080: Bip01 R Finger02
+    400082: Bip01 R Finger0Nub
+    400084: Bip01 R Finger1
+    400086: Bip01 R Finger11
+    400088: Bip01 R Finger12
+    400090: Bip01 R Finger1Nub
+    400092: Bip01 R Finger2
+    400094: Bip01 R Finger21
+    400096: Bip01 R Finger22
+    400098: Bip01 R Finger2Nub
+    400100: Bip01 R Finger3
+    400102: Bip01 R Finger31
+    400104: Bip01 R Finger32
+    400106: Bip01 R Finger3Nub
+    400108: Bip01 R Finger4
+    400110: Bip01 R Finger41
+    400112: Bip01 R Finger42
+    400114: Bip01 R Finger4Nub
+    400116: Bip01 R Foot
+    400118: Bip01 R Forearm
+    400120: Bip01 R Hand
+    400122: Bip01 R Thigh
+    400124: Bip01 R Toe0
+    400126: Bip01 R Toe0Nub
+    400128: Bip01 R UpperArm
+    400130: Bip01 Spine
+    400132: Bip01 Spine1
+    400134: Bone001
+    400136: Bone002
+    400138: Bone003
+    400140: Bone004
+    400142: Bone005
+    400144: Bone006
+    400146: Bone028
+    400148: Bone029
+    400150: Bone030
+    400152: Bone031
+    400154: Bone032
+    400156: Bone033
+    400158: Bone034
+    400160: Bone035
+    400162: Bone036
+    400164: Bone037
+    400166: Bone038
+    400168: Bone039
+    400170: Bone040
+    400172: Bone041
+    400174: Bone042
+    400176: Bone096
+    400178: Bone097
+    400180: Bone098
+    400182: Bone099
+    400184: Bone100
+    400186: Bone101
+    400188: c1_bi
+    400190: c1_mabu
+    400192: Cylinder003
+    400194: Cylinder006
+    400196: Cylinder011
+    400198: Cylinder016
+    400200: Cylinder017
+    400202: //RootNode
+    400204: dianhua
+    400206: dianhua00
+    400208: Dummy001
+    400210: Dummy003
+    400212: Left_ltem
+    400214: Line002
+    400216: Line003
+    400218: Line004
+    400220: mabu00
+    400222: mabu01
+    400224: mabu02
+    400226: mabu03
+    400228: mabu04
+    400230: mabu05
+    400232: Object001
+    400234: Object002
+    400236: Object003
+    400238: Object011
+    400240: Object012
+    400242: Object013
+    400244: Object014
+    400246: Object014 1
+    400248: Right_ltem
+    400250: saoba
+    400252: saoba00
+    400254: saoba01
+    400256: saoba02
+    400258: saoba03
+    400260: shu
+    400262: weeder
+    400264: "\u5BF9\u8C61001"
+    400266: "\u5BF9\u8C61015"
+    400268: book00
+    400270: book01
+    400272: book37
+    400274: book38
+    400276: book39
+    400278: book40
+    400280: book41
+    400282: book42
+    400284: book43
+    400286: c1_015
+    400288: c1_book1
+    400290: c1_bookcover
+    400292: c1_bookin
+    400294: c1_Cylinder003
+    400296: c1_Cylinder006
+    400298: c1_Cylinder011
+    400300: c1_Cylinder016
+    400302: c1_Cylinder017
+    400304: c1_dianhua
+    400306: c1_Line002
+    400308: c1_Line003
+    400310: c1_Line004
+    400312: c1_Object014
+    400314: c1_saoba
+    400316: c1_shu
+    400318: c1_cupdish
+    400320: c1_cupL
+    400322: c1_cupR
+    400324: c1_shuihu
+    400326: qipaokuang
+    400328: shuihu001
+    400330: shuihu002
+    400332: c1_autograph
+    400334: c1_autograph001
+    400336: picture00
+    400338: picture007
+    400340: picture008
+    400342: picture009
+    400344: picture01
+    400346: picture010
+    400348: picture011
+    400350: picture012
+    400352: picture013
+    400354: picture02
+    400356: picture03
+    400358: picture04
+    400360: picture05
+    400362: picture06
+    400364: Dummy004
+    400366: hairbox
+    400368: shoes1
+    400370: shadowhair
+    400372: backside_head
+    400374: earrings
+    400376: glass
+    400378: glass 1
+    400380: necklace
+    2100000: 'Material #3869'
+    2100002: 'Material #3875'
+    2100004: 'Material #3874'
+    2100006: 'Material #3876'
+    2100008: 'Material #3870'
+    2100010: 'Material #3804'
+    2100012: 'Material #25'
+    2100014: 'Material #31'
+    2100016: No Name
+    2100018: c1_zawu
+    2100020: 'Material #3320'
+    2100022: 'Material #3325'
+    2100024: 'Material #27'
+    2100026: 'Material #2355'
+    2100028: shoes1
+    2100030: 'Material #3956'
+    2100032: shadowhair
+    2100034: 'Material #3957'
+    2100036: 'Material #4268'
+    2100038: 'Material #4266'
+    2300000: Cylinder003
+    2300002: Cylinder006
+    2300004: Cylinder011
+    2300006: Cylinder016
+    2300008: Cylinder017
+    2300010: dianhua
+    2300012: Left_ltem
+    2300014: Line002
+    2300016: Line003
+    2300018: Line004
+    2300020: Object002
+    2300022: Object011
+    2300024: Object012
+    2300026: Object013
+    2300028: Object014 1
+    2300030: Right_ltem
+    2300032: "\u5BF9\u8C61015"
+    2300034: c1_015
+    2300036: c1_bookin
+    2300038: c1_Cylinder003
+    2300040: c1_Cylinder006
+    2300042: c1_Cylinder011
+    2300044: c1_Cylinder016
+    2300046: c1_Cylinder017
+    2300048: c1_dianhua
+    2300050: c1_Line002
+    2300052: c1_Line003
+    2300054: c1_Line004
+    2300056: c1_Object014
+    2300058: c1_cupdish
+    2300060: c1_cupL
+    2300062: c1_cupR
+    2300064: c1_shuihu
+    2300066: Object003
+    2300068: shadowhair
+    2300070: backside_head
+    3300000: Cylinder003
+    3300002: Cylinder006
+    3300004: Cylinder011
+    3300006: Cylinder016
+    3300008: Cylinder017
+    3300010: dianhua
+    3300012: Left_ltem
+    3300014: Line002
+    3300016: Line003
+    3300018: Line004
+    3300020: Object002
+    3300022: Object011
+    3300024: Object012
+    3300026: Object013
+    3300028: Object014 1
+    3300030: Right_ltem
+    3300032: "\u5BF9\u8C61015"
+    3300034: c1_015
+    3300036: c1_bookin
+    3300038: c1_Cylinder003
+    3300040: c1_Cylinder006
+    3300042: c1_Cylinder011
+    3300044: c1_Cylinder016
+    3300046: c1_Cylinder017
+    3300048: c1_dianhua
+    3300050: c1_Line002
+    3300052: c1_Line003
+    3300054: c1_Line004
+    3300056: c1_Object014
+    3300058: c1_cupdish
+    3300060: c1_cupL
+    3300062: c1_cupR
+    3300064: c1_shuihu
+    3300066: Object003
+    3300068: shadowhair
+    3300070: backside_head
+    4300000: "\u5BF9\u8C61001"
+    4300002: Object002
+    4300004: Object011
+    4300006: Object013
+    4300008: Object001
+    4300010: Object012
+    4300012: Object003
+    4300014: Object014
+    4300016: Left_ltem
+    4300018: "\u5BF9\u8C61015"
+    4300020: Cylinder011
+    4300022: Line002
+    4300024: Cylinder006
+    4300026: Line004
+    4300028: Line003
+    4300030: Cylinder017
+    4300032: Cylinder016
+    4300034: dianhua
+    4300036: Right_ltem
+    4300038: Cylinder003
+    4300040: Object014
+    4300042: shu
+    4300044: c1_bi
+    4300046: c1_mabu
+    4300048: saoba
+    4300050: c1_015
+    4300052: c1_Cylinder011
+    4300054: c1_Line002
+    4300056: c1_Cylinder006
+    4300058: c1_Line004
+    4300060: c1_Line003
+    4300062: c1_Cylinder017
+    4300064: c1_Cylinder016
+    4300066: c1_dianhua
+    4300068: c1_bookin
+    4300070: c1_Cylinder003
+    4300072: c1_Object014
+    4300074: c1_shu
+    4300076: c1_saoba
+    4300078: c1_book1
+    4300080: c1_bookcover
+    4300082: c1_cupdish
+    4300084: c1_cupL
+    4300086: c1_shuihu
+    4300088: c1_cupR
+    4300090: c1_autograph001
+    4300092: c1_autograph
+    4300094: shoes1
+    4300096: shadowhair
+    4300098: backside_head
+    4300100: necklace
+    4300102: glass
+    4300104: earrings
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: c1_bi
+    13700002: c1_mabu
+    13700004: Object001
+    13700006: Object003
+    13700008: Object014
+    13700010: saoba
+    13700012: shu
+    13700014: "\u5BF9\u8C61001"
+    13700016: c1_book1
+    13700018: c1_bookcover
+    13700020: c1_saoba
+    13700022: c1_shu
+    13700024: c1_autograph
+    13700026: c1_autograph001
+    13700028: shoes1
+    13700030: earrings
+    13700032: glass
+    13700034: necklace
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2355'
+    second: {fileID: 2100000, guid: 799e627a5a1c1224dbfe029cd9996ef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: b1df04f5d8d8eea498ea52385c2c3c5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: 39363fefb63402845b6ceaca995f0071, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #31'
+    second: {fileID: 2100000, guid: 8ff955091643d994f8de0d90a360f3ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3320'
+    second: {fileID: 2100000, guid: ef418918b03f76a4292afe2ebac6ac2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3325'
+    second: {fileID: 2100000, guid: 799e627a5a1c1224dbfe029cd9996ef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3804'
+    second: {fileID: 2100000, guid: ac484762a79ccf144b3c08d39be7211b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3869'
+    second: {fileID: 2100000, guid: 33642d1c1a93e11409dd60cb90f69bce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3870'
+    second: {fileID: 2100000, guid: f10b6739deaca154082e60394df69dbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3874'
+    second: {fileID: 2100000, guid: 3db2a5f5fb8589c4fa0127aefd2d7c67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3875'
+    second: {fileID: 2100000, guid: 5bd832614fff1df4992b267d4d90a5e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3876'
+    second: {fileID: 2100000, guid: 84f62416f2508894994436ea5f830ca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3956'
+    second: {fileID: 2100000, guid: 4597115b52b1c294eb8adcd4ff79a2ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3957'
+    second: {fileID: 2100000, guid: 73cb0d05661a49b43a9a10da2fa355a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4266'
+    second: {fileID: 2100000, guid: be81e59402256384bbdf9be8f69f3651, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4268'
+    second: {fileID: 2100000, guid: 8db8f9c084194c4419173a6379d19004, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 4fdbe872406060a47a21d9c359295434, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: c1_zawu
+    second: {fileID: 2100000, guid: 87d83764b60a7b54ab89bd19cea6c0ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shadowhair
+    second: {fileID: 2100000, guid: 69ae3e49a98e18748b0681055b5607e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes1
+    second: {fileID: 2100000, guid: bf8258bc54486eb40adf85a95f80124b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

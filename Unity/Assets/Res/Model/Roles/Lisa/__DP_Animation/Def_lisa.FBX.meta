@@ -1,0 +1,1444 @@
+fileFormatVersion: 2
+guid: ef9a052b6bbc254458c377b9a0906b9f
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip01
+  - first:
+      1: 100002
+    second: Bip01 Head
+  - first:
+      1: 100004
+    second: Bip01 HeadNub
+  - first:
+      1: 100006
+    second: Bip01 L Calf
+  - first:
+      1: 100008
+    second: Bip01 L Clavicle
+  - first:
+      1: 100010
+    second: Bip01 L Finger0
+  - first:
+      1: 100012
+    second: Bip01 L Finger01
+  - first:
+      1: 100014
+    second: Bip01 L Finger02
+  - first:
+      1: 100016
+    second: Bip01 L Finger0Nub
+  - first:
+      1: 100018
+    second: Bip01 L Finger1
+  - first:
+      1: 100020
+    second: Bip01 L Finger11
+  - first:
+      1: 100022
+    second: Bip01 L Finger12
+  - first:
+      1: 100024
+    second: Bip01 L Finger1Nub
+  - first:
+      1: 100026
+    second: Bip01 L Finger2
+  - first:
+      1: 100028
+    second: Bip01 L Finger21
+  - first:
+      1: 100030
+    second: Bip01 L Finger22
+  - first:
+      1: 100032
+    second: Bip01 L Finger2Nub
+  - first:
+      1: 100034
+    second: Bip01 L Finger3
+  - first:
+      1: 100036
+    second: Bip01 L Finger31
+  - first:
+      1: 100038
+    second: Bip01 L Finger32
+  - first:
+      1: 100040
+    second: Bip01 L Finger3Nub
+  - first:
+      1: 100042
+    second: Bip01 L Finger4
+  - first:
+      1: 100044
+    second: Bip01 L Finger41
+  - first:
+      1: 100046
+    second: Bip01 L Finger42
+  - first:
+      1: 100048
+    second: Bip01 L Finger4Nub
+  - first:
+      1: 100050
+    second: Bip01 L Foot
+  - first:
+      1: 100052
+    second: Bip01 L Forearm
+  - first:
+      1: 100054
+    second: Bip01 L Hand
+  - first:
+      1: 100056
+    second: Bip01 L Thigh
+  - first:
+      1: 100058
+    second: Bip01 L Toe0
+  - first:
+      1: 100060
+    second: Bip01 L Toe0Nub
+  - first:
+      1: 100062
+    second: Bip01 L UpperArm
+  - first:
+      1: 100064
+    second: Bip01 Neck
+  - first:
+      1: 100066
+    second: Bip01 Pelvis
+  - first:
+      1: 100068
+    second: Bip01 R Calf
+  - first:
+      1: 100070
+    second: Bip01 R Clavicle
+  - first:
+      1: 100072
+    second: Bip01 R Finger0
+  - first:
+      1: 100074
+    second: Bip01 R Finger01
+  - first:
+      1: 100076
+    second: Bip01 R Finger02
+  - first:
+      1: 100078
+    second: Bip01 R Finger0Nub
+  - first:
+      1: 100080
+    second: Bip01 R Finger1
+  - first:
+      1: 100082
+    second: Bip01 R Finger11
+  - first:
+      1: 100084
+    second: Bip01 R Finger12
+  - first:
+      1: 100086
+    second: Bip01 R Finger1Nub
+  - first:
+      1: 100088
+    second: Bip01 R Finger2
+  - first:
+      1: 100090
+    second: Bip01 R Finger21
+  - first:
+      1: 100092
+    second: Bip01 R Finger22
+  - first:
+      1: 100094
+    second: Bip01 R Finger2Nub
+  - first:
+      1: 100096
+    second: Bip01 R Finger3
+  - first:
+      1: 100098
+    second: Bip01 R Finger31
+  - first:
+      1: 100100
+    second: Bip01 R Finger32
+  - first:
+      1: 100102
+    second: Bip01 R Finger3Nub
+  - first:
+      1: 100104
+    second: Bip01 R Finger4
+  - first:
+      1: 100106
+    second: Bip01 R Finger41
+  - first:
+      1: 100108
+    second: Bip01 R Finger42
+  - first:
+      1: 100110
+    second: Bip01 R Finger4Nub
+  - first:
+      1: 100112
+    second: Bip01 R Foot
+  - first:
+      1: 100114
+    second: Bip01 R Forearm
+  - first:
+      1: 100116
+    second: Bip01 R Hand
+  - first:
+      1: 100118
+    second: Bip01 R Thigh
+  - first:
+      1: 100120
+    second: Bip01 R Toe0
+  - first:
+      1: 100122
+    second: Bip01 R Toe0Nub
+  - first:
+      1: 100124
+    second: Bip01 R UpperArm
+  - first:
+      1: 100126
+    second: Bip01 Spine
+  - first:
+      1: 100128
+    second: Bip01 Spine1
+  - first:
+      1: 100130
+    second: Bone001
+  - first:
+      1: 100132
+    second: Bone002
+  - first:
+      1: 100134
+    second: Bone003
+  - first:
+      1: 100136
+    second: Bone004
+  - first:
+      1: 100138
+    second: Bone005
+  - first:
+      1: 100140
+    second: Bone006
+  - first:
+      1: 100142
+    second: Bone028
+  - first:
+      1: 100144
+    second: Bone029
+  - first:
+      1: 100146
+    second: Bone030
+  - first:
+      1: 100148
+    second: Bone031
+  - first:
+      1: 100150
+    second: Bone032
+  - first:
+      1: 100152
+    second: Bone033
+  - first:
+      1: 100154
+    second: Bone034
+  - first:
+      1: 100156
+    second: Bone035
+  - first:
+      1: 100158
+    second: Bone036
+  - first:
+      1: 100160
+    second: Bone037
+  - first:
+      1: 100162
+    second: Bone038
+  - first:
+      1: 100164
+    second: Bone039
+  - first:
+      1: 100166
+    second: Bone040
+  - first:
+      1: 100168
+    second: Bone041
+  - first:
+      1: 100170
+    second: Bone042
+  - first:
+      1: 100172
+    second: Bone096
+  - first:
+      1: 100174
+    second: Bone097
+  - first:
+      1: 100176
+    second: Bone098
+  - first:
+      1: 100178
+    second: Bone099
+  - first:
+      1: 100180
+    second: Bone100
+  - first:
+      1: 100182
+    second: Bone101
+  - first:
+      1: 100184
+    second: book00
+  - first:
+      1: 100186
+    second: book01
+  - first:
+      1: 100188
+    second: book37
+  - first:
+      1: 100190
+    second: book38
+  - first:
+      1: 100192
+    second: book39
+  - first:
+      1: 100194
+    second: book40
+  - first:
+      1: 100196
+    second: book41
+  - first:
+      1: 100198
+    second: book42
+  - first:
+      1: 100200
+    second: book43
+  - first:
+      1: 100202
+    second: c1_015
+  - first:
+      1: 100204
+    second: c1_bi
+  - first:
+      1: 100206
+    second: c1_book1
+  - first:
+      1: 100208
+    second: c1_bookcover
+  - first:
+      1: 100210
+    second: c1_bookin
+  - first:
+      1: 100212
+    second: c1_cupdish
+  - first:
+      1: 100214
+    second: c1_cupL
+  - first:
+      1: 100216
+    second: c1_cupR
+  - first:
+      1: 100218
+    second: c1_Cylinder003
+  - first:
+      1: 100220
+    second: c1_Cylinder006
+  - first:
+      1: 100222
+    second: c1_Cylinder011
+  - first:
+      1: 100224
+    second: c1_Cylinder016
+  - first:
+      1: 100226
+    second: c1_Cylinder017
+  - first:
+      1: 100228
+    second: c1_dianhua
+  - first:
+      1: 100230
+    second: c1_Line002
+  - first:
+      1: 100232
+    second: c1_Line003
+  - first:
+      1: 100234
+    second: c1_Line004
+  - first:
+      1: 100236
+    second: c1_mabu
+  - first:
+      1: 100238
+    second: c1_Object014
+  - first:
+      1: 100240
+    second: c1_saoba
+  - first:
+      1: 100242
+    second: c1_shu
+  - first:
+      1: 100244
+    second: c1_shuihu
+  - first:
+      1: 100246
+    second: //RootNode
+  - first:
+      1: 100248
+    second: dianhua00
+  - first:
+      1: 100250
+    second: Dummy001
+  - first:
+      1: 100252
+    second: Dummy003
+  - first:
+      1: 100254
+    second: mabu00
+  - first:
+      1: 100256
+    second: mabu01
+  - first:
+      1: 100258
+    second: mabu02
+  - first:
+      1: 100260
+    second: mabu03
+  - first:
+      1: 100262
+    second: mabu04
+  - first:
+      1: 100264
+    second: mabu05
+  - first:
+      1: 100266
+    second: Object001
+  - first:
+      1: 100268
+    second: Object002
+  - first:
+      1: 100270
+    second: Object003
+  - first:
+      1: 100272
+    second: Object011
+  - first:
+      1: 100274
+    second: Object012
+  - first:
+      1: 100276
+    second: Object013
+  - first:
+      1: 100278
+    second: Object014
+  - first:
+      1: 100280
+    second: qipaokuang
+  - first:
+      1: 100282
+    second: saoba00
+  - first:
+      1: 100284
+    second: saoba01
+  - first:
+      1: 100286
+    second: saoba02
+  - first:
+      1: 100288
+    second: saoba03
+  - first:
+      1: 100290
+    second: shuihu001
+  - first:
+      1: 100292
+    second: shuihu002
+  - first:
+      1: 100294
+    second: weeder
+  - first:
+      1: 100296
+    second: "\u5BF9\u8C61001"
+  - first:
+      1: 100298
+    second: c1_autograph
+  - first:
+      1: 100300
+    second: c1_autograph001
+  - first:
+      1: 100302
+    second: picture00
+  - first:
+      1: 100304
+    second: picture007
+  - first:
+      1: 100306
+    second: picture008
+  - first:
+      1: 100308
+    second: picture009
+  - first:
+      1: 100310
+    second: picture01
+  - first:
+      1: 100312
+    second: picture010
+  - first:
+      1: 100314
+    second: picture011
+  - first:
+      1: 100316
+    second: picture012
+  - first:
+      1: 100318
+    second: picture013
+  - first:
+      1: 100320
+    second: picture02
+  - first:
+      1: 100322
+    second: picture03
+  - first:
+      1: 100324
+    second: picture04
+  - first:
+      1: 100326
+    second: picture05
+  - first:
+      1: 100328
+    second: picture06
+  - first:
+      1: 100330
+    second: Dummy004
+  - first:
+      4: 400000
+    second: Bip01
+  - first:
+      4: 400002
+    second: Bip01 Head
+  - first:
+      4: 400004
+    second: Bip01 HeadNub
+  - first:
+      4: 400006
+    second: Bip01 L Calf
+  - first:
+      4: 400008
+    second: Bip01 L Clavicle
+  - first:
+      4: 400010
+    second: Bip01 L Finger0
+  - first:
+      4: 400012
+    second: Bip01 L Finger01
+  - first:
+      4: 400014
+    second: Bip01 L Finger02
+  - first:
+      4: 400016
+    second: Bip01 L Finger0Nub
+  - first:
+      4: 400018
+    second: Bip01 L Finger1
+  - first:
+      4: 400020
+    second: Bip01 L Finger11
+  - first:
+      4: 400022
+    second: Bip01 L Finger12
+  - first:
+      4: 400024
+    second: Bip01 L Finger1Nub
+  - first:
+      4: 400026
+    second: Bip01 L Finger2
+  - first:
+      4: 400028
+    second: Bip01 L Finger21
+  - first:
+      4: 400030
+    second: Bip01 L Finger22
+  - first:
+      4: 400032
+    second: Bip01 L Finger2Nub
+  - first:
+      4: 400034
+    second: Bip01 L Finger3
+  - first:
+      4: 400036
+    second: Bip01 L Finger31
+  - first:
+      4: 400038
+    second: Bip01 L Finger32
+  - first:
+      4: 400040
+    second: Bip01 L Finger3Nub
+  - first:
+      4: 400042
+    second: Bip01 L Finger4
+  - first:
+      4: 400044
+    second: Bip01 L Finger41
+  - first:
+      4: 400046
+    second: Bip01 L Finger42
+  - first:
+      4: 400048
+    second: Bip01 L Finger4Nub
+  - first:
+      4: 400050
+    second: Bip01 L Foot
+  - first:
+      4: 400052
+    second: Bip01 L Forearm
+  - first:
+      4: 400054
+    second: Bip01 L Hand
+  - first:
+      4: 400056
+    second: Bip01 L Thigh
+  - first:
+      4: 400058
+    second: Bip01 L Toe0
+  - first:
+      4: 400060
+    second: Bip01 L Toe0Nub
+  - first:
+      4: 400062
+    second: Bip01 L UpperArm
+  - first:
+      4: 400064
+    second: Bip01 Neck
+  - first:
+      4: 400066
+    second: Bip01 Pelvis
+  - first:
+      4: 400068
+    second: Bip01 R Calf
+  - first:
+      4: 400070
+    second: Bip01 R Clavicle
+  - first:
+      4: 400072
+    second: Bip01 R Finger0
+  - first:
+      4: 400074
+    second: Bip01 R Finger01
+  - first:
+      4: 400076
+    second: Bip01 R Finger02
+  - first:
+      4: 400078
+    second: Bip01 R Finger0Nub
+  - first:
+      4: 400080
+    second: Bip01 R Finger1
+  - first:
+      4: 400082
+    second: Bip01 R Finger11
+  - first:
+      4: 400084
+    second: Bip01 R Finger12
+  - first:
+      4: 400086
+    second: Bip01 R Finger1Nub
+  - first:
+      4: 400088
+    second: Bip01 R Finger2
+  - first:
+      4: 400090
+    second: Bip01 R Finger21
+  - first:
+      4: 400092
+    second: Bip01 R Finger22
+  - first:
+      4: 400094
+    second: Bip01 R Finger2Nub
+  - first:
+      4: 400096
+    second: Bip01 R Finger3
+  - first:
+      4: 400098
+    second: Bip01 R Finger31
+  - first:
+      4: 400100
+    second: Bip01 R Finger32
+  - first:
+      4: 400102
+    second: Bip01 R Finger3Nub
+  - first:
+      4: 400104
+    second: Bip01 R Finger4
+  - first:
+      4: 400106
+    second: Bip01 R Finger41
+  - first:
+      4: 400108
+    second: Bip01 R Finger42
+  - first:
+      4: 400110
+    second: Bip01 R Finger4Nub
+  - first:
+      4: 400112
+    second: Bip01 R Foot
+  - first:
+      4: 400114
+    second: Bip01 R Forearm
+  - first:
+      4: 400116
+    second: Bip01 R Hand
+  - first:
+      4: 400118
+    second: Bip01 R Thigh
+  - first:
+      4: 400120
+    second: Bip01 R Toe0
+  - first:
+      4: 400122
+    second: Bip01 R Toe0Nub
+  - first:
+      4: 400124
+    second: Bip01 R UpperArm
+  - first:
+      4: 400126
+    second: Bip01 Spine
+  - first:
+      4: 400128
+    second: Bip01 Spine1
+  - first:
+      4: 400130
+    second: Bone001
+  - first:
+      4: 400132
+    second: Bone002
+  - first:
+      4: 400134
+    second: Bone003
+  - first:
+      4: 400136
+    second: Bone004
+  - first:
+      4: 400138
+    second: Bone005
+  - first:
+      4: 400140
+    second: Bone006
+  - first:
+      4: 400142
+    second: Bone028
+  - first:
+      4: 400144
+    second: Bone029
+  - first:
+      4: 400146
+    second: Bone030
+  - first:
+      4: 400148
+    second: Bone031
+  - first:
+      4: 400150
+    second: Bone032
+  - first:
+      4: 400152
+    second: Bone033
+  - first:
+      4: 400154
+    second: Bone034
+  - first:
+      4: 400156
+    second: Bone035
+  - first:
+      4: 400158
+    second: Bone036
+  - first:
+      4: 400160
+    second: Bone037
+  - first:
+      4: 400162
+    second: Bone038
+  - first:
+      4: 400164
+    second: Bone039
+  - first:
+      4: 400166
+    second: Bone040
+  - first:
+      4: 400168
+    second: Bone041
+  - first:
+      4: 400170
+    second: Bone042
+  - first:
+      4: 400172
+    second: Bone096
+  - first:
+      4: 400174
+    second: Bone097
+  - first:
+      4: 400176
+    second: Bone098
+  - first:
+      4: 400178
+    second: Bone099
+  - first:
+      4: 400180
+    second: Bone100
+  - first:
+      4: 400182
+    second: Bone101
+  - first:
+      4: 400184
+    second: book00
+  - first:
+      4: 400186
+    second: book01
+  - first:
+      4: 400188
+    second: book37
+  - first:
+      4: 400190
+    second: book38
+  - first:
+      4: 400192
+    second: book39
+  - first:
+      4: 400194
+    second: book40
+  - first:
+      4: 400196
+    second: book41
+  - first:
+      4: 400198
+    second: book42
+  - first:
+      4: 400200
+    second: book43
+  - first:
+      4: 400202
+    second: c1_015
+  - first:
+      4: 400204
+    second: c1_bi
+  - first:
+      4: 400206
+    second: c1_book1
+  - first:
+      4: 400208
+    second: c1_bookcover
+  - first:
+      4: 400210
+    second: c1_bookin
+  - first:
+      4: 400212
+    second: c1_cupdish
+  - first:
+      4: 400214
+    second: c1_cupL
+  - first:
+      4: 400216
+    second: c1_cupR
+  - first:
+      4: 400218
+    second: c1_Cylinder003
+  - first:
+      4: 400220
+    second: c1_Cylinder006
+  - first:
+      4: 400222
+    second: c1_Cylinder011
+  - first:
+      4: 400224
+    second: c1_Cylinder016
+  - first:
+      4: 400226
+    second: c1_Cylinder017
+  - first:
+      4: 400228
+    second: c1_dianhua
+  - first:
+      4: 400230
+    second: c1_Line002
+  - first:
+      4: 400232
+    second: c1_Line003
+  - first:
+      4: 400234
+    second: c1_Line004
+  - first:
+      4: 400236
+    second: c1_mabu
+  - first:
+      4: 400238
+    second: c1_Object014
+  - first:
+      4: 400240
+    second: c1_saoba
+  - first:
+      4: 400242
+    second: c1_shu
+  - first:
+      4: 400244
+    second: c1_shuihu
+  - first:
+      4: 400246
+    second: //RootNode
+  - first:
+      4: 400248
+    second: dianhua00
+  - first:
+      4: 400250
+    second: Dummy001
+  - first:
+      4: 400252
+    second: Dummy003
+  - first:
+      4: 400254
+    second: mabu00
+  - first:
+      4: 400256
+    second: mabu01
+  - first:
+      4: 400258
+    second: mabu02
+  - first:
+      4: 400260
+    second: mabu03
+  - first:
+      4: 400262
+    second: mabu04
+  - first:
+      4: 400264
+    second: mabu05
+  - first:
+      4: 400266
+    second: Object001
+  - first:
+      4: 400268
+    second: Object002
+  - first:
+      4: 400270
+    second: Object003
+  - first:
+      4: 400272
+    second: Object011
+  - first:
+      4: 400274
+    second: Object012
+  - first:
+      4: 400276
+    second: Object013
+  - first:
+      4: 400278
+    second: Object014
+  - first:
+      4: 400280
+    second: qipaokuang
+  - first:
+      4: 400282
+    second: saoba00
+  - first:
+      4: 400284
+    second: saoba01
+  - first:
+      4: 400286
+    second: saoba02
+  - first:
+      4: 400288
+    second: saoba03
+  - first:
+      4: 400290
+    second: shuihu001
+  - first:
+      4: 400292
+    second: shuihu002
+  - first:
+      4: 400294
+    second: weeder
+  - first:
+      4: 400296
+    second: "\u5BF9\u8C61001"
+  - first:
+      4: 400298
+    second: c1_autograph
+  - first:
+      4: 400300
+    second: c1_autograph001
+  - first:
+      4: 400302
+    second: picture00
+  - first:
+      4: 400304
+    second: picture007
+  - first:
+      4: 400306
+    second: picture008
+  - first:
+      4: 400308
+    second: picture009
+  - first:
+      4: 400310
+    second: picture01
+  - first:
+      4: 400312
+    second: picture010
+  - first:
+      4: 400314
+    second: picture011
+  - first:
+      4: 400316
+    second: picture012
+  - first:
+      4: 400318
+    second: picture013
+  - first:
+      4: 400320
+    second: picture02
+  - first:
+      4: 400322
+    second: picture03
+  - first:
+      4: 400324
+    second: picture04
+  - first:
+      4: 400326
+    second: picture05
+  - first:
+      4: 400328
+    second: picture06
+  - first:
+      4: 400330
+    second: Dummy004
+  - first:
+      21: 2100000
+    second: Material #25
+  - first:
+      21: 2100002
+    second: c1_zawu
+  - first:
+      21: 2100004
+    second: Material #3320
+  - first:
+      21: 2100006
+    second: Material #3325
+  - first:
+      21: 2100008
+    second: Material #27
+  - first:
+      21: 2100010
+    second: Material #2355
+  - first:
+      21: 2100012
+    second: Material #3804
+  - first:
+      23: 2300000
+    second: c1_015
+  - first:
+      23: 2300002
+    second: c1_bookin
+  - first:
+      23: 2300004
+    second: c1_cupdish
+  - first:
+      23: 2300006
+    second: c1_cupL
+  - first:
+      23: 2300008
+    second: c1_cupR
+  - first:
+      23: 2300010
+    second: c1_Cylinder003
+  - first:
+      23: 2300012
+    second: c1_Cylinder006
+  - first:
+      23: 2300014
+    second: c1_Cylinder011
+  - first:
+      23: 2300016
+    second: c1_Cylinder016
+  - first:
+      23: 2300018
+    second: c1_Cylinder017
+  - first:
+      23: 2300020
+    second: c1_dianhua
+  - first:
+      23: 2300022
+    second: c1_Line002
+  - first:
+      23: 2300024
+    second: c1_Line003
+  - first:
+      23: 2300026
+    second: c1_Line004
+  - first:
+      23: 2300028
+    second: c1_Object014
+  - first:
+      23: 2300030
+    second: c1_shuihu
+  - first:
+      23: 2300032
+    second: Object002
+  - first:
+      23: 2300034
+    second: Object011
+  - first:
+      23: 2300036
+    second: Object012
+  - first:
+      23: 2300038
+    second: Object013
+  - first:
+      23: 2300040
+    second: Object003
+  - first:
+      33: 3300000
+    second: c1_015
+  - first:
+      33: 3300002
+    second: c1_bookin
+  - first:
+      33: 3300004
+    second: c1_cupdish
+  - first:
+      33: 3300006
+    second: c1_cupL
+  - first:
+      33: 3300008
+    second: c1_cupR
+  - first:
+      33: 3300010
+    second: c1_Cylinder003
+  - first:
+      33: 3300012
+    second: c1_Cylinder006
+  - first:
+      33: 3300014
+    second: c1_Cylinder011
+  - first:
+      33: 3300016
+    second: c1_Cylinder016
+  - first:
+      33: 3300018
+    second: c1_Cylinder017
+  - first:
+      33: 3300020
+    second: c1_dianhua
+  - first:
+      33: 3300022
+    second: c1_Line002
+  - first:
+      33: 3300024
+    second: c1_Line003
+  - first:
+      33: 3300026
+    second: c1_Line004
+  - first:
+      33: 3300028
+    second: c1_Object014
+  - first:
+      33: 3300030
+    second: c1_shuihu
+  - first:
+      33: 3300032
+    second: Object002
+  - first:
+      33: 3300034
+    second: Object011
+  - first:
+      33: 3300036
+    second: Object012
+  - first:
+      33: 3300038
+    second: Object013
+  - first:
+      33: 3300040
+    second: Object003
+  - first:
+      43: 4300000
+    second: "\u5BF9\u8C61001"
+  - first:
+      43: 4300002
+    second: Object002
+  - first:
+      43: 4300004
+    second: Object011
+  - first:
+      43: 4300006
+    second: Object013
+  - first:
+      43: 4300008
+    second: Object001
+  - first:
+      43: 4300010
+    second: Object012
+  - first:
+      43: 4300012
+    second: Object003
+  - first:
+      43: 4300014
+    second: Object014
+  - first:
+      43: 4300016
+    second: c1_015
+  - first:
+      43: 4300018
+    second: c1_Cylinder011
+  - first:
+      43: 4300020
+    second: c1_Line002
+  - first:
+      43: 4300022
+    second: c1_Cylinder006
+  - first:
+      43: 4300024
+    second: c1_Line004
+  - first:
+      43: 4300026
+    second: c1_Line003
+  - first:
+      43: 4300028
+    second: c1_Cylinder017
+  - first:
+      43: 4300030
+    second: c1_Cylinder016
+  - first:
+      43: 4300032
+    second: c1_dianhua
+  - first:
+      43: 4300034
+    second: c1_bookin
+  - first:
+      43: 4300036
+    second: c1_cupdish
+  - first:
+      43: 4300038
+    second: c1_cupL
+  - first:
+      43: 4300040
+    second: c1_shuihu
+  - first:
+      43: 4300042
+    second: c1_Cylinder003
+  - first:
+      43: 4300044
+    second: c1_Object014
+  - first:
+      43: 4300046
+    second: c1_cupR
+  - first:
+      43: 4300048
+    second: c1_shu
+  - first:
+      43: 4300050
+    second: c1_bi
+  - first:
+      43: 4300052
+    second: c1_mabu
+  - first:
+      43: 4300054
+    second: c1_saoba
+  - first:
+      43: 4300056
+    second: c1_book1
+  - first:
+      43: 4300058
+    second: c1_bookcover
+  - first:
+      43: 4300060
+    second: c1_autograph001
+  - first:
+      43: 4300062
+    second: c1_autograph
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: c1_bi
+  - first:
+      137: 13700002
+    second: c1_book1
+  - first:
+      137: 13700004
+    second: c1_bookcover
+  - first:
+      137: 13700006
+    second: c1_mabu
+  - first:
+      137: 13700008
+    second: c1_saoba
+  - first:
+      137: 13700010
+    second: c1_shu
+  - first:
+      137: 13700012
+    second: Object001
+  - first:
+      137: 13700014
+    second: Object003
+  - first:
+      137: 13700016
+    second: Object014
+  - first:
+      137: 13700018
+    second: "\u5BF9\u8C61001"
+  - first:
+      137: 13700020
+    second: c1_autograph
+  - first:
+      137: 13700022
+    second: c1_autograph001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #2355
+    second: {fileID: 2100000, guid: fc662053b58b797408bccaf31439ec76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #27
+    second: {fileID: 2100000, guid: 39363fefb63402845b6ceaca995f0071, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3320
+    second: {fileID: 2100000, guid: ef418918b03f76a4292afe2ebac6ac2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3325
+    second: {fileID: 2100000, guid: 799e627a5a1c1224dbfe029cd9996ef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3804
+    second: {fileID: 2100000, guid: ac484762a79ccf144b3c08d39be7211b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: c1_zawu
+    second: {fileID: 2100000, guid: 87d83764b60a7b54ab89bd19cea6c0ec, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 2
+    normalSmoothingSource: 0
+  referencedClips:
+  - 29e5409280eb3414da1b6034410d300a
+  - aa3938a660b483341a7d921d31d1de0e
+  - 5fa93579ce480944796e776b39a0f988
+  - b36e5a9af7d792f48a76437b5e0beb96
+  - 35a87a24be9e3cf40ada5846aef934a4
+  - 16a9788c535b2d84e97bae3ce0d7d9af
+  - f9d1fbab483f2e74fa710c1caff74f29
+  - 5cf1075298b4ddb4e976c13c93c68de4
+  - 9abb8efc662f2fd49a3eb2e6179d5d49
+  - 81c499d058cbc1f44a6049fdc68bde6d
+  - cbe2cc97649cf8c40bc8338247982f7a
+  - e2185a7324286654c90045ac65f8eaed
+  - d3071d0d3fb3e8a489d34062fb12baf6
+  - e55064b0a445fab49838073ffcbe8921
+  - 571015be6b6a89040ba4f4208caf1085
+  - 1dcb65776ab257340bb8c9b90bd693a5
+  - 0288ffc0804863c4d838a0edfbfa0be8
+  - fef37a8a860534943ac4e4bfe090f0eb
+  - 915164a052a94e64c9e58c07e5365dc6
+  - 03929aa88f7f5684fa35b56ea792f9b7
+  - 9986e5b24d502f6448c2b08a2f8d85c4
+  - 79bcb308021071a498596027b5e2da62
+  - 1006b2c74296f4241818b5adf13320a3
+  - d506d2e20a49b7447bec762a179549af
+  - b8853f7ad7ade5f48bb4219b556a0972
+  - 140eabc52638e0643850e6c98ec2cfc8
+  - 7750e66b3b26ab043b683d8cd449269a
+  - 027bf09666cf56843999b294a152c72b
+  - b0a9d99110a2fc44f9231c0eac1e9b34
+  - ab495c1d65929bf4498a175876d7385d
+  - 6d0e498c0e15b7c41ac216c556575eff
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
