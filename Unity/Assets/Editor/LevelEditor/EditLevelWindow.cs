@@ -7,16 +7,20 @@
  using Sirenix.Utilities;
  using Sirenix.Utilities.Editor;
  using UnityEditor;
+ using UnityEditor.Graphs.AnimationBlendTree;
  using UnityEngine;
 
  public class EditLevelWindow : OdinMenuEditorWindow
     {
-        [MenuItem("Tools/Test")]
+        [MenuItem("Tools/Restaurant/Kitchen/刷新所有Property的资源路径")]
         private static void Test()
         {
-            var path = "Assets/Res/Config/Kitchen/Levels/1.asset";
-            var fileName = Path.GetFileNameWithoutExtension(path);
-                var dir = Path.GetDirectoryName(path);
+            foreach(var node in Directory.GetFiles("Assets/Res/" + GameConfig.CustomerConfigPath,"*.asset",SearchOption.AllDirectories))
+            {
+                var path = PathUtils.FullPathToUnityPath(node);
+                var customerProperty = AssetDatabase.LoadAssetAtPath<CustomerProperty>(path);
+                customerProperty.UpdatePath();
+            }
         }
         
         [MenuItem("Tools/Restaurant/Kitchen/Open Edit Level Window")]
