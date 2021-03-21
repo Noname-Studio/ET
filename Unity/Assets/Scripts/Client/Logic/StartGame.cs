@@ -2,6 +2,7 @@
 using Client.UI.ViewModel;
 using Cysharp.Threading.Tasks;
 using FairyGUI;
+using Kitchen;
 using Panthea.Asset;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -36,15 +37,15 @@ public class StartGame
                 await assetsLocator.Load<RuntimeAnimatorController>("Model/Roles/Lisa/Kitchen");//加载后厨人物动画
                 await assetsLocator.Load<Texture>("Image/Food/plate1_1");//加载人物托盘
                 //Todo 暂时把加载顾客写在这里
-                /*foreach (var node in customer)
+                foreach (var node in customer)
                 {
                     foreach (var obj in node.Value)
                     {
                         var customerProperty = obj as CustomerProperty;
                         if (customerProperty != null) 
-                            await assetsLocator.Load<GameObject>(customerreProperty.ModelPath);
+                            await assetsLocator.Load<GameObject>(customerProperty.ModelPath);
                     }
-                }*/
+                }
             }
             catch(Exception e)
             {
@@ -69,6 +70,7 @@ public class StartGame
             UIKit.Inst.Create<Client.UI.ViewModel.UI_NotJoinGuild>();
         else
             UIKit.Inst.Create<Client.UI.ViewModel.UI_JoinedGuild>();*/
-        UIKit.Inst.Create<UI_FirstGameLoading>();
+        //UIKit.Inst.Create<UI_FirstGameLoading>();
+        KRManager.Inst.SwitchToKitchen(KitchenDataHelper.LoadLevel(2000001));
     }
 }

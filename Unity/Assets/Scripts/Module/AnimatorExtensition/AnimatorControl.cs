@@ -1,47 +1,61 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
- using System.Collections.ObjectModel;
- using System.Text;
- using System.Threading.Tasks;
- using JetBrains.Annotations;
- using UnityEngine;
- public enum AnimatorEventType
+using System.Collections.ObjectModel;
+using System.Text;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
+using UnityEngine;
+
+public enum AnimatorEventType
 {
-    Enter,Exit,Running
+    Enter,
+    Exit,
+    Running
 }
- 
- [RequireComponent(typeof(Animator))]
+
+[RequireComponent(typeof (Animator))]
 [DefaultExecutionOrder(99)]
-public partial class AnimatorControl : MonoBehaviour
+public partial class AnimatorControl: MonoBehaviour
 {
     private Animator mAnimator;
+
     public Animator Animator
     {
-        get { return (object)mAnimator != null ? mAnimator : (mAnimator = GetComponent<Animator>()); }
-        private set { mAnimator = value; }
+        get
+        {
+            return (object) mAnimator != null? mAnimator : (mAnimator = GetComponent<Animator>());
+        }
+        private set
+        {
+            mAnimator = value;
+        }
     }
 
     public float Speed
     {
-        get { return Animator.speed; }
+        get
+        {
+            return Animator.speed;
+        }
         set
         {
-            Animator.speed = value; 
+            Animator.speed = value;
         }
     }
 
     private const string MatchSign = "*";
     private const string RandomSign = "?";
-    private Dictionary<int,CommonStateMachineBehaviour> mBehaviour = new Dictionary<int,CommonStateMachineBehaviour>();
+    private Dictionary<int, CommonStateMachineBehaviour> mBehaviour = new Dictionary<int, CommonStateMachineBehaviour>();
 
     public CommonStateMachineBehaviour GetBehaviour(int layer)
     {
         CommonStateMachineBehaviour state;
-        if (!mBehaviour.TryGetValue(layer,out state))
+        if (!mBehaviour.TryGetValue(layer, out state))
         {
             Log.Error("不存在这个动画层");
             return null;
         }
+
         return state;
     }
 
@@ -82,6 +96,7 @@ public partial class AnimatorControl : MonoBehaviour
                 return true;
             }
         }
+
         return false;
     }
 
@@ -90,12 +105,12 @@ public partial class AnimatorControl : MonoBehaviour
     /// 使用如Attack_*表示所有带有Attack_前缀的添加Action
     /// 当不带*时表示全字符匹配
     /// </summary>
-    public void SetEvent(AnimatorEventType type,CommonStateMachineBehaviour.StateEvent action,params string[] stateName)
+    public void SetEvent(AnimatorEventType type, CommonStateMachineBehaviour.StateEvent action, params string[] stateName)
     {
         AddEvent(type, action, 0, stateName);
     }
-    
-    public void AddEvent(AnimatorEventType type,CommonStateMachineBehaviour.StateEvent action,int layer,params string[] stateName)
+
+    public void AddEvent(AnimatorEventType type, CommonStateMachineBehaviour.StateEvent action, int layer, params string[] stateName)
     {
         int length = stateName.Length;
         var behaviour = GetBehaviour(layer);
@@ -133,7 +148,7 @@ public partial class AnimatorControl : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// 使用*表示将Action应用到所有的状态当中
     /// 使用如Attack_*表示所有带有Attack_前缀的添加Action
@@ -182,7 +197,7 @@ public partial class AnimatorControl : MonoBehaviour
             }
         }
     }
-    
+
     public string HashToName(int hash)
     {
         var state = GetBehaviour(0).RuntimeInfo.FindState(hash);
@@ -204,42 +219,25 @@ public partial class AnimatorControl : MonoBehaviour
     /// 你可以使用?来随机动画的播放
     /// 如Attack_?则会随机播放所有带有Attack_为前缀的任意动画
     /// </summary>
-    public void Play(string anim, int layer = 0, float time = 0,bool replay = true)
+    public void Play(string anim, int layer = 0, float time = 0, bool replay = true)
     {
-        Animator.Play(anim,layer,time);
+        Animator.Play(anim, layer, time);
     }
-    
-    public void CrossFadeInFixedTime(string anim,float normalizedTransitionDuration,int layer = 0,float normalizedTimeOffset = 0,float normalizedTransitionTime = 0,bool replay = true)
+
+    public void CrossFadeInFixedTime(string anim, float normalizedTransitionDuration, int layer = 0, float normalizedTimeOffset = 0,
+    float normalizedTransitionTime = 0, bool replay = true)
     {
-        Animator.CrossFadeInFixedTime(anim,normalizedTransitionDuration,layer,normalizedTimeOffset,normalizedTransitionTime);
+        Animator.CrossFadeInFixedTime(anim, normalizedTransitionDuration, layer, normalizedTimeOffset, normalizedTransitionTime);
     }
-    
+
     /// <summary>
     /// 你可以使用?来随机动画的播放
     /// 如Attack_?则会随机播放所有带有Attack_为前缀的任意动画
     /// </summary>
-    public async Task PlayAsync(string anim, int layer = 0, float time = 0,bool replay = true)
+    public async Task PlayAsync(string anim, int layer = 0, float time = 0, bool replay = true)
     {
-        Animator.Play(anim,layer,time);
-        TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>(); 
-        CommonStateMachineBehaviour.StateEvent callback = null;
-        callback = (animator, info, index) =>
-        {
-            RemoveEvent(AnimatorEventType.Exit, callback, anim);
-            tcs.SetResult(true);
-        };
-        SetEvent(AnimatorEventType.Exit, callback, anim);
-        await tcs.Task;
-    }
-    
-    /// <summary>
-    /// 你可以使用?来随机动画的播放
-    /// 如Attack_?则会随机播放所有带有Attack_为前缀的任意动画
-    /// </summary>
-    public async Task CrossFadeInFixedTimeAsync(string anim,float normalizedTransitionDuration,int layer = 0,float normalizedTimeOffset = 0,float normalizedTransitionTime = 0,bool replay = true)
-    {
-        Animator.CrossFadeInFixedTime(anim,normalizedTransitionDuration,layer,normalizedTimeOffset,normalizedTransitionTime);
-        TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>(); 
+        Animator.Play(anim, layer, time);
+        TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
         CommonStateMachineBehaviour.StateEvent callback = null;
         callback = (animator, info, index) =>
         {
@@ -250,8 +248,27 @@ public partial class AnimatorControl : MonoBehaviour
         await tcs.Task;
     }
 
-    
+    /// <summary>
+    /// 你可以使用?来随机动画的播放
+    /// 如Attack_?则会随机播放所有带有Attack_为前缀的任意动画
+    /// </summary>
+    public async Task CrossFadeInFixedTimeAsync(string anim, float normalizedTransitionDuration, int layer = 0, float normalizedTimeOffset = 0,
+    float normalizedTransitionTime = 0, bool replay = true)
+    {
+        Animator.CrossFadeInFixedTime(anim, normalizedTransitionDuration, layer, normalizedTimeOffset, normalizedTransitionTime);
+        TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+        CommonStateMachineBehaviour.StateEvent callback = null;
+        callback = (animator, info, index) =>
+        {
+            RemoveEvent(AnimatorEventType.Exit, callback, anim);
+            tcs.SetResult(true);
+        };
+        SetEvent(AnimatorEventType.Exit, callback, anim);
+        await tcs.Task;
+    }
+
     public event Action<AnimatorControl, string, bool> ParametersBoolChange;
+
     public void SetBool(string varName, bool value)
     {
         if (string.IsNullOrEmpty(varName))
@@ -261,6 +278,7 @@ public partial class AnimatorControl : MonoBehaviour
     }
 
     public event Action<AnimatorControl, string, int> ParametersIntegerChange;
+
     public void SetInteger(string varName, int value)
     {
         if (string.IsNullOrEmpty(varName))
@@ -270,6 +288,7 @@ public partial class AnimatorControl : MonoBehaviour
     }
 
     public event Action<AnimatorControl, string, float> ParametersFloatChange;
+
     public void SetFloat(string varName, float value)
     {
         if (string.IsNullOrEmpty(varName))
@@ -277,8 +296,9 @@ public partial class AnimatorControl : MonoBehaviour
         Animator.SetFloat(varName, value);
         if (ParametersFloatChange != null) ParametersFloatChange(this, varName, value);
     }
-    
+
     public event Action<AnimatorControl, string> ParametersTriggerChange;
+
     public void SetTrigger(string varName)
     {
         if (string.IsNullOrEmpty(varName))
@@ -301,5 +321,6 @@ public partial class AnimatorControl : MonoBehaviour
     {
         return Animator.GetFloat(varName);
     }
+
     #endregion
 }

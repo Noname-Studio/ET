@@ -1,9 +1,11 @@
 ﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Panthea.Asset
 {
@@ -11,21 +13,19 @@ namespace Panthea.Asset
     {
         public async UniTask<T> Load<T>(string filePath) where T : Object
         {
-            var name = System.IO.Path.GetFileName(filePath);
-            string packPath = "Res/";
+            string packPath = "Assets/Res/";
             filePath = filePath.ToLower();
-            var allAssetGuids = AssetDatabase.FindAssets("t:" + typeof(T).Name + " " + name);
+            string dir = "Assets/Res/" + Path.GetDirectoryName(filePath);
+            var allAssetGuids = AssetDatabase.FindAssets("t:" + typeof (T).Name, new[] { dir });
             for (int i = 0; i < allAssetGuids.Length; i++)
             {
                 var assetPath = AssetDatabase.GUIDToAssetPath(allAssetGuids[i]);
-                //查找最后一个AssetBundle并删除
-                int lastIndexOf = assetPath.LastIndexOf(packPath);
+                int lastIndexOf = assetPath.IndexOf(packPath);
                 if (lastIndexOf == -1)
                     continue;
                 string tempAssetPath = assetPath.Substring(lastIndexOf + packPath.Length);
-                //移除后缀名
-                tempAssetPath = tempAssetPath.Substring(0,tempAssetPath.LastIndexOf('.')).ToLower();
-                if (tempAssetPath == filePath)
+                tempAssetPath = PathUtils.RemoveFileExtension(tempAssetPath);
+                if (tempAssetPath.Equals(filePath,StringComparison.OrdinalIgnoreCase))
                 {
                     var obj = AssetDatabase.LoadAssetAtPath<T>(assetPath);
                     return obj;

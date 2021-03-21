@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using Panthea.Asset;
+﻿using Panthea.Asset;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 /// <summary>
 /// 
 /// </summary>

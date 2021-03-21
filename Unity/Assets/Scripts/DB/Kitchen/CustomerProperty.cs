@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using DB.Kitchen;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEditor;
@@ -38,9 +39,9 @@ public partial class CustomerProperty : SerializedScriptableObject
     [SerializeField, BoxGroup("模型相关"),HideInInlineEditors,LabelText("模型资源"),AssetsOnly,AssetSelector(Paths = "Assets/Res/Model/Customer"),InlineEditor(PreviewHeight = 300,Expanded = true),OnValueChanged("SetModelPath")]
     GameObject mModelObject;                             // 模型名称
     #endif
-    [SerializeField] [HideInInspector] private string mModelPath;
-    
     [SerializeField, LabelText("移动速度"),HideInInlineEditors,BoxGroup("模型相关")] private float mMoveSpeed;                        //移动的速度
+    
+    [SerializeField, BoxGroup("模型相关"),HideInInlineEditors,LabelText("模型资源"),ReadOnly] private string mModelPath;
 
     public float MoveSpeed => mMoveSpeed;
 
@@ -64,7 +65,7 @@ public partial class CustomerProperty : SerializedScriptableObject
 }
 
 #if UNITY_EDITOR
-public partial class CustomerProperty
+public partial class CustomerProperty : ILevelEditorImp
 {
     private static ValueDropdownList<CustomerType> EDITOR_CustomerType()
     {
@@ -94,6 +95,11 @@ public partial class CustomerProperty
         {
             mModelPath = null;
         }
+    }
+
+    public void UpdatePath()
+    {
+        this.SetModelPath();
     }
 }
 #endif

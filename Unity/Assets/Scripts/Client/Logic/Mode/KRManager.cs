@@ -1,4 +1,5 @@
 ﻿using System;
+using Manager;
 using UnityEngine;
 
 /// <summary>
@@ -6,11 +7,8 @@ using UnityEngine;
 /// K: Kitchen后厨
 /// R: Restaurant餐厅
 /// </summary>
-public class KRManager
+public class KRManager : Singleton<KRManager>
 {
-    private static KRManager _inst;
-    public static KRManager Inst => _inst ?? (_inst = new KRManager());
-
     private IGameMode mMode;
     public bool IsKitchen => mMode is NormalKitchenMode;
     
