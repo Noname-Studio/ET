@@ -189,11 +189,6 @@ ModelImporter:
     100366: hairbox
     100368: shoes1
     100370: shadowhair
-    100372: backside_head
-    100374: earrings
-    100376: glass
-    100378: glass 1
-    100380: necklace
     400000: 001
     400002: 002
     400004: Bip01
@@ -380,11 +375,6 @@ ModelImporter:
     400366: hairbox
     400368: shoes1
     400370: shadowhair
-    400372: backside_head
-    400374: earrings
-    400376: glass
-    400378: glass 1
-    400380: necklace
     2100000: 'Material #3869'
     2100002: 'Material #3875'
     2100004: 'Material #3874'
@@ -402,9 +392,6 @@ ModelImporter:
     2100028: shoes1
     2100030: 'Material #3956'
     2100032: shadowhair
-    2100034: 'Material #3957'
-    2100036: 'Material #4268'
-    2100038: 'Material #4266'
     2300000: Cylinder003
     2300002: Cylinder006
     2300004: Cylinder011
@@ -440,7 +427,6 @@ ModelImporter:
     2300064: c1_shuihu
     2300066: Object003
     2300068: shadowhair
-    2300070: backside_head
     3300000: Cylinder003
     3300002: Cylinder006
     3300004: Cylinder011
@@ -476,7 +462,6 @@ ModelImporter:
     3300064: c1_shuihu
     3300066: Object003
     3300068: shadowhair
-    3300070: backside_head
     4300000: "\u5BF9\u8C61001"
     4300002: Object002
     4300004: Object011
@@ -526,10 +511,6 @@ ModelImporter:
     4300092: c1_autograph
     4300094: shoes1
     4300096: shadowhair
-    4300098: backside_head
-    4300100: necklace
-    4300102: glass
-    4300104: earrings
     7400000: Take 001
     9500000: //RootNode
     13700000: c1_bi
@@ -547,9 +528,6 @@ ModelImporter:
     13700024: c1_autograph
     13700026: c1_autograph001
     13700028: shoes1
-    13700030: earrings
-    13700032: glass
-    13700034: necklace
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -616,21 +594,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: 'Material #3956'
     second: {fileID: 2100000, guid: 4597115b52b1c294eb8adcd4ff79a2ed, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #3957'
-    second: {fileID: 2100000, guid: 73cb0d05661a49b43a9a10da2fa355a4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #4266'
-    second: {fileID: 2100000, guid: be81e59402256384bbdf9be8f69f3651, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #4268'
-    second: {fileID: 2100000, guid: 8db8f9c084194c4419173a6379d19004, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

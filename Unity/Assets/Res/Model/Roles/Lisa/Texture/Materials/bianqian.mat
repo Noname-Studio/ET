@@ -4,11 +4,10 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_Name: bianqian
-  m_Shader: {fileID: 4800000, guid: bd66194ba2e3a6e419447b6429cea12b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4035374a18bdcbd47bfe4d10994f6543, type: 3}
   m_ShaderKeywords: _NEEDPACK_ON _USELIGHT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -30,13 +29,7 @@ Material:
     - _Cutoff: 0
     - _NeedPack: 1
     - _SoftHardMix: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
     - _UseLight: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Glow: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []

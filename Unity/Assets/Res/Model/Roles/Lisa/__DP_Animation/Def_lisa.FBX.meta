@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: ef9a052b6bbc254458c377b9a0906b9f
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 20100
   internalIDToNameTable:
   - first:
       1: 100000
@@ -1354,7 +1354,6 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
-    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -1437,7 +1436,6 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
