@@ -50,31 +50,10 @@ namespace Pathfinding {
 				}
 			}
 
-			rules.Add(Pass.BeforeConnections, context => {
-				new JobSurfaceAction {
-					layerToTag = layerToTag,
-					layerToUnwalkable = layerToUnwalkable,
-					raycastHits = context.data.heightHits,
-					nodeWalkable = context.data.nodeWalkable,
-					nodeTags = context.data.nodeTags,
-				}.ScheduleManagedInMainThread(context.tracker);
-			});
-		}
-
-		public struct JobSurfaceAction : IJob {
-			public int[] layerToTag;
-			public bool[] layerToUnwalkable;
-
-			[ReadOnly]
-			public NativeArray<RaycastHit> raycastHits;
-
-			[WriteOnly]
-			public NativeArray<int> nodeTags;
-
-			[WriteOnly]
-			public NativeArray<bool> nodeWalkable;
-
-			public void Execute () {
+			rules.AddMainThreadPass(Pass.BeforeConnections, context => {
+				var raycastHits = context.data.heightHits;
+				var nodeWalkable = context.data.nodeWalkable;
+				var nodeTags = context.data.nodeTags;
 				for (int i = 0; i < raycastHits.Length; i++) {
 					var coll = raycastHits[i].collider;
 					if (coll != null) {
@@ -84,7 +63,7 @@ namespace Pathfinding {
 						if ((tag & SetTagBit) != 0) nodeTags[i] = tag & 0xFF;
 					}
 				}
-			}
+			});
 		}
 	}
 }

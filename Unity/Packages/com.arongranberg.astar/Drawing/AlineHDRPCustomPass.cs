@@ -10,11 +10,19 @@ namespace Pathfinding.Drawing {
 		protected override void Setup (ScriptableRenderContext renderContext, CommandBuffer cmd) {
 		}
 
+#if MODULE_RENDER_PIPELINES_HIGH_DEFINITION_9_0_OR_NEWER
+		protected override void Execute (CustomPassContext context) {
+			UnityEngine.Profiling.Profiler.BeginSample("ALINE");
+			DrawingManager.instance.SubmitFrame(context.hdCamera.camera, context.cmd, true);
+			UnityEngine.Profiling.Profiler.EndSample();
+		}
+#else
 		protected override void Execute (ScriptableRenderContext context, CommandBuffer cmd, HDCamera camera, CullingResults cullingResult) {
 			UnityEngine.Profiling.Profiler.BeginSample("ALINE");
 			DrawingManager.instance.SubmitFrame(camera.camera, cmd, true);
 			UnityEngine.Profiling.Profiler.EndSample();
 		}
+#endif
 
 		protected override void Cleanup () {
 		}

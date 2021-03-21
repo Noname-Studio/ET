@@ -223,6 +223,13 @@ namespace Pathfinding {
 			}
 		}
 
+		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
+		public override Vector3 endOfPath {
+			get {
+				return hasPath ? richPath.Endpoint : destination;
+			}
+		}
+
 		/// <summary>
 		/// \copydoc Pathfinding::IAstarAI::Teleport
 		///

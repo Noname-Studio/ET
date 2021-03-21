@@ -764,6 +764,8 @@ namespace Pathfinding {
 					nodes[i].SerializeNode(ctx);
 				}
 			}
+
+			SerializeNodeSurfaceNormals(ctx);
 		}
 
 		protected override void DeserializeExtraInfo (GraphSerializationContext ctx) {
@@ -783,6 +785,8 @@ namespace Pathfinding {
 					nodes[i] = null;
 				}
 			}
+
+			DeserializeNodeSurfaceNormals(ctx, nodes, ctx.meta.version < AstarSerializer.V4_3_37);
 		}
 
 		protected override void PostDeserialization (GraphSerializationContext ctx) {

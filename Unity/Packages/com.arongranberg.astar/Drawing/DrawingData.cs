@@ -27,6 +27,27 @@ namespace Pathfinding.Drawing {
 		private class BurstTimeKey {}
 	}
 
+	/// <summary>
+	/// Used to cache drawing data over multiple frames.
+	/// This is useful as a performance optimization when you are drawing the same thing over multiple consecutive frames.
+	///
+	/// <code>
+	/// private RedrawScope redrawScope;
+	///
+	/// void Start () {
+	///     redrawScope = DrawingManager.GetRedrawScope();
+	///     using (var builder = DrawingManager.GetBuilder(redrawScope)) {
+	///         builder.WireSphere(Vector3.zero, 1.0f, Color.red);
+	///     }
+	/// }
+	///
+	/// void Update () {
+	///     redrawScope.Draw();
+	/// }
+	/// </code>
+	///
+	/// See: \reflink{DrawingManager.GetRedrawScope}
+	/// </summary>
 	public struct RedrawScope {
 		internal DrawingData gizmos;
 		/// <summary>
@@ -132,7 +153,6 @@ namespace Pathfinding.Drawing {
 				Static,
 				Dynamic,
 				Persistent,
-				CustomMeshes,
 			}
 
 			public Type type;
@@ -148,8 +168,13 @@ namespace Pathfinding.Drawing {
 
 			public bool isValid => type != Type.Invalid;
 
+			public struct CapturedState {
+				public Matrix4x4 matrix;
+				public Color color;
+			}
+
 			public struct MeshBuffers {
-				public UnsafeAppendBuffer splitterOutput, vertices, triangles, solidVertices, solidTriangles, textVertices, textTriangles;
+				public UnsafeAppendBuffer splitterOutput, vertices, triangles, solidVertices, solidTriangles, textVertices, textTriangles, capturedState;
 				public Bounds bounds;
 
 				public MeshBuffers(Allocator allocator) {
@@ -160,6 +185,7 @@ namespace Pathfinding.Drawing {
 					solidTriangles = new UnsafeAppendBuffer(0, 4, allocator);
 					textVertices = new UnsafeAppendBuffer(0, 4, allocator);
 					textTriangles = new UnsafeAppendBuffer(0, 4, allocator);
+					capturedState = new UnsafeAppendBuffer(0, 4, allocator);
 					bounds = new Bounds();
 				}
 
@@ -171,6 +197,7 @@ namespace Pathfinding.Drawing {
 					solidTriangles.Dispose();
 					textVertices.Dispose();
 					textTriangles.Dispose();
+					capturedState.Dispose();
 				}
 			}
 
@@ -251,7 +278,8 @@ namespace Pathfinding.Drawing {
 			}
 
 			public void Schedule (DrawingData gizmos, Camera camera) {
-				if (type != Type.Static && type != Type.CustomMeshes) {
+				// The job for Static will already have been scheduled in SetSplitterJob
+				if (type != Type.Static) {
 					unsafe {
 						buildJob = CommandBuilder.Build(gizmos, (MeshBuffers*)NativeArrayUnsafeUtility.GetUnsafeBufferPointerWithoutChecks(temporaryMeshBuffers), camera, splitterJob);
 					}
@@ -259,26 +287,79 @@ namespace Pathfinding.Drawing {
 			}
 
 			public void BuildMeshes (DrawingData gizmos) {
-				if ((type == Type.Static && submitted) || type == Type.CustomMeshes) return;
+				if (type == Type.Static && submitted) return;
 				buildJob.Complete();
 				unsafe {
+					// Remove any existing meshes since we will generate new ones.
+					// We do not remove custom meshes because we do not regenerate those.
 					PoolMeshes(gizmos);
-					CommandBuilder.BuildMesh(gizmos, meshes, meta.drawOrderIndex, (MeshBuffers*)temporaryMeshBuffers.GetUnsafePtr());
+					CommandBuilder.BuildMesh(gizmos, meshes, (MeshBuffers*)temporaryMeshBuffers.GetUnsafePtr());
 				}
 				submitted = true;
 			}
 
+			public void CollectMeshes (List<RenderedMeshWithType> meshes) {
+				var itemMeshes = this.meshes;
+				var customMeshIndex = 0;
+				var capturedState = temporaryMeshBuffers[0].capturedState;
+				var maxCustomMeshes = capturedState.GetLength() / UnsafeUtility.SizeOf<CapturedState>();
+
+				for (int i = 0; i < itemMeshes.Count; i++) {
+					Color color;
+					Matrix4x4 matrix;
+					int drawOrderIndex;
+					if ((itemMeshes[i].type & MeshType.Custom) != 0) {
+						UnityEngine.Assertions.Assert.IsTrue(customMeshIndex < maxCustomMeshes);
+
+						// The color and orientation of custom meshes are stored in the captured state array.
+						// It is indexed in the same order as the custom meshes in the #meshes list.
+						unsafe {
+							var state = *((CapturedState*)capturedState.Ptr + customMeshIndex);
+							color = state.color;
+							matrix = state.matrix;
+							customMeshIndex += 1;
+						}
+						// Custom meshes are rendered *after* all similar builders.
+						// In practice this means all custom meshes are drawn after all dynamic items.
+						drawOrderIndex = meta.drawOrderIndex + 1;
+					} else {
+						// All other meshes use default colors and identity matrices
+						// since their data is already baked into the vertex colors and positions
+						color = Color.white;
+						matrix = Matrix4x4.identity;
+						drawOrderIndex = meta.drawOrderIndex;
+					}
+					meshes.Add(new RenderedMeshWithType {
+						mesh = itemMeshes[i].mesh,
+						type = itemMeshes[i].type,
+						drawingOrderIndex = drawOrderIndex,
+						color = color,
+						matrix = matrix,
+					});
+				}
+			}
+
 			void PoolMeshes (DrawingData gizmos) {
 				if (!isValid) throw new System.InvalidOperationException();
-				if (type != Type.CustomMeshes) {
-					for (int i = 0; i < meshes.Count; i++) gizmos.PoolMesh(meshes[i].mesh);
+				var outIndex = 0;
+				for (int i = 0; i < meshes.Count; i++) {
+					// Custom meshes should never be pooled since they are supplied by the user
+					if ((meshes[i].type & MeshType.Custom) == 0) {
+						gizmos.PoolMesh(meshes[i].mesh);
+					} else {
+						// Retain custom meshes
+						meshes[outIndex] = meshes[i];
+						outIndex += 1;
+					}
 				}
-				meshes.Clear();
+				meshes.RemoveRange(outIndex, meshes.Count - outIndex);
 			}
 
 			public void Release (DrawingData gizmos) {
 				if (!isValid) throw new System.InvalidOperationException();
 				PoolMeshes(gizmos);
+				// Clear custom meshes too
+				meshes.Clear();
 				type = Type.Invalid;
 				splitterJob.Complete();
 				buildJob.Complete();
@@ -295,12 +376,14 @@ namespace Pathfinding.Drawing {
 			}
 		}
 
+		[BurstCompile]
 		internal struct BuilderData : IDisposable {
 			public enum State {
 				Free,
 				Reserved,
 				Initialized,
 				WaitingForSplitter,
+				WaitingForUserDefinedJob,
 			}
 
 			public struct Meta {
@@ -374,6 +457,8 @@ namespace Pathfinding.Drawing {
 			// TODO?
 			public bool preventDispose;
 			JobHandle splitterJob;
+			JobHandle disposeDependency;
+			System.Runtime.InteropServices.GCHandle disposeGCHandle;
 			public Meta meta;
 
 			public void Reserve (int dataIndex, bool isBuiltInCommandBuilder) {
@@ -413,8 +498,47 @@ namespace Pathfinding.Drawing {
 				}
 			}
 
+			[BurstCompile]
+			[AOT.MonoPInvokeCallback(typeof(AnyBuffersWrittenToDelegate))]
+			unsafe static bool AnyBuffersWrittenTo (UnsafeAppendBuffer* buffers, int numBuffers) {
+				bool any = false;
+
+				for (int i = 0; i < numBuffers; i++) {
+					any |= buffers[i].GetLength() > 0;
+				}
+				return any;
+			}
+
+			[BurstCompile]
+			[AOT.MonoPInvokeCallback(typeof(AnyBuffersWrittenToDelegate))]
+			unsafe static void ResetAllBuffers (UnsafeAppendBuffer* buffers, int numBuffers) {
+				for (int i = 0; i < numBuffers; i++) {
+					buffers[i].Reset();
+				}
+			}
+
+			unsafe delegate bool AnyBuffersWrittenToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
+			private readonly unsafe static AnyBuffersWrittenToDelegate AnyBuffersWrittenToInvoke = BurstCompiler.CompileFunctionPointer<AnyBuffersWrittenToDelegate>(AnyBuffersWrittenTo).Invoke;
+			unsafe delegate void ResetAllBuffersToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
+			private readonly unsafe static ResetAllBuffersToDelegate ResetAllBuffersToInvoke = BurstCompiler.CompileFunctionPointer<ResetAllBuffersToDelegate>(ResetAllBuffers).Invoke;
+
+			public void SubmitWithDependency (System.Runtime.InteropServices.GCHandle gcHandle, JobHandle dependency) {
+				state = State.WaitingForUserDefinedJob;
+				disposeDependency = dependency;
+				disposeGCHandle = gcHandle;
+			}
+
 			public void Submit (DrawingData gizmos) {
 				if (state != State.Initialized) throw new System.InvalidOperationException();
+
+				unsafe {
+					// There are about 128 buffers we need to check and it's faster to do that using Burst
+					if (meshes.Count == 0 && !AnyBuffersWrittenToInvoke((UnsafeAppendBuffer*)commandBuffers.GetUnsafeReadOnlyPtr(), commandBuffers.Length)) {
+						// If no buffers have been written to then simply discard this builder
+						Release();
+						return;
+					}
+				}
 
 				meta.version = gizmos.version;
 
@@ -433,6 +557,7 @@ namespace Pathfinding.Drawing {
 				tmpMeta.drawOrderIndex = meta.drawOrderIndex*3 + 0;
 				int staticBuffer = gizmos.processedData.Reserve(ProcessedBuilderData.Type.Static, tmpMeta);
 				// Dynamic stuff is drawn directly after the static stuff
+				// Note that any custom meshes will get this draw order index + 1.
 				tmpMeta.drawOrderIndex = meta.drawOrderIndex*3 + 1;
 				int dynamicBuffer = gizmos.processedData.Reserve(ProcessedBuilderData.Type.Dynamic, tmpMeta);
 				// Persistent stuff is always drawn after everything else
@@ -453,12 +578,14 @@ namespace Pathfinding.Drawing {
 				gizmos.processedData.Get(persistentBuffer).SetSplitterJob(gizmos, splitterJob);
 
 				if (meshes.Count > 0) {
-					// Custom meshes stuff are drawn after the dynamic stuff
-					tmpMeta.drawOrderIndex = meta.drawOrderIndex*3 + 2;
+					// Custom meshes may be affected by matrices and colors that are set in the command builders.
+					// Matrices may in theory be dynamic per camera (though this functionality is not used at the moment).
+					// The Command.CaptureState commands are marked as Dynamic so captured state will be written to
+					// the meshBuffers.capturedState array in the #dynamicBuffer.
+					var customMeshes = gizmos.processedData.Get(dynamicBuffer).meshes;
 
-					var customMeshes = gizmos.processedData.Get(gizmos.processedData.Reserve(ProcessedBuilderData.Type.CustomMeshes, tmpMeta)).meshes;
 					// Copy meshes to render
-					for (int i = 0; i < meshes.Count; i++) customMeshes.Add(new MeshWithType { mesh = meshes[i], type = MeshType.Solid, drawingOrderIndex = tmpMeta.drawOrderIndex });
+					for (int i = 0; i < meshes.Count; i++) customMeshes.Add(new MeshWithType { mesh = meshes[i], type = MeshType.Solid | MeshType.Custom });
 					meshes.Clear();
 				}
 
@@ -472,6 +599,16 @@ namespace Pathfinding.Drawing {
 				state = State.WaitingForSplitter;
 			}
 
+			public void CheckJobDependency (DrawingData gizmos) {
+				if (state == State.WaitingForUserDefinedJob && disposeDependency.IsCompleted) {
+					disposeDependency.Complete();
+					disposeDependency = default;
+					disposeGCHandle.Free();
+					state = State.Initialized;
+					Submit(gizmos);
+				}
+			}
+
 			public void Release () {
 				if (state == State.Free) throw new System.InvalidOperationException();
 				state = BuilderData.State.Free;
@@ -481,19 +618,27 @@ namespace Pathfinding.Drawing {
 			void ClearData () {
 				// Wait for any jobs that might be running
 				// This is important to avoid memory corruption bugs
+				disposeDependency.Complete();
 				splitterJob.Complete();
 				meta = default;
+				disposeDependency = default;
 				preventDispose = false;
 				meshes.Clear();
-				for (int i = 0; i < commandBuffers.Length; i++) {
-					var buffer = commandBuffers[i];
-					buffer.Reset();
-					commandBuffers[i] = buffer;
+				unsafe {
+					// There are about 128 buffers we need to reset and it's faster to do that using Burst
+					ResetAllBuffers((UnsafeAppendBuffer*)commandBuffers.GetUnsafePtr(), commandBuffers.Length);
 				}
 			}
 
 			public void Dispose () {
-				if (state == State.Reserved || state == State.Initialized) {
+				if (state == State.WaitingForUserDefinedJob) {
+					disposeDependency.Complete();
+					disposeGCHandle.Free();
+					// We would call Submit here, but we are deleting the data anyway, so who cares.
+					state = State.WaitingForSplitter;
+				}
+
+				if (state == State.Reserved || state == State.Initialized || state == State.WaitingForUserDefinedJob) {
 					UnityEngine.Debug.LogError("Drawing data is being destroyed, but a drawing instance is still active. Are you sure you have called Dispose on all drawing instances? This will cause a memory leak!");
 					return;
 				}
@@ -544,6 +689,15 @@ namespace Pathfinding.Drawing {
 				if (data[index].state == BuilderData.State.Free) throw new System.ArgumentException("Data is not reserved");
 				if (data[index].packedMeta != meta) throw new System.ArgumentException("This command builder has already been disposed");
 				return ref data[index];
+			}
+
+			public void DisposeCommandBuildersWithJobDependencies (DrawingData gizmos) {
+				if (data == null) return;
+				for (int i = 0; i < data.Length; i++) {
+					if (data[i].state == BuilderData.State.WaitingForUserDefinedJob) {
+						data[i].CheckJobDependency(gizmos);
+					}
+				}
 			}
 
 			public void ReleaseAllUnused () {
@@ -619,14 +773,11 @@ namespace Pathfinding.Drawing {
 				Profiler.EndSample();
 			}
 
-			public void CollectMeshes (int versionThreshold, List<MeshWithType> meshes, Camera camera, bool allowGizmos, bool allowCameraDefault) {
+			public void CollectMeshes (int versionThreshold, List<RenderedMeshWithType> meshes, Camera camera, bool allowGizmos, bool allowCameraDefault) {
 				if (data == null) return;
 				for (int i = 0; i < data.Length; i++) {
 					if (data[i].isValid && data[i].meta.version >= versionThreshold && data[i].IsValidForCamera(camera, allowGizmos, allowCameraDefault)) {
-						var itemMeshes = data[i].meshes;
-						for (int j = 0; j < itemMeshes.Count; j++) {
-							meshes.Add(itemMeshes[j]);
-						}
+						data[i].CollectMeshes(meshes);
 					}
 				}
 			}
@@ -709,20 +860,31 @@ namespace Pathfinding.Drawing {
 		}
 
 		internal enum MeshType {
-			Lines,
-			Solid,
-			Text
+			Lines = 1 << 0,
+			Solid = 1 << 1,
+			Text = 1 << 2,
+			// Set if the mesh is not a built-in mesh. These may have non-identity matrices set.
+			Custom = 1 << 3,
 		}
 
 		internal struct MeshWithType {
 			public Mesh mesh;
 			public MeshType type;
+		}
+
+		internal struct RenderedMeshWithType {
+			public Mesh mesh;
+			public MeshType type;
 			public int drawingOrderIndex;
+			// May only be set to non-white if type contains MeshType.Custom
+			public Color color;
+			// May only be set to a non-identity matrix if type contains MeshType.Custom
+			public Matrix4x4 matrix;
 		}
 
 		internal BuilderDataContainer data;
 		internal ProcessedBuilderDataContainer processedData;
-		List<MeshWithType> meshes = new List<MeshWithType>();
+		List<RenderedMeshWithType> meshes = new List<RenderedMeshWithType>();
 		Stack<Mesh> cachedMeshes = new Stack<Mesh>();
 		internal SDFLookupData fontData;
 		int currentDrawOrderIndex = 0;
@@ -876,6 +1038,7 @@ namespace Pathfinding.Drawing {
 		}
 
 		public void TickFrame () {
+			data.DisposeCommandBuildersWithJobDependencies(this);
 			// All cameras rendered between the last tick and this one will have
 			// a version that is at least lastTickVersion + 1.
 			// However the user may want to reuse meshes from the previous frame (see Draw(Hasher)).
@@ -892,14 +1055,17 @@ namespace Pathfinding.Drawing {
 			// TODO: Filter cameraVersions to avoid memory leak
 		}
 
-		class MeshCompareByDrawingOrder : IComparer<MeshWithType> {
-			public int Compare (MeshWithType a, MeshWithType b) {
+		class MeshCompareByDrawingOrder : IComparer<RenderedMeshWithType> {
+			public int Compare (RenderedMeshWithType a, RenderedMeshWithType b) {
 				return a.drawingOrderIndex - b.drawingOrderIndex;
 			}
 		}
 
 		static readonly MeshCompareByDrawingOrder meshSorter = new MeshCompareByDrawingOrder();
+		// Temporary array, cached to avoid allocations
 		Plane[] frustrumPlanes = new Plane[6];
+		// Temporary block, cached to avoid allocations
+		MaterialPropertyBlock customMaterialProperties = new MaterialPropertyBlock();
 
 		void ConfigureMaterialFeature (Material material, DetectedRenderPipeline detectedRenderPipeline) {
 			if (material) {
@@ -913,12 +1079,9 @@ namespace Pathfinding.Drawing {
 
 		void LoadMaterials (DetectedRenderPipeline detectedRenderPipeline) {
 			// Make sure the material references are correct
-#if UNITY_EDITOR
-			// When importing the package for the first time the asset database may not be up to date.
-			// If this is not done it may not find the assets and it will lead to exceptions until scripts are recompiled.
-			// This is a bit hard to test, so I *think* this fix works, but I am not 100% sure.
-			if (surfaceMaterial == null || lineMaterial == null) UnityEditor.AssetDatabase.Refresh();
-#endif
+
+			// Note: When importing the package for the first time the asset database may not be up to date and Resources.Load may return null.
+
 			if (surfaceMaterial == null) {
 				surfaceMaterial = Resources.Load<Material>("aline_surface");
 				ConfigureMaterialFeature(surfaceMaterial, detectedRenderPipeline);
@@ -1006,6 +1169,9 @@ namespace Pathfinding.Drawing {
 				meshes.Sort(meshSorter);
 				Profiler.EndSample();
 
+				int colorID = Shader.PropertyToID("_Color");
+				var baseColor = surfaceMaterial.GetColor(colorID);
+
 				// First surfaces, then lines
 				for (int matIndex = 0; matIndex <= 2; matIndex++) {
 					var mat = matIndex == 0 ? surfaceMaterial : (matIndex == 1 ? lineMaterial : fontData.material);
@@ -1013,8 +1179,19 @@ namespace Pathfinding.Drawing {
 
 					for (int pass = 0; pass < mat.passCount; pass++) {
 						for (int i = 0; i < meshes.Count; i++) {
-							if (meshes[i].type == meshType && GeometryUtility.TestPlanesAABB(planes, meshes[i].mesh.bounds)) {
-								commandBuffer.DrawMesh(meshes[i].mesh, Matrix4x4.identity, mat, 0, pass, null);
+							var mesh = meshes[i];
+							if ((mesh.type & meshType) != 0) {
+								if ((mesh.type & MeshType.Custom) != 0) {
+									// This mesh type may have a matrix set. So we need to handle that
+									if (GeometryUtility.TestPlanesAABB(planes, TransformBoundingBox(mesh.matrix, mesh.mesh.bounds))) {
+										// Custom meshes may have different colors
+										customMaterialProperties.SetColor(colorID, baseColor * mesh.color);
+										commandBuffer.DrawMesh(mesh.mesh, mesh.matrix, mat, 0, pass, customMaterialProperties);
+									}
+								} else if (GeometryUtility.TestPlanesAABB(planes, mesh.mesh.bounds)) {
+									// This mesh is drawn with an identity matrix
+									commandBuffer.DrawMesh(mesh.mesh, Matrix4x4.identity, mat, 0, pass, null);
+								}
 							}
 						}
 					}
@@ -1026,6 +1203,27 @@ namespace Pathfinding.Drawing {
 			cameraVersions[cam] = cameraRenderingRange;
 			version++;
 			Profiler.EndSample();
+		}
+
+		/// <summary>Returns a new axis aligned bounding box that contains the given bounding box after being transformed by the matrix</summary>
+		static Bounds TransformBoundingBox (Matrix4x4 matrix, Bounds bounds) {
+			var mn = bounds.min;
+			var mx = bounds.max;
+			// Create the bounding box from the bounding box of the transformed
+			// 8 points of the original bounding box.
+			var newBounds = new Bounds(matrix.MultiplyPoint(mn), Vector3.zero);
+
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mn.x, mn.y, mx.z)));
+
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mn.x, mx.y, mn.z)));
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mn.x, mx.y, mx.z)));
+
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mx.x, mn.y, mn.z)));
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mx.x, mn.y, mx.z)));
+
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mx.x, mx.y, mn.z)));
+			newBounds.Encapsulate(matrix.MultiplyPoint(new Vector3(mx.x, mx.y, mx.z)));
+			return newBounds;
 		}
 
 		/// <summary>

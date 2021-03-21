@@ -1,5 +1,6 @@
 {
     "name": "AstarPathfindingProjectEditor",
+    "rootNamespace": "",
     "references": [
         "GUID:efa45043feb7e4147a305b73b5cea642",
         "GUID:774e21169c4ac4ec8a01db9cdb98d33b",
@@ -17,7 +18,6 @@
     "defineConstraints": [
         "MODULE_BURST",
         "MODULE_MATHEMATICS",
-        "MODULE_ENTITIES",
         "MODULE_COLLECTIONS",
         "MODULE_JOBS"
     ],

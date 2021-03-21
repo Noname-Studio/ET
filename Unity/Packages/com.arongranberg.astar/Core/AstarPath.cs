@@ -28,7 +28,7 @@ using Thread = System.Threading.Thread;
 [HelpURL("http://arongranberg.com/astar/docs/class_astar_path.php")]
 public class AstarPath : VersionedMonoBehaviour {
 	/// <summary>The version number for the A* %Pathfinding Project</summary>
-	public static readonly System.Version Version = new System.Version(4, 3, 34);
+	public static readonly System.Version Version = new System.Version(4, 3, 41);
 
 	/// <summary>Information about where the package was downloaded</summary>
 	public enum AstarDistribution { WebsiteDownload, AssetStore, PackageManager };
@@ -2029,9 +2029,10 @@ public class AstarPath : VersionedMonoBehaviour {
 	static readonly NNConstraint NNConstraintNone = NNConstraint.None;
 
 	/// <summary>
-	/// Returns the nearest node to a position using the specified NNConstraint.
-	/// Searches through all graphs for their nearest nodes to the specified position and picks the closest one.\n
-	/// Using the NNConstraint.None constraint.
+	/// Returns the nearest node to a position.
+	/// This method will search through all graphs and query them for the closest node to this position, and then it will return the closest one of those.
+	///
+	/// Equivalent to GetNearest(position, NNConstraint.None).
 	///
 	/// <code>
 	/// // Find the closest node to this GameObject's position

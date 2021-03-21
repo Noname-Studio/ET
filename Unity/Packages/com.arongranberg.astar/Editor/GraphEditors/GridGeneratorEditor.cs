@@ -558,8 +558,16 @@ namespace Pathfinding {
 
 			var sideBase = new Vector2(2*rect.width / 3f, rect.height);
 			float sideScale;
-			if (collision.type == ColliderType.Sphere) sideScale = scale;
-			else sideScale = Mathf.Max(scale * 0.5f, Mathf.Min(scale, sideBase.y / (collision.height + collision.collisionOffset + diameter * 0.5f)));
+			if (collision.type == ColliderType.Sphere) {
+				sideScale = scale;
+				// A high collision offset should not cause it to break
+				sideScale = Mathf.Min(sideScale, sideBase.y / (Mathf.Max(0, collision.collisionOffset) + diameter));
+			} else {
+				sideScale = Mathf.Max(scale * 0.5f, Mathf.Min(scale, sideBase.y / (collision.height + collision.collisionOffset + diameter * 0.5f)));
+				// A high collision offset should not cause it to break
+				sideScale = Mathf.Min(sideScale, sideBase.y / (Mathf.Max(0, collision.collisionOffset) + diameter));
+			}
+
 			var interpolatedGridSideScale = gridWidthInNodes * nodeSize * sideScale;
 
 			DrawLine(sideBase + new Vector2(-interpolatedGridSideScale * 0.5f, 0), sideBase + new Vector2(interpolatedGridSideScale * 0.5f, 0));
@@ -650,16 +658,17 @@ namespace Pathfinding {
 		}
 
 		protected virtual void DrawRules (GridGraph graph) {
-			graph.rules.rules = graph.rules.rules ?? new List<GridGraphRule>();
-			for (int i = 0; i < graph.rules.rules.Count; i++) {
-				var rule = graph.rules.rules[i];
+			var rules = graph.rules.GetRules();
+
+			for (int i = 0; i < rules.Count; i++) {
+				var rule = rules[i];
 				if (rule != null) {
 					var ruleEditor = GetEditor(rule);
 					var ruleType = rule.GetType();
 					GUILayout.BeginHorizontal();
 					rule.enabled = ToggleGroup(ruleHeaders.ContainsKey(ruleType) ? ruleHeaders[ruleType] : ruleType.Name, rule.enabled);
 					if (GUILayout.Button("", AstarPathEditor.astarSkin.FindStyle("SimpleDeleteButton"))) {
-						graph.rules.rules.Remove(rule);
+						graph.rules.RemoveRule(rule);
 						ruleEditorInstances.Remove(rule);
 						rule.enabled = false;
 						rule.DisposeUnmanagedData();
@@ -688,7 +697,7 @@ namespace Pathfinding {
 				if (ruleEditors == null) FindRuleEditors();
 				GenericMenu menu = new GenericMenu();
 				foreach (var type in ruleTypes) {
-					menu.AddItem(new GUIContent(ruleHeaders.ContainsKey(type) ? ruleHeaders[type] : type.Name), false, ruleType => graph.rules.rules.Add(System.Activator.CreateInstance((System.Type)ruleType) as GridGraphRule), type);
+					menu.AddItem(new GUIContent(ruleHeaders.ContainsKey(type) ? ruleHeaders[type] : type.Name), false, ruleType => graph.rules.AddRule(System.Activator.CreateInstance((System.Type)ruleType) as GridGraphRule), type);
 				}
 				menu.ShowAsContext();
 			}
@@ -854,9 +863,9 @@ namespace Pathfinding {
 				}
 			}
 
-			graph.rules.rules = graph.rules.rules ?? new List<GridGraphRule>();
-			for (int i = 0; i < graph.rules.rules.Count; i++) {
-				var rule = graph.rules.rules[i];
+			var rules = graph.rules.GetRules();
+			for (int i = 0; i < rules.Count; i++) {
+				var rule = rules[i];
 				if (rule != null && rule.enabled) {
 					var ruleEditor = GetEditor(rule);
 					if (ruleEditor != null) {

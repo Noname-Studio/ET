@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Burst;
 
 namespace Pathfinding.Recast {
@@ -22,6 +23,7 @@ namespace Pathfinding.Recast {
 		List<NativeArray<Vector3> > vertexBuffers;
 		List<NativeArray<int> > triangleBuffers;
 		List<Mesh> meshData;
+		bool anyNonReadableMesh;
 
 		List<GatheredMesh> meshes;
 
@@ -70,13 +72,13 @@ namespace Pathfinding.Recast {
 
 		[BurstCompile]
 		[AOT.MonoPInvokeCallback(typeof(CalculateBoundsDelegate))]
-		static void CalculateBounds (ref NativeSlice<float3> vertices, ref float4x4 localToWorldMatrix, out Bounds bounds) {
-			if (vertices.Length == 0) {
+		unsafe static void CalculateBounds (float3* vertices, int numVertices, ref float4x4 localToWorldMatrix, out Bounds bounds) {
+			if (numVertices == 0) {
 				bounds = new Bounds();
 			} else {
 				float3 max = float.NegativeInfinity;
 				float3 min = float.PositiveInfinity;
-				for (int i = 0; i < vertices.Length; i++) {
+				for (int i = 0; i < numVertices; i++) {
 					var v = math.mul(localToWorldMatrix, new float4(vertices[i], 1)).xyz;
 					max = math.max(max, v);
 					min = math.min(min, v);
@@ -85,8 +87,8 @@ namespace Pathfinding.Recast {
 			}
 		}
 
-		delegate void CalculateBoundsDelegate(ref NativeSlice<float3> vertices, ref float4x4 localToWorldMatrix, out Bounds bounds);
-		private readonly static CalculateBoundsDelegate CalculateBoundsInvoke = BurstCompiler.CompileFunctionPointer<CalculateBoundsDelegate>(CalculateBounds).Invoke;
+		unsafe delegate void CalculateBoundsDelegate(float3* vertices, int numVertices, ref float4x4 localToWorldMatrix, out Bounds bounds);
+		private readonly unsafe static CalculateBoundsDelegate CalculateBoundsInvoke = BurstCompiler.CompileFunctionPointer<CalculateBoundsDelegate>(CalculateBounds).Invoke;
 
 		public MeshCollection Finalize () {
 #if UNITY_2020_1_OR_NEWER
@@ -126,12 +128,14 @@ namespace Pathfinding.Recast {
 				}
 
 				var bounds = gatheredMesh.bounds;
-				var slice = vertexBuffers[bufferIndex].Slice().SliceConvert<float3>();
+				var slice = vertexBuffers[bufferIndex].Reinterpret<float3>();
 				if (bounds == new Bounds()) {
 					UnityEngine.Profiling.Profiler.BeginSample("CalculateBounds");
 					// Recalculate bounding box
 					float4x4 m = gatheredMesh.matrix;
-					CalculateBoundsInvoke(ref slice, ref m, out bounds);
+					unsafe {
+						CalculateBoundsInvoke((float3*)slice.GetUnsafeReadOnlyPtr(), slice.Length, ref m, out bounds);
+					}
 					UnityEngine.Profiling.Profiler.EndSample();
 				}
 
@@ -245,6 +249,21 @@ namespace Pathfinding.Recast {
 		}
 
 		void AddNewMesh (Renderer renderer, Mesh mesh, int area, bool solid = false) {
+			// Ignore meshes that do not have a Position vertex attribute.
+			// This can happen for meshes that are empty, i.e. have no vertices at all.
+			if (!mesh.HasVertexAttribute(UnityEngine.Rendering.VertexAttribute.Position)) {
+				return;
+			}
+
+			if (!mesh.isReadable) {
+				// Cannot scan this
+				if (!anyNonReadableMesh) {
+					Debug.LogError("Some meshes could not be included when scanning the graph because they are marked as not readable. This includes the mesh '" + mesh.name + "'. You need to mark the mesh with read/write enabled in the mesh importer. Alternatively you can only rasterize colliders and not meshes. Mesh Collider meshes still need to be readable.", mesh);
+				}
+				anyNonReadableMesh = true;
+				return;
+			}
+
 			// Check the cache to avoid allocating
 			// a new array unless necessary
 			int meshBufferIndex;
@@ -263,6 +282,48 @@ namespace Pathfinding.Recast {
 				solid = solid,
 				matrix = renderer.localToWorldMatrix,
 			});
+		}
+
+		GatheredMesh? GetColliderMesh (MeshCollider collider, Matrix4x4 localToWorldMatrix) {
+			if (collider.sharedMesh != null) {
+				Mesh mesh = collider.sharedMesh;
+
+				// Ignore meshes that do not have a Position vertex attribute.
+				// This can happen for meshes that are empty, i.e. have no vertices at all.
+				if (!mesh.HasVertexAttribute(UnityEngine.Rendering.VertexAttribute.Position)) {
+					return null;
+				}
+
+				if (!mesh.isReadable) {
+					// Cannot scan this
+					if (!anyNonReadableMesh) {
+						Debug.LogError("Some mesh collider meshes could not be included when scanning the graph because they are marked as not readable. This includes the mesh '" + mesh.name + "'. You need to mark the mesh with read/write enabled in the mesh importer.", mesh);
+					}
+					anyNonReadableMesh = true;
+					return null;
+				}
+
+				// Check the cache to avoid allocating
+				// a new array unless necessary
+				int meshDataIndex;
+				if (!cachedMeshes.TryGetValue(new MeshCacheItem(mesh), out meshDataIndex)) {
+					meshDataIndex = meshData.Count;
+					meshData.Add(mesh);
+					cachedMeshes[new MeshCacheItem(mesh)] = meshDataIndex;
+				}
+
+				return new GatheredMesh {
+						   meshDataIndex = meshDataIndex,
+						   bounds = collider.bounds,
+						   area = 1,
+						   indicesCount = -1,
+						   // Treat the collider as solid iff the collider is convex
+						   solid = collider.convex,
+						   matrix = localToWorldMatrix,
+				};
+			}
+
+			return null;
 		}
 
 		public void CollectSceneMeshes () {
@@ -660,31 +721,8 @@ namespace Pathfinding.Recast {
 				matrix = localToWorldMatrix * matrix;
 
 				return RasterizeCapsuleCollider(radius, height, col.bounds, matrix);
-			} else if (col is MeshCollider) {
-				var collider = col as MeshCollider;
-
-				if (collider.sharedMesh != null) {
-					Mesh mesh = collider.sharedMesh;
-
-					// Check the cache to avoid allocating
-					// a new array unless necessary
-					int meshDataIndex;
-					if (!cachedMeshes.TryGetValue(new MeshCacheItem(mesh), out meshDataIndex)) {
-						meshDataIndex = meshData.Count;
-						meshData.Add(mesh);
-						cachedMeshes[new MeshCacheItem(mesh)] = meshDataIndex;
-					}
-
-					return new GatheredMesh {
-							   meshDataIndex = meshDataIndex,
-							   bounds = collider.bounds,
-							   area = 1,
-							   indicesCount = -1,
-							   // Treat the collider as solid iff the collider is convex
-							   solid = collider.convex,
-							   matrix = localToWorldMatrix,
-					};
-				}
+			} else if (col is MeshCollider collider) {
+				return GetColliderMesh(collider, localToWorldMatrix);
 			}
 
 			return null;

@@ -408,7 +408,7 @@ namespace Pathfinding {
 				pathHandlers[i].DestroyNode(node);
 			}
 
-			astar.hierarchicalGraph.AddDirtyNode(node);
+			astar.hierarchicalGraph.OnDestroyedNode(node);
 		}
 
 		/// <summary>

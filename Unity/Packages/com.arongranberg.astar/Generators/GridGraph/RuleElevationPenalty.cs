@@ -35,7 +35,7 @@ namespace Pathfinding {
 			}
 
 			var clampedElevationRange = new Vector2(math.max(0, elevationRange.x), math.max(1, elevationRange.y));
-			rules.Add(Pass.BeforeConnections, context => {
+			rules.AddJobSystemPass(Pass.BeforeConnections, context => {
 				//var elevationRangeScale = Matrix4x4.TRS(new Vector3(0, -clampedElevationRange.x, 0), Quaternion.identity, new Vector3(1, 1/(clampedElevationRange.y - clampedElevationRange.x), 1));
 				var elevationRangeScale = Matrix4x4.Scale(new Vector3(1, 1/(clampedElevationRange.y - clampedElevationRange.x), 1)) * Matrix4x4.Translate(new Vector3(0, -clampedElevationRange.x, 0));
 				new JobElevationPenalty {

@@ -380,6 +380,9 @@ namespace Pathfinding {
 			set { velocity2D = movementPlane.ToPlane(value, out verticalVelocity); }
 		}
 
+		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
+		public abstract Vector3 endOfPath { get; }
+
 		/// <summary>\copydoc Pathfinding::IAstarAI::reachedDestination</summary>
 		public abstract bool reachedDestination { get; }
 
@@ -442,7 +445,7 @@ namespace Pathfinding {
 				for (int i = 0, j = 0; i < count; i++) {
 					var agent = components[i];
 					if (agent.rvoController != null && agent.rvoController.enabled) {
-						densityJobData.Set(j, agent.rvoController.rvoAgent.AgentIndex, agent.destination, agent.rvoDensityBehavior.densityThreshold, agent.rvoDensityBehavior.progressAverage);
+						densityJobData.Set(j, agent.rvoController.rvoAgent.AgentIndex, agent.endOfPath, agent.rvoDensityBehavior.densityThreshold, agent.rvoDensityBehavior.progressAverage);
 						j++;
 					}
 				}

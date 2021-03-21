@@ -138,6 +138,26 @@ namespace Pathfinding.Drawing {
 			DisposeInternal();
 		}
 
+		/// <summary>
+		/// Diposes this command builder after the given job has completed.
+		///
+		/// You will not be able to use this command builder on the main thread anymore.
+		/// </summary>
+		public void DisposeAfter (JobHandle dependency) {
+			if (!gizmos.IsAllocated) throw new System.Exception("You cannot dispose an invalid command builder. Are you trying to dipose it twice?");
+			try {
+				if (gizmos.IsAllocated && gizmos.Target != null) {
+					var target = gizmos.Target as DrawingData;
+					if (!target.data.StillExists(uniqueID)) {
+						throw new System.Exception("Cannot dispose the command builder because the drawing manager has been destroyed");
+					}
+					target.data.Get(uniqueID).SubmitWithDependency(gizmos, dependency);
+				}
+			} finally {
+				this = default;
+			}
+		}
+
 		internal void DisposeInternal () {
 			if (!gizmos.IsAllocated) throw new System.Exception("You cannot dispose an invalid command builder. Are you trying to dipose it twice?");
 			try {
@@ -199,6 +219,9 @@ namespace Pathfinding.Drawing {
 			PushPersist,
 			PopPersist,
 			Text,
+			PushLineWidth,
+			PopLineWidth,
+			CaptureState,
 		}
 
 		/// <summary>Holds rendering data for a line</summary>
@@ -232,6 +255,13 @@ namespace Pathfinding.Drawing {
 		private struct PersistData {
 			public float endTime;
 		}
+
+		internal struct LineWidthData {
+			public float pixels;
+			public bool automaticJoins;
+		}
+
+
 
 		private struct TextData {
 			public float3 center;
@@ -360,7 +390,31 @@ namespace Pathfinding.Drawing {
 				if (gizmos.IsAllocated && gizmos.Target != null && !(gizmos.Target as DrawingData).data.StillExists(uniqueID)) throw new System.InvalidOperationException("The drawing instance this persist scope belongs to no longer exists. Persist scopes cannot survive for longer than a frame unless you have a custom drawing instance. Are you using a persist scope inside a coroutine?");
 #endif
 				unsafe {
-					new CommandBuilder { gizmos = gizmos, buffer = buffer, threadIndex = 0, uniqueID = uniqueID }.PopPersist();
+					new CommandBuilder { gizmos = gizmos, buffer = buffer, threadIndex = 0, uniqueID = uniqueID }.PopDuration();
+					buffer = null;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Scope that does nothing.
+		/// Used for optimization in standalone builds.
+		/// </summary>
+		public struct ScopeEmpty : IDisposable {
+			public void Dispose () {
+			}
+		}
+
+		public struct ScopeLineWidth : IDisposable {
+			internal unsafe UnsafeAppendBuffer* buffer;
+			internal GCHandle gizmos;
+			internal BitPackedMeta uniqueID;
+			public void Dispose () {
+#if ENABLE_UNITY_COLLECTIONS_CHECKS
+				if (gizmos.IsAllocated && gizmos.Target != null && !(gizmos.Target as DrawingData).data.StillExists(uniqueID)) throw new System.InvalidOperationException("The drawing instance this line width scope belongs to no longer exists. Line width scopes cannot survive for longer than a frame unless you have a custom drawing instance. Are you using a line width scope inside a coroutine?");
+#endif
+				unsafe {
+					new CommandBuilder { gizmos = gizmos, buffer = buffer, threadIndex = 0, uniqueID = uniqueID }.PopLineWidth();
 					buffer = null;
 				}
 			}
@@ -441,9 +495,29 @@ namespace Pathfinding.Drawing {
 
 		[BurstDiscard]
 		public ScopePersist WithDuration (float duration) {
-			PushPersist(duration);
+			PushDuration(duration);
 			unsafe {
 				return new ScopePersist { buffer = buffer, gizmos = gizmos, uniqueID = uniqueID };
+			}
+		}
+
+		/// <summary>
+		/// Scope to draw multiple things with a given line width.
+		///
+		/// Note that the line join algorithm is a quite simple one optimized for speed. It normally looks good on a 2D plane, but if the polylines curve a lot in 3D space then
+		/// it can look odd from some angles.
+		///
+		/// [Open online documentation to see images]
+		///
+		/// In the picture the top row has automaticJoins enabled and in the bottom row it is disabled.
+		/// </summary>
+		/// <param name="pixels">Line width in pixels</param>
+		/// <param name="automaticJoins">If true then sequences of lines that are adjacent will be automatically joined at their vertices. This typically produces nicer polylines without weird gaps.</param>
+		[BurstDiscard]
+		public ScopeLineWidth WithLineWidth (float pixels, bool automaticJoins = true) {
+			PushLineWidth(pixels, automaticJoins);
+			unsafe {
+				return new ScopeLineWidth { buffer = buffer, gizmos = gizmos, uniqueID = uniqueID };
 			}
 		}
 
@@ -471,7 +545,7 @@ namespace Pathfinding.Drawing {
 
 		/// <summary>
 		/// Scope to draw multiple things in screen space of a camera.
-		/// If you draw 2D coordinates (i.e. (x,y,0)) they will be projected onto a plane (2*near clip plane of the camera) world units in front of the camera.
+		/// If you draw 2D coordinates (i.e. (x,y,0)) they will be projected onto a plane approximately [2*near clip plane of the camera] world units in front of the camera (but guaranteed to be between the near and far planes).
 		///
 		/// The lower left corner of the camera is (0,0,0) and the upper right is (camera.pixelWidth, camera.pixelHeight, 0)
 		///
@@ -527,10 +601,10 @@ namespace Pathfinding.Drawing {
 		}
 
 		/// <summary>
-		/// Draws everything until the next PopPersist for a number of seconds.
+		/// Draws everything until the next PopDuration for a number of seconds.
 		/// Warning: This is not recommended inside a DrawGizmos callback since DrawGizmos is called every frame anyway.
 		/// </summary>
-		public void PushPersist (float duration) {
+		public void PushDuration (float duration) {
 			Reserve<PersistData>();
 			Add(Command.PushPersist);
 			// We must use the BurstTime variable which is updated more rarely than Time.time.
@@ -539,10 +613,59 @@ namespace Pathfinding.Drawing {
 			Add(new PersistData { endTime = SharedDrawingData.BurstTime.Data + duration });
 		}
 
-		/// <summary>Pops a persist scope from the stack</summary>
-		public void PopPersist () {
+		/// <summary>Pops a duration scope from the stack</summary>
+		public void PopDuration () {
 			Reserve(4);
 			Add(Command.PopPersist);
+		}
+
+		/// <summary>
+		/// Draws everything until the next PopPersist for a number of seconds.
+		/// Warning: This is not recommended inside a DrawGizmos callback since DrawGizmos is called every frame anyway.
+		///
+		/// Deprecated: Renamed to <see cref="PushDuration"/>
+		/// </summary>
+		[System.Obsolete("Renamed to PushDuration for consistency")]
+		public void PushPersist (float duration) {
+			PushDuration(duration);
+		}
+
+		/// <summary>
+		/// Pops a persist scope from the stack.
+		/// Deprecated: Renamed to <see cref="PopDuration"/>
+		/// </summary>
+		[System.Obsolete("Renamed to PopDuration for consistency")]
+		public void PopPersist () {
+			PopDuration();
+		}
+
+		/// <summary>
+		/// Draws all lines until the next PopLineWidth with a given line width in pixels.
+		///
+		/// Note that the line join algorithm is a quite simple one optimized for speed. It normally looks good on a 2D plane, but if the polylines curve a lot in 3D space then
+		/// it can look odd from some angles.
+		///
+		/// [Open online documentation to see images]
+		///
+		/// In the picture the top row has automaticJoins enabled and in the bottom row it is disabled.
+		/// </summary>
+		/// <param name="pixels">Line width in pixels</param>
+		/// <param name="automaticJoins">If true then sequences of lines that are adjacent will be automatically joined at their vertices. This typically produces nicer polylines without weird gaps.</param>
+		public void PushLineWidth (float pixels, bool automaticJoins = true) {
+			if (pixels <= 0) throw new System.ArgumentOutOfRangeException("pixels", "Line width must be positive");
+
+			Reserve<LineWidthData>();
+			Add(Command.PushLineWidth);
+			// We must use the BurstTime variable which is updated more rarely than Time.time.
+			// This is necessary because this code may be called from a burst job or from a different thread.
+			// Time.time can only be accessed in the main thread.
+			Add(new LineWidthData { pixels = pixels, automaticJoins = automaticJoins });
+		}
+
+		/// <summary>Pops a line width scope from the stack</summary>
+		public void PopLineWidth () {
+			Reserve(4);
+			Add(Command.PopLineWidth);
 		}
 
 		/// <summary>
@@ -679,7 +802,7 @@ namespace Pathfinding.Drawing {
 			var d2 = end - center;
 			var normal = math.cross(d2, d1);
 
-			if (math.any(normal != 0)) {
+			if (math.any(normal)) {
 				var m = Matrix4x4.TRS(center, Quaternion.LookRotation(d1, normal), Vector3.one);
 				var angle = Vector3.SignedAngle(d1, d2, normal) * Mathf.Deg2Rad;
 				PushMatrix(m);
@@ -779,21 +902,22 @@ namespace Pathfinding.Drawing {
 			// Note: second parameter is normalized (-1,1,1)
 			if (math.all(tangent == float3.zero)) tangent = math.cross(up, new float3(-0.577350269f, 0.577350269f, 0.577350269f));
 
-			using (WithMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, up), new Vector3(radius, height, radius)))) {
-				CircleXZ(float3.zero, 1);
-				if (height > 0) {
-					CircleXZ(new float3(0, 1, 0), 1);
-					Line(new float3(1, 0, 0), new float3(1, 1, 0));
-					Line(new float3(-1, 0, 0), new float3(-1, 1, 0));
-					Line(new float3(0, 0, 1), new float3(0, 1, 1));
-					Line(new float3(0, 0, -1), new float3(0, 1, -1));
-				}
+			PushMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, up), new Vector3(radius, height, radius)));
+			CircleXZ(float3.zero, 1);
+			if (height > 0) {
+				CircleXZ(new float3(0, 1, 0), 1);
+				Line(new float3(1, 0, 0), new float3(1, 1, 0));
+				Line(new float3(-1, 0, 0), new float3(-1, 1, 0));
+				Line(new float3(0, 0, 1), new float3(0, 1, 1));
+				Line(new float3(0, 0, -1), new float3(0, 1, -1));
 			}
+			PopMatrix();
 		}
 
 		/// <summary>
-		/// Draws a capsule.
-		/// The capsule's lower circle will be centered at the bottom parameter and similarly for the upper circle.
+		/// Draws a capsule with a (start,end) parameterization.
+		///
+		/// The behavior of this method matches common Unity APIs such as Physics.CheckCapsule.
 		///
 		/// <code>
 		/// // Draw a tilted capsule between the points (0,0,0) and (1,1,1) with a radius of 0.5
@@ -802,43 +926,53 @@ namespace Pathfinding.Drawing {
 		///
 		/// [Open online documentation to see images]
 		/// </summary>
-		public void WireCapsule (float3 bottom, float3 top, float radius) {
-			WireCapsule(bottom, top - bottom, math.length(top - bottom), radius);
+		/// <param name="start">Center of the start hemisphere of the capsule.</param>
+		/// <param name="end">Center of the end hemisphere of the capsule.</param>
+		/// <param name="radius">Radius of the capsule.</param>
+		public void WireCapsule (float3 start, float3 end, float radius) {
+			var dir = end - start;
+			var length = math.length(dir);
+			var normalized_dir = length > 0.0001 ? dir / length : float3.zero;
+
+			WireCapsule(start - normalized_dir*radius, normalized_dir, length + 2*radius, radius);
 		}
 
-		// TODO: Change to center, up, height parametrization
+		// TODO: Change to center, up, height parameterization
 		/// <summary>
-		/// Draws a capsule.
+		/// Draws a capsule with a (position,direction/length) parameterization.
 		///
 		/// <code>
-		/// // Draw a tilted capsule between the points (0,0,0) and (1,1,1) with a radius of 0.5
-		/// Draw.WireCapsule(Vector3.zero, Vector3.one, 0.5f, Color.black);
+		/// // Draw a capsule that touches the y=0 plane, is 2 meters tall and has a radius of 0.5
+		/// Draw.WireCapsule(Vector3.zero, Vector3.up, 2.0f, 0.5f, Color.black);
 		/// </code>
 		///
 		/// [Open online documentation to see images]
 		/// </summary>
-		/// <param name="position">Lowest point of the capsule.</param>
-		/// <param name="up">Up direction of the capsule.</param>
-		/// <param name="height">Distance between the lowest and highest points of the capsule. The height will be clamped to be at least 2*radius.</param>
+		/// <param name="position">One endpoint of the capsule. This is at the edge of the capsule, not at the center of one of the hemispheres.</param>
+		/// <param name="direction">The main axis of the capsule.</param>
+		/// <param name="length">Distance between the two endpoints of the capsule. The length will be clamped to be at least 2*radius.</param>
 		/// <param name="radius">The radius of the capsule.</param>
-		public void WireCapsule (float3 position, float3 up, float height, float radius) {
-			up = math.normalizesafe(up);
-			// Note; second parameter is normalized (1,1,1)
-			var tangent = math.cross(up, new float3(0.577350269f, 0.577350269f, 0.577350269f));
+		public void WireCapsule (float3 position, float3 direction, float length, float radius) {
+			direction = math.normalizesafe(direction);
+			if (radius <= 0) {
+				Line(position, position + direction * length);
+			} else {
+				// Note; second parameter is normalized (1,1,1)
+				var tangent = math.cross(direction, new float3(0.577350269f, 0.577350269f, 0.577350269f));
 
-			// Note: second parameter is normalized (-1,1,1)
-			if (math.all(tangent == float3.zero)) tangent = math.cross(up, new float3(-0.577350269f, 0.577350269f, 0.577350269f));
+				// Note: second parameter is normalized (-1,1,1)
+				if (math.all(tangent == float3.zero)) tangent = math.cross(direction, new float3(-0.577350269f, 0.577350269f, 0.577350269f));
 
-			height = math.max(height, radius*2);
+				length = math.max(length, radius*2);
 
-			using (WithMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, up), Vector3.one))) {
+				PushMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, direction), Vector3.one));
 				CircleXZ(new float3(0, radius, 0), radius);
 				CircleXY(new float3(0, radius, 0), radius, Mathf.PI, 2 * Mathf.PI);
 				PushMatrix(XZtoYZPlaneMatrix);
 				CircleXZ(new float3(radius, 0, 0), radius, Mathf.PI*0.5f, Mathf.PI*1.5f);
 				PopMatrix();
-				if (height > 0) {
-					var upperY = height - radius;
+				if (length > 0) {
+					var upperY = length - radius;
 					var lowerY = radius;
 					CircleXZ(new float3(0, upperY, 0), radius);
 					CircleXY(new float3(0, upperY, 0), radius, 0, Mathf.PI);
@@ -850,6 +984,7 @@ namespace Pathfinding.Drawing {
 					Line(new float3(0, lowerY, radius), new float3(0, upperY, radius));
 					Line(new float3(0, lowerY, -radius), new float3(0, upperY, -radius));
 				}
+				PopMatrix();
 			}
 		}
 
@@ -880,7 +1015,7 @@ namespace Pathfinding.Drawing {
 		/// Draw.Polyline(new [] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(1, 1, 0), new Vector3(0, 1, 0) }, true);
 		/// </code>
 		/// </summary>
-		/// <param name="points">Seq u ence of points to draw lines through</param>
+		/// <param name="points">Sequence of points to draw lines through</param>
 		/// <param name="cycle">If true a line will be drawn from the last point in the sequence back to the first point.</param>
 		[BurstDiscard]
 		public void Polyline (List<Vector3> points, bool cycle = false) {
@@ -966,9 +1101,9 @@ namespace Pathfinding.Drawing {
 		/// <param name="rotation">Rotation of the box</param>
 		/// <param name="size">Width of the box along all dimensions</param>
 		public void WireBox (float3 center, Quaternion rotation, float3 size) {
-			using (WithMatrix(Matrix4x4.TRS(center, rotation, size))) {
-				WireBox(new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one));
-			}
+			PushMatrix(Matrix4x4.TRS(center, rotation, size));
+			WireBox(new Bounds(Vector3.zero, Vector3.one));
+			PopMatrix();
 		}
 
 		/// <summary>
@@ -1109,6 +1244,11 @@ namespace Pathfinding.Drawing {
 			var g = gizmos.Target as DrawingData;
 
 			g.data.Get(uniqueID).meshes.Add(mesh);
+			// Internally we need to make sure to capture the current state
+			// (which includes the current matrix and color) so that it
+			// can be applied to the mesh.
+			Reserve(4);
+			Add(Command.CaptureState);
 		}
 
 		/// <summary>
@@ -1132,7 +1272,7 @@ namespace Pathfinding.Drawing {
 			mesh.SetColors(colors);
 			// Upload all data
 			mesh.UploadMeshData(false);
-			g.data.Get(uniqueID).meshes.Add(mesh);
+			SolidMesh(mesh);
 		}
 
 		/// <summary>
@@ -1156,7 +1296,7 @@ namespace Pathfinding.Drawing {
 			mesh.SetColors(colors, 0, vertexCount);
 			// Upload all data
 			mesh.UploadMeshData(false);
-			g.data.Get(uniqueID).meshes.Add(mesh);
+			SolidMesh(mesh);
 		}
 
 		/// <summary>
@@ -1598,6 +1738,7 @@ namespace Pathfinding.Drawing {
 			Line(new float3(min.x, max.y, 0), new float3(min.x, min.y, 0));
 		}
 
+
 		/// <summary>
 		/// Draws a triangle outline.
 		///
@@ -1683,6 +1824,28 @@ namespace Pathfinding.Drawing {
 		}
 
 		/// <summary>
+		/// Draws a solid rectangle.
+		/// The rectangle corners are assumed to be in XY space.
+		/// This is particularly useful when combined with <see cref="InScreenSpace"/>.
+		///
+		/// Behind the scenes this is implemented using <see cref="SolidPlane"/>.
+		///
+		/// <code>
+		/// using (Draw.InScreenSpace(Camera.main)) {
+		///     Draw.SolidRectangle(new Rect(10, 10, 100, 100), Color.black);
+		/// }
+		/// </code>
+		/// [Open online documentation to see images]
+		///
+		/// See: <see cref="WireRectangleXZ"/>
+		/// See: <see cref="WireRectangle(float3,Quaternion,float2)"/>
+		/// See: <see cref="SolidBox"/>
+		/// </summary>
+		public void SolidRectangle (Rect rect) {
+			SolidPlane(new float3(rect.center.x, rect.center.y, 0.0f), Quaternion.Euler(-90, 0, 0), new float2(rect.width, rect.height));
+		}
+
+		/// <summary>
 		/// Draws a solid plane.
 		///
 		/// <code>
@@ -1694,7 +1857,7 @@ namespace Pathfinding.Drawing {
 		/// <param name="normal">Direction perpendicular to the plane. If this is (0,0,0) then nothing will be rendered.</param>
 		/// <param name="size">Width and height of the visualized plane.</param>
 		public void SolidPlane (float3 center, float3 normal, float2 size) {
-			if (math.any(normal != 0)) {
+			if (math.any(normal)) {
 				SolidPlane(center, Quaternion.LookRotation(calculateTangent(normal), normal), size);
 			}
 		}
@@ -1738,7 +1901,7 @@ namespace Pathfinding.Drawing {
 		/// <param name="normal">Direction perpendicular to the plane. If this is (0,0,0) then nothing will be rendered.</param>
 		/// <param name="size">Width and height of the visualized plane.</param>
 		public void WirePlane (float3 center, float3 normal, float2 size) {
-			if (math.any(normal != 0)) {
+			if (math.any(normal)) {
 				WirePlane(center, Quaternion.LookRotation(calculateTangent(normal), normal), size);
 			}
 		}
@@ -1777,7 +1940,7 @@ namespace Pathfinding.Drawing {
 		/// <param name="normal">Direction perpendicular to the plane. If this is (0,0,0) then nothing will be rendered.</param>
 		/// <param name="size">Width and height of the visualized plane.</param>
 		public void PlaneWithNormal (float3 center, float3 normal, float2 size) {
-			if (math.any(normal != 0)) {
+			if (math.any(normal)) {
 				PlaneWithNormal(center, Quaternion.LookRotation(calculateTangent(normal), normal), size);
 			}
 		}
@@ -1840,9 +2003,9 @@ namespace Pathfinding.Drawing {
 		/// <param name="rotation">Rotation of the box</param>
 		/// <param name="size">Width of the box along all dimensions</param>
 		public void SolidBox (float3 center, Quaternion rotation, float3 size) {
-			using (WithMatrix(Matrix4x4.TRS(center, rotation, size))) {
-				SolidBox(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
-			}
+			PushMatrix(Matrix4x4.TRS(center, rotation, size));
+			SolidBox(float3.zero, Vector3.one);
+			PopMatrix();
 		}
 
 		/// <summary>
@@ -1988,33 +2151,36 @@ namespace Pathfinding.Drawing {
 			return new Builder {
 					   buffers = buffers,
 					   currentMatrix = Matrix4x4.identity,
+					   currentLineWidthData = new LineWidthData {
+						   pixels = 1,
+						   automaticJoins = false,
+					   },
 					   currentColor = (Color32)Color.white,
-					   outBounds = &buffers->bounds,
 					   cameraPosition = camera != null ? camera.transform.position : Vector3.zero,
 					   cameraRotation = camera != null ? camera.transform.rotation : Quaternion.identity,
-					   cameraDepthToPixelSize = camera != null? CameraDepthToPixelSize(camera) : 0,
-													characterInfo = (SDFCharacter*)gizmos.fontData.characters.GetUnsafeReadOnlyPtr(),
-													characterInfoLength = gizmos.fontData.characters.Length,
+					   cameraDepthToPixelSize = (camera != null ? CameraDepthToPixelSize(camera) : 0),
+					   characterInfo = (SDFCharacter*)gizmos.fontData.characters.GetUnsafeReadOnlyPtr(),
+					   characterInfoLength = gizmos.fontData.characters.Length,
 			}.Schedule(dependency);
 		}
 
-		internal static unsafe void BuildMesh (DrawingData gizmos, List<MeshWithType> meshes, int drawingOrderIndex, ProcessedBuilderData.MeshBuffers* inputBuffers) {
+		internal static unsafe void BuildMesh (DrawingData gizmos, List<MeshWithType> meshes, ProcessedBuilderData.MeshBuffers* inputBuffers) {
 			if (inputBuffers->triangles.GetLength() > 0) {
 				var mesh = gizmos.GetMesh();
 				AssignMeshData<Builder.Vertex>(mesh, inputBuffers->bounds, inputBuffers->vertices, inputBuffers->triangles, MeshLayout);
-				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Lines, drawingOrderIndex = drawingOrderIndex });
+				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Lines });
 			}
 
 			if (inputBuffers->solidTriangles.GetLength() > 0) {
 				var mesh = gizmos.GetMesh();
 				AssignMeshData<Builder.Vertex>(mesh, inputBuffers->bounds, inputBuffers->solidVertices, inputBuffers->solidTriangles, MeshLayout);
-				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Solid, drawingOrderIndex = drawingOrderIndex });
+				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Solid });
 			}
 
 			if (inputBuffers->textTriangles.GetLength() > 0) {
 				var mesh = gizmos.GetMesh();
 				AssignMeshData<Builder.TextVertex>(mesh, inputBuffers->bounds, inputBuffers->textVertices, inputBuffers->textTriangles, MeshLayoutText);
-				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Text, drawingOrderIndex = drawingOrderIndex });
+				meshes.Add(new MeshWithType { mesh = mesh, type = MeshType.Text });
 			}
 		}
 
@@ -2042,6 +2208,9 @@ namespace Pathfinding.Drawing {
 				commandSizes[(int)Command.PushPersist] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<PersistData>();
 				commandSizes[(int)Command.PopPersist] = UnsafeUtility.SizeOf<Command>();
 				commandSizes[(int)Command.Text] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<TextData>(); // Dynamically sized
+				commandSizes[(int)Command.PushLineWidth] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<LineWidthData>();
+				commandSizes[(int)Command.PopLineWidth] = UnsafeUtility.SizeOf<Command>();
+				commandSizes[(int)Command.CaptureState] = UnsafeUtility.SizeOf<Command>();
 
 				unsafe {
 					// Store in local variables for performance (makes it possible to use registers for a lot of fields)
@@ -2117,10 +2286,10 @@ namespace Pathfinding.Drawing {
 			[NativeDisableUnsafePtrRestriction]
 			public unsafe UnsafeAppendBuffer* staticBuffer, dynamicBuffer, persistentBuffer;
 
-			internal static readonly int PushCommands = (1 << (int)Command.PushColor) | (1 << (int)Command.PushMatrix) | (1 << (int)Command.PushSetMatrix) | (1 << (int)Command.PushPersist);
-			internal static readonly int PopCommands = (1 << (int)Command.PopColor) | (1 << (int)Command.PopMatrix) | (1 << (int)Command.PopPersist);
+			internal static readonly int PushCommands = (1 << (int)Command.PushColor) | (1 << (int)Command.PushMatrix) | (1 << (int)Command.PushSetMatrix) | (1 << (int)Command.PushPersist) | (1 << (int)Command.PushLineWidth);
+			internal static readonly int PopCommands = (1 << (int)Command.PopColor) | (1 << (int)Command.PopMatrix) | (1 << (int)Command.PopPersist) | (1 << (int)Command.PopLineWidth);
 			internal static readonly int MetaCommands = PushCommands | PopCommands;
-			internal static readonly int DynamicCommands = (1 << (int)Command.CircleXZ) | (1 << (int)Command.Circle) | (1 << (int)Command.Text) | MetaCommands;
+			internal static readonly int DynamicCommands = (1 << (int)Command.CircleXZ) | (1 << (int)Command.Circle) | (1 << (int)Command.Text) | (1 << (int)Command.CaptureState) | MetaCommands;
 			internal static readonly int StaticCommands = (1 << (int)Command.Line) | (1 << (int)Command.Box) | MetaCommands;
 
 			public void Execute () {
@@ -2146,6 +2315,9 @@ namespace Pathfinding.Drawing {
 				commandSizes[(int)Command.PushPersist] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<PersistData>();
 				commandSizes[(int)Command.PopPersist] = UnsafeUtility.SizeOf<Command>();
 				commandSizes[(int)Command.Text] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<TextData>(); // Dynamically sized
+				commandSizes[(int)Command.PushLineWidth] = UnsafeUtility.SizeOf<Command>() + UnsafeUtility.SizeOf<LineWidthData>();
+				commandSizes[(int)Command.PopLineWidth] = UnsafeUtility.SizeOf<Command>();
+				commandSizes[(int)Command.CaptureState] = UnsafeUtility.SizeOf<Command>();
 
 				unsafe {
 					// Store in local variables for performance (makes it possible to use registers for a lot of fields)
@@ -2262,6 +2434,7 @@ namespace Pathfinding.Drawing {
 
 			public Color32 currentColor;
 			public float4x4 currentMatrix;
+			public LineWidthData currentLineWidthData;
 			float3 minBounds;
 			float3 maxBounds;
 			public float3 cameraPosition;
@@ -2282,9 +2455,6 @@ namespace Pathfinding.Drawing {
 				public Color32 color;
 				public float2 uv;
 			}
-
-			[NativeDisableUnsafePtrRestriction]
-			public unsafe Bounds* outBounds;
 
 			static unsafe void Add<T>(UnsafeAppendBuffer* buffer, T value) where T : struct {
 				int num = UnsafeUtility.SizeOf<T>();
@@ -2421,15 +2591,77 @@ namespace Pathfinding.Drawing {
 				}
 			}
 
+			float3 lastNormalizedLineDir;
+			float lastLineWidth;
+
+			/// <summary>
+			/// Joins the end of the last line segment to the start of the line segment at the given byte offset.
+			/// The byte offset refers to the buffers->vertices array. It is assumed that the start of the line segment is given by the
+			/// two vertices that start at the given offset into the array.
+			/// </summary>
+			void Join (int lineByteOffset) {
+				unsafe {
+					var outlineVertices = &buffers->vertices;
+					var nextLineByteOffset = outlineVertices->GetLength() - 4*UnsafeUtility.SizeOf<Vertex>();
+
+					if (nextLineByteOffset < 0) throw new System.Exception("Cannot call Join when there are no line segments written");
+
+					// Cannot join line to itself
+					if (lineByteOffset == nextLineByteOffset) return;
+
+					// Third and fourth vertices in the previous line
+					var prevLineVertex1 = (Vertex*)((byte*)outlineVertices->Ptr + lineByteOffset) + 0;
+					var prevLineVertex2 = prevLineVertex1 + 1;
+					// First and second vertices in the next line
+					var nextLineVertex1 = (Vertex*)((byte*)outlineVertices->Ptr + nextLineByteOffset) + 2;
+					var nextLineVertex2 = nextLineVertex1 + 1;
+
+					var normalizedLineDir = lastNormalizedLineDir;
+					var prevNormalizedLineDir = math.normalize(prevLineVertex1->uv2);
+					var lineWidth = lastLineWidth;
+
+					var cosAngle = math.dot(normalizedLineDir, prevNormalizedLineDir);
+					if (math.lengthsq(prevLineVertex1->position - nextLineVertex1->position) < 0.001f*0.001f && cosAngle >= -0.87f) {
+						// Safety: tangent cannot be 0 because cosAngle > -1
+						var tangent = normalizedLineDir + prevNormalizedLineDir;
+						// From the law of cosines we get that
+						// tangent.magnitude = sqrt(2)*sqrt(1+cosAngle)
+
+						// Create join!
+						// Trigonometry gives us
+						// joinRadius = lineWidth / (2*cos(alpha / 2))
+						// Using half angle identity for cos we get
+						// joinRadius = lineWidth / (sqrt(2)*sqrt(1 + cos(alpha))
+						// Since the tangent already has mostly the same factors we can simplify the calculation
+						// normalize(tangent) * joinRadius * 2
+						// = tangent / (sqrt(2)*sqrt(1+cosAngle)) * joinRadius * 2
+						// = tangent * lineWidth / (1 + cos(alpha)
+						var joinLineDir = tangent * lineWidth / (1 + cosAngle);
+
+						prevLineVertex1->uv2 = joinLineDir;
+						prevLineVertex2->uv2 = joinLineDir;
+						nextLineVertex1->uv2 = joinLineDir;
+						nextLineVertex2->uv2 = joinLineDir;
+					}
+				}
+
+				lastLineWidth = 0;
+			}
+
 			void AddLine (LineData line) {
 				// Store the line direction in the vertex.
 				// A line consists of 4 vertices. The line direction will be used to
 				// offset the vertices to create a line with a fixed pixel thickness
 				var a = PerspectiveDivide(math.mul(currentMatrix, new float4(line.a, 1.0f)));
 				var b = PerspectiveDivide(math.mul(currentMatrix, new float4(line.b, 1.0f)));
-				var lineDir = b - a;
 
-				if (math.any(math.isnan(lineDir))) throw new Exception("Nan line coordinates");
+				float lineWidth = currentLineWidthData.pixels;
+				var normalizedLineDir = math.normalizesafe(b - a);
+
+				if (math.any(math.isnan(normalizedLineDir))) throw new Exception("Nan line coordinates");
+				if (lineWidth <= 0) {
+					return;
+				}
 
 				// Update the bounding box
 				minBounds = math.min(minBounds, math.min(a, b));
@@ -2445,32 +2677,69 @@ namespace Pathfinding.Drawing {
 					// Doing it with pointers is faster, and this is the hottest
 					// code of the whole gizmo drawing process.
 					var ptr = (Vertex*)((byte*)outlineVertices->Ptr + outlineVertices->GetLength());
+
+					var startLineDir = normalizedLineDir * lineWidth;
+					var endLineDir = normalizedLineDir * lineWidth;
+
+					// If dot(last dir, this dir) >= 0 => use join
+					if (lineWidth > 1 && currentLineWidthData.automaticJoins && outlineVertices->GetLength() > 2*UnsafeUtility.SizeOf<Vertex>()) {
+						// has previous vertex
+						Vertex* lastVertex1 = (Vertex*)(ptr - 1);
+						Vertex* lastVertex2 = (Vertex*)(ptr - 2);
+
+						var cosAngle = math.dot(normalizedLineDir, lastNormalizedLineDir);
+						if (math.all(lastVertex2->position == a) && lastLineWidth == lineWidth && cosAngle >= -0.6f) {
+							// Safety: tangent cannot be 0 because cosAngle > -1
+							var tangent = normalizedLineDir + lastNormalizedLineDir;
+							// From the law of cosines we get that
+							// tangent.magnitude = sqrt(2)*sqrt(1+cosAngle)
+
+							// Create join!
+							// Trigonometry gives us
+							// joinRadius = lineWidth / (2*cos(alpha / 2))
+							// Using half angle identity for cos we get
+							// joinRadius = lineWidth / (sqrt(2)*sqrt(1 + cos(alpha))
+							// Since the tangent already has mostly the same factors we can simplify the calculation
+							// normalize(tangent) * joinRadius * 2
+							// = tangent / (sqrt(2)*sqrt(1+cosAngle)) * joinRadius * 2
+							// = tangent * lineWidth / (1 + cos(alpha)
+							var joinLineDir = tangent * lineWidth / (1 + cosAngle);
+
+							startLineDir = joinLineDir;
+							lastVertex1->uv2 = startLineDir;
+							lastVertex2->uv2 = startLineDir;
+						}
+					}
+
 					outlineVertices->SetLength(outlineVertices->GetLength() + 4 * UnsafeUtility.SizeOf<Vertex>());
 					*ptr++ = new Vertex {
 						position = a,
 						color = currentColor,
-						uv = new Vector2(0, 0),
-						uv2 = lineDir,
+						uv = new float2(0, 0),
+						uv2 = startLineDir,
 					};
 					*ptr++ = new Vertex {
 						position = a,
 						color = currentColor,
-						uv = new Vector2(1, 0),
-						uv2 = lineDir,
+						uv = new float2(1, 0),
+						uv2 = startLineDir,
 					};
 
 					*ptr++ = new Vertex {
 						position = b,
 						color = currentColor,
-						uv = new Vector2(0, 1),
-						uv2 = lineDir,
+						uv = new float2(0, 1),
+						uv2 = endLineDir,
 					};
 					*ptr++ = new Vertex {
 						position = b,
 						color = currentColor,
-						uv = new Vector2(1, 1),
-						uv2 = lineDir,
+						uv = new float2(1, 1),
+						uv2 = endLineDir,
 					};
+
+					lastNormalizedLineDir = normalizedLineDir;
+					lastLineWidth = lineWidth;
 				}
 			}
 
@@ -2511,7 +2780,14 @@ namespace Pathfinding.Drawing {
 				var oldMatrix = currentMatrix;
 				currentMatrix = math.mul(currentMatrix, Matrix4x4.TRS(circle.center, Quaternion.LookRotation(circle.normal, tangent1), new Vector3(circle.radius, circle.radius, circle.radius)));
 
+				int firstLineByteOffset;
+				unsafe {
+					firstLineByteOffset = buffers->vertices.GetLength();
+				}
+
 				float invSteps = 1.0f / steps;
+				bool tmpJoins = currentLineWidthData.automaticJoins;
+				currentLineWidthData.automaticJoins = true;
 				for (int i = 0; i < steps; i += 3) {
 					var i4 = math.lerp(0, 2*Mathf.PI, new float4(i, i + 1, i + 2, i + 3) * invSteps);
 					// Calculate 4 sines and cosines at the same time using SIMD
@@ -2520,6 +2796,9 @@ namespace Pathfinding.Drawing {
 					AddLine(new LineData { a = new float3(cos.y, sin.y, 0), b = new float3(cos.z, sin.z, 0) });
 					AddLine(new LineData { a = new float3(cos.z, sin.z, 0), b = new float3(cos.w, sin.w, 0) });
 				}
+
+				Join(firstLineByteOffset);
+				currentLineWidthData.automaticJoins = tmpJoins;
 
 				currentMatrix = oldMatrix;
 			}
@@ -2535,6 +2814,13 @@ namespace Pathfinding.Drawing {
 				var oldMatrix = currentMatrix;
 				currentMatrix = math.mul(currentMatrix, Matrix4x4.Translate(circle.center) * Matrix4x4.Scale(new Vector3(circle.radius, circle.radius, circle.radius)));
 
+				int firstLineByteOffset;
+				unsafe {
+					firstLineByteOffset = buffers->vertices.GetLength();
+				}
+				bool tmpJoins = currentLineWidthData.automaticJoins;
+				currentLineWidthData.automaticJoins = true;
+
 				float invSteps = 1.0f / steps;
 				for (int i = 0; i < steps; i += 3) {
 					var i4 = math.lerp(circle.startAngle, circle.endAngle, new float4(i, i + 1, i + 2, i + 3) * invSteps);
@@ -2544,6 +2830,9 @@ namespace Pathfinding.Drawing {
 					AddLine(new LineData { a = new float3(cos.y, 0, sin.y), b = new float3(cos.z, 0, sin.z) });
 					AddLine(new LineData { a = new float3(cos.z, 0, sin.z), b = new float3(cos.w, 0, sin.w) });
 				}
+
+				Join(firstLineByteOffset);
+				currentLineWidthData.automaticJoins = tmpJoins;
 
 				currentMatrix = oldMatrix;
 			}
@@ -2620,7 +2909,7 @@ namespace Pathfinding.Drawing {
 				}
 			}
 
-			public void Next (ref UnsafeAppendBuffer.Reader reader, ref NativeArray<float4x4> matrixStack, ref NativeArray<Color32> colorStack, ref int matrixStackSize, ref int colorStackSize) {
+			public void Next (ref UnsafeAppendBuffer.Reader reader, ref NativeArray<float4x4> matrixStack, ref NativeArray<Color32> colorStack, ref NativeArray<LineWidthData> lineWidthStack, ref int matrixStackSize, ref int colorStackSize, ref int lineWidthStackSize) {
 				var fullCmd = reader.ReadNext<Command>();
 				var cmd = fullCmd & (Command)0xFF;
 				Color32 oldColor = default;
@@ -2659,6 +2948,17 @@ namespace Pathfinding.Drawing {
 					matrixStackSize--;
 					currentMatrix = matrixStack[matrixStackSize];
 					break;
+				case Command.PushLineWidth:
+					if (lineWidthStackSize >= lineWidthStack.Length) throw new System.Exception("Too deeply nested PushLineWidth calls");
+					lineWidthStack[lineWidthStackSize] = currentLineWidthData;
+					lineWidthStackSize++;
+					currentLineWidthData = reader.ReadNext<LineWidthData>();
+					break;
+				case Command.PopLineWidth:
+					if (lineWidthStackSize <= 0) throw new System.Exception("PushLineWidth and PopLineWidth are not matched");
+					lineWidthStackSize--;
+					currentLineWidthData = lineWidthStack[lineWidthStackSize];
+					break;
 				case Command.Line:
 					AddLine(reader.ReadNext<LineData>());
 					break;
@@ -2683,6 +2983,14 @@ namespace Pathfinding.Drawing {
 					unsafe {
 						System.UInt16* ptr = (System.UInt16*)reader.ReadNext(UnsafeUtility.SizeOf<System.UInt16>() * data.numCharacters);
 						AddText(ptr, data, currentColor);
+					}
+					break;
+				case Command.CaptureState:
+					unsafe {
+						buffers->capturedState.Add(new ProcessedBuilderData.CapturedState {
+							color = this.currentColor,
+							matrix = this.currentMatrix,
+						});
 					}
 					break;
 				default:
@@ -2735,6 +3043,7 @@ namespace Pathfinding.Drawing {
 					buffers->solidTriangles.Reset();
 					buffers->textVertices.Reset();
 					buffers->textTriangles.Reset();
+					buffers->capturedState.Reset();
 				}
 
 				minBounds = new float3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
@@ -2742,21 +3051,28 @@ namespace Pathfinding.Drawing {
 
 				var matrixStack = new NativeArray<float4x4>(MaxStackSize, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
 				var colorStack = new NativeArray<Color32>(MaxStackSize, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+				var lineWidthStack = new NativeArray<LineWidthData>(MaxStackSize, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
 				int matrixStackSize = 0;
 				int colorStackSize = 0;
+				int lineWidthStackSize = 0;
 
 				unsafe {
 					var reader = buffers->splitterOutput.AsReader();
-					while (reader.Offset < reader.Size) Next(ref reader, ref matrixStack, ref colorStack, ref matrixStackSize, ref colorStackSize);
+					while (reader.Offset < reader.Size) Next(ref reader, ref matrixStack, ref colorStack, ref lineWidthStack, ref matrixStackSize, ref colorStackSize, ref lineWidthStackSize);
 					if (reader.Offset != reader.Size) throw new Exception("Didn't reach the end of the buffer");
 				}
 
 				CreateTriangles();
 
 				unsafe {
+					var outBounds = &buffers->bounds;
 					*outBounds = new Bounds((minBounds + maxBounds) * 0.5f, maxBounds - minBounds);
 
-					if (math.any(math.isnan(outBounds->min)) && (buffers->vertices.GetLength() > 0 || buffers->solidTriangles.GetLength() > 0)) throw new Exception("NaN bounds. A Draw.* command may have been given NaN coordinates.");
+					if (math.any(math.isnan(outBounds->min)) && (buffers->vertices.GetLength() > 0 || buffers->solidTriangles.GetLength() > 0)) {
+						// Fall back to a bounding box that covers everything
+						*outBounds = new Bounds(Vector3.zero, new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity));
+						throw new Exception("NaN bounds. A Draw.* command may have been given NaN coordinates.");
+					}
 				}
 			}
 		}

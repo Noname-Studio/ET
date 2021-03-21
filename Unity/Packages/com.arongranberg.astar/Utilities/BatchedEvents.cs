@@ -91,8 +91,8 @@ namespace Pathfinding.Util {
 			// So instead we just always create a new instance. This is not a particularly heavy operation and it only happens once per game, so why not.
 			// The OnEnable call will clean up duplicate managers if there are any.
 
-			var go = new UnityEngine.GameObject("Batch Helper") {
-				hideFlags = UnityEngine.HideFlags.DontSave | UnityEngine.HideFlags.NotEditable | UnityEngine.HideFlags.HideInInspector
+			var go = new GameObject("Batch Helper") {
+				hideFlags = HideFlags.DontSave | HideFlags.NotEditable | HideFlags.HideInInspector | HideFlags.HideInHierarchy
 			};
 
 			instance = go.AddComponent<BatchedEvents>();

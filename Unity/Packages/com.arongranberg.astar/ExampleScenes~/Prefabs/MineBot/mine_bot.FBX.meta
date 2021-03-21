@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: caeffedc34d9f4161b7694ad0d84bbd3
 ModelImporter:
-  serializedVersion: 20100
+  serializedVersion: 21100
   internalIDToNameTable:
   - first:
       1: 100000
@@ -178,7 +178,7 @@ ModelImporter:
       name: 01 - Default
     second: {fileID: 2100000, guid: 1829738127541482a895692670703544, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 3
     materialSearch: 1
     materialLocation: 0
@@ -245,6 +245,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -301,6 +302,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

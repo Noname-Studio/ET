@@ -343,7 +343,7 @@ namespace Pathfinding {
 					graphs[i].active = null;
 				}
 			}
-			graphs = null;
+			graphs = new NavGraph[0];
 			UpdateShortcuts();
 		}
 

@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif
 using System.Collections.Generic;
 using Unity.Jobs;
@@ -175,7 +176,7 @@ namespace Pathfinding.Drawing {
 			// The OnEnable call will clean up duplicate managers if there are any.
 
 			var go = new GameObject("RetainedGizmos") {
-				hideFlags = HideFlags.DontSave | HideFlags.NotEditable | HideFlags.HideInInspector
+				hideFlags = HideFlags.DontSave | HideFlags.NotEditable | HideFlags.HideInInspector | HideFlags.HideInHierarchy
 			};
 			_instance = go.AddComponent<DrawingManager>();
 			if (Application.isPlaying) DontDestroyOnLoad(go);
@@ -206,7 +207,7 @@ namespace Pathfinding.Drawing {
 #if MODULE_RENDER_PIPELINES_UNIVERSAL
 			if (pipelineType == typeof(UniversalRenderPipeline)) {
 				// Note: Renderer2D is in internal class so we need to use the name for comparison
-				if (detectedRenderPipeline != DetectedRenderPipeline.URP && UniversalRenderPipeline.asset.GetRenderer(-1).GetType().Name == "Renderer2D") {
+				if (detectedRenderPipeline != DetectedRenderPipeline.URP && UniversalRenderPipeline.asset.scriptableRenderer.GetType().Name == "Renderer2D") {
 #if UNITY_EDITOR
 					Debug.LogWarning("The A* Pathfinding Project visualization system does not fully support the URP Experimental 2D Renderer since the 2D renderer does not yet have an extensible post processing system.\n"
 						+ "You may not see graphs or other gizmos in the scene view if you use the 2D renderer. This does not impact any other functionality of the A* Pathfinding Project.\n"
@@ -224,7 +225,8 @@ namespace Pathfinding.Drawing {
 #if UNITY_EDITOR
 		void DelayedDestroy () {
 			EditorApplication.update -= DelayedDestroy;
-			GameObject.DestroyImmediate(gameObject);
+			// Check if the object still exists (it might have been destroyed in some other way already).
+			if (gameObject) GameObject.DestroyImmediate(gameObject);
 		}
 #endif
 
@@ -298,9 +300,12 @@ namespace Pathfinding.Drawing {
 #if UNITY_EDITOR
 			EditorApplication.update -= OnUpdate;
 #endif
-			Draw.builder.DiscardAndDisposeInternal();
-			Draw.ingame_builder.DiscardAndDisposeInternal();
-			gizmos.ClearData();
+			// Gizmos can be null here if this GameObject was duplicated by a user in the hierarchy.
+			if (gizmos != null) {
+				Draw.builder.DiscardAndDisposeInternal();
+				Draw.ingame_builder.DiscardAndDisposeInternal();
+				gizmos.ClearData();
+			}
 #if MODULE_RENDER_PIPELINES_UNIVERSAL
 			if (renderPassFeature != null) {
 				ScriptableObject.DestroyImmediate(renderPassFeature);
@@ -481,6 +486,11 @@ namespace Pathfinding.Drawing {
 			var frameRedrawScope = gizmos.frameRedrawScope;
 			gizmos.frameRedrawScope = default(RedrawScope);
 
+#if UNITY_EDITOR && UNITY_2020_1_OR_NEWER
+			var currentStage = StageUtility.GetCurrentStage();
+			var isInNonMainStage = currentStage != StageUtility.GetMainStage();
+#endif
+
 			// This would look nicer as a 'using' block, but built-in command builders
 			// cannot be disposed normally to prevent user error.
 			// The try-finally is equivalent to a 'using' block.
@@ -494,7 +504,13 @@ namespace Pathfinding.Drawing {
 				GizmoContext.drawingGizmos = true;
 				if (usingRenderPipeline) {
 					for (int i = gizmoDrawers.Count - 1; i >= 0; i--) {
-						if ((gizmoDrawers[i] as MonoBehaviour).isActiveAndEnabled) {
+#if UNITY_EDITOR && UNITY_2020_1_OR_NEWER
+						// True if the scene is in isolation mode (e.g. focusing on a single prefab) and this object is not part of that sub-stage
+						var disabledDueToIsolationMode = isInNonMainStage && StageUtility.GetStage((gizmoDrawers[i] as MonoBehaviour).gameObject) != currentStage;
+#else
+						var disabledDueToIsolationMode = false;
+#endif
+						if ((gizmoDrawers[i] as MonoBehaviour).isActiveAndEnabled && !disabledDueToIsolationMode) {
 							try {
 								gizmoDrawers[i].DrawGizmos();
 							} catch (System.Exception e) {
@@ -504,7 +520,13 @@ namespace Pathfinding.Drawing {
 					}
 				} else {
 					for (int i = gizmoDrawers.Count - 1; i >= 0; i--) {
-						if ((gizmoDrawers[i] as MonoBehaviour).isActiveAndEnabled && typeToGizmosEnabled[gizmoDrawers[i].GetType()]) {
+#if UNITY_EDITOR && UNITY_2020_1_OR_NEWER
+						// True if the scene is in isolation mode (e.g. focusing on a single prefab) and this object is not part of that sub-stage
+						var disabledDueToIsolationMode = isInNonMainStage && StageUtility.GetStage((gizmoDrawers[i] as MonoBehaviour).gameObject) != currentStage;
+#else
+						var disabledDueToIsolationMode = false;
+#endif
+						if ((gizmoDrawers[i] as MonoBehaviour).isActiveAndEnabled && typeToGizmosEnabled[gizmoDrawers[i].GetType()] && !disabledDueToIsolationMode) {
 							try {
 								gizmoDrawers[i].DrawGizmos();
 							} catch (System.Exception e) {
@@ -609,6 +631,21 @@ namespace Pathfinding.Drawing {
 		/// A scope which can be used to draw things over multiple frames.
 		/// You can use <see cref="GetBuilder(RedrawScope,bool)"/> to get a builder with a given redraw scope.
 		/// After you have disposed the builder you may call <see cref="Drawing.RedrawScope.Draw"/> in any number of future frames to render the command builder again.
+		///
+		/// <code>
+		/// private RedrawScope redrawScope;
+		///
+		/// void Start () {
+		///     redrawScope = DrawingManager.GetRedrawScope();
+		///     using (var builder = DrawingManager.GetBuilder(redrawScope)) {
+		///         builder.WireSphere(Vector3.zero, 1.0f, Color.red);
+		///     }
+		/// }
+		///
+		/// void Update () {
+		///     redrawScope.Draw();
+		/// }
+		/// </code>
 		///
 		/// Note: The data will only be kept if <see cref="Drawing.RedrawScope.Draw"/> is called every frame.
 		/// The command builder's data will be cleared if you do not call <see cref="Drawing.RedrawScope.Draw"/> in a future frame.

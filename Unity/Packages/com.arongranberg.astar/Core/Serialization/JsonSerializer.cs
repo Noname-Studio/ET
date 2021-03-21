@@ -233,6 +233,9 @@ namespace Pathfinding.Serialization {
 		/// <summary>Cached version object for 4.3.6</summary>
 		public static readonly System.Version V4_3_6 = new System.Version(4, 3, 6);
 
+		/// <summary>Cached version object for 4.3.37</summary>
+		public static readonly System.Version V4_3_37 = new System.Version(4, 3, 37);
+
 		/// <summary>Cached version object for 4.3.12</summary>
 		public static readonly System.Version V4_3_12 = new System.Version(4, 3, 12);
 
@@ -823,6 +826,7 @@ namespace Pathfinding.Serialization {
 			meta.typeNames = new List<string>();
 			count = reader.ReadInt32();
 			for (int i = 0; i < count; i++) meta.typeNames.Add(reader.ReadString());
+			reader.Close();
 
 			return meta;
 		}

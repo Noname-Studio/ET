@@ -58,43 +58,35 @@ namespace Pathfinding.Jobs {
 	}
 
 	public struct JobHandleWithMainThreadWork {
-		JobHandle handle;
 		JobDependencyTracker tracker;
 		IEnumerator<JobHandle> coroutine;
 
-		public JobHandleWithMainThreadWork (JobHandle handle, JobDependencyTracker tracker) {
-			this.handle = handle;
-			this.tracker = tracker;
-			this.coroutine = null;
-		}
-
 		public JobHandleWithMainThreadWork (IEnumerator<JobHandle> handles, JobDependencyTracker tracker) {
-			this.handle = default;
 			this.coroutine = handles;
 			this.tracker = tracker;
 		}
 
 		public void Complete () {
-			do {
-				// Calling Complete on an empty struct should also work
-				if (tracker != null) tracker.CompleteMainThreadWork();
-				handle.Complete();
-				if (coroutine != null && coroutine.MoveNext()) handle = coroutine.Current;
-				else coroutine = null;
-			} while (coroutine != null);
+			tracker.timeSlice = TimeSlice.Infinite;
+			while (coroutine.MoveNext()) {
+				coroutine.Current.Complete();
+			}
 		}
 
-
 		public System.Collections.IEnumerable CompleteTimeSliced (float maxMillisPerStep) {
-			do {
-				if (tracker != null) {
-					foreach (var _ in tracker.CompleteMainThreadWorkTimeSliced(maxMillisPerStep)) yield return null;
+			tracker.timeSlice = TimeSlice.MillisFromNow(maxMillisPerStep);
+			while (true) {
+				if (!coroutine.MoveNext()) yield break;
+				while (!coroutine.Current.IsCompleted) {
+					yield return null;
+					tracker.timeSlice = TimeSlice.MillisFromNow(maxMillisPerStep);
 				}
-				while (!handle.IsCompleted) yield return null;
-				handle.Complete();
-				if (coroutine != null && coroutine.MoveNext()) handle = coroutine.Current;
-				else coroutine = null;
-			} while (coroutine != null);
+				coroutine.Current.Complete();
+				if (tracker.timeSlice.expired) {
+					yield return null;
+					tracker.timeSlice = TimeSlice.MillisFromNow(maxMillisPerStep);
+				}
+			}
 		}
 	}
 
@@ -141,65 +133,17 @@ namespace Pathfinding.Jobs {
 	/// </summary>
 	public class JobDependencyTracker : IAstarPooledObject {
 		internal List<NativeArraySlot> slots = ListPool<NativeArraySlot>.Claim();
-		internal List<MainThreadWork> mainThreadWork = ListPool<MainThreadWork>.Claim();
 		SimpleNativeList<JobHandle> temporaryJobs;
 		List<GCHandle> gcHandlesToFree;
 		NativeArrayArena arena;
 		internal NativeArray<JobHandle> dependenciesScratchBuffer;
 		LinearDependencies linearDependencies;
+		internal TimeSlice timeSlice = TimeSlice.Infinite;
 
 		public bool forceLinearDependencies {
 			get {
 				if (linearDependencies == LinearDependencies.Check) SetLinearDependencies(false);
 				return linearDependencies == LinearDependencies.Enabled;
-			}
-		}
-
-		internal struct MainThreadWork {
-			public JobHandle dependsOn;
-			public IJob job;
-			public ManualResetEvent doneEvent;
-			public ManualResetEvent dependenciesDoneEvent;
-#if ENABLE_UNITY_COLLECTIONS_CHECKS
-			public AtomicSafetyHandle safetyHandle;
-#endif
-
-			public bool Complete (TimeSlice timeSlice) {
-				JobHandle.ScheduleBatchedJobs();
-				// Calling 'Complete' can cause rare deadlocks.
-				// A slightly less efficient solution is to use the dependenciesDoneEvent.
-				// This seems to work without any rare deadlocks.
-				//
-				// This happens because if Complete is called the main thread may be scheduled to run the
-				// job that waits for the main thread job. This will cause a deadlock.
-				// dependsOn.Complete();
-				dependenciesDoneEvent.WaitOne();
-				UnityEngine.Profiling.Profiler.BeginSample("Main thread job");
-				bool finished = true;
-
-				try {
-					// Note: if this method throws an exception then finished will be true and the job marked as completed
-					if (job is IJobTimeSliced sliced) finished = sliced.Execute(timeSlice);
-					else job.Execute();
-				} finally {
-					UnityEngine.Profiling.Profiler.EndSample();
-					if (finished) {
-						doneEvent.Set();
-#if ENABLE_UNITY_COLLECTIONS_CHECKS
-						AtomicSafetyHandle.CheckDeallocateAndThrow(safetyHandle);
-						AtomicSafetyHandle.Release(safetyHandle);
-#endif
-					}
-				}
-				return finished;
-			}
-
-			public bool RunIfReady (TimeSlice timeSlice) {
-				//if (dependsOn.IsCompleted) {
-				if (dependenciesDoneEvent.WaitOne(0)) {
-					return Complete(timeSlice);
-				}
-				return false;
 			}
 		}
 
@@ -272,7 +216,6 @@ namespace Pathfinding.Jobs {
 			if (!supportsMultithreading) linearDependencies = true;
 
 			if (linearDependencies) {
-				CompleteMainThreadWork();
 				AllWritesDependency.Complete();
 			}
 			this.linearDependencies = linearDependencies ? LinearDependencies.Enabled : LinearDependencies.Disabled;
@@ -321,31 +264,6 @@ namespace Pathfinding.Jobs {
 		public void DeferFree (GCHandle handle, JobHandle dependsOn) {
 			if (gcHandlesToFree == null) gcHandlesToFree = ListPool<GCHandle>.Claim();
 			gcHandlesToFree.Add(handle);
-		}
-
-		public void CompleteMainThreadWork () {
-			if (mainThreadWork != null) {
-				for (int i = 0; i < mainThreadWork.Count; i++) {
-					mainThreadWork[i].Complete(TimeSlice.Infinite);
-				}
-				mainThreadWork.Clear();
-			}
-		}
-
-		/// <summary>
-		/// Runs main thread work with a given time budget per step.
-		/// Note: Only main thread jobs implementing the IJobTimeSliced interface can be time sliced. IJob main thread jobs will always run in a single step, regardless of how long it takes.
-		/// </summary>
-		public System.Collections.IEnumerable CompleteMainThreadWorkTimeSliced (float maxMillis) {
-			if (mainThreadWork != null) {
-				int i = 0;
-				while (i < mainThreadWork.Count) {
-					var slice = TimeSlice.MillisFromNow(maxMillis);
-					while (i < mainThreadWork.Count && mainThreadWork[i].RunIfReady(slice)) i++;
-					yield return null;
-				}
-				mainThreadWork.Clear();
-			}
 		}
 
 #if DEBUG_JOBS
@@ -406,7 +324,6 @@ namespace Pathfinding.Jobs {
 		/// It is automatically called if you are using the ObjectPool<T>.Release method.
 		/// </summary>
 		void Dispose () {
-			if (mainThreadWork.Count > 0) throw new System.InvalidOperationException("Cannot pool the JobDependencyTracker while there are still main thread work items to complete. Call CompleteMainThreadWork() first.");
 			for (int i = 0; i < slots.Count; i++) ListPool<JobInstance>.Release(slots[i].lastReads);
 
 			// Need to call complete on e.g. dispose jobs, otherwise these will create small memory leaks due to the handles being kept allocated
@@ -419,7 +336,6 @@ namespace Pathfinding.Jobs {
 			}
 
 			slots.Clear();
-			mainThreadWork.Clear();
 			arena.DisposeAll();
 			linearDependencies = LinearDependencies.Check;
 			if (dependenciesScratchBuffer.IsCreated) dependenciesScratchBuffer.Dispose();
@@ -440,6 +356,10 @@ namespace Pathfinding.Jobs {
 	}
 
 	public interface IJobTimeSliced : IJob {
+		/// <summary>
+		/// Returns true if the job completed.
+		/// If false is returned this job may be called again until the job completes.
+		/// </summary>
 		bool Execute(TimeSlice timeSlice);
 	}
 
@@ -463,18 +383,8 @@ namespace Pathfinding.Jobs {
 			}
 		}
 
-		struct ManagedJobParallelForBatch : IJobParallelForBatched {
-			public GCHandle handle;
-
-			public bool allowBoundsChecks => false;
-
-			public void Execute (int startIndex, int count) {
-				((Pathfinding.Jobs.IJobParallelForBatched)handle.Target).Execute(startIndex, count);
-			}
-		}
-
 		/// <summary>
-		/// Schedule a job and handle dependencies automatically.
+		/// Schedule a job with automatic dependency tracking.
 		/// You need to have "using Pathfinding.Util" in your script to be able to use this extension method.
 		///
 		/// See: <see cref="Pathfinding.Util.JobDependencyTracker"/>
@@ -490,6 +400,7 @@ namespace Pathfinding.Jobs {
 			}
 		}
 
+		/// <summary>Schedules an \reflink{IJobParallelForBatched} job with automatic dependency tracking</summary>
 		public static JobHandle ScheduleBatch<T>(this T data, int arrayLength, int minIndicesPerJobCount, JobDependencyTracker tracker, JobHandle additionalDependency = default) where T : struct, IJobParallelForBatched {
 			if (tracker.forceLinearDependencies) {
 				additionalDependency.Complete();
@@ -504,67 +415,54 @@ namespace Pathfinding.Jobs {
 			}
 		}
 
+		/// <summary>Schedules a managed job to run in the job system</summary>
 		public static JobHandle ScheduleManaged<T>(this T data, JobHandle dependsOn) where T : struct, IJob {
 			return new ManagedJob { handle = GCHandle.Alloc(data) }.Schedule(dependsOn);
 		}
 
+		/// <summary>Schedules a managed job to run in the job system</summary>
 		public static JobHandle ScheduleManaged (this System.Action data, JobHandle dependsOn) {
 			return new ManagedActionJob {
 					   handle = GCHandle.Alloc(data)
 			}.Schedule(dependsOn);
 		}
 
-		static readonly UnityEngine.Profiling.CustomSampler waitingForMainThreadSampler = UnityEngine.Profiling.CustomSampler.Create("Waiting for main thread work (sleep)");
+		public static JobHandle GetDependencies<T>(this T data, JobDependencyTracker tracker) where T : struct, IJob {
+			if (tracker.forceLinearDependencies) return default;
+			else return JobDependencyAnalyzer<T>.GetDependencies(ref data, tracker);
+		}
 
 		/// <summary>
-		/// Schedules a job to run in the main Unity thread.
+		/// Executes this job in the main thread using a coroutine.
+		/// Usage:
+		/// - 1. Optionally schedule some other jobs before this one (using the dependency tracker)
+		/// - 2. Call job.ExecuteMainThreadJob(tracker)
+		/// - 3. Iterate over the enumerator until it is finished. Call handle.Complete on all yielded job handles. Usually this only yields once, but if you use the <see cref="JobHandleWithMainThreadWork"/> wrapper it will
+		///    yield once for every time slice.
+		/// - 4. Continue scheduling other jobs.
 		///
-		/// You must call <see cref="JobDependencyTracker.RunMainThreadWork()"/> repeatedly in the main thread to allow the work to be done.
+		/// You must not schedule other jobs (that may touch the same data) while executing this job.
 		///
-		/// Warning: This method is to be avoided unless absolutely necessary. It may cause a worker thread to sleep until the main thread has had time to run the job, preventing other jobs from running in that worker thread.
-		///
-		/// Note: In the future Unity may allow more direct control over the semaphores used in the job system, and then this method may become more efficient.
+		/// See: \reflink{Pathfinding.Jobs.JobHandleWithMainThreadWork}
 		/// </summary>
-		public static JobHandle ScheduleManagedInMainThread<T>(this T data, JobDependencyTracker tracker) where T : struct, IJob {
+		public static IEnumerator<JobHandle> ExecuteMainThreadJob<T>(this T data, JobDependencyTracker tracker) where T : struct, IJobTimeSliced {
 			if (tracker.forceLinearDependencies) {
 				UnityEngine.Profiling.Profiler.BeginSample("Main Thread Work");
 				data.Execute();
 				UnityEngine.Profiling.Profiler.EndSample();
-				return default;
+				yield break;
 			}
 
-#if ENABLE_UNITY_COLLECTIONS_CHECKS
-			// Replacing the atomic safety handle because otherwise we will not be able to read/write from native arrays in the job.
-			// This is because other jobs may be scheduled that also read/write from them. The JobDependencyTracker ensures
-			// that we do not read/write at the same time, but the job system doesn't know that.
-			var safetyHandle = AtomicSafetyHandle.Create();
-			JobDependencyAnalyzer<T>.SetSafetyHandle(ref data, safetyHandle);
-#endif
-			var ijob = (IJob)data;
 			var dependsOn = JobDependencyAnalyzer<T>.GetDependencies(ref data, tracker);
-			var dependenciesDoneEvent = new ManualResetEvent(false);
-			var doneEvent = new ManualResetEvent(false);
+			yield return dependsOn;
 
-			tracker.mainThreadWork.Add(new JobDependencyTracker.MainThreadWork {
-				dependsOn = dependsOn,
-				dependenciesDoneEvent = dependenciesDoneEvent,
-				doneEvent = doneEvent,
-				job = ijob,
-#if ENABLE_UNITY_COLLECTIONS_CHECKS
-				safetyHandle = safetyHandle,
-#endif
-			});
-
-			System.Action waitAction = () => {
-				waitingForMainThreadSampler.Begin();
-				dependenciesDoneEvent.Set();
-				doneEvent.WaitOne();
-				waitingForMainThreadSampler.End();
-			};
-			var waitJob = waitAction.ScheduleManaged(dependsOn);
-
-			JobDependencyAnalyzer<T>.Scheduled(ref data, tracker, waitJob);
-			return waitJob;
+			while (true) {
+				UnityEngine.Profiling.Profiler.BeginSample("Main Thread Work");
+				var didComplete = data.Execute(tracker.timeSlice);
+				UnityEngine.Profiling.Profiler.EndSample();
+				if (didComplete) yield break;
+				else yield return new JobHandle();
+			}
 		}
 	}
 

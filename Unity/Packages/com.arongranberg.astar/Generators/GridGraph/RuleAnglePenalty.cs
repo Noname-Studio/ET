@@ -33,7 +33,7 @@ namespace Pathfinding {
 				angleToPenalty[i] = Mathf.Max(0, curve.Evaluate(90.0f * i / (angleToPenalty.Length - 1)) * penaltyScale);
 			}
 
-			rules.Add(Pass.BeforeConnections, context => {
+			rules.AddJobSystemPass(Pass.BeforeConnections, context => {
 				new JobPenaltyAngle {
 					angleToPenalty = angleToPenalty,
 					up = context.data.up,

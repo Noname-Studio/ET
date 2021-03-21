@@ -440,7 +440,7 @@ namespace Pathfinding {
 		/// // Get the first grid graph in the scene
 		/// var gridGraph = AstarPath.active.data.gridGraph;
 		///
-		/// gridGraph.rules.rules.Add(new RuleAnglePenalty {
+		/// gridGraph.rules.AddRule(new RuleAnglePenalty {
 		///     penaltyScale = 10000,
 		///     curve = AnimationCurve.Linear(0, 0, 90, 1),
 		/// });
@@ -1273,15 +1273,109 @@ namespace Pathfinding {
 			public IntBounds bounds;
 			public int layers;
 			public Vector3 up;
+
+			/// <summary>Transforms graph-space to world space</summary>
 			public GraphTransform transform;
+
+			/// <summary>
+			/// Positions of all nodes.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid
+			/// - BeforeConnections: Valid
+			/// - AfterConnections: Valid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<Vector3> nodePositions;
+
+			/// <summary>
+			/// Bitpacked connections of all nodes.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Invalid
+			/// - BeforeConnections: Invalid
+			/// - AfterConnections: Valid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<int> nodeConnections;
+
+			/// <summary>
+			/// Bitpacked connections of all nodes.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid
+			/// - BeforeConnections: Valid
+			/// - AfterConnections: Valid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<uint> nodePenalties;
+
+			/// <summary>
+			/// Tags of all nodes
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid (but if erosion uses tags then it will be overwritten later)
+			/// - BeforeConnections: Valid (but if erosion uses tags then it will be overwritten later)
+			/// - AfterConnections: Valid (but if erosion uses tags then it will be overwritten later)
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<int> nodeTags;
+
+			/// <summary>
+			/// Normals of all nodes.
+			/// If height testing is disabled the normal will be (0,1,0) for all nodes.
+			/// If a node doesn't exist (only happens in layered grid graphs) or if the height raycast didn't hit anything then the normal will be (0,0,0).
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid
+			/// - BeforeConnections: Valid
+			/// - AfterConnections: Valid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<float4> nodeNormals;
+
+			/// <summary>
+			/// Walkability of all nodes before erosion happens.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid (it will be combined with collision testing later)
+			/// - BeforeConnections: Valid
+			/// - AfterConnections: Valid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<bool> nodeWalkable;
+
+			/// <summary>
+			/// Walkability of all nodes after erosion happens. This is the final walkability of the nodes.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Invalid
+			/// - BeforeConnections: Invalid
+			/// - AfterConnections: Invalid
+			/// - PostProcess: Valid
+			/// </summary>
 			public NativeArray<bool> nodeWalkableWithErosion;
+
+			/// <summary>
+			/// Raycasts hits used for height testing.
+			/// This data is only valid if height testing is enabled, otherwise the array is uninitialized.
+			///
+			/// Data is valid in these passes:
+			/// - BeforeCollision: Valid (if height testing is enabled)
+			/// - BeforeConnections: Valid (if height testing is enabled)
+			/// - AfterConnections: Valid (if height testing is enabled)
+			/// - PostProcess: Valid (if height testing is enabled)
+			/// </summary>
 			public NativeArray<RaycastHit> heightHits;
+
+			/// <summary>
+			/// True if the data may have multiple layers.
+			/// For layered data the nodes are laid out as `data[y*width*depth + z*width + x]`.
+			/// For non-layered data the nodes are laid out as `data[z*width + x]` (which is equivalent to the above layout assuming y=0).
+			///
+			/// This also affects how node connections are stored. You can use \reflink{LayeredGridAdjacencyMapper} and \reflink{FlatGridAdjacencyMapper} to access
+			/// connections for the different data layouts.
+			/// </summary>
 			public bool layeredDataLayout;
 
 			public void AllocateBuffers () {
@@ -1377,18 +1471,19 @@ namespace Pathfinding {
 				}.Schedule(dependencyTracker);
 			}
 
-			public void CollisionCheck (GraphCollision collision) {
+			public IEnumerator<JobHandle> CollisionCheck (GraphCollision collision) {
 				if (collision.type == ColliderType.Ray && !collision.use2D) {
 					var collisionCheckResult = dependencyTracker.NewNativeArray<bool>(numNodes, allocationMethod, NativeArrayOptions.UninitializedMemory);
 					collision.JobCollisionRay(nodePositions, collisionCheckResult, up, allocationMethod, dependencyTracker);
 					nodeWalkable.BitwiseAndWith(collisionCheckResult).Schedule(dependencyTracker);
+					return null;
 				} else {
 					// This part can unfortunately not be jobified yet
-					new JobCheckCollisions {
-						nodePositions = nodePositions,
-						collisionResult = nodeWalkable,
-						collision = collision,
-					}.ScheduleManagedInMainThread(dependencyTracker);
+					return new JobCheckCollisions {
+							   nodePositions = nodePositions,
+							   collisionResult = nodeWalkable,
+							   collision = collision,
+					}.ExecuteMainThreadJob(dependencyTracker);
 				}
 			}
 
@@ -1621,7 +1716,7 @@ namespace Pathfinding {
 		}
 
 		public enum RecalculationMode {
-			/// <summary>Recalculates the nodes from scratch. Used when the graph is first scanned</summary>
+			/// <summary>Recalculates the nodes from scratch. Used when the graph is first scanned. You should have destroyed all existing nodes before updating the graph with this mode.</summary>
 			RecalculateFromScratch,
 			/// <summary>Recalculate the minimal number of nodes necessary to guarantee changes inside the graph update's bounding box are taken into account. Some data may be read from the existing nodes</summary>
 			RecalculateMinimal,
@@ -1741,11 +1836,25 @@ namespace Pathfinding {
 
 				rules.RebuildIfNecessary();
 
-				rules.ExecuteRule(GridGraphRule.Pass.BeforeCollision, context);
 
-				if (collision.collisionCheck) context.data.CollisionCheck(collision);
+				{
+					// Here we execute some rules and possibly wait for some dependencies to complete.
+					// If main thread rules are used then we need to wait for all previous jobs to complete before the rule is actually executed.
+					var wait = rules.ExecuteRule(GridGraphRule.Pass.BeforeCollision, context);
+					while (wait.MoveNext()) yield return wait.Current;
+				}
 
-				rules.ExecuteRule(GridGraphRule.Pass.BeforeConnections, context);
+				if (collision.collisionCheck) {
+					var wait = context.data.CollisionCheck(collision);
+					while (wait != null && wait.MoveNext()) {
+						yield return wait.Current;
+					}
+				}
+
+				{
+					var wait = rules.ExecuteRule(GridGraphRule.Pass.BeforeConnections, context);
+					while (wait.MoveNext()) yield return wait.Current;
+				}
 
 				if (recalculationMode == RecalculationMode.RecalculateMinimal) {
 					context.data = context.data.ReadFromNodesAndCopy(newNodes, nodeArrayBounds, readBounds, nodesDependsOn, nodeSurfaceNormals);
@@ -1779,7 +1888,10 @@ namespace Pathfinding {
 
 			// Calculate the connections between nodes and also erode the graph
 			context.data.Connections(maxStepHeight, maxStepUsesSlope, neighbours, cutCorners, collision.use2D, false, characterHeight);
-			rules.ExecuteRule(GridGraphRule.Pass.AfterConnections, context);
+			{
+				var wait = rules.ExecuteRule(GridGraphRule.Pass.AfterConnections, context);
+				while (wait.MoveNext()) yield return wait.Current;
+			}
 
 			var writeMaskBounds = new IntBounds(writeMaskRect.xmin, 0, writeMaskRect.ymin, writeMaskRect.xmax + 1, context.data.layers, writeMaskRect.ymax + 1);
 
@@ -1788,14 +1900,20 @@ namespace Pathfinding {
 
 				// After erosion is done we need to recalculate the node connections
 				context.data.Connections(maxStepHeight, maxStepUsesSlope, neighbours, cutCorners, collision.use2D, true, characterHeight);
-				rules.ExecuteRule(GridGraphRule.Pass.AfterConnections, context);
+				{
+					var wait = rules.ExecuteRule(GridGraphRule.Pass.AfterConnections, context);
+					while (wait.MoveNext()) yield return wait.Current;
+				}
 			} else {
 				// If erosion is disabled we can just copy nodeWalkable to nodeWalkableWithErosion
 				// TODO: Can we just do an assignment of the whole array?
 				context.data.nodeWalkable.CopyToJob(context.data.nodeWalkableWithErosion).Schedule(dependencyTracker);
 			}
 
-			rules.ExecuteRule(GridGraphRule.Pass.PostProcess, context);
+			{
+				var wait = rules.ExecuteRule(GridGraphRule.Pass.PostProcess, context);
+				while (wait.MoveNext()) yield return wait.Current;
+			}
 
 			var newNodeArrayBounds = nodeArrayBounds;
 			newNodeArrayBounds.y = context.data.layers;
@@ -1833,9 +1951,13 @@ namespace Pathfinding {
 				nodeArrayBounds = newNodeArrayBounds,
 				nodes = newNodes,
 				newGridNodeDelegate = newGridNodeDelegate,
-			}.ScheduleManagedInMainThread(dependencyTracker);
+			};
 
-			yield return context.data.AssignToNodes(newNodes, newNodeArrayBounds, writeMaskBounds, graphIndex, allocJob, newNodeSurfaceNormals);
+			// This job needs to be executed on the main thread
+			yield return allocJob.GetDependencies(dependencyTracker);
+			allocJob.Execute();
+
+			yield return context.data.AssignToNodes(newNodes, newNodeArrayBounds, writeMaskBounds, graphIndex, new JobHandle(), newNodeSurfaceNormals);
 
 			// Dispose the old normals array and replace it with the new one.
 			// The disposal must happen after the above yield to make sure no jobs are using it at the moment.
@@ -3457,9 +3579,7 @@ namespace Pathfinding {
 				nodes[i].SerializeNode(ctx);
 			}
 
-			for (int i = 0; i < nodes.Length; i++) {
-				ctx.SerializeVector3(new Vector3(nodeSurfaceNormals[i].x, nodeSurfaceNormals[i].y, nodeSurfaceNormals[i].z));
-			}
+			SerializeNodeSurfaceNormals(ctx);
 		}
 
 		protected override void DeserializeExtraInfo (GraphSerializationContext ctx) {
@@ -3477,14 +3597,31 @@ namespace Pathfinding {
 				nodes[i].DeserializeNode(ctx);
 			}
 
+			DeserializeNodeSurfaceNormals(ctx, nodes, ctx.meta.version < AstarSerializer.V4_3_6);
+		}
+
+		protected void SerializeNodeSurfaceNormals (GraphSerializationContext ctx) {
+			for (int i = 0; i < nodes.Length; i++) {
+				ctx.SerializeVector3(new Vector3(nodeSurfaceNormals[i].x, nodeSurfaceNormals[i].y, nodeSurfaceNormals[i].z));
+			}
+		}
+
+		protected void DeserializeNodeSurfaceNormals (GraphSerializationContext ctx, GridNodeBase[] nodes, bool ignoreForCompatibility) {
 			if (nodeSurfaceNormals.IsCreated) nodeSurfaceNormals.Dispose();
 			nodeSurfaceNormals = new NativeArray<float4>(nodes.Length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
-			if (ctx.meta.version >= AstarSerializer.V4_3_6) {
-				var v = ctx.DeserializeVector3();
-				for (int i = 0; i < nodes.Length; i++) nodeSurfaceNormals[i] = new float4(v.x, v.y, v.z, 0);
+			if (ignoreForCompatibility) {
+				// For backwards compatibility with older versions that do not have the information stored.
+				// For most of these versions the #maxStepUsesSlope field will be deserialized to false anyway, so this array will not have any effect.
+				for (int i = 0; i < nodes.Length; i++) {
+					// If a node is null (can only happen for layered grid graphs) then the normal must be set to zero.
+					// Otherwise we set it to a "reasonable" up direction.
+					nodeSurfaceNormals[i] = nodes[i] != null ? new float4(0, 1, 0, 0) : float4.zero;
+				}
 			} else {
-				// For backwards compatibility
-				nodeSurfaceNormals.MemSet(new float4(0, 1, 0, 0)).Schedule().Complete();
+				for (int i = 0; i < nodes.Length; i++) {
+					var v = ctx.DeserializeVector3();
+					nodeSurfaceNormals[i] = new float4(v.x, v.y, v.z, 0);
+				}
 			}
 		}
 
@@ -3526,7 +3663,7 @@ namespace Pathfinding {
 			if (penaltyPosition) {
 				penaltyPosition = false;
 				// Can't convert it exactly. So assume there are no nodes with an elevation greater than 1000
-				rules.rules.Add(new RuleElevationPenalty {
+				rules.AddRule(new RuleElevationPenalty {
 					penaltyScale = Int3.Precision * penaltyPositionFactor * 1000.0f,
 					elevationRange = new Vector2(-penaltyPositionOffset/Int3.Precision, -penaltyPositionOffset/Int3.Precision + 1000),
 					curve = AnimationCurve.Linear(0, 0, 1, 1),
@@ -3552,7 +3689,7 @@ namespace Pathfinding {
 					curve.SmoothTangents(i, 0.5f);
 				}
 
-				rules.rules.Add(new RuleAnglePenalty {
+				rules.AddRule(new RuleAnglePenalty {
 					penaltyScale = maxPenalty,
 					curve = curve,
 				});
@@ -3565,7 +3702,7 @@ namespace Pathfinding {
 				var channels = textureData.channels.Cast<RuleTexture.ChannelUse>().ToList();
 				while (channels.Count < 4) channels.Add(RuleTexture.ChannelUse.None);
 
-				rules.rules.Add(new RuleTexture {
+				rules.AddRule(new RuleTexture {
 					texture = textureData.source,
 					channels = channels.ToArray(),
 					channelScales = channelScales.ToArray(),

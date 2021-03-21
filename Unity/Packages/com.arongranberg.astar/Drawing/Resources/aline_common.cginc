@@ -29,9 +29,8 @@ struct appdata_color {
 
 struct line_v2f {
 	half4 col : COLOR;
-	float2 normal : TEXCOORD0;
-	float4 screenPos : TEXCOORD1;
-	float4 originScreenPos : TEXCOORD2;
+	noperspective float lineWidth: TEXCOORD3;
+	noperspective float uv : TEXCOORD4;
 	UNITY_VERTEX_OUTPUT_STEREO
 };
 
@@ -55,6 +54,13 @@ float4 ComputeScreenPos (float4 pos, float projectionSign)
   o.xy = float2(o.x, o.y * projectionSign) + o.w;
   o.zw = pos.zw;
   return o;
+}
+
+float calculateLineAlpha(line_v2f i, float pixelWidth, float falloffTextureScreenPixels) {
+	float dist = abs((i.uv - 0.5)*2);
+	float falloffFractionOfWidth = falloffTextureScreenPixels/(pixelWidth*0.5);
+	float a = lineAA((abs(dist) - (1 - falloffFractionOfWidth))/falloffFractionOfWidth);
+	return a;
 }
 
 line_v2f line_vert (appdata_color v, float pixelWidth, float lengthPadding, out float4 outpos : SV_POSITION) {
@@ -106,17 +112,16 @@ line_v2f line_vert (appdata_color v, float pixelWidth, float lengthPadding, out 
 	// Make the line wide
 	outpos = (Mv / Mv.w) + side*sn*pixelWidth*0.5;
 	
-	// Start (-1) or End (1) of the line
-	float start = (v.uv.y - 0.5)*2;
+	// -1 or +1 if this vertex is at the start or end of the line respectively.
+	float forwards = (v.uv.y - 0.5)*2;
 	// Add some additional length to the line (usually on the order of 0.5 px)
 	// to avoid occational 1 pixel holes in sequences of contiguous lines.
-	outpos.xy += start*(delta.xy / _ScreenParams.xy)*0.5*lengthPadding;
+	outpos.xy += forwards*(delta.xy / _ScreenParams.xy)*0.5*lengthPadding;
 
 	// Multiply by w because homogeneous coordinates (it still needs to be clipped)
 	outpos *= Mv.w;
-	o.normal = normalizedScreenSpaceNormal;
-	o.originScreenPos = ComputeScreenPos(Mv, _ProjectionParams.x);
-	o.screenPos = ComputeScreenPos(outpos, _ProjectionParams.x);
+	o.lineWidth = pixelWidth;
+	o.uv = v.uv.x;
 	return o;
 }
 

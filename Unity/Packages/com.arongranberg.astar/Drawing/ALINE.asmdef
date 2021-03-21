@@ -49,6 +49,11 @@
             "name": "com.unity.render-pipelines.high-definition",
             "expression": "0.0.0",
             "define": "MODULE_RENDER_PIPELINES_HIGH_DEFINITION"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "9.0",
+            "define": "MODULE_RENDER_PIPELINES_HIGH_DEFINITION_9_0_OR_NEWER"
         }
     ],
     "noEngineReferences": false

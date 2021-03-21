@@ -56,16 +56,16 @@ namespace Pathfinding.Drawing {
 			// Note: second parameter is normalized (-1,1,1)
 			if (math.all(tangent == float3.zero)) tangent = math.cross(up, new float3(-0.577350269f, 0.577350269f, 0.577350269f));
 
-			using (WithMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, up), new Vector3(radius, height, radius)))) {
-				CircleXZ(float3.zero, 1);
-				if (height > 0) {
-					CircleXZ(new float3(0, 1, 0), 1);
-					Line(new float3(1, 0, 0), new float3(1, 1, 0));
-					Line(new float3(-1, 0, 0), new float3(-1, 1, 0));
-					Line(new float3(0, 0, 1), new float3(0, 1, 1));
-					Line(new float3(0, 0, -1), new float3(0, 1, -1));
-				}
+			PushMatrix(Matrix4x4.TRS(position, Quaternion.LookRotation(tangent, up), new Vector3(radius, height, radius)));
+			CircleXZ(float3.zero, 1);
+			if (height > 0) {
+				CircleXZ(new float3(0, 1, 0), 1);
+				Line(new float3(1, 0, 0), new float3(1, 1, 0));
+				Line(new float3(-1, 0, 0), new float3(-1, 1, 0));
+				Line(new float3(0, 0, 1), new float3(0, 1, 1));
+				Line(new float3(0, 0, -1), new float3(0, 1, -1));
 			}
+			PopMatrix();
 			PopColor();
 		}
 
@@ -153,9 +153,9 @@ namespace Pathfinding.Drawing {
 		/// <param name="color">Color of the object</param>
 		public void WireBox (float3 center, Quaternion rotation, float3 size, Color color) {
 			PushColor(color);
-			using (WithMatrix(Matrix4x4.TRS(center, rotation, size))) {
-				WireBox(new Bounds(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one));
-			}
+			PushMatrix(Matrix4x4.TRS(center, rotation, size));
+			WireBox(new Bounds(Vector3.zero, Vector3.one));
+			PopMatrix();
 			PopColor();
 		}
 
@@ -229,9 +229,9 @@ namespace Pathfinding.Drawing {
 		/// <param name="color">Color of the object</param>
 		public void SolidBox (float3 center, Quaternion rotation, float3 size, Color color) {
 			PushColor(color);
-			using (WithMatrix(Matrix4x4.TRS(center, rotation, size))) {
-				SolidBox(new Vector3(0.5f, 0.5f, 0.5f), Vector3.one);
-			}
+			PushMatrix(Matrix4x4.TRS(center, rotation, size));
+			SolidBox(float3.zero, Vector3.one);
+			PopMatrix();
 			PopColor();
 		}
 	}

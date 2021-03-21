@@ -25,12 +25,6 @@ namespace Pathfinding.Util {
 					version = "1.1.0",
 				},
 #endif
-#if !MODULE_ENTITIES
-				new Dependency {
-					name = "com.unity.entities",
-					version = "0.1.1",
-				},
-#endif
 #if !MODULE_COLLECTIONS
 				new Dependency {
 					name = "com.unity.collections",

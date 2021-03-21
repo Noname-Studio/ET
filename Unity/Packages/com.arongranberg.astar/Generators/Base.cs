@@ -540,6 +540,15 @@ namespace Pathfinding {
 		/// </summary>
 		private Vector3 upheight;
 
+		/// <summary>Used for 2D collision queries</summary>
+		private ContactFilter2D contactFilter;
+
+		/// <summary>
+		/// Just so that the Physics2D.OverlapPoint method has some buffer to store things in.
+		/// We never actually read from this array, so we don't even care if this is thread safe.
+		/// </summary>
+		private static Collider2D[] dummyArray = new Collider2D[1];
+
 		/// <summary>
 		/// <see cref="diameter"/> * scale * 0.5.
 		/// Where scale usually is \link Pathfinding.GridGraph.nodeSize nodeSize \endlink
@@ -568,10 +577,11 @@ namespace Pathfinding {
 			upheight = up*height;
 			finalRadius = diameter*scale*0.5F;
 			finalRaycastRadius = thickRaycastDiameter*scale*0.5F;
+			contactFilter = new ContactFilter2D { layerMask = mask, useDepth = false, useLayerMask = true, useNormalAngle = false, useTriggers = false };
 		}
 
 		/// <summary>
-		/// Returns if the position is obstructed.
+		/// Returns true if the position is not obstructed.
 		/// If <see cref="collisionCheck"/> is false, this will always return true.\n
 		/// </summary>
 		public bool Check (Vector3 position) {
@@ -583,9 +593,9 @@ namespace Pathfinding {
 				switch (type) {
 				case ColliderType.Capsule:
 				case ColliderType.Sphere:
-					return Physics2D.OverlapCircle(position, finalRadius, mask) == null;
+					return Physics2D.OverlapCircle(position, finalRadius, contactFilter, dummyArray) == 0;
 				default:
-					return Physics2D.OverlapPoint(position, mask) == null;
+					return Physics2D.OverlapPoint(position, contactFilter, dummyArray) == 0;
 				}
 			}
 

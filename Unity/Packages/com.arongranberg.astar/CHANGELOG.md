@@ -1,3 +1,48 @@
+## 4.3.41 (2021-02-28)
+- Fixed the graphs would be rendered even when the scene view was in prefab isolation mode and you were viewing an unrelated prefab.
+- Fixed a deprecation warning when using the HDRP package version 9.0 or higher.
+- Fixed a bug in the grid graph rule's helper function \reflink{ForEachNode} which would not work if the normal of the nodes were exactly (0,1,0).
+- Improved error messages when trying to include a non-readable mesh in a recast graph scan.
+
+## 4.3.40 (2021-01-27)
+- Cleaned up some large audio files in the example scenes to reduce the package install size quite significantly.
+- Removed some `.blend1` (blender backup files) that had been accidentally included in the package.
+- The Unity Entities package is no longer a dependency.
+		This previously contained some functionality that was needed, but this has since moved to the smaller Jobs package.
+- Fixed some visual scaling bugs in the collision visualization code for the grid graph.
+- Fixed calling `AstarData.ClearGraphs` and then immediately calling `AstarData.AddGraph` would result in an exception.
+- Fixed \reflink{UpdateGraphsNoBlock(GraphUpdateObject,GraphNode,GraphNode,bool)} could return incorrect results if there were already some pending graph updates.
+
+## 4.3.39 (2020-12-11)
+- Fixed grid graph would see 2D triggers as obstacles. Now all 2D colliders marked as triggers will be ignored by the grid graph.
+- Improved compatibility with some older versions of the Universal Render Pipeline.
+
+## 4.3.38 (2020-11-18)
+- Fixed a memory leak that could happen after switching scenes. Thanks @nGenius for finding it.
+- Fixed compatibility with Unity 2020.2.
+		Note that this package is not compatible with some alpha releases of 2020.2, but it is compatible with the later 2020.2 releases.
+
+## 4.3.37 (2020-11-01)
+- Fixed scanning recast graphs could throw an exception in Unity 2020 or higher if the scene contained a mesh with 0 vertices.
+- Added \reflink{IAstarAI.endOfPath}.
+- Fixed the built-in movement scripts' 'Stop When Destination Is Crowded' behavior would not work well if the destination couldn't be reached, but the agents were still crowding up against the closest point they could reach.
+- Fixed updating layer grid graphs during runtime that had been loaded from a file/cache could throw an exception (bug introduced during the 4.3.x beta). Thanks @Kevin_Jenkins for help with pinning the bug down.
+		- Note: If you are using the \emph{account for slopes} graph option I recommend that you regenerate any caches and re-save any graph files after upgrading (if you are using any caches/graph files).
+		Things will work without doing that, but in some cases it may behave as if \emph{account for slopes} is disabled.
+- Fixed updating grid graphs during runtime could sometimes give you subtly different results if the graph had been loaded from a file/cache (bug introduced during the 4.3.x beta).
+
+## 4.3.36 (2020-10-25)
+- Fixed a major memory leak that could happen if the graph was re-scanned many times. The bug was introduced in 4.3.12.
+- Fixed Unity freezing when scanning grid graphs on some computers.
+- Made it possible to create grid graph rules that run in the main thread instead of using the unity job system. See \ref grid-rules-write.
+- Fixed a bug which could cause a greyed out object called 'RetainedGizmos' to appear in the scene hierarchy.
+- Improved the documentation for writing custom grid graph rules: \ref grid-rules-write.
+
+## 4.3.35 (2020-10-10)
+- Fixed burstified recast code sometimes throwing an exception in standalone IL2CPP builds.
+- Worked around a null reference exception in Unity's ClearPreviewCache that could appear randomly from time to time.
+- Minor reduction in overhead in standalone builds.
+
 ## 4.3.34 (2020-09-04)
 - Added a setter for the rotation property of all movement scripts (\reflink{IAstarAI.rotation}).
 - Fixed RichAI always teleporting to the closest point on the navmesh when the script is enabled even if \reflink{RichAI.canMove} is false.

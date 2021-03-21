@@ -162,6 +162,10 @@ namespace Pathfinding {
 				if (!dirtyNodes[i].Destroyed) {
 					dirtyNodes[numDirtyNodes] = dirtyNodes[i];
 					numDirtyNodes++;
+				} else {
+					// Mark the associated hierarchical node as dirty to ensure it is recalculated or removed later.
+					// If we don't do this then hierarchical nodes in which all nodes are destroyed will leak.
+					dirty[dirtyNodes[i].HierarchicalNodeIndex] = 1;
 				}
 			}
 			// Clear end of array
@@ -221,8 +225,9 @@ namespace Pathfinding {
 
 			var nodeChildren = children[hierarchicalNode];
 
+			// Ensure all children of dirty hierarchical nodes are included in the recalculation
 			for (int i = 0; i < nodeChildren.Count; i++) {
-				AddDirtyNode(nodeChildren[i]);
+				if (!nodeChildren[i].Destroyed) AddDirtyNode(nodeChildren[i]);
 			}
 
 			nodeChildren.ClearFast();

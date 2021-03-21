@@ -17,8 +17,13 @@ namespace Pathfinding.Jobs {
 			static public IntPtr jobReflectionData;
 
 			public static IntPtr Initialize () {
-				if (jobReflectionData == IntPtr.Zero)
-				 {	jobReflectionData = JobsUtility.CreateJobReflectionData(typeof(T), (ExecuteJobFunction)Execute); }
+				if (jobReflectionData == IntPtr.Zero) {
+#if UNITY_2020_2_OR_NEWER
+					jobReflectionData = JobsUtility.CreateJobReflectionData(typeof(T), (ExecuteJobFunction)Execute, null, null);
+#else
+					jobReflectionData = JobsUtility.CreateJobReflectionData(typeof(T), JobType.ParallelFor, (ExecuteJobFunction)Execute);
+#endif
+				}
 				return jobReflectionData;
 			}
 
@@ -40,7 +45,13 @@ namespace Pathfinding.Jobs {
 		}
 
 		unsafe static public JobHandle ScheduleBatch<T>(this T jobData, int arrayLength, int minIndicesPerJobCount, JobHandle dependsOn = new JobHandle()) where T : struct, IJobParallelForBatched {
-			var scheduleParams = new JobsUtility.JobScheduleParameters(UnsafeUtility.AddressOf(ref jobData), ParallelForBatchJobStruct<T>.Initialize(), dependsOn, ScheduleMode.Parallel);
+#if UNITY_2020_2_OR_NEWER
+			// This was renamed in Unity 2020.2
+			var scheduleMode = ScheduleMode.Parallel;
+#else
+			var scheduleMode = ScheduleMode.Batched;
+#endif
+			var scheduleParams = new JobsUtility.JobScheduleParameters(UnsafeUtility.AddressOf(ref jobData), ParallelForBatchJobStruct<T>.Initialize(), dependsOn, scheduleMode);
 
 			return JobsUtility.ScheduleParallelFor(ref scheduleParams, arrayLength, minIndicesPerJobCount);
 		}

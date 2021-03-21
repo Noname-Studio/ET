@@ -578,6 +578,7 @@ namespace Pathfinding {
 			callback = null;
 			immediateCallback = null;
 			traversalProvider = null;
+			pathHandler = null;
 		}
 
 		/// <summary>

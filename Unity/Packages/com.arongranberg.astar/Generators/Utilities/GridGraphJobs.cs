@@ -76,23 +76,28 @@ namespace Pathfinding.Jobs.Grid {
 	}
 
 	[BurstCompile]
-	public struct JobNodePositions : IJob, GridGraphRule.INodeModifier {
+	public struct JobNodePositions : IJob {
 		public Matrix4x4 graphToWorld;
 		public IntBounds bounds;
 
 		[WriteOnly]
 		public NativeArray<Vector3> nodePositions;
 
-		public static Vector3 NodePosition (Matrix4x4 graphToWorld, IntBounds bounds, int x, int z) {
-			return graphToWorld.MultiplyPoint3x4(new Vector3((bounds.min.x + x) + 0.5f, 0, (bounds.min.z + z) + 0.5f));
-		}
-
-		public void ModifyNode (int nodeIndex, int dataX, int dataZ) {
-			nodePositions[nodeIndex] = NodePosition(graphToWorld, bounds, dataX, dataZ);
+		public static Vector3 NodePosition (Matrix4x4 graphToWorld, IntBounds bounds, int dataX, int dataZ) {
+			return graphToWorld.MultiplyPoint3x4(new Vector3((bounds.min.x + dataX) + 0.5f, 0, (bounds.min.z + dataZ) + 0.5f));
 		}
 
 		public void Execute () {
-			GridGraphRule.ForEachNode(bounds, ref this);
+			var size = bounds.size;
+			int i = 0;
+
+			for (int y = 0; y < size.y; y++) {
+				for (int z = 0; z < size.z; z++) {
+					for (int x = 0; x < size.x; x++, i++) {
+						nodePositions[i] = NodePosition(graphToWorld, bounds, x, z);
+					}
+				}
+			}
 		}
 	}
 

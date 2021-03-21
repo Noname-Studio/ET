@@ -70,10 +70,11 @@ namespace Pathfinding {
 			channelPenaltiesCombined /= 255.0f;
 
 			if (math.any(channelPositionScalesCombined)) {
-				rules.Add(Pass.BeforeCollision, context => {
+				rules.AddJobSystemPass(Pass.BeforeCollision, context => {
 					new JobTexturePosition {
 						colorData = colors,
 						nodePositions = context.data.nodePositions,
+						nodeNormals = context.data.nodeNormals,
 						bounds = context.data.bounds,
 						colorDataSize = textureSize,
 						scale = scalingMode == ScalingMode.FixedScale ? 1.0f/math.max(0.01f, nodesPerPixel) : textureSize / new float2(context.graph.width, context.graph.depth),
@@ -83,11 +84,12 @@ namespace Pathfinding {
 				});
 			}
 
-			rules.Add(Pass.BeforeConnections, context => {
+			rules.AddJobSystemPass(Pass.BeforeConnections, context => {
 				new JobTexturePenalty {
 					colorData = colors,
 					penalty = context.data.nodePenalties,
 					walkable = context.data.nodeWalkable,
+					nodeNormals = context.data.nodeNormals,
 					bounds = context.data.bounds,
 					colorDataSize = textureSize,
 					scale = scalingMode == ScalingMode.FixedScale ? 1.0f/math.max(0.01f, nodesPerPixel) : textureSize / new float2(context.graph.width, context.graph.depth),
@@ -107,6 +109,8 @@ namespace Pathfinding {
 			public NativeArray<int> colorData;
 			[WriteOnly]
 			public NativeArray<Vector3> nodePositions;
+			[ReadOnly]
+			public NativeArray<float4> nodeNormals;
 
 			public Matrix4x4 graphToWorld;
 			public IntBounds bounds;
@@ -114,7 +118,7 @@ namespace Pathfinding {
 			public float2 scale;
 			public float4 channelPositionScale;
 
-			public void ModifyNode (int dataIndex, int dataX, int dataZ) {
+			public void ModifyNode (int dataIndex, int dataX, int dataLayer, int dataZ) {
 				var offset = bounds.min.xz;
 				int2 colorPos = math.clamp((int2)math.round((new float2(dataX, dataZ) + offset) * scale), int2.zero, colorDataSize - new int2(1, 1));
 				int colorIndex = colorPos.y*colorDataSize.x + colorPos.x;
@@ -127,7 +131,7 @@ namespace Pathfinding {
 			}
 
 			public void Execute () {
-				ForEachNode(bounds, ref this);
+				ForEachNode(bounds, nodeNormals, ref this);
 			}
 		}
 
@@ -137,6 +141,8 @@ namespace Pathfinding {
 			public NativeArray<int> colorData;
 			public NativeArray<uint> penalty;
 			public NativeArray<bool> walkable;
+			[ReadOnly]
+			public NativeArray<float4> nodeNormals;
 
 			public IntBounds bounds;
 			public int2 colorDataSize;
@@ -144,7 +150,7 @@ namespace Pathfinding {
 			public float4 channelPenalties;
 			public bool4 channelDeterminesWalkability;
 
-			public void ModifyNode (int dataIndex, int dataX, int dataZ) {
+			public void ModifyNode (int dataIndex, int dataX, int dataLayer, int dataZ) {
 				var offset = bounds.min.xz;
 				int2 colorPos = math.clamp((int2)math.round((new float2(dataX, dataZ) + offset) * scale), int2.zero, colorDataSize - new int2(1, 1));
 				int colorIndex = colorPos.y*colorDataSize.x + colorPos.x;
@@ -156,7 +162,7 @@ namespace Pathfinding {
 			}
 
 			public void Execute () {
-				ForEachNode(bounds, ref this);
+				ForEachNode(bounds, nodeNormals, ref this);
 			}
 		}
 	}

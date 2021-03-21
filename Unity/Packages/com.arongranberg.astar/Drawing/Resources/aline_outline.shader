@@ -10,6 +10,8 @@ Shader "Hidden/ALINE/Outline" {
 		ZWrite Off
 		Offset -3, -50
 		Tags { "IgnoreProjector"="True" "RenderType"="Overlay" }
+		// With line joins some triangles can actually end up backwards, so disable culling
+		Cull Off
 		
 		// Render behind objects
 		Pass {
@@ -29,19 +31,15 @@ Shader "Hidden/ALINE/Outline" {
 			static const float FalloffTextureScreenPixels = 2;
 			
 			line_v2f vert (appdata_color v, out float4 outpos : SV_POSITION) {
-				line_v2f o = line_vert(v, _PixelWidth, _LengthPadding, outpos);
+				float pixelWidth = _PixelWidth * length(v.normal);
+				line_v2f o = line_vert(v, pixelWidth, _LengthPadding, outpos);
 				o.col = v.color * _Color * _FadeColor;
 				o.col.rgb = ConvertSRGBToDestinationColorSpace(o.col.rgb);
 				return o;
 			}
 
 			half4 frag (line_v2f i, float4 screenPos : VPOS) : COLOR {
-				float2 p = (i.screenPos.xy/i.screenPos.w) - (i.originScreenPos.xy / i.originScreenPos.w);
-				// Handle DirectX properly. See https://docs.unity3d.com/Manual/SL-PlatformDifferences.html
-				p.y *= _ProjectionParams.x;
-				float dist = dot(p*_ScreenParams.xy, i.normal) / _PixelWidth;
-				float FalloffFractionOfWidth = FalloffTextureScreenPixels/(_PixelWidth*0.5);
-				float a = lineAA((abs(dist*4) - (1 - FalloffFractionOfWidth))/FalloffFractionOfWidth);
+				float a = calculateLineAlpha(i, i.lineWidth, FalloffTextureScreenPixels);
 				return i.col * float4(1,1,1,a);
 			}
 			ENDHLSL
@@ -67,18 +65,14 @@ Shader "Hidden/ALINE/Outline" {
 			static const float FalloffTextureScreenPixels = 2;
 			
 			line_v2f vert (appdata_color v, out float4 outpos : SV_POSITION) {
-				line_v2f o = line_vert(v, _PixelWidth, _LengthPadding, outpos);
+				float pixelWidth = _PixelWidth * length(v.normal);
+				line_v2f o = line_vert(v, pixelWidth, _LengthPadding, outpos);
 				o.col = half4(1,1,1,1);
 				return o;
 			}
 
 			half4 frag (line_v2f i, float4 screenPos : VPOS) : COLOR {
-				float2 p = (i.screenPos.xy/i.screenPos.w) - (i.originScreenPos.xy / i.originScreenPos.w);
-				// Handle DirectX properly. See https://docs.unity3d.com/Manual/SL-PlatformDifferences.html
-				p.y *= _ProjectionParams.x;
-				float dist = dot(p*_ScreenParams.xy, i.normal) / _PixelWidth;
-				float FalloffFractionOfWidth = FalloffTextureScreenPixels/(_PixelWidth*0.5);
-				float a = lineAA((abs(dist*4) - (1 - FalloffFractionOfWidth))/FalloffFractionOfWidth);
+				float a = calculateLineAlpha(i, i.lineWidth, FalloffTextureScreenPixels);
 				if (a < 0.7) discard;
 				return float4(1,1,1,a);
 			}
@@ -103,7 +97,8 @@ Shader "Hidden/ALINE/Outline" {
 			static const float FalloffTextureScreenPixels = 2;
 			
 			line_v2f vert (appdata_color v, out float4 outpos : SV_POSITION) {
-				line_v2f o = line_vert(v, _PixelWidth, _LengthPadding, outpos);
+				float pixelWidth = _PixelWidth * length(v.normal);
+				line_v2f o = line_vert(v, pixelWidth, _LengthPadding, outpos);
 				o.col = v.color * _Color;
 				o.col.rgb = ConvertSRGBToDestinationColorSpace(o.col.rgb);
 				return o;
@@ -111,12 +106,7 @@ Shader "Hidden/ALINE/Outline" {
 
 			half4 frag (line_v2f i, float4 screenPos : VPOS) : COLOR {
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
-				float2 p = (i.screenPos.xy/i.screenPos.w) - (i.originScreenPos.xy / i.originScreenPos.w);
-				// Handle DirectX properly. See https://docs.unity3d.com/Manual/SL-PlatformDifferences.html
-				p.y *= _ProjectionParams.x;
-				float dist = dot(p*_ScreenParams.xy, i.normal) / _PixelWidth;
-				float FalloffFractionOfWidth = FalloffTextureScreenPixels/(_PixelWidth*0.5);
-				float a = lineAA((abs(dist*4) - (1 - FalloffFractionOfWidth))/FalloffFractionOfWidth);
+				float a = calculateLineAlpha(i, i.lineWidth, FalloffTextureScreenPixels);
 				return i.col * float4(1,1,1,a);
 			}
 			ENDHLSL

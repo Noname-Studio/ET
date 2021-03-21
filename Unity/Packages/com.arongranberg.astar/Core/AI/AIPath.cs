@@ -214,6 +214,13 @@ namespace Pathfinding {
 			}
 		}
 
+		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
+		public override Vector3 endOfPath {
+			get {
+				return interpolator.valid ? interpolator.endPoint : destination;
+			}
+		}
+
 		/// <summary>\copydoc Pathfinding::IAstarAI::radius</summary>
 		float IAstarAI.radius { get { return radius; } set { radius = value; } }
 

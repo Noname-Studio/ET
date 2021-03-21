@@ -210,6 +210,13 @@ namespace Pathfinding {
 			}
 		}
 
+		/// <summary>\copydoc Pathfinding::IAstarAI::endOfPath</summary>
+		public Vector3 endOfPath {
+			get {
+				return interpolator.valid ? interpolator.endPoint : destination;
+			}
+		}
+
 		#region IAstarAI implementation
 
 		/// <summary>\copydoc Pathfinding::IAstarAI::Move</summary>

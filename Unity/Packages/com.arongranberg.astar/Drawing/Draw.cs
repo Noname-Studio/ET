@@ -13,6 +13,7 @@ namespace Pathfinding.Drawing {
 		internal static CommandBuilder ingame_builder;
 
 
+#if UNITY_EDITOR
 		/// <summary>
 		/// \copydoc Drawing::CommandBuilder::WithMatrix(Matrix4x4)
 		/// Warning: This method cannot be used inside of Burst jobs. See job-system (view in online documentation for working links) instead.
@@ -22,7 +23,16 @@ namespace Pathfinding.Drawing {
 			DrawingManager.Init();
 			return builder.WithMatrix(matrix);
 		}
+#else
+		[BurstDiscard]
+		public static CommandBuilder.ScopeEmpty WithMatrix (Matrix4x4 matrix) {
+			// Do nothing in standlone builds
+			return new CommandBuilder.ScopeEmpty();
+		}
+#endif
 
+
+#if UNITY_EDITOR
 		/// <summary>
 		/// \copydoc Drawing::CommandBuilder::WithColor(Color)
 		/// Warning: This method cannot be used inside of Burst jobs. See job-system (view in online documentation for working links) instead.
@@ -32,6 +42,19 @@ namespace Pathfinding.Drawing {
 			DrawingManager.Init();
 			return builder.WithColor(color);
 		}
+#else
+		[BurstDiscard]
+		public static CommandBuilder.ScopeEmpty WithColor (Color color) {
+			// Do nothing in standlone builds
+			return new CommandBuilder.ScopeEmpty();
+		}
+#endif
+
+
+
+
+
+
 
 
 
@@ -49,8 +72,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Line (float3 a, float3 b) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Line(a, b);
+#endif
 		}
 
 		/// <summary>
@@ -59,8 +84,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Line (Vector3 a, Vector3 b) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Line(a, b);
+#endif
 		}
 
 		/// <summary>
@@ -69,8 +96,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Line (Vector3 a, Vector3 b, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Line(a, b, color);
+#endif
 		}
 
 		/// <summary>
@@ -79,8 +108,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Ray (float3 origin, float3 direction) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Ray(origin, direction);
+#endif
 		}
 
 		/// <summary>
@@ -89,8 +120,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Ray (Ray ray, float length) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Ray(ray, length);
+#endif
 		}
 
 
@@ -100,8 +133,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CircleXZ (float3 center, float radius, float startAngle = 0f, float endAngle = 2 * Mathf.PI) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CircleXZ(center, radius, startAngle, endAngle);
+#endif
 		}
 
 
@@ -112,8 +147,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireCylinder (float3 bottom, float3 top, float radius) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireCylinder(bottom, top, radius);
+#endif
 		}
 
 		/// <summary>
@@ -122,8 +159,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireCylinder (float3 position, float3 up, float height, float radius) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireCylinder(position, up, height, radius);
+#endif
 		}
 
 
@@ -135,8 +174,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (List<Vector3> points, bool cycle = false) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle);
+#endif
 		}
 
 		/// <summary>
@@ -145,8 +186,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (Vector3[] points, bool cycle = false) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle);
+#endif
 		}
 
 		/// <summary>
@@ -155,8 +198,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (float3[] points, bool cycle = false) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle);
+#endif
 		}
 
 		/// <summary>
@@ -165,8 +210,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (NativeArray<float3> points, bool cycle = false) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle);
+#endif
 		}
 
 		/// <summary>
@@ -175,8 +222,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (float3 center, float3 size) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(center, size);
+#endif
 		}
 
 		/// <summary>
@@ -185,8 +234,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (float3 center, Quaternion rotation, float3 size) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(center, rotation, size);
+#endif
 		}
 
 		/// <summary>
@@ -195,8 +246,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (Bounds bounds) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(bounds);
+#endif
 		}
 
 
@@ -210,8 +263,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CrossXZ (float3 position, float size = 1) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CrossXZ(position, size);
+#endif
 		}
 
 
@@ -230,9 +285,12 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireGrid (float3 center, Quaternion rotation, int2 cells, float2 totalSize) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireGrid(center, rotation, cells, totalSize);
+#endif
 		}
+
 
 
 
@@ -254,8 +312,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (float3 center, float3 size) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(center, size);
+#endif
 		}
 
 		/// <summary>
@@ -264,8 +324,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (Bounds bounds) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(bounds);
+#endif
 		}
 
 		/// <summary>
@@ -274,8 +336,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (float3 center, Quaternion rotation, float3 size) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(center, rotation, size);
+#endif
 		}
 
 
@@ -286,8 +350,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Line (float3 a, float3 b, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Line(a, b, color);
+#endif
 		}
 
 		/// <summary>
@@ -296,8 +362,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Ray (float3 origin, float3 direction, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Ray(origin, direction, color);
+#endif
 		}
 
 		/// <summary>
@@ -306,8 +374,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Ray (Ray ray, float length, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Ray(ray, length, color);
+#endif
 		}
 
 
@@ -317,8 +387,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CircleXZ (float3 center, float radius, float startAngle, float endAngle, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CircleXZ(center, radius, startAngle, endAngle, color);
+#endif
 		}
 
 		/// <summary>
@@ -327,8 +399,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CircleXZ (float3 center, float radius, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CircleXZ(center, radius, color);
+#endif
 		}
 
 
@@ -340,8 +414,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireCylinder (float3 bottom, float3 top, float radius, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireCylinder(bottom, top, radius, color);
+#endif
 		}
 
 		/// <summary>
@@ -350,8 +426,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireCylinder (float3 position, float3 up, float height, float radius, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireCylinder(position, up, height, radius, color);
+#endif
 		}
 
 
@@ -363,8 +441,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (List<Vector3> points, bool cycle, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle, color);
+#endif
 		}
 
 		/// <summary>
@@ -373,8 +453,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (List<Vector3> points, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, color);
+#endif
 		}
 
 		/// <summary>
@@ -383,8 +465,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (Vector3[] points, bool cycle, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle, color);
+#endif
 		}
 
 		/// <summary>
@@ -393,8 +477,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (Vector3[] points, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, color);
+#endif
 		}
 
 		/// <summary>
@@ -403,8 +489,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (float3[] points, bool cycle, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle, color);
+#endif
 		}
 
 		/// <summary>
@@ -413,8 +501,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (float3[] points, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, color);
+#endif
 		}
 
 		/// <summary>
@@ -423,8 +513,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (NativeArray<float3> points, bool cycle, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, cycle, color);
+#endif
 		}
 
 		/// <summary>
@@ -433,8 +525,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void Polyline (NativeArray<float3> points, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.Polyline(points, color);
+#endif
 		}
 
 		/// <summary>
@@ -443,8 +537,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (float3 center, float3 size, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(center, size, color);
+#endif
 		}
 
 		/// <summary>
@@ -453,8 +549,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (float3 center, Quaternion rotation, float3 size, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(center, rotation, size, color);
+#endif
 		}
 
 		/// <summary>
@@ -463,8 +561,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireBox (Bounds bounds, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireBox(bounds, color);
+#endif
 		}
 
 
@@ -477,8 +577,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CrossXZ (float3 position, float size, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CrossXZ(position, size, color);
+#endif
 		}
 
 		/// <summary>
@@ -487,8 +589,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void CrossXZ (float3 position, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.CrossXZ(position, color);
+#endif
 		}
 
 
@@ -509,9 +613,12 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void WireGrid (float3 center, Quaternion rotation, int2 cells, float2 totalSize, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.WireGrid(center, rotation, cells, totalSize, color);
+#endif
 		}
+
 
 
 
@@ -533,8 +640,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (float3 center, float3 size, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(center, size, color);
+#endif
 		}
 
 		/// <summary>
@@ -543,8 +652,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (Bounds bounds, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(bounds, color);
+#endif
 		}
 
 		/// <summary>
@@ -553,8 +664,10 @@ namespace Pathfinding.Drawing {
 		/// </summary>
 		[BurstDiscard]
 		public static void SolidBox (float3 center, Quaternion rotation, float3 size, Color color) {
+#if UNITY_EDITOR
 			DrawingManager.Init();
 			builder.SolidBox(center, rotation, size, color);
+#endif
 		}
 	}
 }

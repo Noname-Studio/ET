@@ -2,12 +2,43 @@
 /// \page changelog Changelog
 /// \order{-10}
 ///
-/// - 1.2.4
+/// - 1.4.1 (2021-02-28)
+///     - Added \reflink{CommandBuilder.DisposeAfter} to dispose a command builder after a job has completed.
+///     - Fixed gizmos would be rendered for other objects when the scene view was in prefab isolation mode. Now they will be hidden, which matches what Unity does.
+///     - Fixed a deprecation warning when unity the HDRP package version 9.0 or higher.
+///     - Improved docs for \reflink{RedrawScope}.
+///     - Fixed documentation for scopes (e.g. \reflink{Draw.WithColor}) would show up as missing in the online documentation.
+///
+/// - 1.4 (2021-01-27)
+///     - Breaking changes
+///         - \reflink{Draw.WireCapsule(float3,float3,float)} with the bottom/top parameterization was incorrect and the behavior did not match the documentation for it.
+///             This method has been changed so that it now matches the documentation as this was the intended behavior all along.
+///             The documentation and parameter names have also been clarified.
+///     - Added \reflink{Draw.SolidRectangle(Rect)}.
+///     - Fixed \reflink{Draw.SolidBox(float3,Quaternion,float3)} and \reflink{Draw.WireBox(float3,Quaternion,float3)} rendered a box that was offset by 0.5 times the size of the box.
+///         This bug only applied to the overload with a rotation, not for example to \reflink{Draw.SolidBox(float3,float3)}.
+///     - Fixed Draw.SolidMesh would always be rendered at the world origin with a white color. Now it picks up matrices and colors properly.
+///     - Fixed a bug which could cause a greyed out object called 'RetainedGizmos' to appear in the scene hierarchy.
+///     - Fixed some overloads of WireCylinder, WireCapsule, WireBox and SolidBox throwing errors when you tried to use them in a Burst job.
+///     - Improved compatibility with some older versions of the Universal Render Pipeline.
+///
+/// - 1.3.1 (2020-10-10)
+///     - Improved performance in standalone builds by more aggressively compiling out drawing commands that would never render anything anyway.
+///     - Reduced overhead in some cases, in particular when nothing is being rendered.
+///
+/// - 1.3 (2020-09-12)
+///     - Added support for line widths.
+///         See \reflink{Draw.WithLineWidth}.
+///         [Open online documentation to see images]
 ///     - Added warning message when using the Experimental URP 2D Renderer. The URP 2D renderer unfortunately does not have enough features yet
 ///         to be able to support ALINE. It doesn't have an extensible post processing system. The 2D renderer will be supported as soon as it is technically possible.
 ///     - Fixed \reflink{Draw.SolidPlane(float3,float3,float2)} and \reflink{Draw.WirePlane(float3,float3,float2)} not working for all normals.
 ///     - Fixed the culling bounding box for text and lines could be calculated incorrectly if text labels were used.
 ///         This could result in text and lines randomly disappearing when the camera was looking in particular directions.
+///     - Renamed \reflink{Draw.PushPersist} and \reflink{Draw.PopPersist} to \reflink{Draw.PushDuration} and \reflink{Draw.PopDuration} for consistency with the \reflink{Draw.WithDuration} scope.
+///         The previous names will still work, but they are marked as deprecated.
+///     - Known bugs
+///         - \reflink{Draw.SolidMesh(Mesh)} does not respect matrices and will always be drawn with the pivot at the world origin.
 ///
 /// - 1.2.3 (2020-07-26)
 ///     - Fixed solid drawing not working when using VR rendering.

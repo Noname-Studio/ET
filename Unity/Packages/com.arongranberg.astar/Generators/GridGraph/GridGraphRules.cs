@@ -6,6 +6,7 @@ namespace Pathfinding {
 	using Unity.Jobs;
 	using Unity.Collections;
 	using Unity.Burst;
+	using Unity.Mathematics;
 
 	public class CustomGridGraphRuleEditorAttribute : System.Attribute {
 		public System.Type type;
@@ -23,7 +24,7 @@ namespace Pathfinding {
 	/// // Get the first grid graph in the scene
 	/// var gridGraph = AstarPath.active.data.gridGraph;
 	///
-	/// gridGraph.rules.rules.Add(new RuleAnglePenalty {
+	/// gridGraph.rules.AddRule(new RuleAnglePenalty {
 	///     penaltyScale = 10000,
 	///     curve = AnimationCurve.Linear(0, 0, 90, 1),
 	/// });
@@ -34,11 +35,12 @@ namespace Pathfinding {
 	/// </summary>
 	[JsonOptIn]
 	public class GridGraphRules {
-		List<System.Action<Context> >[] callbacks;
+		List<System.Action<Context> >[] jobSystemCallbacks;
+		List<System.Action<Context> >[] mainThreadCallbacks;
 
 		/// <summary>List of all rules</summary>
 		[JsonMember]
-		public List<GridGraphRule> rules = new List<GridGraphRule>();
+		List<GridGraphRule> rules = new List<GridGraphRule>();
 
 		long lastHash;
 
@@ -50,6 +52,21 @@ namespace Pathfinding {
 			public GridGraph.GridGraphScanData data;
 			/// <summary>Tracks job dependencies. Use when scheduling jobs.</summary>
 			public JobDependencyTracker tracker;
+		}
+
+		public void AddRule (GridGraphRule rule) {
+			rules.Add(rule);
+			lastHash = -1;
+		}
+
+		public void RemoveRule (GridGraphRule rule) {
+			rules.Remove(rule);
+			lastHash = -1;
+		}
+
+		public IReadOnlyList<GridGraphRule> GetRules () {
+			if (rules == null) rules = new List<GridGraphRule>();
+			return rules.AsReadOnly();
 		}
 
 		long Hash () {
@@ -64,16 +81,20 @@ namespace Pathfinding {
 		public void RebuildIfNecessary () {
 			var newHash = Hash();
 
-			if (newHash == lastHash && callbacks != null) return;
+			if (newHash == lastHash && jobSystemCallbacks != null && mainThreadCallbacks != null) return;
 			lastHash = newHash;
 			Rebuild();
 		}
 
 		public void Rebuild () {
 			rules = rules ?? new List<GridGraphRule>();
-			callbacks = callbacks ?? new List<System.Action<Context> >[5];
-			for (int i = 0; i < callbacks.Length; i++) {
-				if (callbacks[i] != null) callbacks[i].Clear();
+			jobSystemCallbacks = jobSystemCallbacks ?? new List<System.Action<Context> >[5];
+			for (int i = 0; i < jobSystemCallbacks.Length; i++) {
+				if (jobSystemCallbacks[i] != null) jobSystemCallbacks[i].Clear();
+			}
+			mainThreadCallbacks = mainThreadCallbacks ?? new List<System.Action<Context> >[5];
+			for (int i = 0; i < mainThreadCallbacks.Length; i++) {
+				if (mainThreadCallbacks[i] != null) mainThreadCallbacks[i].Clear();
 			}
 			for (int i = 0; i < rules.Count; i++) {
 				if (rules[i].enabled) rules[i].Register(this);
@@ -91,45 +112,68 @@ namespace Pathfinding {
 			}
 		}
 
-		public bool ExecuteRule (GridGraphRule.Pass rule, Context context) {
-			if (callbacks == null) Rebuild();
-			var actions = callbacks[(int)rule];
+		static void CallActions (List<System.Action<Context> > actions, Context context) {
 			if (actions != null) {
 				try {
 					for (int i = 0; i < actions.Count; i++) actions[i](context);
 				} catch (System.Exception e) {
 					UnityEngine.Debug.LogException(e);
-					return false;
 				}
-				return true;
 			}
-			return false;
-		}
-
-		public void Add (GridGraphRule.Pass rule, System.Action<Context> action) {
-			var index = (int)rule;
-
-			if (callbacks[index] == null) {
-				callbacks[index] = new List<System.Action<Context> >();
-			}
-			callbacks[index].Add(action);
 		}
 
 		/// <summary>
-		/// <code>
-		/// 		struct Filter : GridGraphRules.IConnectionFilter {
-		/// 		    public IntRect bounds;
-		/// 		    public bool IsValidConnection (int x, int z, int direction) {
-		/// 		        x += bounds.xmin;
-		/// 		        z += bounds.ymin;
-		/// 		        var nx = x + GridGraph.neighbourXOffsets[direction];
-		/// 		        var nz = z + GridGraph.neighbourZOffsets[direction];
-		/// 		        // ... todo
-		/// 		        return true;
-		/// 		    }
-		/// 		}
-		/// 		</code>
+		/// Executes the rules for the given pass.
+		/// Call handle.Complete on, or wait for, all yielded job handles.
 		/// </summary>
+		public IEnumerator<JobHandle> ExecuteRule (GridGraphRule.Pass rule, Context context) {
+			if (jobSystemCallbacks == null) Rebuild();
+			CallActions(jobSystemCallbacks[(int)rule], context);
+
+			if (mainThreadCallbacks[(int)rule] != null && mainThreadCallbacks[(int)rule].Count > 0) {
+				if (!context.tracker.forceLinearDependencies) yield return context.tracker.AllWritesDependency;
+				CallActions(mainThreadCallbacks[(int)rule], context);
+			}
+		}
+
+		/// <summary>
+		/// Adds a pass callback that uses the job system.
+		/// This rule should only schedule jobs using the `Context.tracker` dependency tracker. Data is not safe to access directly in the callback
+		/// </summary>
+		public void AddJobSystemPass (GridGraphRule.Pass pass, System.Action<Context> action) {
+			var index = (int)pass;
+
+			if (jobSystemCallbacks[index] == null) {
+				jobSystemCallbacks[index] = new List<System.Action<Context> >();
+			}
+			jobSystemCallbacks[index].Add(action);
+		}
+
+		/// <summary>
+		/// Adds a pass callback that runs in the main thread.
+		/// The callback may access and modify any data in the context.
+		/// You do not need to schedule jobs in order to access the data.
+		///
+		/// Warning: Not all data in the Context is valid for every pass. For example you cannot access node connections in the BeforeConnections pass
+		/// since they haven't been calculated yet.
+		///
+		/// This is a bit slower than <see cref="AddJobSystemPass"/> since parallelism and the burst compiler cannot be used.
+		/// But if you need to use non-thread-safe APIs or data then this is a good choice.
+		/// </summary>
+		public void AddMainThreadPass (GridGraphRule.Pass pass, System.Action<Context> action) {
+			var index = (int)pass;
+
+			if (mainThreadCallbacks[index] == null) {
+				mainThreadCallbacks[index] = new List<System.Action<Context> >();
+			}
+			mainThreadCallbacks[index].Add(action);
+		}
+
+		/// <summary>Deprecated: Use AddJobSystemPass or AddMainThreadPass instead</summary>
+		[System.Obsolete("Use AddJobSystemPass or AddMainThreadPass instead")]
+		public void Add (GridGraphRule.Pass pass, System.Action<Context> action) {
+			AddJobSystemPass(pass, action);
+		}
 	}
 
 	/// <summary>
@@ -142,9 +186,12 @@ namespace Pathfinding {
 		/// <summary>Only enabled rules are executed</summary>
 		[JsonMember]
 		public bool enabled = true;
-		int dirty;
+		int dirty = 1;
 
-		/// <summary>Where in the scanning process a rule will be executed</summary>
+		/// <summary>
+		/// Where in the scanning process a rule will be executed.
+		/// Check the documentation for \reflink{GridGraphScanData} to see which data fields are valid in which passes.
+		/// </summary>
 		public enum Pass {
 			/// <summary>
 			/// Before the collision testing phase but after height testing.
@@ -164,7 +211,7 @@ namespace Pathfinding {
 			/// <summary>
 			/// After connections are calculated.
 			///
-			/// If you are modifying connections directly you should that in this pass.
+			/// If you are modifying connections directly you should do that in this pass.
 			///
 			/// Note: If erosion is used then this pass will be executed twice. One time before erosion and one time after erosion
 			/// when the connections are calculated again.
@@ -209,14 +256,18 @@ namespace Pathfinding {
 		}
 
 		public interface IConnectionFilter {
-			bool IsValidConnection(int dataIndex, int dataX, int dataZ, int direction);
+			bool IsValidConnection(int dataIndex, int dataX, int dataLayer, int dataZ, int direction);
 		}
 
 		public interface INodeModifier {
-			void ModifyNode(int dataIndex, int dataX, int dataZ);
+			void ModifyNode(int dataIndex, int dataX, int dataLayer, int dataZ);
 		}
 
-		public static void ForEachNode<T>(IntBounds bounds, ref T callback) where T : struct, INodeModifier {
+		/// <summary>Iterate through all nodes.</summary>
+		/// <param name="bounds">Sub-rectangle of the grid graph that is being updated/scanned</param>
+		/// <param name="nodeNormals">Data for all node normals. This is used to determine if a node exists (important for layered grid graphs).</param>
+		/// <param name="callback">The ModifyNode method on the callback struct will be called for each node.</param>
+		public static void ForEachNode<T>(IntBounds bounds, NativeArray<float4> nodeNormals, ref T callback) where T : struct, INodeModifier {
 			var size = bounds.size;
 
 			int i = 0;
@@ -224,7 +275,12 @@ namespace Pathfinding {
 			for (int y = 0; y < size.y; y++) {
 				for (int z = 0; z < size.z; z++) {
 					for (int x = 0; x < size.x; x++, i++) {
-						callback.ModifyNode(i, x, z);
+						// Check if the node exists at all
+						// This is important for layered grid graphs
+						// A normal is never zero otherwise
+						if (math.any(nodeNormals[i])) {
+							callback.ModifyNode(i, x, y, z);
+						}
 					}
 				}
 			}
@@ -242,7 +298,7 @@ namespace Pathfinding {
 						if (layeredDataLayout) {
 							// Layered grid graph
 							for (int i = 0; i < 8; i++) {
-								if (((conn >> LevelGridNode.ConnectionStride*i) & LevelGridNode.ConnectionMask) != LevelGridNode.NoConnection && !filter.IsValidConnection(nodeIndex, x, z, i)) {
+								if (((conn >> LevelGridNode.ConnectionStride*i) & LevelGridNode.ConnectionMask) != LevelGridNode.NoConnection && !filter.IsValidConnection(nodeIndex, x, y, z, i)) {
 									conn |= LevelGridNode.NoConnection << LevelGridNode.ConnectionStride*i;
 								}
 							}
@@ -250,7 +306,7 @@ namespace Pathfinding {
 							// Normal grid graph
 							// Iterate through all connections on the node
 							for (int i = 0; i < 8; i++) {
-								if ((conn & (1 << i)) != 0 && !filter.IsValidConnection(nodeIndex, x, z, i)) {
+								if ((conn & (1 << i)) != 0 && !filter.IsValidConnection(nodeIndex, x, y, z, i)) {
 									conn &= ~(1 << i);
 								}
 							}
@@ -261,23 +317,50 @@ namespace Pathfinding {
 			}
 		}
 
-		/// <summary>Returns the data index for a node's neighbour in the given direction</summary>
-		public static int GetNeighbourDataIndex (IntBounds bounds, NativeArray<int> nodeConnections, bool layeredDataLayout, int dataIndex, int direction) {
+		/// <summary>
+		/// Returns the data index for a node's neighbour in the given direction.
+		///
+		/// The bounds, nodeConnections and layeredDataLayout fields can be retrieved from the \reflink{GridGraphRules.Context}.data object.
+		///
+		/// Returns: Null if the node has no connection in that direction. Otherwise the data index for that node is returned.
+		///
+		/// See: gridgraphrule-connection-filter (view in online documentation for working links) for example usage.
+		/// </summary>
+		/// <param name="bounds">Sub-rectangle of the grid graph that is being updated/scanned</param>
+		/// <param name="nodeConnections">Data for all node connections</param>
+		/// <param name="layeredDataLayout">True if this is a layered grid graph</param>
+		/// <param name="dataX">X coordinate in the data arrays for the node for which you want to get a neighbour</param>
+		/// <param name="dataLayer">Layer (Y) coordinate in the data arrays for the node for which you want to get a neighbour</param>
+		/// <param name="dataZ">Z coordinate in the data arrays for the node for which you want to get a neighbour</param>
+		/// <param name="direction">Direction to the neighbour. See \reflink{GridNode.HasConnectionInDirection}.</param>
+		public static int? GetNeighbourDataIndex (IntBounds bounds, NativeArray<int> nodeConnections, bool layeredDataLayout, int dataX, int dataLayer, int dataZ, int direction) {
 			// Find the coordinates of the adjacent node
 			var dx = GridGraph.neighbourXOffsets[direction];
 			var dz = GridGraph.neighbourZOffsets[direction];
 
+			int nx = dataX + dx;
+			int nz = dataZ + dz;
+
+			// For valid nodeConnections arrays this is not necessary as out of bounds connections are not valid and it will thus be caught below in the 'has connection' check.
+			// But let's be safe in case users do something weird
+			if (nx < 0 || nz < 0 || nx >= bounds.size.x || nz >= bounds.size.z) return null;
+
 			// The data arrays are laid out row by row
 			const int xstride = 1;
 			var zstride = bounds.size.x;
-			var neighbourDataIndex = dataIndex + dz * zstride + dx * xstride;
+			var ystride = bounds.size.x * bounds.size.z;
+
+			var dataIndex = dataLayer * ystride + dataZ * zstride + dataX * xstride;
+			var neighbourDataIndex = nz * zstride + nx * xstride;
 
 			if (layeredDataLayout) {
 				// In a layered grid graph we need to account for nodes in different layers
-				var y = dataIndex / (bounds.size.x*bounds.size.z);
-				var neighbourY = nodeConnections[dataIndex] >> LevelGridNode.ConnectionStride*direction & LevelGridNode.ConnectionMask;
-				neighbourDataIndex += (neighbourY - y) * bounds.size.x*bounds.size.z;
-			}
+				var ny = nodeConnections[dataIndex] >> LevelGridNode.ConnectionStride*direction & LevelGridNode.ConnectionMask;
+				if (ny == LevelGridNode.NoConnection) return null;
+				neighbourDataIndex += ny * ystride;
+			} else
+			if ((nodeConnections[dataIndex] & (1 << direction)) == 0) return null;
+
 			return neighbourDataIndex;
 		}
 	}
