@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 84b4844ae6ffba641a79daca15b818d2
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: C1_0
+    100002: C1_1
+    100004: C1_2
+    100006: C1_Carpet
+    100008: C1_Carpet 1
+    100010: C1_Carpet_yy
+    100012: C1_Cupboard
+    100014: C1_floor
+    100016: C1_floor1
+    100018: C1_floor2
+    100020: C1_wall
+    100022: //RootNode
+    100024: Cupboard_yy
+    100026: Shelf
+    100028: Shelf_yy
+    100030: Wall1
+    100032: wall1_yy
+    100034: wall2
+    100036: wall3
+    100038: wall1_yy1
+    400000: C1_0
+    400002: C1_1
+    400004: C1_2
+    400006: C1_Carpet
+    400008: C1_Carpet 1
+    400010: C1_Carpet_yy
+    400012: C1_Cupboard
+    400014: C1_floor
+    400016: C1_floor1
+    400018: C1_floor2
+    400020: C1_wall
+    400022: //RootNode
+    400024: Cupboard_yy
+    400026: Shelf
+    400028: Shelf_yy
+    400030: Wall1
+    400032: wall1_yy
+    400034: wall2
+    400036: wall3
+    400038: wall1_yy1
+    2100000: 'Material #3736'
+    2100002: yiying
+    2100004: 'Material #3739'
+    2100006: 'Material #3738'
+    2100008: 'Material #3733'
+    2100010: 'Material #3571'
+    2300000: C1_0
+    2300002: C1_Carpet 1
+    2300004: C1_Carpet_yy
+    2300006: C1_Cupboard
+    2300008: C1_floor1
+    2300010: C1_floor2
+    2300012: Cupboard_yy
+    2300014: Shelf
+    2300016: Shelf_yy
+    2300018: Wall1
+    2300020: wall1_yy
+    2300022: wall2
+    2300024: wall3
+    2300026: wall1_yy1
+    3300000: C1_0
+    3300002: C1_Carpet 1
+    3300004: C1_Carpet_yy
+    3300006: C1_Cupboard
+    3300008: C1_floor1
+    3300010: C1_floor2
+    3300012: Cupboard_yy
+    3300014: Shelf
+    3300016: Shelf_yy
+    3300018: Wall1
+    3300020: wall1_yy
+    3300022: wall2
+    3300024: wall3
+    3300026: wall1_yy1
+    4300000: C1_0
+    4300002: C1_Cupboard
+    4300004: Cupboard_yy
+    4300006: Shelf
+    4300008: Shelf_yy
+    4300010: C1_Carpet
+    4300012: C1_Carpet_yy
+    4300014: C1_floor1
+    4300016: C1_floor2
+    4300018: Wall1
+    4300020: wall1_yy
+    4300022: wall2
+    4300024: wall3
+    4300026: wall1_yy1
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3571'
+    second: {fileID: 2100000, guid: f2ae5840702a1814fa91b4f1105d084d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3733'
+    second: {fileID: 2100000, guid: 39482b78497bd5449bb3a0c810c83188, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3736'
+    second: {fileID: 2100000, guid: d9238f79729f5c5468e3a9b1d264ee3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3738'
+    second: {fileID: 2100000, guid: aeb0f4f2c7651e441a3d7b70ccac33d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3739'
+    second: {fileID: 2100000, guid: f61404cf56e25c2488b2553b00aea5d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yiying
+    second: {fileID: 2100000, guid: a11b4928e912aa2458f70d9f9a0563f6, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 2
+    tangentImportMode: 2
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
