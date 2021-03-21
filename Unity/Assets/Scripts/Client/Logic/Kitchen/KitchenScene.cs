@@ -70,7 +70,7 @@ public class KitchenScene
 
     async UniTask InitScene()
     {
-        mBaseScene = await AssetsKit.Inst.Instantiate("Model/Kitchen/FoodTruck/c0");
+        mBaseScene = await AssetsKit.Inst.Instantiate("Model/Kitchen/Breakfast/c1");
         InitSpot(mBaseScene);
     }
 
@@ -160,7 +160,9 @@ public class KitchenScene
         obj.AddComponent<PolygonCollider2D>();
         mIngredientDisplays[node] = new IngredientDisplay(obj, node);
         obj.LocalPosition = pos.Pos;
-        obj.LocalScale = new Vector3(0.9f,0.9f);
+        obj.EulerAngles = new Vector3(30, 135, 0);
+        obj.LocalScale = new Vector3(0.4f,0.4f);
+        obj.Layer = LayerHelper.IngoreNav;
         //方便调试食材的位置
 #if UNITY_EDITOR
         UnityLifeCycleKit.Inst.AddUpdate(() =>
@@ -295,7 +297,9 @@ public class KitchenScene
                 throw new Exception("请确认场景Prefab中是否存在名为Cookware的子物体");
             obj.Parent = parent; 
             obj.LocalPosition = pos.Pos;
-            obj.LocalScale = new Vector3(0.7f, 0.7f, 0.7f);
+            obj.EulerAngles = new Vector3(30, 135, 0);
+            obj.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
+            obj.Layer = LayerHelper.IngoreNav;
             obj.AddComponent<BoxCollider2D>();
             runtimeSkeletonAnimation.Initialize(false);
             runtimeSkeletonAnimation.Skeleton.SetSkin("default");
@@ -334,9 +338,11 @@ public class KitchenScene
     /// <returns></returns>
     async UniTask InitPlayer()
     {
-        var player = new PlayerController();
+        var playerObject = await PlayerCreationFactory.CreateKitchenPlayer();
+        var display = new PlayerDisplay(playerObject);
+        var player = new PlayerController(display);
         //TODO 这里应该改成配置表读取的格式而不是硬编码固定数值
-        player.Position = new Vector3(-1, -0.76f);
+        player.Position = new Vector3(-1, 0.01f, 1.4f);
     }
 
     /// <summary>

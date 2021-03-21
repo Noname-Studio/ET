@@ -108,6 +108,12 @@ public class UnityObject
         get => Transform.eulerAngles;
         set => Transform.eulerAngles = value;
     }
+
+    public int Layer
+    {
+        get => this.GameObject.layer;
+        set => this.GameObject.layer = value;
+    }
     
     public Vector3 LocalEulerAngles
     {

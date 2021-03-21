@@ -36,13 +36,14 @@ namespace Kitchen
             set => mDisplay.Go.Rotation = value;
         }
 
-        public PlayerController()
+        public PlayerController(PlayerDisplay playerDisplay)
         {
             mBehaviour = UnityLifeCycleKit.Inst;            
-            mBehaviour.AddUpdate(Update);    
-            //创建后厨模型
-            CreateModel().Forget();
+            mBehaviour.AddUpdate(Update);
 
+            mDisplay = playerDisplay;
+            Animator = playerDisplay.Animator;
+            
             //创建操作控制器
             mInput = new InputHandler();
             mInput.Init(this);
@@ -59,13 +60,6 @@ namespace Kitchen
         }
 
         #region 公共方法
-        async UniTaskVoid CreateModel()
-        {
-            var player = await PlayerCreationFactory.CreateKitchenPlayer();
-            mDisplay = new PlayerDisplay(player);
-            Animator = mDisplay.Animator;
-        }
-
         /// <summary>
         /// 移动到目标点.如果目标点无法到达则移动至最近的目标点,ref 将把传入的坐标校对为最近的点以方便后续校验坐标是否修改
         /// </summary>
@@ -76,6 +70,8 @@ namespace Kitchen
             mDisplay.MoveCom.canSearch = true;
             mDisplay.MoveCom.isStopped = false;
             var node = AstarPath.active.GetNearest ( position, NNConstraint.Default );
+            if (node.node == null)
+                return;
             position = node.position;
             mDisplay.MoveCom.SetDestination(position);
         }

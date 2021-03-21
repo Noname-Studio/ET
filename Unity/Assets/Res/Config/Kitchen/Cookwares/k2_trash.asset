@@ -30,7 +30,7 @@ MonoBehaviour:
   mDisPosList:
   - Start: 0
     End: 0
-    Pos: {x: 4.44, y: -3.23, z: 0}
+    Pos: {x: -0.06, y: 0.22, z: 0.67}
     mLevel: 0
     mRestaurant: Breakfast
   mLevels:

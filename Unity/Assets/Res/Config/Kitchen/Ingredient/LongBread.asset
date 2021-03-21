@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LongBread
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -27,6 +27,6 @@ MonoBehaviour:
   mDisPosList:
   - Start: 0
     End: 0
-    Pos: {x: -5.26, y: -0.4, z: 0}
+    Pos: {x: -2.42, y: 1.51, z: 0}
     mLevel: 0
     mRestaurant: Breakfast
