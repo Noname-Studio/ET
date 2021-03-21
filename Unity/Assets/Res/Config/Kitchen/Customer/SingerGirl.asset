@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: SingerGirl
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 17ac57721ed0f4a83ac5e6ddcd558909, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 17ac57721ed0f4a83ac5e6ddcd558909, type: 3}
   mModelObject: {fileID: 1141538334848618, guid: b7f6909c355754fdc85fc474903e1d74,
     type: 3}
-  mModelPath: Model/Customer/singer_girl/singer_girl
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/singer_girl/singer_girl

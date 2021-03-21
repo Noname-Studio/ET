@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Journalist
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 6681ca8aaa9644a66b29ae3778604c2e, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 6681ca8aaa9644a66b29ae3778604c2e, type: 3}
   mModelObject: {fileID: 1589529909232572, guid: a7df7161d442743b4ab7212b9f3acafa,
     type: 3}
-  mModelPath: Model/Customer/journalist/journalist
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/journalist/journalist

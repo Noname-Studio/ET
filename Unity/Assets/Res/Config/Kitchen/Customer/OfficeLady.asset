@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: OfficeLady
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 795841956da2f4939897a111c02f1e43, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 795841956da2f4939897a111c02f1e43, type: 3}
   mModelObject: {fileID: 1902448175713080, guid: 936c7f9a68c562f488a045d8917ba1be,
     type: 3}
-  mModelPath: Model/Customer/office_lady/office_lady
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/office_lady/office_lady

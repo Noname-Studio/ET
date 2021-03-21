@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Cueboy
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 92191487f40b643408369db045d50ce4, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 92191487f40b643408369db045d50ce4, type: 3}
   mModelObject: {fileID: 1323810105732356, guid: 5d742d990cba84bdeab7efcb220e5137,
     type: 3}
-  mModelPath: Model/Customer/cue_boy/cue_boy
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/cue_boy/cue_boy

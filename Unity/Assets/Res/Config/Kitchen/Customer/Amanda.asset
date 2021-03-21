@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Amanda
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 07a5171cab9354d0f82818ff01138e4a, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 07a5171cab9354d0f82818ff01138e4a, type: 3}
   mModelObject: {fileID: 1011319128340080, guid: efb85e8885a972948855ab10ec7a76c2,
     type: 3}
-  mModelPath: Model/Customer/amanda/amanda
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/amanda/amanda

@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: WeirdMan
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 7170bb0c022d04ba1ac26014ace873b8, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 7170bb0c022d04ba1ac26014ace873b8, type: 3}
   mModelObject: {fileID: 1459100821445144, guid: ee620c0c5132849efb510d904a911e43,
     type: 3}
-  mModelPath: Model/Customer/weird_man/weird_man
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/weird_man/weird_man

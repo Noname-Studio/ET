@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: SailorMan
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: e3e3a97b8ddff4115b2074c01ed7fb26, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: e3e3a97b8ddff4115b2074c01ed7fb26, type: 3}
   mModelObject: {fileID: 1346793134783356, guid: ec526b90d65e647b790af7e6d9305cec,
     type: 3}
-  mModelPath: Model/Customer/sailor_man/sailor_man
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/sailor_man/sailor_man

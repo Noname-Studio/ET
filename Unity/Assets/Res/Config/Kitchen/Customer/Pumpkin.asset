@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Pumpkin
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 473815360aaac45ffa314b049d64bcd0, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 473815360aaac45ffa314b049d64bcd0, type: 3}
   mModelObject: {fileID: 1984837816244158, guid: c3700822e8ff4477cb01774c37cfac4a,
     type: 3}
-  mModelPath: Model/Customer/pumpkin_head/pumpkin_head
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/pumpkin_head/pumpkin_head

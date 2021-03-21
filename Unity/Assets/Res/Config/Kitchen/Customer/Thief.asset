@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Thief
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 5b242d78d33154074ba3f4729bcd122b, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 5b242d78d33154074ba3f4729bcd122b, type: 3}
   mModelObject: {fileID: 1212452974880104, guid: 761c09de72ee246618b9f610c65d3dd4,
     type: 3}
-  mModelPath: Model/Customer/thief/thief
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/thief/thief

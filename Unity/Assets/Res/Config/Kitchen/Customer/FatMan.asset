@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: FatMan
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 1be00272f076a40eea38fbcb21fe5a99, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 1be00272f076a40eea38fbcb21fe5a99, type: 3}
   mModelObject: {fileID: 1127122257219478, guid: 1d8796c68c7f3e5488fbe0104604cd11,
     type: 3}
-  mModelPath: Model/Customer/fat_man/fat_man
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/fat_man/fat_man

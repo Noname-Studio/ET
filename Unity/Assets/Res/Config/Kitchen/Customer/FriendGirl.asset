@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: FriendGirl
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 798a3eeff58ac4e759d3153a4cbc5ea4, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 798a3eeff58ac4e759d3153a4cbc5ea4, type: 3}
   mModelObject: {fileID: 1765780766145198, guid: 66765841ccc304e0896ac8719f014462,
     type: 3}
-  mModelPath: Model/Customer/friend_girl/friend_girl
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/friend_girl/friend_girl

@@ -70,7 +70,7 @@ public class KitchenScene
 
     async UniTask InitScene()
     {
-        mBaseScene = await AssetsKit.Inst.Instantiate("Model/Kitchen/Breakfast/c1");
+        mBaseScene = await AssetsKit.Inst.Instantiate("Model/Kitchen/FoodTruck/c0");
         InitSpot(mBaseScene);
     }
 

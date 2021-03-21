@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: HoopMan
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: a6f085db689b04757a217cdb203ec17b, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: a6f085db689b04757a217cdb203ec17b, type: 3}
   mModelObject: {fileID: 1632681083048554, guid: 41cb3d478f7ec43fcb95ee19c4d8a9fc,
     type: 3}
-  mModelPath: Model/Customer/hoopman/hoopman
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/hoopman/hoopman

@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: OldWoman
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 57b4cf9e6416b49b598800d9feaefbc1, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 57b4cf9e6416b49b598800d9feaefbc1, type: 3}
   mModelObject: {fileID: 1030003651205786, guid: b86f14e322ab34844a38ec9b3ed1eeaa,
     type: 3}
-  mModelPath: Model/Customer/old_woman/old_woman
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/old_woman/old_woman

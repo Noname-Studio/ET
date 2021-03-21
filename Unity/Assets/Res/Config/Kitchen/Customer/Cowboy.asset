@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Cowboy
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 7b363456a5e0740af9d65dfa8f912511, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 7b363456a5e0740af9d65dfa8f912511, type: 3}
   mModelObject: {fileID: 1886700629234330, guid: 11e50803eb838d044956a6809b14b368,
     type: 3}
-  mModelPath: Model/Customer/cowboy/cowboy
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/cowboy/cowboy

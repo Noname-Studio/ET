@@ -3,8 +3,9 @@
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Animator
   serializedVersion: 5
   m_AnimatorParameters:
@@ -60,8 +61,9 @@ AnimatorController:
 --- !u!114 &114043463813550260
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -71,99 +73,270 @@ MonoBehaviour:
   Control: {fileID: 0}
   RuntimeInfo:
     StateInfo:
-    - Name: accept
-    - Name: clean1
-    - Name: clean1end
-    - Name: clean1start
-    - Name: clean2
-    - Name: clean2end
-    - Name: clean2start
-    - Name: clean3
-    - Name: explain
-    - Name: idle
-    - Name: laugh
-    - Name: oppose
-    - Name: other1
-    - Name: search
-    - Name: sitdown
-    - Name: sitidle
-    - Name: sitidle1
-    - Name: sitidle1_end
-    - Name: sitidle1_start
-    - Name: sitidle2
-    - Name: standup
-    - Name: walk1
-    - Name: walk2
-    - Name: walk
-    - Name: applause
-    - Name: piano
-    - Name: push
-    - Name: shake
-    - Name: trip
-    - Name: weeder_start
-    - Name: weeder_end
-    - Name: bend
-    - Name: shovelsoilend
-    - Name: shovelsoilloop
-    - Name: shovelsoilstart
-    - Name: phoneend
-    - Name: phone
-    - Name: phonestart
-    - Name: weeder
-    - Name: readbookend
-    - Name: readbookloop
-    - Name: readbookstart
-    - Name: water_end
-    - Name: water_start
-    - Name: other2
-    - Name: search2
-    - Name: watering
-    - Name: sitidle2_end
-    - Name: sitidle2_start
-    - Name: coffeemachine
-    - Name: oldpicture_end
-    - Name: oldpicture_loop
-    - Name: oldpicture_start
-    - Name: touch_end
-    - Name: touch_loop
-    - Name: touch_start
-    - Name: doubt
-    - Name: idle_clean2
-    - Name: stop
-    - Name: amazing
-    - Name: stop_end
-    - Name: bend_new
-    - Name: sitlook_01
-    - Name: sitlook_02
-    - Name: sitlook_03
-    - Name: craze
-    - Name: get
-    - Name: laugh2
-    - Name: laugh3
-    - Name: twistvalve
-    - Name: sitlookloop
-    - Name: amazingend
-    - Name: amazingloop
-    - Name: amazingstart
-    - Name: anger
-    - Name: drink1
-    - Name: drinkidle
-    - Name: drinkstand
-    - Name: drink1back
-    - Name: messageend
-    - Name: messageloop
-    - Name: messagestart
-    - Name: selfie
-    - Name: selfie2
-    - Name: windowshow
+    - mName: accept
+      mHash: -1289687756
+      mClip: {fileID: 0}
+    - mName: clean1
+      mHash: -1943165394
+      mClip: {fileID: 0}
+    - mName: clean1end
+      mHash: -1884479539
+      mClip: {fileID: 0}
+    - mName: clean1start
+      mHash: 774602951
+      mClip: {fileID: 0}
+    - mName: clean2
+      mHash: 354744212
+      mClip: {fileID: 0}
+    - mName: clean2end
+      mHash: -1659326429
+      mClip: {fileID: 0}
+    - mName: clean2start
+      mHash: -1463815575
+      mClip: {fileID: 0}
+    - mName: clean3
+      mHash: 1646511874
+      mClip: {fileID: 0}
+    - mName: explain
+      mHash: 2089920066
+      mClip: {fileID: 0}
+    - mName: idle
+      mHash: -601574123
+      mClip: {fileID: 0}
+    - mName: laugh
+      mHash: 580207494
+      mClip: {fileID: 0}
+    - mName: oppose
+      mHash: -1597214848
+      mClip: {fileID: 0}
+    - mName: other1
+      mHash: -1200908470
+      mClip: {fileID: 0}
+    - mName: search
+      mHash: -1259283545
+      mClip: {fileID: 0}
+    - mName: sitdown
+      mHash: 1593721458
+      mClip: {fileID: 0}
+    - mName: sitidle
+      mHash: -1641715876
+      mClip: {fileID: 0}
+    - mName: sitidle1
+      mHash: -509618417
+      mClip: {fileID: 0}
+    - mName: sitidle1_end
+      mHash: -1125753453
+      mClip: {fileID: 0}
+    - mName: sitidle1_start
+      mHash: -1832786966
+      mClip: {fileID: 0}
+    - mName: sitidle2
+      mHash: 2023130805
+      mClip: {fileID: 0}
+    - mName: standup
+      mHash: -496559199
+      mClip: {fileID: 0}
+    - mName: walk1
+      mHash: -1739531338
+      mClip: {fileID: 0}
+    - mName: walk2
+      mHash: 22645260
+      mClip: {fileID: 0}
+    - mName: walk
+      mHash: -1919845803
+      mClip: {fileID: 0}
+    - mName: applause
+      mHash: 713145813
+      mClip: {fileID: 0}
+    - mName: piano
+      mHash: 381170860
+      mClip: {fileID: 0}
+    - mName: push
+      mHash: 1597642340
+      mClip: {fileID: 0}
+    - mName: shake
+      mHash: 1946563650
+      mClip: {fileID: 0}
+    - mName: trip
+      mHash: 1985410363
+      mClip: {fileID: 0}
+    - mName: weeder_start
+      mHash: 2075851935
+      mClip: {fileID: 0}
+    - mName: weeder_end
+      mHash: -1310643132
+      mClip: {fileID: 0}
+    - mName: bend
+      mHash: 1339427383
+      mClip: {fileID: 0}
+    - mName: shovelsoilend
+      mHash: -1315804643
+      mClip: {fileID: 0}
+    - mName: shovelsoilloop
+      mHash: 2123275380
+      mClip: {fileID: 0}
+    - mName: shovelsoilstart
+      mHash: -1887633836
+      mClip: {fileID: 0}
+    - mName: phoneend
+      mHash: 1573836106
+      mClip: {fileID: 0}
+    - mName: phone
+      mHash: 1146066909
+      mClip: {fileID: 0}
+    - mName: phonestart
+      mHash: 559445894
+      mClip: {fileID: 0}
+    - mName: weeder
+      mHash: 328241112
+      mClip: {fileID: 0}
+    - mName: readbookend
+      mHash: 147665970
+      mClip: {fileID: 0}
+    - mName: readbookloop
+      mHash: -706281869
+      mClip: {fileID: 0}
+    - mName: readbookstart
+      mHash: 296944533
+      mClip: {fileID: 0}
+    - mName: water_end
+      mHash: -1051380034
+      mClip: {fileID: 0}
+    - mName: water_start
+      mHash: 1753971814
+      mClip: {fileID: 0}
+    - mName: other2
+      mHash: 560121584
+      mClip: {fileID: 0}
+    - mName: search2
+      mHash: 1389590685
+      mClip: {fileID: 0}
+    - mName: watering
+      mHash: -2121294543
+      mClip: {fileID: 0}
+    - mName: sitidle2_end
+      mHash: -79288509
+      mClip: {fileID: 0}
+    - mName: sitidle2_start
+      mHash: -1557530249
+      mClip: {fileID: 0}
+    - mName: coffeemachine
+      mHash: -2071641623
+      mClip: {fileID: 0}
+    - mName: oldpicture_end
+      mHash: -277842012
+      mClip: {fileID: 0}
+    - mName: oldpicture_loop
+      mHash: -865241791
+      mClip: {fileID: 0}
+    - mName: oldpicture_start
+      mHash: -646063714
+      mClip: {fileID: 0}
+    - mName: touch_end
+      mHash: -1221820477
+      mClip: {fileID: 0}
+    - mName: touch_loop
+      mHash: 535027122
+      mClip: {fileID: 0}
+    - mName: touch_start
+      mHash: -48565104
+      mClip: {fileID: 0}
+    - mName: doubt
+      mHash: -1689462914
+      mClip: {fileID: 0}
+    - mName: idle_clean2
+      mHash: -885674403
+      mClip: {fileID: 0}
+    - mName: stop
+      mHash: -1185540426
+      mClip: {fileID: 0}
+    - mName: amazing
+      mHash: -877012781
+      mClip: {fileID: 0}
+    - mName: stop_end
+      mHash: 863573301
+      mClip: {fileID: 0}
+    - mName: bend_new
+      mHash: 2011309801
+      mClip: {fileID: 0}
+    - mName: sitlook_01
+      mHash: -1918391620
+      mClip: {fileID: 0}
+    - mName: sitlook_02
+      mHash: 347011846
+      mClip: {fileID: 0}
+    - mName: sitlook_03
+      mHash: 1672072080
+      mClip: {fileID: 0}
+    - mName: craze
+      mHash: 2023438123
+      mClip: {fileID: 0}
+    - mName: get
+      mHash: -46453136
+      mClip: {fileID: 0}
+    - mName: laugh2
+      mHash: 506203483
+      mClip: {fileID: 0}
+    - mName: laugh3
+      mHash: 1764441549
+      mClip: {fileID: 0}
+    - mName: twistvalve
+      mHash: -100327021
+      mClip: {fileID: 0}
+    - mName: sitlookloop
+      mHash: -518289244
+      mClip: {fileID: 0}
+    - mName: amazingend
+      mHash: 1953496108
+      mClip: {fileID: 0}
+    - mName: amazingloop
+      mHash: 798319064
+      mClip: {fileID: 0}
+    - mName: amazingstart
+      mHash: 1347226218
+      mClip: {fileID: 0}
+    - mName: anger
+      mHash: 1385200519
+      mClip: {fileID: 0}
+    - mName: drink1
+      mHash: 1912976309
+      mClip: {fileID: 0}
+    - mName: drinkidle
+      mHash: 916527522
+      mClip: {fileID: 0}
+    - mName: drinkstand
+      mHash: 827767605
+      mClip: {fileID: 0}
+    - mName: drink1back
+      mHash: 1124522883
+      mClip: {fileID: 0}
+    - mName: messageend
+      mHash: 902292904
+      mClip: {fileID: 0}
+    - mName: messageloop
+      mHash: -989753608
+      mClip: {fileID: 0}
+    - mName: messagestart
+      mHash: 1808383565
+      mClip: {fileID: 0}
+    - mName: selfie
+      mHash: -638870303
+      mClip: {fileID: 0}
+    - mName: selfie2
+      mHash: -855537793
+      mClip: {fileID: 0}
+    - mName: windowshow
+      mHash: 475896922
+      mClip: {fileID: 0}
     Layer:
       Name: Base Layer
       Index: 0
 --- !u!206 &206059742509010930
 BlendTree:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
   m_Childs: []
   m_BlendParameter: Blend
@@ -175,9 +348,10 @@ BlendTree:
   m_BlendType: 0
 --- !u!206 &206772947385920004
 BlendTree:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
   m_Childs: []
   m_BlendParameter: Blend
@@ -190,8 +364,9 @@ BlendTree:
 --- !u!1101 &1101012880656296760
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -211,8 +386,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101021054405269938
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -232,8 +408,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101026072963272850
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -253,8 +430,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101031164651934316
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -274,8 +452,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101046288491120834
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -295,8 +474,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101073958172191716
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -316,8 +496,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101074931017336116
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -337,8 +518,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101085488903799866
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -358,8 +540,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101130688293631712
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -379,8 +562,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101131812839225690
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -400,8 +584,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101150548865732510
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -421,8 +606,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101191808956787696
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -442,8 +628,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101192016264064344
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -463,8 +650,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101212539524936742
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -483,9 +671,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101212979155064442
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -505,8 +694,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101214280904241756
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -526,8 +716,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101218253732335358
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -546,9 +737,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101224199350095394
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -568,8 +760,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101263854010635966
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -589,8 +782,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101284578144193386
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -610,8 +804,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101293813304336066
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -631,8 +826,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101300166814865796
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -652,8 +848,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101302893378358618
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -673,8 +870,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101324468834887142
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -694,8 +892,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101327213299313790
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -715,8 +914,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101331644494382882
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -735,9 +935,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101334745178604654
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -757,8 +958,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101337015373902694
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -778,8 +980,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101345445218125840
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -799,8 +1002,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101350984445557440
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -820,8 +1024,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101372539320780884
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -840,9 +1045,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101372718788939330
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -861,9 +1067,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101374387942090174
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -883,8 +1090,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101402470343663012
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -904,8 +1112,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101402984507810268
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -925,8 +1134,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101418552942062840
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -946,8 +1156,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101426589487165046
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -967,8 +1178,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101429179529992746
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -987,9 +1199,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101432393512168686
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1008,9 +1221,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101470313404958914
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1030,8 +1244,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101475069537566650
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1051,8 +1266,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101490626141252036
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1072,8 +1288,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101503698740223292
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1093,8 +1310,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101505630464379466
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1114,8 +1332,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101517610240712618
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1135,8 +1354,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101531944111217890
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1155,9 +1375,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101553438641555220
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1176,9 +1397,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101558778030263450
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1198,8 +1420,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101563567710880852
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1219,8 +1442,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101586774190275512
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1240,8 +1464,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101591261322537474
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1261,8 +1486,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101597247540616892
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1282,8 +1508,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101654751941846942
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1303,8 +1530,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101663293835678028
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1324,8 +1552,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101711769081889212
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1345,8 +1574,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101722935018520972
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1366,8 +1596,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101724610356747216
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1387,8 +1618,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101746670144006602
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1408,8 +1640,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101764808320766546
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1428,9 +1661,10 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1101 &1101805419228878300
 AnimatorStateTransition:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1450,8 +1684,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101835423687832494
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1471,8 +1706,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101851500113077514
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1492,8 +1728,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101856401217663086
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1513,8 +1750,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101858436500333538
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1534,8 +1772,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101868663894957812
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1555,8 +1794,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101886149431039412
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1576,8 +1816,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101898191436662230
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1597,8 +1838,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101908430124653946
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1618,8 +1860,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101913090948626604
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1639,8 +1882,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101918364935158804
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1660,8 +1904,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101940642687072270
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1681,8 +1926,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101942203807404072
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1702,8 +1948,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101949806133434358
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1723,8 +1970,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101955739864760564
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1744,8 +1992,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101961496717679506
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1765,8 +2014,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101983826288536752
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1786,8 +2036,9 @@ AnimatorStateTransition:
 --- !u!1101 &1101987947348963996
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
@@ -1806,10 +2057,11 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1102 &1102023694995825500
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: shovelsoilloop
   m_Speed: 1
   m_CycleOffset: 0
@@ -1831,10 +2083,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102034387268948958
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2end
   m_Speed: 1
   m_CycleOffset: 0
@@ -1857,10 +2110,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102043456515936850
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -1883,10 +2137,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102052962018402608
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: anger
   m_Speed: 1
   m_CycleOffset: 0
@@ -1909,10 +2164,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102056201505327858
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: oppose
   m_Speed: 1
   m_CycleOffset: 0
@@ -1935,10 +2191,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102063283733294030
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: walk2
   m_Speed: 1
   m_CycleOffset: 0
@@ -1960,10 +2217,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102064655230129822
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1
   m_Speed: 1
   m_CycleOffset: 0
@@ -1985,10 +2243,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102090186224371752
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: water_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2011,10 +2270,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102090815662762462
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -2036,10 +2296,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102097231842435022
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle
   m_Speed: 1
   m_CycleOffset: 0
@@ -2061,10 +2322,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102103566106910076
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitdown
   m_Speed: 1
   m_CycleOffset: 0
@@ -2087,10 +2349,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102111758815212142
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: watering
   m_Speed: 1
   m_CycleOffset: 0
@@ -2112,10 +2375,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102128399696263886
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: other2
   m_Speed: 1
   m_CycleOffset: 0
@@ -2138,10 +2402,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102140345096530556
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: walk
   m_Speed: 1.3
   m_CycleOffset: 1
@@ -2163,10 +2428,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102140383736429022
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: oldpicture_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2189,10 +2455,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102162480804166076
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: drink1
   m_Speed: 1
   m_CycleOffset: 0
@@ -2215,10 +2482,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102164062449447120
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: laugh3
   m_Speed: 1
   m_CycleOffset: 0
@@ -2241,10 +2509,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102185527835379846
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: craze
   m_Speed: 1
   m_CycleOffset: 0
@@ -2267,10 +2536,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102196372913462866
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1
   m_Speed: 1
   m_CycleOffset: 0
@@ -2293,10 +2563,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102200517073303630
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: walk1
   m_Speed: 1
   m_CycleOffset: 0
@@ -2318,10 +2589,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102205605182419876
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: idle
   m_Speed: 1
   m_CycleOffset: 0
@@ -2343,10 +2615,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102248002943946208
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: shovelsoilend
   m_Speed: 1
   m_CycleOffset: 0
@@ -2369,10 +2642,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102264984256918044
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: oldpicture_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -2395,10 +2669,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102276853515697224
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitlookloop
   m_Speed: 1
   m_CycleOffset: 0
@@ -2420,10 +2695,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102278292985968058
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: push
   m_Speed: 1
   m_CycleOffset: 0
@@ -2445,10 +2721,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102281623273431314
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: readbookend
   m_Speed: 1
   m_CycleOffset: 0
@@ -2471,10 +2748,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102294880545247212
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2497,10 +2775,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102312478500107090
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: shovelsoilstart
   m_Speed: 1
   m_CycleOffset: 0
@@ -2523,10 +2802,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102312589309379584
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: readbookstart
   m_Speed: 1
   m_CycleOffset: 0
@@ -2549,10 +2829,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102328806786943398
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: phoneend
   m_Speed: 1
   m_CycleOffset: 0
@@ -2575,10 +2856,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102339458412063388
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -2600,10 +2882,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102348757114253798
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2626,10 +2909,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102351093373234974
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: other1
   m_Speed: 1
   m_CycleOffset: 0
@@ -2652,10 +2936,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102356246516526478
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2678,10 +2963,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102356770159136814
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: get
   m_Speed: 1
   m_CycleOffset: 0
@@ -2704,10 +2990,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102362937723699890
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitlook_03
   m_Speed: 1
   m_CycleOffset: 0
@@ -2729,10 +3016,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102362967253037534
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2755,10 +3043,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102365135197177254
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: explain
   m_Speed: 1
   m_CycleOffset: 0
@@ -2781,10 +3070,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102373384342924668
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: messagestart
   m_Speed: 1
   m_CycleOffset: 0
@@ -2807,10 +3097,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102397186864287222
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: search2
   m_Speed: 1
   m_CycleOffset: 0
@@ -2833,10 +3124,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102407131137611572
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -2859,10 +3151,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102447274442925868
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: applause
   m_Speed: 1
   m_CycleOffset: 0
@@ -2885,10 +3178,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102457888049937198
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle
   m_Speed: 1
   m_CycleOffset: 0
@@ -2910,10 +3204,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102460350703482206
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: amazingstart
   m_Speed: 1
   m_CycleOffset: 0
@@ -2936,10 +3231,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102461454733238694
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2
   m_Speed: 1
   m_CycleOffset: 0
@@ -2961,10 +3257,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102461928434845546
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: standup
   m_Speed: 1
   m_CycleOffset: 0
@@ -2987,10 +3284,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102462825283251518
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: phonestart
   m_Speed: 1
   m_CycleOffset: 0
@@ -3013,10 +3311,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102466957707376032
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: weeder_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3039,10 +3338,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102476232947003394
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: messageloop
   m_Speed: 1
   m_CycleOffset: 0
@@ -3064,10 +3364,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102486375079838870
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: windowshow
   m_Speed: 1
   m_CycleOffset: 0
@@ -3090,10 +3391,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102490899968499980
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: laugh2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3116,10 +3418,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102495124049015592
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3142,10 +3445,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102500220845428992
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: selfie
   m_Speed: 1
   m_CycleOffset: 0
@@ -3168,10 +3472,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102512159225728112
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: weeder
   m_Speed: 1
   m_CycleOffset: 0
@@ -3193,10 +3498,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102521666945601912
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: stop
   m_Speed: 1
   m_CycleOffset: 0
@@ -3218,10 +3524,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102565499902251198
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitlook_02
   m_Speed: 1
   m_CycleOffset: 0
@@ -3243,10 +3550,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102570730730871894
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: phone
   m_Speed: 1
   m_CycleOffset: 0
@@ -3268,10 +3576,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102595863284625184
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitdown
   m_Speed: 1
   m_CycleOffset: 0
@@ -3294,10 +3603,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102597062585212582
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: messageend
   m_Speed: 1
   m_CycleOffset: 0
@@ -3320,10 +3630,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102626500371584870
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: water_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3346,10 +3657,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102632080891151858
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3372,10 +3684,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102635375982921026
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1
   m_Speed: 1
   m_CycleOffset: 0
@@ -3398,10 +3711,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102636551730480924
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: selfie2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3424,10 +3738,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102657037086368212
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: doubt
   m_Speed: 1
   m_CycleOffset: 0
@@ -3450,10 +3765,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102659452830152550
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: touch_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3476,10 +3792,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102670059356452172
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: search
   m_Speed: 1
   m_CycleOffset: 0
@@ -3502,10 +3819,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102678411429624900
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: twistvalve
   m_Speed: 1
   m_CycleOffset: 0
@@ -3528,10 +3846,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102687016109507260
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -3554,10 +3873,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102691936557900004
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: oldpicture_loop
   m_Speed: 1
   m_CycleOffset: 0
@@ -3579,10 +3899,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102700751139505766
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2start
   m_Speed: 1
   m_CycleOffset: 0
@@ -3605,10 +3926,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102705889618799992
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: bend
   m_Speed: 1
   m_CycleOffset: 0
@@ -3631,10 +3953,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102718972069672900
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: piano
   m_Speed: 1
   m_CycleOffset: 0
@@ -3656,10 +3979,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102730063317076120
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: bend_new
   m_Speed: 1
   m_CycleOffset: 0
@@ -3682,10 +4006,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102755268544096408
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -3707,10 +4032,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102759080389920214
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: laugh
   m_Speed: 1
   m_CycleOffset: 0
@@ -3733,10 +4059,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102760770734155772
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: drink1back
   m_Speed: -1
   m_CycleOffset: 0
@@ -3759,10 +4086,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102781339364861850
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3785,10 +4113,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102795765867596760
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean3
   m_Speed: 1
   m_CycleOffset: 0
@@ -3811,10 +4140,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102811791178750520
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean1
   m_Speed: 1
   m_CycleOffset: 0
@@ -3836,10 +4166,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102823388307714588
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3862,10 +4193,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102823983073714196
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: idel01_Def_lisa 1
   m_Speed: 1
   m_CycleOffset: 0
@@ -3888,10 +4220,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102824995816774072
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: weeder_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -3914,10 +4247,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102830617949555892
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: clean2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3939,10 +4273,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102844847199171592
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: trip
   m_Speed: 1
   m_CycleOffset: 0
@@ -3965,10 +4300,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102849259316522386
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: idle_clean2
   m_Speed: 1
   m_CycleOffset: 0
@@ -3990,10 +4326,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102853409795366250
 AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -4015,10 +4352,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102864039483322498
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: drinkstand
   m_Speed: 1
   m_CycleOffset: 0
@@ -4041,10 +4379,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102874819505005840
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: coffeemachine
   m_Speed: 1
   m_CycleOffset: 0
@@ -4067,10 +4406,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102875159185354482
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle1_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -4093,10 +4433,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102879370782767720
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: readbookloop
   m_Speed: 1
   m_CycleOffset: 0
@@ -4118,10 +4459,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102887018164233798
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: drinkidle
   m_Speed: 1
   m_CycleOffset: 0
@@ -4143,10 +4485,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102891623847875294
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: stop_end
   m_Speed: 1
   m_CycleOffset: 0
@@ -4169,10 +4512,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102945209501866662
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: amazing
   m_Speed: 1
   m_CycleOffset: 0
@@ -4195,10 +4539,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102945588942124260
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: amazingloop
   m_Speed: 1
   m_CycleOffset: 0
@@ -4220,10 +4565,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102950510111104372
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: shake
   m_Speed: 1
   m_CycleOffset: 0
@@ -4245,10 +4591,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102950732186261300
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: accept
   m_Speed: 1
   m_CycleOffset: 0
@@ -4271,10 +4618,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102963154008584794
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitidle2 0
   m_Speed: 1
   m_CycleOffset: 0
@@ -4296,10 +4644,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102963215788509698
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: touch_start
   m_Speed: 1
   m_CycleOffset: 0
@@ -4322,10 +4671,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102981905308507278
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: touch_loop
   m_Speed: 1
   m_CycleOffset: 0
@@ -4347,10 +4697,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102995534080644554
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: sitlook_01
   m_Speed: 1
   m_CycleOffset: 0
@@ -4373,10 +4724,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &1102999913592994650
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: amazingend
   m_Speed: 1
   m_CycleOffset: 0
@@ -4399,10 +4751,11 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1107 &1107008286448967410
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: New StateMachine
   m_ChildStates: []
   m_ChildStateMachines: []
@@ -4417,10 +4770,11 @@ AnimatorStateMachine:
   m_DefaultState: {fileID: 0}
 --- !u!1107 &1107829445261984118
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: New StateMachine
   m_ChildStates: []
   m_ChildStateMachines: []
@@ -4435,10 +4789,11 @@ AnimatorStateMachine:
   m_DefaultState: {fileID: 0}
 --- !u!1107 &1107844334443639686
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1

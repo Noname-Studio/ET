@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: StudentGirl
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 2799f9b9254934df6867bb186b4bfeba, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 2799f9b9254934df6867bb186b4bfeba, type: 3}
   mModelObject: {fileID: 1412966829984496, guid: 5eba449b399a8bf41a3b8e6cbc48f10d,
     type: 3}
-  mModelPath: Model/Customer/student_girl/student_girl
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/student_girl/student_girl

@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: GenerousMan
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 880c8da76bb4943edb94ee354b9a39d9, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 880c8da76bb4943edb94ee354b9a39d9, type: 3}
   mModelObject: {fileID: 1540726531227060, guid: 6731be19845424f34acf358f702cf24a,
     type: 3}
-  mModelPath: Model/Customer/generous_man/generous_man
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/generous_man/generous_man

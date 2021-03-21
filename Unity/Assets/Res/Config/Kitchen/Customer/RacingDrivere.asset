@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: RacingDrivere
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 13f908f66bb714680b7b9e9cfc1d177a, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 13f908f66bb714680b7b9e9cfc1d177a, type: 3}
   mModelObject: {fileID: 1532341713390082, guid: 37d4cbc28c9014729be4b7e243de3ce9,
     type: 3}
-  mModelPath: Model/Customer/racing_driver/racing_driver
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/racing_driver/racing_driver

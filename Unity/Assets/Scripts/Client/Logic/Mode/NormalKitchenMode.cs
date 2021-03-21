@@ -18,7 +18,7 @@ public class NormalKitchenMode : IGameMode
         try
         {
             //加载后厨全局配置表
-            var config = await AssetsKit.Inst.Load<KitchenConfigProperty>("DB/Kitchen/KitchenConfig");
+            var config = await AssetsKit.Inst.Load<KitchenConfigProperty>("Config/Kitchen/KitchenConfig");
             KRoot = new KitchenRoot(LevelProperty, config);
         }
         catch(Exception e)

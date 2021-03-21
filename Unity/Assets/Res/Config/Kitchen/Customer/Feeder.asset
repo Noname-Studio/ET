@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Feeder
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: b4d12f37e731c465bb2894b17915ebc3, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: b4d12f37e731c465bb2894b17915ebc3, type: 3}
   mModelObject: {fileID: 1852610837105974, guid: f7af2c8ee43714d33a08d013beec037b,
     type: 3}
-  mModelPath: Model/Customer/feeder/feeder
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/feeder/feeder

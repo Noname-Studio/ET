@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   mKey: Magician
   mType: 0
-  mIconTexture: {fileID: 2800000, guid: 0ca716269d0054d1996ce6272bcb61b9, type: 3}
+  mEditorTexture: {fileID: 2800000, guid: 0ca716269d0054d1996ce6272bcb61b9, type: 3}
   mModelObject: {fileID: 1356654529077090, guid: 0b7c011dd780b9b49aeca5b40fffaed4,
     type: 3}
-  mModelPath: Model/Customer/magician/magician
   mMoveSpeed: 0
+  mModelPath: Model/Roles/Customer/magician/magician
