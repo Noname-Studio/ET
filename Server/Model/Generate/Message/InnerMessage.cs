@@ -429,25 +429,6 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(CS2G_AddPlayerToChatServer))]
-	[Message(InnerOpcode.G2CS_AddPlayerToChatServer)]
-	[ProtoContract]
-	public partial class G2CS_AddPlayerToChatServer: IActorRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-		[ProtoMember(1)]
-		public long GateSessionId { get; set; }
-
-	}
-
 	[Message(InnerOpcode.G2CS_SendGuildMessage)]
 	[ProtoContract]
 	public partial class G2CS_SendGuildMessage: IActorLocationMessage

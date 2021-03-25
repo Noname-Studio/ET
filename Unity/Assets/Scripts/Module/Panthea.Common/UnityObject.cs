@@ -69,6 +69,20 @@ public class UnityObject
         set => Transform.localPosition = value;
     }
 
+    private string mName;
+    public string Name
+    {
+        get
+        {
+            this.mName ??= this.GameObject.name;
+            return this.mName;
+        }
+        set
+        {
+            this.mName = value;
+        }
+    }
+    
     public bool Active
     {
         get => GameObject.activeSelf;
@@ -145,6 +159,16 @@ public class UnityObject
         GameObject = new GameObject(name);
     }
 
+    public Vector3 TransformPoint(Vector3 vec)
+    {
+        return this.Transform.TransformPoint(vec);
+    }
+
+    public Vector3 TransformPoint(float x, float y, float z)
+    {
+        return this.Transform.TransformPoint(x, y, z);
+    }
+    
     public T GetComponent<T>()
     {
         var type = typeof(T);

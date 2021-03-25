@@ -23,4 +23,5 @@ public static class GameConfig
         }
     }
 
+    public static char[] StringSplit = {','};
 }

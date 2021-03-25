@@ -203,15 +203,6 @@ message CS2G_AddPlayerToChatServer //IActorResponse
     int64 UnitId = 1;
 }
 
-//ResponseType CS2G_AddPlayerToChatServer
-message G2CS_AddPlayerToChatServer // IActorRequest
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-    int64 GateSessionId = 1;
-}
-
 message G2CS_SendGuildMessage // IActorLocationMessage
 {
 	int32 RpcId = 90;

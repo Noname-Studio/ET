@@ -6,6 +6,13 @@ namespace Client.UI.ViewModel
     [UIWidget(Pool = true,Repeat = true)]
     public class UI_Order : UIBase<View_Order>
     {
+        public UI_Order()
+        {
+        }
+        public UI_Order(View_Order order) : base(order)
+        {
+        }
+        
         /// <summary>
         /// 刷新订单面板
         /// </summary>
@@ -14,15 +21,16 @@ namespace Client.UI.ViewModel
         {
             if (properties == null)
             {
-                CloseMySelf();
+                this.Visible = false;
                 return;
             }
             int count = properties.Count;
             if (count == 0)
             {
-                CloseMySelf();
+                this.Visible = false;
                 return;
             }
+            this.Visible = true;
             View.Number.selectedIndex = count - 1;
             InitFood(properties);
         }

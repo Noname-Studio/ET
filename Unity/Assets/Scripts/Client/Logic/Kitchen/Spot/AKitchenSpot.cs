@@ -6,7 +6,14 @@ using UnityEngine;
 /// </summary>
 public abstract class AKitchenSpot
 {
-    public Vector3 Position { get; }
+    public Vector3 Position
+    {
+        get
+        {
+            return this.Display.Position;
+        }
+    }
+
     /// <summary>
     /// 当前餐位状态
     /// </summary>
@@ -20,7 +27,6 @@ public abstract class AKitchenSpot
     public AKitchenSpot(UnityObject display)
     {
         Display = display;
-        Position = Display.Position;
     }
 
     /// <summary>

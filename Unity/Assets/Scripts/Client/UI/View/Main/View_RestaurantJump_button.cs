@@ -3,28 +3,23 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Main
+namespace Main
 {
-	public partial class View_RestaurantJump_button : GButton
-	{
-		public GLabel Mask;
+    public partial class View_RestaurantJump_button : GButton
+    {
+        public GLabel Mask;
+        public const string URL = "ui://fmkyh2ywslfx8nk";
 
-		public const string URL = "ui://fmkyh2ywslfx8nk";
+        public static View_RestaurantJump_button CreateInstance()
+        {
+            return (View_RestaurantJump_button)UIPackage.CreateObject("Main", "RestaurantJump_button");
+        }
 
-		public static View_RestaurantJump_button CreateInstance()
-		{
-			return (View_RestaurantJump_button)UIPackage.CreateObject("Main","RestaurantJump_button");
-		}
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-		public View_RestaurantJump_button()
-		{
-		}
-
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
-
-			Mask = (GLabel)this.GetChildAt(0);
-		}
-	}
+            Mask = (GLabel)GetChild("Mask");
+        }
+    }
 }

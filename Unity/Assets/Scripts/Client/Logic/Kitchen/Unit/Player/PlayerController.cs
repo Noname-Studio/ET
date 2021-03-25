@@ -51,8 +51,8 @@ namespace Kitchen
             //创建操作手
             HandProvider = new HandProvider();
             //一定要先添加左手在添加右手,左手没食物.那么要将右手的食物传递给左手.因为动画拿取一个菜盘的只有左手.没有右手
-            HandProvider.AddHand("Left",mDisplay.Go.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand/HoldItem"));
             HandProvider.AddHand("Right",mDisplay.Go.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/HoldItem"));
+            HandProvider.AddHand("Left",mDisplay.Go.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand/HoldItem"));
             
             UnitManager.Inst.Register(this);
             //TODO 测试代码

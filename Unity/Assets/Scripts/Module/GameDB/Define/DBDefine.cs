@@ -4,7 +4,7 @@
 public class DBDefine
 {
     [ProtoMember(0)]
-    public string id;
+    public long id;
     [ProtoMember(1)]
     public long create_time = 0;
     [ProtoMember(2)]

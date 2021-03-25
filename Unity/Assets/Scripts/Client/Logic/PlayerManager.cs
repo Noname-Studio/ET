@@ -1,4 +1,5 @@
 ﻿using Kitchen;
+using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
 public class PlayerManager : IPlayer
 {
@@ -9,7 +10,7 @@ public class PlayerManager : IPlayer
     private Data_GameRecord mGameRecord;
     private PlayerManager()
     {
-        mGameRecord = DBManager.Inst.Query<Data_GameRecord>().GetAwaiter().GetResult();
+        mGameRecord = DBManager.Inst.Query<Data_GameRecord>();
         mMessage = MessageKit.Inst;
     }
     
@@ -27,35 +28,21 @@ public class PlayerManager : IPlayer
 
     public int GetCoin(RestaurantKey rest = null)
     {
-        if(rest == null)
-            rest = RestaurantKey.This;
-        var coins = mGameRecord.Coin;
-        if (coins.Count >= rest.Index)
-        {
-            return coins[rest.Index - 1];
-        }
-        return 0;
+        return ResourcesHelper.GetCoin(rest);
     }
 
     public int GetGem()
     {
-        return mGameRecord.Gem;
+        return ResourcesHelper.GetGem();
     }
 
     public void SetCoin(int coin,RestaurantKey rest = null)
     {
-        if(rest == null)
-            rest = RestaurantKey.This;
-        
-        var coins = mGameRecord.Coin;
-        if (coins.Count >= rest.Index)
-        {
-            coins[rest.Index - 1] = coin;
-        }
+        ResourcesHelper.SetGameCoin(coin);
     }
 
     public void SetGem(int gem)
     {
-        mGameRecord.Gem = gem;
+        ResourcesHelper.SetGem(gem);
     }
 }

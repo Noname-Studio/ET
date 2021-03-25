@@ -18,3 +18,4 @@ CharacterEyeballPart,角色换装瞳孔,"eyeball,eyeballr,eyel,eyer,eyeuplbase,e
 CharacterRougePart,角色换装腮红,rouge
 CharacterMouthPart,角色换装嘴唇,"mouth,mouthbase"
 CharacterNosePart,角色换装鼻子,nose
+LevelConsumeEnergy,关卡消耗能量,1

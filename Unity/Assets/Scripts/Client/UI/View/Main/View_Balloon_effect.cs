@@ -3,28 +3,23 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Main
+namespace Main
 {
-	public partial class View_Balloon_effect : GComponent
-	{
-		public Transition t0;
+    public partial class View_Balloon_effect : GComponent
+    {
+        public Transition t0;
+        public const string URL = "ui://fmkyh2ywoge98on";
 
-		public const string URL = "ui://fmkyh2ywoge98on";
+        public static View_Balloon_effect CreateInstance()
+        {
+            return (View_Balloon_effect)UIPackage.CreateObject("Main", "Balloon_effect");
+        }
 
-		public static View_Balloon_effect CreateInstance()
-		{
-			return (View_Balloon_effect)UIPackage.CreateObject("Main","Balloon_effect");
-		}
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-		public View_Balloon_effect()
-		{
-		}
-
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
-
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            t0 = GetTransition("t0");
+        }
+    }
 }

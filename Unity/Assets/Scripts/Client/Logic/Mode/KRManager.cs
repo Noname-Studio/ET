@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Manager;
 using UnityEngine;
 
@@ -19,13 +20,13 @@ public class KRManager : Singleton<KRManager>
     /// <summary>
     /// 切换显示到后厨场景
     /// </summary>
-    public void SwitchToKitchen(LevelProperty property)
+    public async UniTask SwitchToKitchen<T>(LevelProperty property)where T : IKitchenMode
     {
         try
         {
             var kitchen = new NormalKitchenMode(property);
             mMode = kitchen;
-            mMode.Enter();
+            await mMode.Enter();
         }
         catch(Exception e)
         {
@@ -36,16 +37,17 @@ public class KRManager : Singleton<KRManager>
     /// <summary>
     /// 切换显示到餐厅场景
     /// </summary>
-    public void SwitchToStory()
+    public async UniTask SwitchToRestaurant<T>() where T : IRestaurantMode,new()
     {
-        //try
-        //{
-        //    mMode = mContainer.Instantiate<NormalRestaurantMode>();
-        //    mMode.Enter();
-        //}
-        //catch(Exception e)
-        //{
-        //    Debug.LogError("切换到餐厅场景发生错误，检查一下错误内容\n" + e);
-        //}
+        try
+        {
+            var restaurant = new NormalRestaurantMode();
+            mMode = restaurant;
+            await mMode.Enter();
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
 }

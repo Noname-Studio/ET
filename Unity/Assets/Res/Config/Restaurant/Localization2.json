@@ -1,0 +1,62 @@
+{
+  "ClosePanelDontApply": {
+    "Id": "ClosePanelDontApply",
+    "Chinese": "关闭界面不会应用当前设置",
+    "Chinese_tw": "关闭界面不会应用当前设置",
+    "English": "Closing the interface does not apply the current settings"
+  },
+  "Close": {
+    "Id": "Close",
+    "Chinese": "关闭",
+    "Chinese_tw": "关闭",
+    "English": "Close"
+  },
+  "Cancel": {
+    "Id": "Cancel",
+    "Chinese": "取消",
+    "Chinese_tw": "取消",
+    "English": "Cancel"
+  },
+  "PleaseInputSomething": {
+    "Id": "PleaseInputSomething",
+    "Chinese": "请输入名称",
+    "Chinese_tw": "请输入名称",
+    "English": "请输入名称"
+  },
+  "InputNameMoreThanNum": {
+    "Id": "InputNameMoreThanNum",
+    "Chinese": "名称长度不能大于{0}个字符",
+    "Chinese_tw": "名称长度不能大于{0}个字符",
+    "English": "名称长度不能大于{0}个字符"
+  },
+  "FoodTruck": {
+    "Id": "FoodTruck",
+    "Chinese": "快餐车",
+    "Chinese_tw": "快餐车",
+    "English": "快餐车"
+  },
+  "Breakfast": {
+    "Id": "Breakfast",
+    "Chinese": "早餐厅",
+    "Chinese_tw": "早餐厅",
+    "English": "早餐厅"
+  },
+  "Confirm": {
+    "Id": "Confirm",
+    "Chinese": "确认",
+    "Chinese_tw": "确认",
+    "English": "确认"
+  },
+  "CreateUnionError": {
+    "Id": "CreateUnionError",
+    "Chinese": "创建公会失败",
+    "Chinese_tw": "创建公会失败",
+    "English": "创建公会失败"
+  },
+  "NetworkNotReachable": {
+    "Id": "NetworkNotReachable",
+    "Chinese": "无法连接到互联网",
+    "Chinese_tw": "无法连接到互联网",
+    "English": "อักษรไทย"
+  }
+}

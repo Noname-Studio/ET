@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ProtoBuf;
 
 public class RestaurantRecord
 {
@@ -9,16 +8,33 @@ public class RestaurantRecord
     public long challenge_stamp;//挑战关卡时间戳
 }
 
-[DBContainerKey("/id")]
-[ProtoContract]
 public class Data_GameRecord : DBDefine
 {
-    [ProtoMember(0)]
-    public List<int> Coin = new List<int>();//金币
-    [ProtoMember(1)]
+    public Dictionary<int,int> mCoin = new Dictionary<int, int>();//金币
+
+    public int Coin
+    {
+        get
+        {
+            if (!this.mCoin.TryGetValue(1, out int value))
+            {
+                value = this.mCoin[1] = 0;
+            }
+            return value;
+        }
+        set
+        {
+            this.mCoin[1] = value;
+        }
+    }
+
     public int Gem = 10;//点券
-    [ProtoMember(2)]
-    public int ArriveRestaurant = 2;//到达餐厅
-    [ProtoMember(3)]
-    public int Level = 2000001;//关卡
+    public int ArriveRestaurant { get; set; } = 2;//到达餐厅
+    public int Level { get; set; }= 2000001;//关卡
+    public int InfineEnergy { get; set; } = -1;
+    public int Energy { get; set; } = 5;
+    public int MaxEnergy { get; set; } = 5;
+    public long CosumeEnergy { get; set; } = -1;
+    public string Name { get; set; } = "Player";
+    public string Head { get; set; } = "ui://Settings/0";
 }

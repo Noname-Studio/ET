@@ -4,7 +4,7 @@ using Kitchen;
 using Panthea.Asset;
 using UnityEngine;
 
-public class NormalKitchenMode : IGameMode
+public class NormalKitchenMode : IKitchenMode
 {
     private LevelProperty LevelProperty { get; }
     private KitchenRoot KRoot { get; set; }

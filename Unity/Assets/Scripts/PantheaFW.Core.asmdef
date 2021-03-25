@@ -1,10 +1,9 @@
 {
     "name": "PantheaFW.Core",
+    "rootNamespace": "",
     "references": [
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:bebd02018e98e44409a761968a7cbcd9",
-        "GUID:ac145e6b8c6034cdbadc8c6e26aedbcf",
-        "GUID:1e8e55397bd004beaba78a667566665f",
         "GUID:b7179b7ed593e634091add66d9405318",
         "GUID:a3beee000661b42419d72602ddd2c32e",
         "GUID:68765d262e2128e4ab49c983f3411946",
@@ -20,8 +19,9 @@
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:de4e6084e6d474788bb8c799d6b461eb",
         "GUID:f4059aaf6c60a4a58a177a2609feb769",
-        "GUID:ff6de30450f3748908ff580f6ec64d9a",
-        "GUID:60bfecf5cb232594891bc622f40d6bed"
+        "GUID:d37afb78b2329ab4eac85ead0fec930a",
+        "GUID:a0b61406ef42fc64c88b25492ed2e72e",
+        "GUID:ff6de30450f3748908ff580f6ec64d9a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,3 +1,4 @@
+using FairyGUI;
 using UnityEngine;
 
 namespace Kitchen
@@ -7,10 +8,18 @@ namespace Kitchen
     /// </summary>
     public partial class KitchenNormalSpot : AKitchenSpot
     {
+        private UnityObject OrderObject { get; }
         public Vector3 OrderPosition { get; private set;}
+        public UIPanel OrderUI { get; }
         public KitchenNormalSpot(UnityObject display) : base(display)
         {
-            OrderPosition = display.Find("Order").Position;
+            OrderObject = display.Find("Order");
+            OrderPosition = this.OrderObject.Position;
+            OrderUI = OrderObject.GetComponent<UIPanel>();
+            OrderUI.CreateUI();
+            OrderUI.ui.scale = new Vector2(0.4f, 0.4f);
+            OrderUI.transform.eulerAngles = new Vector3(30, 135, 0);
+            OrderUI.ui.visible = false;
             #if UNITY_EDITOR
             Editor_Initialize();
             #endif
@@ -32,4 +41,5 @@ namespace Kitchen
     }
 #endif
 }
+
 

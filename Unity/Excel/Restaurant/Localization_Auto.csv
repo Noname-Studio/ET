@@ -1,12 +1,13 @@
-ï»¿Id,ä¸­æ–‡,ç¹ä½“,è‹±æ–‡
-Id,Chinese,Chinese_tw,English
-string,string,string,string
-ClosePanelDontApply,å…³é—­ç•Œé¢ä¸ä¼šåº”ç”¨å½“å‰è®¾ç½®,å…³é—­ç•Œé¢ä¸ä¼šåº”ç”¨å½“å‰è®¾ç½®,Closing the interface does not apply the current settings
-Close,å…³é—­,å…³é—­,Close
-Cancel,å–æ¶ˆ,å–æ¶ˆ,Cancel
-PleaseInputSomething,è¯·è¾“å…¥åç§°,è¯·è¾“å…¥åç§°,è¯·è¾“å…¥åç§°
-InputNameMoreThanNum,åç§°é•¿åº¦ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦,åç§°é•¿åº¦ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦,åç§°é•¿åº¦ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦
-FoodTruck,å¿«é¤è½¦,å¿«é¤è½¦,å¿«é¤è½¦
-Breakfast,æ—©é¤å…,æ—©é¤å…,æ—©é¤å…
-Confirm,ç¡®è®¤,ç¡®è®¤,ç¡®è®¤
-CreateUnionError,åˆ›å»ºå…¬ä¼šå¤±è´¥,åˆ›å»ºå…¬ä¼šå¤±è´¥,åˆ›å»ºå…¬ä¼šå¤±è´¥
+Id	ÖĞÎÄ	·±Ìå	Ó¢ÎÄ
+Id	Chinese	Chinese_tw	English
+string	string	string	string
+ClosePanelDontApply	¹Ø±Õ½çÃæ²»»áÓ¦ÓÃµ±Ç°ÉèÖÃ	¹Ø±Õ½çÃæ²»»áÓ¦ÓÃµ±Ç°ÉèÖÃ	Closing the interface does not apply the current settings
+Close	¹Ø±Õ	¹Ø±Õ	Close
+Cancel	È¡Ïû	È¡Ïû	Cancel
+PleaseInputSomething	ÇëÊäÈëÃû³Æ	ÇëÊäÈëÃû³Æ	ÇëÊäÈëÃû³Æ
+InputNameMoreThanNum	Ãû³Æ³¤¶È²»ÄÜ´óÓÚ{0}¸ö×Ö·û	Ãû³Æ³¤¶È²»ÄÜ´óÓÚ{0}¸ö×Ö·û	Ãû³Æ³¤¶È²»ÄÜ´óÓÚ{0}¸ö×Ö·û
+FoodTruck	¿ì²Í³µ	¿ì²Í³µ	¿ì²Í³µ
+Breakfast	Ôç²ÍÌü	Ôç²ÍÌü	Ôç²ÍÌü
+Confirm	È·ÈÏ	È·ÈÏ	È·ÈÏ
+CreateUnionError	´´½¨¹«»áÊ§°Ü	´´½¨¹«»áÊ§°Ü	´´½¨¹«»áÊ§°Ü
+NetworkNotReachable	ÎŞ·¨Á¬½Óµ½»¥ÁªÍø	ÎŞ·¨Á¬½Óµ½»¥ÁªÍø	ÎŞ·¨Á¬½Óµ½»¥ÁªÍø

@@ -48,7 +48,7 @@ namespace Panthea.Editor.Asset
                     RemoveEmptyDir(node.FullName);
                 }
             }
-            if (allFile.Length == 0 || allFile.All(t1 => t1.Extension == ".meta"))
+            if ((allFile.Length == 0 || allFile.All(t1 => t1.Extension == ".meta")) && dir.GetDirectories().Length == 0)
             {
                 FileUtil.DeleteFileOrDirectory(PathUtils.FullPathToUnityPath(dir.FullName));
                 var metaPath = dir.FullName + ".meta";

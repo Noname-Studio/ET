@@ -38,13 +38,15 @@ namespace Kitchen
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 inputPosition = Input.mousePosition;
-                RaycastHit2D rayHit = Physics2D.GetRayIntersection(mCamera.Main.ScreenPointToRay(inputPosition));
-                DoJob(rayHit);
+                if (Physics.Raycast(mCamera.Main.ScreenPointToRay(inputPosition),out RaycastHit hit))
+                {
+                    DoJob(hit);
+                }
             }
             return 0;
         }
     
-        private void DoJob(RaycastHit2D hit)
+        private void DoJob(RaycastHit hit)
         {
             var transform = hit.transform;
             if (transform == null)

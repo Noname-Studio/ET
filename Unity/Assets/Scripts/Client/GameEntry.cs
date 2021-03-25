@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Client.UI.ViewModel;
 using Config.ConfigCore;
@@ -8,24 +7,34 @@ using ET;
 using FairyGUI;
 using Panthea.Asset;
 using RestaurantPreview.Config;
-using Sirenix.OdinInspector;
 #if UNITY_ANDROID || UNITY_IOS
 using NotificationSamples;
+using Panthea.NativePlugins.Ads;
+using Panthea.NativePlugins.Notify;
 #endif
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.Rendering.Universal;
+using Object = UnityEngine.Object;
 
 public class GameEntry : MonoBehaviour
 {
+    public static GameEntry inst;
+    public Vector3 Vec;
+    public float X;
+    public Vector3 XXX;
     void Start()
     {
+        inst = this;
         //Todo 先放在这里
         {
             if (Application.isEditor)
                 Application.runInBackground = true;
+            Application.targetFrameRate = 60;
+            GRoot.inst.SetContentScaleFactor(UIGlobalConfig.UIDesignX,UIGlobalConfig.UIDesignY,UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
+            Screen.sleepTimeout = SleepTimeout.NeverSleep; // 常亮
+            Object.DontDestroyOnLoad(StageCamera.main.gameObject);
         }
-
         DoProcess();
     }
     
@@ -34,7 +43,7 @@ public class GameEntry : MonoBehaviour
         RegisterUniTaskModule();
         RegisterUpdateModule();
         RegisterAssetBundleModule();
-        //RegisterAds();
+        RegisterAds();
         RegisterNotify();
         await RegisterGameConfigure();
         await RegisterUIModule();
@@ -42,7 +51,8 @@ public class GameEntry : MonoBehaviour
         await RegisterDatabaseSaveSystem();
         //开始游戏
         await UniTask.SwitchToMainThread();
-        new StartGame();
+        
+        UIKit.Inst.Create<UI_FirstGameLoading>();
     }
 
     /// <summary>
@@ -145,7 +155,7 @@ public class GameEntry : MonoBehaviour
     void RegisterAds()
     {
         #if UNITY_IOS || UNITY_ANDROID
-        AdsKit.Initialize(new GoogleAndAppleAds());
+        AdsKit.Initialize(new UnityAds());
         #endif
     }
 
@@ -171,7 +181,5 @@ public class GameEntry : MonoBehaviour
     async UniTask RegisterDatabaseSaveSystem()
     {
         var manager = DBManager.Inst;
-        //在这里Load所有的DB文件
-        await manager.Query<Data_GameRecord>();
     }
 }

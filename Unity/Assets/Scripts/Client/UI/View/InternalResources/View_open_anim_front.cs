@@ -7,10 +7,6 @@ namespace InternalResources
 {
     public partial class View_open_anim_front : GComponent
     {
-        public GGraph BgHolder;
-        public GGraph LeftButtfly;
-        public GGraph RightButtfly;
-        public GGraph ButtflyParticle;
         public View_LoadingProgress Loading;
         public GTextField Title;
         public Transition t2;
@@ -27,10 +23,6 @@ namespace InternalResources
         {
             base.ConstructFromXML(xml);
 
-            BgHolder = (GGraph)GetChild("BgHolder");
-            LeftButtfly = (GGraph)GetChild("LeftButtfly");
-            RightButtfly = (GGraph)GetChild("RightButtfly");
-            ButtflyParticle = (GGraph)GetChild("ButtflyParticle");
             Loading = (View_LoadingProgress)GetChild("Loading");
             Title = (GTextField)GetChild("Title");
             t2 = GetTransition("t2");

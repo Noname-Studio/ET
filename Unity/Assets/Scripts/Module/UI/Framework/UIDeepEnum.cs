@@ -3,5 +3,6 @@
 public enum UIDeepEnum : short
 {
     Default = 10,
-    NetworkLoading = Int16.MaxValue, 
+    NetworkLoading = short.MaxValue,
+    GameLoading = short.MaxValue - 1,
 }

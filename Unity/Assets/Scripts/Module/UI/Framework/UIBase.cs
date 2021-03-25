@@ -55,7 +55,7 @@ public partial class UIBase
     
     public EventListener OnClose
     {
-        get { return mOnClose ?? (mOnClose = new EventListener(GComponent, "OnClose")); }
+        get { return this.mOnClose ??= new EventListener(this.GComponent, "OnClose"); }
     }
     
     /// <summary>
@@ -298,12 +298,12 @@ public abstract class UIBase<T> : UIBase where T : GComponent
         Init(mCreateInstance());
     }
 
-    public UIBase(T wrapper,bool add)
+    public UIBase(T wrapper)
     {
-        Init(wrapper,add);
+        Init(wrapper);
     }
 
-    private void Init(T wrapper,bool add = true)
+    private void Init(T wrapper)
     {
         View = wrapper;
         GComponent = wrapper;
@@ -316,19 +316,18 @@ public abstract class UIBase<T> : UIBase where T : GComponent
             bg.size = GRoot.inst.size + new Vector2(100, 100);
             bg.Center();
         }
-        
-        #if MINISTONE
-        var help = View.GetChild("Help") as GButton;
-        if(help != null)
-            help.onClick.Set(() =>OpenHelp());
-        #endif    
-        
+
         AutoSet();
         OnLoaded();
     }
 
     void AutoSet()
     {
+#if MINISTONE
+        var help = View.GetChild("Help") as GButton;
+        if(help != null)
+            help.onClick.Set(() =>OpenHelp());
+#endif    
         var close = View.GetChild("Close");
         close?.onClick.Set(CloseMySelf);
     }

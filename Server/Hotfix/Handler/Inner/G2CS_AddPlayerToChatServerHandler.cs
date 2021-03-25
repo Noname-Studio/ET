@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class G2CS_AddPlayerToChatServerHandler : AMActorRpcHandler<Scene, G2M_CreateUnit, M2G_CreateUnit>
+    public class G2CS_AddPlayerToChatServerHandler : AMActorRpcHandler<Scene, G2CS_AddPlayerToChatServer, CS2G_AddPlayerToChatServer>
     {
         protected override async ETTask Run(Scene scene, G2M_CreateUnit request, M2G_CreateUnit response, Action reply)
         {

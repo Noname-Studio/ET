@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -25,6 +26,7 @@ public class KitchenMoveProvider
             graph.SnapForceBoundsToScene();
             graph.characterRadius = 0.4f;
             graph.cellSize = 0.15f;
+            graph.mask = graph.mask & ~(1 << LayerHelper.IngoreNav);
         }
         
         graph.Scan();

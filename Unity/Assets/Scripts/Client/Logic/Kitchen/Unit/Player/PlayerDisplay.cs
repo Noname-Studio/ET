@@ -17,10 +17,10 @@ namespace Kitchen
             MoveCom = Go.AddComponent<PlayerMoveComponent>();
             MoveCom.whenCloseToDestination = CloseToDestinationMode.ContinueToExactDestination;
             MoveCom.radius = 0.25f;
-            MoveCom.maxSpeed = 6;
+            MoveCom.maxSpeed = 3;
             MoveCom.slowWhenNotFacingTarget = false;
-            MoveCom.rotationSpeed = float.MaxValue;
-            MoveCom.maxAcceleration = float.MaxValue;
+            MoveCom.rotationSpeed = 800;
+            MoveCom.maxAcceleration = 800;
             MoveCom.gravity = Vector3.zero;
             MoveCom.slowdownDistance = 0;
             Animator = Go.GetComponent<AnimatorControl>();

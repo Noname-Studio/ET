@@ -104,14 +104,16 @@ namespace Kitchen
 
         public void Update()
         {
-            Tray.Model.EulerAngles = new Vector3(-30.268f, -13.296f, -80.701f);
-            Food.Model.EulerAngles = new Vector3(-30.268f, -13.296f, -80.701f);
-            var heading = CameraTransform.position - mPivot.Position;
+            Tray.Model.EulerAngles = new Vector3(30, 135, 0);
+            Food.Model.EulerAngles = new Vector3(30, 135, 0);
+            var pt = mPivot.TransformPoint(Vector3.zero);
+            /*var heading = CameraTransform.position - mPivot.Position;
             var distance = heading.magnitude;
             var direction = heading / distance;
-            var position = direction * 0.7f;
-            Tray.Model.LocalPosition = position;
-            Food.Model.LocalPosition = position; 
+            GameEntry.inst.Vec = direction;
+            var position = direction * GameEntry.inst.X + GameEntry.inst.XXX;*/
+            Tray.Model.Position = pt;
+            Food.Model.Position = pt; 
         }
         
         public void Dispose()

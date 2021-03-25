@@ -52,5 +52,11 @@
     "Chinese": "创建公会失败",
     "Chinese_tw": "创建公会失败",
     "English": "创建公会失败"
+  },
+  "NetworkNotReachable": {
+    "Id": "NetworkNotReachable",
+    "Chinese": "无法连接到互联网",
+    "Chinese_tw": "无法连接到互联网",
+    "English": "无法连接到互联网"
   }
 }

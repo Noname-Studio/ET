@@ -1,4 +1,5 @@
-﻿using GameBegins;
+﻿using Cysharp.Threading.Tasks;
+using GameBegins;
 using Panthea.Asset;
 
 namespace Client.UI.ViewModel
@@ -20,7 +21,7 @@ namespace Client.UI.ViewModel
         {
             base.OnInit(p);
             InitEditor();
-            GameRecord = await DBManager.Inst.Query<Data_GameRecord>();
+            GameRecord = DBManager.Inst.Query<Data_GameRecord>();
             LevelProperty = await AssetsLocator.Load<LevelProperty>(GameConfig.LevelConfigPath + GameRecord.Level);
             InitPanel(LevelProperty);
             InitUI();
@@ -42,7 +43,7 @@ namespace Client.UI.ViewModel
             if (LevelProperty != null)
             {
                 //注入关卡
-                KrManager.SwitchToKitchen(LevelProperty);
+                KrManager.SwitchToKitchen<NormalKitchenMode>(LevelProperty).Forget();
             }
             CloseMySelf();
         }

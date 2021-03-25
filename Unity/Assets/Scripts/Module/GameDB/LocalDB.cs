@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using Cysharp.Threading.Tasks;
 using ET;
+using Module.Panthea.Utils;
+using Newtonsoft.Json;
 
 public class LocalDB : IDBService
 {
@@ -15,13 +17,13 @@ public class LocalDB : IDBService
     {
     }
 
-    public async UniTask<T> Query<T>(string userId) where T : DBDefine
+    public T Query<T>(string userId) where T : DBDefine
     {
         var t = typeof(T);
-        return (T) await Query(t, userId); 
+        return (T) Query(t, userId); 
     }
 
-    public async UniTask<DBDefine> Query(Type t, string userId)
+    public DBDefine Query(Type t, string userId)
     {
         DBDefine db;
         if (mMapping.TryGetValue(t, out db))
@@ -30,10 +32,10 @@ public class LocalDB : IDBService
         }
         else
         {
-            if (File.Exists(mSavePath + t.Name))
+            if (File.Exists(mSavePath + t.Name + Extname))
             {
-                var bytes = File.ReadAllBytes(mSavePath + t.Name + Extname);
-                db = (DBDefine) ProtobufHelper.FromBytes(t, bytes, 0, bytes.Length);
+                var str = FileUtils.ReadAndDecodeAllText(mSavePath + t.Name + Extname);
+                db = (DBDefine) JsonConvert.DeserializeObject(str, t);
                 mMapping.Add(t, db);
                 return db;
             }
@@ -48,8 +50,8 @@ public class LocalDB : IDBService
         var t = typeof(T);
         if (mMapping.TryGetValue(t, out DBDefine db))
         {
-            var bytes = ProtobufHelper.ToBytes((T)db);
-            File.WriteAllBytes(mSavePath + t.Name + Extname, bytes);
+            var str = JsonConvert.SerializeObject((T)db);
+            FileUtils.EncodeAllTextAndWrite(mSavePath + t.Name + Extname,str);
         }
     }
 }

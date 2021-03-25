@@ -1,6 +1,7 @@
 using System.Collections.Specialized;
 using Client.UI.ViewModel;
 using FairyGUI;
+using GamingUI;
 using Kitchen;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class NormalCustomer: ACustomer
     
     private UI_PatienceProgress PatienceProgress;
     private UI_Order mOrder;
-    public NormalCustomer(UnityObject display, AKitchenSpot spot,CustomerOrder property) : base(display, spot,property)
+    public NormalCustomer(UnityObject display, KitchenNormalSpot spot,CustomerOrder property) : base(display, spot,property)
     {
         Components.Set(MoveCom = new CustomerMoveComponent(4,Display));
         UnitManager.Inst.Register(this);
@@ -45,16 +46,14 @@ public class NormalCustomer: ACustomer
     private void Wait()
     {
         Components.Set(PatienceCom = new PatienceComponent(100, KitchenRoot.Inst.LevelProperty.WaitingDecay.Rate));
-        //创建订单
-        mOrder = UIKit.Inst.Create<UI_Order>();
+        mOrder = new UI_Order((View_Order) ((KitchenNormalSpot) Spot).OrderUI.ui);
+        mOrder.Visible = true;
         mOrder.RefreshUI(Order);
         Order.CollectionChanged += OrderOnCollectionChanged;
         var spot = (KitchenNormalSpot) Spot;
-        var screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(spot.OrderPosition);
+        var screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(spot.OrderUI.GetUIWorldPosition());
         screenPos.y =  Screen.height - screenPos.y;
         Vector2 pt = GRoot.inst.GlobalToLocal(screenPos);
-        mOrder.View.position = pt;
-
         PatienceProgress = UIKit.Inst.Create<UI_PatienceProgress>();
         PatienceProgress.View.position = pt + new Vector2(20, -50);
     }
@@ -67,7 +66,7 @@ public class NormalCustomer: ACustomer
     public override void OnExit()
     {
         base.OnExit();
-        mOrder.CloseMySelf();
+        mOrder.Visible = false;
         PatienceProgress.CloseMySelf();
         MoveCom.To = Spot.Position + new Vector3(8, 0, 0);
         Display.GetComponent<Animator>().SetInteger(Animator.StringToHash("state"), 5);

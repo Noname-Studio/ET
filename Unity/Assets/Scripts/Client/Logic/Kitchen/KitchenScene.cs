@@ -157,9 +157,9 @@ public class KitchenScene
         var tex = await AssetsKit.Inst.Load<Sprite>(node.Texture);
         var renderer = obj.AddComponent<SpriteRenderer>();
         renderer.sprite = tex;
-        obj.AddComponent<PolygonCollider2D>();
+        obj.AddComponent<BoxCollider>();
         mIngredientDisplays[node] = new IngredientDisplay(obj, node);
-        obj.LocalPosition = pos.Pos;
+        obj.Position = pos.Pos;
         obj.EulerAngles = new Vector3(30, 135, 0);
         obj.LocalScale = new Vector3(0.4f,0.4f);
         obj.Layer = LayerHelper.IngoreNav;
@@ -286,7 +286,7 @@ public class KitchenScene
         }
     }
     
-    private void CreateCookware(CookwareProperty cookware, ReachItemDPosition pos, CookwareDetailProperty detail,Func<SkeletonAnimation,UnityObject,CookwareProperty,ICookware> registy)
+    private async void CreateCookware(CookwareProperty cookware, ReachItemDPosition pos, CookwareDetailProperty detail,Func<SkeletonAnimation,UnityObject,CookwareProperty,ICookware> registy)
     {
         try
         {
@@ -296,11 +296,11 @@ public class KitchenScene
             if(parent == null)
                 throw new Exception("请确认场景Prefab中是否存在名为Cookware的子物体");
             obj.Parent = parent; 
-            obj.LocalPosition = pos.Pos;
+            obj.Position = pos.Pos;
             obj.EulerAngles = new Vector3(30, 135, 0);
             obj.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
             obj.Layer = LayerHelper.IngoreNav;
-            obj.AddComponent<BoxCollider2D>();
+            obj.AddComponent<BoxCollider>();
             runtimeSkeletonAnimation.Initialize(false);
             runtimeSkeletonAnimation.Skeleton.SetSkin("default");
             runtimeSkeletonAnimation.Skeleton.SetSlotsToSetupPose();

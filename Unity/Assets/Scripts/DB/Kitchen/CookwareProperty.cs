@@ -160,9 +160,8 @@ public partial class CookwareProperty : SerializedScriptableObject
     {
         get
         {
-            var cookware = DBManager.Inst.Query<Data_Cookware>().AsTask();
-            var result = cookware.Result;
-            var info = result.Get(Key);
+            var cookware = DBManager.Inst.Query<Data_Cookware>();
+            var info = cookware.Get(Key);
             if (info == null)
             {
                 return Levels[0];

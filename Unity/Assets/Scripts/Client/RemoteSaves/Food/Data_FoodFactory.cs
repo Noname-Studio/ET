@@ -10,8 +10,7 @@ public class Data_FoodFactory
         Data_Food_DBDefine db;
         if (!mCacheDB.TryGetValue(rest, out db))
         {
-            var task = DBManager.Inst.Query(typeof(Data_Food_DBDefine).Assembly.GetType("Data_Food_" + rest.Key)).AsTask();
-            db = task.Result as Data_Food_DBDefine;
+            var task = (Data_Food_DBDefine)DBManager.Inst.Query(typeof(Data_Food_DBDefine).Assembly.GetType("Data_Food_" + rest.Key));
             mCacheDB[rest] = db;
         }
 
@@ -23,8 +22,7 @@ public class Data_FoodFactory
         Data_Food_DBDefine db;
         if (!mCacheDB.TryGetValue(rest, out db))
         {
-            var task = DBManager.Inst.Query(typeof(Data_Food_DBDefine).Assembly.GetType("Data_Food_" + rest.Key)).AsTask();
-            db = task.Result as Data_Food_DBDefine;
+            var task = (Data_Food_DBDefine)DBManager.Inst.Query(typeof(Data_Food_DBDefine).Assembly.GetType("Data_Food_" + rest.Key));
             mCacheDB[rest] = db;
         }
 

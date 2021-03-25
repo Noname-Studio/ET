@@ -1,5 +1,6 @@
 using Client.UI.ViewModel;
 using FairyGUI;
+using Spine.Unity;
 using UnityEngine;
 
 namespace Kitchen
@@ -27,7 +28,7 @@ namespace Kitchen
             mCookwareProgress.View.position = pt;
             CreateFood();
         }
-
+        
         /// <summary>
         /// 创建显示盘子
         /// </summary>

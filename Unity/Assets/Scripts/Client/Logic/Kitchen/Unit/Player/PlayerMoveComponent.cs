@@ -14,7 +14,7 @@ namespace Kitchen
             base.Start();
             mCacheTransform = transform;
             endReachedDistance = 0.1f;
-            enableRotation = false;
+            this.gameObject.AddComponent<FunnelModifier>();
         }
 
         public void SetDestination(Vector3 vec)
@@ -28,15 +28,9 @@ namespace Kitchen
         {
             if (!IsReached)
             {
-                var dir = position - nextPosition;
-                if (dir.x > 0)
-                {
-                    rotation = quaternion.Euler(0, -90, 0);
-                }
-                else
-                {
-                    rotation = quaternion.Euler(0, 90, 0);
-                }
+                //var dir = position - nextPosition;
+                
+                
                 base.FinalizeMovement(nextPosition, nextRotation);
             }
         }

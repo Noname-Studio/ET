@@ -12,22 +12,22 @@ public partial class DBManager : IDBService
     {
         //TODO 这里加入对服务器的判断.然后添加加载DB设置
         mDBServices.Add(new LocalDB());
-        //mDBServices.Add(resolver.Resolve<ServerDB>());
+        //mDBServices.Add(new ServerDB());
     }
 
-    public async UniTask<T> Query<T>(string userId = "") where T : DBDefine
+    public T Query<T>(string userId = "") where T : DBDefine
     {
-        return (T) await Query(typeof(T), userId);
+        return (T) Query(typeof (T), userId);
     }
-
-    public async UniTask<DBDefine> Query(Type type, string userId = "")
+    
+    public DBDefine Query(Type type, string userId = "")
     {
         var service = GetPriorityService();
         if (service == null)
         {
             throw new Exception("你必须注册至少一个DB服务才能查询！！");
         }
-        return await service.Query(type,userId);
+        return service.Query(type,userId);
     }
 
     private IDBService GetPriorityService()
@@ -47,6 +47,16 @@ public partial class DBManager : IDBService
         return service;
     }
 
+    public void UpdateLocal<T>(T value) where T : DBDefine
+    {
+        for (int i = 0; i < mDBServices.Count; i++)
+        {
+            var node = mDBServices[i];
+            if (node is LocalDB)
+                node.Update(value);
+        }
+    }
+    
     public void Update<T>(T value) where T : DBDefine
     {
         for (int i = 0; i < mDBServices.Count; i++)

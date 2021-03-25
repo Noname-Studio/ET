@@ -36,7 +36,7 @@ public class RestaurantKey
     {
         get
         {
-            var gameRecord = DBManager.Inst.Query<Data_GameRecord>().GetAwaiter().GetResult();
+            var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             foreach (var node in All)
             {
                 if (node.Index == gameRecord.ArriveRestaurant)

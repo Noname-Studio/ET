@@ -3,28 +3,23 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Main
+namespace Main
 {
-	public partial class View_Button_icon : GButton
-	{
-		public GComponent tips;
+    public partial class View_Button_icon : GButton
+    {
+        public GComponent tips;
+        public const string URL = "ui://fmkyh2ywmom6ki";
 
-		public const string URL = "ui://fmkyh2ywmom6ki";
+        public static View_Button_icon CreateInstance()
+        {
+            return (View_Button_icon)UIPackage.CreateObject("Main", "Button_icon");
+        }
 
-		public static View_Button_icon CreateInstance()
-		{
-			return (View_Button_icon)UIPackage.CreateObject("Main","Button_icon");
-		}
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-		public View_Button_icon()
-		{
-		}
-
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
-
-			tips = (GComponent)this.GetChildAt(2);
-		}
-	}
+            tips = (GComponent)GetChild("tips");
+        }
+    }
 }

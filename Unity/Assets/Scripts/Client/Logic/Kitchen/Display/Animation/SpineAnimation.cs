@@ -10,7 +10,7 @@ namespace Kitchen
     public class SpineAnimation : IAnimation
     {
         private readonly SkeletonAnimation mInst;
-        private Skeleton mSkeleton;
+        public Skeleton mSkeleton;
         private Transform mCacheTransform;
 
         public bool Loop
@@ -51,11 +51,17 @@ namespace Kitchen
             mSkeleton = mInst.Skeleton;
             mSkeleton.UpdateWorldTransform();
             var bone = mSkeleton.FindBone("food");
-            if(bone != null)
+            if (bone != null)
+            {
+                bone.UpdateWorldTransform();
                 FoodPos = bone.GetWorldPosition(mCacheTransform);
+            }
             bone = mSkeleton.FindBone("clock");
-            if(bone != null)
+            if (bone != null)
+            {
+                bone.UpdateWorldTransform();
                 ClockPos = bone.GetWorldPosition(mCacheTransform);
+            }
         }
     }
 }

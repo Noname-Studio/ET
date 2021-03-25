@@ -1,4 +1,5 @@
-﻿using Effect;
+﻿using Cysharp.Threading.Tasks;
+using Effect;
 using FairyGUI;
 
 /// <summary>
@@ -20,14 +21,22 @@ public class FadeScreen : IEffect
         mFadeScreen.sortingOrder = int.MaxValue;
     }
 
-    public void PlayDark()
+    public async UniTask PlayDark()
     {
         mFadeScreen.t0.PlayReverse();
+        while (IsPlaying)
+        {
+            await UniTask.NextFrame();
+        }
     }
 
-    public void PlayWhite()
+    public async UniTask PlayWhite()
     {
         mFadeScreen.t0.Play();
+        while (IsPlaying)
+        {
+            await UniTask.NextFrame();
+        }
     }
 
     public void Dispose()

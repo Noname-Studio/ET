@@ -26,8 +26,7 @@ namespace ET
 		 public const ushort M2G_CreateUnit = 10022;
 		 public const ushort G2CS_AddPlayerToChatServer = 10023;
 		 public const ushort CS2G_AddPlayerToChatServer = 10024;
-		 public const ushort G2CS_AddPlayerToChatServer = 10025;
-		 public const ushort G2CS_SendGuildMessage = 10026;
-		 public const ushort G2M_SessionDisconnect = 10027;
+		 public const ushort G2CS_SendGuildMessage = 10025;
+		 public const ushort G2M_SessionDisconnect = 10026;
 	}
 }

@@ -1,0 +1,18 @@
+{
+    "name": "GooglePlayerGames",
+    "rootNamespace": "",
+    "references": [
+        "GUID:59d8be856926c114e8fd31d60181a470"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

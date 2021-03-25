@@ -1,0 +1,13 @@
+﻿Id,中文,繁体,英文
+Id,Chinese,Chinese_tw,English
+string,string,string,string
+ClosePanelDontApply,关闭界面不会应用当前设置,关闭界面不会应用当前设置,Closing the interface does not apply the current settings
+Close,关闭,关闭,Close
+Cancel,取消,取消,Cancel
+PleaseInputSomething,请输入名称,请输入名称,请输入名称
+InputNameMoreThanNum,名称长度不能大于{0}个字符,名称长度不能大于{0}个字符,名称长度不能大于{0}个字符
+FoodTruck,快餐车,快餐车,快餐车
+Breakfast,早餐厅,早餐厅,早餐厅
+Confirm,确认,确认,确认
+CreateUnionError,创建公会失败,创建公会失败,创建公会失败
+NetworkNotReachable,无法连接到互联网,无法连接到互联网,อักษรไทย
