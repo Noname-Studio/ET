@@ -1,4 +1,3 @@
-﻿public interface IKitchenMode : IGameMode
+﻿public interface IKitchenMode: IGameMode
 {
-        
 }

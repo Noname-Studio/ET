@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
+using Kitchen;
 
-namespace Kitchen
+namespace Kitchen.Action
 {
-    public class PutIngredientAndGetFood : IGameAction
+    public class PutIngredientAndGetFood: IGameAction
     {
         private PlayerController Controller { get; }
         private ICookware Cookware { get; }
-        public PutIngredientAndGetFood(PlayerController controller,ICookware cookware)
+
+        public PutIngredientAndGetFood(PlayerController controller, ICookware cookware)
         {
             Controller = controller;
             Cookware = cookware;
         }
-    
+
         public void Execute()
         {
             List<string> list = new List<string>();

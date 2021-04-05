@@ -4,246 +4,306 @@ using System.Collections;
 using Pathfinding;
 using System.Linq;
 
-namespace Pathfinding.Examples.RTS {
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_u_i.php")]
-	public class RTSUI : MonoBehaviour {
-		public static RTSUI active;
-		public RectTransform selectionBox;
-		public GameObject menuRoot;
-		public GameObject menuItemPrefab;
-		public State state;
-		public Button clickFallback;
-		public GameObject buildingPreview;
-		public LayerMask groundMask;
+namespace Pathfinding.Examples.RTS
+{
+    [HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_u_i.php")]
+    public class RTSUI: MonoBehaviour
+    {
+        public static RTSUI active;
+        public RectTransform selectionBox;
+        public GameObject menuRoot;
+        public GameObject menuItemPrefab;
+        public State state;
+        public Button clickFallback;
+        public GameObject buildingPreview;
+        public LayerMask groundMask;
 
-		public AudioClip click;
-		public AudioClip notEnoughResources;
+        public AudioClip click;
+        public AudioClip notEnoughResources;
 
-		public RTSWorldSpaceUI worldSpaceUI;
+        public RTSWorldSpaceUI worldSpaceUI;
 
-		RTSUnitBuilder.BuildingItem buildingInfo;
-		int ignoreFrame = -1;
+        private RTSUnitBuilder.BuildingItem buildingInfo;
+        private int ignoreFrame = -1;
 
-		Menu activeMenu;
+        private Menu activeMenu;
 
-		public enum State {
-			Normal,
-			PlacingBuilding,
-			Dragging
-		}
+        public enum State
+        {
+            Normal,
+            PlacingBuilding,
+            Dragging
+        }
 
-		[System.Serializable]
-		public class MenuItem {
-			public Sprite icon;
-			public string label;
-			public string description;
-		}
+        [System.Serializable]
+        public class MenuItem
+        {
+            public Sprite icon;
+            public string label;
+            public string description;
+        }
 
-		// Use this for initialization
-		void Awake () {
-			active = this;
+        // Use this for initialization
+        private void Awake()
+        {
+            active = this;
 
-			/*foreach (var btn in buildingMenuRoot.GetComponentsInChildren<RTSBuildingButton>()) {
-			    btn.gameObject.GetComponent<Button>().onClick.AddListener(() => {
-			        StartBuildingPlacement(btn);
-			    });
-			}*/
-		}
+            /*foreach (var btn in buildingMenuRoot.GetComponentsInChildren<RTSBuildingButton>()) {
+                btn.gameObject.GetComponent<Button>().onClick.AddListener(() => {
+                    StartBuildingPlacement(btn);
+                });
+            }*/
+        }
 
-		public class Menu {
-			GameObject root;
-			GameObject itemPrefab;
+        public class Menu
+        {
+            private GameObject root;
+            private GameObject itemPrefab;
 
-			public Menu (GameObject root, GameObject itemPrefab) {
-				this.root = root;
-				this.itemPrefab = itemPrefab;
-			}
+            public Menu(GameObject root, GameObject itemPrefab)
+            {
+                this.root = root;
+                this.itemPrefab = itemPrefab;
+            }
 
-			public void Hide () {
-				if (root != null) {
-					for (int i = 0; i < root.transform.childCount; i++) {
-						GameObject.Destroy(root.transform.GetChild(i).gameObject);
-					}
-					root = null;
-				}
-			}
+            public void Hide()
+            {
+                if (root != null)
+                {
+                    for (int i = 0; i < root.transform.childCount; i++)
+                    {
+                        Destroy(root.transform.GetChild(i).gameObject);
+                    }
 
-			public void AddItem (MenuItem item, System.Action callback) {
-				var go = GameObject.Instantiate(itemPrefab) as GameObject;
+                    root = null;
+                }
+            }
 
-				go.transform.SetParent(root.transform);
-				go.GetComponent<Button>().onClick.AddListener(() => callback());
-				go.transform.Find("Image/Icon").GetComponent<Image>().sprite = item.icon;
-				go.transform.Find("Label").GetComponent<Text>().text = item.label;
-				go.transform.Find("Description").GetComponent<Text>().text = item.description;
-			}
-		}
+            public void AddItem(MenuItem item, System.Action callback)
+            {
+                var go = Instantiate(itemPrefab) as GameObject;
 
-		public Menu ShowMenu () {
-			if (activeMenu != null) {
-				activeMenu.Hide();
-			}
+                go.transform.SetParent(root.transform);
+                go.GetComponent<Button>().onClick.AddListener(() => callback());
+                go.transform.Find("Image/Icon").GetComponent<Image>().sprite = item.icon;
+                go.transform.Find("Label").GetComponent<Text>().text = item.label;
+                go.transform.Find("Description").GetComponent<Text>().text = item.description;
+            }
+        }
 
-			activeMenu = new Menu(menuRoot, menuItemPrefab);
-			return activeMenu;
-		}
+        public Menu ShowMenu()
+        {
+            if (activeMenu != null)
+            {
+                activeMenu.Hide();
+            }
 
-		Vector2 dragStart;
-		bool hasSelected = false;
+            activeMenu = new Menu(menuRoot, menuItemPrefab);
+            return activeMenu;
+        }
 
-		// Update is called once per frame
-		void Update () {
-			HandleSelection();
-			HandleMovement();
-			HandleBuildingPlacement();
-		}
+        private Vector2 dragStart;
+        private bool hasSelected = false;
 
-		void HandleBuildingPlacement () {
-			var overUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+        // Update is called once per frame
+        private void Update()
+        {
+            HandleSelection();
+            HandleMovement();
+            HandleBuildingPlacement();
+        }
 
-			if (state == State.PlacingBuilding) {
-				if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape)) {
-					RTSManager.instance.audio.Play(notEnoughResources);
-					AbortBuildingPlacement();
-				}
+        private void HandleBuildingPlacement()
+        {
+            var overUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
 
-				buildingPreview.transform.position = RaycastScreenPoint(Input.mousePosition, groundMask).point;
+            if (state == State.PlacingBuilding)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Escape))
+                {
+                    RTSManager.instance.audio.Play(notEnoughResources);
+                    AbortBuildingPlacement();
+                }
 
-				// Ignore the first frame as that will also be a key down event
-				if (!overUI && Input.GetKeyDown(KeyCode.Mouse0) && Time.frameCount != ignoreFrame) {
-					if (RTSBuildingManager.IsValidBuildingPlacement(buildingPreview)) {
-						if (RTSManager.instance.GetPlayer(1).resources.GetResource(RTSUnit.Type.ResourceCrystal) < buildingInfo.cost) {
-							RTSManager.instance.audio.Play(notEnoughResources);
-							Debug.LogError("Not enouch resources");
-						} else {
-							RTSManager.instance.audio.Play(click);
-							RTSManager.instance.GetPlayer(1).resources.AddResource(RTSUnit.Type.ResourceCrystal, -buildingInfo.cost);
-							GameObject.Instantiate(buildingInfo.prefab, buildingPreview.transform.position, buildingPreview.transform.rotation);
-						}
-						GameObject.Destroy(buildingPreview);
-						state = State.Normal;
-					} else {
-						// Building placement failed
-					}
-				}
-			}
-		}
+                buildingPreview.transform.position = RaycastScreenPoint(Input.mousePosition, groundMask).point;
 
-		public void StartBuildingPlacement (RTSUnitBuilder.BuildingItem buildingInfo) {
-			if (state == State.PlacingBuilding) {
-				GameObject.Destroy(buildingPreview);
-				state = State.Normal;
-			}
+                // Ignore the first frame as that will also be a key down event
+                if (!overUI && Input.GetKeyDown(KeyCode.Mouse0) && Time.frameCount != ignoreFrame)
+                {
+                    if (RTSBuildingManager.IsValidBuildingPlacement(buildingPreview))
+                    {
+                        if (RTSManager.instance.GetPlayer(1).resources.GetResource(RTSUnit.Type.ResourceCrystal) < buildingInfo.cost)
+                        {
+                            RTSManager.instance.audio.Play(notEnoughResources);
+                            Debug.LogError("Not enouch resources");
+                        }
+                        else
+                        {
+                            RTSManager.instance.audio.Play(click);
+                            RTSManager.instance.GetPlayer(1).resources.AddResource(RTSUnit.Type.ResourceCrystal, -buildingInfo.cost);
+                            Instantiate(buildingInfo.prefab, buildingPreview.transform.position, buildingPreview.transform.rotation);
+                        }
 
-			if (RTSManager.instance.GetPlayer(1).resources.GetResource(RTSUnit.Type.ResourceCrystal) < buildingInfo.cost) {
-				Debug.LogError("Not enouch resources");
-				RTSManager.instance.audio.Play(notEnoughResources);
-				return;
-			}
+                        Destroy(buildingPreview);
+                        state = State.Normal;
+                    }
+                    else
+                    {
+                        // Building placement failed
+                    }
+                }
+            }
+        }
 
-			this.buildingInfo = buildingInfo;
-			buildingPreview = GameObject.Instantiate(buildingInfo.prefab) as GameObject;
-			ignoreFrame = Time.frameCount;
-			state = State.PlacingBuilding;
+        public void StartBuildingPlacement(RTSUnitBuilder.BuildingItem buildingInfo)
+        {
+            if (state == State.PlacingBuilding)
+            {
+                Destroy(buildingPreview);
+                state = State.Normal;
+            }
 
-			// Disable all navmesh cuts and colliders on the preview
-			foreach (var cut in buildingPreview.GetComponentsInChildren<NavmeshCut>()) {
-				cut.enabled = false;
-			}
-			foreach (var coll in buildingPreview.GetComponentsInChildren<Collider>()) {
-				coll.enabled = false;
-			}
-		}
+            if (RTSManager.instance.GetPlayer(1).resources.GetResource(RTSUnit.Type.ResourceCrystal) < buildingInfo.cost)
+            {
+                Debug.LogError("Not enouch resources");
+                RTSManager.instance.audio.Play(notEnoughResources);
+                return;
+            }
 
-		void AbortBuildingPlacement () {
-			if (buildingPreview != null) {
-				GameObject.Destroy(buildingPreview);
-				state = State.Normal;
-			}
-		}
+            this.buildingInfo = buildingInfo;
+            buildingPreview = Instantiate(buildingInfo.prefab) as GameObject;
+            ignoreFrame = Time.frameCount;
+            state = State.PlacingBuilding;
 
-		void HandleMovement () {
-			if (state == State.Normal && Input.GetKeyDown(KeyCode.Mouse1)) {
-				RTSManager.instance.audio.Play(click);
-				RTSManager.instance.units.MoveGroupTo(RTSManager.instance.units.selectedUnits, RaycastScreenPoint(Input.mousePosition, groundMask).point, true, Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.A) ? MovementMode.AttackMove : MovementMode.Move);
-			}
-		}
+            // Disable all navmesh cuts and colliders on the preview
+            foreach (var cut in buildingPreview.GetComponentsInChildren<NavmeshCut>())
+            {
+                cut.enabled = false;
+            }
 
-		void HandleSelection () {
-			var overUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+            foreach (var coll in buildingPreview.GetComponentsInChildren<Collider>())
+            {
+                coll.enabled = false;
+            }
+        }
 
-			if (state != State.Normal && state != State.Dragging) return;
+        private void AbortBuildingPlacement()
+        {
+            if (buildingPreview != null)
+            {
+                Destroy(buildingPreview);
+                state = State.Normal;
+            }
+        }
 
-			if (!overUI && Input.GetKeyDown(KeyCode.Mouse0)) {
-				dragStart = Input.mousePosition;
-				state = State.Dragging;
-				hasSelected = false;
-			}
+        private void HandleMovement()
+        {
+            if (state == State.Normal && Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                RTSManager.instance.audio.Play(click);
+                RTSManager.instance.units.MoveGroupTo(RTSManager.instance.units.selectedUnits,
+                    RaycastScreenPoint(Input.mousePosition, groundMask).point, true,
+                    Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.A)? MovementMode.AttackMove : MovementMode.Move);
+            }
+        }
 
-			if (state == State.Dragging) {
-				Vector2 dragEnd = Input.mousePosition;
-				var mn = Vector2.Min(dragStart, dragEnd);
-				var mx = Vector2.Max(dragStart, dragEnd);
-				var rect = Rect.MinMaxRect(mn.x, mn.y, mx.x, mx.y);
+        private void HandleSelection()
+        {
+            var overUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
 
-				bool isSelecting = (dragEnd - dragStart).magnitude > 5;
-				hasSelected |= isSelecting;
-				selectionBox.gameObject.SetActive(isSelecting);
+            if (state != State.Normal && state != State.Dragging)
+            {
+                return;
+            }
 
-				if (isSelecting) {
-					selectionBox.offsetMin = Vector2.Min(dragStart, dragEnd);
-					selectionBox.offsetMax = Vector2.Max(dragStart, dragEnd);
-				}
+            if (!overUI && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                dragStart = Input.mousePosition;
+                state = State.Dragging;
+                hasSelected = false;
+            }
 
-				if (!Input.GetKey(KeyCode.Mouse0)) {
-					state = State.Normal;
-					selectionBox.gameObject.SetActive(false);
+            if (state == State.Dragging)
+            {
+                Vector2 dragEnd = Input.mousePosition;
+                var mn = Vector2.Min(dragStart, dragEnd);
+                var mx = Vector2.Max(dragStart, dragEnd);
+                var rect = Rect.MinMaxRect(mn.x, mn.y, mx.x, mx.y);
 
-					if (isSelecting) {
-						RTSManager.instance.units.SetSelection(unit => {
-							var screenPos = RTSManager.instance.units.cam.WorldToScreenPoint(unit.transform.position);
-							return rect.Contains(screenPos);
-						});
-					} else {
-						// Clicking
-						var hit = RaycastScreenPoint(dragEnd, -1);
-						var p = hit.point;
-						float clickFuzzDistance = 0.1f;
-						float minDist = 0;
-						RTSUnit minUnit = hit.collider != null? hit.collider.gameObject.GetComponentInParent<RTSUnit>() : null;
-						if (minUnit == null) {
-							foreach (var unit in RTSManager.instance.units.units) {
-								var dir = unit.transform.position - p;
-								dir.y = 0;
-								var dist = dir.magnitude - unit.radius - clickFuzzDistance;
-								if (dist < minDist) {
-									minDist = dist;
-									minUnit = unit;
-								}
-							}
-						}
+                bool isSelecting = (dragEnd - dragStart).magnitude > 5;
+                hasSelected |= isSelecting;
+                selectionBox.gameObject.SetActive(isSelecting);
 
-						RTSManager.instance.units.SetSelection(u => u == minUnit);
-					}
-				} else if (hasSelected) {
-					foreach (var unit in RTSManager.instance.units.units) {
-						var screenPos = RTSManager.instance.units.cam.WorldToScreenPoint(unit.transform.position);
-						unit.selectionIndicatorEnabled = rect.Contains(screenPos);
-					}
-				}
-			}
-		}
+                if (isSelecting)
+                {
+                    selectionBox.offsetMin = Vector2.Min(dragStart, dragEnd);
+                    selectionBox.offsetMax = Vector2.Max(dragStart, dragEnd);
+                }
 
-		RaycastHit RaycastScreenPoint (Vector2 mousePosition, LayerMask mask) {
-			var ray = RTSManager.instance.units.cam.ScreenPointToRay(mousePosition);
-			RaycastHit hit;
+                if (!Input.GetKey(KeyCode.Mouse0))
+                {
+                    state = State.Normal;
+                    selectionBox.gameObject.SetActive(false);
 
-			if (Physics.Raycast(ray, out hit, float.PositiveInfinity, mask)) {
-				Debug.DrawRay(hit.point, Vector3.up, Color.red, 2);
-				return hit;
-			} else {
-				throw new System.Exception("Mouse raycast did not hit anything");
-			}
-		}
-	}
+                    if (isSelecting)
+                    {
+                        RTSManager.instance.units.SetSelection(unit =>
+                        {
+                            var screenPos = RTSManager.instance.units.cam.WorldToScreenPoint(unit.transform.position);
+                            return rect.Contains(screenPos);
+                        });
+                    }
+                    else
+                    {
+                        // Clicking
+                        var hit = RaycastScreenPoint(dragEnd, -1);
+                        var p = hit.point;
+                        float clickFuzzDistance = 0.1f;
+                        float minDist = 0;
+                        RTSUnit minUnit = hit.collider != null? hit.collider.gameObject.GetComponentInParent<RTSUnit>() : null;
+                        if (minUnit == null)
+                        {
+                            foreach (var unit in RTSManager.instance.units.units)
+                            {
+                                var dir = unit.transform.position - p;
+                                dir.y = 0;
+                                var dist = dir.magnitude - unit.radius - clickFuzzDistance;
+                                if (dist < minDist)
+                                {
+                                    minDist = dist;
+                                    minUnit = unit;
+                                }
+                            }
+                        }
+
+                        RTSManager.instance.units.SetSelection(u => u == minUnit);
+                    }
+                }
+                else if (hasSelected)
+                {
+                    foreach (var unit in RTSManager.instance.units.units)
+                    {
+                        var screenPos = RTSManager.instance.units.cam.WorldToScreenPoint(unit.transform.position);
+                        unit.selectionIndicatorEnabled = rect.Contains(screenPos);
+                    }
+                }
+            }
+        }
+
+        private RaycastHit RaycastScreenPoint(Vector2 mousePosition, LayerMask mask)
+        {
+            var ray = RTSManager.instance.units.cam.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, float.PositiveInfinity, mask))
+            {
+                Debug.DrawRay(hit.point, Vector3.up, Color.red, 2);
+                return hit;
+            }
+            else
+            {
+                throw new System.Exception("Mouse raycast did not hit anything");
+            }
+        }
+    }
 }

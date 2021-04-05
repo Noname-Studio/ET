@@ -1,6 +1,8 @@
 
 
+using System.IO;
 using System.Net;
+using Google.Apis.Auth.OAuth2;
 
 namespace ET
 {
@@ -40,7 +42,12 @@ namespace ET
                 await SceneFactory.Create(Game.Scene, startConfig.SceneId, startConfig.Zone, startConfig.Name, startConfig.Type, startConfig);
             }
 
-            var x = Game.Scene.Get(6);
+            if (GuildComponent.Instance != null)
+            {
+                TimerComponent.Instance.NewRepeatedTimer(/*1800000*/5000, GuildComponent.Instance.Update);
+            }
+
+            await GuildComponent.Instance.RegisterAllGuildToChat();
         }
     }
 }

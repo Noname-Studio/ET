@@ -4,275 +4,355 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Profiling;
 
-namespace Pathfinding.Examples.RTS {
-	using Pathfinding;
-	using Pathfinding.RVO;
-	using Pathfinding.Util;
+namespace Pathfinding.Examples.RTS
+{
+    using Pathfinding;
+    using RVO;
+    using Util;
 
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_unit.php")]
-	public class RTSUnit : VersionedMonoBehaviour {
-		public GameObject selectionIndicator;
-		public GameObject deathEffect;
-		public int team;
-		public float detectionRange;
+    [HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_unit.php")]
+    public class RTSUnit: VersionedMonoBehaviour
+    {
+        public GameObject selectionIndicator;
+        public GameObject deathEffect;
+        public int team;
+        public float detectionRange;
 
-		public float maxHealth;
+        public float maxHealth;
 
-		public enum Type {
-			Infantry,
-			Heavy,
-			Worker,
-			Harvester,
+        public enum Type
+        {
+            Infantry,
+            Heavy,
+            Worker,
+            Harvester,
 
-			HarvesterDropoff = 100,
-			HarvesterDropoffQueue,
-			ResourceCrystal = 200,
-		}
+            HarvesterDropoff = 100,
+            HarvesterDropoffQueue,
+            ResourceCrystal = 200
+        }
 
-		public Type type;
-		[System.NonSerialized]
-		public float health;
-		IAstarAI ai;
-		RVOController rvo;
-		MovementMode movementMode;
-		Vector3 lastDestination;
-		RTSUnit attackTarget;
-		RTSWeapon weapon;
-		float lastSeenAttackTarget = float.NegativeInfinity;
-		bool reachedDestination;
-		public int storedCrystals;
-		public RTSUnit reservedBy;
-		public bool locked;
-		new Transform transform;
+        public Type type;
 
-		/// <summary>Position at the start of the current frame</summary>
-		protected Vector3 position;
+        [System.NonSerialized]
+        public float health;
 
-		public System.Action<bool> onMakeActiveUnit;
+        private IAstarAI ai;
+        private RVOController rvo;
+        private MovementMode movementMode;
+        private Vector3 lastDestination;
+        private RTSUnit attackTarget;
+        private RTSWeapon weapon;
+        private float lastSeenAttackTarget = float.NegativeInfinity;
+        private bool reachedDestination;
+        public int storedCrystals;
+        public RTSUnit reservedBy;
+        public bool locked;
+        private new Transform transform;
 
-		public RTSPlayer owner {
-			get {
-				return RTSManager.instance.GetPlayer(team);
-			}
-		}
+        /// <summary>Position at the start of the current frame</summary>
+        protected Vector3 position;
 
-		public bool selectionIndicatorEnabled {
-			get {
-				if (selectionIndicator == null) return false;
-				return selectionIndicator.activeSelf;
-			}
-			set {
-				if (selectionIndicator != null) selectionIndicator.SetActive(value);
-			}
-		}
+        public System.Action<bool> onMakeActiveUnit;
 
-		public RTSHarvestableResource resource {
-			get {
-				return GetComponent<RTSHarvestableResource>();
-			}
-		}
+        public RTSPlayer owner => RTSManager.instance.GetPlayer(team);
 
-		public float radius {
-			get {
-				return rvo != null ? rvo.radius : 1f;
-			}
-		}
+        public bool selectionIndicatorEnabled
+        {
+            get
+            {
+                if (selectionIndicator == null)
+                {
+                    return false;
+                }
 
-		bool mSelected;
-		public bool selected {
-			get {
-				return mSelected;
-			}
-			set {
-				mSelected = value;
-				selectionIndicatorEnabled = value;
-				if (value) {
-					RTSManager.instance.units.OnSelected(this);
-				} else {
-					RTSManager.instance.units.OnDeselected(this);
-				}
-			}
-		}
+                return selectionIndicator.activeSelf;
+            }
+            set
+            {
+                if (selectionIndicator != null)
+                {
+                    selectionIndicator.SetActive(value);
+                }
+            }
+        }
 
-		public void OnMakeActiveUnit (bool active) {
-			if (onMakeActiveUnit != null) onMakeActiveUnit(active);
-		}
+        public RTSHarvestableResource resource => GetComponent<RTSHarvestableResource>();
 
-		public void SetDestination (Vector3 destination, MovementMode mode) {
-			if (ai != null && this) {
-				reachedDestination = false;
-				movementMode = mode;
-				ai.destination = lastDestination = destination;
-				(ai as AIBase).rvoDensityBehavior.ClearDestinationReached();
-				ai.SearchPath();
-				if (mode == MovementMode.Move) {
-					attackTarget = null;
-				}
-			}
-		}
+        public float radius => rvo != null? rvo.radius : 1f;
 
-		protected override void Awake () {
-			base.Awake();
-			transform = (this as MonoBehaviour).transform;
-			ai = GetComponent<IAstarAI>();
-			rvo = GetComponent<RVOController>();
-			weapon = GetComponent<RTSWeapon>();
-		}
+        private bool mSelected;
 
-		static System.Action<RTSUnit[], int> OnUpdateDelegate;
-		void OnEnable () {
-			if (OnUpdateDelegate == null) OnUpdateDelegate = OnUpdate;
-			RTSManager.instance.units.AddUnit(this);
-			selected = false;
-			health = maxHealth;
-			movementMode = MovementMode.AttackMove;
-			reachedDestination = true;
-			if (ai != null) lastDestination = ai.destination;
-			BatchedEvents.Add(this, BatchedEvents.Event.Update, OnUpdateDelegate);
-		}
+        public bool selected
+        {
+            get => mSelected;
+            set
+            {
+                mSelected = value;
+                selectionIndicatorEnabled = value;
+                if (value)
+                {
+                    RTSManager.instance.units.OnSelected(this);
+                }
+                else
+                {
+                    RTSManager.instance.units.OnDeselected(this);
+                }
+            }
+        }
 
-		void OnDisable () {
-			BatchedEvents.Remove(this);
-			if (RTSManager.instance != null) RTSManager.instance.units.RemoveUnit(this);
-		}
+        public void OnMakeActiveUnit(bool active)
+        {
+            if (onMakeActiveUnit != null)
+            {
+                onMakeActiveUnit(active);
+            }
+        }
 
-		static void OnUpdate (RTSUnit[] units, int count) {
-			// Get some lists and arrays from an object pool
-			List<RTSUnit>[] unitsByOwner = ArrayPool<List<RTSUnit> >.ClaimWithExactLength(RTSManager.instance.PlayerCount);
-			for (int i = 0; i < unitsByOwner.Length; i++) {
-				unitsByOwner[i] = ListPool<RTSUnit>.Claim();
-			}
-			for (int i = 0; i < count; i++) {
-				units[i].position = units[i].transform.position;
-				unitsByOwner[units[i].owner.index].Add(units[i]);
-			}
-			for (int i = 0; i < count; i++) {
-				units[i].OnUpdate(unitsByOwner);
-			}
+        public void SetDestination(Vector3 destination, MovementMode mode)
+        {
+            if (ai != null && this)
+            {
+                reachedDestination = false;
+                movementMode = mode;
+                ai.destination = lastDestination = destination;
+                (ai as AIBase).rvoDensityBehavior.ClearDestinationReached();
+                ai.SearchPath();
+                if (mode == MovementMode.Move)
+                {
+                    attackTarget = null;
+                }
+            }
+        }
 
-			// Release allocated lists back to a pool
-			for (int i = 0; i < unitsByOwner.Length; i++) {
-				ListPool<RTSUnit>.Release(ref unitsByOwner[i]);
-			}
-			ArrayPool<List<RTSUnit> >.Release(ref unitsByOwner, true);
-		}
+        protected override void Awake()
+        {
+            base.Awake();
+            transform = (this as MonoBehaviour).transform;
+            ai = GetComponent<IAstarAI>();
+            rvo = GetComponent<RVOController>();
+            weapon = GetComponent<RTSWeapon>();
+        }
 
-		// Update is called once per frame
-		protected virtual void OnUpdate (List<RTSUnit>[] unitsByOwner) {
-			if (ai == null) {
-				// Stationary unit
+        private static System.Action<RTSUnit[], int> OnUpdateDelegate;
 
-				if (weapon != null) {
-					float minDist = detectionRange*detectionRange;
-					for (int player = 0; player < unitsByOwner.Length; player++) {
-						if (!owner.IsHostile(RTSManager.instance.GetPlayer(player))) continue;
+        private void OnEnable()
+        {
+            if (OnUpdateDelegate == null)
+            {
+                OnUpdateDelegate = OnUpdate;
+            }
 
-						for (int i = 0; i < unitsByOwner[player].Count; i++) {
-							var unit = unitsByOwner[player][i];
-							var dist = (unit.position - position).sqrMagnitude;
-							if (dist < minDist) {
-								attackTarget = unit;
-								minDist = dist;
-							}
-						}
-					}
+            RTSManager.instance.units.AddUnit(this);
+            selected = false;
+            health = maxHealth;
+            movementMode = MovementMode.AttackMove;
+            reachedDestination = true;
+            if (ai != null)
+            {
+                lastDestination = ai.destination;
+            }
 
-					if (attackTarget != null) {
-						if (!weapon.InRangeOf(attackTarget.position)) {
-							attackTarget = null;
-						} else {
-							if (weapon.Aim(attackTarget)) {
-								weapon.Attack(attackTarget);
-							}
-						}
-					}
-				}
+            BatchedEvents.Add(this, BatchedEvents.Event.Update, OnUpdateDelegate);
+        }
 
-				if (attackTarget != null) {
-					lastSeenAttackTarget = Time.time;
-				}
-			} else {
-				rvo.locked = false | locked;
+        private void OnDisable()
+        {
+            BatchedEvents.Remove(this);
+            if (RTSManager.instance != null)
+            {
+                RTSManager.instance.units.RemoveUnit(this);
+            }
+        }
 
-				// this.reachedDestination will be true once the AI has reached its destination
-				// and it will stay true until the next time SetDestination is called.
-				reachedDestination |= (ai as AIBase).rvoDensityBehavior.reachedDestination;
+        private static void OnUpdate(RTSUnit[] units, int count)
+        {
+            // Get some lists and arrays from an object pool
+            List<RTSUnit>[] unitsByOwner = ArrayPool<List<RTSUnit>>.ClaimWithExactLength(RTSManager.instance.PlayerCount);
+            for (int i = 0; i < unitsByOwner.Length; i++)
+            {
+                unitsByOwner[i] = ListPool<RTSUnit>.Claim();
+            }
 
-				if (weapon != null) {
-					bool canAttack = movementMode == MovementMode.AttackMove;
-					// This takes into account path calculations as well as if the AI stops far away from the destination due to being part of a large group
-					canAttack |= reachedDestination && movementMode == MovementMode.Move;
+            for (int i = 0; i < count; i++)
+            {
+                units[i].position = units[i].transform.position;
+                unitsByOwner[units[i].owner.index].Add(units[i]);
+            }
 
-					if (canAttack) {
-						float minDist = detectionRange*detectionRange;
+            for (int i = 0; i < count; i++)
+            {
+                units[i].OnUpdate(unitsByOwner);
+            }
 
-						Profiler.BeginSample("Distance");
-						var pos = position;
-						for (int player = 0; player < unitsByOwner.Length; player++) {
-							if (!owner.IsHostile(RTSManager.instance.GetPlayer(player))) continue;
+            // Release allocated lists back to a pool
+            for (int i = 0; i < unitsByOwner.Length; i++)
+            {
+                ListPool<RTSUnit>.Release(ref unitsByOwner[i]);
+            }
 
-							var enemies = unitsByOwner[player];
-							for (int i = 0; i < enemies.Count; i++) {
-								var enemy = enemies[i];
-								var dist = (enemy.position - pos).sqrMagnitude;
-								if (dist < minDist) {
-									attackTarget = enemy;
-									minDist = dist;
-								}
-							}
-						}
-						Profiler.EndSample();
+            ArrayPool<List<RTSUnit>>.Release(ref unitsByOwner, true);
+        }
 
-						float rangeFuzz = 1.1f;
-						if (attackTarget != null && (attackTarget.position - position).magnitude > detectionRange*rangeFuzz) {
-							attackTarget = null;
-						}
+        // Update is called once per frame
+        protected virtual void OnUpdate(List<RTSUnit>[] unitsByOwner)
+        {
+            if (ai == null)
+            {
+                // Stationary unit
 
-						bool wantsToAttack = false;
+                if (weapon != null)
+                {
+                    float minDist = detectionRange * detectionRange;
+                    for (int player = 0; player < unitsByOwner.Length; player++)
+                    {
+                        if (!owner.IsHostile(RTSManager.instance.GetPlayer(player)))
+                        {
+                            continue;
+                        }
 
-						if (attackTarget != null) {
-							if (!weapon.InRangeOf(attackTarget.position)) {
-								ai.destination = attackTarget.position;
-							} else {
-								wantsToAttack = true;
-								if (weapon.Aim(attackTarget)) {
-									weapon.Attack(attackTarget);
-								}
-							}
-						}
+                        for (int i = 0; i < unitsByOwner[player].Count; i++)
+                        {
+                            var unit = unitsByOwner[player][i];
+                            var dist = (unit.position - position).sqrMagnitude;
+                            if (dist < minDist)
+                            {
+                                attackTarget = unit;
+                                minDist = dist;
+                            }
+                        }
+                    }
 
-						if (attackTarget != null) {
-							lastSeenAttackTarget = Time.time;
-						}
+                    if (attackTarget != null)
+                    {
+                        if (!weapon.InRangeOf(attackTarget.position))
+                        {
+                            attackTarget = null;
+                        }
+                        else
+                        {
+                            if (weapon.Aim(attackTarget))
+                            {
+                                weapon.Attack(attackTarget);
+                            }
+                        }
+                    }
+                }
 
-						if (!weapon.canMoveWhileAttacking && (wantsToAttack || weapon.isAttacking)) {
-							rvo.locked = true;
-						}
-					}
-				}
+                if (attackTarget != null)
+                {
+                    lastSeenAttackTarget = Time.time;
+                }
+            }
+            else
+            {
+                rvo.locked = false | locked;
 
-				// Move back to original destination in case we followed an enemy for some time
-				if (Time.time - lastSeenAttackTarget > 2) {
-					ai.destination = lastDestination;
-				}
-			}
-		}
+                // this.reachedDestination will be true once the AI has reached its destination
+                // and it will stay true until the next time SetDestination is called.
+                reachedDestination |= (ai as AIBase).rvoDensityBehavior.reachedDestination;
 
-		public void Die () {
-			StartCoroutine(DieCoroutine());
-		}
+                if (weapon != null)
+                {
+                    bool canAttack = movementMode == MovementMode.AttackMove;
+                    // This takes into account path calculations as well as if the AI stops far away from the destination due to being part of a large group
+                    canAttack |= reachedDestination && movementMode == MovementMode.Move;
 
-		IEnumerator DieCoroutine () {
-			yield return new WaitForEndOfFrame();
-			if (deathEffect != null) GameObject.Instantiate(deathEffect, transform.position, transform.rotation);
-			GameObject.Destroy(gameObject);
-		}
+                    if (canAttack)
+                    {
+                        float minDist = detectionRange * detectionRange;
 
-		public void ApplyDamage (float damage) {
-			health = Mathf.Clamp(health - damage, 0, maxHealth);
-			if (health <= 0) {
-				Die();
-			}
-		}
-	}
+                        Profiler.BeginSample("Distance");
+                        var pos = position;
+                        for (int player = 0; player < unitsByOwner.Length; player++)
+                        {
+                            if (!owner.IsHostile(RTSManager.instance.GetPlayer(player)))
+                            {
+                                continue;
+                            }
+
+                            var enemies = unitsByOwner[player];
+                            for (int i = 0; i < enemies.Count; i++)
+                            {
+                                var enemy = enemies[i];
+                                var dist = (enemy.position - pos).sqrMagnitude;
+                                if (dist < minDist)
+                                {
+                                    attackTarget = enemy;
+                                    minDist = dist;
+                                }
+                            }
+                        }
+
+                        Profiler.EndSample();
+
+                        float rangeFuzz = 1.1f;
+                        if (attackTarget != null && (attackTarget.position - position).magnitude > detectionRange * rangeFuzz)
+                        {
+                            attackTarget = null;
+                        }
+
+                        bool wantsToAttack = false;
+
+                        if (attackTarget != null)
+                        {
+                            if (!weapon.InRangeOf(attackTarget.position))
+                            {
+                                ai.destination = attackTarget.position;
+                            }
+                            else
+                            {
+                                wantsToAttack = true;
+                                if (weapon.Aim(attackTarget))
+                                {
+                                    weapon.Attack(attackTarget);
+                                }
+                            }
+                        }
+
+                        if (attackTarget != null)
+                        {
+                            lastSeenAttackTarget = Time.time;
+                        }
+
+                        if (!weapon.canMoveWhileAttacking && (wantsToAttack || weapon.isAttacking))
+                        {
+                            rvo.locked = true;
+                        }
+                    }
+                }
+
+                // Move back to original destination in case we followed an enemy for some time
+                if (Time.time - lastSeenAttackTarget > 2)
+                {
+                    ai.destination = lastDestination;
+                }
+            }
+        }
+
+        public void Die()
+        {
+            StartCoroutine(DieCoroutine());
+        }
+
+        private IEnumerator DieCoroutine()
+        {
+            yield return new WaitForEndOfFrame();
+            if (deathEffect != null)
+            {
+                Instantiate(deathEffect, transform.position, transform.rotation);
+            }
+
+            Destroy(gameObject);
+        }
+
+        public void ApplyDamage(float damage)
+        {
+            health = Mathf.Clamp(health - damage, 0, maxHealth);
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+    }
 }

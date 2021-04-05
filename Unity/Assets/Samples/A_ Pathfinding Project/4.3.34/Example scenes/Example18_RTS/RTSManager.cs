@@ -1,38 +1,48 @@
 using UnityEngine;
 
-namespace Pathfinding.Examples.RTS {
-	[HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_manager.php")]
-	public class RTSManager : VersionedMonoBehaviour {
-		public static RTSManager instance;
+namespace Pathfinding.Examples.RTS
+{
+    [HelpURL("http://arongranberg.com/astar/docs/class_pathfinding_1_1_examples_1_1_r_t_s_1_1_r_t_s_manager.php")]
+    public class RTSManager: VersionedMonoBehaviour
+    {
+        public static RTSManager instance;
 
-		public RTSUnitManager units;
-		public new RTSAudio audio;
+        public RTSUnitManager units;
+        public new RTSAudio audio;
 
-		RTSPlayer[] players;
+        private RTSPlayer[] players;
 
-		protected override void Awake () {
-			if (instance != null) throw new System.Exception("Multiple RTSManager instances in the scene. You should only have one.");
-			instance = this;
+        protected override void Awake()
+        {
+            if (instance != null)
+            {
+                throw new System.Exception("Multiple RTSManager instances in the scene. You should only have one.");
+            }
 
-			units = new RTSUnitManager();
-			units.Awake();
+            instance = this;
 
-			players = new RTSPlayer[3];
-			for (int i = 0; i < players.Length; i++) {
-				players[i] = new RTSPlayer();
-				players[i].index = i;
-			}
-		}
+            units = new RTSUnitManager();
+            units.Awake();
 
-		void OnDestroy () {
-			units.OnDestroy();
-			instance = null;
-		}
+            players = new RTSPlayer[3];
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i] = new RTSPlayer();
+                players[i].index = i;
+            }
+        }
 
-		public int PlayerCount => players.Length;
+        private void OnDestroy()
+        {
+            units.OnDestroy();
+            instance = null;
+        }
 
-		public RTSPlayer GetPlayer (int team) {
-			return players[team];
-		}
-	}
+        public int PlayerCount => players.Length;
+
+        public RTSPlayer GetPlayer(int team)
+        {
+            return players[team];
+        }
+    }
 }

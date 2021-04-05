@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_ContinuousService : GComponent
+    public partial class View_ContinuousService: GComponent
     {
         public Controller c1;
         public GLoader ComboTimes;
@@ -14,7 +14,7 @@ namespace GamingUI
 
         public static View_ContinuousService CreateInstance()
         {
-            return (View_ContinuousService)UIPackage.CreateObject("GamingUI", "ContinuousService");
+            return (View_ContinuousService) UIPackage.CreateObject("GamingUI", "ContinuousService");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -22,8 +22,8 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            ComboTimes = (GLoader)GetChild("ComboTimes");
-            Interval = (GLoader)GetChild("Interval");
+            ComboTimes = (GLoader) GetChild("ComboTimes");
+            Interval = (GLoader) GetChild("Interval");
         }
     }
 }

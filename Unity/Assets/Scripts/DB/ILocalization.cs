@@ -4,6 +4,7 @@
     {
         string Chinese { get; set; }
         string Chinese_tw { get; set; }
+
         string English { get; set; }
         /*string Spanish { get; set; }
         string German { get; set; }
@@ -18,14 +19,24 @@
     {
         public static string ToLoc(this ILocalization localization, Language? language)
         {
-            if(!language.HasValue)
+            if (!language.HasValue)
+            {
                 language = Language.CurrentLanguage;
+            }
+
             if (language.Equals(Language.Chinese))
+            {
                 return localization.Chinese;
+            }
             else if (language.Equals(Language.Chinese_tw))
+            {
                 return localization.Chinese_tw;
+            }
             else if (language.Equals(Language.English))
+            {
                 return localization.English;
+            }
+
             /*else if (language.Equals(Language.Spanish))
                 return localization.Spanish;
             else if (language.Equals(Language.German))
@@ -42,6 +53,5 @@
                 return localization.Italian;*/
             return localization.English;
         }
-
     }
 }

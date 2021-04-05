@@ -2,7 +2,7 @@
 
 public static class ListHelper
 {
-    public static int Overlap<T>(this IList<T> from,IList<T> to)
+    public static int Overlap<T>(this IList<T> from, IList<T> to)
     {
         int count = from.Count;
         int count2 = to.Count;
@@ -14,9 +14,12 @@ public static class ListHelper
             {
                 var b = to[j];
                 if (Equals(a, b))
+                {
                     result++;
+                }
             }
         }
+
         return result;
     }
 

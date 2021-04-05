@@ -29,7 +29,7 @@ namespace GamingUI
             leftObj.c1.selectedIndex = count;
             return this;
         }
-        
+
         public View_TipBar Left(string left)
         {
             if (string.IsNullOrEmpty(left))
@@ -37,7 +37,8 @@ namespace GamingUI
                 Log.Error("菜品Icon为空");
                 return this;
             }
-            var obj = (View_MultipleFood)List.AddItemFromPool();
+
+            var obj = (View_MultipleFood) List.AddItemFromPool();
             obj.c1.selectedIndex = 0;
             obj.GetChild("n" + 0).asLoader.url = left;
             return this;
@@ -50,17 +51,18 @@ namespace GamingUI
                 Log.Error("菜品Icon为空");
                 return this;
             }
-            var rightObj = (View_MultipleFood)List.AddItemFromPool();
+
+            var rightObj = (View_MultipleFood) List.AddItemFromPool();
             rightObj.c1.selectedIndex = 0;
             rightObj.GetChild("n" + 0).asLoader.url = right;
             return this;
         }
-        
+
         /// <summary>
         /// left和right传入icon路径. 
         /// </summary>
         /// <returns></returns>
-        public View_TipBar Plus(List<string> left,string right)
+        public View_TipBar Plus(List<string> left, string right)
         {
             Left(left);
             Plus();
@@ -74,8 +76,8 @@ namespace GamingUI
             Right(right);
             return this;
         }
-        
-        public View_TipBar To(string left,string right)
+
+        public View_TipBar To(string left, string right)
         {
             Left(left);
             To();
@@ -88,13 +90,13 @@ namespace GamingUI
             List.AddItemFromPool("ui://GamingUI/Plus");
             return this;
         }
-        
+
         public View_TipBar Equal()
         {
             List.AddItemFromPool("ui://GamingUI/Equal");
             return this;
         }
-        
+
         public View_TipBar Slash()
         {
             List.AddItemFromPool("ui://GamingUI/Slash");

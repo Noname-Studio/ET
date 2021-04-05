@@ -51,7 +51,8 @@ namespace Sirenix.OdinInspector.Editor.Drawers
             }
 
             SirenixEditorGUI.BeginHorizontalToolbar();
-            this.visible.Value = SirenixEditorGUI.Foldout(this.visible.Value, GUIHelper.TempContent("SyncList " + label.text + "  [" + typeof(TList).Name + "]"));
+            this.visible.Value =
+ SirenixEditorGUI.Foldout(this.visible.Value, GUIHelper.TempContent("SyncList " + label.text + "  [" + typeof(TList).Name + "]"));
             EditorGUILayout.LabelField(GUIHelper.TempContent(minCount == maxCount ? (minCount == 0 ? "Empty" : minCount + " items") : minCount + " (" + maxCount + ") items"), SirenixGUIStyles.RightAlignedGreyMiniLabel);
             SirenixEditorGUI.EndHorizontalToolbar();
 

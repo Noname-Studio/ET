@@ -15,14 +15,13 @@ namespace ET
             {
                 return;
             }
-            
+
             ETTaskCompletionSource tcs = self.tcs;
             self.tcs = null;
             tcs.SetResult();
         }
     }
-	
-    
+
     public class SceneChangeComponentDestroySystem: DestroySystem<SceneChangeComponent>
     {
         public override void Destroy(SceneChangeComponent self)
@@ -42,14 +41,15 @@ namespace ET
             //this.loadMapOperation.allowSceneActivation = false;
             await self.tcs.Task;
         }
-        
+
         public static int Process(this SceneChangeComponent self)
         {
             if (self.loadMapOperation == null)
             {
                 return 0;
             }
-            return (int)(self.loadMapOperation.progress * 100);
+
+            return (int) (self.loadMapOperation.progress * 100);
         }
     }
 }

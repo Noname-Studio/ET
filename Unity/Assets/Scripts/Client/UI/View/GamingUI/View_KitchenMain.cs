@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_KitchenMain : GComponent
+    public partial class View_KitchenMain: GComponent
     {
         public Controller ui_style;
         public View_coinsBar ScoreBar;
@@ -20,7 +20,7 @@ namespace GamingUI
 
         public static View_KitchenMain CreateInstance()
         {
-            return (View_KitchenMain)UIPackage.CreateObject("GamingUI", "KitchenMain");
+            return (View_KitchenMain) UIPackage.CreateObject("GamingUI", "KitchenMain");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -28,14 +28,14 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             ui_style = GetController("ui_style");
-            ScoreBar = (View_coinsBar)GetChild("ScoreBar");
-            TimeBar = (View_timerBar)GetChild("TimeBar");
-            Condition = (View_Condition)GetChild("Condition");
-            InfiniteTargetBar = (View_infiniteBar)GetChild("InfiniteTargetBar");
-            Pause = (GButton)GetChild("Pause");
-            Exit = (GButton)GetChild("Exit");
-            PropList = (GList)GetChild("PropList");
-            ComboBar = (View_ContinuousService)GetChild("ComboBar");
+            ScoreBar = (View_coinsBar) GetChild("ScoreBar");
+            TimeBar = (View_timerBar) GetChild("TimeBar");
+            Condition = (View_Condition) GetChild("Condition");
+            InfiniteTargetBar = (View_infiniteBar) GetChild("InfiniteTargetBar");
+            Pause = (GButton) GetChild("Pause");
+            Exit = (GButton) GetChild("Exit");
+            PropList = (GList) GetChild("PropList");
+            ComboBar = (View_ContinuousService) GetChild("ComboBar");
         }
     }
 }

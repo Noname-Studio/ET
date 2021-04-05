@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_propitems0 : GComponent
+    public partial class View_propitems0: GComponent
     {
         public View_Button12 Item1;
         public View_Button12 Item2;
@@ -15,17 +15,17 @@ namespace GameBegins
 
         public static View_propitems0 CreateInstance()
         {
-            return (View_propitems0)UIPackage.CreateObject("GameBegins", "propitems0");
+            return (View_propitems0) UIPackage.CreateObject("GameBegins", "propitems0");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Item1 = (View_Button12)GetChild("Item1");
-            Item2 = (View_Button12)GetChild("Item2");
-            Item3 = (View_Button12)GetChild("Item3");
-            Item4 = (View_Button12)GetChild("Item4");
+            Item1 = (View_Button12) GetChild("Item1");
+            Item2 = (View_Button12) GetChild("Item2");
+            Item3 = (View_Button12) GetChild("Item3");
+            Item4 = (View_Button12) GetChild("Item4");
         }
     }
 }

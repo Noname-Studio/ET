@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_effect_fly_star_light : GComponent
+    public partial class View_effect_fly_star_light: GComponent
     {
         public GImage light1;
         public Transition t0;
@@ -13,14 +13,14 @@ namespace GamingUI
 
         public static View_effect_fly_star_light CreateInstance()
         {
-            return (View_effect_fly_star_light)UIPackage.CreateObject("GamingUI", "effect_fly_star_light");
+            return (View_effect_fly_star_light) UIPackage.CreateObject("GamingUI", "effect_fly_star_light");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            light1 = (GImage)GetChild("light1");
+            light1 = (GImage) GetChild("light1");
             t0 = GetTransition("t0");
         }
     }

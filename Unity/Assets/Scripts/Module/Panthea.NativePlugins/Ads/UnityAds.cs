@@ -1,9 +1,10 @@
 ﻿#if UNITY_ANDROID || UNITY_IOS
 using System.Threading.Tasks;
 using UnityEngine.Advertisements;
+
 namespace Panthea.NativePlugins.Ads
 {
-    public class UnityAds : IUnityAdsListener,IAdsHandler
+    public class UnityAds: IUnityAdsListener, IAdsHandler
     {
 #if UNITY_IOS
         private string gameId { get; } = "4060426";
@@ -15,30 +16,36 @@ namespace Panthea.NativePlugins.Ads
 
         private MessageKit mEventManager { get; }
         private TaskCompletionSource<bool> Tcs { get; set; }
+
         public UnityAds()
         {
             mEventManager = MessageKit.Inst;
             Advertisement.AddListener(this);
             Advertisement.Initialize(gameId);
         }
-    
-        public void OnUnityAdsReady (string placementId) {
-            if(RewardVideoPlacementId == placementId)
+
+        public void OnUnityAdsReady(string placementId)
+        {
+            if (RewardVideoPlacementId == placementId)
+            {
                 mEventManager.Send(EventKey.AdsReady);
+            }
+
             Log.Print(placementId + " 已准备就绪");
         }
 
-        public void OnUnityAdsDidFinish (string placementId, ShowResult showResult) {
+        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        {
             if (showResult == ShowResult.Finished)
             {
                 Tcs?.TrySetResult(true);
                 mEventManager.Send(EventKey.AdsRewarded);
-            } 
+            }
             else if (showResult == ShowResult.Skipped)
             {
                 Tcs?.TrySetResult(false);
                 mEventManager.Send(EventKey.AdsSkipped);
-            } 
+            }
             else if (showResult == ShowResult.Failed)
             {
                 Tcs?.TrySetResult(false);
@@ -46,12 +53,13 @@ namespace Panthea.NativePlugins.Ads
             }
         }
 
-        public void OnUnityAdsDidError (string message)
+        public void OnUnityAdsDidError(string message)
         {
             Log.Error(message);
         }
 
-        public void OnUnityAdsDidStart (string placementId) {
+        public void OnUnityAdsDidStart(string placementId)
+        {
         }
 
         public void PlayRewardVideo()
@@ -61,7 +69,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 还未初始化");
                 return;
             }
-            else if (!AdsKit.Inst.IsReady(this.RewardVideoPlacementId))
+            else if (!AdsKit.Inst.IsReady(RewardVideoPlacementId))
             {
                 Log.Error("广告还未准备好");
                 return;
@@ -71,6 +79,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 不支持");
                 return;
             }
+
             Advertisement.Show(RewardVideoPlacementId);
         }
 
@@ -78,7 +87,7 @@ namespace Panthea.NativePlugins.Ads
         {
             Tcs = new TaskCompletionSource<bool>();
             PlayRewardVideo();
-            var result = await this.Tcs.Task;
+            var result = await Tcs.Task;
             return result;
         }
 
@@ -89,7 +98,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 还未初始化");
                 return;
             }
-            else if (!AdsKit.Inst.IsReady(this.VideoPlacementId))
+            else if (!AdsKit.Inst.IsReady(VideoPlacementId))
             {
                 Log.Error("广告还未准备好");
                 return;
@@ -99,6 +108,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 不支持");
                 return;
             }
+
             Advertisement.Show(VideoPlacementId);
         }
 
@@ -106,7 +116,7 @@ namespace Panthea.NativePlugins.Ads
         {
             Tcs = new TaskCompletionSource<bool>();
             PlayVideo();
-            var result = await this.Tcs.Task;
+            var result = await Tcs.Task;
             return result;
         }
 

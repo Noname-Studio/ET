@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_effect_combo : GComponent
+    public partial class View_effect_combo: GComponent
     {
         public Controller c1;
         public Controller c0;
@@ -17,7 +17,7 @@ namespace GamingUI
 
         public static View_effect_combo CreateInstance()
         {
-            return (View_effect_combo)UIPackage.CreateObject("GamingUI", "effect_combo");
+            return (View_effect_combo) UIPackage.CreateObject("GamingUI", "effect_combo");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -26,9 +26,9 @@ namespace GamingUI
 
             c1 = GetController("c1");
             c0 = GetController("c0");
-            title = (GLoader)GetChild("title");
-            txt = (GRichTextField)GetChild("txt");
-            title_normal = (GLoader)GetChild("title_normal");
+            title = (GLoader) GetChild("title");
+            txt = (GRichTextField) GetChild("txt");
+            title_normal = (GLoader) GetChild("title_normal");
             t0 = GetTransition("t0");
         }
     }

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace EnergySystem
 {
-    public partial class View_TiLiYaoQing : GComponent
+    public partial class View_TiLiYaoQing: GComponent
     {
         public Controller c1;
         public GButton bg;
@@ -20,7 +20,7 @@ namespace EnergySystem
 
         public static View_TiLiYaoQing CreateInstance()
         {
-            return (View_TiLiYaoQing)UIPackage.CreateObject("EnergySystem", "体力邀请");
+            return (View_TiLiYaoQing) UIPackage.CreateObject("EnergySystem", "体力邀请");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -28,14 +28,14 @@ namespace EnergySystem
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
-            NoFriend = (GGroup)GetChild("NoFriend");
-            Close = (GButton)GetChild("Close");
-            List = (GList)GetChild("List");
-            SendGift = (GButton)GetChild("SendGift");
-            AskFriend = (GButton)GetChild("AskFriend");
-            LoginFB = (GButton)GetChild("LoginFB");
-            InviteFriend = (GButton)GetChild("InviteFriend");
+            bg = (GButton) GetChild("bg");
+            NoFriend = (GGroup) GetChild("NoFriend");
+            Close = (GButton) GetChild("Close");
+            List = (GList) GetChild("List");
+            SendGift = (GButton) GetChild("SendGift");
+            AskFriend = (GButton) GetChild("AskFriend");
+            LoginFB = (GButton) GetChild("LoginFB");
+            InviteFriend = (GButton) GetChild("InviteFriend");
         }
     }
 }

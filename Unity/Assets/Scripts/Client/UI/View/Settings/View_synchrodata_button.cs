@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_synchrodata_button : GButton
+    public partial class View_synchrodata_button: GButton
     {
         public Controller c1;
         public Transition t0;
@@ -13,7 +13,7 @@ namespace Settings
 
         public static View_synchrodata_button CreateInstance()
         {
-            return (View_synchrodata_button)UIPackage.CreateObject("Settings", "synchrodata_button");
+            return (View_synchrodata_button) UIPackage.CreateObject("Settings", "synchrodata_button");
         }
 
         public override void ConstructFromXML(XML xml)

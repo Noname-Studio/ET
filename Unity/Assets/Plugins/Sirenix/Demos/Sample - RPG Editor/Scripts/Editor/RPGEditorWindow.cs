@@ -1,8 +1,8 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities;
+    using Editor;
+    using Utilities;
     using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
@@ -22,7 +22,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     // Go on an adventure in various classes to see how things are achived.
     // 
 
-    public class RPGEditorWindow : OdinMenuEditorWindow
+    public class RPGEditorWindow: OdinMenuEditorWindow
     {
         [MenuItem("Tools/Odin Inspector/Demos/RPG Editor")]
         private static void Open()
@@ -42,11 +42,11 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
             tree.Add("Characters", new CharacterTable(CharacterOverview.Instance.AllCharacters));
 
             // Adds all characters.
-            tree.AddAllAssetsAtPath("Characters", "Assets/Plugins/Sirenix", typeof(Character), true, true);
+            tree.AddAllAssetsAtPath("Characters", "Assets/Plugins/Sirenix", typeof (Character), true, true);
 
             // Add all scriptable object items.
-            tree.AddAllAssetsAtPath("", "Assets/Plugins/Sirenix/Demos/SAMPLE - RPG Editor/Items", typeof(Item), true)
-                .ForEach(this.AddDragHandles);
+            tree.AddAllAssetsAtPath("", "Assets/Plugins/Sirenix/Demos/SAMPLE - RPG Editor/Items", typeof (Item), true)
+                    .ForEach(AddDragHandles);
 
             // Add drag handles to items, so they can be easily dragged into the inventory if characters etc...
             tree.EnumerateTree().Where(x => x.Value as Item).ForEach(AddDragHandles);
@@ -65,8 +65,8 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
 
         protected override void OnBeginDrawEditors()
         {
-            var selected = this.MenuTree.Selection.FirstOrDefault();
-            var toolbarHeight = this.MenuTree.Config.SearchToolbarHeight;
+            var selected = MenuTree.Selection.FirstOrDefault();
+            var toolbarHeight = MenuTree.Config.SearchToolbarHeight;
 
             // Draws a toolbar with the name of the currently selected menu item.
             SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);

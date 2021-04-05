@@ -6,19 +6,20 @@ using UnityEngine;
 
 namespace Panthea.Editor.Asset
 {
-    public class CollectAllAssets : AResPipeline
+    public class CollectAllAssets: AResPipeline
     {
         public string PackPath;
         private Dictionary<string, object> mInject;
-        public CollectAllAssets(string packPath,Dictionary<string,object> inject)
+
+        public CollectAllAssets(string packPath, Dictionary<string, object> inject)
         {
-            this.PackPath = packPath;
-            this.mInject = inject;
+            PackPath = packPath;
+            mInject = inject;
         }
-    
+
         public override Task Do()
         {
-            var files = Directory.GetFiles(Application.dataPath + "/" + this.PackPath, "*.*", SearchOption.AllDirectories).ToList();
+            var files = Directory.GetFiles(Application.dataPath + "/" + PackPath, "*.*", SearchOption.AllDirectories).ToList();
 
             for (var index = files.Count - 1; index >= 0; index--)
             {
@@ -30,14 +31,16 @@ namespace Panthea.Editor.Asset
                     files.RemoveAt(index);
                     continue;
                 }
+
                 if (fileName.StartsWith("."))
                 {
                     files.RemoveAt(index);
                     continue;
                 }
+
                 files[index] = PathUtils.FormatFilePath(files[index]);
             }
-        
+
 #if DEBUG_ADDRESSABLE
         foreach (var node in files)
         {
@@ -45,7 +48,7 @@ namespace Panthea.Editor.Asset
         }
 #endif
 
-            this.mInject.Add("files", files);
+            mInject.Add("files", files);
             return Task.CompletedTask;
         }
     }

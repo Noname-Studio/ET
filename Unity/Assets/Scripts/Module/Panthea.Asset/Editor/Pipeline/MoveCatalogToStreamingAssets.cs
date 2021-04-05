@@ -6,7 +6,7 @@ using File = System.IO.File;
 
 namespace Panthea.Editor.Asset
 {
-    public class MoveCatalogToStreamingAssets : AResPipeline
+    public class MoveCatalogToStreamingAssets: AResPipeline
     {
         public override Task Do()
         {
@@ -15,11 +15,13 @@ namespace Panthea.Editor.Asset
             {
                 return Task.CompletedTask;
             }
+
             string destinationPath = Addressables.PlayerBuildDataPath;
             if (!Directory.Exists(destinationPath))
             {
                 Directory.CreateDirectory(destinationPath);
             }
+
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*",
                 SearchOption.AllDirectories))
             {
@@ -27,9 +29,12 @@ namespace Panthea.Editor.Asset
             }
 
             //Copy all the files & Replaces any files with the same name
-            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", 
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*",
                 SearchOption.AllDirectories))
+            {
                 File.Copy(newPath, newPath.Replace(sourcePath, destinationPath), true);
+            }
+
             return Task.CompletedTask;
         }
     }

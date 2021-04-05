@@ -5,32 +5,32 @@ using FairyGUI.Utils;
 
 namespace UI.Story.FollowUs
 {
-	public partial class View_Follow : GComponent
-	{
-		public GButton bg;
-		public GButton Go;
-		public GButton Skip;
-		public GTextField Desc;
+    public partial class View_Follow: GComponent
+    {
+        public GButton bg;
+        public GButton Go;
+        public GButton Skip;
+        public GTextField Desc;
 
-		public const string URL = "ui://h0jalhnpfkga3";
+        public const string URL = "ui://h0jalhnpfkga3";
 
-		public static View_Follow CreateInstance()
-		{
-			return (View_Follow)UIPackage.CreateObject("FollowUs","Follow");
-		}
+        public static View_Follow CreateInstance()
+        {
+            return (View_Follow) UIPackage.CreateObject("FollowUs", "Follow");
+        }
 
-		public View_Follow()
-		{
-		}
+        public View_Follow()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			bg = (GButton)this.GetChildAt(0);
-			Go = (GButton)this.GetChildAt(3);
-			Skip = (GButton)this.GetChildAt(4);
-			Desc = (GTextField)this.GetChildAt(5);
-		}
-	}
+            bg = (GButton) GetChildAt(0);
+            Go = (GButton) GetChildAt(3);
+            Skip = (GButton) GetChildAt(4);
+            Desc = (GTextField) GetChildAt(5);
+        }
+    }
 }

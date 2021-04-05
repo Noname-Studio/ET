@@ -8,7 +8,7 @@ namespace NotificationSamples
     /// Standard serializer used by the <see cref="GameNotificationsManager"/> if no others
     /// are provided. Saves a simple binary format.
     /// </summary>
-    public class DefaultSerializer : IPendingNotificationsSerializer
+    public class DefaultSerializer: IPendingNotificationsSerializer
     {
         private const byte Version = 0;
 

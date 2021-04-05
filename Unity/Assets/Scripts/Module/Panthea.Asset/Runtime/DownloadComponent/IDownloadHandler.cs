@@ -9,6 +9,5 @@ namespace Panthea.Asset
         UniTask<Dictionary<string, string>> GetHeaders(string url);
         UniTask<string> GetText(string url);
         UniTask<byte[]> GetBytes(string url);
-
     }
 }

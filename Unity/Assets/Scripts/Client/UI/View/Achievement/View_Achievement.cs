@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Achievement
 {
-    public partial class View_Achievement : GComponent
+    public partial class View_Achievement: GComponent
     {
         public GButton bg;
         public GList AchiList;
@@ -15,17 +15,17 @@ namespace Achievement
 
         public static View_Achievement CreateInstance()
         {
-            return (View_Achievement)UIPackage.CreateObject("Achievement", "Achievement");
+            return (View_Achievement) UIPackage.CreateObject("Achievement", "Achievement");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
-            AchiList = (GList)GetChild("AchiList");
-            Close = (GButton)GetChild("Close");
-            title = (GTextField)GetChild("title");
+            bg = (GButton) GetChild("bg");
+            AchiList = (GList) GetChild("AchiList");
+            Close = (GButton) GetChild("Close");
+            title = (GTextField) GetChild("title");
         }
     }
 }

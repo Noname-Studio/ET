@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_JiaoSeXuanZe : GComponent
+    public partial class View_JiaoSeXuanZe: GComponent
     {
         public Controller state;
         public View_JuGuangDeng_effect light;
@@ -21,7 +21,7 @@ namespace GameBegins
 
         public static View_JiaoSeXuanZe CreateInstance()
         {
-            return (View_JiaoSeXuanZe)UIPackage.CreateObject("GameBegins", "角色选择");
+            return (View_JiaoSeXuanZe) UIPackage.CreateObject("GameBegins", "角色选择");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -29,15 +29,15 @@ namespace GameBegins
             base.ConstructFromXML(xml);
 
             state = GetController("state");
-            light = (View_JuGuangDeng_effect)GetChild("light");
-            go_guild = (GButton)GetChild("go_guild");
-            friendcom = (View_friendcom)GetChild("friendcom");
-            point_efffect = (View_effect_GuangDian)GetChild("point_efffect");
-            normal = (GGroup)GetChild("normal");
-            friendname = (View_ZengYiTiaoJian)GetChild("friendname");
-            rightbtn = (GButton)GetChild("rightbtn");
-            leftbtn = (GButton)GetChild("leftbtn");
-            namegroup = (GGroup)GetChild("namegroup");
+            light = (View_JuGuangDeng_effect) GetChild("light");
+            go_guild = (GButton) GetChild("go_guild");
+            friendcom = (View_friendcom) GetChild("friendcom");
+            point_efffect = (View_effect_GuangDian) GetChild("point_efffect");
+            normal = (GGroup) GetChild("normal");
+            friendname = (View_ZengYiTiaoJian) GetChild("friendname");
+            rightbtn = (GButton) GetChild("rightbtn");
+            leftbtn = (GButton) GetChild("leftbtn");
+            namegroup = (GGroup) GetChild("namegroup");
         }
     }
 }

@@ -16,4 +16,3 @@ namespace Panthea.NativePlugins.Ads
         bool IsInitialized();
     }
 }
-

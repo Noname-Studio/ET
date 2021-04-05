@@ -34,120 +34,156 @@ using UnityEditor;
 using UnityEngine;
 using Spine;
 
-namespace Spine.Unity.Editor {
-	using Event = UnityEngine.Event;
+namespace Spine.Unity.Editor
+{
+    using Event = UnityEngine.Event;
 
-	[CustomEditor(typeof(SpineSpriteAtlasAsset)), CanEditMultipleObjects]
-	public class SpineSpriteAtlasAssetInspector : UnityEditor.Editor {
-		SerializedProperty atlasFile, materials;
-		SpineSpriteAtlasAsset atlasAsset;
+    [CustomEditor(typeof (SpineSpriteAtlasAsset))]
+    [CanEditMultipleObjects]
+    public class SpineSpriteAtlasAssetInspector: UnityEditor.Editor
+    {
+        private SerializedProperty atlasFile, materials;
+        private SpineSpriteAtlasAsset atlasAsset;
 
-		static List<AtlasRegion> GetRegions (Atlas atlas) {
-			FieldInfo regionsField = SpineInspectorUtility.GetNonPublicField(typeof(Atlas), "regions");
-			return (List<AtlasRegion>)regionsField.GetValue(atlas);
-		}
+        private static List<AtlasRegion> GetRegions(Atlas atlas)
+        {
+            FieldInfo regionsField = SpineInspectorUtility.GetNonPublicField(typeof (Atlas), "regions");
+            return (List<AtlasRegion>) regionsField.GetValue(atlas);
+        }
 
-		void OnEnable () {
-			SpineEditorUtilities.ConfirmInitialization();
-			atlasFile = serializedObject.FindProperty("spriteAtlasFile");
-			materials = serializedObject.FindProperty("materials");
-			materials.isExpanded = true;
-			atlasAsset = (SpineSpriteAtlasAsset)target;
+        private void OnEnable()
+        {
+            SpineEditorUtilities.ConfirmInitialization();
+            atlasFile = serializedObject.FindProperty("spriteAtlasFile");
+            materials = serializedObject.FindProperty("materials");
+            materials.isExpanded = true;
+            atlasAsset = (SpineSpriteAtlasAsset) target;
 
-			if (!SpineSpriteAtlasAsset.AnySpriteAtlasNeedsRegionsLoaded())
-				return;
-			EditorApplication.update -= SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
-			EditorApplication.update += SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
-		}
+            if (!SpineSpriteAtlasAsset.AnySpriteAtlasNeedsRegionsLoaded())
+            {
+                return;
+            }
 
-		void OnDisable () {
-			EditorApplication.update -= SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
-		}
+            EditorApplication.update -= SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
+            EditorApplication.update += SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
+        }
 
-		override public void OnInspectorGUI () {
-			if (serializedObject.isEditingMultipleObjects) {
-				DrawDefaultInspector();
-				return;
-			}
+        private void OnDisable()
+        {
+            EditorApplication.update -= SpineSpriteAtlasAsset.UpdateWhenEditorPlayModeStarted;
+        }
 
-			serializedObject.Update();
-			atlasAsset = atlasAsset ?? (SpineSpriteAtlasAsset)target;
+        public override void OnInspectorGUI()
+        {
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                DrawDefaultInspector();
+                return;
+            }
 
-			if (atlasAsset.RegionsNeedLoading) {
-				if (GUILayout.Button(SpineInspectorUtility.TempContent("Load regions by entering Play mode"), GUILayout.Height(20))) {
-					EditorApplication.isPlaying = true;
-				}
-			}
+            serializedObject.Update();
+            atlasAsset = atlasAsset ?? (SpineSpriteAtlasAsset) target;
 
-			EditorGUI.BeginChangeCheck();
-			EditorGUILayout.PropertyField(atlasFile);
-			EditorGUILayout.PropertyField(materials, true);
-			if (EditorGUI.EndChangeCheck()) {
-				serializedObject.ApplyModifiedProperties();
-				atlasAsset.Clear();
-				atlasAsset.GetAtlas();
-				atlasAsset.updateRegionsInPlayMode = true;
-			}
+            if (atlasAsset.RegionsNeedLoading)
+            {
+                if (GUILayout.Button(SpineInspectorUtility.TempContent("Load regions by entering Play mode"), GUILayout.Height(20)))
+                {
+                    EditorApplication.isPlaying = true;
+                }
+            }
 
-			if (materials.arraySize == 0) {
-				EditorGUILayout.HelpBox("No materials", MessageType.Error);
-				return;
-			}
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(atlasFile);
+            EditorGUILayout.PropertyField(materials, true);
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                atlasAsset.Clear();
+                atlasAsset.GetAtlas();
+                atlasAsset.updateRegionsInPlayMode = true;
+            }
 
-			for (int i = 0; i < materials.arraySize; i++) {
-				SerializedProperty prop = materials.GetArrayElementAtIndex(i);
-				var material = (Material)prop.objectReferenceValue;
-				if (material == null) {
-					EditorGUILayout.HelpBox("Materials cannot be null.", MessageType.Error);
-					return;
-				}
-			}
+            if (materials.arraySize == 0)
+            {
+                EditorGUILayout.HelpBox("No materials", MessageType.Error);
+                return;
+            }
 
-			if (atlasFile.objectReferenceValue != null) {
-				int baseIndent = EditorGUI.indentLevel;
+            for (int i = 0; i < materials.arraySize; i++)
+            {
+                SerializedProperty prop = materials.GetArrayElementAtIndex(i);
+                var material = (Material) prop.objectReferenceValue;
+                if (material == null)
+                {
+                    EditorGUILayout.HelpBox("Materials cannot be null.", MessageType.Error);
+                    return;
+                }
+            }
 
-				var regions = SpineSpriteAtlasAssetInspector.GetRegions(atlasAsset.GetAtlas());
-				int regionsCount = regions.Count;
-				using (new EditorGUILayout.HorizontalScope()) {
-					EditorGUILayout.LabelField("Atlas Regions", EditorStyles.boldLabel);
-					EditorGUILayout.LabelField(string.Format("{0} regions total", regionsCount));
-				}
-				AtlasPage lastPage = null;
-				for (int i = 0; i < regionsCount; i++) {
-					if (lastPage != regions[i].page) {
-						if (lastPage != null) {
-							EditorGUILayout.Separator();
-							EditorGUILayout.Separator();
-						}
-						lastPage = regions[i].page;
-						Material mat = ((Material)lastPage.rendererObject);
-						if (mat != null) {
-							EditorGUI.indentLevel = baseIndent;
-							using (new GUILayout.HorizontalScope())
-							using (new EditorGUI.DisabledGroupScope(true))
-								EditorGUILayout.ObjectField(mat, typeof(Material), false, GUILayout.Width(250));
-							EditorGUI.indentLevel = baseIndent + 1;
-						} else {
-							EditorGUILayout.HelpBox("Page missing material!", MessageType.Warning);
-						}
-					}
+            if (atlasFile.objectReferenceValue != null)
+            {
+                int baseIndent = EditorGUI.indentLevel;
 
-					string regionName = regions[i].name;
-					Texture2D icon = SpineEditorUtilities.Icons.image;
-					if (regionName.EndsWith(" ")) {
-						regionName = string.Format("'{0}'", regions[i].name);
-						icon = SpineEditorUtilities.Icons.warning;
-						EditorGUILayout.LabelField(SpineInspectorUtility.TempContent(regionName, icon, "Region name ends with whitespace. This may cause errors. Please check your source image filenames."));
-					} else {
-						EditorGUILayout.LabelField(SpineInspectorUtility.TempContent(regionName, icon));
-					}
-				}
-				EditorGUI.indentLevel = baseIndent;
-			}
+                var regions = GetRegions(atlasAsset.GetAtlas());
+                int regionsCount = regions.Count;
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.LabelField("Atlas Regions", EditorStyles.boldLabel);
+                    EditorGUILayout.LabelField(string.Format("{0} regions total", regionsCount));
+                }
 
-			if (serializedObject.ApplyModifiedProperties() || SpineInspectorUtility.UndoRedoPerformed(Event.current))
-				atlasAsset.Clear();
-		}
-	}
+                AtlasPage lastPage = null;
+                for (int i = 0; i < regionsCount; i++)
+                {
+                    if (lastPage != regions[i].page)
+                    {
+                        if (lastPage != null)
+                        {
+                            EditorGUILayout.Separator();
+                            EditorGUILayout.Separator();
+                        }
 
+                        lastPage = regions[i].page;
+                        Material mat = (Material) lastPage.rendererObject;
+                        if (mat != null)
+                        {
+                            EditorGUI.indentLevel = baseIndent;
+                            using (new GUILayout.HorizontalScope())
+                            using (new EditorGUI.DisabledGroupScope(true))
+                            {
+                                EditorGUILayout.ObjectField(mat, typeof (Material), false, GUILayout.Width(250));
+                            }
+
+                            EditorGUI.indentLevel = baseIndent + 1;
+                        }
+                        else
+                        {
+                            EditorGUILayout.HelpBox("Page missing material!", MessageType.Warning);
+                        }
+                    }
+
+                    string regionName = regions[i].name;
+                    Texture2D icon = SpineEditorUtilities.Icons.image;
+                    if (regionName.EndsWith(" "))
+                    {
+                        regionName = string.Format("'{0}'", regions[i].name);
+                        icon = SpineEditorUtilities.Icons.warning;
+                        EditorGUILayout.LabelField(SpineInspectorUtility.TempContent(regionName, icon,
+                            "Region name ends with whitespace. This may cause errors. Please check your source image filenames."));
+                    }
+                    else
+                    {
+                        EditorGUILayout.LabelField(SpineInspectorUtility.TempContent(regionName, icon));
+                    }
+                }
+
+                EditorGUI.indentLevel = baseIndent;
+            }
+
+            if (serializedObject.ApplyModifiedProperties() || SpineInspectorUtility.UndoRedoPerformed(Event.current))
+            {
+                atlasAsset.Clear();
+            }
+        }
+    }
 }

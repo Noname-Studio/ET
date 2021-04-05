@@ -28,7 +28,7 @@ namespace RestaurantPreview.Config
 	}
 	[%CoreClass]
 	{
-		public partial class [@Class]Property : ConfigAssetManager<[@Class]Property>, ILocalization
+		public partial class [@Class]Property : IConfig, ILocalization
 		{
 			[%Enum]
 			{
@@ -54,6 +54,8 @@ namespace RestaurantPreview.Config
         	public static string Read(string id,Language? language = null,bool throwException = true)
         	{
         	    var property = Get(id, throwException);
+	    if (property == null)
+                          return id;
         	    return property.ToLoc(language);
         	}
 

@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Share
 {
-	public partial class View_ShareFrame : GComponent
-	{
-		public GLoader Holder;
+    public partial class View_ShareFrame: GComponent
+    {
+        public GLoader Holder;
 
-		public const string URL = "ui://ypf7zkklom85nj";
+        public const string URL = "ui://ypf7zkklom85nj";
 
-		public static View_ShareFrame CreateInstance()
-		{
-			return (View_ShareFrame)UIPackage.CreateObject("Share","ShareFrame");
-		}
+        public static View_ShareFrame CreateInstance()
+        {
+            return (View_ShareFrame) UIPackage.CreateObject("Share", "ShareFrame");
+        }
 
-		public View_ShareFrame()
-		{
-		}
+        public View_ShareFrame()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			Holder = (GLoader)this.GetChildAt(1);
-		}
-	}
+            Holder = (GLoader) GetChildAt(1);
+        }
+    }
 }

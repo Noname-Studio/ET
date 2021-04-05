@@ -12,22 +12,22 @@ namespace Panthea.Asset
         private ABFileTrack mFilelogContext;
         private IDownloadPlatform mDownloadServices;
 
-        public AssetBundleDownloader(ABFileTrack filelog,IDownloadPlatform platform)
+        public AssetBundleDownloader(ABFileTrack filelog, IDownloadPlatform platform)
         {
-            this.mFilelogContext = filelog;
-            this.mDownloadServices = platform;
+            mFilelogContext = filelog;
+            mDownloadServices = platform;
         }
-    
+
         /// <summary>
         /// 根据本地列表检测需要下载得文件内容
         /// </summary>
         /// <returns></returns>
         public async UniTask<List<AssetFileLog>> FetchDownloadList()
         {
-            var updateList = await this.mFilelogContext.CheckUpdateList();
+            var updateList = await mFilelogContext.CheckUpdateList();
             return updateList;
         }
-    
+
         /// <summary>
         /// 检查本地是否存在这个文件
         /// </summary>
@@ -36,7 +36,7 @@ namespace Panthea.Asset
         /// <exception cref="FileNotFoundException"></exception>
         private string HasExist(string path)
         {
-            var value = this.mFilelogContext.GetFileInfo(path);
+            var value = mFilelogContext.GetFileInfo(path);
             //这里我们返回的应该是最新版本的File
             if (value != null)
             {
@@ -58,14 +58,14 @@ namespace Panthea.Asset
 
             return null;
         }
-    
+
         /// <summary>
         /// 下载文件
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async UniTask Download(List<AssetFileLog> pathList,IProgress<float> progress = null)
+        public async UniTask Download(List<AssetFileLog> pathList, IProgress<float> progress = null)
         {
             //我们需要优先下载Catalog,这个文件是Addressable系统必须的文件.后续的加载和下载依赖等都需要使用这个文件
             List<UniTask> downloadTasks = new List<UniTask>();
@@ -73,6 +73,7 @@ namespace Panthea.Asset
             {
                 downloadTasks.Add(Download(path.Path));
             }
+
             int length = downloadTasks.Count - 1;
             if (length > 0)
             {
@@ -93,24 +94,26 @@ namespace Panthea.Asset
                         progress?.Report(100);
                         break;
                     }
+
                     progress?.Report(finished / length * 100);
                     await UniTask.DelayFrame(1);
                 }
-                this.mFilelogContext.SyncLocal();
+
+                mFilelogContext.SyncLocal();
             }
         }
-    
+
         private async UniTask Download(string path)
         {
-            IDownloadPlatform service = this.mDownloadServices;
+            IDownloadPlatform service = mDownloadServices;
             int tryTimes = 0;
             var thread = await service.FetchHeader(path);
-            var existPath = this.HasExist(path);
+            var existPath = HasExist(path);
             if (!string.IsNullOrEmpty(existPath))
             {
                 if (AssetsUtils.CheckIntegrity(existPath, thread.Crc))
                 {
-                    await this.mFilelogContext.Update(path);
+                    await mFilelogContext.Update(path);
                     return;
                 }
             }
@@ -127,7 +130,7 @@ namespace Panthea.Asset
                     }
 
                     Log.Print(path + "    下载完毕");
-                    await this.mFilelogContext.Update(path);
+                    await mFilelogContext.Update(path);
                     break;
                 }
                 catch (RemoteFileNotFound e)

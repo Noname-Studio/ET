@@ -7,65 +7,68 @@ namespace Kitchen
     /// 厨具的公开方法.用于处理状态和获取厨具的相关信息
     /// 你无法操作任何显示层相关的东西.但是你可以通过改变状态去驱动显示层做出变化
     /// </summary>
-    public class NormalCookware : ICookware
+    public class NormalCookware: ICookware
     {
-        public Type Type => this.GetType();
+        public Type Type => GetType();
         public IAnimation Animation { get; }
         public UnityObject Display { get; }
         public CookwareProperty Property { get; }
         public CookwareDetailProperty CookwareDetail { get; }
 
         private List<FoodProperty> mMakeFoodProperty;
-        
+
         private CookwareState mState = CookwareState.Idle;
+
         /// <summary>
         /// 厨具当前的状态
         /// </summary>
         public CookwareState State
         {
-            get
-            {
-                return mState;
-            }
+            get => mState;
             private set
             {
                 mState = value;
-                mRenderer.Update(mState);
+                mRenderer.ChangeState(mState);
             }
         }
+
         /// <summary>
         /// 厨具的状态处理器.内部包含一个帧处理器.如果厨具已经完成了工作.且食材会烧焦的情况下的话.帧处理器会处理食物烧焦的情况
         /// </summary>
         private readonly CookwareRenderer mRenderer;
+
         /// <summary>
         /// 如果这个ID不为0则代表这个厨具上面已经产生了食物.
         /// </summary>
         public string FoodId { get; private set; } = null;
+
         /// <summary>
         /// 当前FoodId的数量
         /// </summary>
-        public int Count { get; private set; }
+        public int FoodCount { get; private set; }
+
         /// <summary>
         /// 正在制作中的食物
         /// </summary>
         private string WorkingFoodId { get; set; }
-        public PlacedIngredients PlacedIngredients{get;}
+
+        public PlacedIngredients PlacedIngredients { get; }
         private readonly PlacedRenderer mPlacedRenderer;
+
         /// <summary>
         /// 避免重复New List 我们这里把GetRequirement的需求条件编程类变量而不是局部变量
         /// </summary>
         private HashSet<BaseIngredient> mRequirement = new HashSet<BaseIngredient>();
 
-        
-        public NormalCookware(CookwareProperty property,UnityObject display,IAnimation animation)
+        public NormalCookware(CookwareProperty property, UnityObject display, IAnimation animation)
         {
             Property = property;
-            CookwareDetail = property.Current;
+            CookwareDetail = property.CurrentLevel;
             Display = display;
             Animation = animation;
             mRenderer = new CookwareRenderer(this);
             PlacedIngredients = new PlacedIngredients();
-            mPlacedRenderer = new PlacedRenderer(PlacedIngredients,Animation.FoodPos);
+            mPlacedRenderer = new PlacedRenderer(PlacedIngredients, Animation.FoodPos);
             InitMakeFoodProperty();
         }
 
@@ -79,10 +82,9 @@ namespace Kitchen
 
         public void Dispose()
         {
-            mRenderer.Dispose();
             mPlacedRenderer.Dispose();
         }
-        
+
         /// <summary>
         /// 将需要添加到厨具的菜品,如果添加成功了会返回添加成功的菜品
         /// </summary>
@@ -91,22 +93,32 @@ namespace Kitchen
         public List<string> PutIn(List<string> ingredients)
         {
             if (ingredients == null || ingredients.Count == 0)
+            {
                 return null;
-            if (!string.IsNullOrEmpty(FoodId) && Count > 1)
+            }
+
+            if (!string.IsNullOrEmpty(FoodId) && FoodCount > 1)
+            {
                 return null;
+            }
+
             var list = GetRequirement();
             List<string> put = null;
             foreach (var req in list)
             {
                 if (ingredients.Contains(req.Key))
                 {
-                    if(put == null)
+                    if (put == null)
+                    {
                         put = new List<string>();
+                    }
+
                     if (PlacedIngredients.List.Contains(req.Key))
                     {
                         //厨具里面已经有这个食材了.我们不需要添加这个食材了
                         continue;
                     }
+
                     put.Add(req.Key);
                     PlacedIngredients.Add(req.Key);
                 }
@@ -121,31 +133,37 @@ namespace Kitchen
         public string TakeFood()
         {
             var food = FoodId;
-            Count--;
+            FoodCount--;
             mRenderer.RefreshCount();
-            if (Count <= 0)
+            if (FoodCount <= 0)
             {
                 FoodId = null;
                 Animation.Loop = false;
                 Animation.AnimationName = "1normal";
                 State = CookwareState.Idle;
             }
+
             return food;
         }
-        
+
         /// <summary>
         /// 厨具开始工作
         /// </summary>
         public void DoWork()
         {
-            string foodKey = null; 
+            string foodKey = null;
             //食材还未集齐.我们无法开始制作
-            if(GetRequirement(ref foodKey).Count != 0)
+            if (GetRequirement(ref foodKey).Count != 0)
+            {
                 return;
+            }
+
             //厨具上有食物不能继续工作
             if (!string.IsNullOrEmpty(FoodId))
+            {
                 return;
-            
+            }
+
             Animation.Loop = true;
             Animation.AnimationName = "3work";
             State = CookwareState.Work;
@@ -158,7 +176,7 @@ namespace Kitchen
             string key = null;
             return GetRequirement(ref key);
         }
-        
+
         /// <summary>
         /// 获取食物制作所需要的食材,该方法返回食材列表
         /// </summary>
@@ -166,10 +184,13 @@ namespace Kitchen
         /// <returns></returns>
         private HashSet<BaseIngredient> GetRequirement(ref string foodKey)
         {
-            if(mRequirement.Count > 0)
+            if (mRequirement.Count > 0)
+            {
                 mRequirement.Clear();
+            }
+
             var placedList = PlacedIngredients.List;
-            
+
             bool hasPlaced = placedList.Count > 0;
             foreach (var node in mMakeFoodProperty)
             {
@@ -178,12 +199,12 @@ namespace Kitchen
                 {
                     if (hasPlaced)
                     {
-                        int overlapCount = Overlap(placedList,node.AllIngredients);
-                        if (overlapCount == node.AllIngredients.Count)//发现厨具上的食材完全匹配
+                        int overlapCount = Overlap(placedList, node.AllIngredients);
+                        if (overlapCount == node.AllIngredients.Count) //发现厨具上的食材完全匹配
                         {
                             pass = true;
                         }
-                        else if(overlapCount > 0)
+                        else if (overlapCount > 0)
                         {
                             mRequirement.AddRange(node.AllIngredients);
                         }
@@ -197,6 +218,7 @@ namespace Kitchen
                 {
                     pass = true;
                 }
+
                 //我们这里找到了完全匹配的食谱.我们不需要任何食材了.直接清空需求列表并返回
                 if (pass)
                 {
@@ -205,16 +227,17 @@ namespace Kitchen
                     return mRequirement;
                 }
             }
+
             return mRequirement;
         }
-        
+
         /// <summary>
         /// 检查两个List之间存在的交集数量
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        private int Overlap(IList<string> from,IList<BaseIngredient> to)
+        private int Overlap(IList<string> from, IList<BaseIngredient> to)
         {
             int count = from.Count;
             int count2 = to.Count;
@@ -226,9 +249,12 @@ namespace Kitchen
                 {
                     var b = to[j];
                     if (b != null && a == b.Key)
+                    {
                         result++;
+                    }
                 }
             }
+
             return result;
         }
 
@@ -240,7 +266,7 @@ namespace Kitchen
             Animation.Loop = false;
             Animation.AnimationName = "4done";
             FoodId = WorkingFoodId;
-            Count = CookwareDetail.MakeCount;
+            FoodCount = CookwareDetail.MakeCount;
             WorkingFoodId = null;
             State = CookwareState.Done;
             if (CookwareDetail.BurnTime > 0)
@@ -248,7 +274,7 @@ namespace Kitchen
                 StartBurn();
             }
         }
-    
+
         /// <summary>
         /// 开始烧焦
         /// </summary>
@@ -258,7 +284,7 @@ namespace Kitchen
             Animation.AnimationName = "4done";
             State = CookwareState.Burning;
         }
-        
+
         /// <summary>
         /// 彻底烧焦
         /// </summary>
@@ -266,8 +292,13 @@ namespace Kitchen
         {
             Animation.Loop = true;
             Animation.AnimationName = "5burn";
-            FoodId = "F_BurnedFood";//烧焦食物ID
+            FoodId = "F_BurnedFood"; //烧焦食物ID
             State = CookwareState.Burned;
+        }
+
+        public void Update()
+        {
+            mRenderer.Update();
         }
     }
 }

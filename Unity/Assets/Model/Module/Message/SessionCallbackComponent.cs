@@ -10,14 +10,14 @@ namespace ET
 
         public override void Dispose()
         {
-            if (this.IsDisposed)
+            if (IsDisposed)
             {
                 return;
             }
 
             base.Dispose();
 
-            this.DisposeCallback?.Invoke(this.GetParent<Session>());
+            DisposeCallback?.Invoke(GetParent<Session>());
         }
     }
 }

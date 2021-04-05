@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Panthea.Asset
 {
-    public class S3Download : IDownloadPlatform
+    public class S3Download: IDownloadPlatform
     {
         private IDownloadHandler mDownloadHandler;
         private const string WEB_CONTENT_HOST = "https://dum5uv7xb9d66.cloudfront.net/";
@@ -13,22 +13,22 @@ namespace Panthea.Asset
         private static readonly string Version = Application.version;
         private static readonly string Platform = AssetsConfig.Platform;
 
-        public S3Download(string relativePath,string savePath,IDownloadHandler downloadHandler)
+        public S3Download(string relativePath, string savePath, IDownloadHandler downloadHandler)
         {
-            this.mRelativePath = relativePath;
-            this.mSavePath = savePath;
-            this.mDownloadHandler = downloadHandler;
+            mRelativePath = relativePath;
+            mSavePath = savePath;
+            mDownloadHandler = downloadHandler;
         }
-    
+
         private string FormatUrl(string path)
         {
-            string url = WEB_CONTENT_HOST + this.mRelativePath + Version + "/" + Platform + "/" +  path;
+            string url = WEB_CONTENT_HOST + mRelativePath + Version + "/" + Platform + "/" + path;
             return url;
         }
-    
+
         public async UniTask<DownloadResult> Download(DownloadThread thread)
         {
-            return await this.mDownloadHandler.Download(thread);
+            return await mDownloadHandler.Download(thread);
         }
 
         public async UniTask<DownloadThread> FetchHeader(string path)
@@ -36,8 +36,8 @@ namespace Panthea.Asset
             long length = 0;
             uint crc32 = 0;
             long version = 0;
-            string url = this.FormatUrl(path);
-            var headers = await this.mDownloadHandler.GetHeaders(url);
+            string url = FormatUrl(path);
+            var headers = await mDownloadHandler.GetHeaders(url);
             if (headers != null)
             {
                 long.TryParse(headers["Content-Length"], out length);
@@ -48,19 +48,20 @@ namespace Panthea.Asset
             {
                 throw new RemoteFileNotFound(url + "上找不到这个文件");
             }
-            return new DownloadThread(url, this.mSavePath + path, length, version,crc32);
+
+            return new DownloadThread(url, mSavePath + path, length, version, crc32);
         }
 
         public async UniTask<string> GetText(string path)
         {
-            string url = this.FormatUrl(path);
-            return await this.mDownloadHandler.GetText(url);
+            string url = FormatUrl(path);
+            return await mDownloadHandler.GetText(url);
         }
-    
+
         public async UniTask<byte[]> GetBytes(string path)
         {
-            string url = this.FormatUrl(path);
-            return await this.mDownloadHandler.GetBytes(url);
+            string url = FormatUrl(path);
+            return await mDownloadHandler.GetBytes(url);
         }
     }
 }

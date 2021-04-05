@@ -14,7 +14,6 @@ namespace Common
         public GLoader icon1;
         public GTextField newval;
         public GLoader icon;
-        public GTextField maxal;
         public GTextField name;
         public const string URL = "ui://ucagdrsi7pufvvm";
 
@@ -34,7 +33,6 @@ namespace Common
             icon1 = (GLoader)GetChild("icon1");
             newval = (GTextField)GetChild("newval");
             icon = (GLoader)GetChild("icon");
-            maxal = (GTextField)GetChild("maxal");
             name = (GTextField)GetChild("name");
         }
     }

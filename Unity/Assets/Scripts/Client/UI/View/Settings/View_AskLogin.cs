@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_AskLogin : GComponent
+    public partial class View_AskLogin: GComponent
     {
         public Controller c1;
         public GButton bg;
@@ -16,7 +16,7 @@ namespace Settings
 
         public static View_AskLogin CreateInstance()
         {
-            return (View_AskLogin)UIPackage.CreateObject("Settings", "AskLogin");
+            return (View_AskLogin) UIPackage.CreateObject("Settings", "AskLogin");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -24,10 +24,10 @@ namespace Settings
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
-            login = (GButton)GetChild("login");
-            Close = (GButton)GetChild("Close");
-            Relief = (GRichTextField)GetChild("Relief");
+            bg = (GButton) GetChild("bg");
+            login = (GButton) GetChild("login");
+            Close = (GButton) GetChild("Close");
+            Relief = (GRichTextField) GetChild("Relief");
         }
     }
 }

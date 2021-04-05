@@ -15,12 +15,12 @@ namespace Panthea.Asset
             var crc32 = Crc32CAlgorithm.Compute(thread.WritePath);
             return crc32 == thread.Crc;
         }
-    
+
         /// <summary>
         /// 检查文件完整性
         /// </summary>
         /// <returns></returns>
-        public static bool CheckIntegrity(string file,uint compareCrc)
+        public static bool CheckIntegrity(string file, uint compareCrc)
         {
             Stream stream;
             if (file.StartsWith(AssetsConfig.StreamingAssets))
@@ -35,14 +35,15 @@ namespace Panthea.Asset
             {
                 stream = new FileStream(file, FileMode.Open, FileAccess.Read);
             }
-            return CheckIntegrity(stream,compareCrc);
+
+            return CheckIntegrity(stream, compareCrc);
         }
 
         /// <summary>
         /// 检查文件完整性
         /// </summary>
         /// <returns></returns>
-        public static bool CheckIntegrity(Stream stream,uint compareCrc)
+        public static bool CheckIntegrity(Stream stream, uint compareCrc)
         {
             var localCrc = Crc32CAlgorithm.Compute(stream);
             return localCrc == compareCrc;

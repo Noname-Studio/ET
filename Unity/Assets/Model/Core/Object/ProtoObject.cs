@@ -10,7 +10,7 @@ namespace ET
         public object Clone()
         {
             byte[] bytes = ProtobufHelper.ToBytes(this);
-            return ProtobufHelper.FromBytes(this.GetType(), bytes, 0, bytes.Length);
+            return ProtobufHelper.FromBytes(GetType(), bytes, 0, bytes.Length);
         }
     }
 }

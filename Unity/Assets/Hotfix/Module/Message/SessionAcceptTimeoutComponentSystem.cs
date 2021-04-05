@@ -1,4 +1,4 @@
-﻿﻿namespace ET
+﻿namespace ET
 {
     [ObjectSystem]
     public class SessionAcceptTimeoutComponentAwakeSystem: AwakeSystem<SessionAcceptTimeoutComponent>
@@ -17,9 +17,8 @@
             TimerComponent.Instance.Remove(ref self.Timer);
         }
     }
-    
+
     public static class SessionAcceptTimeoutComponentSystem
     {
-        
     }
 }

@@ -38,7 +38,7 @@ namespace GamingUI
 
         private void RegisterDataUpdate(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(KitchenRecord.ServicesOrderNumber))
+            if (e.PropertyName == nameof (KitchenRecord.ServicesOrderNumber))
             {
                 var args = e as IntPropertyChanged;
                 if (args != null)
@@ -61,7 +61,7 @@ namespace GamingUI
             IntervalProgress.value = 0;
             ComboTimesProgress.value = 0;
         }
-        
+
         private void SetFullComboTime()
         {
             IntervalProgress.value = 100;
@@ -73,6 +73,7 @@ namespace GamingUI
             if (IntervalProgress.value <= 0)
             {
                 ComboTimesProgress.value = 0;
+                MessageKit.Inst.Send(EventKey.AdsFailed);
             }
         }
     }

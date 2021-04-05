@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.QuizGame
 {
-	public partial class View_loadingstar : GComponent
-	{
-		public Transition t0;
+    public partial class View_loadingstar: GComponent
+    {
+        public Transition t0;
 
-		public const string URL = "ui://btrw885ip59ohk";
+        public const string URL = "ui://btrw885ip59ohk";
 
-		public static View_loadingstar CreateInstance()
-		{
-			return (View_loadingstar)UIPackage.CreateObject("QuizGame","loadingstar");
-		}
+        public static View_loadingstar CreateInstance()
+        {
+            return (View_loadingstar) UIPackage.CreateObject("QuizGame", "loadingstar");
+        }
 
-		public View_loadingstar()
-		{
-		}
+        public View_loadingstar()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            t0 = GetTransitionAt(0);
+        }
+    }
 }

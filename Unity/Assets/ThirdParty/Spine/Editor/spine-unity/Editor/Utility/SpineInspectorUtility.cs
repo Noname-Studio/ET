@@ -32,345 +32,498 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Spine.Unity.Editor {
-	public static class SpineInspectorUtility {
+namespace Spine.Unity.Editor
+{
+    public static class SpineInspectorUtility
+    {
+        public static string Pluralize(int n, string singular, string plural)
+        {
+            return n + " " + (n == 1? singular : plural);
+        }
 
-		public static string Pluralize (int n, string singular, string plural) {
-			return n + " " + (n == 1 ? singular : plural);
-		}
+        public static string PluralThenS(int n)
+        {
+            return n == 1? "" : "s";
+        }
 
-		public static string PluralThenS (int n) {
-			return n == 1 ? "" : "s";
-		}
+        public static string EmDash => "\u2014";
 
-		public static string EmDash {
-			get { return "\u2014"; }
-		}
+        private static GUIContent tempContent;
 
-		static GUIContent tempContent;
-		internal static GUIContent TempContent (string text, Texture2D image = null, string tooltip = null) {
-			if (tempContent == null) tempContent = new GUIContent();
-			tempContent.text = text;
-			tempContent.image = image;
-			tempContent.tooltip = tooltip;
-			return tempContent;
-		}
+        internal static GUIContent TempContent(string text, Texture2D image = null, string tooltip = null)
+        {
+            if (tempContent == null)
+            {
+                tempContent = new GUIContent();
+            }
 
-		public static void PropertyFieldWideLabel (SerializedProperty property, GUIContent label = null, float minimumLabelWidth = 150) {
-			EditorGUIUtility.labelWidth = minimumLabelWidth;
-			EditorGUILayout.PropertyField(property, label ?? TempContent(property.displayName, null, property.tooltip));
-			EditorGUIUtility.labelWidth = 0; // Resets to default
-		}
+            tempContent.text = text;
+            tempContent.image = image;
+            tempContent.tooltip = tooltip;
+            return tempContent;
+        }
 
-		public static void PropertyFieldFitLabel (SerializedProperty property, GUIContent label = null, float extraSpace = 5f) {
-			label = label ?? TempContent(property.displayName, null, property.tooltip);
-			float width = GUI.skin.label.CalcSize(TempContent(label.text)).x + extraSpace;
-			if (label.image != null)
-				width += EditorGUIUtility.singleLineHeight;
-			PropertyFieldWideLabel(property, label, width);
-		}
+        public static void PropertyFieldWideLabel(SerializedProperty property, GUIContent label = null, float minimumLabelWidth = 150)
+        {
+            EditorGUIUtility.labelWidth = minimumLabelWidth;
+            EditorGUILayout.PropertyField(property, label ?? TempContent(property.displayName, null, property.tooltip));
+            EditorGUIUtility.labelWidth = 0; // Resets to default
+        }
 
-		/// <summary>Multi-edit-compatible version of EditorGUILayout.ToggleLeft(SerializedProperty)</summary>
-		public static void ToggleLeftLayout (SerializedProperty property, GUIContent label = null, float width = 120f) {
-			if (label == null) label = SpineInspectorUtility.TempContent(property.displayName, tooltip: property.tooltip);
+        public static void PropertyFieldFitLabel(SerializedProperty property, GUIContent label = null, float extraSpace = 5f)
+        {
+            label = label ?? TempContent(property.displayName, null, property.tooltip);
+            float width = GUI.skin.label.CalcSize(TempContent(label.text)).x + extraSpace;
+            if (label.image != null)
+            {
+                width += EditorGUIUtility.singleLineHeight;
+            }
 
-			if (property.hasMultipleDifferentValues) {
-				bool previousShowMixedValue = EditorGUI.showMixedValue;
-				EditorGUI.showMixedValue = true;
+            PropertyFieldWideLabel(property, label, width);
+        }
 
-				bool clicked = EditorGUILayout.ToggleLeft(label, property.boolValue, GUILayout.Width(width));
-				if (clicked) property.boolValue = true; // Set all values to true when clicked.
+        /// <summary>Multi-edit-compatible version of EditorGUILayout.ToggleLeft(SerializedProperty)</summary>
+        public static void ToggleLeftLayout(SerializedProperty property, GUIContent label = null, float width = 120f)
+        {
+            if (label == null)
+            {
+                label = TempContent(property.displayName, tooltip: property.tooltip);
+            }
 
-				EditorGUI.showMixedValue = previousShowMixedValue;
-			} else {
-				property.boolValue = EditorGUILayout.ToggleLeft(label, property.boolValue, GUILayout.Width(width));
-			}
-		}
+            if (property.hasMultipleDifferentValues)
+            {
+                bool previousShowMixedValue = EditorGUI.showMixedValue;
+                EditorGUI.showMixedValue = true;
 
-		/// <summary>Multi-edit-compatible version of EditorGUILayout.ToggleLeft(SerializedProperty)</summary>
-		public static void ToggleLeft (Rect rect, SerializedProperty property, GUIContent label = null) {
-			if (label == null) label = SpineInspectorUtility.TempContent(property.displayName, tooltip: property.tooltip);
+                bool clicked = EditorGUILayout.ToggleLeft(label, property.boolValue, GUILayout.Width(width));
+                if (clicked)
+                {
+                    property.boolValue = true; // Set all values to true when clicked.
+                }
 
-			if (property.hasMultipleDifferentValues) {
-				bool previousShowMixedValue = EditorGUI.showMixedValue;
-				EditorGUI.showMixedValue = true;
+                EditorGUI.showMixedValue = previousShowMixedValue;
+            }
+            else
+            {
+                property.boolValue = EditorGUILayout.ToggleLeft(label, property.boolValue, GUILayout.Width(width));
+            }
+        }
 
-				bool clicked = EditorGUI.ToggleLeft(rect, label, property.boolValue);
-				if (clicked) property.boolValue = true; // Set all values to true when clicked.
+        /// <summary>Multi-edit-compatible version of EditorGUILayout.ToggleLeft(SerializedProperty)</summary>
+        public static void ToggleLeft(Rect rect, SerializedProperty property, GUIContent label = null)
+        {
+            if (label == null)
+            {
+                label = TempContent(property.displayName, tooltip: property.tooltip);
+            }
 
-				EditorGUI.showMixedValue = previousShowMixedValue;
-			} else {
-				property.boolValue = EditorGUI.ToggleLeft(rect, label, property.boolValue);
-			}
-		}
+            if (property.hasMultipleDifferentValues)
+            {
+                bool previousShowMixedValue = EditorGUI.showMixedValue;
+                EditorGUI.showMixedValue = true;
 
-		public static bool UndoRedoPerformed (UnityEngine.Event current) {
-			return current.type == EventType.ValidateCommand && current.commandName == "UndoRedoPerformed";
-		}
+                bool clicked = EditorGUI.ToggleLeft(rect, label, property.boolValue);
+                if (clicked)
+                {
+                    property.boolValue = true; // Set all values to true when clicked.
+                }
 
-		public static Texture2D UnityIcon<T>() {
-			return EditorGUIUtility.ObjectContent(null, typeof(T)).image as Texture2D;
-		}
+                EditorGUI.showMixedValue = previousShowMixedValue;
+            }
+            else
+            {
+                property.boolValue = EditorGUI.ToggleLeft(rect, label, property.boolValue);
+            }
+        }
 
-		public static Texture2D UnityIcon(System.Type type) {
-			return EditorGUIUtility.ObjectContent(null, type).image as Texture2D;
-		}
+        public static bool UndoRedoPerformed(UnityEngine.Event current)
+        {
+            return current.type == EventType.ValidateCommand && current.commandName == "UndoRedoPerformed";
+        }
 
-		public static FieldInfo GetNonPublicField (System.Type type, string fieldName) {
-			return type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
-		}
+        public static Texture2D UnityIcon<T>()
+        {
+            return EditorGUIUtility.ObjectContent(null, typeof (T)).image as Texture2D;
+        }
 
-		#region SerializedProperty Helpers
-		public static SerializedProperty FindBaseOrSiblingProperty (this SerializedProperty property, string propertyName) {
-			if (string.IsNullOrEmpty(propertyName)) return null;
+        public static Texture2D UnityIcon(System.Type type)
+        {
+            return EditorGUIUtility.ObjectContent(null, type).image as Texture2D;
+        }
 
-			SerializedProperty relativeProperty = property.serializedObject.FindProperty(propertyName); // baseProperty
+        public static FieldInfo GetNonPublicField(System.Type type, string fieldName)
+        {
+            return type.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+        }
 
-			// If base property is not found, look for the sibling property.
-			if (relativeProperty == null) {
-				string propertyPath = property.propertyPath;
-				int localPathLength = property.name.Length;
+        #region SerializedProperty Helpers
 
-				string newPropertyPath = propertyPath.Remove(propertyPath.Length - localPathLength, localPathLength) + propertyName;
-				relativeProperty = property.serializedObject.FindProperty(newPropertyPath);
+        public static SerializedProperty FindBaseOrSiblingProperty(this SerializedProperty property, string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName))
+            {
+                return null;
+            }
 
-				// If a direct sibling property was not found, try to find the sibling of the array.
-				if (relativeProperty == null && property.isArray) {
-					int propertyPathLength = propertyPath.Length;
+            SerializedProperty relativeProperty = property.serializedObject.FindProperty(propertyName); // baseProperty
 
-					int dotCount = 0;
-					const int SiblingOfListDotCount = 3;
-					for (int i = 1; i < propertyPathLength; i++) {
-						if (propertyPath[propertyPathLength - i] == '.') {
-							dotCount++;
-							if (dotCount >= SiblingOfListDotCount) {
-								localPathLength = i - 1;
-								break;
-							}
-						}
-					}
+            // If base property is not found, look for the sibling property.
+            if (relativeProperty == null)
+            {
+                string propertyPath = property.propertyPath;
+                int localPathLength = property.name.Length;
 
-					newPropertyPath = propertyPath.Remove(propertyPath.Length - localPathLength, localPathLength) + propertyName;
-					relativeProperty = property.serializedObject.FindProperty(newPropertyPath);
-				}
-			}
+                string newPropertyPath = propertyPath.Remove(propertyPath.Length - localPathLength, localPathLength) + propertyName;
+                relativeProperty = property.serializedObject.FindProperty(newPropertyPath);
 
-			return relativeProperty;
-		}
-		#endregion
+                // If a direct sibling property was not found, try to find the sibling of the array.
+                if (relativeProperty == null && property.isArray)
+                {
+                    int propertyPathLength = propertyPath.Length;
 
-		#region Layout Scopes
-		static GUIStyle grayMiniLabel;
-		public static GUIStyle GrayMiniLabel {
-			get {
-				if (grayMiniLabel == null) {
-					grayMiniLabel = new GUIStyle(EditorStyles.centeredGreyMiniLabel) {
-						alignment = TextAnchor.UpperLeft
-					};
-				}
-				return grayMiniLabel;
-			}
-		}
+                    int dotCount = 0;
+                    const int SiblingOfListDotCount = 3;
+                    for (int i = 1; i < propertyPathLength; i++)
+                    {
+                        if (propertyPath[propertyPathLength - i] == '.')
+                        {
+                            dotCount++;
+                            if (dotCount >= SiblingOfListDotCount)
+                            {
+                                localPathLength = i - 1;
+                                break;
+                            }
+                        }
+                    }
 
-		public class LabelWidthScope : System.IDisposable {
-			public LabelWidthScope (float minimumLabelWidth = 190f) {
-				EditorGUIUtility.labelWidth = minimumLabelWidth;
-			}
+                    newPropertyPath = propertyPath.Remove(propertyPath.Length - localPathLength, localPathLength) + propertyName;
+                    relativeProperty = property.serializedObject.FindProperty(newPropertyPath);
+                }
+            }
 
-			public void Dispose () {
-				EditorGUIUtility.labelWidth = 0f;
-			}
-		}
+            return relativeProperty;
+        }
 
-		public class IndentScope : System.IDisposable {
-			public IndentScope () { EditorGUI.indentLevel++; }
-			public void Dispose () { EditorGUI.indentLevel--; }
-		}
+        #endregion
 
-		public class BoxScope : System.IDisposable {
-			readonly bool indent;
+        #region Layout Scopes
 
-			static GUIStyle boxScopeStyle;
-			public static GUIStyle BoxScopeStyle {
-				get {
-					if (boxScopeStyle == null) {
-						boxScopeStyle = new GUIStyle(EditorStyles.helpBox);
-						RectOffset p = boxScopeStyle.padding; // RectOffset is a class
-						p.right += 6;
-						p.top += 1;
-						p.left += 3;
-					}
+        private static GUIStyle grayMiniLabel;
 
-					return boxScopeStyle;
-				}
-			}
+        public static GUIStyle GrayMiniLabel
+        {
+            get
+            {
+                if (grayMiniLabel == null)
+                {
+                    grayMiniLabel = new GUIStyle(EditorStyles.centeredGreyMiniLabel) { alignment = TextAnchor.UpperLeft };
+                }
 
-			public BoxScope (bool indent = true) {
-				this.indent = indent;
-				EditorGUILayout.BeginVertical(BoxScopeStyle);
-				if (indent) EditorGUI.indentLevel++;
-			}
+                return grayMiniLabel;
+            }
+        }
 
-			public void Dispose () {
-				if (indent) EditorGUI.indentLevel--;
-				EditorGUILayout.EndVertical();
-			}
-		}
-		#endregion
+        public class LabelWidthScope: System.IDisposable
+        {
+            public LabelWidthScope(float minimumLabelWidth = 190f)
+            {
+                EditorGUIUtility.labelWidth = minimumLabelWidth;
+            }
 
-		#region Button
-		const float CenterButtonMaxWidth = 270f;
-		const float CenterButtonHeight = 30f;
-		static GUIStyle spineButtonStyle;
-		static GUIStyle SpineButtonStyle {
-			get {
-				if (spineButtonStyle == null) {
-					spineButtonStyle = new GUIStyle(GUI.skin.button);
-					spineButtonStyle.padding = new RectOffset(10, 10, 10, 10);
-				}
-				return spineButtonStyle;
-			}
-		}
+            public void Dispose()
+            {
+                EditorGUIUtility.labelWidth = 0f;
+            }
+        }
 
-		public static bool LargeCenteredButton (string label, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth) {
-			if (sideSpace) {
-				bool clicked;
-				using (new EditorGUILayout.HorizontalScope()) {
-					EditorGUILayout.Space();
-					clicked = GUILayout.Button(label, SpineButtonStyle, GUILayout.MaxWidth(maxWidth), GUILayout.Height(CenterButtonHeight));
-					EditorGUILayout.Space();
-				}
-				EditorGUILayout.Space();
-				return clicked;
-			} else {
-				return GUILayout.Button(label, GUILayout.MaxWidth(CenterButtonMaxWidth), GUILayout.Height(CenterButtonHeight));
-			}
-		}
+        public class IndentScope: System.IDisposable
+        {
+            public IndentScope()
+            {
+                EditorGUI.indentLevel++;
+            }
 
-		public static bool LargeCenteredButton (GUIContent content, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth) {
-			if (sideSpace) {
-				bool clicked;
-				using (new EditorGUILayout.HorizontalScope()) {
-					EditorGUILayout.Space();
-					clicked = GUILayout.Button(content, SpineButtonStyle, GUILayout.MaxWidth(maxWidth), GUILayout.Height(CenterButtonHeight));
-					EditorGUILayout.Space();
-				}
-				EditorGUILayout.Space();
-				return clicked;
-			} else {
-				return GUILayout.Button(content, GUILayout.MaxWidth(CenterButtonMaxWidth), GUILayout.Height(CenterButtonHeight));
-			}
-		}
+            public void Dispose()
+            {
+                EditorGUI.indentLevel--;
+            }
+        }
 
-		public static bool CenteredButton (GUIContent content, float height = 20f, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth) {
-			if (sideSpace) {
-				bool clicked;
-				using (new EditorGUILayout.HorizontalScope()) {
-					EditorGUILayout.Space();
-					clicked = GUILayout.Button(content, GUILayout.MaxWidth(maxWidth), GUILayout.Height(height));
-					EditorGUILayout.Space();
-				}
-				EditorGUILayout.Space();
-				return clicked;
-			} else {
-				return GUILayout.Button(content, GUILayout.MaxWidth(maxWidth), GUILayout.Height(height));
-			}
-		}
-		#endregion
+        public class BoxScope: System.IDisposable
+        {
+            private readonly bool indent;
 
-		#region Multi-Editing Helpers
-		public static bool TargetsUseSameData (SerializedObject so) {
-			if (so.isEditingMultipleObjects) {
-				int n = so.targetObjects.Length;
-				var first = so.targetObjects[0] as IHasSkeletonDataAsset;
-				for (int i = 1; i < n; i++) {
-					var sr = so.targetObjects[i] as IHasSkeletonDataAsset;
-					if (sr != null && sr.SkeletonDataAsset != first.SkeletonDataAsset)
-						return false;
-				}
-			}
-			return true;
-		}
+            private static GUIStyle boxScopeStyle;
 
-		public static SerializedObject GetRenderersSerializedObject (SerializedObject serializedObject) {
-			if (serializedObject.isEditingMultipleObjects) {
-				var renderers = new List<Object>();
-				foreach (var o in serializedObject.targetObjects) {
-					var component = o as Component;
-					if (component != null) {
-						var renderer = component.GetComponent<Renderer>();
-						if (renderer != null)
-							renderers.Add(renderer);
-					}
-				}
-				return new SerializedObject(renderers.ToArray());
-			} else {
-				var component = serializedObject.targetObject as Component;
-				if (component != null) {
-					var renderer = component.GetComponent<Renderer>();
-					if (renderer != null)
-						return new SerializedObject(renderer);
-				}
-			}
+            public static GUIStyle BoxScopeStyle
+            {
+                get
+                {
+                    if (boxScopeStyle == null)
+                    {
+                        boxScopeStyle = new GUIStyle(EditorStyles.helpBox);
+                        RectOffset p = boxScopeStyle.padding; // RectOffset is a class
+                        p.right += 6;
+                        p.top += 1;
+                        p.left += 3;
+                    }
 
-			return null;
-		}
-		#endregion
+                    return boxScopeStyle;
+                }
+            }
 
-		#region Sorting Layer Field Helpers
-		static readonly GUIContent SortingLayerLabel = new GUIContent("Sorting Layer", "MeshRenderer.sortingLayerID");
-		static readonly GUIContent OrderInLayerLabel = new GUIContent("Order in Layer", "MeshRenderer.sortingOrder");
+            public BoxScope(bool indent = true)
+            {
+                this.indent = indent;
+                EditorGUILayout.BeginVertical(BoxScopeStyle);
+                if (indent)
+                {
+                    EditorGUI.indentLevel++;
+                }
+            }
 
-		static MethodInfo m_SortingLayerFieldMethod;
-		static MethodInfo SortingLayerFieldMethod {
-			get {
-				if (m_SortingLayerFieldMethod == null)
-					m_SortingLayerFieldMethod = typeof(EditorGUILayout).GetMethod("SortingLayerField", BindingFlags.Static | BindingFlags.NonPublic, null, new [] { typeof(GUIContent), typeof(SerializedProperty), typeof(GUIStyle) }, null);
+            public void Dispose()
+            {
+                if (indent)
+                {
+                    EditorGUI.indentLevel--;
+                }
 
-				return m_SortingLayerFieldMethod;
-			}
-		}
+                EditorGUILayout.EndVertical();
+            }
+        }
 
-		public struct SerializedSortingProperties {
-			public SerializedObject renderer;
-			public SerializedProperty sortingLayerID;
-			public SerializedProperty sortingOrder;
+        #endregion
 
-			public SerializedSortingProperties (Renderer r) : this(new SerializedObject(r)) {}
-			public SerializedSortingProperties (Object[] renderers) : this(new SerializedObject(renderers)) {}
+        #region Button
 
-			public SerializedSortingProperties (SerializedObject rendererSerializedObject) {
-				renderer = rendererSerializedObject;
-				sortingLayerID = renderer.FindProperty("m_SortingLayerID");
-				sortingOrder = renderer.FindProperty("m_SortingOrder");
-			}
+        private const float CenterButtonMaxWidth = 270f;
+        private const float CenterButtonHeight = 30f;
+        private static GUIStyle spineButtonStyle;
 
-			public void ApplyModifiedProperties () {
-				renderer.ApplyModifiedProperties();
+        private static GUIStyle SpineButtonStyle
+        {
+            get
+            {
+                if (spineButtonStyle == null)
+                {
+                    spineButtonStyle = new GUIStyle(GUI.skin.button);
+                    spineButtonStyle.padding = new RectOffset(10, 10, 10, 10);
+                }
 
-				// SetDirty
-				if (renderer.isEditingMultipleObjects)
-					foreach (var o in renderer.targetObjects)
-						EditorUtility.SetDirty(o);
-				else
-					EditorUtility.SetDirty(renderer.targetObject);
-			}
-		}
+                return spineButtonStyle;
+            }
+        }
 
-		public static void SortingPropertyFields (SerializedSortingProperties prop, bool applyModifiedProperties) {
-			if (applyModifiedProperties)
-				EditorGUI.BeginChangeCheck();
+        public static bool LargeCenteredButton(string label, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth)
+        {
+            if (sideSpace)
+            {
+                bool clicked;
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.Space();
+                    clicked = GUILayout.Button(label, SpineButtonStyle, GUILayout.MaxWidth(maxWidth), GUILayout.Height(CenterButtonHeight));
+                    EditorGUILayout.Space();
+                }
 
-			if (SpineInspectorUtility.SortingLayerFieldMethod != null && prop.sortingLayerID != null)
-				SpineInspectorUtility.SortingLayerFieldMethod.Invoke(null, new object[] { SortingLayerLabel, prop.sortingLayerID, EditorStyles.popup } );
-			else
-				EditorGUILayout.PropertyField(prop.sortingLayerID);
+                EditorGUILayout.Space();
+                return clicked;
+            }
+            else
+            {
+                return GUILayout.Button(label, GUILayout.MaxWidth(CenterButtonMaxWidth), GUILayout.Height(CenterButtonHeight));
+            }
+        }
 
-			EditorGUILayout.PropertyField(prop.sortingOrder, OrderInLayerLabel);
+        public static bool LargeCenteredButton(GUIContent content, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth)
+        {
+            if (sideSpace)
+            {
+                bool clicked;
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.Space();
+                    clicked = GUILayout.Button(content, SpineButtonStyle, GUILayout.MaxWidth(maxWidth), GUILayout.Height(CenterButtonHeight));
+                    EditorGUILayout.Space();
+                }
 
-			if (applyModifiedProperties && EditorGUI.EndChangeCheck())
-				prop.ApplyModifiedProperties();
-		}
-		#endregion
-	}
+                EditorGUILayout.Space();
+                return clicked;
+            }
+            else
+            {
+                return GUILayout.Button(content, GUILayout.MaxWidth(CenterButtonMaxWidth), GUILayout.Height(CenterButtonHeight));
+            }
+        }
+
+        public static bool CenteredButton(GUIContent content, float height = 20f, bool sideSpace = true, float maxWidth = CenterButtonMaxWidth)
+        {
+            if (sideSpace)
+            {
+                bool clicked;
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    EditorGUILayout.Space();
+                    clicked = GUILayout.Button(content, GUILayout.MaxWidth(maxWidth), GUILayout.Height(height));
+                    EditorGUILayout.Space();
+                }
+
+                EditorGUILayout.Space();
+                return clicked;
+            }
+            else
+            {
+                return GUILayout.Button(content, GUILayout.MaxWidth(maxWidth), GUILayout.Height(height));
+            }
+        }
+
+        #endregion
+
+        #region Multi-Editing Helpers
+
+        public static bool TargetsUseSameData(SerializedObject so)
+        {
+            if (so.isEditingMultipleObjects)
+            {
+                int n = so.targetObjects.Length;
+                var first = so.targetObjects[0] as IHasSkeletonDataAsset;
+                for (int i = 1; i < n; i++)
+                {
+                    var sr = so.targetObjects[i] as IHasSkeletonDataAsset;
+                    if (sr != null && sr.SkeletonDataAsset != first.SkeletonDataAsset)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public static SerializedObject GetRenderersSerializedObject(SerializedObject serializedObject)
+        {
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                var renderers = new List<Object>();
+                foreach (var o in serializedObject.targetObjects)
+                {
+                    var component = o as Component;
+                    if (component != null)
+                    {
+                        var renderer = component.GetComponent<Renderer>();
+                        if (renderer != null)
+                        {
+                            renderers.Add(renderer);
+                        }
+                    }
+                }
+
+                return new SerializedObject(renderers.ToArray());
+            }
+            else
+            {
+                var component = serializedObject.targetObject as Component;
+                if (component != null)
+                {
+                    var renderer = component.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        return new SerializedObject(renderer);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
+
+        #region Sorting Layer Field Helpers
+
+        private static readonly GUIContent SortingLayerLabel = new GUIContent("Sorting Layer", "MeshRenderer.sortingLayerID");
+        private static readonly GUIContent OrderInLayerLabel = new GUIContent("Order in Layer", "MeshRenderer.sortingOrder");
+
+        private static MethodInfo m_SortingLayerFieldMethod;
+
+        private static MethodInfo SortingLayerFieldMethod
+        {
+            get
+            {
+                if (m_SortingLayerFieldMethod == null)
+                {
+                    m_SortingLayerFieldMethod = typeof (EditorGUILayout).GetMethod("SortingLayerField", BindingFlags.Static | BindingFlags.NonPublic,
+                        null, new[] { typeof (GUIContent), typeof (SerializedProperty), typeof (GUIStyle) }, null);
+                }
+
+                return m_SortingLayerFieldMethod;
+            }
+        }
+
+        public struct SerializedSortingProperties
+        {
+            public SerializedObject renderer;
+            public SerializedProperty sortingLayerID;
+            public SerializedProperty sortingOrder;
+
+            public SerializedSortingProperties(Renderer r): this(new SerializedObject(r))
+            {
+            }
+
+            public SerializedSortingProperties(Object[] renderers): this(new SerializedObject(renderers))
+            {
+            }
+
+            public SerializedSortingProperties(SerializedObject rendererSerializedObject)
+            {
+                renderer = rendererSerializedObject;
+                sortingLayerID = renderer.FindProperty("m_SortingLayerID");
+                sortingOrder = renderer.FindProperty("m_SortingOrder");
+            }
+
+            public void ApplyModifiedProperties()
+            {
+                renderer.ApplyModifiedProperties();
+
+                // SetDirty
+                if (renderer.isEditingMultipleObjects)
+                {
+                    foreach (var o in renderer.targetObjects)
+                    {
+                        EditorUtility.SetDirty(o);
+                    }
+                }
+                else
+                {
+                    EditorUtility.SetDirty(renderer.targetObject);
+                }
+            }
+        }
+
+        public static void SortingPropertyFields(SerializedSortingProperties prop, bool applyModifiedProperties)
+        {
+            if (applyModifiedProperties)
+            {
+                EditorGUI.BeginChangeCheck();
+            }
+
+            if (SortingLayerFieldMethod != null && prop.sortingLayerID != null)
+            {
+                SortingLayerFieldMethod.Invoke(null, new object[] { SortingLayerLabel, prop.sortingLayerID, EditorStyles.popup });
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(prop.sortingLayerID);
+            }
+
+            EditorGUILayout.PropertyField(prop.sortingOrder, OrderInLayerLabel);
+
+            if (applyModifiedProperties && EditorGUI.EndChangeCheck())
+            {
+                prop.ApplyModifiedProperties();
+            }
+        }
+
+        #endregion
+    }
 }

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_PatienceProgress : GComponent
+    public partial class View_PatienceProgress: GComponent
     {
         public Controller State;
         public GLoader Bar;
@@ -13,7 +13,7 @@ namespace GamingUI
 
         public static View_PatienceProgress CreateInstance()
         {
-            return (View_PatienceProgress)UIPackage.CreateObject("GamingUI", "PatienceProgress");
+            return (View_PatienceProgress) UIPackage.CreateObject("GamingUI", "PatienceProgress");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -21,7 +21,7 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             State = GetController("State");
-            Bar = (GLoader)GetChild("Bar");
+            Bar = (GLoader) GetChild("Bar");
         }
     }
 }

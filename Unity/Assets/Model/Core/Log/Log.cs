@@ -15,7 +15,7 @@ namespace ET
         public const int DebugLevel = 2;
         public const int InfoLevel = 3;
         public const int WarningLevel = 4;
-        
+
         public static ILog ILog { get; }
 
         static Log()
@@ -33,10 +33,10 @@ namespace ET
             {
                 return true;
             }
-            
+
             return Game.Options.LogLevel <= level;
         }
-        
+
         public static Action<string, object[]> DebugCallback;
         public static Action<string> ErrorCallback;
 
@@ -46,6 +46,7 @@ namespace ET
             {
                 return;
             }
+
             DebugCallback?.Invoke(msg, null);
             StackTrace st = new StackTrace(1, true);
             ILog.Trace($"{msg}\n{st}");
@@ -57,6 +58,7 @@ namespace ET
             {
                 return;
             }
+
             DebugCallback?.Invoke(msg, null);
             ILog.Debug(msg);
         }
@@ -67,6 +69,7 @@ namespace ET
             {
                 return;
             }
+
             ILog.Info(msg);
         }
 
@@ -76,6 +79,7 @@ namespace ET
             {
                 return;
             }
+
             StackTrace st = new StackTrace(1, true);
             ILog.Trace($"{msg}\n{st}");
         }
@@ -110,6 +114,7 @@ namespace ET
             {
                 return;
             }
+
             DebugCallback?.Invoke(message, args);
             StackTrace st = new StackTrace(1, true);
             ILog.Trace($"{string.Format(message, args)}\n{st}");
@@ -121,6 +126,7 @@ namespace ET
             {
                 return;
             }
+
             ILog.Warning(string.Format(message, args));
         }
 
@@ -130,6 +136,7 @@ namespace ET
             {
                 return;
             }
+
             ILog.Info(string.Format(message, args));
         }
 
@@ -139,9 +146,9 @@ namespace ET
             {
                 return;
             }
+
             DebugCallback?.Invoke(message, args);
             ILog.Debug(string.Format(message, args));
-
         }
 
         public static void Error(string message, params object[] args)

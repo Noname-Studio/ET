@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+
 #if UNITY_ANDROID && !UNITY_EDITOR
 using System.IO.Compression;
 using System.Text;
@@ -26,7 +27,7 @@ namespace Panthea.Asset
         }
     }
 #endif
-    
+
         /*public static async UniTask MoveStreamingAssetsOut()
     {
         string movedFlag = AssetsConfig.AssetBundlePersistentDataPath + "/" +  AssetsManager.kVersionInfo;
@@ -110,7 +111,7 @@ namespace Panthea.Asset
 #endif
             return File.ReadAllText(AssetsConfig.StreamingAssets + "/" + path);
         }
-    
+
         private static Stream Internal_GetStream(string path)
         {
             Stream stream = null;
@@ -128,7 +129,7 @@ namespace Panthea.Asset
             stream = new FileStream(AssetsConfig.StreamingAssets + "/" + path, FileMode.Open, FileAccess.Read);
             return stream;
         }
-    
+
         public static Stream GetStream(string path)
         {
             Stream stream = null;
@@ -182,6 +183,5 @@ namespace Panthea.Asset
 
             return File.GetCreationTimeUtc(path);
         }
-    
     }
 }

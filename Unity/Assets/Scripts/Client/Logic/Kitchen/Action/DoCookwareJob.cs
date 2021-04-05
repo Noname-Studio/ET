@@ -1,13 +1,16 @@
-namespace Kitchen
+using Kitchen;
+
+namespace Kitchen.Action
 {
-    public class DoCookwareJob : IGameAction
+    public class DoCookwareJob: IGameAction
     {
         private ICookware mTarget { get; }
+
         public DoCookwareJob(ICookware target)
         {
             mTarget = target;
         }
-    
+
         public void Execute()
         {
             mTarget.DoWork();

@@ -1,4 +1,5 @@
 ﻿using System;
+using ET.Server.Chat;
 using Model.Module.DB.ActualTable;
 
 namespace ET
@@ -12,17 +13,21 @@ namespace ET
 		{
 			Data_PlayerInfo player = session.GetComponent<SessionPlayerComponent>().Player;
 			// 在map服务器上创建战斗Unit
-			long mapInstanceId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map").SceneId;
 			M2G_CreateUnit createUnit = (M2G_CreateUnit)await ActorMessageSenderComponent.Instance.Call(
-				mapInstanceId, new G2M_CreateUnit() { PlayerId = player.Id, GateSessionId = session.InstanceId });
-			CS2G_AddPlayerToChatServer createChat = (CS2G_AddPlayerToChatServer)await ActorMessageSenderComponent.Instance.Call(
-				mapInstanceId, new G2CS_AddPlayerToChatServer() { GateSessionId = session.InstanceId });
+				StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map").SceneId, 
+				new G2M_CreateUnit() { PlayerId = player.Id, GateSessionId = session.InstanceId });
 			player.UnitId = createUnit.UnitId;
-			player.ChatId = createChat.UnitId;
 			response.UnitId = player.Id;
-			var guild = await DBComponent.Instance.Query<Data_Guild>(player.GuildId);
+			var guild = GuildComponent.Instance.Get(player.GuildId);
+			
+			//注册聊天到世界频道
+			CS2G_RegisterPlayerToChat registerChat = await ChatHelper.Register(session, player);
+			player.ChatId = registerChat.UnitId;
+			
 			if (guild != null)
 			{
+				//注册聊天到公会频道
+				await ChatHelper.AddToGuild(guild.Id, player);
 				var proto = guild.CreateGuildUpdateProto();
 				session.Send(proto);
 			}

@@ -25,7 +25,7 @@ using UnityEngine.Purchasing.Security;
 /// To use with your account, configure the product ids (AddProduct).
 /// </summary>
 [AddComponentMenu("Unity IAP/Demo")]
-public class IAPDemo : MonoBehaviour, IStoreListener
+public class IAPDemo: MonoBehaviour, IStoreListener
 {
     // Unity IAP objects
     private IStoreController m_Controller;
@@ -85,7 +85,6 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         // Sample code for expose product sku details for apple store
         //Dictionary<string, string> product_details = m_AppleExtensions.GetProductDetails();
 
-
         Debug.Log("Available items:");
         foreach (var item in controller.products.all)
         {
@@ -94,13 +93,8 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                 Debug.Log(string.Join(" - ",
                     new[]
                     {
-                        item.metadata.localizedTitle,
-                        item.metadata.localizedDescription,
-                        item.metadata.isoCurrencyCode,
-                        item.metadata.localizedPrice.ToString(),
-                        item.metadata.localizedPriceString,
-                        item.transactionID,
-                        item.receipt
+                        item.metadata.localizedTitle, item.metadata.localizedDescription, item.metadata.isoCurrencyCode,
+                        item.metadata.localizedPrice.ToString(), item.metadata.localizedPriceString, item.transactionID, item.receipt
                     }));
 #if INTERCEPT_PROMOTIONAL_PURCHASES
                 // Set all these products to be visible in the user's App Store according to Apple's Promotional IAP feature
@@ -113,7 +107,8 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                 if (item.receipt != null) {
                     if (item.definition.type == ProductType.Subscription) {
                         if (checkIfProductIsAvailableForSubscriptionManager(item.receipt)) {
-                            string intro_json = (introductory_info_dict == null || !introductory_info_dict.ContainsKey(item.definition.storeSpecificId)) ? null : introductory_info_dict[item.definition.storeSpecificId];
+                            string intro_json =
+ (introductory_info_dict == null || !introductory_info_dict.ContainsKey(item.definition.storeSpecificId)) ? null : introductory_info_dict[item.definition.storeSpecificId];
                             SubscriptionManager p = new SubscriptionManager(item, intro_json);
                             SubscriptionInfo info = p.getSubscriptionInfo();
                             Debug.Log("product id is: " + info.getProductId());
@@ -243,7 +238,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                 return PurchaseProcessingResult.Complete;
             }
         }
-        #endif
+#endif
 
         // Unlock content from purchases here.
 #if USE_PAYOUTS
@@ -312,7 +307,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         if (m_TransactionHistoryExtensions.GetLastPurchaseFailureDescription() != null)
         {
             Debug.Log("Purchase failure description message: " +
-                      m_TransactionHistoryExtensions.GetLastPurchaseFailureDescription().message);
+                m_TransactionHistoryExtensions.GetLastPurchaseFailureDescription().message);
         }
 
         m_PurchaseInProgress = false;
@@ -352,7 +347,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         builder.Configure<IMicrosoftConfiguration>().useMockBillingSystem = false;
 
         m_IsGooglePlayStoreSelected =
-            Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay;
+                Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay;
 
 #if AGGRESSIVE_INTERRUPT_RECOVERY_GOOGLEPLAY
         // For GooglePlay, if we have access to a backend server to deduplicate purchases, query purchase history
@@ -384,6 +379,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                 {
                     ids.Add(storeID.id, storeID.store);
                 }
+
                 builder.AddProduct(product.id, product.type, ids);
             }
             else
@@ -398,11 +394,12 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         // So on the Mac App store our products have different identifiers,
         // and we tell Unity IAP this by using the IDs class.
 
-        builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
+        builder.AddProduct("100.gold.coins", ProductType.Consumable,
+            new IDs
             {
-                {"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name},
-                {"100.gold.coins", AmazonApps.Name},
-                {"100.gold.coins", AppleAppStore.Name}
+                { "com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name },
+                { "100.gold.coins", AmazonApps.Name },
+                { "100.gold.coins", AppleAppStore.Name }
             }
 #if USE_PAYOUTS
                 , new List<PayoutDefinition> {
@@ -410,21 +407,16 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                 new PayoutDefinition(PayoutType.Currency, "gold", 50)
                 }
 #endif //USE_PAYOUTS
-                );
+        );
 
-        builder.AddProduct("500.gold.coins", ProductType.Consumable, new IDs
-            {
-                {"com.unity3d.unityiap.unityiapdemo.500goldcoins.7", MacAppStore.Name},
-                {"500.gold.coins", AmazonApps.Name},
-            }
+        builder.AddProduct("500.gold.coins", ProductType.Consumable,
+            new IDs { { "com.unity3d.unityiap.unityiapdemo.500goldcoins.7", MacAppStore.Name }, { "500.gold.coins", AmazonApps.Name } }
 #if USE_PAYOUTS
         , new PayoutDefinition(PayoutType.Currency, "gold", 500)
 #endif //USE_PAYOUTS
         );
 
-        builder.AddProduct("300.gold.coins", ProductType.Consumable, new IDs
-            {
-            }
+        builder.AddProduct("300.gold.coins", ProductType.Consumable, new IDs { }
 #if USE_PAYOUTS
         , new List<PayoutDefinition> {
             new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
@@ -433,14 +425,9 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 #endif //USE_PAYOUTS
         );
 
-        builder.AddProduct("sub1", ProductType.Subscription, new IDs
-        {
-        });
+        builder.AddProduct("sub1", ProductType.Subscription, new IDs { });
 
-        builder.AddProduct("sub2", ProductType.Subscription, new IDs
-        {
-        });
-
+        builder.AddProduct("sub2", ProductType.Subscription, new IDs { });
 
         // Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.
         // This should be removed from a production build.
@@ -454,7 +441,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         // A) Unity IAP does not automatically restore purchases on Samsung Galaxy Apps
         // B) IAPDemo (this) displays the "Restore" GUI button for Samsung Galaxy Apps
         m_IsSamsungAppsStoreSelected =
-            Application.platform == RuntimePlatform.Android && module.appStore == AppStore.SamsungApps;
+                Application.platform == RuntimePlatform.Android && module.appStore == AppStore.SamsungApps;
 
 #if INTERCEPT_PROMOTIONAL_PURCHASES
         // On iOS and tvOS we can intercept promotional purchases that come directly from the App Store.
@@ -528,9 +515,8 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         restoreButton.onClick.AddListener(RestoreButtonClick);
 
         versionText.text = "Unity version: " + Application.unityVersion + "\n" +
-                           "IAP version: " + StandardPurchasingModule.k_PackageVersion;
+                "IAP version: " + StandardPurchasingModule.k_PackageVersion;
     }
-
 
     public void PurchaseButtonClick(string productID)
     {
@@ -563,7 +549,6 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         //payload_dictionary["developerPayload"] = "Faked developer payload";
         //m_Controller.InitiatePurchase(m_Controller.products.WithID(productID), MiniJson.JsonEncode(payload_dictionary));
         m_Controller.InitiatePurchase(m_Controller.products.WithID(productID), "developerPayload");
-
     }
 
     public void RestoreButtonClick()
@@ -573,8 +558,8 @@ public class IAPDemo : MonoBehaviour, IStoreListener
             m_SamsungExtensions.RestoreTransactions(OnTransactionsRestored);
         }
         else if (Application.platform == RuntimePlatform.WSAPlayerX86 ||
-                 Application.platform == RuntimePlatform.WSAPlayerX64 ||
-                 Application.platform == RuntimePlatform.WSAPlayerARM)
+            Application.platform == RuntimePlatform.WSAPlayerX64 ||
+            Application.platform == RuntimePlatform.WSAPlayerARM)
         {
             m_MicrosoftExtensions.RestoreTransactions();
         }
@@ -592,8 +577,9 @@ public class IAPDemo : MonoBehaviour, IStoreListener
     {
         foreach (var productUIKVP in m_ProductUIs)
         {
-            GameObject.Destroy(productUIKVP.Value.gameObject);
+            Destroy(productUIKVP.Value.gameObject);
         }
+
         m_ProductUIs.Clear();
     }
 
@@ -609,7 +595,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 
         foreach (var p in products)
         {
-            var newProductUI = GameObject.Instantiate(productUITemplate.gameObject) as GameObject;
+            var newProductUI = Instantiate(productUITemplate.gameObject) as GameObject;
             newProductUI.transform.SetParent(productUITemplate.transform.parent, false);
             var rect = newProductUI.GetComponent<RectTransform>();
             rect.localPosition = currPos;
@@ -641,12 +627,12 @@ public class IAPDemo : MonoBehaviour, IStoreListener
     private bool NeedRestoreButton()
     {
         return Application.platform == RuntimePlatform.IPhonePlayer ||
-               Application.platform == RuntimePlatform.OSXPlayer ||
-               Application.platform == RuntimePlatform.tvOS ||
-               Application.platform == RuntimePlatform.WSAPlayerX86 ||
-               Application.platform == RuntimePlatform.WSAPlayerX64 ||
-               Application.platform == RuntimePlatform.WSAPlayerARM ||
-               m_IsSamsungAppsStoreSelected;
+                Application.platform == RuntimePlatform.OSXPlayer ||
+                Application.platform == RuntimePlatform.tvOS ||
+                Application.platform == RuntimePlatform.WSAPlayerX86 ||
+                Application.platform == RuntimePlatform.WSAPlayerX64 ||
+                Application.platform == RuntimePlatform.WSAPlayerARM ||
+                m_IsSamsungAppsStoreSelected;
     }
 
     private void LogProductDefinitions()
@@ -655,7 +641,8 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         foreach (var product in products)
         {
 #if UNITY_5_6_OR_NEWER
-            Debug.Log(string.Format("id: {0}\nstore-specific id: {1}\ntype: {2}\nenabled: {3}\n", product.definition.id, product.definition.storeSpecificId, product.definition.type.ToString(), product.definition.enabled ? "enabled" : "disabled"));
+            Debug.Log(string.Format("id: {0}\nstore-specific id: {1}\ntype: {2}\nenabled: {3}\n", product.definition.id,
+                product.definition.storeSpecificId, product.definition.type.ToString(), product.definition.enabled? "enabled" : "disabled"));
 #else
             Debug.Log(string.Format("id: {0}\nstore-specific id: {1}\ntype: {2}\n", product.definition.id,
                 product.definition.storeSpecificId, product.definition.type.ToString()));

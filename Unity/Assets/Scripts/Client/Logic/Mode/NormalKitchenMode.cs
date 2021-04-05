@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Kitchen;
 using Panthea.Asset;
 using UnityEngine;
 
-public class NormalKitchenMode : IKitchenMode
+public class NormalKitchenMode: IKitchenMode
 {
     private LevelProperty LevelProperty { get; }
     private KitchenRoot KRoot { get; set; }
-    public NormalKitchenMode(LevelProperty property)
+
+    public NormalKitchenMode(LevelProperty property, List<string> usedProp)
     {
         LevelProperty = property;
     }
-    
+
     public async UniTask Enter()
     {
         try
@@ -21,7 +23,7 @@ public class NormalKitchenMode : IKitchenMode
             var config = await AssetsKit.Inst.Load<KitchenConfigProperty>("Config/Kitchen/KitchenConfig");
             KRoot = new KitchenRoot(LevelProperty, config);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.LogError("切换到厨房场景发生错误，检查一下错误内容\n" + e);
         }
@@ -33,10 +35,11 @@ public class NormalKitchenMode : IKitchenMode
         {
             KRoot.Dispose();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.LogError("从厨房场景退出时发生错误,检查一下错误内容\n" + e);
         }
+        UIKit.Inst.UnLoadAllUI();
         return UniTask.CompletedTask;
     }
 }

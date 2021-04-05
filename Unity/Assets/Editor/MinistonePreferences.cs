@@ -45,8 +45,8 @@ using UnityEngine;
         
     }
 }*/
- 
-static class MSEditorSettings
+
+internal static class MSEditorSettings
 {
     [SettingsProvider]
     public static SettingsProvider CreateMyCustomSettingsProvider()
@@ -56,24 +56,27 @@ static class MSEditorSettings
             label = "Ministone Settings",
             guiHandler = (searchContext) =>
             {
-                bool UseAws = EditorPrefs.GetBool("AWSSavedSystem",false);
+                bool UseAws = EditorPrefs.GetBool("AWSSavedSystem", false);
                 UseAws = EditorGUILayout.Toggle("使用AWS存档系统: ", UseAws);
                 if (GUI.changed)
                 {
                     EditorPrefs.SetBool("AWSSavedSystem", UseAws);
                 }
 
-                bool simulationMobileRuntime = EditorPrefs.GetBool(nameof(GameConfig.MobileRuntime), false);
+                bool simulationMobileRuntime = EditorPrefs.GetBool(nameof (GameConfig.MobileRuntime), false);
                 simulationMobileRuntime = EditorGUILayout.Toggle("开启实际游戏模式: ", simulationMobileRuntime);
                 if (GUI.changed)
                 {
-                    EditorPrefs.SetBool(nameof(GameConfig.MobileRuntime), simulationMobileRuntime);
+                    EditorPrefs.SetBool(nameof (GameConfig.MobileRuntime), simulationMobileRuntime);
                 }
-        
+
                 EditorGUI.BeginChangeCheck();
                 var localization = ArrayUtility.FindIndex(Language.All, t1 => t1.Value == EditorPrefs.GetString("Localization"));
                 if (localization == -1)
+                {
                     localization = 0;
+                }
+
                 var s = new string[Language.All.Length];
                 for (var i = 0; i < Language.All.Length; i++)
                 {
@@ -88,8 +91,9 @@ static class MSEditorSettings
                     /*if(Application.isPlaying)
                         FairyManager.Instance.RefreshLocalization();*/
                 }
-                EditorGUILayout.HelpBox("UI需要在下次启动游戏的时候才能生效",MessageType.Info);
-            },
+
+                EditorGUILayout.HelpBox("UI需要在下次启动游戏的时候才能生效", MessageType.Info);
+            }
         };
         return provider;
     }

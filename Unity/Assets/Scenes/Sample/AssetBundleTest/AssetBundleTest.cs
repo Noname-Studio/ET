@@ -1,17 +1,19 @@
 ﻿using Panthea.Asset;
 using UnityEngine;
 using UnityEngine.UI;
+
 /// <summary>
 /// 
 /// </summary>
-public class AssetBundleTest : MonoBehaviour
+public class AssetBundleTest: MonoBehaviour
 {
     public Button LoadAsset;
     public Button UnloadAsset;
     public Button FetchDownloadList;
     public Button UpdateAssetBundle;
-    
-    Texture tex;
+
+    private Texture tex;
+
     private AssetsManager assetsManager;
     /*async void Start()
     {
@@ -72,6 +74,4 @@ public class AssetBundleTest : MonoBehaviour
         StaticContext.Container.UnbindAll();
     }
 #endif*/
-
 }
-

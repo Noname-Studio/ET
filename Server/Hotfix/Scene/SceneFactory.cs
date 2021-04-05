@@ -1,6 +1,5 @@
-
-
 using System.Net;
+using ET.Server.Chat.Component;
 
 namespace ET
 {
@@ -38,6 +37,7 @@ namespace ET
                     scene.AddComponent<RecastPathComponent>();
                     break;
                 case SceneType.Chat:
+                    scene.AddComponent<ChatChannelComponent>();
                     scene.AddComponent<ChatUnitComponent>();
                     break;
                 case SceneType.Location:

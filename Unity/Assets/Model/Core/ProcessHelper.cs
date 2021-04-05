@@ -27,7 +27,7 @@ namespace ET
                     redirectStandardError = true;
                     useShellExecute = false;
                 }
-                
+
                 ProcessStartInfo info = new ProcessStartInfo
                 {
                     FileName = exe,
@@ -36,9 +36,9 @@ namespace ET
                     UseShellExecute = useShellExecute,
                     WorkingDirectory = workingDirectory,
                     RedirectStandardOutput = redirectStandardOutput,
-                    RedirectStandardError = redirectStandardError,
+                    RedirectStandardError = redirectStandardError
                 };
-                
+
                 Process process = Process.Start(info);
 
                 if (waitExit)

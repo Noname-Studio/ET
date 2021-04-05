@@ -8,7 +8,6 @@ namespace TheGuild
     public partial class View_LiaoTianZuJian : GComponent
     {
         public Controller showstate;
-        public Controller msgstate;
         public GButton Send;
         public GList List;
         public GTextInput Input;
@@ -27,7 +26,6 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             showstate = GetController("showstate");
-            msgstate = GetController("msgstate");
             Send = (GButton)GetChild("Send");
             List = (GList)GetChild("List");
             Input = (GTextInput)GetChild("Input");

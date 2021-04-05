@@ -6,16 +6,17 @@ using Kitchen;
 
 namespace Client.UI.ViewModel
 {
-    public class UI_KitchenMain : UIBase<View_KitchenMain>
+    public class UI_KitchenMain: UIBase<View_KitchenMain>
     {
         private LevelProperty LevelProperty { get; }
         private Com_TimeBar TimeBar { get; set; }
+
         public UI_KitchenMain()
         {
             LevelProperty = KitchenRoot.Inst.LevelProperty;
         }
 
-        public override void OnInit(IUIParams p)
+        protected override void OnInit(IUIParams p)
         {
             base.OnInit(p);
             TimeBar = new Com_TimeBar(View.TimeBar);
@@ -31,6 +32,7 @@ namespace Client.UI.ViewModel
                 }
             };
             KitchenRoot.Inst.Record.PropertyChanged += RecordChanged;
+            RegisterButtonClick();
         }
 
         private void RecordChanged(object sender, PropertyChangedEventArgs e)
@@ -50,23 +52,23 @@ namespace Client.UI.ViewModel
             }
         }
 
-        public override void OnEnable(IUIParams p, bool refresh)
+        protected override void OnEnable(IUIParams p, bool refresh)
         {
             InitCondition();
             InitRequirement();
         }
-    
+
         /// <summary>
         /// 注册所有按钮的点击事件
         /// </summary>
         private void RegisterButtonClick()
         {
-            View.Pause.onClick.Add(PauseOnClick);
+            View.Pause.onClick.Add(Pause_OnClick);
         }
 
-        private void PauseOnClick(EventContext context)
+        private void Pause_OnClick(EventContext context)
         {
-        
+            UIKit.Inst.Create<UI_KitchenPause>();
         }
 
         /// <summary>
@@ -75,8 +77,11 @@ namespace Client.UI.ViewModel
         private void InitRequirement()
         {
             var req = LevelProperty.Requirements;
-            if(LevelProperty.Type.HasFlag(LevelType.FixedTime))
+            if (LevelProperty.Type.HasFlag(LevelType.FixedTime))
+            {
                 View.TimeBar.max = req.FixedTime;
+            }
+
             if (LevelProperty.Type.HasFlag(LevelType.LikeCount))
             {
                 View.ScoreBar.c1.selectedPage = "Praise";
@@ -97,7 +102,7 @@ namespace Client.UI.ViewModel
 
             View.ScoreBar.value = 0;
         }
-    
+
         /// <summary>
         /// 初始化关卡条件
         /// </summary>
@@ -110,16 +115,19 @@ namespace Client.UI.ViewModel
                 var loader = View.Condition.GetChildAt(i++).asLoader;
                 loader.url = "ui://Common/no_burn";
             }
+
             if (!req.AllowUseTrash)
             {
                 var loader = View.Condition.GetChildAt(i++).asLoader;
                 loader.url = "ui://Common/no_trash";
             }
+
             if (!req.AllowLostCustomer)
             {
                 var loader = View.Condition.GetChildAt(i++).asLoader;
                 loader.url = "ui://Common/icon_no_lost";
             }
+
             View.Condition.c1.selectedIndex = i;
         }
 
@@ -157,7 +165,7 @@ namespace Client.UI.ViewModel
                 View.TipBar.Plus(iconList, cookware).Equal(result);
             }*/
         }
-    
+
         /// <summary>
         /// 展示菜品制作流程
         /// </summary>

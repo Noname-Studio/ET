@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace Achievement
 {
-    public partial class View_starachievement : GComponent
+    public partial class View_starachievement: GComponent
     {
         public Controller c1;
         public const string URL = "ui://y1hfvz76fzdbg3";
 
         public static View_starachievement CreateInstance()
         {
-            return (View_starachievement)UIPackage.CreateObject("Achievement", "starachievement");
+            return (View_starachievement) UIPackage.CreateObject("Achievement", "starachievement");
         }
 
         public override void ConstructFromXML(XML xml)

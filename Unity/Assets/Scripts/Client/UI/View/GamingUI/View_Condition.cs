@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_Condition : GComponent
+    public partial class View_Condition: GComponent
     {
         public Controller c1;
         public GLoader One;
@@ -15,7 +15,7 @@ namespace GamingUI
 
         public static View_Condition CreateInstance()
         {
-            return (View_Condition)UIPackage.CreateObject("GamingUI", "Condition");
+            return (View_Condition) UIPackage.CreateObject("GamingUI", "Condition");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,9 +23,9 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            One = (GLoader)GetChild("One");
-            Two = (GLoader)GetChild("Two");
-            Three = (GLoader)GetChild("Three");
+            One = (GLoader) GetChild("One");
+            Two = (GLoader) GetChild("Two");
+            Three = (GLoader) GetChild("Three");
         }
     }
 }

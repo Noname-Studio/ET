@@ -2,42 +2,67 @@ using System;
 using Client.UI.ViewModel;
 using Cysharp.Threading.Tasks;
 using Kitchen;
+using Kitchen.Provider;
 using UnityEngine;
-public class KitchenRoot : IDisposable
+using UnityEngine.SceneManagement;
+
+public class KitchenRoot: IDisposable
 {
     /// <summary>
     /// 寻路组件.你可以传递其他继承该类的寻路支持器.重载寻路算法
     /// </summary>
     private KitchenMoveProvider mMoveProvider { get; set; }
+
     /// <summary>
     /// 餐厅结束支持器
     /// 重写这个支持器.我们可以在普通
     /// </summary>
-    private EndOfKitchenProvider mEndOfKitchenProvider { get; set; }
+    public EndOfKitchenProvider EndOfKitchenProvider { get; private set; }
+
     /// <summary>
     /// 顾客管理器
     /// </summary>
-    public CustomerProvider CustomerProvider { get; set; }
+    public CustomerProvider CustomerProvider { get; private set; }
+
     /// <summary>
     /// 就餐位访问器,通过该组件可以获得就餐位的状态
     /// </summary>
-    public KitchenSpotProvider SpotProvider { get; set; }
+    public KitchenSpotProvider SpotProvider { get; private set; }
+
     /// <summary>
     /// 餐厅的所有显示都在这个组件处理
     /// </summary>
     public KitchenScene Scene { get; private set; }
+
     /// <summary>
     /// 餐厅得所有操作记录
     /// 结束以后可以将这个记录传递至成就当中记录下来.或者在失败后丢弃
     /// </summary>
     public KitchenRecord Record { get; private set; }
+
+    /// <summary>
+    /// 给予餐厅可以连击的能力
+    /// </summary>
+    public ComboProvider ComboProvider { get; private set; }
+    public UnitManager Units { get; } = new UnitManager();
+    
     public LevelProperty LevelProperty { get; }
     public KitchenConfigProperty KitchenConfig { get; }
     private UIManager UiManager { get; }
     public Camera MainCamera { get; }
     public static KitchenRoot Inst { get; set; }
+    public bool IsPause { get; private set; }
+    public void Pause()
+    {
+        IsPause = true;
+    }
+
+    public void Resume()
+    {
+        IsPause = false;
+    }
     
-    public KitchenRoot(LevelProperty property,KitchenConfigProperty kitchenConfig)
+    public KitchenRoot(LevelProperty property, KitchenConfigProperty kitchenConfig)
     {
         UiManager = UIKit.Inst;
         KitchenConfig = kitchenConfig;
@@ -46,7 +71,7 @@ public class KitchenRoot : IDisposable
         LevelProperty = property;
         Initialize().Forget();
     }
-    
+
     public async UniTaskVoid Initialize()
     {
         Record = new KitchenRecord();
@@ -57,6 +82,7 @@ public class KitchenRoot : IDisposable
         InitSpotsProvider();
         InitCustomerGeneratorProvider();
         InitEndOfKitchenProvider();
+        InitOtherProvider();
         //我们UI最后在初始化
         InitUI();
         UnityLifeCycleKit.Inst.AddUpdate(Update);
@@ -66,7 +92,7 @@ public class KitchenRoot : IDisposable
     /// 初始化寻路服务 //0
     /// </summary>
     /// <returns></returns>
-    void InitKitchenMoveProvider()
+    private void InitKitchenMoveProvider()
     {
         mMoveProvider = new KitchenMoveProvider();
     }
@@ -74,7 +100,7 @@ public class KitchenRoot : IDisposable
     /// <summary>
     /// 初始化所有就餐位 //1
     /// </summary>
-    void InitSpotsProvider()
+    private void InitSpotsProvider()
     {
         SpotProvider = new KitchenSpotProvider();
         //TODO 初始化就餐位不应该在Root中
@@ -83,14 +109,14 @@ public class KitchenRoot : IDisposable
             SpotProvider.AddSpot(new KitchenNormalSpot(display));
         }
     }
-    
+
     /// <summary>
     /// 初始化顾客生成器 //2
     /// </summary>
     /// <returns></returns>
-    void InitCustomerGeneratorProvider()
+    private void InitCustomerGeneratorProvider()
     {
-        CustomerProvider = new CustomerProvider(SpotProvider,LevelProperty);
+        CustomerProvider = new CustomerProvider(SpotProvider, LevelProperty);
         var normalCustomerGenerator = new NormalCustomerGenerator(LevelProperty);
         CustomerProvider.AddGenerator(normalCustomerGenerator);
     }
@@ -98,30 +124,50 @@ public class KitchenRoot : IDisposable
     /// <summary>
     /// 初始化关卡结束(通关,失败,主动退出)触发服务
     /// </summary>
-    void InitEndOfKitchenProvider()
+    private void InitEndOfKitchenProvider()
     {
-        mEndOfKitchenProvider =
-            new EndOfKitchenProvider(new EndOfNormalLevel(LevelProperty, UnitManager.Inst.GetPlayer()), LevelProperty);
+        EndOfKitchenProvider =
+                new EndOfKitchenProvider(new EndOfNormalLevel(LevelProperty, Units.GetPlayer()), LevelProperty);
+    }
+    
+    private void InitOtherProvider()
+    {
+        ComboProvider = new ComboProvider();
     }
 
     /// <summary>
     /// 初始化UI显示界面
     /// </summary>
-    void InitUI()
+    private void InitUI()
     {
         UiManager.Create<UI_KitchenMain>();
     }
 
-    float Update()
+    private float Update()
     {
+        Units.Update();//这里让单位继续走Update是希望单位在即使暂停的情况下移动组件仍然能够继续Update.
+        if (IsPause)
+            return 0;
+        Scene.Update();
         Record.PlayTime += Time.deltaTime;
-        mEndOfKitchenProvider.Update();
+        EndOfKitchenProvider.Update();
+        CustomerProvider.Update();
         return 0;
     }
 
     public void Dispose()
     {
         UnityLifeCycleKit.Inst.RemoveUpdate(Update);
-        Scene.Dispose();
+        foreach (var node in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            UnityEngine.Object.Destroy(node);
+        }
+    }
+
+    public void Reset()
+    {
+        Scene.Reset();
+        CustomerProvider.ClearGenerator();
+        InitCustomerGeneratorProvider();
     }
 }

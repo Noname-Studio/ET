@@ -13,13 +13,14 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     // on the Type field, so that when users only can specify supported item-types.  
     // 
 
-    public abstract class Item : ScriptableObject
+    public abstract class Item: ScriptableObject
     {
-        protected const string LEFT_VERTICAL_GROUP             = "Split/Left";
-        protected const string STATS_BOX_GROUP                 = "Split/Left/Stats";
+        protected const string LEFT_VERTICAL_GROUP = "Split/Left";
+        protected const string STATS_BOX_GROUP = "Split/Left/Stats";
         protected const string GENERAL_SETTINGS_VERTICAL_GROUP = "Split/Left/General Settings/Split/Right";
 
-        [HideLabel, PreviewField(55)]
+        [HideLabel]
+        [PreviewField(55)]
         [VerticalGroup(LEFT_VERTICAL_GROUP)]
         [HorizontalGroup(LEFT_VERTICAL_GROUP + "/General Settings/Split", 55, LabelWidth = 67)]
         public Texture Icon;
@@ -29,12 +30,14 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         public string Name;
 
         [BoxGroup("Split/Right/Description")]
-        [HideLabel, TextArea(4, 14)]
+        [HideLabel]
+        [TextArea(4, 14)]
         public string Description;
 
         [HorizontalGroup("Split", 0.5f, MarginLeft = 5, LabelWidth = 130)]
         [BoxGroup("Split/Right/Notes")]
-        [HideLabel, TextArea(4, 9)]
+        [HideLabel]
+        [TextArea(4, 9)]
         public string Notes;
 
         [VerticalGroup(GENERAL_SETTINGS_VERTICAL_GROUP)]
@@ -59,7 +62,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
 
         private bool IsSupportedType(ItemTypes type)
         {
-            return this.SupportedItemTypes.Contains(type);
+            return SupportedItemTypes.Contains(type);
         }
     }
 }

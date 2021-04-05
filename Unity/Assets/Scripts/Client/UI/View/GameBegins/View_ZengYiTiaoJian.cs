@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_ZengYiTiaoJian : GComponent
+    public partial class View_ZengYiTiaoJian: GComponent
     {
         public Controller c1;
         public GTextField txt;
@@ -15,7 +15,7 @@ namespace GameBegins
 
         public static View_ZengYiTiaoJian CreateInstance()
         {
-            return (View_ZengYiTiaoJian)UIPackage.CreateObject("GameBegins", "增益条件");
+            return (View_ZengYiTiaoJian) UIPackage.CreateObject("GameBegins", "增益条件");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,9 +23,9 @@ namespace GameBegins
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            txt = (GTextField)GetChild("txt");
-            up_coin = (View_ZengYiZuJian)GetChild("up_coin");
-            total = (GTextField)GetChild("total");
+            txt = (GTextField) GetChild("txt");
+            up_coin = (View_ZengYiZuJian) GetChild("up_coin");
+            total = (GTextField) GetChild("total");
         }
     }
 }

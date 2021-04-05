@@ -3,17 +3,17 @@ using InternalResources;
 
 namespace Client.UI.ViewModel
 {
-    public class UI_LoadingBase : UIBase<View_Loading>
+    public class UI_LoadingBase: UIBase<View_Loading>
     {
         public double MaxProgress
         {
-            get { return View.Progress.max; }
-            set { View.Progress.max = value; }
+            get => View.Progress.max;
+            set => View.Progress.max = value;
         }
 
         public double Value
         {
-            get { return View.Progress.value; }
+            get => View.Progress.value;
             set
             {
                 GTween.Kill(this, false);
@@ -25,9 +25,8 @@ namespace Client.UI.ViewModel
 
         public string Title
         {
-            get { return View.Title.text; }
-            set { View.Title.text = value; }
+            get => View.Title.text;
+            set => View.Title.text = value;
         }
-    
     }
 }

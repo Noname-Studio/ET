@@ -6,11 +6,11 @@ using UnityEngine.Networking;
 
 namespace Panthea.Asset
 {
-    public class UnityWebDownloader : IDownloadHandler
+    public class UnityWebDownloader: IDownloadHandler
     {
         public async UniTask<DownloadResult> Download(DownloadThread thread)
         {
-            return await this.Internal_Download(thread);
+            return await Internal_Download(thread);
         }
 
         public async UniTask<Dictionary<string, string>> GetHeaders(string url)
@@ -20,15 +20,19 @@ namespace Panthea.Asset
             {
                 await headRequest.SendWebRequest();
                 if (string.IsNullOrEmpty(headRequest.error))
+                {
                     return headRequest.GetResponseHeaders();
+                }
                 else
+                {
                     return null;
+                }
             }
         }
 
         private async UniTask<DownloadResult> Internal_Download(DownloadThread thread)
         {
-            var request = new UnityWebRequest {downloadHandler = new DownloadHandlerFile(thread.WritePath + ".temp"), url = thread.Url};
+            var request = new UnityWebRequest { downloadHandler = new DownloadHandlerFile(thread.WritePath + ".temp"), url = thread.Url };
             //先删除本地文件
             File.Delete(thread.WritePath);
             var versionFile = thread.WritePath + ".bytes";
@@ -44,11 +48,13 @@ namespace Panthea.Asset
                     File.Delete(tempFile);
                 }
             }
+
             if (File.Exists(tempFile))
             {
                 var length = new FileInfo(tempFile).Length;
                 request.SetRequestHeader("Range", $"bytes={length}-{thread.Length}");
             }
+
             await request.SendWebRequest();
 
             File.Delete(versionFile);
@@ -57,14 +63,11 @@ namespace Panthea.Asset
             {
                 throw new Exception(request.error);
             }
+
             //因为DownloadHandlerFile是直接写入本地的我们不需要操作Stream自己写入.
             //我们这里把本地写入的文件找出来
             //thread.WritePath;
-            return new DownloadResult
-            {
-                RemoteCrc32 = thread.Crc,
-                WritePath = thread.WritePath,
-            };
+            return new DownloadResult { RemoteCrc32 = thread.Crc, WritePath = thread.WritePath };
         }
 
         public async UniTask<string> GetText(string url)

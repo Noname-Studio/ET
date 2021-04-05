@@ -13,105 +13,113 @@ namespace ET
 
         // 重用HashSet
         private readonly Queue<HashSet<K>> queue = new Queue<HashSet<K>>();
-        
+
         public HashSet<K> this[T t]
         {
             get
             {
                 HashSet<K> set;
-                if (!this.dictionary.TryGetValue(t, out set))
+                if (!dictionary.TryGetValue(t, out set))
                 {
                     set = new HashSet<K>();
                 }
+
                 return set;
             }
         }
-        
+
         public Dictionary<T, HashSet<K>> GetDictionary()
         {
-            return this.dictionary;
+            return dictionary;
         }
-        
+
         public void Add(T t, K k)
         {
             HashSet<K> set;
-            this.dictionary.TryGetValue(t, out set);
+            dictionary.TryGetValue(t, out set);
             if (set == null)
             {
-                set = this.FetchList();
-                this.dictionary[t] = set;
+                set = FetchList();
+                dictionary[t] = set;
             }
+
             set.Add(k);
         }
 
         public bool Remove(T t, K k)
         {
             HashSet<K> set;
-            this.dictionary.TryGetValue(t, out set);
+            dictionary.TryGetValue(t, out set);
             if (set == null)
             {
                 return false;
             }
+
             if (!set.Remove(k))
             {
                 return false;
             }
+
             if (set.Count == 0)
             {
-                this.RecycleList(set);
-                this.dictionary.Remove(t);
+                RecycleList(set);
+                dictionary.Remove(t);
             }
+
             return true;
         }
 
         public bool Remove(T t)
         {
             HashSet<K> set = null;
-            this.dictionary.TryGetValue(t, out set);
+            dictionary.TryGetValue(t, out set);
             if (set != null)
             {
-                this.RecycleList(set);
+                RecycleList(set);
             }
-            return this.dictionary.Remove(t);
+
+            return dictionary.Remove(t);
         }
-        
-                
+
         private HashSet<K> FetchList()
         {
-            if (this.queue.Count > 0)
+            if (queue.Count > 0)
             {
-                HashSet<K> set = this.queue.Dequeue();
+                HashSet<K> set = queue.Dequeue();
                 set.Clear();
                 return set;
             }
+
             return new HashSet<K>();
         }
-        
+
         private void RecycleList(HashSet<K> set)
         {
             // 防止暴涨
-            if (this.queue.Count > 100)
+            if (queue.Count > 100)
             {
                 return;
             }
+
             set.Clear();
-            this.queue.Enqueue(set);
+            queue.Enqueue(set);
         }
 
         public bool Contains(T t, K k)
         {
             HashSet<K> set;
-            this.dictionary.TryGetValue(t, out set);
+            dictionary.TryGetValue(t, out set);
             if (set == null)
             {
                 return false;
             }
+
             return set.Contains(k);
         }
-        
+
         public bool ContainsKey(T t)
         {
-            return this.dictionary.ContainsKey(t);
+            return dictionary.ContainsKey(t);
         }
 
         public void Clear()
@@ -124,10 +132,11 @@ namespace ET
             get
             {
                 int count = 0;
-                foreach (KeyValuePair<T,HashSet<K>> kv in this.dictionary)
+                foreach (KeyValuePair<T, HashSet<K>> kv in dictionary)
                 {
                     count += kv.Value.Count;
                 }
+
                 return count;
             }
         }

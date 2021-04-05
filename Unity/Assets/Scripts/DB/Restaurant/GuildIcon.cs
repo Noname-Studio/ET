@@ -1,6 +1,7 @@
 /********************************
   该脚本是自动生成的请勿手动修改
 *********************************/
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -11,17 +12,18 @@ using System.IO;
 
 namespace RestaurantPreview.Config
 {
-    public partial class GuildIconProperty : ConfigAssetManager<GuildIconProperty>
+    public partial class GuildIconProperty: IConfig
     {
         public enum TypeEnum
         {
             Frame,
-            Inside,
+            Inside
         }
 
         private int mId;
         private TypeEnum mType;
         private string mUrl;
+
         /// <summary>
         /// Id
         /// </summary>

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_ZengYiZuJian : GComponent
+    public partial class View_ZengYiZuJian: GComponent
     {
         public GLoader icon0;
         public GTextField num;
@@ -13,15 +13,15 @@ namespace GameBegins
 
         public static View_ZengYiZuJian CreateInstance()
         {
-            return (View_ZengYiZuJian)UIPackage.CreateObject("GameBegins", "增益组件");
+            return (View_ZengYiZuJian) UIPackage.CreateObject("GameBegins", "增益组件");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            icon0 = (GLoader)GetChild("icon0");
-            num = (GTextField)GetChild("num");
+            icon0 = (GLoader) GetChild("icon0");
+            num = (GTextField) GetChild("num");
         }
     }
 }

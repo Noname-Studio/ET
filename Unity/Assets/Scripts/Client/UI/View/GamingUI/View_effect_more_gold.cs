@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_effect_more_gold : GComponent
+    public partial class View_effect_more_gold: GComponent
     {
         public GTextField number;
         public Transition t0;
@@ -14,14 +14,14 @@ namespace GamingUI
 
         public static View_effect_more_gold CreateInstance()
         {
-            return (View_effect_more_gold)UIPackage.CreateObject("GamingUI", "effect_more_gold");
+            return (View_effect_more_gold) UIPackage.CreateObject("GamingUI", "effect_more_gold");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            number = (GTextField)GetChild("number");
+            number = (GTextField) GetChild("number");
             t0 = GetTransition("t0");
             t1 = GetTransition("t1");
         }

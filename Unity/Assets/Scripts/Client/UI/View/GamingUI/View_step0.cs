@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_step0 : GComponent
+    public partial class View_step0: GComponent
     {
         public GImage arrow;
         public GImage food;
@@ -14,16 +14,16 @@ namespace GamingUI
 
         public static View_step0 CreateInstance()
         {
-            return (View_step0)UIPackage.CreateObject("GamingUI", "step0");
+            return (View_step0) UIPackage.CreateObject("GamingUI", "step0");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            arrow = (GImage)GetChild("arrow");
-            food = (GImage)GetChild("food");
-            cw = (GImage)GetChild("cw");
+            arrow = (GImage) GetChild("arrow");
+            food = (GImage) GetChild("food");
+            cw = (GImage) GetChild("cw");
         }
     }
 }

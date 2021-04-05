@@ -5,32 +5,32 @@ using FairyGUI.Utils;
 
 namespace UI.Story.QuizGame
 {
-	public partial class View_sharing : GComponent
-	{
-		public Controller c1;
-		public GLoader icon;
-		public GButton ok;
-		public Transition t0;
+    public partial class View_sharing: GComponent
+    {
+        public Controller c1;
+        public GLoader icon;
+        public GButton ok;
+        public Transition t0;
 
-		public const string URL = "ui://btrw885ihqihhu";
+        public const string URL = "ui://btrw885ihqihhu";
 
-		public static View_sharing CreateInstance()
-		{
-			return (View_sharing)UIPackage.CreateObject("QuizGame","sharing");
-		}
+        public static View_sharing CreateInstance()
+        {
+            return (View_sharing) UIPackage.CreateObject("QuizGame", "sharing");
+        }
 
-		public View_sharing()
-		{
-		}
+        public View_sharing()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			c1 = this.GetControllerAt(0);
-			icon = (GLoader)this.GetChildAt(10);
-			ok = (GButton)this.GetChildAt(11);
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            c1 = GetControllerAt(0);
+            icon = (GLoader) GetChildAt(10);
+            ok = (GButton) GetChildAt(11);
+            t0 = GetTransitionAt(0);
+        }
+    }
 }

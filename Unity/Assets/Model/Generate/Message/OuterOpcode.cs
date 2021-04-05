@@ -40,7 +40,13 @@ namespace ET
 		 public const ushort C2G_ChatMessage = 20036;
 		 public const ushort G2C_ChatMessage = 20037;
 		 public const ushort CS2C_GuildMessageChanged = 20038;
-		 public const ushort ApplicationInfo = 20039;
-		 public const ushort MemberInfo = 20040;
+		 public const ushort ChatMessageInfo = 20039;
+		 public const ushort C2M_GuildAskEnergyRequest = 20040;
+		 public const ushort M2C_GuildAskEnergyResponse = 20041;
+		 public const ushort C2M_GuildGiveEnergyRequest = 20042;
+		 public const ushort M2C_GuildGiveEnergyResponse = 20043;
+		 public const ushort ApplicationInfo = 20044;
+		 public const ushort AskEnergyInfo = 20045;
+		 public const ushort MemberInfo = 20046;
 	}
 }

@@ -2,14 +2,15 @@
 
 namespace Kitchen.Robot
 {
-    public class ModifyRobotStep : IGameAction
+    public class ModifyRobotStep: IGameAction
     {
-        private Action mModify;
-        public ModifyRobotStep(Action modify)
+        private System.Action mModify;
+
+        public ModifyRobotStep(System.Action modify)
         {
             mModify = modify;
         }
-        
+
         public void Execute()
         {
             mModify();

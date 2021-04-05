@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct GameStart : IEventHandle
+public struct GameStart: IEventHandle
 {
-
 }

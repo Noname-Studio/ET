@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUIParams {
+public interface IUIParams
+{
 }
 
-public class StringParams : IUIParams
+public class StringParams: IUIParams
 {
     public string Key;
 

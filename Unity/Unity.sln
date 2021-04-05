@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ThirdParty", "Unity.ThirdParty.csproj", "{d2ad5be1-263a-9a30-ab0f-dc5b08044350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FairyGUI", "FairyGUI.csproj", "{f41b355c-331a-af48-b348-52fd7a76b064}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantheaFW.Core", "PantheaFW.Core.csproj", "{62940cec-f56b-72ab-5c04-dceab4b446f5}"
 EndProject
@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Model", "Unity.Model.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GooglePlayGames", "GooglePlayGames.csproj", "{8f12843b-d2c9-87bc-0345-2c9dcc8ab066}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ThirdParty", "Unity.ThirdParty.csproj", "{d2ad5be1-263a-9a30-ab0f-dc5b08044350}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{09b46226-3263-561e-d797-c9025c53bdd6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Hotfix", "Unity.Hotfix.csproj", "{52f66610-896a-c4d1-9881-1a19df7ab80e}"
@@ -27,11 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.ModelView", "Unity.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panthea.Utils", "Panthea.Utils.csproj", "{fd394c41-51e6-503c-1715-785bb9cd194a}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panthea.NativePlugins", "Panthea.NativePlugins.csproj", "{435f4702-710d-6b8e-c7cf-1e8a98445ea5}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageTools", "PackageTools.csproj", "{55a0a1d9-ae78-b33d-e412-b818306d482e}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.HotfixView", "Unity.HotfixView.csproj", "{de4513d3-889b-5c52-8e9c-744c99ae7509}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panthea.NativePlugins", "Panthea.NativePlugins.csproj", "{435f4702-710d-6b8e-c7cf-1e8a98445ea5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panthea.Common", "Panthea.Common.csproj", "{93340cae-54e5-e19e-726b-e4dddf416e69}"
 EndProject
@@ -75,10 +77,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{f41b355c-331a-af48-b348-52fd7a76b064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f41b355c-331a-af48-b348-52fd7a76b064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f41b355c-331a-af48-b348-52fd7a76b064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{f41b355c-331a-af48-b348-52fd7a76b064}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62940cec-f56b-72ab-5c04-dceab4b446f5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62940cec-f56b-72ab-5c04-dceab4b446f5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62940cec-f56b-72ab-5c04-dceab4b446f5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -107,6 +109,10 @@ Global
 		{8f12843b-d2c9-87bc-0345-2c9dcc8ab066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8f12843b-d2c9-87bc-0345-2c9dcc8ab066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8f12843b-d2c9-87bc-0345-2c9dcc8ab066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{d2ad5be1-263a-9a30-ab0f-dc5b08044350}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09b46226-3263-561e-d797-c9025c53bdd6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09b46226-3263-561e-d797-c9025c53bdd6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09b46226-3263-561e-d797-c9025c53bdd6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -127,6 +133,10 @@ Global
 		{fd394c41-51e6-503c-1715-785bb9cd194a}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{fd394c41-51e6-503c-1715-785bb9cd194a}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{fd394c41-51e6-503c-1715-785bb9cd194a}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55a0a1d9-ae78-b33d-e412-b818306d482e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55a0a1d9-ae78-b33d-e412-b818306d482e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55a0a1d9-ae78-b33d-e412-b818306d482e}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -135,10 +145,6 @@ Global
 		{de4513d3-889b-5c52-8e9c-744c99ae7509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{de4513d3-889b-5c52-8e9c-744c99ae7509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{de4513d3-889b-5c52-8e9c-744c99ae7509}.Release|Any CPU.Build.0 = Release|Any CPU
-		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{435f4702-710d-6b8e-c7cf-1e8a98445ea5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93340cae-54e5-e19e-726b-e4dddf416e69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93340cae-54e5-e19e-726b-e4dddf416e69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93340cae-54e5-e19e-726b-e4dddf416e69}.Release|Any CPU.ActiveCfg = Release|Any CPU

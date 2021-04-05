@@ -5,16 +5,17 @@ using UnityEngine;
 
 namespace Kitchen
 {
-    public class PlayerMoveComponent : AIPath
+    public class PlayerMoveComponent: AIPath
     {
         public bool IsReached { get; private set; } = true;
         private Transform mCacheTransform;
+
         protected override void Start()
         {
             base.Start();
             mCacheTransform = transform;
             endReachedDistance = 0.1f;
-            this.gameObject.AddComponent<FunnelModifier>();
+            gameObject.AddComponent<FunnelModifier>();
         }
 
         public void SetDestination(Vector3 vec)
@@ -29,8 +30,7 @@ namespace Kitchen
             if (!IsReached)
             {
                 //var dir = position - nextPosition;
-                
-                
+
                 base.FinalizeMovement(nextPosition, nextRotation);
             }
         }

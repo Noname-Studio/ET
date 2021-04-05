@@ -27,7 +27,7 @@ namespace RestaurantPreview.Config
 }
 [%CoreClass]
 {
-	public partial class [@Class]Property : ConfigAssetManager<[@Class]Property>
+	public partial class [@Class]Property : IConfig
 	{
 		[%Enum]
 		{

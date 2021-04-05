@@ -3,35 +3,19 @@ using ET;
 
 public class Data_Guild : Entity, IDBCollection
 {
-    public class MemberInfo
-    {
-        public long Id;
-        public string Name;
-        public int Level;
-        public long LastLogin;
-        public long JoinTime;
-        public short Language;
-        public string Icon;
-        public List<int> DressUp = new List<int>();
-        public int Hornor = 0;
-    }
-    public class ApplicationInfo
-    {
-        public long Time;
-        public long Id;
-    }
     public string Name = null;
-    public int Frame = 0;
-    public int Inside = 0;
-    public bool IsPublic = true;
-    public short Language = -1;
+    public int? Frame = null;
+    public int? Inside = null;
+    public bool? IsPublic = null;
+    public short? Language = null;
     public string Desc = null;
-    public int MinLevel = -1;
-    public long OwnerId = 0;
-    public int Activity = -1;
+    public int? MinLevel = null;
+    public long? OwnerId = null;
+    public int? Activity = null;
     public List<MemberInfo> Members = new List<MemberInfo>();
     public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
-    public long CreateTime;
+    public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
+    public long? CreateTime = null;
 
 
     public M2C_GuildUpdate CreateGuildUpdateProto()
@@ -48,22 +32,11 @@ public class Data_Guild : Entity, IDBCollection
             MinLevel = MinLevel,
             OwnerId = OwnerId,
             MaxMemberNum = 20,
+            Frame = Frame
         };
-        foreach (var node in Members)
-        {
-            guildUpdate.Members.Add(new ET.MemberInfo
-            {
-                JoinTime = node.JoinTime,
-                LastLogin = node.LastLogin,
-                Hornor = node.Hornor,
-                Icon = node.Icon,
-                Level = node.Level,
-                Language = node.Language,
-                Id = node.Id,
-                Name = node.Name,
-                DressUp = node.DressUp,
-            });
-        }
+        guildUpdate.Members.AddRange(Members);
+        guildUpdate.ApplicationList.AddRange(ApplicationList);
+        guildUpdate.AskEnergyList.AddRange(AskEnergyList);
 
         return guildUpdate;
     }

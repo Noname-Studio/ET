@@ -4,46 +4,46 @@ using UnityEngine;
 
 namespace ET
 {
-	
-	public class AssetsBundleLoaderAsyncSystem : UpdateSystem<AssetsBundleLoaderAsync>
-	{
-		public override void Update(AssetsBundleLoaderAsync self)
-		{
-			self.Update();
-		}
-	}
+    public class AssetsBundleLoaderAsyncSystem: UpdateSystem<AssetsBundleLoaderAsync>
+    {
+        public override void Update(AssetsBundleLoaderAsync self)
+        {
+            self.Update();
+        }
+    }
 
-	public class AssetsBundleLoaderAsync : Entity
-	{
-		private AssetBundleCreateRequest request;
+    public class AssetsBundleLoaderAsync: Entity
+    {
+        private AssetBundleCreateRequest request;
 
-		private ETTaskCompletionSource<AssetBundle> tcs;
+        private ETTaskCompletionSource<AssetBundle> tcs;
 
-		public void Update()
-		{
-			if (!this.request.isDone)
-			{
-				return;
-			}
+        public void Update()
+        {
+            if (!request.isDone)
+            {
+                return;
+            }
 
-			ETTaskCompletionSource<AssetBundle> t = tcs;
-			t.SetResult(this.request.assetBundle);
-		}
+            ETTaskCompletionSource<AssetBundle> t = tcs;
+            t.SetResult(request.assetBundle);
+        }
 
-		public override void Dispose()
-		{
-			if (this.IsDisposed)
-			{
-				return;
-			}
-			base.Dispose();
-		}
+        public override void Dispose()
+        {
+            if (IsDisposed)
+            {
+                return;
+            }
 
-		public ETTask<AssetBundle> LoadAsync(string path)
-		{
-			this.tcs = new ETTaskCompletionSource<AssetBundle>();
-			this.request = AssetBundle.LoadFromFileAsync(path);
-			return this.tcs.Task;
-		}
-	}
+            base.Dispose();
+        }
+
+        public ETTask<AssetBundle> LoadAsync(string path)
+        {
+            tcs = new ETTaskCompletionSource<AssetBundle>();
+            request = AssetBundle.LoadFromFileAsync(path);
+            return tcs.Task;
+        }
+    }
 }

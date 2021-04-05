@@ -6,7 +6,7 @@ namespace ET
         {
             return await scene.GetComponent<UIComponent>().Create(uiType);
         }
-        
+
         public static async ETTask Remove(Scene scene, string uiType)
         {
             scene.GetComponent<UIComponent>().Remove(uiType);

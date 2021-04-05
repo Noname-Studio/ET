@@ -1,43 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using FairyGUI;
 using UnityEngine;
 
-public partial class UIBase
+public class UIBase
 {
     /// <summary>
     /// 注意如果需要修改这个变量内的值一定要先调用MarkDirty避免把池污染了
     /// UI配置,当UI界面需要特殊处理时可以修改内部的参数达到一定效果
     /// </summary>
-    public UIWidget Widget;
-    public Type Type;
-    private bool mIsDirty = false;
-    private EventListener mOnClose;
-    protected UIManager Manager;
-    protected MessageKit Message;
+    public UIWidget Widget { get; set; }
+
+    public Type Type { get; set; }
+    private bool mIsDirty { get; set; }
+    private EventListener mOnClose { get; set; }
+    protected UIManager Manager { get; }
+    protected MessageKit Message { get; }
+
+    /// <summary>
+    /// 当前界面是否激活.
+    /// </summary>
+    public bool Active { get; set; }
+
     /// <summary>
     /// 父组件.
     /// </summary>
-    public UIBase Parent;
-    private Dictionary<EventKey, Action> mKeyEvent = new Dictionary<EventKey, Action>();
-    private Dictionary<Type,object> mEventHandle = new Dictionary<Type,object>();
-    #if NetworkModule
-    [InjectOptional] protected EchoClientHandler ClientHandler;
-    #endif
+    public UIBase Parent { get; set; }
+
+    private Dictionary<EventKey, Action> mKeyEvent { get; } = new Dictionary<EventKey, Action>();
+    private Dictionary<Type, object> mEventHandle { get; } = new Dictionary<Type, object>();
 
     public UIBase()
     {
         Manager = UIKit.Inst;
         Message = MessageKit.Inst;
     }
-    
-    /// <summary>
-    /// 当前界面是否激活.
-    /// </summary>
-    public bool Active = false;
 
     /// <summary>
     /// 界面已经被销毁了.
@@ -47,17 +46,24 @@ public partial class UIBase
         get
         {
             if (Window != null)
+            {
                 return Window.isDisposed;
+            }
             else
+            {
                 return GComponent == null || GComponent.isDisposed;
+            }
         }
     }
-    
+
     public EventListener OnClose
     {
-        get { return this.mOnClose ??= new EventListener(this.GComponent, "OnClose"); }
+        get
+        {
+            return mOnClose ??= new EventListener(GComponent, "OnClose");
+        }
     }
-    
+
     /// <summary>
     /// 与FairyGUI通信的接口
     /// </summary>
@@ -67,45 +73,70 @@ public partial class UIBase
     {
         get
         {
+            if (IsDisposed)
+            {
+                return false;
+            }
+
             return GComponent != null && GComponent.visible;
         }
-        set { GComponent.visible = value; }
+        set => GComponent.visible = value;
     }
-    
+
     /// <summary>
     /// 窗口(仅当UIConfig标记了IsWindow为false的时候为Null)
     /// </summary>
     public NormalWindow Window { get; set; }
+
     #region virtual
+
     /// <summary>
     /// 界面准备
     /// </summary>
     /// <returns></returns>
+#pragma warning disable 1998
     public virtual async Task<bool> Prepared()
+#pragma warning restore 1998
     {
         return true;
     }
+
     /// <summary>
     /// 仅当UI界面被创建的时候触发
     /// </summary>
-    /// <param name="args"></param>
-    public virtual void OnInit(IUIParams p) { }
+    /// <param name="p"></param>
+    protected virtual void OnInit(IUIParams p)
+    {
+    }
+
     /// <summary>
     /// 当UI界面被销毁时触发
     /// </summary>
-    public virtual void OnRelease() { }
+    protected virtual void OnRelease()
+    {
+    }
 
     /// <summary>
     /// 当UI界面处于活跃状态时调用一次在OnInit之后触发
     /// </summary>
-    public virtual void OnEnable(IUIParams p,bool refresh) { }
+    protected virtual void OnEnable(IUIParams p, bool refresh)
+    {
+    }
+
     /// <summary>
     /// 当UI界面处于非活跃状态是调用一次在OnClose之前触发
     /// </summary>
-    public virtual void OnDisable(bool refresh) { }
-  
-    public virtual void Update() { }
-    public virtual void LateUpdate() { }
+    protected virtual void OnDisable(bool refresh)
+    {
+    }
+
+    public virtual void Update()
+    {
+    }
+
+    public virtual void LateUpdate()
+    {
+    }
 
     public virtual void DoShowAnimation()
     {
@@ -114,9 +145,9 @@ public partial class UIBase
 
     public virtual void DoHideAnimation()
     {
-        Window.OnClose();
+        Window.OnClose(false);
     }
-    
+
     /// <summary>
     /// 当动画播放结束的时候触发仅针对UIWindow有效果
     /// </summary>
@@ -129,17 +160,22 @@ public partial class UIBase
     /// </summary>
     public virtual void OnExit()
     {
-        
     }
-    
+
     /// <summary>
     /// 当界面处在最上层的时候被响应
     /// </summary>
-    public virtual void OnFocus(){}
+    public virtual void OnFocus()
+    {
+    }
+
     /// <summary>
     /// 当界面从最上层移出时响应
     /// </summary>
-    public virtual void OnLostFocus(){}
+    public virtual void OnLostFocus()
+    {
+    }
+
     #endregion
 
     #region Base
@@ -148,14 +184,20 @@ public partial class UIBase
     {
         if (!Widget.DontFullScreen)
         {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (GComponent.width == 1920 && GComponent.height == 1080)
             {
-                if(Window != null)
+                if (Window != null)
+                {
                     Window.MakeFullScreen();
+                }
                 else
+                {
                     GComponent.MakeFullScreen();
+                }
             }
         }
+
         OnInit(p);
     }
 
@@ -168,12 +210,13 @@ public partial class UIBase
 
     public void BaseDisable()
     {
-        bool refresh = Active == true;
+        bool refresh = Active;
         Active = false;
         if (Widget.Pool)
         {
             mOnClose?.Call(this);
         }
+
         RemoveAllEvent();
         OnDisable(refresh);
     }
@@ -184,11 +227,14 @@ public partial class UIBase
         {
             mOnClose?.Call(this);
         }
+
         OnRelease();
     }
+
     #endregion
 
     #region Method
+
     /// <summary>
     /// 销毁自身
     /// </summary>
@@ -200,13 +246,16 @@ public partial class UIBase
     /// <summary>
     /// 移动到目标组件下
     /// </summary>
-    public void MoveTo(GComponent obj,int index = -1)
+    public void MoveTo(GComponent obj, int index = -1)
     {
         if (index == -1)
+        {
             index = obj.numChildren - 1;
+        }
+
         obj.AddChildAt(GComponent, index);
     }
-    
+
     /// <summary>
     /// 标记Widget为已修改的
     /// </summary>
@@ -221,22 +270,23 @@ public partial class UIBase
 
     public void AddEvent<T>(MessageKit.EventDelegate<T> del) where T : IEventHandle
     {
-        mEventHandle[typeof(T)] = del;
+        mEventHandle[typeof (T)] = del;
         Message.Add(del);
     }
-    public void AddEvent(EventKey key,Action action)
+
+    public void AddEvent(EventKey key, Action action)
     {
-        mKeyEvent[key]= action;
+        mKeyEvent[key] = action;
         Message.Add(key, action);
     }
 
     public void RemoveEvent<T>(MessageKit.EventDelegate<T> del) where T : IEventHandle
     {
-        mEventHandle.Remove(typeof(T));
+        mEventHandle.Remove(typeof (T));
         Message.Remove(del);
     }
-    
-    public void RemoveEvent(EventKey key,Action action)
+
+    public void RemoveEvent(EventKey key, Action action)
     {
         mKeyEvent.Remove(key);
         Message.Remove(key, action);
@@ -256,7 +306,7 @@ public partial class UIBase
         Dictionary<Type, object> eventHandleTmp = new Dictionary<Type, object>(mEventHandle);
         foreach (var node in eventHandleTmp)
         {
-            method.MakeGenericMethod(node.Key).Invoke(this, new[] {node.Value});
+            method.MakeGenericMethod(node.Key).Invoke(this, new[] { node.Value });
         }
 
         Dictionary<EventKey, Action> keyEventTmp = new Dictionary<EventKey, Action>(mKeyEvent);
@@ -265,6 +315,7 @@ public partial class UIBase
             RemoveEvent(node.Key, node.Value);
         }
     }
+
     #endregion
 }
 
@@ -275,22 +326,24 @@ public partial class UIBase
 /// 我们现在继承得这个类即ViewModel层.负责将双边得数据链接再一起.
 /// </summary>
 /// <typeparam name="T">View</typeparam>
-/// <typeparam name="M">Model</typeparam>
-public abstract class UIBase<T> : UIBase where T : GComponent
+public abstract class UIBase<T>: UIBase where T : GComponent
 {
     /// <summary>
     /// UI数据接口
     /// </summary>
     public T View;
+
     private const string CreateInstanceMethodName = "CreateInstance";
-    private static string ViewName;
+
     private delegate T CreateInstance();
+
     private static readonly CreateInstance mCreateInstance;
+
     static UIBase()
     {
-        var t = typeof(T);
-        ViewName = t.Name;
-        mCreateInstance = (CreateInstance)t.GetMethod(CreateInstanceMethodName, BindingFlags.Static | BindingFlags.Public).CreateDelegate(typeof(CreateInstance));
+        var t = typeof (T);
+        mCreateInstance = (CreateInstance) t.GetMethod(CreateInstanceMethodName, BindingFlags.Static | BindingFlags.Public)
+                .CreateDelegate(typeof (CreateInstance));
     }
 
     protected UIBase()
@@ -309,32 +362,24 @@ public abstract class UIBase<T> : UIBase where T : GComponent
         GComponent = wrapper;
         View.fairyBatching = true;
         View.AddRelation(GRoot.inst, RelationType.Size);
-
-        var bg = View.GetChild("bg");
-        if (bg != null)
-        {
-            bg.size = GRoot.inst.size + new Vector2(100, 100);
-            bg.Center();
-        }
-
+        
         AutoSet();
         OnLoaded();
     }
 
-    void AutoSet()
+    private void AutoSet()
     {
 #if MINISTONE
         var help = View.GetChild("Help") as GButton;
         if(help != null)
             help.onClick.Set(() =>OpenHelp());
-#endif    
+#endif
         var close = View.GetChild("Close");
         close?.onClick.Set(CloseMySelf);
     }
 
     protected virtual void OnLoaded()
     {
-        
     }
 }
 
@@ -343,10 +388,11 @@ public abstract class UIBase<T> : UIBase where T : GComponent
 /// </summary>
 /// <typeparam name="T">View</typeparam>
 /// <typeparam name="M">Model</typeparam>
-public class UIBase<T,M> : UIBase<T> where T : GComponent 
-                                              where M : IUIModel,new()
+public class UIBase<T, M>: UIBase<T> where T : GComponent
+        where M : IUIModel, new()
 {
     public M Model;
+
     /// <summary>
     /// 不要重写这个函数.如果要重写也请调用base.OnLoaded()
     /// </summary>
@@ -356,4 +402,3 @@ public class UIBase<T,M> : UIBase<T> where T : GComponent
         Model = new M();
     }
 }
-

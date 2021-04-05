@@ -5,11 +5,11 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
-
 #if UNITY_EDITOR
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities;
+    using Editor;
+    using Utilities;
     using System.Collections;
+
 #endif
 
     // 
@@ -37,24 +37,21 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
 
         public StatValue this[int index]
         {
-            get { return this.stats[index]; }
-            set { this.stats[index] = value; }
+            get => stats[index];
+            set => stats[index] = value;
         }
 
-        public int Count
-        {
-            get { return this.stats.Count; }
-        }
+        public int Count => stats.Count;
 
         public float this[StatType type]
         {
             get
             {
-                for (int i = 0; i < this.stats.Count; i++)
+                for (int i = 0; i < stats.Count; i++)
                 {
-                    if (this.stats[i].Type == type)
+                    if (stats[i].Type == type)
                     {
-                        return this.stats[i].Value;
+                        return stats[i].Value;
                     }
                 }
 
@@ -62,18 +59,18 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
             }
             set
             {
-                for (int i = 0; i < this.stats.Count; i++)
+                for (int i = 0; i < stats.Count; i++)
                 {
-                    if (this.stats[i].Type == type)
+                    if (stats[i].Type == type)
                     {
-                        var val = this.stats[i];
+                        var val = stats[i];
                         val.Value = value;
-                        this.stats[i] = val;
+                        stats[i] = val;
                         return;
                     }
                 }
 
-                this.stats.Add(new StatValue(type, value));
+                stats.Add(new StatValue(type, value));
             }
         }
 
@@ -81,11 +78,11 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         // Finds all available stat-types and excludes the types that the statList already contains, so we don't get multiple entries of the same type.
         private IEnumerable CustomAddStatsButton()
         {
-            return Enum.GetValues(typeof(StatType)).Cast<StatType>()
-                .Except(this.stats.Select(x => x.Type))
-                .Select(x => new StatValue(x))
-                .AppendWith(this.stats)
-                .Select(x => new ValueDropdownItem(x.Type.ToString(), x));
+            return Enum.GetValues(typeof (StatType)).Cast<StatType>()
+                    .Except(stats.Select(x => x.Type))
+                    .Select(x => new StatValue(x))
+                    .AppendWith(stats)
+                    .Select(x => new ValueDropdownItem(x.Type.ToString(), x));
         }
 #endif
     }
@@ -106,12 +103,12 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     // the difference.
     // 
 
-    internal class StatListValueDrawer : OdinValueDrawer<StatList>
+    internal class StatListValueDrawer: OdinValueDrawer<StatList>
     {
         protected override void DrawPropertyLayout(GUIContent label)
         {
             // This would be the "private List<StatValue> stats" field.
-            this.Property.Children[0].Draw(label);
+            Property.Children[0].Draw(label);
         }
     }
 

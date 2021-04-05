@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_MultipleFood : GComponent
+    public partial class View_MultipleFood: GComponent
     {
         public Controller c1;
         public const string URL = "ui://dpc3yd4tsglytw0q";
 
         public static View_MultipleFood CreateInstance()
         {
-            return (View_MultipleFood)UIPackage.CreateObject("GamingUI", "MultipleFood");
+            return (View_MultipleFood) UIPackage.CreateObject("GamingUI", "MultipleFood");
         }
 
         public override void ConstructFromXML(XML xml)

@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace ET
 {
-    public class ThreadSynchronizationContext : SynchronizationContext
+    public class ThreadSynchronizationContext: SynchronizationContext
     {
         public static ThreadSynchronizationContext Instance { get; } = new ThreadSynchronizationContext(Thread.CurrentThread.ManagedThreadId);
 
@@ -24,7 +24,7 @@ namespace ET
         {
             while (true)
             {
-                if (!this.queue.TryDequeue(out a))
+                if (!queue.TryDequeue(out a))
                 {
                     return;
                 }
@@ -42,12 +42,12 @@ namespace ET
 
         public override void Post(SendOrPostCallback callback, object state)
         {
-            this.Post(() => callback(state));
+            Post(() => callback(state));
         }
-		
+
         public void Post(Action action)
         {
-            if (Thread.CurrentThread.ManagedThreadId == this.threadId)
+            if (Thread.CurrentThread.ManagedThreadId == threadId)
             {
                 try
                 {
@@ -61,12 +61,12 @@ namespace ET
                 return;
             }
 
-            this.queue.Enqueue(action);
+            queue.Enqueue(action);
         }
-		
+
         public void PostNext(Action action)
         {
-            this.queue.Enqueue(action);
+            queue.Enqueue(action);
         }
     }
 }

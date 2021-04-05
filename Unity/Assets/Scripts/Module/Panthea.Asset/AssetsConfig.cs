@@ -6,15 +6,18 @@ namespace Panthea.Asset
     {
         private static string mStreamingAssets;
         public static string StreamingAssets => mStreamingAssets ?? (mStreamingAssets = Application.streamingAssetsPath);
-        public static string AssetBundleStreamingAssets => (mStreamingAssets ?? (mStreamingAssets = Application.streamingAssetsPath)) + "/" + Platform;
+
+        public static string AssetBundleStreamingAssets =>
+                (mStreamingAssets ?? (mStreamingAssets = Application.streamingAssetsPath)) + "/" + Platform;
 
         private static string mPersistentDataPath;
+
         public static string PersistentDataPath
         {
             get
             {
 #if DEVELOPMENT_BUILD
-            return mPersistentDataPath ?? (mPersistentDataPath = Application.persistentDataPath);
+                return mPersistentDataPath ?? (mPersistentDataPath = Application.persistentDataPath);
 #elif UNITY_ANDROID && !UNITY_EDITOR
             if (mPersistentDataPath == null)
             {
@@ -30,23 +33,19 @@ namespace Panthea.Asset
 #else
                 return mPersistentDataPath ?? (mPersistentDataPath = Application.persistentDataPath);
 #endif
-
             }
         }
 
         public const string Suffix = ".bundle";
-    
-        public static string AssetBundlePersistentDataPath
-        {
-            get { return PersistentDataPath + "/assetbundles"; }
-        }
-    
+
+        public static string AssetBundlePersistentDataPath => PersistentDataPath + "/assetbundles";
+
         public static string Platform
         {
             get
             {
 #if UNITY_ANDROID
-            return "android";
+                return "android";
 #elif UNITY_IOS
             return "ios";
 #else

@@ -11,6 +11,7 @@ public interface ISceneLoading
     /// </summary>
     /// <param name="data"></param>
     void InjectParamters(ISceneLoadData data);
+
     /// <summary>
     /// 你可以在这里准备哪些资源需要被加载.也可以在这里下载某些后续需要使用到的资源
     /// 即使这里不添加所有的加载资源也没关系.
@@ -19,11 +20,13 @@ public interface ISceneLoading
     /// </summary>
     /// <returns></returns>
     List<string> PreparedResources();
+
     /// <summary>
     /// 运行你创建场景的逻辑.创建需要的东西
     /// </summary>
     /// <returns></returns>
     UniTask Run();
+
     /// <summary>
     /// 这里我们建议返回要卸载的AB包.这样在下一次PreparedResources的时候我们可以根据需要过滤相应的需要卸载的包.避免重复加载AB
     /// </summary>

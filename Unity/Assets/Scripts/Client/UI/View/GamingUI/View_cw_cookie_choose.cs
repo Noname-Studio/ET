@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_cw_cookie_choose : GComponent
+    public partial class View_cw_cookie_choose: GComponent
     {
         public GLoader icon_bg0;
         public GLoader icon_bg1;
@@ -18,20 +18,20 @@ namespace GamingUI
 
         public static View_cw_cookie_choose CreateInstance()
         {
-            return (View_cw_cookie_choose)UIPackage.CreateObject("GamingUI", "cw_cookie_choose");
+            return (View_cw_cookie_choose) UIPackage.CreateObject("GamingUI", "cw_cookie_choose");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            icon_bg0 = (GLoader)GetChild("icon_bg0");
-            icon_bg1 = (GLoader)GetChild("icon_bg1");
-            icon_bg2 = (GLoader)GetChild("icon_bg2");
-            icon_light = (GImage)GetChild("icon_light");
-            icon0 = (GImage)GetChild("icon0");
-            icon1 = (GImage)GetChild("icon1");
-            icon2 = (GImage)GetChild("icon2");
+            icon_bg0 = (GLoader) GetChild("icon_bg0");
+            icon_bg1 = (GLoader) GetChild("icon_bg1");
+            icon_bg2 = (GLoader) GetChild("icon_bg2");
+            icon_light = (GImage) GetChild("icon_light");
+            icon0 = (GImage) GetChild("icon0");
+            icon1 = (GImage) GetChild("icon1");
+            icon2 = (GImage) GetChild("icon2");
         }
     }
 }

@@ -3,16 +3,17 @@ using GamingUI;
 
 namespace Client.UI.ViewModel
 {
-    [UIWidget(Pool = true,Repeat = true)]
-    public class UI_Order : UIBase<View_Order>
+    [UIWidget(Pool = true, Repeat = true)]
+    public class UI_Order: UIBase<View_Order>
     {
         public UI_Order()
         {
         }
-        public UI_Order(View_Order order) : base(order)
+
+        public UI_Order(View_Order order): base(order)
         {
         }
-        
+
         /// <summary>
         /// 刷新订单面板
         /// </summary>
@@ -21,16 +22,18 @@ namespace Client.UI.ViewModel
         {
             if (properties == null)
             {
-                this.Visible = false;
+                Visible = false;
                 return;
             }
+
             int count = properties.Count;
             if (count == 0)
             {
-                this.Visible = false;
+                Visible = false;
                 return;
             }
-            this.Visible = true;
+
+            Visible = true;
             View.Number.selectedIndex = count - 1;
             InitFood(properties);
         }
@@ -49,6 +52,7 @@ namespace Client.UI.ViewModel
                     Log.Error("找不到 Food" + (i + 1) + "这个Child");
                     continue;
                 }
+
                 display.icon = properties[i].Texture;
             }
         }

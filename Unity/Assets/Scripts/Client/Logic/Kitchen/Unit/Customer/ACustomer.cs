@@ -5,22 +5,23 @@ using UnityEngine;
 
 namespace Kitchen
 {
-    public class ACustomer : IUnit
+    public class ACustomer: IUnit
     {
         public AKitchenSpot Spot { get; }
         public UnityObject Display { get; }
+        public AnimatorControl Animator { get; }
         protected CustomerOrder Property { get; }
         public ObservableCollection<FoodProperty> Order { get; }
         public CustomerState State { get; protected set; } = CustomerState.Enter;
         public ComponentContainer Components { get; } = new ComponentContainer();
-        
-        public ACustomer(UnityObject display,AKitchenSpot spot,CustomerOrder property)
+
+        public ACustomer(UnityObject display, AKitchenSpot spot, CustomerOrder property)
         {
             Spot = spot;
             Display = display;
+            Animator = Display.AddComponent<AnimatorControl>();
             Property = property;
             Order = new ObservableCollection<FoodProperty>(Property.Foods);
-            UnityLifeCycleKit.Inst.AddUpdate(OnUpdate);
         }
 
         public void RemoveOrder(string key)
@@ -38,24 +39,16 @@ namespace Kitchen
                 }
             }
         }
-        
-        public virtual void Destroy()
+
+        public virtual void Dispose()
         {
             KitchenRoot.Inst.CustomerProvider.Push(this);
             Display.Active = false;
             KitchenRoot.Inst.SpotProvider.ReleaseSpot(Spot);
-            UnityLifeCycleKit.Inst.RemoveUpdate(OnUpdate);
-        }
-        
-        private float OnUpdate()
-        {
-            Update();
-            return 0;
         }
 
-        protected virtual void Update()
+        public virtual void Update()
         {
-            
         }
 
         /// <summary>
@@ -79,7 +72,6 @@ namespace Kitchen
         /// </summary>
         public virtual void OnEnter()
         {
-            
         }
     }
 }

@@ -64,8 +64,8 @@ namespace NotificationSamples
     /// </summary>
     /// <remarks>Has a concrete notification type</remarks>
     /// <typeparam name="TNotificationType">The type of notification returned by this platform.</typeparam>
-    public interface IGameNotificationsPlatform<TNotificationType> : IGameNotificationsPlatform
-        where TNotificationType : IGameNotification
+    public interface IGameNotificationsPlatform<TNotificationType>: IGameNotificationsPlatform
+            where TNotificationType : IGameNotification
     {
         /// <summary>
         /// Create an instance of <typeparamref name="TNotificationType"/>.

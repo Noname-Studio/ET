@@ -4,12 +4,12 @@ using FairyGUI;
 
 namespace UI.Story.BeginCG
 {
-	public class BeginCGBinder
-	{
-		[UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(View_BeginCG.URL, typeof(View_BeginCG));
-		}
-	}
+    public class BeginCGBinder
+    {
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(View_BeginCG.URL, typeof (View_BeginCG));
+        }
+    }
 }

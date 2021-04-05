@@ -11,7 +11,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     // 
 
     [Serializable]
-    public struct StatValue : IEquatable<StatValue>
+    public struct StatValue: IEquatable<StatValue>
     {
         [HideInInspector]
         public StatType Type;
@@ -23,19 +23,19 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
 
         public StatValue(StatType type, float value)
         {
-            this.Type = type;
-            this.Value = value;
+            Type = type;
+            Value = value;
         }
 
         public StatValue(StatType type)
         {
-            this.Type = type;
-            this.Value = 0;
+            Type = type;
+            Value = 0;
         }
 
         public bool Equals(StatValue other)
         {
-            return this.Type == other.Type && this.Value == other.Value;
+            return Type == other.Type && Value == other.Value;
         }
     }
 }

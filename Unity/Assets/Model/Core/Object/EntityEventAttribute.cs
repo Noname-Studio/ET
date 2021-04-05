@@ -2,14 +2,14 @@
 
 namespace ET
 {
-	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-	public class EntityEventAttribute: Attribute
-	{
-		public int ClassType;
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    public class EntityEventAttribute: Attribute
+    {
+        public int ClassType;
 
-		public EntityEventAttribute(int classType)
-		{
-			this.ClassType = classType;
-		}
-	}
+        public EntityEventAttribute(int classType)
+        {
+            ClassType = classType;
+        }
+    }
 }

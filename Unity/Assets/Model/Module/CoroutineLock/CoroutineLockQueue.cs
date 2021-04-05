@@ -8,32 +8,26 @@ namespace ET
 
         public void Enqueue(ETTaskCompletionSource<CoroutineLock> tcs)
         {
-            this.queue.Enqueue(tcs);
+            queue.Enqueue(tcs);
         }
 
         public ETTaskCompletionSource<CoroutineLock> Dequeue()
         {
-            return this.queue.Dequeue();
+            return queue.Dequeue();
         }
 
-        public int Count
-        {
-            get
-            {
-                return this.queue.Count;
-            }
-        }
+        public int Count => queue.Count;
 
         public override void Dispose()
         {
-            if (this.IsDisposed)
+            if (IsDisposed)
             {
                 return;
             }
-            
+
             base.Dispose();
-            
-            this.queue.Clear();
+
+            queue.Clear();
         }
     }
 }

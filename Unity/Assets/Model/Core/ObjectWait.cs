@@ -11,14 +11,10 @@ namespace ET
         public const int Cancel = 2;
         public const int Timeout = 3;
     }
-    
+
     public interface IWaitType
     {
-        int Error
-        {
-            get;
-            set;
-        }
+        int Error { get; set; }
     }
 
     [ObjectSystem]
@@ -56,27 +52,27 @@ namespace ET
 
             public ResultCallback()
             {
-                this.tcs = new ETTaskCompletionSource<K>();
+                tcs = new ETTaskCompletionSource<K>();
             }
-            
+
             public ResultCallback(long timer)
             {
                 this.timer = timer;
-                this.tcs = new ETTaskCompletionSource<K>();
+                tcs = new ETTaskCompletionSource<K>();
             }
 
-            public ETTask<K> Task => this.tcs.Task;
+            public ETTask<K> Task => tcs.Task;
 
             public void SetResult(K k)
             {
-                TimerComponent.Instance.Remove(this.timer);
-                this.tcs.SetResult(k);
+                TimerComponent.Instance.Remove(timer);
+                tcs.SetResult(k);
             }
 
             public void SetResult()
             {
-                TimerComponent.Instance.Remove(this.timer);
-                this.tcs.SetResult(new K() { Error = WaitTypeError.Destroy });
+                TimerComponent.Instance.Remove(timer);
+                tcs.SetResult(new K() { Error = WaitTypeError.Destroy });
             }
         }
 
@@ -86,11 +82,11 @@ namespace ET
         {
             ResultCallback<T> tcs = new ResultCallback<T>();
             Type type = typeof (T);
-            this.tcss.Add(type, tcs);
+            tcss.Add(type, tcs);
 
             void CancelAction()
             {
-                this.Notify(new T() { Error = WaitTypeError.Cancel });
+                Notify(new T() { Error = WaitTypeError.Cancel });
             }
 
             T ret;
@@ -101,26 +97,25 @@ namespace ET
             }
             finally
             {
-                cancellationToken?.Remove(CancelAction);    
+                cancellationToken?.Remove(CancelAction);
             }
+
             return ret;
         }
 
         public async ETTask<T> Wait<T>(int timeout, ETCancellationToken cancellationToken = null) where T : struct, IWaitType
         {
-            long timerId = TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + timeout, () =>
-            {
-                Notify(new T() { Error = WaitTypeError.Timeout });
-            });
-            
+            long timerId = TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + timeout,
+                () => { Notify(new T() { Error = WaitTypeError.Timeout }); });
+
             ResultCallback<T> tcs = new ResultCallback<T>(timerId);
-            this.tcss.Add(typeof (T), tcs);
-            
+            tcss.Add(typeof (T), tcs);
+
             void CancelAction()
             {
                 Notify(new T() { Error = WaitTypeError.Cancel });
             }
-            
+
             T ret;
             try
             {
@@ -129,20 +124,21 @@ namespace ET
             }
             finally
             {
-                cancellationToken?.Remove(CancelAction);    
+                cancellationToken?.Remove(CancelAction);
             }
+
             return ret;
         }
 
         public void Notify<T>(T obj) where T : struct, IWaitType
         {
             Type type = typeof (T);
-            if (!this.tcss.TryGetValue(type, out object tcs))
+            if (!tcss.TryGetValue(type, out object tcs))
             {
                 return;
             }
 
-            this.tcss.Remove(type);
+            tcss.Remove(type);
             ((ResultCallback<T>) tcs).SetResult(obj);
         }
     }

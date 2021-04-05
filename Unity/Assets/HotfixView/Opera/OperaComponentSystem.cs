@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ET
 {
-    public class OperaComponentAwakeSystem : AwakeSystem<OperaComponent>
+    public class OperaComponentAwakeSystem: AwakeSystem<OperaComponent>
     {
         public override void Awake(OperaComponent self)
         {
@@ -11,14 +11,14 @@ namespace ET
         }
     }
 
-    public class OperaComponentUpdateSystem : UpdateSystem<OperaComponent>
+    public class OperaComponentUpdateSystem: UpdateSystem<OperaComponent>
     {
         public override void Update(OperaComponent self)
         {
             self.Update();
         }
     }
-    
+
     public static class OperaComponentSystem
     {
         public static void Update(this OperaComponent self)
@@ -45,8 +45,8 @@ namespace ET
         {
             try
             {
-                M2C_TestActorResponse response = (M2C_TestActorResponse)await self.ZoneScene().GetComponent<SessionComponent>().Session.Call(
-                    new C2M_TestActorRequest() { Info = "actor rpc request" });
+                M2C_TestActorResponse response = (M2C_TestActorResponse) await self.ZoneScene().GetComponent<SessionComponent>().Session
+                        .Call(new C2M_TestActorRequest() { Info = "actor rpc request" });
                 Log.Info(response.Info);
             }
             catch (Exception e)

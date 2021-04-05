@@ -9,7 +9,9 @@ public static class DictionaryUtils
         foreach (var node in source)
         {
             if (!target.TryGetValue(node.Key, out var outValue))
+            {
                 temp.Add(node.Key, node.Value);
+            }
             else
             {
                 var result = compare(node.Value, outValue);

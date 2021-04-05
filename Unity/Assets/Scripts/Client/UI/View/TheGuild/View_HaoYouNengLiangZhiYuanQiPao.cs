@@ -19,7 +19,6 @@ namespace TheGuild
         public GRichTextField title;
         public GButton GoMail;
         public GGroup mail_tips;
-        public GTextField content;
         public const string URL = "ui://nvat1mjsrki3dlg";
 
         public static View_HaoYouNengLiangZhiYuanQiPao CreateInstance()
@@ -43,7 +42,6 @@ namespace TheGuild
             title = (GRichTextField)GetChild("title");
             GoMail = (GButton)GetChild("GoMail");
             mail_tips = (GGroup)GetChild("mail_tips");
-            content = (GTextField)GetChild("content");
         }
     }
 }

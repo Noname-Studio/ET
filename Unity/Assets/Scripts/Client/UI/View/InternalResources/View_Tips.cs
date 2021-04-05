@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_Tips : GComponent
+    public partial class View_Tips: GComponent
     {
         public Controller ButtonState;
         public GButton bg;
@@ -16,7 +16,7 @@ namespace InternalResources
 
         public static View_Tips CreateInstance()
         {
-            return (View_Tips)UIPackage.CreateObject("InternalResources", "Tips");
+            return (View_Tips) UIPackage.CreateObject("InternalResources", "Tips");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -24,9 +24,9 @@ namespace InternalResources
             base.ConstructFromXML(xml);
 
             ButtonState = GetController("ButtonState");
-            bg = (GButton)GetChild("bg");
-            Content = (GRichTextField)GetChild("Content");
-            ButtonList = (GList)GetChild("ButtonList");
+            bg = (GButton) GetChild("bg");
+            Content = (GRichTextField) GetChild("Content");
+            ButtonList = (GList) GetChild("ButtonList");
             t0 = GetTransition("t0");
         }
     }

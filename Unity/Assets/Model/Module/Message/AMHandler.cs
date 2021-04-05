@@ -22,7 +22,7 @@ namespace ET
                 return;
             }
 
-            this.Run(session, message).Coroutine();
+            Run(session, message).Coroutine();
         }
 
         public Type GetMessageType()

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_yellow_light_circle : GComponent
+    public partial class View_yellow_light_circle: GComponent
     {
         public Transition t0;
         public Transition t1;
@@ -13,7 +13,7 @@ namespace GamingUI
 
         public static View_yellow_light_circle CreateInstance()
         {
-            return (View_yellow_light_circle)UIPackage.CreateObject("GamingUI", "yellow_light_circle");
+            return (View_yellow_light_circle) UIPackage.CreateObject("GamingUI", "yellow_light_circle");
         }
 
         public override void ConstructFromXML(XML xml)

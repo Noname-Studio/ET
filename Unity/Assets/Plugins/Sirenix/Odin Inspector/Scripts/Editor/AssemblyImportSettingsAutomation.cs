@@ -11,23 +11,22 @@ namespace Sirenix.OdinInspector.Editor
     using System.IO;
     using System.Collections.Generic;
     using Sirenix.Serialization.Utilities.Editor;
-    using Sirenix.Utilities;
+    using Utilities;
     using UnityEditor;
     using UnityEditor.Build;
-
 #if UNITY_2018_1_OR_NEWER
     using UnityEditor.Build.Reporting;
+
 #endif
 
-    public class AssemblyImportSettingsAutomation :
+    public class AssemblyImportSettingsAutomation:
 #if UNITY_2018_1_OR_NEWER
-        IPreprocessBuildWithReport
+            IPreprocessBuildWithReport
 #else
         IPreprocessBuild
 #endif
     {
-
-        public int callbackOrder { get { return -1500; } }
+        public int callbackOrder => -1500;
 
         private static void ConfigureImportSettings()
         {
@@ -85,8 +84,7 @@ namespace Sirenix.OdinInspector.Editor
             {
                 var platform = EditorUserBuildSettings.activeBuildTarget;
 
-                if (AssemblyImportSettingsUtilities.IsJITSupported(
-                    platform,
+                if (AssemblyImportSettingsUtilities.IsJITSupported(platform,
                     AssemblyImportSettingsUtilities.GetCurrentScriptingBackend(),
                     AssemblyImportSettingsUtilities.GetCurrentApiCompatibilityLevel()))
                 {
@@ -121,7 +119,6 @@ namespace Sirenix.OdinInspector.Editor
         }
 
 #else
-
         void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path)
         {
             ConfigureImportSettings();

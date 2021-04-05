@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_UpgradeObjects : GComponent
+    public partial class View_UpgradeObjects: GComponent
     {
         public GLoader plate;
         public GLoader loader;
@@ -13,15 +13,15 @@ namespace GameBegins
 
         public static View_UpgradeObjects CreateInstance()
         {
-            return (View_UpgradeObjects)UIPackage.CreateObject("GameBegins", "UpgradeObjects");
+            return (View_UpgradeObjects) UIPackage.CreateObject("GameBegins", "UpgradeObjects");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            plate = (GLoader)GetChild("plate");
-            loader = (GLoader)GetChild("loader");
+            plate = (GLoader) GetChild("plate");
+            loader = (GLoader) GetChild("loader");
         }
     }
 }

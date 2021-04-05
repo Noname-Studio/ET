@@ -15,20 +15,20 @@ namespace Kitchen
         private float mWorkTime;
         private float mBurnTime;
         private CookwareState mState;
+
         public CookwareRenderer(NormalCookware display)
         {
             mDisplay = display;
             mProperty = mDisplay.Property;
             mCookwareDetail = mDisplay.CookwareDetail;
-            UnityLifeCycleKit.Inst.AddUpdate(DoJob);
             mCookwareProgress = UIKit.Inst.Create<UI_CookwareProgress>();
             Vector3 screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(display.Animation.ClockPos);
-            screenPos.y = Screen.height - screenPos.y; 
+            screenPos.y = Screen.height - screenPos.y;
             var pt = GRoot.inst.GlobalToLocal(screenPos);
             mCookwareProgress.View.position = pt;
             CreateFood();
         }
-        
+
         /// <summary>
         /// 创建显示盘子
         /// </summary>
@@ -37,38 +37,42 @@ namespace Kitchen
             mCookResult = UIKit.Inst.Create<UI_CookFood>();
             mCookResult.View.visible = false;
             Vector3 screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(mDisplay.Animation.FoodPos);
-            screenPos.y = Screen.height - screenPos.y; 
+            screenPos.y = Screen.height - screenPos.y;
             var pt = GRoot.inst.GlobalToLocal(screenPos);
             mCookResult.View.position = pt;
         }
 
         public void RefreshCount()
         {
-            if (mDisplay.Count <= 1)
+            if (mDisplay.FoodCount <= 1)
+            {
                 mCookResult.View.Number.text = "";
+            }
             else
-                mCookResult.View.Number.text = "x" + mDisplay.Count;
+            {
+                mCookResult.View.Number.text = "x" + mDisplay.FoodCount;
+            }
         }
-        
-        public void Dispose()
-        {
-            UnityLifeCycleKit.Inst.RemoveUpdate(DoJob);
-        }
-    
+
         /// <summary>
         /// 更新显示状态
         /// </summary>
         /// <param name="state"></param>
-        public void Update(CookwareState state)
+        public void ChangeState(CookwareState state)
         {
             mState = state;
             if (state == CookwareState.Burned || state == CookwareState.Done)
+            {
                 SetDisplayFoodId(mDisplay.FoodId);
-            else if(state == CookwareState.Idle || state == CookwareState.Work || state == CookwareState.Broken)
+            }
+            else if (state == CookwareState.Idle || state == CookwareState.Work || state == CookwareState.Broken)
+            {
                 SetDisplayFoodId(null);
+            }
+
             mCookwareProgress.SetState(state);
         }
-    
+
         /// <summary>
         /// 设置显示食物ID
         /// </summary>
@@ -80,6 +84,7 @@ namespace Kitchen
                 Reset();
                 return;
             }
+
             var property = KitchenDataHelper.LoadFood(id);
             mCookResult.View.Plate.url = "Image/Food/plate1_1";
             mCookResult.View.Food.url = property.Texture;
@@ -94,7 +99,7 @@ namespace Kitchen
             mBurnTime = 0;
         }
 
-        private float DoJob()
+        public void Update()
         {
             if (mState == CookwareState.Work)
             {
@@ -122,8 +127,6 @@ namespace Kitchen
                 mWorkTime = 0;
                 mBurnTime = 0;
             }
-            return 0;
         }
     }
-
 }

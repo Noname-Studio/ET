@@ -8,7 +8,7 @@ namespace ET
 
         public ResponseTypeAttribute(Type type)
         {
-            this.Type = type;
+            Type = type;
         }
     }
 }

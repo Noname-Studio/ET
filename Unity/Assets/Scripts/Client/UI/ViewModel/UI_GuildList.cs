@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Client.Manager;
 using Cysharp.Threading.Tasks;
 using ET;
 using FairyGUI;
@@ -14,11 +15,12 @@ namespace Client.UI.ViewModel
     public class UI_GuildList
     {
         private List<SearchGuildResult> SearchResults { get; } = new List<SearchGuildResult>();
-        private Session Session;
+        private NetworkManager Session;
         private View_GongHuiLieBiao View;
         private UI_NotJoinGuild Parent;
         private int Cursor { get; set; } = 1;
-        public UI_GuildList(View_GongHuiLieBiao guildList,UI_NotJoinGuild parent)
+
+        public UI_GuildList(View_GongHuiLieBiao guildList, UI_NotJoinGuild parent)
         {
             View = guildList;
             Parent = parent;
@@ -27,10 +29,10 @@ namespace Client.UI.ViewModel
         public async UniTask Init()
         {
             InitList();
-            this.View.Search.onClick.Add(Search_OnClick);
+            View.Search.onClick.Add(Search_OnClick);
 
             await FetchGuildList();
-            
+
             RefreshList();
         }
 
@@ -39,14 +41,20 @@ namespace Client.UI.ViewModel
             FetchGuildList();
         }
 
-        private async UniTask FetchGuildList(string name = "",int id = 0)
+        private async UniTask FetchGuildList(string name = "", int id = 0)
         {
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
-            Session = Game.Scene.Get(1).GetComponent<SessionComponent>().Session;
-            var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() { Name = name, Id = id, MaxNum = 20, IsNewSearch = true });
-            SearchResults.AddRange(response.Results);
-            await UniTask.SwitchToMainThread();
-            networkLoad.CloseMySelf();
+            try
+            {
+                Session = NetworkManager.Inst;
+                var response = (M2C_SearchGuild) await Session.Call(new C2M_SearchGuild() { Name = name, Id = id, MaxNum = 20, IsNewSearch = true });
+                SearchResults.AddRange(response.Results);
+            }
+            finally
+            {
+                await UniTask.SwitchToMainThread();
+                networkLoad.CloseMySelf();
+            }
         }
 
         private void InitList()
@@ -55,10 +63,10 @@ namespace Client.UI.ViewModel
             View.List.itemRenderer = SearchResultItemRender;
             View.List.scrollPane.onPullUpRelease.Set(OnPullUpToRefresh);
         }
-        
+
         private async void OnPullUpToRefresh()
         {
-            View_PullListToRefresh footer = (View_PullListToRefresh)View.List.scrollPane.footer;
+            View_PullListToRefresh footer = (View_PullListToRefresh) View.List.scrollPane.footer;
             View.List.scrollPane.LockFooter(footer.sourceHeight);
             footer.Desc.text = "查看更多内容";
             footer.c1.selectedPage = "WaitNet";
@@ -76,10 +84,11 @@ namespace Client.UI.ViewModel
             {
                 Cursor++;
             }
+
             RefreshList();
             View.List.scrollPane.LockFooter(0);
             footer.t0.Stop();
-            footer.Desc.text = "查看更多内容";//上拉查看更多
+            footer.Desc.text = "查看更多内容"; //上拉查看更多
             footer.c1.selectedPage = "WaitNet";
         }
 
@@ -87,8 +96,8 @@ namespace Client.UI.ViewModel
         {
             var item = (View_JiaRuGongHuiZuJian) obj;
             var data = SearchResults[index];
-            item.inside.icon = GuildIconProperty.Read(data.Inside)?.Url ?? GuildIconProperty.DefaultInside.Url;
-            item.frame.icon = GuildIconProperty.Read(data.Frame)?.Url ?? GuildIconProperty.DefaultFrame.Url;
+            item.inside.icon = GuildIconProperty.Read(data.Inside.GetValueOrDefault(GuildIconProperty.DefaultInside.Id))?.Url;
+            item.frame.icon = GuildIconProperty.Read(data.Frame.GetValueOrDefault(GuildIconProperty.DefaultFrame.Id))?.Url;
             item.UnionName.text = data.Name;
             item.UnionDesc.text = data.Desc;
             item.Join.data = data;
@@ -99,14 +108,15 @@ namespace Client.UI.ViewModel
                 try
                 {
                     var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
-                    this.Parent.CloseMySelf();
+                    Parent.CloseMySelf();
                     UIKit.Inst.Create<UI_JoinedGuild>();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     UIKit.Inst.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
                     Log.Error(e.Message);
                 }
+
                 networkLoad.CloseMySelf();
             });
         }

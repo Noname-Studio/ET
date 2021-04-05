@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_HelpFriendPlay : GComponent
+    public partial class View_HelpFriendPlay: GComponent
     {
         public Controller board_style;
         public GButton bg;
@@ -23,7 +23,7 @@ namespace GameBegins
 
         public static View_HelpFriendPlay CreateInstance()
         {
-            return (View_HelpFriendPlay)UIPackage.CreateObject("GameBegins", "HelpFriendPlay");
+            return (View_HelpFriendPlay) UIPackage.CreateObject("GameBegins", "HelpFriendPlay");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -31,17 +31,17 @@ namespace GameBegins
             base.ConstructFromXML(xml);
 
             board_style = GetController("board_style");
-            bg = (GButton)GetChild("bg");
-            board = (GGroup)GetChild("board");
-            Close = (GButton)GetChild("Close");
-            Play = (GButton)GetChild("Play");
-            target = (View_game_target)GetChild("target");
-            Restaurant = (GTextField)GetChild("Restaurant");
-            guidedifficult = (GImage)GetChild("guidedifficult");
-            Title1 = (GTextField)GetChild("Title1");
-            Title = (GTextField)GetChild("Title");
-            prop = (View_propitems0)GetChild("prop");
-            Recipe = (View_recipebtn)GetChild("Recipe");
+            bg = (GButton) GetChild("bg");
+            board = (GGroup) GetChild("board");
+            Close = (GButton) GetChild("Close");
+            Play = (GButton) GetChild("Play");
+            target = (View_game_target) GetChild("target");
+            Restaurant = (GTextField) GetChild("Restaurant");
+            guidedifficult = (GImage) GetChild("guidedifficult");
+            Title1 = (GTextField) GetChild("Title1");
+            Title = (GTextField) GetChild("Title");
+            prop = (View_propitems0) GetChild("prop");
+            Recipe = (View_recipebtn) GetChild("Recipe");
         }
     }
 }

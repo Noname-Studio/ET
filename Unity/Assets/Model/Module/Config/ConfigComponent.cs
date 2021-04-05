@@ -9,9 +9,9 @@ namespace ET
     public class ConfigComponent: Entity
     {
         public static Action<Dictionary<string, byte[]>> GetAllConfigBytes;
-        
+
         public static ConfigComponent Instance;
-		
+
         public Dictionary<Type, object> AllConfig = new Dictionary<Type, object>();
     }
 }

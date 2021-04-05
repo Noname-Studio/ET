@@ -7,9 +7,9 @@ namespace Panthea.Asset
     public interface IAssetsLocator
     {
         UniTask<T> Load<T>(string filePath) where T : Object;
-        UniTask<Dictionary<string,List<Object>>> LoadAll(string path);
+        UniTask<Dictionary<string, List<Object>>> LoadAll(string path);
         T LoadSync<T>(string filePath) where T : Object;
-        Dictionary<string,List<Object>> LoadAllSync(string path);
+        Dictionary<string, List<Object>> LoadAllSync(string path);
         UniTask<AssetBundleRequest> LoadAssetBundle(string filePath);
         UniTask<AssetBundleRequest> LoadAssetBundleFromABKey(string abPath);
         void ReleaseAssetBundle(string filePath);

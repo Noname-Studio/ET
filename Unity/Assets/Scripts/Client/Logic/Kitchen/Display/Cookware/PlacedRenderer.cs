@@ -9,7 +9,8 @@ namespace Kitchen
         private PlacedIngredients Ingredients { get; }
         private Vector3 Pos { get; }
         private UI_StorageFood Ui { get; set; }
-        public PlacedRenderer(PlacedIngredients ingredients,Vector3 pos)
+
+        public PlacedRenderer(PlacedIngredients ingredients, Vector3 pos)
         {
             Ingredients = ingredients;
             Pos = pos;
@@ -25,6 +26,7 @@ namespace Kitchen
                 Ui.Visible = false;
                 return;
             }
+
             Ui.Visible = true;
             Ui.View.c1.selectedPage = list.Count.ToString();
             for (int i = 0; i < list.Count; i++)
@@ -53,7 +55,7 @@ namespace Kitchen
             Ui = UIKit.Inst.Create<UI_StorageFood>();
             Ui.Visible = false;
             Vector3 screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(Pos);
-            screenPos.y = Screen.height - screenPos.y; 
+            screenPos.y = Screen.height - screenPos.y;
             var pt = GRoot.inst.GlobalToLocal(screenPos);
             Ui.View.position = pt;
         }

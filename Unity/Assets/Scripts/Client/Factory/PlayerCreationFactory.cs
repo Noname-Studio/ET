@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Panthea.Asset;
 using UnityEngine;
 
-public class PlayerCreationFactory 
+public class PlayerCreationFactory
 {
     public static async UniTask<UnityObject> CreateKitchenPlayer()
     {

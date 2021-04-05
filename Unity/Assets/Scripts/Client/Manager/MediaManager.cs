@@ -16,7 +16,7 @@ using Object = UnityEngine.Object;
 /// 负责视频的播放
 /// 或者声音的播放
 /// </summary>
-public class MediaManager : Singleton<MediaManager>
+public class MediaManager: Singleton<MediaManager>
 {
     public class Callback
     {
@@ -27,7 +27,7 @@ public class MediaManager : Singleton<MediaManager>
     {
         public AudioSource Source;
         public AudioClip Clip;
-        public string PlayMediaPath;//播放媒体得文件路径
+        public string PlayMediaPath; //播放媒体得文件路径
         public OnEnd EndCallback;
 
         public TempClip(AudioSource source)
@@ -35,62 +35,70 @@ public class MediaManager : Singleton<MediaManager>
             Source = source;
         }
     }
-    
+
     public delegate void OnEnd(Callback data);
+
     /// <summary>
     /// 视频存储的位置
     /// </summary>
-    private string[] mViedoPath = {"Movie/"};
+    private string[] mViedoPath = { "Movie/" };
+
     /// <summary>
     /// 音乐,音效存储的位置
     /// </summary>
-    private string[] mMusicPath = {"sound/"};
+    private string[] mMusicPath = { "sound/" };
 
     private Preference Prefs { get; } = Preference.Inst;
+
     /// <summary>
     /// 缓存使用过的声效
     /// </summary>
-    private Dictionary<string,AudioClip> VoiceCache = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> VoiceCache = new Dictionary<string, AudioClip>();
+
     /// <summary>
     /// 缓存使用过的音乐
     /// </summary>
-    private Dictionary<string,AudioClip> MusicCache = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> MusicCache = new Dictionary<string, AudioClip>();
+
     /// <summary>
     /// 因为这个声效可能正在播放中.如果这时候我们调整了音效的音量.我们无法从池里面拿到所有的音效(因为这个音效正在使用中我们无法把他放到池中)
     /// </summary>
     private List<TempClip> TempVoicePool = new List<TempClip>();
-    private Dictionary<string,int> AliasMap = new Dictionary<string, int>();
+
+    private Dictionary<string, int> AliasMap = new Dictionary<string, int>();
 
     private float mSoundEffectVolume = 1;
+
     public float SoundEffectVolume
     {
-        get { return this.mSoundEffectVolume; }
+        get => mSoundEffectVolume;
         set
         {
             //mVoiceVolume = value;
             ControlVoice(value);
             Stage.inst.soundVolume = value;
-            
-            this.mSoundEffectVolume = value;
-            this.Prefs.SoundEffectVolume = value;
+
+            mSoundEffectVolume = value;
+            Prefs.SoundEffectVolume = value;
         }
     }
-    
+
     private float mMusicVolume = 1;
+
     public float MusicVolume
     {
-        get { return mMusicVolume; }
+        get => mMusicVolume;
         set
         {
             ControlMuisc(value);
-            
+
             mMusicVolume = value;
-            this.Prefs.mMusicVolume = value;
+            Prefs.mMusicVolume = value;
         }
     }
 
     private AudioSource mMuiscSource;
-    
+
     private AudioSource MusicSource
     {
         get
@@ -102,28 +110,28 @@ public class MediaManager : Singleton<MediaManager>
                 mMuiscSource = music.AddComponent<AudioSource>();
                 mMuiscSource.loop = true;
             }
+
             return mMuiscSource;
         }
     }
 
     private float mPlayPitch;
+
     public float PlayPitch
     {
-        get { return mPlayPitch; }
-        set { mPlayPitch = value; }
+        get => mPlayPitch;
+        set => mPlayPitch = value;
     }
-    
-    
+
     public override void OnInit()
     {
         mPlayPitch = 1.0f;
-        mMusicVolume = this.Prefs.mMusicVolume;
-        Stage.inst.soundVolume = this.mSoundEffectVolume = Prefs.SoundEffectVolume;
+        mMusicVolume = Prefs.mMusicVolume;
+        Stage.inst.soundVolume = mSoundEffectVolume = Prefs.SoundEffectVolume;
         base.OnInit();
 
         //注册Update用于清理回收池
         UnityLifeCycleKit.Inst.AddUpdate(XUpdate);
-
 
         //先压十个音效进入回收池
         AudioSource[] sources = new AudioSource[10];
@@ -136,7 +144,6 @@ public class MediaManager : Singleton<MediaManager>
         {
             VoicePool.Inst.Return(sources[i]);
         }
-
     }
 
     private float XUpdate()
@@ -145,22 +152,20 @@ public class MediaManager : Singleton<MediaManager>
         {
             var node = Inst.TempVoicePool[index];
             if (!node.Source.isPlaying && !node.Source.loop)
+            {
                 Inst.VoiceReturnToPool(node.Source);
+            }
         }
 
         return 1;
     }
 
-    public class VoicePool : ObjectPool<AudioSource>
+    public class VoicePool: ObjectPool<AudioSource>
     {
         private static VoicePool mInst;
 
-      
-        private static GameObject mContainer
-        {
-            get;
-            set;
-        }
+        private static GameObject mContainer { get; set; }
+
         public static VoicePool Inst
         {
             get
@@ -170,8 +175,8 @@ public class MediaManager : Singleton<MediaManager>
                     mContainer = new GameObject("Voice");
                     Object.DontDestroyOnLoad(mContainer);
                     mInst = new VoicePool();
-                    
                 }
+
                 return mInst;
             }
         }
@@ -194,7 +199,7 @@ public class MediaManager : Singleton<MediaManager>
                 }
             }
         }
-        
+
         protected override AudioSource CreateInstance()
         {
             var source = mContainer.AddComponent<AudioSource>();
@@ -202,34 +207,35 @@ public class MediaManager : Singleton<MediaManager>
             return source;
         }
     }
-    
+
     //播放视频
     public async UniTask PlayViedo(string videoName, string prefix = ".mov")
     {
         var video = Camera.main.gameObject.GetComponent<VideoPlayer>();
         if (video == null)
         {
-            video              = Camera.main.gameObject.AddComponent<VideoPlayer>();
-            video.aspectRatio  = VideoAspectRatio.Stretch;
-            video.renderMode   = VideoRenderMode.CameraNearPlane;
+            video = Camera.main.gameObject.AddComponent<VideoPlayer>();
+            video.aspectRatio = VideoAspectRatio.Stretch;
+            video.renderMode = VideoRenderMode.CameraNearPlane;
             video.targetCamera = Camera.main;
         }
-        #if UNITY_ANDROID || UNITY_IPHONE || REALGAME
-        video.url = FindSource(mViedoPath,videoName + prefix);
-        #else
+#if UNITY_ANDROID || UNITY_IPHONE || REALGAME
+        video.url = FindSource(mViedoPath, videoName + prefix);
+#else
         video.url = AssetBundleConfig.WWWLocalzation + "Movie/" + videoName + prefix;
-        #endif
+#endif
         video.enabled = true;
 
         await UniTask.WaitUntil(() => video.isPrepared);
-        
+
         await UniTask.WaitUntil(() =>
         {
             if (video.isPlaying == false)
             {
-                video.enabled  = false;
+                video.enabled = false;
                 return true;
             }
+
             return false;
         });
     }
@@ -240,31 +246,41 @@ public class MediaManager : Singleton<MediaManager>
     /// </summary>
     /// <param name="alias"></param>
     /// <param name="id"></param>
-    public void SetAlias(string alias,int id)
+    public void SetAlias(string alias, int id)
     {
-        if(id != 0 && !string.IsNullOrEmpty(alias))
+        if (id != 0 && !string.IsNullOrEmpty(alias))
+        {
             AliasMap[alias] = id;
+        }
     }
 
     public int GetIdByAlias(string alias)
     {
         if (string.IsNullOrEmpty(alias))
+        {
             return 0;
+        }
+
         int id;
         if (AliasMap.TryGetValue(alias, out id))
+        {
             return id;
+        }
+
         return 0;
     }
 
     public void RemoveMap(string alias)
     {
         if (AliasMap.ContainsKey(alias))
+        {
             AliasMap.Remove(alias);
+        }
     }
-    
+
     //==================================================================================================================
     // 用文件名播放音效
-    public async Task<int> PlayVoice(string name,bool loop = false, OnEnd end = null)
+    public async Task<int> PlayVoice(string name, bool loop = false, OnEnd end = null)
     {
         AudioClip clip;
         if (string.IsNullOrEmpty(name))
@@ -272,24 +288,27 @@ public class MediaManager : Singleton<MediaManager>
             Log.Error("播放声音使用的路径不能为空");
             return 0;
         }
+
         var path = "Sound/" + name;
         bool temp3 = VoiceCache.TryGetValue(path, out clip);
 
         if (!temp3 || clip == null)
         {
             clip = await AssetsKit.Inst.Load<AudioClip>(path);
-            
+
             if (clip == null)
+            {
                 return 0;
+            }
+
             VoiceCache[path] = clip;
         }
-        
+
         var source = VoicePool.Inst.Rent();
-        var temp = new TempClip(source) {Clip = clip, EndCallback = end,Source = source,PlayMediaPath = name};
+        var temp = new TempClip(source) { Clip = clip, EndCallback = end, Source = source, PlayMediaPath = name };
         TempVoicePool.Add(temp);
-        
-       
-//        Debugger.Log("播放声音" + name);
+
+        //        Debugger.Log("播放声音" + name);
         source.clip = clip;
         source.Play();
         source.loop = loop;
@@ -297,13 +316,13 @@ public class MediaManager : Singleton<MediaManager>
         int code = source.GetHashCode();
         return code;
     }
-    
+
     //用组件播放音效
-    public int PlayVoice(AudioClip clip, bool loop = false,OnEnd end = null)
+    public int PlayVoice(AudioClip clip, bool loop = false, OnEnd end = null)
     {
         var source = VoicePool.Inst.Rent();
 
-        var temp = new TempClip(source) {Clip = clip, EndCallback = end, Source = source, PlayMediaPath = clip.name};
+        var temp = new TempClip(source) { Clip = clip, EndCallback = end, Source = source, PlayMediaPath = clip.name };
         TempVoicePool.Add(temp);
 
         source.clip = clip;
@@ -314,7 +333,7 @@ public class MediaManager : Singleton<MediaManager>
 
         return code;
     }
-    
+
     //暂停指定音效
     public void PauseVoice(int id)
     {
@@ -338,18 +357,19 @@ public class MediaManager : Singleton<MediaManager>
             }
         }
     }
+
     //继续指定音效
     public void ResumeVoice(string fileName)
     {
         for (int i = 0; i < TempVoicePool.Count; i++)
         {
-            if (string.Equals(TempVoicePool[i].PlayMediaPath,fileName))
+            if (string.Equals(TempVoicePool[i].PlayMediaPath, fileName))
             {
                 TempVoicePool[i].Source.UnPause();
             }
         }
     }
-    
+
     //停止指定音效
     public void StopVoice(int id)
     {
@@ -362,7 +382,7 @@ public class MediaManager : Singleton<MediaManager>
             }
         }
     }
-    
+
     //暂停所有音效
     public void PauseAllVoice()
     {
@@ -371,16 +391,16 @@ public class MediaManager : Singleton<MediaManager>
             TempVoicePool[i].Source.Pause();
         }
     }
-    
+
     //继续所有音效
     public void ResumeAllVoice()
     {
         for (int i = 0; i < TempVoicePool.Count; i++)
         {
             TempVoicePool[i].Source.UnPause();
-        } 
+        }
     }
-    
+
     //停止所有音效
     public void StopAllVoice()
     {
@@ -389,11 +409,12 @@ public class MediaManager : Singleton<MediaManager>
             var source = TempVoicePool[i];
             VoicePool.Inst.Return(source.Source);
             source.Source.Stop();
-            source.EndCallback?.Invoke(new Callback {Handle = source.Source.GetHashCode()});
+            source.EndCallback?.Invoke(new Callback { Handle = source.Source.GetHashCode() });
         }
+
         TempVoicePool.Clear();
     }
-    
+
     //设置音乐的播放速度
     public void SetVoicePitch(int id)
     {
@@ -406,7 +427,7 @@ public class MediaManager : Singleton<MediaManager>
             }
         }
     }
-    
+
     //==================================================================================================================
     //用文件名播放音乐文件
     public async Task PlayMusic(string name, bool loop = true)
@@ -417,13 +438,17 @@ public class MediaManager : Singleton<MediaManager>
             MusicSource.Stop();
             return;
         }
+
         AudioClip clip;
         name = "Sound/" + name;
         if (!MusicCache.TryGetValue(name, out clip) || clip == null)
         {
             clip = await AssetsKit.Inst.Load<AudioClip>(name);
             if (clip == null)
+            {
                 return;
+            }
+
             MusicCache[name] = clip;
         }
 
@@ -431,7 +456,7 @@ public class MediaManager : Singleton<MediaManager>
         MusicSource.clip = clip;
         MusicSource.loop = loop;
         MusicSource.volume = MusicVolume;
-//      pitchBendGroup.audioMixer.SetFloat("pitchBend", 1f / 1.5f);
+        //      pitchBendGroup.audioMixer.SetFloat("pitchBend", 1f / 1.5f);
         MusicSource.Play();
     }
 
@@ -440,27 +465,26 @@ public class MediaManager : Singleton<MediaManager>
     {
         MusicSource.pitch = pitch;
         mPlayPitch = pitch;
-        
     }
-    
+
     //暂停音乐
     public void PauseMusic()
     {
-//        DOTween.To(() => MusicSource.volume, t1 => MusicSource.volume = t1, 0, 0.5f).SetUpdate(true).OnComplete(()=>{ MusicSource.Pause();});
+        //        DOTween.To(() => MusicSource.volume, t1 => MusicSource.volume = t1, 0, 0.5f).SetUpdate(true).OnComplete(()=>{ MusicSource.Pause();});
         MusicSource.Pause();
     }
-    
+
     //继续音乐
     public void ResumeMusic()
     {
         MusicSource.UnPause();
-//        if (mMusicVolume > 0)
-//        {
-//            MusicSource.volume = 0;
-//            DOTween.To(() => MusicSource.volume, t1 => MusicSource.volume = t1, mMusicVolume, 0.5f).SetUpdate(true);
-//        }
+        //        if (mMusicVolume > 0)
+        //        {
+        //            MusicSource.volume = 0;
+        //            DOTween.To(() => MusicSource.volume, t1 => MusicSource.volume = t1, mMusicVolume, 0.5f).SetUpdate(true);
+        //        }
     }
-    
+
     //停止音乐
     public void StopMusic()
     {
@@ -472,10 +496,10 @@ public class MediaManager : Singleton<MediaManager>
     {
         MusicSource.Play();
     }
-    
-//=====================================================================================================================    
+
+    //=====================================================================================================================    
     //私有成员
-    private string FindSource(string[] searchPath,string name)
+    private string FindSource(string[] searchPath, string name)
     {
         for (int i = 0; i < searchPath.Length; i++)
         {
@@ -495,11 +519,14 @@ public class MediaManager : Singleton<MediaManager>
         return string.Empty;
     }
 
-
     private void VoiceReturnToPool(AudioSource source)
     {
-//        Debugger.Log("回收声音:" + source.clip.name);
-        if (source == null) return;
+        //        Debugger.Log("回收声音:" + source.clip.name);
+        if (source == null)
+        {
+            return;
+        }
+
         VoicePool.Inst.Return(source);
         for (int i = 0; i < TempVoicePool.Count; i++)
         {
@@ -507,17 +534,16 @@ public class MediaManager : Singleton<MediaManager>
             {
                 var tempClip = TempVoicePool[i];
                 tempClip.Source.Stop();
-                tempClip.EndCallback?.Invoke(new Callback {Handle = tempClip.Source.GetHashCode()});
+                tempClip.EndCallback?.Invoke(new Callback { Handle = tempClip.Source.GetHashCode() });
                 TempVoicePool.RemoveAt(i);
                 return;
             }
         }
     }
 
-   
     private void ControlVoice(float value)
     {
-        var tempVal = this.mSoundEffectVolume;
+        var tempVal = mSoundEffectVolume;
         VoicePool.Inst.Apply(source =>
         {
             DOTween.Kill(source);
@@ -529,8 +555,7 @@ public class MediaManager : Singleton<MediaManager>
             DOTween.To(() => tempVal, t1 => tempVal = node.Source.volume = t1, value, 0.5f).SetUpdate(true).SetTarget(node);
         }
     }
-    
-    
+
     private void ControlMuisc(float value)
     {
         var tempVal = mMusicVolume;

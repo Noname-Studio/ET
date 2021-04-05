@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_effect_great : GComponent
+    public partial class View_effect_great: GComponent
     {
         public GImage light1;
         public Transition t0;
@@ -13,14 +13,14 @@ namespace GamingUI
 
         public static View_effect_great CreateInstance()
         {
-            return (View_effect_great)UIPackage.CreateObject("GamingUI", "effect_great");
+            return (View_effect_great) UIPackage.CreateObject("GamingUI", "effect_great");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            light1 = (GImage)GetChild("light1");
+            light1 = (GImage) GetChild("light1");
             t0 = GetTransition("t0");
         }
     }

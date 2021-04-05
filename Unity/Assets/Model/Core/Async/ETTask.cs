@@ -19,7 +19,7 @@ namespace ET
         [DebuggerHidden]
         public ETTaskCompletionSource GetAwaiter()
         {
-            return this.awaiter;
+            return awaiter;
         }
 
         [DebuggerHidden]
@@ -49,7 +49,7 @@ namespace ET
         [DebuggerHidden]
         public ETTaskCompletionSource<T> GetAwaiter()
         {
-            return this.awaiter;
+            return awaiter;
         }
 
         [DebuggerHidden]

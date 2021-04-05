@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Kitchen;
 
+public enum KitchenEndState
+{
+    Win,
+    Fail,
+    Restart
+}
 
 /// <summary>
 /// 餐厅结束检测
@@ -18,7 +24,7 @@ public class EndOfKitchenProvider
     private Requirements Requirements { get; }
     private Dictionary<LevelType, bool> GamePass { get; }
 
-    public EndOfKitchenProvider(IEndExecute endEndHandler,LevelProperty levelProperty)
+    public EndOfKitchenProvider(IEndExecute endEndHandler, LevelProperty levelProperty)
     {
         EndHandler = endEndHandler;
         LevelProperty = levelProperty;
@@ -33,8 +39,8 @@ public class EndOfKitchenProvider
         else if (levelType.HasFlag(LevelType.NumberOfCustomerService))
         {
         }
-        
-        foreach (var value in Enum.GetValues(typeof(LevelType)).Cast<LevelType>())
+
+        foreach (var value in Enum.GetValues(typeof (LevelType)).Cast<LevelType>())
         {
             if (levelType.HasFlag(value))
             {
@@ -49,7 +55,7 @@ public class EndOfKitchenProvider
         {
             if (Record.BurnFoodCount > 0)
             {
-                EndHandler.Execute(false);
+                EndHandler.Execute(KitchenEndState.Fail);
             }
         }
 
@@ -57,7 +63,7 @@ public class EndOfKitchenProvider
         {
             if (Record.LostCustomerCount > 0)
             {
-                EndHandler.Execute(false);
+                EndHandler.Execute(KitchenEndState.Fail);
             }
         }
 
@@ -65,14 +71,16 @@ public class EndOfKitchenProvider
         {
             if (Record.DropFoodCount > 0)
             {
-                EndHandler.Execute(false);
+                EndHandler.Execute(KitchenEndState.Fail);
             }
         }
-        
+
         if (GamePass.ContainsKey(LevelType.LostCustomer))
         {
-            if(Record.LostCustomerCount >= Requirements.LostCustomer)
-                EndHandler.Execute(false);
+            if (Record.LostCustomerCount >= Requirements.LostCustomer)
+            {
+                EndHandler.Execute(KitchenEndState.Fail);
+            }
         }
 
         if (GamePass.ContainsKey(LevelType.FixedTime))
@@ -113,7 +121,7 @@ public class EndOfKitchenProvider
             if (Record.ServicesCustomerNumber >= Requirements.NumberOfCustomerService)
             {
                 GamePass[LevelType.NumberOfCustomerService] = true;
-                if (!GamePass.ContainsKey(LevelType.FixedTime))//同时有顾客和有倒计时时.根据倒计时为准
+                if (!GamePass.ContainsKey(LevelType.FixedTime)) //同时有顾客和有倒计时时.根据倒计时为准
                 {
                     EndHandler.Execute(IsWin());
                 }
@@ -122,23 +130,36 @@ public class EndOfKitchenProvider
 
         if (!GamePass.ContainsKey(LevelType.NumberOfCustomerService) && !GamePass.ContainsKey(LevelType.FixedTime))
         {
-            bool win = IsWin();
-            if (win)
-                EndHandler.Execute(true);
+            KitchenEndState win = IsWin();
+            if (win == KitchenEndState.Win)
+            {
+                EndHandler.Execute(KitchenEndState.Win);
+            }
         }
     }
 
-    private bool IsWin()
+    private KitchenEndState IsWin()
     {
-        bool win = true;
+        KitchenEndState state = KitchenEndState.Win;
         foreach (var type in GamePass)
         {
             if (!type.Value)
             {
-                win = false;
+                state = KitchenEndState.Fail;
                 break;
             }
         }
-        return win;
+
+        return state;
+    }
+
+    /*public void ForceFail()
+    {
+        this.EndHandler.Execute(false);
+    }*/
+
+    public void Restart()
+    {
+        EndHandler.Execute(KitchenEndState.Restart);
     }
 }

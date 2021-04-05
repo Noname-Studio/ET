@@ -10,7 +10,6 @@ namespace KitchenUI
         public static void BindAll()
         {
             UIObjectFactory.SetPackageItemExtension(View_friendHelpinfo.URL, typeof(View_friendHelpinfo));
-            UIObjectFactory.SetPackageItemExtension(View_point_bg.URL, typeof(View_point_bg));
             UIObjectFactory.SetPackageItemExtension(View_win.URL, typeof(View_win));
             UIObjectFactory.SetPackageItemExtension(View_Ads.URL, typeof(View_Ads));
             UIObjectFactory.SetPackageItemExtension(View_RecommendGestures.URL, typeof(View_RecommendGestures));

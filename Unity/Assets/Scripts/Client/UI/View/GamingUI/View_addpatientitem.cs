@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_addpatientitem : GComponent
+    public partial class View_addpatientitem: GComponent
     {
         public Controller c1;
         public Controller ui_style;
@@ -20,7 +20,7 @@ namespace GamingUI
 
         public static View_addpatientitem CreateInstance()
         {
-            return (View_addpatientitem)UIPackage.CreateObject("GamingUI", "addpatientitem");
+            return (View_addpatientitem) UIPackage.CreateObject("GamingUI", "addpatientitem");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -29,13 +29,13 @@ namespace GamingUI
 
             c1 = GetController("c1");
             ui_style = GetController("ui_style");
-            icon = (GLoader)GetChild("icon");
-            sel = (GImage)GetChild("sel");
-            restoreBar = (GProgressBar)GetChild("restoreBar");
-            numbg = (GImage)GetChild("numbg");
-            add_icon = (GImage)GetChild("add_icon");
-            num = (GTextField)GetChild("num");
-            recommend = (GComponent)GetChild("recommend");
+            icon = (GLoader) GetChild("icon");
+            sel = (GImage) GetChild("sel");
+            restoreBar = (GProgressBar) GetChild("restoreBar");
+            numbg = (GImage) GetChild("numbg");
+            add_icon = (GImage) GetChild("add_icon");
+            num = (GTextField) GetChild("num");
+            recommend = (GComponent) GetChild("recommend");
         }
     }
 }

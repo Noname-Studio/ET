@@ -10,6 +10,12 @@
 
     public sealed class ChatUnit: Entity
     {
+        public long GateSessionId { get; set; }
+        public Scene Scene { get; set; }
+        public string Head { get; set; }
+        public string Name { get; set; }
+        public long GuildId { get; set; }
+        public long PlayerId { get; set; }
         public void Awake()
         {
         }

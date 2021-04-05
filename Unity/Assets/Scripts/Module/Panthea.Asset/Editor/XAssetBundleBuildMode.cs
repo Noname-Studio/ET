@@ -19,42 +19,45 @@ using UnityEngine.AddressableAssets.ResourceLocators;
 namespace Panthea.Editor.Asset
 {
     [CreateAssetMenu(fileName = "XAssetBundleBuildMode.asset", menuName = "XFramework AssetBundle Build")]
-    public class XAssetBundleBuildMode : BuildScriptBase
+    public class XAssetBundleBuildMode: BuildScriptBase
     {
-        public override string Name
-        {
-            get
-            {
-                return "XFramework AssetBundle Build";
-            }
-        }
-    
+        public override string Name => "XFramework AssetBundle Build";
+
         public override bool CanBuildData<T>()
         {
-            return typeof(T).IsAssignableFrom(typeof(AddressablesPlayerBuildResult));
+            return typeof (T).IsAssignableFrom(typeof (AddressablesPlayerBuildResult));
         }
-    
+
         private List<AssetBundleBuild> m_AllBundleInputDefs = new List<AssetBundleBuild>();
+
         protected override string ProcessGroup(AddressableAssetGroup assetGroup, AddressableAssetsBuildContext aaContext)
         {
             if (assetGroup == null)
+            {
                 return string.Empty;
+            }
 
             foreach (var schema in assetGroup.Schemas)
             {
-                var errorString = this.ProcessGroupSchema(schema, assetGroup, aaContext);
-                if(!string.IsNullOrEmpty(errorString))
+                var errorString = ProcessGroupSchema(schema, assetGroup, aaContext);
+                if (!string.IsNullOrEmpty(errorString))
+                {
                     return errorString;
+                }
             }
 
             return string.Empty;
         }
-    
-        protected virtual string ProcessGroupSchema(AddressableAssetGroupSchema schema, AddressableAssetGroup assetGroup, AddressableAssetsBuildContext aaContext)
+
+        protected virtual string ProcessGroupSchema(AddressableAssetGroupSchema schema, AddressableAssetGroup assetGroup,
+        AddressableAssetsBuildContext aaContext)
         {
             var bundledAssetSchema = schema as BundledAssetGroupSchema;
             if (bundledAssetSchema != null)
-                return this.ProcessBundledAssetSchema(bundledAssetSchema, assetGroup, aaContext);
+            {
+                return ProcessBundledAssetSchema(bundledAssetSchema, assetGroup, aaContext);
+            }
+
             return string.Empty;
         }
 
@@ -65,14 +68,14 @@ namespace Panthea.Editor.Asset
 
         protected override TResult BuildDataImplementation<TResult>(AddressablesDataBuilderInput builderInput)
         {
-            TResult result = default(TResult);
-            
+            TResult result = default;
+
             var timer = new Stopwatch();
             timer.Start();
             var aaSettings = builderInput.AddressableSettings;
 
             var locations = new List<ContentCatalogDataEntry>();
-            this.m_AllBundleInputDefs = new List<AssetBundleBuild>();
+            m_AllBundleInputDefs = new List<AssetBundleBuild>();
             var bundleToAssetGroup = new Dictionary<string, string>();
             var runtimeData = new ResourceManagerRuntimeData();
             runtimeData.CertificateHandlerType = aaSettings.CertificateHandlerType;
@@ -88,17 +91,21 @@ namespace Panthea.Editor.Asset
                 providerTypes = new HashSet<Type>()
             };
 
-            var errorString = this.ProcessAllGroups(aaContext);
-            if(!string.IsNullOrEmpty(errorString))
+            var errorString = ProcessAllGroups(aaContext);
+            if (!string.IsNullOrEmpty(errorString))
+            {
                 result = AddressableAssetBuildResult.CreateResult<TResult>(null, 0, errorString);
+            }
 
             if (result == null)
             {
-                result = this.DoBuild<TResult>(builderInput, aaContext);   
+                result = DoBuild<TResult>(builderInput, aaContext);
             }
-            
-            if(result != null)
+
+            if (result != null)
+            {
                 result.Duration = timer.Elapsed.TotalSeconds;
+            }
 
             return result;
         }
@@ -109,17 +116,20 @@ namespace Panthea.Editor.Asset
                 aaContext.settings == null ||
                 aaContext.settings.groups == null)
             {
-                return "No groups found to process in build script " + this.Name;
+                return "No groups found to process in build script " + Name;
             }
+
             //intentionally for not foreach so groups can be added mid-loop.
-            for(int index = 0; index < aaContext.settings.groups.Count; index++)  
+            for (int index = 0; index < aaContext.settings.groups.Count; index++)
             {
                 AddressableAssetGroup assetGroup = aaContext.settings.groups[index];
                 if (assetGroup == null)
+                {
                     continue;
+                }
 
-                EditorUtility.DisplayProgressBar($"Processing Addressable Group", assetGroup.Name, (float)index/aaContext.settings.groups.Count);
-                var errorString = this.ProcessGroup(assetGroup, aaContext);
+                EditorUtility.DisplayProgressBar($"Processing Addressable Group", assetGroup.Name, (float) index / aaContext.settings.groups.Count);
+                var errorString = ProcessGroup(assetGroup, aaContext);
                 if (!string.IsNullOrEmpty(errorString))
                 {
                     EditorUtility.ClearProgressBar();
@@ -131,23 +141,25 @@ namespace Panthea.Editor.Asset
             return string.Empty;
         }
 
-        protected TResult DoBuild<TResult>(AddressablesDataBuilderInput builderInput, AddressableAssetsBuildContext aaContext) where TResult : IDataBuilderResult
+        protected TResult DoBuild<TResult>(AddressablesDataBuilderInput builderInput, AddressableAssetsBuildContext aaContext)
+                where TResult : IDataBuilderResult
         {
             ExtractDataTask extractData = new ExtractDataTask();
 
-            if (this.m_AllBundleInputDefs.Count > 0)
+            if (m_AllBundleInputDefs.Count > 0)
             {
                 if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                {
                     return AddressableAssetBuildResult.CreateResult<TResult>(null, 0, "Unsaved scenes");
+                }
 
                 var buildTarget = builderInput.Target;
                 var buildTargetGroup = builderInput.TargetGroup;
 
-                var buildParams = new AddressableAssetsBundleBuildParameters(
-                    aaContext.settings, 
-                    aaContext.bundleToAssetGroup, 
-                    buildTarget, 
-                    buildTargetGroup, 
+                var buildParams = new AddressableAssetsBundleBuildParameters(aaContext.settings,
+                    aaContext.bundleToAssetGroup,
+                    buildTarget,
+                    buildTargetGroup,
                     Application.streamingAssetsPath);
 
                 var builtinShaderBundleName = aaContext.settings.DefaultGroup.Guid + "_unitybuiltinshaders.bundle";
@@ -156,12 +168,18 @@ namespace Panthea.Editor.Asset
 
                 string aaPath = aaContext.settings.AssetPath;
                 IBundleBuildResults results;
-                var exitCode = ContentPipeline.BuildAssetBundles(buildParams, new BundleBuildContent(this.m_AllBundleInputDefs), out results, buildTasks, aaContext);
+                var exitCode = ContentPipeline.BuildAssetBundles(buildParams, new BundleBuildContent(m_AllBundleInputDefs), out results, buildTasks,
+                    aaContext);
 
                 if (exitCode < ReturnCode.Success)
+                {
                     return AddressableAssetBuildResult.CreateResult<TResult>(null, 0, "SBP Error" + exitCode);
+                }
+
                 if (aaContext.settings == null && !string.IsNullOrEmpty(aaPath))
+                {
                     aaContext.settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(aaPath);
+                }
 
                 //using (var progressTracker = new UnityEditor.Build.Pipeline.Utilities.ProgressTracker())
                 //{
@@ -169,13 +187,13 @@ namespace Panthea.Editor.Asset
                 //    GenerateLocationListsTask.Run(aaContext, extractData.WriteData);
                 //}
             }
-        
+
             var opResult = AddressableAssetBuildResult.CreateResult<TResult>("", aaContext.locations.Count);
 
             return opResult;
         }
 
-        static IList<IBuildTask> RuntimeDataBuildTasks(string builtinShaderBundleName)
+        private static IList<IBuildTask> RuntimeDataBuildTasks(string builtinShaderBundleName)
         {
             var buildTasks = new List<IBuildTask>();
 
@@ -204,17 +222,20 @@ namespace Panthea.Editor.Asset
             // Writing
             buildTasks.Add(new WriteSerializedFiles());
             buildTasks.Add(new ArchiveAndCompressBundles());
-            
+
             //XAssetsFramework Need
             buildTasks.Add(new DeleteUnusedAssetBundle());
             buildTasks.Add(new GenerateFileLog());
             return buildTasks;
         }
-    
-        protected string ProcessBundledAssetSchema(BundledAssetGroupSchema schema, AddressableAssetGroup assetGroup, AddressableAssetsBuildContext aaContext)
+
+        protected string ProcessBundledAssetSchema(BundledAssetGroupSchema schema, AddressableAssetGroup assetGroup,
+        AddressableAssetsBuildContext aaContext)
         {
             if (schema == null || !schema.IncludeInBuild)
+            {
                 return string.Empty;
+            }
 
             var bundleInputDefs = new List<AssetBundleBuild>();
             PrepGroupBundlePacking(assetGroup, bundleInputDefs, schema.BundleMode);
@@ -226,12 +247,15 @@ namespace Panthea.Editor.Asset
                     int count = 1;
                     var newName = assetBundleName;
                     while (aaContext.bundleToAssetGroup.ContainsKey(newName) && count < 1000)
+                    {
                         newName = assetBundleName.Replace(".bundle", string.Format("{0}.bundle", count++));
+                    }
+
                     assetBundleName = newName;
                 }
 
                 string hashedAssetBundleName = assetBundleName;
-                this.m_AllBundleInputDefs.Add(new AssetBundleBuild
+                m_AllBundleInputDefs.Add(new AssetBundleBuild
                 {
                     addressableNames = bundleInputDefs[i].addressableNames,
                     assetNames = bundleInputDefs[i].assetNames,
@@ -240,20 +264,28 @@ namespace Panthea.Editor.Asset
                 });
                 aaContext.bundleToAssetGroup.Add(hashedAssetBundleName, assetGroup.Guid);
             }
+
             return string.Empty;
         }
-    
-        internal static void PrepGroupBundlePacking(AddressableAssetGroup assetGroup, List<AssetBundleBuild> bundleInputDefs, BundledAssetGroupSchema.BundlePackingMode packingMode)
+
+        internal static void PrepGroupBundlePacking(AddressableAssetGroup assetGroup, List<AssetBundleBuild> bundleInputDefs,
+        BundledAssetGroupSchema.BundlePackingMode packingMode)
         {
             if (packingMode == BundledAssetGroupSchema.BundlePackingMode.PackTogether)
             {
                 var allEntries = new List<AddressableAssetEntry>();
                 foreach (var a in assetGroup.entries)
+                {
                     a.GatherAllAssets(allEntries, true, true, false);
+                }
+
                 var name = assetGroup.Name;
                 if (!assetGroup.Name.Contains("-"))
+                {
                     name += "-" + assetGroup.Name;
-                GenerateBuildInputDefinitions(allEntries, bundleInputDefs, name.Replace("-","/"));
+                }
+
+                GenerateBuildInputDefinitions(allEntries, bundleInputDefs, name.Replace("-", "/"));
             }
             else
             {
@@ -273,11 +305,17 @@ namespace Panthea.Editor.Asset
                     {
                         var sb = new StringBuilder();
                         foreach (var l in a.labels)
+                        {
                             sb.Append(l);
+                        }
+
                         var key = sb.ToString();
                         List<AddressableAssetEntry> entries;
                         if (!labelTable.TryGetValue(key, out entries))
+                        {
                             labelTable.Add(key, entries = new List<AddressableAssetEntry>());
+                        }
+
                         entries.Add(a);
                     }
 
@@ -285,34 +323,49 @@ namespace Panthea.Editor.Asset
                     {
                         var allEntries = new List<AddressableAssetEntry>();
                         foreach (var a in entryGroup.Value)
+                        {
                             a.GatherAllAssets(allEntries, true, true, false);
-                        GenerateBuildInputDefinitions(allEntries, bundleInputDefs, assetGroup.Name.Replace("-","/") + "/" + entryGroup.Key);
+                        }
+
+                        GenerateBuildInputDefinitions(allEntries, bundleInputDefs, assetGroup.Name.Replace("-", "/") + "/" + entryGroup.Key);
                     }
                 }
             }
         }
-    
-    
-        static void GenerateBuildInputDefinitions(List<AddressableAssetEntry> allEntries, List<AssetBundleBuild> buildInputDefs,string name)
+
+        private static void GenerateBuildInputDefinitions(List<AddressableAssetEntry> allEntries, List<AssetBundleBuild> buildInputDefs, string name)
         {
             var scenes = new List<AddressableAssetEntry>();
             var assets = new List<AddressableAssetEntry>();
             foreach (var e in allEntries)
             {
                 if (string.IsNullOrEmpty(e.AssetPath))
+                {
                     continue;
+                }
+
                 if (e.AssetPath.EndsWith(".unity"))
+                {
                     scenes.Add(e);
+                }
                 else
+                {
                     assets.Add(e);
+                }
             }
+
             if (assets.Count > 0)
+            {
                 buildInputDefs.Add(GenerateBuildInputDefinition(assets, name + ".bundle"));
+            }
+
             if (scenes.Count > 0)
+            {
                 buildInputDefs.Add(GenerateBuildInputDefinition(scenes, name + ".bundle"));
+            }
         }
 
-        static AssetBundleBuild GenerateBuildInputDefinition(List<AddressableAssetEntry> assets, string name)
+        private static AssetBundleBuild GenerateBuildInputDefinition(List<AddressableAssetEntry> assets, string name)
         {
             var assetsInputDef = new AssetBundleBuild();
             assetsInputDef.assetBundleName = name.ToLower().Replace(" ", "").Replace('\\', '/').Replace("//", "/");

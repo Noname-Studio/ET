@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_AchievementTips : GLabel
+    public partial class View_AchievementTips: GLabel
     {
         public Transition t0;
         public const string URL = "ui://fmkyh2ywtj0c8op";
 
         public static View_AchievementTips CreateInstance()
         {
-            return (View_AchievementTips)UIPackage.CreateObject("Main", "AchievementTips");
+            return (View_AchievementTips) UIPackage.CreateObject("Main", "AchievementTips");
         }
 
         public override void ConstructFromXML(XML xml)

@@ -58,5 +58,143 @@
     "Chinese": "无法连接到互联网",
     "Chinese_tw": "无法连接到互联网",
     "English": "无法连接到互联网"
+  },
+  "Level X": {
+    "Id": "Level X",
+    "Chinese": "第{0}关",
+    "Chinese_tw": "第{0}关",
+    "English": "第{0}关"
+  },
+  "k2_benedicttable": {
+    "Id": "k2_benedicttable",
+    "Chinese": "班尼迪克板",
+    "Chinese_tw": "班尼迪克板",
+    "English": "班尼迪克板"
+  },
+  "k2_coffee_machine": {
+    "Id": "k2_coffee_machine",
+    "Chinese": "咖啡机",
+    "Chinese_tw": "咖啡机",
+    "English": "咖啡机"
+  },
+  "k2_cuttingboard": {
+    "Id": "k2_cuttingboard",
+    "Chinese": "切菜板",
+    "Chinese_tw": "切菜板",
+    "English": "切菜板"
+  },
+  "k2_grillPan": {
+    "Id": "k2_grillPan",
+    "Chinese": "烤盘",
+    "Chinese_tw": "烤盘",
+    "English": "烤盘"
+  },
+  "k2_holding_plate": {
+    "Id": "k2_holding_plate",
+    "Chinese": "保鲜柜",
+    "Chinese_tw": "保鲜柜",
+    "English": "保鲜柜"
+  },
+  "k2_milkshake": {
+    "Id": "k2_milkshake",
+    "Chinese": "奶昔机",
+    "Chinese_tw": "奶昔机",
+    "English": "奶昔机"
+  },
+  "k2_omelette": {
+    "Id": "k2_omelette",
+    "Chinese": "蒸蛋机",
+    "Chinese_tw": "蒸蛋机",
+    "English": "蒸蛋机"
+  },
+  "k2_oven": {
+    "Id": "k2_oven",
+    "Chinese": "烤箱",
+    "Chinese_tw": "烤箱",
+    "English": "烤箱"
+  },
+  "k2_pan": {
+    "Id": "k2_pan",
+    "Chinese": "平底锅",
+    "Chinese_tw": "平底锅",
+    "English": "平底锅"
+  },
+  "k2_poachedegg": {
+    "Id": "k2_poachedegg",
+    "Chinese": "荷包蛋",
+    "Chinese_tw": "荷包蛋",
+    "English": "荷包蛋"
+  },
+  "k2_soupcooker": {
+    "Id": "k2_soupcooker",
+    "Chinese": "高压锅",
+    "Chinese_tw": "高压锅",
+    "English": "高压锅"
+  },
+  "k2_steakBoard": {
+    "Id": "k2_steakBoard",
+    "Chinese": "切肉板",
+    "Chinese_tw": "切肉板",
+    "English": "切肉板"
+  },
+  "k2_steakgriddle": {
+    "Id": "k2_steakgriddle",
+    "Chinese": "烤架",
+    "Chinese_tw": "烤架",
+    "English": "烤架"
+  },
+  "k2_tablecloth": {
+    "Id": "k2_tablecloth",
+    "Chinese": "桌布",
+    "Chinese_tw": "桌布",
+    "English": "桌布"
+  },
+  "k2_toastoven": {
+    "Id": "k2_toastoven",
+    "Chinese": "面包机",
+    "Chinese_tw": "面包机",
+    "English": "面包机"
+  },
+  "k2_worktable": {
+    "Id": "k2_worktable",
+    "Chinese": "三明治板",
+    "Chinese_tw": "三明治板",
+    "English": "三明治板"
+  },
+  "workTime": {
+    "Id": "workTime",
+    "Chinese": "制作时间:{0}",
+    "Chinese_tw": "制作时间:{0}",
+    "English": "制作时间:{0}"
+  },
+  "burnTime": {
+    "Id": "burnTime",
+    "Chinese": "烧焦时间:{0}",
+    "Chinese_tw": "烧焦时间:{0}",
+    "English": "烧焦时间:{0}"
+  },
+  "makeCount": {
+    "Id": "makeCount",
+    "Chinese": "制作数量:{0}",
+    "Chinese_tw": "制作数量:{0}",
+    "English": "制作数量:{0}"
+  },
+  "UnLockAtLevel": {
+    "Id": "UnLockAtLevel",
+    "Chinese": "在{0}关解锁",
+    "Chinese_tw": "在{0}关解锁",
+    "English": "在{0}关解锁"
+  },
+  "Free": {
+    "Id": "Free",
+    "Chinese": "免费",
+    "Chinese_tw": "免费",
+    "English": "免费"
+  },
+  "Buy": {
+    "Id": "Buy",
+    "Chinese": "购买",
+    "Chinese_tw": "购买",
+    "English": "购买"
   }
 }

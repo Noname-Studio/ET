@@ -11,22 +11,17 @@ namespace Client.UI.ViewComponent
         private GTextInput mInput { get; set; }
         private const int MaxLength = 16;
 
-        public string Text
-        {
-            get
-            {
-                return mInput.text;
-            }
-        }
+        public string Text => mInput.text;
+
         public NameInput(GTextInput input)
         {
-            this.mInput = input;
+            mInput = input;
             Init();
         }
 
         private void Init()
         {
-            this.mInput.onChanged.Add(OnChanged);
+            mInput.onChanged.Add(OnChanged);
         }
 
         private void OnChanged()

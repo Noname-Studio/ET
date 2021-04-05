@@ -4,12 +4,12 @@ using FairyGUI;
 
 namespace UI.Story.FollowUs
 {
-	public class FollowUsBinder
-	{
-		[UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(View_Follow.URL, typeof(View_Follow));
-		}
-	}
+    public class FollowUsBinder
+    {
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(View_Follow.URL, typeof (View_Follow));
+        }
+    }
 }

@@ -2,61 +2,51 @@
 {
     public sealed class Scene: Entity
     {
-        public int Zone
-        {
-            get;
-        }
+        public int Zone { get; }
 
-        public SceneType SceneType
-        {
-            get;
-        }
+        public SceneType SceneType { get; }
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
         public Scene(long id, int zone, SceneType sceneType, string name)
         {
-            this.Id = id;
-            this.InstanceId = id;
-            this.Zone = zone;
-            this.SceneType = sceneType;
-            this.Name = name;
-            this.IsCreate = true;
-            
-            Log.Info($"scene create: {this.SceneType} {this.Name} {this.Id} {this.InstanceId} {this.Zone}");
+            Id = id;
+            InstanceId = id;
+            Zone = zone;
+            SceneType = sceneType;
+            Name = name;
+            IsCreate = true;
+
+            Log.Info($"scene create: {SceneType} {Name} {Id} {InstanceId} {Zone}");
         }
 
         public Scene(long id, long instanceId, int zone, SceneType sceneType, string name)
         {
-            this.Id = id;
-            this.InstanceId = instanceId;
-            this.Zone = zone;
-            this.SceneType = sceneType;
-            this.Name = name;
-            this.IsCreate = true;
-            
-            Log.Info($"scene create: {this.SceneType} {this.Name} {this.Id} {this.InstanceId} {this.Zone}");
+            Id = id;
+            InstanceId = instanceId;
+            Zone = zone;
+            SceneType = sceneType;
+            Name = name;
+            IsCreate = true;
+
+            Log.Info($"scene create: {SceneType} {Name} {Id} {InstanceId} {Zone}");
         }
 
         public override void Dispose()
         {
             base.Dispose();
-            
-            Log.Info($"scene dispose: {this.SceneType} {this.Name} {this.Id} {this.InstanceId} {this.Zone}");
+
+            Log.Info($"scene dispose: {SceneType} {Name} {Id} {InstanceId} {Zone}");
         }
 
         public Scene Get(long id)
         {
-            if (this.Children == null)
+            if (Children == null)
             {
                 return null;
             }
 
-            if (!this.Children.TryGetValue(id, out Entity entity))
+            if (!Children.TryGetValue(id, out Entity entity))
             {
                 return null;
             }
@@ -66,26 +56,26 @@
 
         public new Entity Domain
         {
-            get => this.domain;
-            set => this.domain = value;
+            get => domain;
+            set => domain = value;
         }
 
         public new Entity Parent
         {
             get
             {
-                return this.parent;
+                return parent;
             }
             set
             {
                 if (value == null)
                 {
-                    this.parent = this;
+                    parent = this;
                     return;
                 }
 
-                this.parent = value;
-                this.parent.Children.Add(this.Id, this);
+                parent = value;
+                parent.Children.Add(Id, this);
 #if UNITY_EDITOR && VIEWGO
                 if (this.ViewGO != null)
                 {

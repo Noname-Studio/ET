@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using FairyGUI;
@@ -12,28 +11,24 @@ using AssetBundleRequest = Panthea.Asset.AssetBundleRequest;
 
 public class UIManager
 {
-    private readonly Dictionary<Type, UIWidget> CacheWidget = new Dictionary<Type, UIWidget>(50);
-    private readonly List<UIBase> Stack = new List<UIBase>(20);
-    private readonly Dictionary<Type, UIBase> Dictionary = new Dictionary<Type, UIBase>(20);
-    private readonly Dictionary<Type, List<UIBase>> RepeatUI = new Dictionary<Type, List<UIBase>>(20);
+    private Dictionary<Type, UIWidget> CacheWidget { get; } = new Dictionary<Type, UIWidget>(50);
+    private List<UIBase> Stack { get; } = new List<UIBase>(20);
+    private Dictionary<Type, UIBase> Dictionary { get; } = new Dictionary<Type, UIBase>(20);
+    private Dictionary<Type, List<UIBase>> RepeatUI { get; } = new Dictionary<Type, List<UIBase>>(20);
+
     /// <summary>
     /// 我们存储UI的Dictionary的Keys类型,以便再后面Update中使用它
     /// </summary>
     private readonly List<Type> DictKeys = new List<Type>();
+
     /// <summary>
     /// 同上,这个是用于Update中使用的映射
     /// </summary>
     private readonly List<Type> RepeatKeys = new List<Type>();
 
-    /// <summary>
-    /// 用于统计当前标记Touchable为false的次数.
-    /// 因为有可能同时打开多个UI.或者弹出某个UI的时候立刻触发了另一个UI.
-    /// </summary>
-    private int TouchableCount = 0;
-    
-    private UnityBehaviour mUnityBehaviour;
-    private IAssetsLocator mAssetsLocator;
-    
+    private UnityBehaviour mUnityBehaviour { get; }
+    private IAssetsLocator mAssetsLocator { get; }
+
     /// <summary>
     ///     在这里加载所有的非热更新的UI包
     /// </summary>
@@ -44,31 +39,33 @@ public class UIManager
         UIPackage.AddPackage("UI/InternalResources");
     }
 
-    public async void RefreshLocalization()
+    public void RefreshLocalization()
     {
-
     }
 
     public async UniTask Init()
     {
         mUnityBehaviour.AddUpdate(Update);
         mUnityBehaviour.AddLateUpdate(LateUpdate);
-        GRoot.inst.SetContentScaleFactor(1920,1080,UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
+        GRoot.inst.SetContentScaleFactor(1920, 1080, UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
         //加载字体
         UIConfig.defaultFont = "Fonts/MSFont";
 
         if (!GameConfig.MobileRuntime)
         {
-            #if UNITY_EDITOR
-            var assets = UnityEditor.AssetDatabase.FindAssets("t:" + typeof(TextAsset).Name + " " + "_fui");
+#if UNITY_EDITOR
+            var assets = UnityEditor.AssetDatabase.FindAssets("t:" + nameof (TextAsset) + " " + "_fui");
             foreach (var node in assets)
             {
                 var path = UnityEditor.AssetDatabase.GUIDToAssetPath(node);
-                var dir = PathUtils.FormatFilePath(new DirectoryInfo(path)?.Parent.FullName).Replace(Application.dataPath, "Assets");
+                var dir = PathUtils.FormatFilePath(new DirectoryInfo(path).Parent?.FullName)?.Replace(Application.dataPath, "Assets");
                 var data = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(path);
-                var dataName = Path.GetFileNameWithoutExtension(path)?.Replace("_fui", "");
+                var dataName = Path.GetFileNameWithoutExtension(path).Replace("_fui", "");
                 if (string.IsNullOrEmpty(dataName))
+                {
                     continue;
+                }
+
                 UIPackage.AddPackage(data.bytes, dataName, (string name, string extension, Type type, out DestroyMethod method) =>
                 {
                     method = DestroyMethod.Unload;
@@ -76,33 +73,42 @@ public class UIManager
                     return sprite;
                 });
             }
-            #endif
+#endif
         }
         else
         {
             List<UniTask> tasks = new List<UniTask>();
-            tasks.Add(LoadPackage("UI/Common/Common","Common"));
-            tasks.Add(LoadPackage("UI/Common/GameBegins","GameBegins"));
-            tasks.Add(LoadPackage("UI/Kitchen/GamingUI","GamingUI"));
-            tasks.Add(LoadPackage("UI/Common/Log_in","Log_in"));
-            tasks.Add(LoadPackage("UI/Common/Effect","Effect"));
+            var ui = AssetsKit.Inst.GetFilterAssetBundle(new string[] { "UI/" });
+            foreach (var node in ui)
+            {
+                tasks.Add(LoadPackage(node, Path.GetFileNameWithoutExtension(node)));
+            }
+            /*tasks.Add(LoadPackage("UI/Common/Common", "Common"));
+            tasks.Add(LoadPackage("UI/Common/GameBegins", "GameBegins"));
+            tasks.Add(LoadPackage("UI/Kitchen/GamingUI", "GamingUI"));
+            tasks.Add(LoadPackage("UI/Common/Log_in", "Log_in"));
+            tasks.Add(LoadPackage("UI/Common/Effect", "Effect"));*/
             await UniTask.WhenAll(tasks);
         }
     }
 
-    public async UniTask LoadPackage(string path,string name)
+    private async UniTask LoadPackage(string path, string name)
     {
         path = path.ToLower();
         name = name.ToLower();
-        AssetBundleRequest ab = await mAssetsLocator.LoadAssetBundleFromABKey(path + AssetsConfig.Suffix);
+        AssetBundleRequest ab = await mAssetsLocator.LoadAssetBundleFromABKey(path);
         ab.MarkPersistence(true);
-        path += "/";
-        var text = await ab.LoadAssetAsync<TextAsset>(path + name + "_fui");
-        UIPackage.AddPackage(text.bytes,"", (string file, string extension, Type type, out DestroyMethod method) =>
+        //path += "/";
+        var text = await ab.LoadAssetAsync<TextAsset>(PathUtils.RemoveFileExtension(path) + "/" + name + "_fui");
+        path = PathUtils.RemoveFileExtension(path) + "/";
+        UIPackage.AddPackage(text.bytes, "", (string file, string extension, Type type, out DestroyMethod method) =>
         {
             method = DestroyMethod.None;
-            if (file.Contains("!a"))//我们没有Alpha通道文件.直接上ETC2了.
+            if (file.Contains("!a")) //我们没有Alpha通道文件.直接上ETC2了.
+            {
                 return null;
+            }
+
             return ab.LoadAssetSync(path + name + "_" + file, type);
         });
     }
@@ -114,7 +120,10 @@ public class UIManager
     public UIBase GetLastUI()
     {
         if (Stack.Count > 0)
+        {
             return Stack[Stack.Count - 1];
+        }
+
         return null;
     }
 
@@ -122,7 +131,7 @@ public class UIManager
     {
         return Stack;
     }
-    
+
     /// <summary>
     ///     这个方法提供了更多得功能
     ///     目前提供了实现在打开界面之前弹出菊花.等待界面加载
@@ -132,24 +141,26 @@ public class UIManager
     /// <returns></returns>
     public async Task<T> SuperCreate<T>(IUIParams p = null) where T : UIBase, new()
     {
-        var t = typeof(T);
+        var t = typeof (T);
         return (T) await Create(t, true, p);
     }
 
     public T Create<T>(IUIParams p = null) where T : UIBase
     {
         Profiler.BeginSample("FairyManager.Create");
-        var t = typeof(T);
+        var t = typeof (T);
         var ui = (T) Create(t, false, p).Result;
         Profiler.EndSample();
         return ui;
     }
 
-    private void AddNormalUi(Type t,UIBase uiBase)
+    private void AddNormalUi(Type t, UIBase uiBase)
     {
         Dictionary.Add(t, uiBase);
-        if(!DictKeys.Contains(t))
+        if (!DictKeys.Contains(t))
+        {
             DictKeys.Add(t);
+        }
     }
 
     private void RemoveNormalUi(UIBase uiBase)
@@ -158,14 +169,19 @@ public class UIManager
         Dictionary.Remove(t);
         DictKeys.Remove(t);
     }
-    
+
     private void AddRepeatUi(Type t, UIBase uiBase)
     {
         if (!RepeatUI.ContainsKey(t))
+        {
             RepeatUI.Add(t, new List<UIBase>());
+        }
+
         RepeatUI[t].Add(uiBase);
-        if(!RepeatKeys.Contains(t))
+        if (!RepeatKeys.Contains(t))
+        {
             RepeatKeys.Add(t);
+        }
     }
 
     private void RemoveRepeatUi(UIBase uiBase)
@@ -182,7 +198,7 @@ public class UIManager
             }
         }
     }
-    
+
     public async Task<UIBase> Create(Type t, bool async, IUIParams p = null)
     {
         //开始加载界面
@@ -227,24 +243,29 @@ public class UIManager
                 uiBase.Visible = true;
                 go.gameObject.hideFlags = HideFlags.None;
                 if (!widget.GetControl)
+                {
                     Stack.Add(uiBase);
+                }
             }
             else
             {
                 //首先查找类型是否重写了UIConfig属性
                 if (!CacheWidget.TryGetValue(t, out widget))
                 {
-                    var attribute = (UIWidget[]) t.GetCustomAttributes(typeof(UIWidget), true);
-                    widget = attribute.Length > 0 ? attribute[0] : UIWidget.Default;
+                    var attribute = (UIWidget[]) t.GetCustomAttributes(typeof (UIWidget), true);
+                    widget = attribute.Length > 0? attribute[0] : UIWidget.Default;
                     CacheWidget[t] = widget;
                 }
 
                 //mContainer.BindInstance(uiBase).AsSingle();
-                uiBase = (UIBase)Activator.CreateInstance(t);
+                uiBase = (UIBase) Activator.CreateInstance(t);
                 uiBase.Widget = widget;
                 uiBase.Type = t;
                 if (!widget.GetControl)
+                {
                     Stack.Add(uiBase);
+                }
+
                 if (!widget.Repeat)
                 {
                     AddNormalUi(t, uiBase);
@@ -254,25 +275,25 @@ public class UIManager
                     AddRepeatUi(t, uiBase);
                 }
 
-                var window = widget as UIWindow;
-                if (window != null)
+                if (widget is UIWindow window)
                 {
-                    uiBase.Window = new NormalWindow(uiBase) {contentPane = uiBase.GComponent};
+                    uiBase.Window = new NormalWindow(uiBase) { contentPane = uiBase.GComponent };
                     uiBase.Window.EnterWindowAnim = window.Enter;
                     uiBase.Window.ExitWindowAnim = window.Exit;
-                    uiBase.Window.sortingOrder = (short)widget.Depth;
+                    uiBase.Window.sortingOrder = (short) widget.Depth;
                     uiBase.Window.data = uiBase;
                     uiBase.Window.CloseCallback = (t1) =>
                     {
                         var anonymousUi = t1.Base;
                         OnRemoveWindow(anonymousUi);
                     };
+                    uiBase.Window.onRemovedFromStage.Set(RemoveFromStage);
                 }
                 else
                 {
-                    uiBase.GComponent.sortingOrder = (short)widget.Depth;
+                    uiBase.GComponent.sortingOrder = (short) widget.Depth;
+                    uiBase.GComponent.onRemovedFromStage.Set(RemoveFromStage);
                 }
-
                 if (async)
                 {
                     //TODO 这里添加转菊花界面
@@ -287,14 +308,24 @@ public class UIManager
                 uiBase.BaseStart(p);
             }
 
-            if (uiBase.IsDisposed)//有可能在Start的时候就销毁了这个界面.我们这里判断一下.如果销毁了这里就要及时阻止往下执行
+            if (uiBase.IsDisposed) //有可能在Start的时候就销毁了这个界面.我们这里判断一下.如果销毁了这里就要及时阻止往下执行
+            {
                 return null;
+            }
+
             if (widget is UIWindow)
+            {
                 uiBase.Window.Show();
+            }
             else
+            {
                 GRoot.inst.AddChild(uiBase.GComponent);
+            }
+
             uiBase.BaseEnable(p);
 
+            SetBackground(uiBase);
+            
             return uiBase;
         }
         catch (Exception e)
@@ -304,41 +335,51 @@ public class UIManager
         }
     }
 
-    /// <summary>
-    /// 这个方法会将UI创建至特定UI下.并指定其为父级
-    /// 以此法创建得UI无法被Find查找.
-    /// 你需要先Find查找UI的最上级获得UIBase后使用GetChildren查找.
-    /// </summary>
-    /// <param name="type"></param>
-    /// <param name="async"></param>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    /*public async Task<UIBase> CreateToParent(Type type, bool async, IUIParams p = null)
+    private void RemoveFromStage()
     {
-        
-    }*/
+        SetBackground();
+    }
 
-    
+    private bool SetBackground(UIBase ui)
+    {
+        if (ui.Widget.Background)
+        {
+            var background = Create<UI_BlackBackground>();
+            background.Visible = true;
+            background.SortingOrder = (int) ui.Widget.Depth - 1;
+            var index = GRoot.inst.GetChildIndex(ui.Window ?? ui.GComponent);
+            GRoot.inst.SetChildIndex(background.View, Mathf.Max(0,index));
+            return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     ///     移除Window,这个比较特殊.我们使用OnRemoveFromStage去检测,因为Window得话可能有动画.我们必须等待动画播放结束了这个界面才是真的销毁了
     /// </summary>
-    /// <param name="t"></param>
     /// <param name="uiBase"></param>
     private void OnRemoveWindow(UIBase uiBase)
     {
         var widget = uiBase.Widget;
         if (!widget.Pool || uiBase.IsDisposed)
         {
-            if(widget.Repeat)
+            if (widget.Repeat)
+            {
                 RemoveRepeatUi(uiBase);
+            }
             else
+            {
                 RemoveNormalUi(uiBase);
+            }
+
             uiBase.BaseDestroy();
         }
         else
         {
             uiBase.Visible = false;
         }
+        SetBackground();
     }
 
     /// <summary>
@@ -348,7 +389,10 @@ public class UIManager
     {
         var index = Stack.Count - 2;
         if (index < 0)
+        {
             return;
+        }
+
         var ui = Stack[index];
         Destroy(ui);
     }
@@ -358,52 +402,66 @@ public class UIManager
     /// </summary>
     public void RemoveAll()
     {
-        for(int i = Stack.Count - 2;i>=0;i--)
+        for (int i = Stack.Count - 2; i >= 0; i--)
         {
-            if (i >= Stack.Count) i = Stack.Count - 2;//有的UI面板会移除多个UI，这里还需要矫正一下下标
+            if (i >= Stack.Count)
+            {
+                i = Stack.Count - 2; //有的UI面板会移除多个UI，这里还需要矫正一下下标
+            }
+
             var index = i;
-            if (index < 0)return;    
+            if (index < 0)
+            {
+                return;
+            }
+
             var ui = Stack[index];
             Destroy(ui);
         }
     }
-    
+
     public T Find<T>() where T : UIBase
     {
-        var type = typeof(T);
-        return (T)Find(type);
+        var type = typeof (T);
+        return (T) Find(type);
     }
 
     public UIBase Find(Type type)
     {
-        if (Dictionary.TryGetValue(type,out var result))
+        if (Dictionary.TryGetValue(type, out var result))
         {
-            if(result.Active)
+            if (result.Active)
+            {
                 return result;
+            }
         }
+
         return null;
     }
 
     public List<UIBase> FindAll<T>() where T : UIBase
     {
-        var type = typeof(T);
+        var type = typeof (T);
         return FindAll(type);
     }
 
     public List<UIBase> FindAll(Type type)
     {
         List<UIBase> list;
-        if (RepeatUI.TryGetValue(type,out list)) 
+        if (RepeatUI.TryGetValue(type, out list))
+        {
             return list;
+        }
+
         return null;
     }
-    
+
     /// <summary>
     ///     Window得销毁不在这里调用而在OnRemoveWindow中触发.这里仅触发Window得动画和Window得池处理
     /// </summary>
     /// <param name="base"></param>
     /// <param name="force">强制卸载</param>
-    public void Destroy(UIBase @base, bool force = false,bool raiseEvent = true)
+    public void Destroy(UIBase @base, bool force = false)
     {
         try
         {
@@ -414,24 +472,31 @@ public class UIManager
             }
 
             if (@base.IsDisposed)
+            {
                 return;
+            }
 
             @base.BaseDisable();
             if (@base.Widget.Pool && force == false)
             {
                 var com = @base.GComponent;
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 //只有编辑器概率会发生错误
                 if (com.displayObject == null)
+                {
                     return;
-                #endif
+                }
+#endif
                 if (@base.Widget is UIWindow)
+                {
                     GRoot.inst.HideWindow(@base.Window);
+                }
                 else
                 {
                     GRoot.inst.RemoveChild(com, false);
                     //com.visible = false;
                 }
+
                 //com.displayObject.gameObject.hideFlags = HideFlags.HideInHierarchy;
             }
             else
@@ -444,7 +509,9 @@ public class UIManager
                 else
                 {
                     if (Dictionary.ContainsKey(@base.Type) && !(@base.Widget is UIWindow))
+                    {
                         RemoveNormalUi(@base);
+                    }
                 }
 
                 if (@base.Widget is UIWindow)
@@ -455,7 +522,7 @@ public class UIManager
                     }
                     else
                     {
-                        @base.Window.OnClose();
+                        @base.Window.OnClose(force);
                     }
                 }
                 else
@@ -467,15 +534,34 @@ public class UIManager
 
             Stack.Remove(@base);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.LogError("卸载UI发生错误,如果你是关闭Unity发生得问题可以无视,如果不是请截图给我\n" + e);
         }
     }
 
+    private void SetBackground()
+    {
+        bool setBackgroud = false;
+        for (int i = Stack.Count - 1; i >= 0; i--)
+        {
+            setBackgroud = SetBackground(Stack[i]);
+            if (setBackgroud)
+                break;
+        }
+
+        if (setBackgroud == false)
+        {
+            //不能走Destory避免堆栈溢出(递归调用)
+            var blackground = Find<UI_BlackBackground>();
+            if (blackground != null)
+                blackground.Visible = false;
+        }
+    }
+
     public void Destroy<T>() where T : UIBase
     {
-        var type = typeof(T);
+        var type = typeof (T);
         Destroy(type);
     }
 
@@ -488,16 +574,16 @@ public class UIManager
 
     public void DestroyAll<T>() where T : UIBase
     {
-        var type = typeof(T);
+        var type = typeof (T);
         DestroyAll(type);
     }
 
     public void DestroyAll(Type type)
     {
         UIBase ui;
-        if (Dictionary.TryGetValue(type,out ui))
+        if (Dictionary.TryGetValue(type, out ui))
         {
-            Destroy(ui,raiseEvent : false);
+            Destroy(ui);
         }
 
         List<UIBase> uiList;
@@ -506,11 +592,11 @@ public class UIManager
             int count = uiList.Count;
             for (int i = count - 1; i >= 0; i--)
             {
-                Destroy(uiList[i],raiseEvent : false);
+                Destroy(uiList[i]);
             }
         }
     }
-    
+
     /// <summary>
     /// 切换场景的时候调用的函数.受到DontDestoryOnLoad影响
     /// </summary>
@@ -523,10 +609,13 @@ public class UIManager
             UIBase value = Dictionary[node];
             if (!value.Widget.DontDestroyOnLoad || affectDontDestory == false)
             {
-                Destroy(value, true,false);
+                Destroy(value, true);
             }
             else
+            {
                 pass++;
+            }
+
             //因为有的UI会自己移除他的附加UI.有可能会导致数组越界.
             index = DictKeys.Count - pass;
         }
@@ -539,13 +628,15 @@ public class UIManager
             for (int i = count - 1; i >= 0; i--)
             {
                 var value = list[i];
-                if (!value.Widget.DontDestroyOnLoad  || affectDontDestory == false)
-                    Destroy(value, true,false);
+                if (!value.Widget.DontDestroyOnLoad || affectDontDestory == false)
+                {
+                    Destroy(value, true);
+                }
             }
         }
     }
 
-    float Update()
+    private float Update()
     {
         int listCount = DictKeys.Count;
         for (var index = listCount - 1; index >= 0; index--)
@@ -577,7 +668,7 @@ public class UIManager
         return 0;
     }
 
-    float LateUpdate()
+    private float LateUpdate()
     {
         int listCount = DictKeys.Count;
         for (var index = listCount - 1; index >= 0; index--)
@@ -605,13 +696,13 @@ public class UIManager
                 }
             }
         }
+
         return 0;
     }
-    
-    
-    #if UNITY_EDITOR
+
+#if UNITY_EDITOR
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    static void EDITOR_Reset()
+    private static void EDITOR_Reset()
     {
         /*FontManager.Clear();
         //GRoot._inst = null;
@@ -678,5 +769,5 @@ public class UIManager
         UpdateContext.working = false;
         StageEngine.beingQuit = false;*/
     }
-    #endif
+#endif
 }

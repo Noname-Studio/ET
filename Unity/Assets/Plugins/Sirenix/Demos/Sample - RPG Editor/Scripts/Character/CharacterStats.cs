@@ -16,46 +16,52 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         [HideInInspector]
         public StatList Stats = new StatList();
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Shooting
         {
-            get { return this.Stats[StatType.Shooting]; }
-            set { this.Stats[StatType.Shooting] = value; }
+            get => Stats[StatType.Shooting];
+            set => Stats[StatType.Shooting] = value;
         }
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Melee
         {
-            get { return this.Stats[StatType.Melee]; }
-            set { this.Stats[StatType.Melee] = value; }
+            get => Stats[StatType.Melee];
+            set => Stats[StatType.Melee] = value;
         }
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Social
         {
-            get { return this.Stats[StatType.Social]; }
-            set { this.Stats[StatType.Social] = value; }
+            get => Stats[StatType.Social];
+            set => Stats[StatType.Social] = value;
         }
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Animals
         {
-            get { return this.Stats[StatType.Animals]; }
-            set { this.Stats[StatType.Animals] = value; }
+            get => Stats[StatType.Animals];
+            set => Stats[StatType.Animals] = value;
         }
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Medicine
         {
-            get { return this.Stats[StatType.Medicine]; }
-            set { this.Stats[StatType.Medicine] = value; }
+            get => Stats[StatType.Medicine];
+            set => Stats[StatType.Medicine] = value;
         }
 
-        [ProgressBar(0, 100), ShowInInspector]
+        [ProgressBar(0, 100)]
+        [ShowInInspector]
         public float Crafting
         {
-            get { return this.Stats[StatType.Crafting]; }
-            set { this.Stats[StatType.Crafting] = value; }
+            get => Stats[StatType.Crafting];
+            set => Stats[StatType.Crafting] = value;
         }
     }
 }

@@ -24,13 +24,13 @@ namespace ET
         public string Get(string fileName)
         {
             string md5 = "";
-            this.fileMD5.TryGetValue(fileName, out md5);
+            fileMD5.TryGetValue(fileName, out md5);
             return md5;
         }
 
         public void Add(string fileName, string md5)
         {
-            this.fileMD5[fileName] = md5;
+            fileMD5[fileName] = md5;
         }
     }
 
@@ -58,7 +58,7 @@ namespace ET
 
                 if (GUILayout.Button("导出客户端配置"))
                 {
-                    this.isClient = true;
+                    isClient = true;
 
                     ExportAll(clientPath);
 
@@ -69,7 +69,7 @@ namespace ET
 
                 if (GUILayout.Button("导出服务端配置"))
                 {
-                    this.isClient = false;
+                    isClient = false;
 
                     ExportAll(ServerConfigPath);
 
@@ -150,7 +150,7 @@ namespace ET
                     }
 
                     // s开头表示这个字段是服务端专用
-                    if (fieldDesc.StartsWith("s") && this.isClient)
+                    if (fieldDesc.StartsWith("s") && isClient)
                     {
                         continue;
                     }
@@ -183,11 +183,11 @@ namespace ET
             string md5File = Path.Combine(ExcelPath, "md5.txt");
             if (!File.Exists(md5File))
             {
-                this.md5Info = new ExcelMD5Info();
+                md5Info = new ExcelMD5Info();
             }
             else
             {
-                this.md5Info = MongoHelper.FromJson<ExcelMD5Info>(File.ReadAllText(md5File));
+                md5Info = MongoHelper.FromJson<ExcelMD5Info>(File.ReadAllText(md5File));
             }
 
             foreach (string filePath in Directory.GetFiles(ExcelPath))
@@ -203,9 +203,9 @@ namespace ET
                 }
 
                 string fileName = Path.GetFileName(filePath);
-                string oldMD5 = this.md5Info.Get(fileName);
+                string oldMD5 = md5Info.Get(fileName);
                 string md5 = MD5Helper.FileMD5(filePath);
-                this.md5Info.Add(fileName, md5);
+                md5Info.Add(fileName, md5);
                 // if (md5 == oldMD5)
                 // {
                 // 	continue;
@@ -214,7 +214,7 @@ namespace ET
                 Export(filePath, exportDir);
             }
 
-            File.WriteAllText(md5File, this.md5Info.ToJson());
+            File.WriteAllText(md5File, md5Info.ToJson());
 
             Log.Info("所有表导表完成");
             AssetDatabase.Refresh();
@@ -240,6 +240,7 @@ namespace ET
                     ISheet sheet = xssfWorkbook.GetSheetAt(i);
                     ExportSheet(sheet, sw);
                 }
+
                 sw.WriteLine("}");
             }
 
@@ -278,13 +279,13 @@ namespace ET
                     }
 
                     // s开头表示这个字段是服务端专用
-                    if (desc.StartsWith("s") && this.isClient)
+                    if (desc.StartsWith("s") && isClient)
                     {
                         continue;
                     }
 
                     // c开头表示这个字段是客户端专用
-                    if (desc.StartsWith("c") && !this.isClient)
+                    if (desc.StartsWith("c") && !isClient)
                     {
                         continue;
                     }
@@ -344,10 +345,11 @@ namespace ET
         private static string GetCellString(ISheet sheet, int i, int j)
         {
             IRow _irow = sheet.GetRow(i);
-            if(_irow != null)
+            if (_irow != null)
             {
-               return GetCellString(_irow, j);
+                return GetCellString(_irow, j);
             }
+
             return "";
         }
 
@@ -356,8 +358,10 @@ namespace ET
             ICell _icell = row.GetCell(i);
             if (_icell != null)
             {
-                return GetCellString(_icell); ;
+                return GetCellString(_icell);
+                ;
             }
+
             return "";
         }
 
@@ -365,15 +369,15 @@ namespace ET
         {
             if (cell != null)
             {
-                if(cell.CellType == CellType.Numeric || (cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.Numeric))
+                if (cell.CellType == CellType.Numeric || cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.Numeric)
                 {
                     return cell.NumericCellValue.ToString();
                 }
-                else if (cell.CellType == CellType.String || (cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.String))
+                else if (cell.CellType == CellType.String || cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.String)
                 {
                     return cell.StringCellValue.ToString();
                 }
-                else if (cell.CellType == CellType.Boolean || (cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.Boolean))
+                else if (cell.CellType == CellType.Boolean || cell.CellType == CellType.Formula && cell.CachedFormulaResultType == CellType.Boolean)
                 {
                     return cell.BooleanCellValue.ToString();
                 }
@@ -382,6 +386,7 @@ namespace ET
                     return cell.ToString();
                 }
             }
+
             return "";
         }
     }

@@ -31,7 +31,7 @@ namespace ET
 
     public static class MoveComponentSystem
     {
-        public static async ETTask MoveToAsync(this MoveComponent self,Vector3 target, float speedValue, ETCancellationToken cancellationToken)
+        public static async ETTask MoveToAsync(this MoveComponent self, Vector3 target, float speedValue, ETCancellationToken cancellationToken)
         {
             Unit unit = self.GetParent<Unit>();
 

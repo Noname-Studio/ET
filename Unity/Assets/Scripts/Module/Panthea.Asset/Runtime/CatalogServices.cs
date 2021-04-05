@@ -14,14 +14,14 @@ namespace Panthea.Asset
 
         public enum CatalogState
         {
-            Null,//不存在
-            Include,//在包体内
-            PersistentData,//在下载目录内
+            Null, //不存在
+            Include, //在包体内
+            PersistentData //在下载目录内
         }
-    
+
         private async UniTask<CatalogState> Download()
         {
-            IDownloadPlatform service = this.mDownloadServices;
+            IDownloadPlatform service = mDownloadServices;
             int tryTimes = 0;
             var thread = await service.FetchHeader(mCatalogName);
             string existPath = AssetsConfig.AssetBundlePersistentDataPath + "/" + mCatalogName;
@@ -35,7 +35,8 @@ namespace Panthea.Asset
             else
             {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            var stream = BetterStreamingAssets.GetStream("assets/" + Addressables.StreamingAssetsSubFolder + "/" + PlatformMappingService.GetPlatform() + "/" + mCatalogName);
+            var stream =
+ BetterStreamingAssets.GetStream("assets/" + Addressables.StreamingAssetsSubFolder + "/" + PlatformMappingService.GetPlatform() + "/" + mCatalogName);
 #else
                 var stream = new FileStream(Addressables.RuntimePath + "/" + mCatalogName, FileMode.Open, FileAccess.Read);
 #endif
@@ -72,6 +73,7 @@ namespace Panthea.Asset
                     Log.Error($"更新{mCatalogName}文件失败,正在重新尝试第{tryTimes}次,{e}");
                 }
             }
+
             return CatalogState.Null;
         }
 
@@ -80,7 +82,8 @@ namespace Panthea.Asset
             CatalogState result;
             //对比修改时间
 #if UNITY_ANDROID && !UNITY_EDITOR
-            var includeDt = BetterStreamingAssets.GetCreateTime("assets/" + Addressables.StreamingAssetsSubFolder + "/" + PlatformMappingService.GetPlatform() + "/" + mCatalogName);
+            var includeDt =
+ BetterStreamingAssets.GetCreateTime("assets/" + Addressables.StreamingAssetsSubFolder + "/" + PlatformMappingService.GetPlatform() + "/" + mCatalogName);
 #else
             var includeDt = File.GetCreationTimeUtc(Addressables.RuntimePath + "/" + mCatalogName);
 #endif
@@ -101,20 +104,20 @@ namespace Panthea.Asset
                 result = CatalogState.Include;
             }
 
-            await this.Redirect(result);
+            await Redirect(result);
         }
-    
+
         public async UniTask Update()
         {
             CatalogState result;
-            if(this.mDownloadServices != null)
+            if (mDownloadServices != null)
             {
-                result = await this.Download();
-                await this.Redirect(result);
+                result = await Download();
+                await Redirect(result);
             }
             else
             {
-                await this.Redirect();
+                await Redirect();
             }
         }
 

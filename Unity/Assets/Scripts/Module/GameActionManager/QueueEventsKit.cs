@@ -9,10 +9,16 @@ public class QueueEventsKit
     private Dictionary<IGameAction, bool> Init = new Dictionary<IGameAction, bool>();
     private static QueueEventsKit _inst;
     public static QueueEventsKit Inst => _inst ?? (_inst = new QueueEventsKit());
-    
+
     private QueueEventsKit()
     {
         UnityLifeCycleKit.Inst.AddUpdate(Update);
+    }
+
+    public void Clear()
+    {
+        Init.Clear();
+        mGameActions.Clear();
     }
     
     /// <summary>
@@ -22,7 +28,7 @@ public class QueueEventsKit
     public void AddToTop(IGameAction action)
     {
         mGameActions.Add(action);
-        Init.Add(action,false);
+        Init.Add(action, false);
     }
 
     /// <summary>
@@ -31,13 +37,13 @@ public class QueueEventsKit
     /// <param name="action"></param>
     public void AddToBottom(IGameAction action)
     {
-        mGameActions.Insert(0,action);
-        Init.Add(action,false);
+        mGameActions.Insert(0, action);
+        Init.Add(action, false);
     }
 
     private float Update()
     {
-        while(mGameActions.Count > 0)
+        while (mGameActions.Count > 0)
         {
             int i = mGameActions.Count - 1;
             var action = mGameActions[i];
@@ -49,9 +55,12 @@ public class QueueEventsKit
                     Init[action] = true;
                 }
             }
+
             bool isDone = action.Update();
             if (!isDone)
+            {
                 break;
+            }
             else
             {
                 mGameActions.RemoveAt(i);

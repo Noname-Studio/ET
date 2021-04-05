@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Kitchen
 {
-    public class SpineAnimation : IAnimation
+    public class SpineAnimation: IAnimation
     {
         private readonly SkeletonAnimation mInst;
         public Skeleton mSkeleton;
@@ -26,6 +26,7 @@ namespace Kitchen
         }
 
         private Vector3 mClockPos;
+
         public Vector3 ClockPos
         {
             get => mClockPos;
@@ -33,19 +34,20 @@ namespace Kitchen
         }
 
         private Vector3 mFoodPos;
+
         public Vector3 FoodPos
         {
             get => mFoodPos;
             private set => mFoodPos = value;
         }
 
-        
         public SpineAnimation(SkeletonAnimation inst)
         {
             if (inst == null)
             {
                 throw new Exception("动画文件不能为空");
             }
+
             mInst = inst;
             mCacheTransform = mInst.transform;
             mSkeleton = mInst.Skeleton;
@@ -56,6 +58,7 @@ namespace Kitchen
                 bone.UpdateWorldTransform();
                 FoodPos = bone.GetWorldPosition(mCacheTransform);
             }
+
             bone = mSkeleton.FindBone("clock");
             if (bone != null)
             {

@@ -9,22 +9,23 @@ using UnityEngine;
 /// </summary>
 public class ComponentContainer
 {
-    private Dictionary<Type,IComponent> Components = new Dictionary<Type, IComponent>();
+    private Dictionary<Type, IComponent> Components = new Dictionary<Type, IComponent>();
 
     public T Get<T>()
     {
-        var t = typeof(T);
+        var t = typeof (T);
         IComponent result;
         if (Components.TryGetValue(t, out result))
         {
             return (T) result;
         }
-        return default(T);
+
+        return default;
     }
 
     public void Set<T>(T com) where T : IComponent
     {
-        var t = typeof(T);
+        var t = typeof (T);
         Components[t] = com;
     }
 }

@@ -6,35 +6,39 @@ namespace ET
     public class MultiMapSet<T, K>: SortedDictionary<T, HashSet<K>>
     {
         private readonly HashSet<K> Empty = new HashSet<K>();
-		
+
         public void Add(T t, K k)
         {
             HashSet<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 list = new HashSet<K>();
-                this.Add(t, list);
+                Add(t, list);
             }
+
             list.Add(k);
         }
 
         public bool Remove(T t, K k)
         {
             HashSet<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return false;
             }
+
             if (!list.Remove(k))
             {
                 return false;
             }
+
             if (list.Count == 0)
             {
-                this.Remove(t);
+                Remove(t);
             }
+
             return true;
         }
 
@@ -46,11 +50,12 @@ namespace ET
         public K[] GetAll(T t)
         {
             HashSet<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return new K[0];
             }
+
             return list.ToArray();
         }
 
@@ -63,7 +68,7 @@ namespace ET
         {
             get
             {
-                this.TryGetValue(t, out var list);
+                TryGetValue(t, out var list);
                 return list ?? Empty;
             }
         }
@@ -71,22 +76,24 @@ namespace ET
         public K GetOne(T t)
         {
             HashSet<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list != null && list.Count > 0)
             {
                 return list.FirstOrDefault();
             }
+
             return default;
         }
 
         public bool Contains(T t, K k)
         {
             HashSet<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return false;
             }
+
             return list.Contains(k);
         }
     }

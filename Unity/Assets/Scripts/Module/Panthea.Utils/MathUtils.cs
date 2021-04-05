@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public static class MathUtils  {
+public static class MathUtils
+{
     /// <summary>
     /// 权重算法
     /// </summary>
@@ -12,10 +13,13 @@ public static class MathUtils  {
     /// <param name="nums">返回权重数量</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static List<T> WeightMath<T>(List<T> list,Func<T,int> outInt,int nums,int? seed = null)
+    public static List<T> WeightMath<T>(List<T> list, Func<T, int> outInt, int nums, int? seed = null)
     {
-        if(list == null || list.Count <= 0 || nums == 0)
+        if (list == null || list.Count <= 0 || nums == 0)
+        {
             return new List<T>();
+        }
+
         int listCount = list.Count;
         nums = Mathf.Min(list.Count, nums);
 
@@ -25,30 +29,31 @@ public static class MathUtils  {
         {
             totalWeight += outInt(list[i]);
         }
-        
-        List<KeyValuePair<int,T>> keyList = new List<KeyValuePair<int, T>>();
+
+        List<KeyValuePair<int, T>> keyList = new List<KeyValuePair<int, T>>();
         for (int i = 0; i < listCount; i++)
         {
             if (seed.HasValue)
             {
                 Random.InitState(seed.Value);
             }
+
             var random = Random.Range(1, totalWeight);
             var value = list[i];
             keyList.Add(new KeyValuePair<int, T>(outInt(value) + random, value));
         }
 
         keyList.Sort((pair, valuePair) => valuePair.Key - pair.Key);
-        
+
         List<T> newList = new List<T>(nums);
         for (int i = 0; i < nums; i++)
         {
             newList.Add(keyList[i].Value);
         }
-        
+
         return newList;
     }
-    
+
     /// <summary>
     /// 权重算法
     /// </summary>
@@ -57,11 +62,14 @@ public static class MathUtils  {
     /// <param name="nums">返回权重数量</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static T WeightMath<T>(List<T> list,Func<T,int> outInt,int? seed = null)
+    public static T WeightMath<T>(List<T> list, Func<T, int> outInt, int? seed = null)
     {
         var result = WeightMath(list, outInt, 1, seed);
         if (result.Count > 0)
+        {
             return result[0];
-        return default(T);
+        }
+
+        return default;
     }
 }

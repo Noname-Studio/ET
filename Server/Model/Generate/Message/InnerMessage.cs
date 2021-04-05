@@ -321,7 +321,10 @@ namespace ET
 		public long ActorId { get; set; }
 
 		[ProtoMember(1)]
-		public string Account { get; set; }
+		public string AccessToken { get; set; }
+
+		[ProtoMember(2)]
+		public int LoginType { get; set; }
 
 	}
 
@@ -390,10 +393,152 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(CS2G_AddPlayerToChatServer))]
-	[Message(InnerOpcode.G2CS_AddPlayerToChatServer)]
+	[ResponseType(typeof(CS2G_AddGuildToChatServer))]
+	[Message(InnerOpcode.G2CS_AddGuildToChatServer)]
 	[ProtoContract]
-	public partial class G2CS_AddPlayerToChatServer: IActorRequest
+	public partial class G2CS_AddGuildToChatServer: IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_AddGuildToChatServer)]
+	[ProtoContract]
+	public partial class CS2G_AddGuildToChatServer: IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_RemoveGuildToChatServer))]
+	[Message(InnerOpcode.G2CS_RemoveGuildToChatServer)]
+	[ProtoContract]
+	public partial class G2CS_RemoveGuildToChatServer: IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_RemoveGuildToChatServer)]
+	[ProtoContract]
+	public partial class CS2G_RemoveGuildToChatServer: IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_AddPlayerToChat))]
+	[Message(InnerOpcode.G2CS_AddPlayerToChat)]
+	[ProtoContract]
+	public partial class G2CS_AddPlayerToChat: IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+		[ProtoMember(2)]
+		public int Type { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_AddPlayerToChat)]
+	[ProtoContract]
+	public partial class CS2G_AddPlayerToChat: IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_RemovePlayerFromChat))]
+	[Message(InnerOpcode.G2CS_RemovePlayerFromChat)]
+	[ProtoContract]
+	public partial class G2CS_RemovePlayerFromChat: IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+		[ProtoMember(2)]
+		public int Type { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_RemovePlayerFromChat)]
+	[ProtoContract]
+	public partial class CS2G_RemovePlayerFromChat: IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_RegisterPlayerToChat))]
+	[Message(InnerOpcode.G2CS_RegisterPlayerToChat)]
+	[ProtoContract]
+	public partial class G2CS_RegisterPlayerToChat: IActorRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -407,11 +552,59 @@ namespace ET
 		[ProtoMember(1)]
 		public long GateSessionId { get; set; }
 
+		[ProtoMember(2)]
+		public string Head { get; set; }
+
+		[ProtoMember(3)]
+		public string Name { get; set; }
+
+		[ProtoMember(4)]
+		public long ChatId { get; set; }
+
+		[ProtoMember(5)]
+		public long PlayerId { get; set; }
+
 	}
 
-	[Message(InnerOpcode.CS2G_AddPlayerToChatServer)]
+	[Message(InnerOpcode.CS2G_RegisterPlayerToChat)]
 	[ProtoContract]
-	public partial class CS2G_AddPlayerToChatServer: IActorResponse
+	public partial class CS2G_RegisterPlayerToChat: IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+// 自己的unit id
+// 自己的unit id
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+	}
+
+	[ResponseType(typeof(CS2G_UnRegisterPlayerToChat))]
+	[Message(InnerOpcode.G2CS_UnRegisterPlayerToChat)]
+	[ProtoContract]
+	public partial class G2CS_UnRegisterPlayerToChat: IActorLocationRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(InnerOpcode.CS2G_UnRegisterPlayerToChat)]
+	[ProtoContract]
+	public partial class CS2G_UnRegisterPlayerToChat: IActorLocationResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -446,16 +639,7 @@ namespace ET
 		public long GuildId { get; set; }
 
 		[ProtoMember(2)]
-		public long SenderId { get; set; }
-
-		[ProtoMember(3)]
-		public string SenderName { get; set; }
-
-		[ProtoMember(4)]
 		public string SenderMsg { get; set; }
-
-		[ProtoMember(5)]
-		public long Time { get; set; }
 
 	}
 

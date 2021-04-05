@@ -6,24 +6,29 @@ using ET;
 using Module.Panthea.Utils;
 using Newtonsoft.Json;
 
-public class LocalDB : IDBService
+public class LocalDB: IDBService
 {
     private static readonly string mSavePath = GameConfig.PersistentDataPath + "/DB/Local/";
-    private const string Extname = ".json"; 
-    Dictionary<Type,DBDefine> mMapping = new Dictionary<Type, DBDefine>();
+    private const string Extname = ".json";
+    private Dictionary<Type, DBDefine> mMapping = new Dictionary<Type, DBDefine>();
     public int Order => 1;
+
+    /// <summary>
+    /// 仅调用DBManager.UpdateLocal的时候触发.告诉系统这个文件需要同步到服务器
+    /// </summary>
+    public HashSet<Type> NeedSyncToServer { get; set; } = new HashSet<Type>();
 
     public LocalDB()
     {
     }
 
-    public T Query<T>(string userId) where T : DBDefine
+    public T Query<T>() where T : DBDefine
     {
-        var t = typeof(T);
-        return (T) Query(t, userId); 
+        var t = typeof (T);
+        return (T) Query(t);
     }
 
-    public DBDefine Query(Type t, string userId)
+    public DBDefine Query(Type t)
     {
         DBDefine db;
         if (mMapping.TryGetValue(t, out db))
@@ -32,26 +37,24 @@ public class LocalDB : IDBService
         }
         else
         {
-            if (File.Exists(mSavePath + t.Name + Extname))
+            if (File.Exists(mSavePath + PlayerManager.Id + "/" + t.Name + Extname))
             {
                 var str = FileUtils.ReadAndDecodeAllText(mSavePath + t.Name + Extname);
                 db = (DBDefine) JsonConvert.DeserializeObject(str, t);
                 mMapping.Add(t, db);
                 return db;
             }
+
             db = (DBDefine) Activator.CreateInstance(t);
-            mMapping.Add(t,db);
+            mMapping.Add(t, db);
             return db;
         }
     }
 
     public void Update<T>(T value) where T : DBDefine
     {
-        var t = typeof(T);
-        if (mMapping.TryGetValue(t, out DBDefine db))
-        {
-            var str = JsonConvert.SerializeObject((T)db);
-            FileUtils.EncodeAllTextAndWrite(mSavePath + t.Name + Extname,str);
-        }
+        var t = value.GetType();
+        var str = JsonConvert.SerializeObject((T) value);
+        FileUtils.EncodeAllTextAndWrite(mSavePath + t.Name + Extname, str);
     }
 }

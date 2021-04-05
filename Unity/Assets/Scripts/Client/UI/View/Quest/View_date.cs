@@ -5,30 +5,30 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Quest
 {
-	public partial class View_date : GComponent
-	{
-		public Controller c1;
-		public GImage Progress;
-		public Transition t0;
+    public partial class View_date: GComponent
+    {
+        public Controller c1;
+        public GImage Progress;
+        public Transition t0;
 
-		public const string URL = "ui://ytnp4vk8kswco2";
+        public const string URL = "ui://ytnp4vk8kswco2";
 
-		public static View_date CreateInstance()
-		{
-			return (View_date)UIPackage.CreateObject("Quest","date");
-		}
+        public static View_date CreateInstance()
+        {
+            return (View_date) UIPackage.CreateObject("Quest", "date");
+        }
 
-		public View_date()
-		{
-		}
+        public View_date()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			c1 = this.GetControllerAt(0);
-			Progress = (GImage)this.GetChildAt(1);
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            c1 = GetControllerAt(0);
+            Progress = (GImage) GetChildAt(1);
+            t0 = GetTransitionAt(0);
+        }
+    }
 }

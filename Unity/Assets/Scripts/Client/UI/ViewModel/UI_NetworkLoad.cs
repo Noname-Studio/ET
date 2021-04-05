@@ -4,14 +4,15 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [UIWidget(Depth = UIDeepEnum.NetworkLoading)]
-public class UI_NetworkLoad : UIBase<View_NetworkLoad>
+public class UI_NetworkLoad: UIBase<View_NetworkLoad>
 {
     private Func<bool> CloseCallback;
     private Action OutOfTimeCallback;
     private float IntevalTime { get; set; }
     private UniTaskCompletionSource Tcs { get; set; }
     private float DestoryTime { get; set; }
-    public UI_NetworkLoad OutOfTime(float time,Action callback = null)
+
+    public UI_NetworkLoad OutOfTime(float time, Action callback = null)
     {
         DestoryTime = time;
         OutOfTimeCallback = callback;
@@ -21,7 +22,10 @@ public class UI_NetworkLoad : UIBase<View_NetworkLoad>
     public async UniTask Wait(Func<bool> callback)
     {
         if (Tcs != null)
+        {
             return;
+        }
+
         CloseCallback = callback;
         Tcs = new UniTaskCompletionSource();
         await Tcs.Task;
@@ -36,8 +40,11 @@ public class UI_NetworkLoad : UIBase<View_NetworkLoad>
             if (IntevalTime >= DestoryTime)
             {
                 Tcs?.TrySetResult();
-                if (OutOfTimeCallback != null) 
+                if (OutOfTimeCallback != null)
+                {
                     OutOfTimeCallback();
+                }
+
                 CloseMySelf();
             }
         }
@@ -45,7 +52,10 @@ public class UI_NetworkLoad : UIBase<View_NetworkLoad>
         if (CloseCallback != null)
         {
             if (CloseCallback())
+            {
                 Tcs?.TrySetResult();
+            }
+
             CloseMySelf();
         }
     }

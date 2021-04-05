@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Panthea.Editor.Asset
 {
-    public class ZipAssets : AResPipeline
+    public class ZipAssets: AResPipeline
     {
         public override Task Do()
         {

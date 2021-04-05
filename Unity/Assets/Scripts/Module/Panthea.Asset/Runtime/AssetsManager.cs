@@ -7,19 +7,19 @@ using Object = UnityEngine.Object;
 
 namespace Panthea.Asset
 {
-    public class AssetsManager : IAssetsLocator
+    public class AssetsManager: IAssetsLocator
     {
         public const string kFileInfo = "file_info.json";
         private AssetBundleDownloader ABDownloader;
         private AssetBundleRuntime Runtime;
         private ABFileTrack mAbFileTrack;
-        public AssetsManager(ABFileTrack fileTrack,AssetBundleRuntime runtime,AssetBundleDownloader downloader)
-        {
-            this.mAbFileTrack = fileTrack;
-            this.Runtime = runtime;
-            this.ABDownloader = downloader;
-        }
 
+        public AssetsManager(ABFileTrack fileTrack, AssetBundleRuntime runtime, AssetBundleDownloader downloader)
+        {
+            mAbFileTrack = fileTrack;
+            Runtime = runtime;
+            ABDownloader = downloader;
+        }
 
         /// <summary>
         /// 根据本地列表检测需要下载得文件内容
@@ -27,19 +27,19 @@ namespace Panthea.Asset
         /// <returns></returns>
         public async Task<List<AssetFileLog>> FetchDownloadList()
         {
-            return await this.ABDownloader.FetchDownloadList();
+            return await ABDownloader.FetchDownloadList();
         }
-    
-        public async UniTask Download(List<AssetFileLog> filelogs,IProgress<float> progress = null)
+
+        public async UniTask Download(List<AssetFileLog> filelogs, IProgress<float> progress = null)
         {
-            await this.ABDownloader.Download(filelogs, progress);
+            await ABDownloader.Download(filelogs, progress);
         }
 
         public async UniTask<T> Load<T>(string filePath) where T : Object
         {
             try
             {
-                return await this.Runtime.LoadAssetAsync<T>(filePath.ToLower());
+                return await Runtime.LoadAssetAsync<T>(filePath.ToLower());
             }
             catch (Exception e)
             {
@@ -48,11 +48,11 @@ namespace Panthea.Asset
             }
         }
 
-        public async UniTask<Dictionary<string,List<Object>>> LoadAll(string abPath)
+        public async UniTask<Dictionary<string, List<Object>>> LoadAll(string abPath)
         {
             try
             {
-                return await this.Runtime.LoadAllAssetAsync(abPath.ToLower());
+                return await Runtime.LoadAllAssetAsync(abPath.ToLower());
             }
             catch (Exception e)
             {
@@ -63,19 +63,19 @@ namespace Panthea.Asset
 
         public T LoadSync<T>(string filePath) where T : Object
         {
-            return this.Runtime.LoadAssetSync<T>(filePath.ToLower());
+            return Runtime.LoadAssetSync<T>(filePath.ToLower());
         }
 
         public Dictionary<string, List<Object>> LoadAllSync(string path)
         {
-            return this.Runtime.LoadAllAssetSync(path.ToLower());
+            return Runtime.LoadAllAssetSync(path.ToLower());
         }
 
         public async UniTask<AssetBundleRequest> LoadAssetBundle(string filePath)
         {
             try
             {
-                return await this.Runtime.LoadAssetBundleByFilePath(filePath.ToLower());
+                return await Runtime.LoadAssetBundleByFilePath(filePath.ToLower());
             }
             catch (Exception e)
             {
@@ -88,7 +88,7 @@ namespace Panthea.Asset
         {
             try
             {
-                return await this.Runtime.LoadAssetBundleByABPath(abPath.ToLower());
+                return await Runtime.LoadAssetBundleByABPath(abPath.ToLower());
             }
             catch (Exception e)
             {
@@ -101,7 +101,7 @@ namespace Panthea.Asset
         {
             try
             {
-                this.Runtime.ReleaseAssetBundle(filePath.ToLower());
+                Runtime.ReleaseAssetBundle(filePath.ToLower());
             }
             catch (Exception e)
             {
@@ -113,7 +113,7 @@ namespace Panthea.Asset
         {
             try
             {
-                this.Runtime.ReleaseAssetBundleFromABKey(abPath.ToLower());
+                Runtime.ReleaseAssetBundleFromABKey(abPath.ToLower());
             }
             catch (Exception e)
             {
@@ -123,18 +123,22 @@ namespace Panthea.Asset
 
         public void ReleaseInstance<TObject>(TObject obj) where TObject : Object
         {
-            this.Runtime.ReleaseInstance(obj);
+            Runtime.ReleaseInstance(obj);
         }
 
         public async UniTask<UnityObject> Instantiate(string filePath, Vector3? position = null, Vector3? rotation = null, Transform parent = null)
         {
             try
             {
-                var go = await this.Runtime.Instantiate(filePath.ToLower(), position, rotation, parent);
+                var go = await Runtime.Instantiate(filePath.ToLower(), position, rotation, parent);
                 if (go == null)
+                {
                     return null;
+                }
                 else
+                {
                     return new UnityObject(go);
+                }
             }
             catch (Exception e)
             {
@@ -145,27 +149,28 @@ namespace Panthea.Asset
 
         public void UnloadAllAssetBundle()
         {
-            this.Runtime.UnloadAllAssetBundle();
+            Runtime.UnloadAllAssetBundle();
         }
 
         public List<string> GetFilterAssetBundle(string[] path)
         {
-            return this.mAbFileTrack.GetFilterAssetBundle(path);
+            return mAbFileTrack.GetFilterAssetBundle(path);
         }
 
         public string[] GetDepenciences(string abPath)
         {
-            var info = this.mAbFileTrack.GetABInfo(abPath);
+            var info = mAbFileTrack.GetABInfo(abPath);
             if (info != null)
             {
                 return info.Info.Dependencies;
             }
+
             return null;
         }
 
         public Dictionary<string, AssetBundleRequest> GetLoadedAssetBundle()
         {
-            return this.Runtime.GetLoadedAssetBundle();
+            return Runtime.GetLoadedAssetBundle();
         }
     }
 }

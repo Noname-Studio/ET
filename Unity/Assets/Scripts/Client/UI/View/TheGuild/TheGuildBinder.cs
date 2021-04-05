@@ -26,6 +26,7 @@ namespace TheGuild
             UIObjectFactory.SetPackageItemExtension(View_online.URL, typeof(View_online));
             UIObjectFactory.SetPackageItemExtension(View_WeiJiaRuGongHui.URL, typeof(View_WeiJiaRuGongHui));
             UIObjectFactory.SetPackageItemExtension(View_ComboBox1_popup.URL, typeof(View_ComboBox1_popup));
+            UIObjectFactory.SetPackageItemExtension(View_PuTongQiPao_You.URL, typeof(View_PuTongQiPao_You));
             UIObjectFactory.SetPackageItemExtension(View_tuanduijiesuanjiangli_effect.URL, typeof(View_tuanduijiesuanjiangli_effect));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiYaoQing.URL, typeof(View_GongHuiYaoQing));
             UIObjectFactory.SetPackageItemExtension(View_JiaRuGongHuiZuJian.URL, typeof(View_JiaRuGongHuiZuJian));
@@ -35,17 +36,16 @@ namespace TheGuild
             UIObjectFactory.SetPackageItemExtension(View_ZhuanYangHuiZhangDanChu.URL, typeof(View_ZhuanYangHuiZhangDanChu));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiSouSuo.URL, typeof(View_GongHuiSouSuo));
             UIObjectFactory.SetPackageItemExtension(View_PullListToRefresh.URL, typeof(View_PullListToRefresh));
-            UIObjectFactory.SetPackageItemExtension(View_RiQiQiPao.URL, typeof(View_RiQiQiPao));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiHuoDongZuJian.URL, typeof(View_GongHuiHuoDongZuJian));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiChengYuanHuZhu.URL, typeof(View_GongHuiChengYuanHuZhu));
             UIObjectFactory.SetPackageItemExtension(View_TouXiangZuJian.URL, typeof(View_TouXiangZuJian));
             UIObjectFactory.SetPackageItemExtension(View_HaoYouNengLiangZhiYuanQiPao.URL, typeof(View_HaoYouNengLiangZhiYuanQiPao));
-            UIObjectFactory.SetPackageItemExtension(View_PuTongQiPao.URL, typeof(View_PuTongQiPao));
+            UIObjectFactory.SetPackageItemExtension(View_PuTongQiPao_Zuo.URL, typeof(View_PuTongQiPao_Zuo));
             UIObjectFactory.SetPackageItemExtension(View_HaoYouGuKeZhiYuanQiPao.URL, typeof(View_HaoYouGuKeZhiYuanQiPao));
             UIObjectFactory.SetPackageItemExtension(View_XiTongTiShiDaiJiangLi.URL, typeof(View_XiTongTiShiDaiJiangLi));
             UIObjectFactory.SetPackageItemExtension(View_XiTongXiaoXi.URL, typeof(View_XiTongXiaoXi));
+            UIObjectFactory.SetPackageItemExtension(View_GongHuiXinXiBianJi.URL, typeof(View_GongHuiXinXiBianJi));
             UIObjectFactory.SetPackageItemExtension(View_LiaoTianZuJian.URL, typeof(View_LiaoTianZuJian));
-            UIObjectFactory.SetPackageItemExtension(View_BianJiGongHuiXinXi.URL, typeof(View_BianJiGongHuiXinXi));
             UIObjectFactory.SetPackageItemExtension(View_WoDeGongHuiZuJian.URL, typeof(View_WoDeGongHuiZuJian));
             UIObjectFactory.SetPackageItemExtension(View_GongHuiLieBiao.URL, typeof(View_GongHuiLieBiao));
             UIObjectFactory.SetPackageItemExtension(View_ChuangJianGongHui.URL, typeof(View_ChuangJianGongHui));

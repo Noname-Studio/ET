@@ -17,16 +17,16 @@ namespace ET
 
             public async ETTask WaitAsync()
             {
-                --this.count;
-                if (this.count < 0)
+                --count;
+                if (count < 0)
                 {
                     return;
                 }
 
-                if (this.count == 0)
+                if (count == 0)
                 {
-                    List<ETTaskCompletionSource> t = this.tcss;
-                    this.tcss = null;
+                    List<ETTaskCompletionSource> t = tcss;
+                    tcss = null;
                     foreach (ETTaskCompletionSource ttcs in t)
                     {
                         ttcs.SetResult();
@@ -108,7 +108,7 @@ namespace ET
                 await coroutineBlocker.WaitAsync();
             }
         }
-        
+
         public static async ETTask WaitAll(List<ETTask> tasks)
         {
             CoroutineBlocker coroutineBlocker = new CoroutineBlocker(tasks.Count + 1);

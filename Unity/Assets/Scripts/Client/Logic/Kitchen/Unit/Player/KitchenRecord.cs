@@ -1,17 +1,53 @@
-﻿
+﻿using Client.Event;
+
 namespace Kitchen
 {
-    public class KitchenRecord : NotifyObject
+    public class KitchenRecord: NotifyObject
     {
         public KitchenRecord()
+        { 
+            MessageKit.Inst.Add<ComboLevelUp>(Event_ComboLevelUp);
+            MessageKit.Inst.Add<MaxCombo>(Event_ComboLevelUp);
+        }
+
+        private void Event_ComboLevelUp(MaxCombo e)
         {
+            Event_ComboLevelUp(e.Level);
+        }
+
+        private void Event_ComboLevelUp(ComboLevelUp e)
+        {
+            Event_ComboLevelUp(e.Level);
+        }
+
+        private void Event_ComboLevelUp(int level)
+        {
+            if (level <= 2)
+                return;
+            //这里播放特效
+            CoinNumber += level * 10;
+        }
+
+        public void Dispose()
+        {
+            MessageKit.Inst.Remove<ComboLevelUp>(Event_ComboLevelUp);
+            MessageKit.Inst.Remove<MaxCombo>(Event_ComboLevelUp);
         }
 
         private int mServicesOrderNumber;
+        private int mLikeCount;
+        private int mCoinNumber;
+        private int mServicesCustomerNumber;
+        private int mBurnFoodCount;
+        private int mLostCustomerCount;
+        private int mDropFoodCount;
+        private float mPlayTime;
+
         /// <summary>
         /// 服务食物数量
         /// </summary>
-        public int ServicesOrderNumber {
+        public int ServicesOrderNumber
+        {
             get => mServicesOrderNumber;
             set
             {
@@ -22,14 +58,14 @@ namespace Kitchen
                     mServicesOrderNumber = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mLikeCount;
+
         /// <summary>
         /// 点赞数量
         /// </summary>
-        public int LikeCount {
+        public int LikeCount
+        {
             get => mLikeCount;
             set
             {
@@ -40,14 +76,14 @@ namespace Kitchen
                     mLikeCount = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mCoinNumber;
+
         /// <summary>
         /// 获得金币数量
         /// </summary>
-        public int CoinNumber {
+        public int CoinNumber
+        {
             get => mCoinNumber;
             set
             {
@@ -58,14 +94,14 @@ namespace Kitchen
                     mCoinNumber = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mServicesCustomerNumber;
+
         /// <summary>
         /// 服务顾客数量
         /// </summary>
-        public int ServicesCustomerNumber {
+        public int ServicesCustomerNumber
+        {
             get => mServicesCustomerNumber;
             set
             {
@@ -76,14 +112,14 @@ namespace Kitchen
                     mServicesCustomerNumber = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mBurnFoodCount;
+
         /// <summary>
         /// 食物烧焦数量
         /// </summary>
-        public int BurnFoodCount {
+        public int BurnFoodCount
+        {
             get => mBurnFoodCount;
             set
             {
@@ -94,14 +130,14 @@ namespace Kitchen
                     mBurnFoodCount = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mLostCustomerCount;
+
         /// <summary>
         /// 失去顾客数量
         /// </summary>
-        public int LostCustomerCount {
+        public int LostCustomerCount
+        {
             get => mLostCustomerCount;
             set
             {
@@ -112,14 +148,14 @@ namespace Kitchen
                     mLostCustomerCount = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
-        
-        private int mDropFoodCount;
+
         /// <summary>
         /// 扔掉食物数量
         /// </summary>
-        public int DropFoodCount {
+        public int DropFoodCount
+        {
             get => mDropFoodCount;
             set
             {
@@ -130,14 +166,14 @@ namespace Kitchen
                     mDropFoodCount = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
         }
 
-        private float mPlayTime;
         /// <summary>
         /// 游玩时间
         /// </summary>
-        public float PlayTime {
+        public float PlayTime
+        {
             get => mPlayTime;
             set
             {
@@ -148,7 +184,19 @@ namespace Kitchen
                     mPlayTime = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
-            } 
+            }
+        }
+
+        public void Reset()
+        {
+            mServicesOrderNumber = 0;
+            mLikeCount = 0;
+            mCoinNumber = 0;
+            mServicesCustomerNumber = 0;
+            mBurnFoodCount = 0;
+            mLostCustomerCount = 0;
+            mDropFoodCount = 0;
+            mPlayTime = 0;
         }
     }
 }

@@ -32,16 +32,20 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Spine.Unity.Editor {
-	public static class Menus {
-		[MenuItem("GameObject/Spine/SkeletonRenderer", false, 10)]
-		static public void CreateSkeletonRendererGameObject () {
-			EditorInstantiation.InstantiateEmptySpineGameObject<SkeletonRenderer>("New SkeletonRenderer", true);
-		}
+namespace Spine.Unity.Editor
+{
+    public static class Menus
+    {
+        [MenuItem("GameObject/Spine/SkeletonRenderer", false, 10)]
+        public static void CreateSkeletonRendererGameObject()
+        {
+            EditorInstantiation.InstantiateEmptySpineGameObject<SkeletonRenderer>("New SkeletonRenderer", true);
+        }
 
-		[MenuItem("GameObject/Spine/SkeletonAnimation", false, 10)]
-		static public void CreateSkeletonAnimationGameObject () {
-			EditorInstantiation.InstantiateEmptySpineGameObject<SkeletonAnimation>("New SkeletonAnimation", true);
-		}
-	}
+        [MenuItem("GameObject/Spine/SkeletonAnimation", false, 10)]
+        public static void CreateSkeletonAnimationGameObject()
+        {
+            EditorInstantiation.InstantiateEmptySpineGameObject<SkeletonAnimation>("New SkeletonAnimation", true);
+        }
+    }
 }

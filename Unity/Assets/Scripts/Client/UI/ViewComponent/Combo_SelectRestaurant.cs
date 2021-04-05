@@ -7,25 +7,20 @@ namespace Client.UI.ViewComponent
     public class Combo_SelectRestaurant
     {
         public GComboBox Component { get; }
-        
+
         public string Value
         {
-            get
-            {
-                return Component.value;
-            }
-            set
-            {
-                this.Component.value = value;
-            }
+            get => Component.value;
+            set => Component.value = value;
         }
-        
+
         private static string[] CacheItems;
         private static string[] CacheValues;
+
         public Combo_SelectRestaurant(GComboBox comboBox)
         {
-            this.Component = comboBox;
-            this.Init();
+            Component = comboBox;
+            Init();
         }
 
         static Combo_SelectRestaurant()
@@ -37,14 +32,15 @@ namespace Client.UI.ViewComponent
                 values.Add(node.Key);
                 items.Add(LocalizationProperty.Read(node.Key));
             }
+
             CacheItems = items.ToArray();
             CacheValues = values.ToArray();
         }
 
         private void Init()
         {
-            this.Component.items = CacheItems;
-            this.Component.values = CacheValues;
+            Component.items = CacheItems;
+            Component.values = CacheValues;
         }
     }
 }

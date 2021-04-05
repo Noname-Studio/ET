@@ -17,7 +17,7 @@ namespace ET
         //public ServerType ServerType { get; set; }
 
         [Option("Develop", Required = false, Default = 0, HelpText = "develop mode")]
-        public int Develop { get; set; }
+        public int Develop { get; set; } //0 false,1 true
 
         [Option("Process", Required = false, Default = 1)]
         public int Process { get; set; }

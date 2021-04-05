@@ -5,32 +5,38 @@ using DG.Tweening.Core;
 using FairyGUI;
 using UnityEngine;
 
-public class NormalWindow : BaseWindow {
+public class NormalWindow: BaseWindow
+{
     public WindowAnimType EnterWindowAnim = WindowAnimType.None;
     public WindowAnimType ExitWindowAnim = WindowAnimType.None;
 
     private bool mInAnimation;
+
     /// <summary>
     /// 正在播放动画
     /// </summary>
     public bool InAnimation
     {
-        get { return mInAnimation; }
-        private set { mInAnimation = value; }
+        get => mInAnimation;
+        private set => mInAnimation = value;
     }
+
     public Tween Tween;
 
     public Action<NormalWindow> CloseCallback;
-    public override void OnClose()
+
+    public override void OnClose(bool forceDestory)
     {
-        base.OnClose();
+        base.OnClose(forceDestory);
         Tween?.Kill(false);
-        GRoot.inst.HideWindowImmediately(this, !Base.Widget.Pool);
+        GRoot.inst.HideWindowImmediately(this, !Base.Widget.Pool || forceDestory);
 
         //UIManager.Touchable(true);
         InAnimation = false;
-        if (CloseCallback != null) 
+        if (CloseCallback != null)
+        {
             CloseCallback(this);
+        }
     }
 
     public override void OnCreate()
@@ -44,7 +50,7 @@ public class NormalWindow : BaseWindow {
     {
         InAnimation = true;
         //UIManager.Touchable(false);
-        if(EnterWindowAnim == WindowAnimType.Custom)
+        if (EnterWindowAnim == WindowAnimType.Custom)
         {
             Base.DoShowAnimation();
         }
@@ -65,7 +71,7 @@ public class NormalWindow : BaseWindow {
             animation.sortingOrder = (int) Base.Widget.Depth;
             GRoot.inst.AddChild(animation);
             loader.WrapComponent(Base.GComponent);
-            animation.GetTransition(EnterWindowAnim.ToName()).Play(1,0, onFinish);
+            animation.GetTransition(EnterWindowAnim.ToName()).Play(1, 0, onFinish);
         }
     }
 
@@ -73,7 +79,7 @@ public class NormalWindow : BaseWindow {
     {
         InAnimation = true;
         //UIManager.Touchable(false);
-        if(ExitWindowAnim == WindowAnimType.Custom)
+        if (ExitWindowAnim == WindowAnimType.Custom)
         {
             Base.DoHideAnimation();
         }
@@ -87,18 +93,18 @@ public class NormalWindow : BaseWindow {
             {
                 cacheContainer.AddChild(cacheDisplay);
                 animation.Dispose();
-                OnClose();
+                OnClose(false);
             };
             animation.MakeFullScreen();
             var loader = (XUILoader) animation.Container;
             animation.sortingOrder = (int) Base.Widget.Depth;
             GRoot.inst.AddChild(animation);
             loader.WrapComponent(Base.GComponent);
-            animation.GetTransition(ExitWindowAnim.ToName()).Play(1,0, onFinish);
+            animation.GetTransition(ExitWindowAnim.ToName()).Play(1, 0, onFinish);
         }
     }
 
-    public NormalWindow(UIBase @base) : base(@base)
+    public NormalWindow(UIBase @base): base(@base)
     {
     }
 }

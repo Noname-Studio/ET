@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.StoryProcess
 {
-	public partial class View_options : GLabel
-	{
-		public GButton Send;
+    public partial class View_options: GLabel
+    {
+        public GButton Send;
 
-		public const string URL = "ui://y0mpnw87so97pj";
+        public const string URL = "ui://y0mpnw87so97pj";
 
-		public static View_options CreateInstance()
-		{
-			return (View_options)UIPackage.CreateObject("StoryProcess","options");
-		}
+        public static View_options CreateInstance()
+        {
+            return (View_options) UIPackage.CreateObject("StoryProcess", "options");
+        }
 
-		public View_options()
-		{
-		}
+        public View_options()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			Send = (GButton)this.GetChildAt(2);
-		}
-	}
+            Send = (GButton) GetChildAt(2);
+        }
+    }
 }

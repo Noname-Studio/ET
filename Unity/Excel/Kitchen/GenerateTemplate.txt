@@ -27,7 +27,7 @@ namespace RestaurantPreview.Config
 }
 [%CoreClass]
 {
-	public partial class [@Class]Property : ConfigAssetManager<[@Class]Property>
+	public partial class [@Class]Property : IConfig
 	{
 		[%Enum]
 		{
@@ -54,22 +54,14 @@ namespace RestaurantPreview.Config
 		{
 			return ConfigAssetManager<[@Class]Property>.Read(id, throwException);
 		}
-       		 public static bool IsExist([@KeyType]  id)
-        		{
-            			return (Read(id) == null)?false:true;
-        		}
 [%HasKey]
 {
 		public static [@Class]Property Read([@KeyType] id, bool throwException = true)
 		{
 			return ConfigAssetManager<[@Class]Property>.Read(id, throwException);
 		}
-
-		public static bool IsExist([@KeyType]  id)
-       		{
-           			 return (Read(id) == null)?false:true;
-        		}
 }
+
 		public static Dictionary<[@KeyType],[@Class]Property> ReadDict()
 		{
 			return ConfigAssetManager<[@Class]Property>.Read[@KeyType]Dict();
@@ -79,7 +71,6 @@ namespace RestaurantPreview.Config
 		{
 			return ConfigAssetManager<[@Class]Property>.ReadList();
 		}
-
 	}
 }
 }

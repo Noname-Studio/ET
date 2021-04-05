@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_WuJinQiPao : GComponent
+    public partial class View_WuJinQiPao: GComponent
     {
         public GImage bg;
         public GTextField num;
@@ -16,15 +16,15 @@ namespace GamingUI
 
         public static View_WuJinQiPao CreateInstance()
         {
-            return (View_WuJinQiPao)UIPackage.CreateObject("GamingUI", "无尽气泡");
+            return (View_WuJinQiPao) UIPackage.CreateObject("GamingUI", "无尽气泡");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            bg = (GImage)GetChild("bg");
-            num = (GTextField)GetChild("num");
+            bg = (GImage) GetChild("bg");
+            num = (GTextField) GetChild("num");
             show = GetTransition("show");
             t1 = GetTransition("t1");
             hide = GetTransition("hide");

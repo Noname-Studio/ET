@@ -7,7 +7,7 @@ using UnityEngine;
 public interface IDBService
 {
     int Order { get; }
-    T Query<T>(string userId = "") where T : DBDefine;
-    DBDefine Query(Type type, string userId = "");
+    T Query<T>() where T : DBDefine;
+    DBDefine Query(Type type);
     void Update<T>(T value) where T : DBDefine;
 }

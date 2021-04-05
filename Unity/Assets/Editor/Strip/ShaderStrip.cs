@@ -4,19 +4,18 @@ using UnityEditor.Build;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
- 
+
 // Simple example of stripping of a debug build configuration
-class ShaderDebugBuildProcessor : IPreprocessShaders
+internal class ShaderDebugBuildProcessor: IPreprocessShaders
 {
     public ShaderDebugBuildProcessor()
     {
- 
     }
- 
+
     // Multiple callback may be implemented.
     // The first one executed is the one where callbackOrder is returning the smallest number.
-    public int callbackOrder { get { return 0; } }
- 
+    public int callbackOrder => 0;
+
     public void OnProcessShader(
     Shader shader, ShaderSnippetData snippet, IList<ShaderCompilerData> shaderCompilerData)
     {

@@ -15,10 +15,7 @@ namespace ET
                 MessageHelper.SendToLocationActor(player.ChatId,new G2CS_SendGuildMessage
                 {
                     GuildId = player.GuildId,
-                    Time = TimeHelper.ServerNow(),
-                    SenderId = player.Id,
                     SenderMsg = request.SendMessage,
-                    SenderName = player.Name
                 });
             }
             await ETTask.CompletedTask;

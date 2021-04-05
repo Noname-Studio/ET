@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Map
 {
-	public partial class View_XuanZhongDeCanTing : GLabel
-	{
-		public GLabel Image;
+    public partial class View_XuanZhongDeCanTing: GLabel
+    {
+        public GLabel Image;
 
-		public const string URL = "ui://z2vd6wpaookxg";
+        public const string URL = "ui://z2vd6wpaookxg";
 
-		public static View_XuanZhongDeCanTing CreateInstance()
-		{
-			return (View_XuanZhongDeCanTing)UIPackage.CreateObject("Map","选中的餐厅");
-		}
+        public static View_XuanZhongDeCanTing CreateInstance()
+        {
+            return (View_XuanZhongDeCanTing) UIPackage.CreateObject("Map", "选中的餐厅");
+        }
 
-		public View_XuanZhongDeCanTing()
-		{
-		}
+        public View_XuanZhongDeCanTing()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			Image = (GLabel)this.GetChildAt(1);
-		}
-	}
+            Image = (GLabel) GetChildAt(1);
+        }
+    }
 }

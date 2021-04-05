@@ -12,17 +12,18 @@ using UnityEngine;
 public class NormalCustomer: ACustomer
 {
     //把Component缓存下来.避免每次都要去拿//
-    public PatienceComponent PatienceCom;
+    public PatienceComponent PatienceCom { get; private set; }
+
     private CustomerMoveComponent MoveCom;
     /////////////////////////////////////
-    
-    
+
     private UI_PatienceProgress PatienceProgress;
     private UI_Order mOrder;
-    public NormalCustomer(UnityObject display, KitchenNormalSpot spot,CustomerOrder property) : base(display, spot,property)
+
+    public NormalCustomer(UnityObject display, KitchenNormalSpot spot, CustomerOrder property): base(display, spot, property)
     {
-        Components.Set(MoveCom = new CustomerMoveComponent(4,Display));
-        UnitManager.Inst.Register(this);
+        Components.Set(MoveCom = new CustomerMoveComponent(4, Display));
+        KitchenRoot.Inst.Units.Register(this);
         OnEnter();
     }
 
@@ -52,7 +53,7 @@ public class NormalCustomer: ACustomer
         Order.CollectionChanged += OrderOnCollectionChanged;
         var spot = (KitchenNormalSpot) Spot;
         var screenPos = KitchenRoot.Inst.MainCamera.WorldToScreenPoint(spot.OrderUI.GetUIWorldPosition());
-        screenPos.y =  Screen.height - screenPos.y;
+        screenPos.y = Screen.height - screenPos.y;
         Vector2 pt = GRoot.inst.GlobalToLocal(screenPos);
         PatienceProgress = UIKit.Inst.Create<UI_PatienceProgress>();
         PatienceProgress.View.position = pt + new Vector2(20, -50);
@@ -66,20 +67,22 @@ public class NormalCustomer: ACustomer
     public override void OnExit()
     {
         base.OnExit();
-        mOrder.Visible = false;
-        PatienceProgress.CloseMySelf();
+        State = CustomerState.Exit;
+        if (mOrder != null)
+            mOrder.Visible = false;
+        PatienceProgress?.CloseMySelf();
         MoveCom.To = Spot.Position + new Vector3(8, 0, 0);
-        Display.GetComponent<Animator>().SetInteger(Animator.StringToHash("state"), 5);
+        Animator.SetInteger("state", 5);
         Display.EulerAngles = new Vector3(0, 180, 0);
         Order.CollectionChanged -= OrderOnCollectionChanged;
         MoveCom.ReachedCallback = () =>
         {
             MoveCom.ReachedCallback = null;
-            Destroy();
+            Dispose();
         };
     }
-    
-    protected override void Update()
+
+    public override void Update()
     {
         MoveCom.OnUpdate();
         if (PatienceProgress != null && PatienceCom != null && State != CustomerState.Exit)
@@ -88,17 +91,22 @@ public class NormalCustomer: ACustomer
             PatienceProgress.Value = PatienceCom.Value;
 
             var value = PatienceProgress.Value;
-            if(value > 60)
-                Display.GetComponent<Animator>().SetInteger(Animator.StringToHash("state"), 1);
-            else if(value > 30)
-                Display.GetComponent<Animator>().SetInteger(Animator.StringToHash("state"), 2);
+            if (value > 60)
+            {
+                Animator.SetInteger("state", 1);
+            }
+            else if (value > 30)
+            {
+                Animator.SetInteger("state", 2);
+            }
             else if (value > 0)
-                Display.GetComponent<Animator>().SetInteger(Animator.StringToHash("state"), 3);
+            {
+                Animator.SetInteger("state", 3);
+            }
             else
             {
                 if (State != CustomerState.Exit)
                 {
-                    State = CustomerState.Exit;
                     OnExit();
                 }
             }

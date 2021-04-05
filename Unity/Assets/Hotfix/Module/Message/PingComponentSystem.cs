@@ -14,7 +14,7 @@ namespace ET
         {
             Session session = self.GetParent<Session>();
             long instanceId = self.InstanceId;
-            
+
             while (true)
             {
                 if (self.InstanceId != instanceId)
@@ -34,7 +34,7 @@ namespace ET
 
                     long time2 = TimeHelper.ClientNow();
                     self.Ping = time2 - time1;
-                    
+
                     Game.TimeInfo.ServerMinusClientTime = response.Time + (time2 - time1) / 2 - time2;
 
                     await TimerComponent.Instance.WaitAsync(2000);

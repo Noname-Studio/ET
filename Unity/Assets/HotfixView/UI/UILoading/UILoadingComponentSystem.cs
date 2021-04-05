@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace ET
 {
-    public class UiLoadingComponentAwakeSystem : AwakeSystem<UILoadingComponent>
+    public class UiLoadingComponentAwakeSystem: AwakeSystem<UILoadingComponent>
     {
         public override void Awake(UILoadingComponent self)
         {
@@ -11,13 +11,13 @@ namespace ET
         }
     }
 
-    public class UiLoadingComponentStartSystem : StartSystem<UILoadingComponent>
+    public class UiLoadingComponentStartSystem: StartSystem<UILoadingComponent>
     {
         public override void Start(UILoadingComponent self)
         {
             StartAsync(self).Coroutine();
         }
-		
+
         public async ETVoid StartAsync(UILoadingComponent self)
         {
             TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
@@ -33,5 +33,4 @@ namespace ET
             }
         }
     }
-
 }

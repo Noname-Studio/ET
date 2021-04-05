@@ -1,8 +1,8 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities;
+    using Editor;
+    using Utilities;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -22,7 +22,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     public static class ScriptableObjectCreator
     {
         public static void ShowDialog<T>(string defaultDestinationPath, Action<T> onScritpableObjectCreated = null)
-            where T : ScriptableObject
+                where T : ScriptableObject
         {
             var selector = new ScriptableObjectSelector<T>(defaultDestinationPath, onScritpableObjectCreated);
 
@@ -45,7 +45,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         // This one builds a menu-tree of all types that inherit from T, and when the selection is confirmed, it then prompts the user
         // with a dialog to save the newly created scriptable object.
 
-        private class ScriptableObjectSelector<T> : OdinSelector<Type> where T : ScriptableObject
+        private class ScriptableObjectSelector<T>: OdinSelector<Type> where T : ScriptableObject
         {
             private Action<T> onScritpableObjectCreated;
             private string defaultDestinationPath;
@@ -54,25 +54,25 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
             {
                 this.onScritpableObjectCreated = onScritpableObjectCreated;
                 this.defaultDestinationPath = defaultDestinationPath;
-                this.SelectionConfirmed += this.ShowSaveFileDialog;
+                SelectionConfirmed += ShowSaveFileDialog;
             }
 
             protected override void BuildSelectionTree(OdinMenuTree tree)
             {
                 var scriptableObjectTypes = AssemblyUtilities.GetTypes(AssemblyTypeFlags.CustomTypes)
-                    .Where(x => x.IsClass && !x.IsAbstract && x.InheritsFrom(typeof(T)));
+                        .Where(x => x.IsClass && !x.IsAbstract && x.InheritsFrom(typeof (T)));
 
                 tree.Selection.SupportsMultiSelect = false;
                 tree.Config.DrawSearchToolbar = true;
                 tree.AddRange(scriptableObjectTypes, x => x.GetNiceName())
-                    .AddThumbnailIcons();
+                        .AddThumbnailIcons();
             }
 
             private void ShowSaveFileDialog(IEnumerable<Type> selection)
             {
                 var obj = ScriptableObject.CreateInstance(selection.FirstOrDefault()) as T;
 
-                string dest = this.defaultDestinationPath.TrimEnd('/');
+                string dest = defaultDestinationPath.TrimEnd('/');
 
                 if (!Directory.Exists(dest))
                 {
@@ -80,16 +80,16 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
                     AssetDatabase.Refresh();
                 }
 
-                dest = EditorUtility.SaveFilePanel("Save object as", dest, "New " + typeof(T).GetNiceName(), "asset");
+                dest = EditorUtility.SaveFilePanel("Save object as", dest, "New " + typeof (T).GetNiceName(), "asset");
 
                 if (!string.IsNullOrEmpty(dest) && PathUtilities.TryMakeRelative(Path.GetDirectoryName(Application.dataPath), dest, out dest))
                 {
                     AssetDatabase.CreateAsset(obj, dest);
                     AssetDatabase.Refresh();
 
-                    if (this.onScritpableObjectCreated != null)
+                    if (onScritpableObjectCreated != null)
                     {
-                        this.onScritpableObjectCreated(obj);
+                        onScritpableObjectCreated(obj);
                     }
                 }
                 else

@@ -7,41 +7,41 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneRequest
 {
-    public async UniTask<bool> Load(SceneKey scene,ISceneLoading preScene,IProgress<float> progress = null,ISceneLoadData data = null)
+    public async UniTask<bool> Load(SceneKey scene, ISceneLoading preScene, IProgress<float> progress = null, ISceneLoadData data = null)
     {
         try
         {
             var activeScene = SceneManager.GetActiveScene();
-            var newScene = (ISceneLoading) Activator.CreateInstance(scene.LoadType,data);
-            
+            var newScene = (ISceneLoading) Activator.CreateInstance(scene.LoadType, data);
+
             //注入参数
             newScene.InjectParamters(data);
-            
+
             //加载这个场景需要的资源
             var needLoadRes = PreparedResources(newScene);
 
             var loadedAssetBundle = AssetsKit.Inst.GetLoadedAssetBundle();
-            
+
             //如果这个场景需要加载的资源,上一个场景加载过了.我们这里就不卸载了
             foreach (var node in needLoadRes)
             {
                 loadedAssetBundle.Remove(node);
             }
-            
+
             //卸载上一个场景
             await Release(preScene);
-            
+
             //释放上一个场景加载的资源
             ReleaseRes(new List<string>(loadedAssetBundle.Keys));
 
             await LoadRes(needLoadRes);
-            
+
             //清理完了所有内容之后我们触发一次GC.
             GC.Collect();
-                
+
             //加载场景
             await LoadScene(scene);
-            
+
             await SceneManager.UnloadSceneAsync(activeScene);
             UIKit.Inst.UnLoadAllUI();
 
@@ -55,16 +55,19 @@ public class LoadSceneRequest
 #endif
             Log.Error("加载场景内容结束");
             if (progress != null)
+            {
                 progress.Report(1);
+            }
+
             return true;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Log.Error($"切换场景发生严重错误\n{e}");
             return false;
         }
     }
-    
+
     /// <summary>
     ///     加载场景后处理
     /// </summary>
@@ -74,7 +77,9 @@ public class LoadSceneRequest
     private static async UniTask LoadedHandler(ISceneLoading core)
     {
         if (core != null)
+        {
             await core.Run();
+        }
     }
 
     /// <summary>
@@ -96,7 +101,9 @@ public class LoadSceneRequest
     private static async UniTask Release(ISceneLoading preScene)
     {
         if (preScene != null)
+        {
             await preScene.Release();
+        }
     }
 
     private static async UniTask LoadRes(List<string> abPaths)
@@ -106,6 +113,7 @@ public class LoadSceneRequest
         {
             uniTasks.Add(AssetsKit.Inst.LoadAssetBundle(node));
         }
+
         UniTask.WhenAll(uniTasks);
     }
 

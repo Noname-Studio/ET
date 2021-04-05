@@ -1,8 +1,8 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities;
+    using Editor;
+    using Utilities;
     using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
@@ -13,8 +13,8 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
     // by the name of the item.
     //
 
-    public class ItemDrawer<TItem> : OdinValueDrawer<TItem>
-        where TItem : Item
+    public class ItemDrawer<TItem>: OdinValueDrawer<TItem>
+            where TItem : Item
     {
         protected override void DrawPropertyLayout(GUIContent label)
         {
@@ -29,16 +29,16 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
                 rect = EditorGUI.IndentedRect(rect);
             }
 
-            Item item = this.ValueEntry.SmartValue;
+            Item item = ValueEntry.SmartValue;
             Texture texture = null;
 
             if (item)
             {
-                texture = GUIHelper.GetAssetThumbnail(item.Icon, typeof(TItem), true);
-                GUI.Label(rect.AddXMin(50).AlignMiddle(16), EditorGUI.showMixedValue ? "-" : item.Name);
+                texture = GUIHelper.GetAssetThumbnail(item.Icon, typeof (TItem), true);
+                GUI.Label(rect.AddXMin(50).AlignMiddle(16), EditorGUI.showMixedValue? "-" : item.Name);
             }
 
-            this.ValueEntry.WeakSmartValue = SirenixEditorFields.UnityPreviewObjectField(rect.AlignLeft(45), item, texture, this.ValueEntry.BaseValueType);
+            ValueEntry.WeakSmartValue = SirenixEditorFields.UnityPreviewObjectField(rect.AlignLeft(45), item, texture, ValueEntry.BaseValueType);
         }
     }
 }

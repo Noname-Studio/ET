@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_coinsBar : GProgressBar
+    public partial class View_coinsBar: GProgressBar
     {
         public Controller c1;
         public GLoader iconLoader;
@@ -14,7 +14,7 @@ namespace GamingUI
 
         public static View_coinsBar CreateInstance()
         {
-            return (View_coinsBar)UIPackage.CreateObject("GamingUI", "coinsBar");
+            return (View_coinsBar) UIPackage.CreateObject("GamingUI", "coinsBar");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -22,8 +22,8 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            iconLoader = (GLoader)GetChild("iconLoader");
-            complete_logo = (View_Success_effect)GetChild("complete_logo");
+            iconLoader = (GLoader) GetChild("iconLoader");
+            complete_logo = (View_Success_effect) GetChild("complete_logo");
         }
     }
 }

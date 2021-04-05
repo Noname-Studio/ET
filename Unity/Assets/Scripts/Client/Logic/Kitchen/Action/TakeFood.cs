@@ -1,20 +1,25 @@
-namespace Kitchen
+using Kitchen;
+
+namespace Kitchen.Action
 {
-    public class TakeFood : IGameAction
+    public class TakeFood: IGameAction
     {
         private PlayerController mController;
         private NormalCookware mNormalCookware;
         private IngredientDisplay mIngredient;
-        public TakeFood(PlayerController controller,NormalCookware normalCookware)
+
+        public TakeFood(PlayerController controller, NormalCookware normalCookware)
         {
             mController = controller;
             mNormalCookware = normalCookware;
         }
-        public TakeFood(PlayerController controller,IngredientDisplay ingredient)
+
+        public TakeFood(PlayerController controller, IngredientDisplay ingredient)
         {
             mController = controller;
             mIngredient = ingredient;
         }
+
         public void Execute()
         {
             if (mNormalCookware != null)
@@ -26,7 +31,7 @@ namespace Kitchen
                     mNormalCookware.TakeFood();
                 }
             }
-            else if(mIngredient != null)
+            else if (mIngredient != null)
             {
                 //直接拿食材,因为食材是不会消耗的所以随便拿.
                 mController.HandProvider.Hold(mIngredient.FoodId);

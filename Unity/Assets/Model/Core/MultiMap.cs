@@ -9,31 +9,35 @@ namespace ET
         public void Add(T t, K k)
         {
             List<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 list = new List<K>();
-                this.Add(t, list);
+                Add(t, list);
             }
+
             list.Add(k);
         }
 
         public bool Remove(T t, K k)
         {
             List<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return false;
             }
+
             if (!list.Remove(k))
             {
                 return false;
             }
+
             if (list.Count == 0)
             {
-                this.Remove(t);
+                Remove(t);
             }
+
             return true;
         }
 
@@ -45,11 +49,12 @@ namespace ET
         public K[] GetAll(T t)
         {
             List<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return new K[0];
             }
+
             return list.ToArray();
         }
 
@@ -62,7 +67,7 @@ namespace ET
         {
             get
             {
-                this.TryGetValue(t, out List<K> list);
+                TryGetValue(t, out List<K> list);
                 return list ?? Empty;
             }
         }
@@ -70,22 +75,24 @@ namespace ET
         public K GetOne(T t)
         {
             List<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list != null && list.Count > 0)
             {
                 return list[0];
             }
+
             return default;
         }
 
         public bool Contains(T t, K k)
         {
             List<K> list;
-            this.TryGetValue(t, out list);
+            TryGetValue(t, out list);
             if (list == null)
             {
                 return false;
             }
+
             return list.Contains(k);
         }
     }

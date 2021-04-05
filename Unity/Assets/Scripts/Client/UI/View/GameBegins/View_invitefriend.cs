@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_invitefriend : GComponent
+    public partial class View_invitefriend: GComponent
     {
         public Controller c1;
         public GButton add;
@@ -14,7 +14,7 @@ namespace GameBegins
 
         public static View_invitefriend CreateInstance()
         {
-            return (View_invitefriend)UIPackage.CreateObject("GameBegins", "invitefriend");
+            return (View_invitefriend) UIPackage.CreateObject("GameBegins", "invitefriend");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -22,8 +22,8 @@ namespace GameBegins
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            add = (GButton)GetChild("add");
-            timer = (GTextField)GetChild("timer");
+            add = (GButton) GetChild("add");
+            timer = (GTextField) GetChild("timer");
         }
     }
 }

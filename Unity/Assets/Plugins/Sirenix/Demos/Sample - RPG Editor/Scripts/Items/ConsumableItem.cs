@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    public class ConsumableItem : Item
+    public class ConsumableItem: Item
     {
         [SuffixLabel("seconds ", true)]
         [BoxGroup(STATS_BOX_GROUP)]
@@ -12,7 +12,8 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
 
         [HideLabel]
         [HorizontalGroup(STATS_BOX_GROUP + "/Dur")]
-        [SuffixLabel("seconds ", true), EnableIf("ConsumeOverTime")]
+        [SuffixLabel("seconds ", true)]
+        [EnableIf("ConsumeOverTime")]
         [LabelWidth(20)]
         public float Duration;
 
@@ -23,11 +24,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         {
             get
             {
-                return new ItemTypes[]
-                {
-                    ItemTypes.Consumable,
-                    ItemTypes.Flask
-                };
+                return new ItemTypes[] { ItemTypes.Consumable, ItemTypes.Flask };
             }
         }
     }

@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.SlotMachine
 {
-	public partial class View_rewardpopup : GComponent
-	{
-		public GButton bg;
+    public partial class View_rewardpopup: GComponent
+    {
+        public GButton bg;
 
-		public const string URL = "ui://yta40mdqini3m4";
+        public const string URL = "ui://yta40mdqini3m4";
 
-		public static View_rewardpopup CreateInstance()
-		{
-			return (View_rewardpopup)UIPackage.CreateObject("SlotMachine","rewardpopup");
-		}
+        public static View_rewardpopup CreateInstance()
+        {
+            return (View_rewardpopup) UIPackage.CreateObject("SlotMachine", "rewardpopup");
+        }
 
-		public View_rewardpopup()
-		{
-		}
+        public View_rewardpopup()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			bg = (GButton)this.GetChildAt(0);
-		}
-	}
+            bg = (GButton) GetChildAt(0);
+        }
+    }
 }

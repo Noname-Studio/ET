@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_TouXiangZuJian : GComponent
+    public partial class View_TouXiangZuJian: GComponent
     {
         public Controller c1;
         public GTextField Name;
@@ -15,7 +15,7 @@ namespace Settings
 
         public static View_TouXiangZuJian CreateInstance()
         {
-            return (View_TouXiangZuJian)UIPackage.CreateObject("Settings", "头像组件");
+            return (View_TouXiangZuJian) UIPackage.CreateObject("Settings", "头像组件");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,9 +23,9 @@ namespace Settings
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            Name = (GTextField)GetChild("Name");
-            EditName = (GButton)GetChild("EditName");
-            EditHead = (GButton)GetChild("EditHead");
+            Name = (GTextField) GetChild("Name");
+            EditName = (GButton) GetChild("EditName");
+            EditHead = (GButton) GetChild("EditHead");
         }
     }
 }

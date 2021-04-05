@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_cupcake_shake : GComponent
+    public partial class View_cupcake_shake: GComponent
     {
         public GTextField num;
         public Transition t0;
@@ -13,14 +13,14 @@ namespace GamingUI
 
         public static View_cupcake_shake CreateInstance()
         {
-            return (View_cupcake_shake)UIPackage.CreateObject("GamingUI", "cupcake_shake");
+            return (View_cupcake_shake) UIPackage.CreateObject("GamingUI", "cupcake_shake");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            num = (GTextField)GetChild("num");
+            num = (GTextField) GetChild("num");
             t0 = GetTransition("t0");
         }
     }

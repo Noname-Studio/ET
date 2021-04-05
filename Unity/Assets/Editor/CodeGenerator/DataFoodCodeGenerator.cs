@@ -5,16 +5,16 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-public class DataFoodCodeGenerator : Editor
+public class DataFoodCodeGenerator: Editor
 {
     private static string Template = @"
 using System;
 using System.Collections.Generic;
-using MessagePack;
+//using MessagePack;
 using RemoteSaves;
 
-[DBContainerKey(""/id"")]
-[MessagePackObject]
+//[DBContainerKey(""/id"")]
+//[MessagePackObject]
 public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
 {              
 [@Property]
@@ -27,7 +27,7 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
 [@SetProperty]
     }
 
-    public void Set(string key, Data_Food_Info info)
+    public override void Set(string key, Data_Food_Info info)
     {
         Action<Data_Food_[@Suffix],Data_Food_Info> setter;
         if (SetMappings.TryGetValue(key, out setter))
@@ -36,7 +36,7 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
         }
     }
 
-    public Data_Food_Info Get(string key)
+    public override Data_Food_Info Get(string key)
     {
         Func<Data_Food_[@Suffix],Data_Food_Info> getter;
         if (GetMappings.TryGetValue(key, out getter))
@@ -76,13 +76,13 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
             return Main.ToString();
         }
     }
-    
+
     [MenuItem("Tools/Restaurant/Kitchen/GenerateFoodCode")]
     public static void Do()
     {
-        DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/" + "Res/DB/Kitchen/Foods/");
-        Dictionary<RestaurantKey,Writer> writer = new Dictionary<RestaurantKey, Writer>();
-        Dictionary<RestaurantKey,int> indexCounter = new Dictionary<RestaurantKey, int>();
+        DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/" + "Res/Config/Kitchen/Foods/");
+        Dictionary<RestaurantKey, Writer> writer = new Dictionary<RestaurantKey, Writer>();
+        Dictionary<RestaurantKey, int> indexCounter = new Dictionary<RestaurantKey, int>();
 
         foreach (RestaurantKey node in RestaurantKey.All)
         {
@@ -90,7 +90,7 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
             var propertyWriter = new StringBuilder();
             var getPropertyWriter = new StringBuilder();
             var setPropertyWriter = new StringBuilder();
-            writer.Add(node,new Writer(sb,propertyWriter,getPropertyWriter,setPropertyWriter));
+            writer.Add(node, new Writer(sb, propertyWriter, getPropertyWriter, setPropertyWriter));
             indexCounter.Add(node, 0);
             sb.Replace("[@Suffix]", node.Key);
         }
@@ -102,10 +102,19 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
             var variable = Path.GetFileNameWithoutExtension(file.FullName);
             var property = AssetDatabase.LoadAssetAtPath<FoodProperty>(PathUtils.FullPathToUnityPath(file.FullName));
             if (property == null)
+            {
                 continue;
-            var rest = property.RestId;
-            writer[rest].Variable.AppendLine($"    [Key({indexCounter[rest] + 5})] public Data_Food_Info {variable}" + " { get; set; }");
-            writer[rest].GetDelegate.AppendLine($"         GetMappings.Add(\"{variable}\", (t) => t.{variable});");
+            }
+
+            var rest = property.RestaurantId;
+            if (rest == RestaurantKey.Unknown)
+            {
+                continue;
+            }
+
+            writer[rest].Variable.AppendLine($"    /*[Key({indexCounter[rest] + 5})]*/ public Data_Food_Info {variable}" + " { get; set; }");
+            writer[rest].GetDelegate
+                    .AppendLine($"         GetMappings.Add(\"{variable}\", (t) => t.{variable} ?? (t.{variable} = new Data_Food_Info()));");
             writer[rest].SetDelegate.AppendLine($"         SetMappings.Add(\"{variable}\", (t1, t2) => t1.{variable} = t2);");
             indexCounter[rest]++;
         }

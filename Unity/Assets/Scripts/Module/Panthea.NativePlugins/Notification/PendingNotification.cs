@@ -33,7 +33,7 @@ namespace NotificationSamples
         /// <param name="notification">The notification to create from.</param>
         public PendingNotification(IGameNotification notification)
         {
-            Notification = notification ?? throw new ArgumentNullException(nameof(notification));
+            Notification = notification ?? throw new ArgumentNullException(nameof (notification));
         }
     }
 }

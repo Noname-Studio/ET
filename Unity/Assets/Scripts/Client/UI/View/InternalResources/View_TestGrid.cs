@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_TestGrid : GComponent
+    public partial class View_TestGrid: GComponent
     {
         public GButton Create1;
         public GButton Create2;
@@ -17,19 +17,19 @@ namespace InternalResources
 
         public static View_TestGrid CreateInstance()
         {
-            return (View_TestGrid)UIPackage.CreateObject("InternalResources", "TestGrid");
+            return (View_TestGrid) UIPackage.CreateObject("InternalResources", "TestGrid");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Create1 = (GButton)GetChild("Create1");
-            Create2 = (GButton)GetChild("Create2");
-            Create3 = (GButton)GetChild("Create3");
-            Create4 = (GButton)GetChild("Create4");
-            Create5 = (GButton)GetChild("Create5");
-            Create6 = (GButton)GetChild("Create6");
+            Create1 = (GButton) GetChild("Create1");
+            Create2 = (GButton) GetChild("Create2");
+            Create3 = (GButton) GetChild("Create3");
+            Create4 = (GButton) GetChild("Create4");
+            Create5 = (GButton) GetChild("Create5");
+            Create6 = (GButton) GetChild("Create6");
         }
     }
 }

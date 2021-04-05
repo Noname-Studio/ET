@@ -36,28 +36,20 @@ namespace ET
 
     public class ABInfo: Entity
     {
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
-        public int RefCount
-        {
-            get;
-            set;
-        }
+        public int RefCount { get; set; }
 
         public AssetBundle AssetBundle;
 
         public void Destroy(bool unload = true)
         {
-            if (this.AssetBundle != null)
+            if (AssetBundle != null)
             {
-                this.AssetBundle.Unload(unload);
+                AssetBundle.Unload(unload);
             }
 
-            this.Dispose();
+            Dispose();
         }
     }
 
@@ -120,43 +112,35 @@ namespace ET
 
     public class ResourcesComponent: Entity
     {
-        public static ResourcesComponent Instance
-        {
-            get;
-            set;
-        }
+        public static ResourcesComponent Instance { get; set; }
 
-        public AssetBundleManifest AssetBundleManifestObject
-        {
-            get;
-            set;
-        }
-        
+        public AssetBundleManifest AssetBundleManifestObject { get; set; }
+
         public Dictionary<int, string> IntToStringDict = new Dictionary<int, string>();
 
         public Dictionary<string, string> StringToABDict = new Dictionary<string, string>();
 
         public Dictionary<string, string> BundleNameToLowerDict = new Dictionary<string, string>() { { "StreamingAssets", "StreamingAssets" } };
 
-
-        private readonly Dictionary<string, Dictionary<string, UnityEngine.Object>> resourceCache = new Dictionary<string, Dictionary<string, UnityEngine.Object>>();
+        private readonly Dictionary<string, Dictionary<string, UnityEngine.Object>> resourceCache =
+                new Dictionary<string, Dictionary<string, UnityEngine.Object>>();
 
         private readonly Dictionary<string, ABInfo> bundles = new Dictionary<string, ABInfo>();
 
         public void Awake()
         {
             Instance = this;
-            
+
             if (Define.IsAsync)
             {
-			    LoadOneBundle("StreamingAssets");
-			    AssetBundleManifestObject = (AssetBundleManifest)GetAsset("StreamingAssets", "AssetBundleManifest");
+                LoadOneBundle("StreamingAssets");
+                AssetBundleManifestObject = (AssetBundleManifest) GetAsset("StreamingAssets", "AssetBundleManifest");
             }
         }
 
         public override void Dispose()
         {
-            if (this.IsDisposed)
+            if (IsDisposed)
             {
                 return;
             }
@@ -165,16 +149,16 @@ namespace ET
 
             Instance = null;
 
-            foreach (KeyValuePair<string, ABInfo> abInfo in this.bundles)
+            foreach (KeyValuePair<string, ABInfo> abInfo in bundles)
             {
                 abInfo.Value.Destroy();
             }
 
-            this.bundles.Clear();
-            this.resourceCache.Clear();
-            this.IntToStringDict.Clear();
-            this.StringToABDict.Clear();
-            this.BundleNameToLowerDict.Clear();
+            bundles.Clear();
+            resourceCache.Clear();
+            IntToStringDict.Clear();
+            StringToABDict.Clear();
+            BundleNameToLowerDict.Clear();
         }
 
         private string[] GetDependencies(string assetBundleName, bool isScene = false)
@@ -196,7 +180,7 @@ namespace ET
             }
             else
             {
-                dependencies = this.AssetBundleManifestObject.GetAllDependencies(assetBundleName);
+                dependencies = AssetBundleManifestObject.GetAllDependencies(assetBundleName);
             }
 
             DependenciesCache.Add(assetBundleName, dependencies);
@@ -244,13 +228,13 @@ namespace ET
 
         public bool Contains(string bundleName)
         {
-            return this.bundles.ContainsKey(bundleName);
+            return bundles.ContainsKey(bundleName);
         }
 
         public Dictionary<string, UnityEngine.Object> GetBundleAll(string bundleName)
         {
             Dictionary<string, UnityEngine.Object> dict;
-            if (!this.resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
+            if (!resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
             {
                 throw new Exception($"not found asset: {bundleName}");
             }
@@ -261,7 +245,7 @@ namespace ET
         public UnityEngine.Object GetAsset(string bundleName, string prefab)
         {
             Dictionary<string, UnityEngine.Object> dict;
-            if (!this.resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
+            if (!resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
             {
                 throw new Exception($"not found asset: {bundleName} {prefab}");
             }
@@ -286,7 +270,8 @@ namespace ET
                     {
                         await TimerComponent.Instance.WaitFrameAsync();
                     }
-                    this.UnloadBundle(bundle, unload);
+
+                    UnloadBundle(bundle, unload);
                 }
             }
         }
@@ -301,7 +286,7 @@ namespace ET
             //Log.Debug($"-----------dep unload start {assetBundleName} dep: {dependencies.ToList().ListToString()}");
             foreach (string dependency in dependencies)
             {
-                this.UnloadOneBundle(dependency, unload);
+                UnloadOneBundle(dependency, unload);
             }
 
             //Log.Debug($"-----------dep unload finish {assetBundleName} dep: {dependencies.ToList().ListToString()}");
@@ -312,7 +297,7 @@ namespace ET
             assetBundleName = assetBundleName.BundleNameToLower();
 
             ABInfo abInfo;
-            if (!this.bundles.TryGetValue(assetBundleName, out abInfo))
+            if (!bundles.TryGetValue(assetBundleName, out abInfo))
             {
                 return;
             }
@@ -325,10 +310,10 @@ namespace ET
             {
                 return;
             }
-            
+
             //Log.Debug($"---------------truly unload one bundle {assetBundleName} refcount: {abInfo.RefCount}");
-            this.bundles.Remove(assetBundleName);
-            this.resourceCache.Remove(assetBundleName);
+            bundles.Remove(assetBundleName);
+            resourceCache.Remove(assetBundleName);
             abInfo.Destroy(unload);
             // Log.Debug($"cache count: {this.cacheDictionary.Count}");
         }
@@ -351,7 +336,7 @@ namespace ET
                     continue;
                 }
 
-                this.LoadOneBundle(dependency);
+                LoadOneBundle(dependency);
             }
 
             //Log.Debug($"-----------dep load finish {assetBundleName} dep: {dependencies.ToList().ListToString()}");
@@ -360,10 +345,10 @@ namespace ET
         public void AddResource(string bundleName, string assetName, UnityEngine.Object resource)
         {
             Dictionary<string, UnityEngine.Object> dict;
-            if (!this.resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
+            if (!resourceCache.TryGetValue(bundleName.BundleNameToLower(), out dict))
             {
                 dict = new Dictionary<string, UnityEngine.Object>();
-                this.resourceCache[bundleName] = dict;
+                resourceCache[bundleName] = dict;
             }
 
             dict[assetName] = resource;
@@ -373,13 +358,13 @@ namespace ET
         {
             assetBundleName = assetBundleName.BundleNameToLower();
             ABInfo abInfo;
-            if (this.bundles.TryGetValue(assetBundleName, out abInfo))
+            if (bundles.TryGetValue(assetBundleName, out abInfo))
             {
                 ++abInfo.RefCount;
                 //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
                 return;
             }
-            
+
             if (!Define.IsAsync)
             {
                 string[] realPath = null;
@@ -392,12 +377,10 @@ namespace ET
                     AddResource(assetBundleName, assetName, resource);
                 }
 
-            
-              
                 if (realPath.Length > 0)
                 {
                     abInfo = EntityFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, null);
-                    this.bundles[assetBundleName] = abInfo;
+                    bundles[assetBundleName] = abInfo;
                     //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
                 }
                 else
@@ -438,8 +421,8 @@ namespace ET
             }
 
             abInfo = EntityFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, assetBundle);
-            this.bundles[assetBundleName] = abInfo;
-            
+            bundles[assetBundleName] = abInfo;
+
             //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
         }
 
@@ -452,7 +435,7 @@ namespace ET
         public async ETTask LoadBundleAsync(string assetBundleName, bool isScene = false)
         {
             assetBundleName = assetBundleName.BundleNameToLower();
-            
+
             string[] dependencies = GetSortedDependencies(assetBundleName);
             //Log.Debug($"-----------dep load async start {assetBundleName} dep: {dependencies.ToList().ListToString()}");
             foreach (string dependency in dependencies)
@@ -464,16 +447,16 @@ namespace ET
 
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.Resources, dependency.GetHashCode()))
                 {
-                    await this.LoadOneBundleAsync(dependency, isScene);
+                    await LoadOneBundleAsync(dependency, isScene);
                 }
             }
         }
-        
+
         private async ETTask LoadOneBundleAsync(string assetBundleName, bool isScene)
         {
             assetBundleName = assetBundleName.BundleNameToLower();
             ABInfo abInfo;
-            if (this.bundles.TryGetValue(assetBundleName, out abInfo))
+            if (bundles.TryGetValue(assetBundleName, out abInfo))
             {
                 ++abInfo.RefCount;
                 //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
@@ -482,7 +465,7 @@ namespace ET
 
             string p = "";
             AssetBundle assetBundle = null;
-            
+
             if (!Define.IsAsync)
             {
 #if UNITY_EDITOR
@@ -503,9 +486,9 @@ namespace ET
                             Log.Warning($"Scene bundle not found: {assetBundleName}");
                             return;
                         }
-                        
+
                         abInfo = EntityFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, assetBundle);
-                        this.bundles[assetBundleName] = abInfo;
+                        bundles[assetBundleName] = abInfo;
                     }
                 }
                 else
@@ -521,7 +504,7 @@ namespace ET
                     if (realPath.Length > 0)
                     {
                         abInfo = EntityFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, null);
-                        this.bundles[assetBundleName] = abInfo;
+                        bundles[assetBundleName] = abInfo;
                         //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
                     }
                     else
@@ -529,13 +512,13 @@ namespace ET
                         Log.Error("Bundle not exist! BundleName: " + assetBundleName);
                     }
                 }
+
                 // 编辑器模式也不能同步加载
                 await TimerComponent.Instance.WaitAsync(20);
 #endif
                 return;
             }
 
-            
             p = Path.Combine(PathHelper.AppHotfixResPath, assetBundleName);
             if (!File.Exists(p))
             {
@@ -576,15 +559,15 @@ namespace ET
             }
 
             abInfo = EntityFactory.CreateWithParent<ABInfo, string, AssetBundle>(this, assetBundleName, assetBundle);
-            this.bundles[assetBundleName] = abInfo;
-            
+            bundles[assetBundleName] = abInfo;
+
             //Log.Debug($"---------------load one bundle {assetBundleName} refcount: {abInfo.RefCount}");
         }
 
         public string DebugString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ABInfo abInfo in this.bundles.Values)
+            foreach (ABInfo abInfo in bundles.Values)
             {
                 sb.Append($"{abInfo.Name}:{abInfo.RefCount}\n");
             }

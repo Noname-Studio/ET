@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Panthea.Editor.Asset
 {
-    public class GenerateGroupRuntimeProfile : AResPipeline
+    public class GenerateGroupRuntimeProfile: AResPipeline
     {
         private string template = @"///这个脚本是通过GenerateGroupRuntimeProfile自动生成的.请不要手动修改该脚本的任何内容///
 using System;
@@ -44,34 +44,36 @@ public class AssetsRedirect
             FieldLookup[key].SetValue(null, (isStreamingAssets ? AssetsConfig.AssetBundleStreamingAssets : AssetsConfig.AssetBundlePersistentDataPath));
     }
 }";
-    
-    
+
         private AddressableAssetSettings mAddressableBuilder = null;
 
         public GenerateGroupRuntimeProfile(AddressableAssetSettings settings)
         {
-            this.mAddressableBuilder = settings;
+            mAddressableBuilder = settings;
         }
-    
+
         private static readonly string CodeFilePath = Application.dataPath + "/" + "Scripts/Module/XResComponent/Runtime/AssetsRedirect.cs";
+
         public override Task Do()
         {
-            var groups = this.mAddressableBuilder.groups;
+            var groups = mAddressableBuilder.groups;
             StringBuilder sb = new StringBuilder();
             foreach (var node in groups)
             {
                 var variableName = node.Name.Replace("-", "_").Replace(" ", "_");
-            
+
                 sb.AppendLine("\tpublic static string " + variableName + " = Application.streamingAssetsPath + \"/\" + AssetsConfig.Platform;");
                 var bundled = node.GetSchema<BundledAssetGroupSchema>();
                 if (bundled != null)
                 {
-                    bundled.BuildPath.GetType().GetField("m_Id",BindingFlags.Instance | BindingFlags.NonPublic).SetValue(bundled.BuildPath, "[" + $"AssetsRedirect.{variableName}" + "]");
-                    bundled.LoadPath.GetType().GetField("m_Id",BindingFlags.Instance | BindingFlags.NonPublic).SetValue(bundled.LoadPath, "{" + $"AssetsRedirect.{variableName}" + "}");
+                    bundled.BuildPath.GetType().GetField("m_Id", BindingFlags.Instance | BindingFlags.NonPublic)
+                            .SetValue(bundled.BuildPath, "[" + $"AssetsRedirect.{variableName}" + "]");
+                    bundled.LoadPath.GetType().GetField("m_Id", BindingFlags.Instance | BindingFlags.NonPublic)
+                            .SetValue(bundled.LoadPath, "{" + $"AssetsRedirect.{variableName}" + "}");
                 }
             }
 
-            var code = this.template.Replace("{0}",sb.ToString());
+            var code = template.Replace("{0}", sb.ToString());
             File.WriteAllText(CodeFilePath, code);
             return Task.CompletedTask;
         }

@@ -3,72 +3,72 @@ using System.Collections.Generic;
 
 namespace ET
 {
-	
-	public class NumericWatcherComponentAwakeSystem : AwakeSystem<NumericWatcherComponent>
-	{
-		public override void Awake(NumericWatcherComponent self)
-		{
-			NumericWatcherComponent.Instance = self;
-			self.Awake();
-		}
-	}
+    public class NumericWatcherComponentAwakeSystem: AwakeSystem<NumericWatcherComponent>
+    {
+        public override void Awake(NumericWatcherComponent self)
+        {
+            NumericWatcherComponent.Instance = self;
+            self.Awake();
+        }
+    }
 
-	
-	public class NumericWatcherComponentLoadSystem : LoadSystem<NumericWatcherComponent>
-	{
-		public override void Load(NumericWatcherComponent self)
-		{
-			self.Load();
-		}
-	}
+    public class NumericWatcherComponentLoadSystem: LoadSystem<NumericWatcherComponent>
+    {
+        public override void Load(NumericWatcherComponent self)
+        {
+            self.Load();
+        }
+    }
 
-	/// <summary>
-	/// 监视数值变化组件,分发监听
-	/// </summary>
-	public class NumericWatcherComponent : Entity
-	{
-		public static NumericWatcherComponent Instance { get; set; }
-		
-		private Dictionary<NumericType, List<INumericWatcher>> allWatchers;
+    /// <summary>
+    /// 监视数值变化组件,分发监听
+    /// </summary>
+    public class NumericWatcherComponent: Entity
+    {
+        public static NumericWatcherComponent Instance { get; set; }
 
-		public void Awake()
-		{
-			this.Load();
-		}
+        private Dictionary<NumericType, List<INumericWatcher>> allWatchers;
 
-		public void Load()
-		{
-			this.allWatchers = new Dictionary<NumericType, List<INumericWatcher>>();
+        public void Awake()
+        {
+            Load();
+        }
 
-			HashSet<Type> types = Game.EventSystem.GetTypes(typeof(NumericWatcherAttribute));
-			foreach (Type type in types)
-			{
-				object[] attrs = type.GetCustomAttributes(typeof(NumericWatcherAttribute), false);
+        public void Load()
+        {
+            allWatchers = new Dictionary<NumericType, List<INumericWatcher>>();
 
-				foreach (object attr in attrs)
-				{
-					NumericWatcherAttribute numericWatcherAttribute = (NumericWatcherAttribute)attr;
-					INumericWatcher obj = (INumericWatcher)Activator.CreateInstance(type);
-					if (!this.allWatchers.ContainsKey(numericWatcherAttribute.NumericType))
-					{
-						this.allWatchers.Add(numericWatcherAttribute.NumericType, new List<INumericWatcher>());
-					}
-					this.allWatchers[numericWatcherAttribute.NumericType].Add(obj);
-				}
-			}
-		}
+            HashSet<Type> types = Game.EventSystem.GetTypes(typeof (NumericWatcherAttribute));
+            foreach (Type type in types)
+            {
+                object[] attrs = type.GetCustomAttributes(typeof (NumericWatcherAttribute), false);
 
-		public void Run(NumericType numericType, long id, int value)
-		{
-			List<INumericWatcher> list;
-			if (!this.allWatchers.TryGetValue(numericType, out list))
-			{
-				return;
-			}
-			foreach (INumericWatcher numericWatcher in list)
-			{
-				numericWatcher.Run(id, value);
-			}
-		}
-	}
+                foreach (object attr in attrs)
+                {
+                    NumericWatcherAttribute numericWatcherAttribute = (NumericWatcherAttribute) attr;
+                    INumericWatcher obj = (INumericWatcher) Activator.CreateInstance(type);
+                    if (!allWatchers.ContainsKey(numericWatcherAttribute.NumericType))
+                    {
+                        allWatchers.Add(numericWatcherAttribute.NumericType, new List<INumericWatcher>());
+                    }
+
+                    allWatchers[numericWatcherAttribute.NumericType].Add(obj);
+                }
+            }
+        }
+
+        public void Run(NumericType numericType, long id, int value)
+        {
+            List<INumericWatcher> list;
+            if (!allWatchers.TryGetValue(numericType, out list))
+            {
+                return;
+            }
+
+            foreach (INumericWatcher numericWatcher in list)
+            {
+                numericWatcher.Run(id, value);
+            }
+        }
+    }
 }

@@ -22,7 +22,7 @@ namespace Kitchen
             public Material Material;
             public Texture Texture;
 
-            public Display(UnityObject display,UnityObject parent,int render)
+            public Display(UnityObject display, UnityObject parent, int render)
             {
                 Model = display;
                 Model.Parent = parent;
@@ -55,22 +55,25 @@ namespace Kitchen
         public string Item { get; private set; }
         private ItemType mType;
         private Display Tray;
+
         private Display Food;
+
         //我们需要一个在手上得基点
         private Transform CameraTransform;
         private UnityObject mPivot;
+
         public PlayerTray(UnityObject pivot)
         {
             mPivot = pivot;
             CameraTransform = KitchenRoot.Inst.MainCamera.transform;
-            Tray = new Display(new UnityObject(GameObject.CreatePrimitive(PrimitiveType.Quad)), pivot,3000);
-            Food = new Display(new UnityObject(GameObject.CreatePrimitive(PrimitiveType.Quad)), pivot,3001);
+            Tray = new Display(new UnityObject(GameObject.CreatePrimitive(PrimitiveType.Quad)), pivot, 3000);
+            Food = new Display(new UnityObject(GameObject.CreatePrimitive(PrimitiveType.Quad)), pivot, 3001);
         }
 
         public async UniTaskVoid Hold(string id)
         {
             Item = id;
-            mType = id.StartsWith("F_") ? ItemType.Food : ItemType.Ingedient;
+            mType = id.StartsWith("F_")? ItemType.Food : ItemType.Ingedient;
             Tray.SetActive(true);
             Food.SetActive(true);
             var plate = AssetsKit.Inst.Load<Texture>("Image/Food/plate1_1").AsTask();
@@ -89,7 +92,6 @@ namespace Kitchen
                 await food;
                 Food.SetTexture(food.Result);
             }
-
         }
 
         public string Take()
@@ -113,9 +115,9 @@ namespace Kitchen
             GameEntry.inst.Vec = direction;
             var position = direction * GameEntry.inst.X + GameEntry.inst.XXX;*/
             Tray.Model.Position = pt;
-            Food.Model.Position = pt; 
+            Food.Model.Position = pt;
         }
-        
+
         public void Dispose()
         {
             Tray.Dispose();
@@ -123,4 +125,3 @@ namespace Kitchen
         }
     }
 }
-

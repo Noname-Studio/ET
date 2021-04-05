@@ -4,12 +4,12 @@ using FairyGUI;
 
 namespace UI.Story.RateMe
 {
-	public class RateMeBinder
-	{
-		[UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(View_RateMe.URL, typeof(View_RateMe));
-		}
-	}
+    public class RateMeBinder
+    {
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(View_RateMe.URL, typeof (View_RateMe));
+        }
+    }
 }

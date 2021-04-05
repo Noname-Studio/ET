@@ -8,4 +8,4 @@ FileSuffix = "_Auto"
 EnumSuffix = "Enum"
 #生成的数据库类型   目前支持DB,Json
 GeneratorType = "Json"
-CSVDelimiters = [","]
+CSVDelimiters = ["	"]

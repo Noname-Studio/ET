@@ -9,25 +9,48 @@ using Object = UnityEngine.Object;
 
 namespace Panthea.Asset
 {
-    public class EDITOR_AssetsManager : IAssetsLocator
+    public class EDITOR_AssetsManager: IAssetsLocator
     {
+        public Dictionary<string, Dictionary<Type, Object>> Cached = new Dictionary<string, Dictionary<Type, Object>>();
+
         public async UniTask<T> Load<T>(string filePath) where T : Object
         {
             string packPath = "Assets/Res/";
             filePath = filePath.ToLower();
+            var type = typeof (T);
+            if (Cached.TryGetValue(filePath, out var getter))
+            {
+                if (getter.TryGetValue(type, out var result))
+                {
+                    if (result != null)
+                    {
+                        return (T) result;
+                    }
+                }
+            }
+
             string dir = "Assets/Res/" + Path.GetDirectoryName(filePath);
-            var allAssetGuids = AssetDatabase.FindAssets("t:" + typeof (T).Name, new[] { dir });
+            var allAssetGuids = AssetDatabase.FindAssets("t:" + type.Name, new[] { dir });
             for (int i = 0; i < allAssetGuids.Length; i++)
             {
                 var assetPath = AssetDatabase.GUIDToAssetPath(allAssetGuids[i]);
                 int lastIndexOf = assetPath.IndexOf(packPath);
                 if (lastIndexOf == -1)
+                {
                     continue;
+                }
+
                 string tempAssetPath = assetPath.Substring(lastIndexOf + packPath.Length);
                 tempAssetPath = PathUtils.RemoveFileExtension(tempAssetPath);
-                if (tempAssetPath.Equals(filePath,StringComparison.OrdinalIgnoreCase))
+                if (tempAssetPath.Equals(filePath, StringComparison.OrdinalIgnoreCase))
                 {
                     var obj = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+                    if (!Cached.TryGetValue(filePath, out var dict))
+                    {
+                        dict = Cached[filePath] = new Dictionary<Type, Object>();
+                    }
+
+                    dict[typeof (T)] = obj;
                     return obj;
                 }
             }
@@ -35,11 +58,11 @@ namespace Panthea.Asset
             return null;
         }
 
-        public async UniTask<Dictionary<string,List<Object>>> LoadAll(string path)
+        public async UniTask<Dictionary<string, List<Object>>> LoadAll(string path)
         {
             string packPath = "Res/";
-            DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/" + packPath + path.Replace(AssetsConfig.Suffix,""));
-            Dictionary<string,List<Object>> objects = new Dictionary<string,List<Object>>();
+            DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/" + packPath + path.Replace(AssetsConfig.Suffix, ""));
+            Dictionary<string, List<Object>> objects = new Dictionary<string, List<Object>>();
             foreach (var node in dir.GetFiles())
             {
                 var p = PathUtils.FullPathToUnityPath(node.FullName);
@@ -52,6 +75,7 @@ namespace Panthea.Asset
                         list = new List<Object>();
                         objects.Add(key, list);
                     }
+
                     list.Add(obj);
                 }
             }
@@ -96,13 +120,19 @@ namespace Panthea.Asset
 
         public async UniTask<UnityObject> Instantiate(string filePath, Vector3? position = null, Vector3? rotation = null, Transform parent = null)
         {
-            var go = await this.Load<GameObject>(filePath);
+            var go = await Load<GameObject>(filePath);
             var obj = Object.Instantiate(go, parent);
             var transform = obj.transform;
             if (position.HasValue)
+            {
                 transform.localPosition = position.Value;
+            }
+
             if (rotation.HasValue)
+            {
                 transform.localEulerAngles = rotation.Value;
+            }
+
             return new UnityObject(obj);
         }
 
@@ -113,7 +143,7 @@ namespace Panthea.Asset
 
         public List<string> GetFilterAssetBundle(string[] path)
         {
-            return new List<string>();
+            return new List<string>(path);
         }
 
         public string[] GetDepenciences(string path)

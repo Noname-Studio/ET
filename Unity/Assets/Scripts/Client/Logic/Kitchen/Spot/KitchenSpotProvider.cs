@@ -7,6 +7,7 @@ public class KitchenSpotProvider
 {
     private List<AKitchenSpot> mSpots = new List<AKitchenSpot>();
     private List<AKitchenSpot> mFreeSpots = new List<AKitchenSpot>();
+
     public void AddSpot(AKitchenSpot spot)
     {
         mSpots.Add(spot);
@@ -28,8 +29,8 @@ public class KitchenSpotProvider
     {
         return mFreeSpots.Count;
     }
-    
-    public void LockSpot(AKitchenSpot spot,ACustomer customer)
+
+    public void LockSpot(AKitchenSpot spot, ACustomer customer)
     {
         spot.SetState(KitchenSpotState.Busy);
         spot.SetCustomer(customer);
@@ -48,23 +49,29 @@ public class KitchenSpotProvider
         foreach (var node in mSpots)
         {
             if (node.Position == pos)
+            {
                 return node;
+            }
         }
+
         return null;
     }
-    
+
     public AKitchenSpot GetSpot(int index)
     {
-        if (index >= 0 && mSpots.Count > index) 
+        if (index >= 0 && mSpots.Count > index)
+        {
             return mSpots[index];
+        }
+
         return null;
     }
-    
+
     public bool AnyFree()
     {
         return mFreeSpots.Count > 0;
     }
-    
+
     public AKitchenSpot GetFreeSpot()
     {
         return mFreeSpots[Random.Range(0, mFreeSpots.Count)];

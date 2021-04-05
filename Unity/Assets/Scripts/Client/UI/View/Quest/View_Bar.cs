@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Quest
 {
-	public partial class View_Bar : GComponent
-	{
-		public GImage bar;
+    public partial class View_Bar: GComponent
+    {
+        public GImage bar;
 
-		public const string URL = "ui://ytnp4vk8atg3l4";
+        public const string URL = "ui://ytnp4vk8atg3l4";
 
-		public static View_Bar CreateInstance()
-		{
-			return (View_Bar)UIPackage.CreateObject("Quest","Bar");
-		}
+        public static View_Bar CreateInstance()
+        {
+            return (View_Bar) UIPackage.CreateObject("Quest", "Bar");
+        }
 
-		public View_Bar()
-		{
-		}
+        public View_Bar()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			bar = (GImage)this.GetChildAt(0);
-		}
-	}
+            bar = (GImage) GetChildAt(0);
+        }
+    }
 }

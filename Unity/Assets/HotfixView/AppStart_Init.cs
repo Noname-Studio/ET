@@ -32,11 +32,10 @@ namespace ET
 
                 //await Game.EventSystem.Publish(new EventType.AppStartInitFinish() { ZoneScene = zoneScene });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Log(e);
             }
-
         }
     }
 }

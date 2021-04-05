@@ -16,11 +16,12 @@ namespace Kitchen.Robot
         private RobotInput mRobotInput;
         private QueueEventsKit mQueueEventsKit;
         private int Step = 0;
-        public PlayerKitchenRobot_LowIntelligence(PlayerController playerController,QueueEventsKit gam)
+
+        public PlayerKitchenRobot_LowIntelligence(PlayerController playerController, QueueEventsKit gam)
         {
             mPlayerController = playerController;
             mKitchenRoot = KitchenRoot.Inst;
-            mRobotInput = new RobotInput(mPlayerController,mKitchenRoot.MainCamera);
+            mRobotInput = new RobotInput(mPlayerController, mKitchenRoot.MainCamera);
             mQueueEventsKit = gam;
             UnityLifeCycleKit.Inst.AddUpdate(Update);
         }
@@ -32,7 +33,7 @@ namespace Kitchen.Robot
                 // 新手AI每次仅能进行一步判断.当超过一步判断后立即跳出
                 return 0;
             }
-            
+
             List<FoodProperty> orderLists = new List<FoodProperty>();
             List<ACustomer> customers = new List<ACustomer>();
             //先获得所有顾客需要得食物.
@@ -46,19 +47,26 @@ namespace Kitchen.Robot
                 {
                     var customer = spot.Customer;
                     if (customer.State != CustomerState.Wait)
+                    {
                         continue;
+                    }
+
                     customers.Add(customer);
                     var order = customer.Order;
 
-                    
                     orderLists.AddRange(order);
                 }
             }
+
             //根据顾客耐心排序顾客列表
-            customers = customers.OrderBy(t1=>
+            customers = customers.OrderBy(t1 =>
             {
                 var com = t1.Components.Get<PatienceComponent>();
-                if (com == null) return int.MaxValue;
+                if (com == null)
+                {
+                    return int.MaxValue;
+                }
+
                 return com.Value;
             }).ToList();
 
@@ -89,10 +97,10 @@ namespace Kitchen.Robot
                     }
                 }
             }
-            
+
             //排序菜谱得难度
             orderLists = orderLists.OrderBy(property => property.AllIngredients.Count).ToList();
-            
+
             //这里我们把手上拿着的食物放进厨具制作
             foreach (var node in orderLists)
             {
@@ -108,9 +116,12 @@ namespace Kitchen.Robot
                 }
 
                 if (!pass)
+                {
                     continue;
+                }
+
                 var cookware = mKitchenRoot.Scene.GetCookware(node.Cookware);
-                if (cookware.State == CookwareState.Idle)//厨具正在等待中
+                if (cookware.State == CookwareState.Idle) //厨具正在等待中
                 {
                     mRobotInput.DoJob(cookware.Display);
                     Step++;
@@ -118,7 +129,7 @@ namespace Kitchen.Robot
                     return 0;
                 }
             }
-            
+
             //机器人手上有空间得时候可以查找一下有什么食材可以顺手拿一下
             if (mPlayerController.HandProvider.HasFreeSpace() == true)
             {
@@ -133,13 +144,14 @@ namespace Kitchen.Robot
                         {
                             continue;
                         }
+
                         //如果目标厨具已经在工作了就别拿了.避免卡死关卡(比如说手上拿太多东西在无法丢弃食材得关卡会陷入僵局)
                         var cookware = mKitchenRoot.Scene.GetCookware(food.Cookware);
                         if (cookware.State != CookwareState.Idle)
                         {
                             continue;
                         }
-                        
+
                         IngredientDisplay ingDisplay = mKitchenRoot.Scene.GetIngredient(node);
                         mRobotInput.DoJob(ingDisplay.Display);
                         Step++;
@@ -148,8 +160,8 @@ namespace Kitchen.Robot
                     }
                 }
             }
+
             return 0;
         }
-
     }
 }

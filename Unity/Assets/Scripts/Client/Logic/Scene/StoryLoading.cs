@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Panthea.Asset;
 
-public class StoryLoadData : ISceneLoadData
+public class StoryLoadData: ISceneLoadData
 {
     public RestaurantKey Rest;
 
@@ -13,21 +13,28 @@ public class StoryLoadData : ISceneLoadData
     }
 }
 
-public class StoryLoading : ISceneLoading
+public class StoryLoading: ISceneLoading
 {
     public StoryLoadData Data;
-    private IAssetsLocator mLocator; 
+    private IAssetsLocator mLocator;
+
     public StoryLoading(IAssetsLocator locator)
     {
         mLocator = locator;
     }
-    
+
     public void InjectParamters(ISceneLoadData data)
     {
-        if(data == null)
+        if (data == null)
+        {
             throw new Exception("SceneLoadData不能为空");
+        }
+
         if (!(data is StoryLoadData))
+        {
             throw new Exception("data 不是 StoryLoadData类型");
+        }
+
         Data = (StoryLoadData) data;
     }
 
@@ -41,12 +48,12 @@ public class StoryLoading : ISceneLoading
         throw new NotImplementedException();
     }
 
-    private async UniTask LoadAssetBundle(string path,List<AssetBundleRequest> assetBundles)
+    private async UniTask LoadAssetBundle(string path, List<AssetBundleRequest> assetBundles)
     {
         //加载场景AB
         assetBundles.Add(await mLocator.LoadAssetBundle(path));
     }
-  
+
     public UniTask Run()
     {
         return UniTask.CompletedTask;
@@ -59,7 +66,7 @@ public class StoryLoading : ISceneLoading
 
     public async UniTask GenerateScene()
     {
-        var oldSceneBundleCollect = mLocator.GetFilterAssetBundle(new[] {$"Model/Story/{Data.Rest}_0"});
+        var oldSceneBundleCollect = mLocator.GetFilterAssetBundle(new[] { $"Model/Story/{Data.Rest}_0" });
         List<AssetBundleRequest> assetBundles = new List<AssetBundleRequest>();
         List<UniTask> tasksQueue = new List<UniTask>();
         foreach (var node in oldSceneBundleCollect)
@@ -69,11 +76,10 @@ public class StoryLoading : ISceneLoading
         }
 
         await UniTask.WhenAll(tasksQueue);
-        
-        var dbFurniture = DBManager.Inst.GetFurnitureByKey(Data.Rest, "");
+
+        var dbFurniture = DBManager.Inst.GetFurnitureByKey(Data.Rest);
         foreach (var node in assetBundles)
         {
-
         }
     }
 }

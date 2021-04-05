@@ -8,29 +8,29 @@ namespace ET
 
         public void Add(long key, CoroutineLockQueue coroutineLockQueue)
         {
-            this.workQueues.Add(key, coroutineLockQueue);
+            workQueues.Add(key, coroutineLockQueue);
             coroutineLockQueue.Parent = this;
         }
 
         public void Remove(long key)
         {
-            if (!this.workQueues.TryGetValue(key, out CoroutineLockQueue queue))
+            if (!workQueues.TryGetValue(key, out CoroutineLockQueue queue))
             {
                 return;
             }
 
-            this.workQueues.Remove(key);
+            workQueues.Remove(key);
             queue.Dispose();
         }
 
         public bool ContainsKey(long key)
         {
-            return this.workQueues.ContainsKey(key);
+            return workQueues.ContainsKey(key);
         }
 
         public bool TryGetValue(long key, out CoroutineLockQueue coroutineLockQueue)
         {
-            return this.workQueues.TryGetValue(key, out coroutineLockQueue);
+            return workQueues.TryGetValue(key, out coroutineLockQueue);
         }
     }
 }

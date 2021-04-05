@@ -1,0 +1,4 @@
+﻿Id,角色初始位置
+Id,PlayerInitializePosition
+string,Vector3
+Breakfast,"{x:-1,y:.01,z:1.4}"

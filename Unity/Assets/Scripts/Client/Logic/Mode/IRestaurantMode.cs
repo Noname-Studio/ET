@@ -1,4 +1,3 @@
-﻿public interface IRestaurantMode : IGameMode
+﻿public interface IRestaurantMode: IGameMode
 {
-        
 }

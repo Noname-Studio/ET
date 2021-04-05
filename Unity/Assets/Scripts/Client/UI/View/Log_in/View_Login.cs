@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Log_in
 {
-    public partial class View_Login : GComponent
+    public partial class View_Login: GComponent
     {
         public Controller HasLogin;
         public Controller IsFirstLogin;
@@ -21,7 +21,7 @@ namespace Log_in
 
         public static View_Login CreateInstance()
         {
-            return (View_Login)UIPackage.CreateObject("Log_in", "Login");
+            return (View_Login) UIPackage.CreateObject("Log_in", "Login");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -30,13 +30,13 @@ namespace Log_in
 
             HasLogin = GetController("HasLogin");
             IsFirstLogin = GetController("IsFirstLogin");
-            ButtonUp = (GButton)GetChild("ButtonUp");
-            logo = (View_logo_effect)GetChild("logo");
-            FacebookButton = (GButton)GetChild("FacebookButton");
-            RewardGem = (View_x30_effect)GetChild("RewardGem");
-            FacebookGroup = (GGroup)GetChild("FacebookGroup");
-            Relief = (GRichTextField)GetChild("Relief");
-            Accept = (GButton)GetChild("Accept");
+            ButtonUp = (GButton) GetChild("ButtonUp");
+            logo = (View_logo_effect) GetChild("logo");
+            FacebookButton = (GButton) GetChild("FacebookButton");
+            RewardGem = (View_x30_effect) GetChild("RewardGem");
+            FacebookGroup = (GGroup) GetChild("FacebookGroup");
+            Relief = (GRichTextField) GetChild("Relief");
+            Accept = (GButton) GetChild("Accept");
             t0 = GetTransition("t0");
         }
     }

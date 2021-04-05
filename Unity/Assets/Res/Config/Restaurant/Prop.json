@@ -1,0 +1,42 @@
+{
+  "Extinguisher": {
+    "Id": "Extinguisher",
+    "Loc": "Extinguisher",
+    "Icon": "ui://Common/icon_never_burn",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 2000001,
+    "Type": "Level"
+  },
+  "DoubleCoin": {
+    "Id": "DoubleCoin",
+    "Loc": "DoubleCoin",
+    "Icon": "ui://Common/icon_double_coin",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 2000001,
+    "Type": "Level"
+  },
+  "FirePower": {
+    "Id": "FirePower",
+    "Loc": "FirePower",
+    "Icon": "ui://Common/icon_cookfast",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 2000001,
+    "Type": "Level"
+  },
+  "ComboHelper": {
+    "Id": "ComboHelper",
+    "Loc": "ComboHelper",
+    "Icon": "ui://Common/icon_combo_helper",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 2000001,
+    "Type": "Level"
+  }
+}

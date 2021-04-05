@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_JuGuangDeng_effect : GComponent
+    public partial class View_JuGuangDeng_effect: GComponent
     {
         public Controller c1;
         public Transition t0;
@@ -13,7 +13,7 @@ namespace GameBegins
 
         public static View_JuGuangDeng_effect CreateInstance()
         {
-            return (View_JuGuangDeng_effect)UIPackage.CreateObject("GameBegins", "聚光灯_effect");
+            return (View_JuGuangDeng_effect) UIPackage.CreateObject("GameBegins", "聚光灯_effect");
         }
 
         public override void ConstructFromXML(XML xml)

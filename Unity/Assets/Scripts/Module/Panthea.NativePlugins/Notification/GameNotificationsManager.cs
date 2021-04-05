@@ -15,7 +15,7 @@ namespace NotificationSamples
     /// <summary>
     /// Global notifications manager that serves as a wrapper for multiple platforms' notification systems.
     /// </summary>
-    public class GameNotificationsManager : MonoBehaviour
+    public class GameNotificationsManager: MonoBehaviour
     {
         // Default filename for notifications serializer
         private const string DefaultFilename = "notifications.bin";
@@ -71,14 +71,15 @@ namespace NotificationSamples
             /// Ensures that messages will never be displayed while the application is in the foreground.
             /// </para>
             /// </summary>
-            QueueClearAndReschedule = Queue | ClearOnForegrounding | RescheduleAfterClearing,
+            QueueClearAndReschedule = Queue | ClearOnForegrounding | RescheduleAfterClearing
         }
 
-        [SerializeField, Tooltip("The operating mode for the notifications manager.")]
+        [SerializeField]
+        [Tooltip("The operating mode for the notifications manager.")]
         private OperatingMode mode;
 
-        [SerializeField, Tooltip(
-            "Check to make the notifications manager automatically set badge numbers so that they increment.\n" +
+        [SerializeField]
+        [Tooltip("Check to make the notifications manager automatically set badge numbers so that they increment.\n" +
             "Schedule notifications with no numbers manually set to make use of this feature.")]
         private bool autoBadging = true;
 
@@ -221,7 +222,7 @@ namespace NotificationSamples
 
                 // Sort notifications by delivery time, if no notifications have a badge number set
                 bool noBadgeNumbersSet =
-                    PendingNotifications.All(notification => notification.Notification.BadgeNumber == null);
+                        PendingNotifications.All(notification => notification.Notification.BadgeNumber == null);
 
                 if (noBadgeNumbersSet && AutoBadging)
                 {
@@ -338,23 +339,25 @@ namespace NotificationSamples
                 if (!doneDefault)
                 {
                     doneDefault = true;
-                    ((AndroidNotificationsPlatform)Platform).DefaultChannelId = notificationChannel.Id;
+                    ((AndroidNotificationsPlatform) Platform).DefaultChannelId = notificationChannel.Id;
                 }
 
                 long[] vibrationPattern = null;
                 if (notificationChannel.VibrationPattern != null)
-                    vibrationPattern = notificationChannel.VibrationPattern.Select(v => (long)v).ToArray();
+                {
+                    vibrationPattern = notificationChannel.VibrationPattern.Select(v => (long) v).ToArray();
+                }
 
                 // Wrap channel in Android object
                 var androidChannel = new AndroidNotificationChannel(notificationChannel.Id, notificationChannel.Name,
                     notificationChannel.Description,
-                    (Importance)notificationChannel.Style)
+                    (Importance) notificationChannel.Style)
                 {
                     CanBypassDnd = notificationChannel.HighPriority,
                     CanShowBadge = notificationChannel.ShowsBadge,
                     EnableLights = notificationChannel.ShowLights,
                     EnableVibration = notificationChannel.Vibrates,
-                    LockScreenVisibility = (LockScreenVisibility)notificationChannel.Privacy,
+                    LockScreenVisibility = (LockScreenVisibility) notificationChannel.Privacy,
                     VibrationPattern = vibrationPattern
                 };
 
@@ -454,7 +457,7 @@ namespace NotificationSamples
 
             // Remove the cancelled notification from scheduled list
             int index = PendingNotifications.FindIndex(scheduledNotification =>
-                scheduledNotification.Notification.Id == notificationId);
+                    scheduledNotification.Notification.Id == notificationId);
 
             if (index >= 0)
             {
@@ -525,8 +528,8 @@ namespace NotificationSamples
 
             // Find in pending list
             int deliveredIndex =
-                PendingNotifications.FindIndex(scheduledNotification =>
-                    scheduledNotification.Notification.Id == deliveredNotification.Id);
+                    PendingNotifications.FindIndex(scheduledNotification =>
+                            scheduledNotification.Notification.Id == deliveredNotification.Id);
             if (deliveredIndex >= 0)
             {
                 LocalNotificationDelivered?.Invoke(PendingNotifications[deliveredIndex]);

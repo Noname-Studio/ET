@@ -1,9 +1,11 @@
 {
     "name": "Unity.Hotfix",
+    "rootNamespace": "",
     "references": [
         "Unity.Model",
         "Unity.ThirdParty",
-        "UniTask"
+        "UniTask",
+        "GooglePlayGames"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

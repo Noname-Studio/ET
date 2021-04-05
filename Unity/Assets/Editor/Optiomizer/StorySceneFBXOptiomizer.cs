@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Pathfinding;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Object = UnityEngine.Object;
 using Path = System.IO.Path;
 
-public class StorySceneFBXOptiomizer : Editor {
+public class StorySceneFBXOptiomizer: Editor
+{
+    private static readonly int CutoffKeyword = Shader.PropertyToID("_Cutoff");
+    private static readonly int ColorKeyword = Shader.PropertyToID("_Color");
     public const string Prefix = "Assets/Art/Assetbundle/";
 
     [MenuItem("Assets/剧情场景专用/生成配置文件(FBX)")]
@@ -22,7 +21,10 @@ public class StorySceneFBXOptiomizer : Editor {
             var selArray = Selection.objects;
             var fbxArray = new List<ModelImporter>();
             if (selArray == null || selArray.Length == 0)
+            {
                 return;
+            }
+
             var selection = new List<Object>(selArray);
             var path = AssetDatabase.GetAssetPath(selection[0]);
             path = PathUtils.FormatFilePath(Path.GetDirectoryName(path));
@@ -31,13 +33,13 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 var node = selection[index];
                 var assetPath = AssetDatabase.GetAssetPath(node);
-                ModelImporter importer = (ModelImporter)AssetImporter.GetAtPath(assetPath);
+                ModelImporter importer = (ModelImporter) AssetImporter.GetAtPath(assetPath);
                 if (importer == null)
                 {
                     selection.RemoveAt(index);
                     continue;
                 }
-                
+
                 var compare = PathUtils.FormatFilePath(Path.GetDirectoryName(assetPath));
                 if (path != compare)
                 {
@@ -53,7 +55,7 @@ public class StorySceneFBXOptiomizer : Editor {
 
                 fbxArray.Add(importer);
             }
-            
+
             string prefabDir = path + "/Prefab/";
             string animationDir = path + "/__Combine_Animation/";
             string tempMatDir = path + "/__DP_Materials/";
@@ -61,17 +63,25 @@ public class StorySceneFBXOptiomizer : Editor {
             string baseTextureDir = "Assets/Res/Model/Scene/";
 
             if (!Directory.Exists(animationDir))
+            {
                 Directory.CreateDirectory(animationDir);
-            
+            }
+
             if (!Directory.Exists(textureDir))
+            {
                 Directory.CreateDirectory(textureDir);
-            
+            }
+
             if (!Directory.Exists(tempMatDir))
+            {
                 Directory.CreateDirectory(tempMatDir);
-            
+            }
+
             if (!Directory.Exists(prefabDir))
+            {
                 Directory.CreateDirectory(prefabDir);
-            
+            }
+
             AssetDatabase.Refresh();
 
             AssetDatabase.StartAssetEditing();
@@ -108,6 +118,7 @@ public class StorySceneFBXOptiomizer : Editor {
                             }
                         }
                     }
+
                     EditorUtility.SetDirty(importer);
                     importer.SaveAndReimport();
                 }
@@ -121,6 +132,7 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 AssetDatabase.StopAssetEditing();
             }
+
             try
             {
                 AssetDatabase.StartAssetEditing();
@@ -143,6 +155,7 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 AssetDatabase.StopAssetEditing();
             }
+
             List<GameObject> needDestory = new List<GameObject>();
             try
             {
@@ -200,19 +213,22 @@ public class StorySceneFBXOptiomizer : Editor {
                         {
                             if (node.name.StartsWith("__DD") || node.name.StartsWith("collider__"))
                             {
-                                var temp = Instantiate(node.gameObject);
+                                var temp = Instantiate(node.gameObject, wrapObj.transform, true);
                                 temp.name = node.name;
-                                temp.transform.parent = wrapObj.transform;
-                                temp.transform.position = node.transform.position;
-                                temp.transform.localScale = node.transform.localScale;
-                                temp.transform.rotation = node.transform.rotation;
+                                var transform = node.transform;
+                                temp.transform.position = transform.position;
+                                temp.transform.localScale = transform.localScale;
+                                temp.transform.rotation = transform.rotation;
                             }
                         }
                     }
 
                     Component com = wrapObj.GetComponent<Animator>();
                     if (com != null)
+                    {
                         DestroyImmediate(com);
+                    }
+
                     Animation animCom = null;
                     animCom = wrapObj.gameObject.GetComponent<Animation>();
                     if (animCom == null)
@@ -221,7 +237,7 @@ public class StorySceneFBXOptiomizer : Editor {
                     }
 
                     animCom.playAutomatically = false;
-                    foreach (var anim in Directory.GetFiles(animationDir + o.name + "/","*.anim"))
+                    foreach (var anim in Directory.GetFiles(animationDir + o.name + "/", "*.anim"))
                     {
                         var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(anim);
                         if (clip != null && !clip.name.Contains("__preview__"))
@@ -230,20 +246,22 @@ public class StorySceneFBXOptiomizer : Editor {
                         }
                     }
 
-                    obj = PrefabUtility.CreatePrefab(prefabDir + key + ".prefab", wrapObj, ReplacePrefabOptions.ConnectToPrefab);
+                    obj = PrefabUtility.SaveAsPrefabAssetAndConnect(wrapObj, prefabDir + key + ".prefab", InteractionMode.AutomatedAction);
                     var clips = new List<AnimationClip>();
                     var animation = obj.GetComponent<Animation>();
                     if (animation != null)
                     {
                         foreach (var node in animation)
                         {
-                            if (node != null && node is AnimationState)
+                            if (node is AnimationState state)
                             {
-                                clips.Add(((AnimationState) node).clip);
+                                clips.Add(state.clip);
                             }
                         }
+
                         AnimationUtility.SetAnimationClips(animation, clips.ToArray());
                     }
+
                     needDestory.Add(wrapObj);
                 }
             }
@@ -264,14 +282,14 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 DestroyImmediate(node);
             }
-            
+
             //关闭部分功能避免资源泄漏
             AssetDatabase.StartAssetEditing();
             try
             {
                 foreach (var node in fbxArray)
                 {
-                    var importer = (ModelImporter) node;
+                    var importer = node;
                     importer.materialImportMode = ModelImporterMaterialImportMode.None;
                     importer.importAnimation = false;
                     importer.SaveAndReimport();
@@ -286,6 +304,7 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 AssetDatabase.StopAssetEditing();
             }
+
             AssetDatabase.SaveAssets();
         }
         catch (Exception e)
@@ -294,7 +313,7 @@ public class StorySceneFBXOptiomizer : Editor {
         }
     }
 
-    private static void PasteComponentValues(Transform animObj, Transform wrapObj)
+    /*private static void PasteComponentValues(Transform animObj, Transform wrapObj)
     {
         int count = animObj.childCount;
 
@@ -315,12 +334,12 @@ public class StorySceneFBXOptiomizer : Editor {
                 PasteComponentValues(source, target);
             }
         }
-    }
+    }*/
 
     /// <summary>
     /// 细分材质球
     /// </summary>
-    public static void AssignSplitMaterial(GameObject go, string matDir, string textureDir, string baseTextureDir)
+    private static void AssignSplitMaterial(GameObject go, string matDir, string textureDir, string baseTextureDir)
     {
         var renderers = go.GetComponentsInChildren<Renderer>();
         var baseShader = AssetDatabase.LoadAssetAtPath<Shader>("Assets/Res/Shader/BetterTransparent.shader");
@@ -331,12 +350,16 @@ public class StorySceneFBXOptiomizer : Editor {
             {
                 var mat = materials[i];
                 if (mat == null)
+                {
                     continue;
-                
-                int index = 0;
-                var path = matDir + go.name.Replace("(Clone)","") + "_" + GameObjectUtils.GetObjPath(go.transform,node.transform).Replace("/","_");
+                }
+
+                var path = matDir + go.name.Replace("(Clone)", "") + "_" + GameObjectUtils.GetObjPath(go.transform, node.transform).Replace("/", "_");
                 if (i > 0)
+                {
                     path += "__" + i;
+                }
+
                 path += ".mat";
                 //检查路径是否存在材质球如果存在则只更换贴图即可
                 var pathMat = AssetDatabase.LoadAssetAtPath<Material>(path);
@@ -348,38 +371,47 @@ public class StorySceneFBXOptiomizer : Editor {
                         pathMat.shader = baseShader;
                         pathMat.renderQueue = order;
                     }
+
                     if (mat.mainTexture == null)
                     {
-                        var tex = AssetDatabase.LoadAssetAtPath<Texture2D>(baseTextureDir + mat.name + ".png") ?? AssetDatabase.LoadAssetAtPath<Texture2D>(textureDir + mat.name + ".png");
-                        if(tex != null)
+                        var tex = AssetDatabase.LoadAssetAtPath<Texture2D>(baseTextureDir + mat.name + ".png") ??
+                                AssetDatabase.LoadAssetAtPath<Texture2D>(textureDir + mat.name + ".png");
+                        if (tex != null)
+                        {
                             pathMat.mainTexture = tex;
+                        }
                     }
                     else
                     {
                         var texturePath = Path.GetDirectoryName(PathUtils.FormatFilePath(AssetDatabase.GetAssetPath(mat.mainTexture))) + '/';
-                        if(texturePath == textureDir || texturePath == baseTextureDir)
+                        if (texturePath == textureDir || texturePath == baseTextureDir)
+                        {
                             pathMat.mainTexture = mat.mainTexture;
+                        }
                         else
                         {
-                            if (mat.mainTexture.name.Contains("yinying") || mat.mainTexture.name.Contains("yingying") || mat.mainTexture.name.Contains("yiying"))
+                            if (mat.mainTexture.name.Contains("yinying") || mat.mainTexture.name.Contains("yingying") ||
+                                mat.mainTexture.name.Contains("yiying"))
                             {
-                                pathMat.SetFloat("_Cutoff",0);
+                                pathMat.SetFloat(CutoffKeyword, 0);
                                 pathMat.mainTexture = AssetDatabase.LoadAssetAtPath<Texture>(baseTextureDir + "yinying.png");
                             }
                         }
                     }
+
                     materials[i] = pathMat;
                 }
                 else
                 {
                     var newMat = new Material(baseShader);
                     newMat.CopyPropertiesFromMaterial(mat);
-                    newMat.SetColor("_Color",Color.white);
-                    newMat.SetFloat("_Cutoff", 0);
+                    newMat.SetColor(ColorKeyword, Color.white);
+                    newMat.SetFloat(CutoffKeyword, 0);
                     AssetDatabase.CreateAsset(newMat, path);
                     materials[i] = AssetDatabase.LoadAssetAtPath<Material>(path);
                 }
             }
+
             node.sharedMaterials = materials;
         }
     }

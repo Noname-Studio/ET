@@ -5,28 +5,28 @@ using FairyGUI.Utils;
 
 namespace UI.Story.QuizGame
 {
-	public partial class View_tips_star : GComponent
-	{
-		public GTextField title;
-		public Transition t0;
+    public partial class View_tips_star: GComponent
+    {
+        public GTextField title;
+        public Transition t0;
 
-		public const string URL = "ui://btrw885ifq7chl";
+        public const string URL = "ui://btrw885ifq7chl";
 
-		public static View_tips_star CreateInstance()
-		{
-			return (View_tips_star)UIPackage.CreateObject("QuizGame","tips_star");
-		}
+        public static View_tips_star CreateInstance()
+        {
+            return (View_tips_star) UIPackage.CreateObject("QuizGame", "tips_star");
+        }
 
-		public View_tips_star()
-		{
-		}
+        public View_tips_star()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			title = (GTextField)this.GetChildAt(1);
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            title = (GTextField) GetChildAt(1);
+            t0 = GetTransitionAt(0);
+        }
+    }
 }

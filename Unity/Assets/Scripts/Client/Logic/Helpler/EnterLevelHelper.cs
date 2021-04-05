@@ -10,6 +10,7 @@ public static class EnterLevelHelper
             var tips = UIKit.Inst.Create<UI_NoEnergyTips>();
             return false;
         }
+
         return true;
     }
 }

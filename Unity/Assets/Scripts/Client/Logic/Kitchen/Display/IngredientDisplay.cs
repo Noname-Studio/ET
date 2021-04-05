@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace Kitchen
 {
-    public class IngredientDisplay : IDisplay
+    public class IngredientDisplay: IDisplay
     {
         private IngredientProperty Property;
-        public Type Type => this.GetType();
+        public Type Type => GetType();
         public IAnimation Animation { get; set; }
         public UnityObject Display { get; }
         public string FoodId { get; }
-        public IngredientDisplay(UnityObject display,IngredientProperty property)
+
+        public IngredientDisplay(UnityObject display, IngredientProperty property)
         {
             Display = display;
             Property = property;
@@ -23,4 +24,3 @@ namespace Kitchen
         }
     }
 }
-

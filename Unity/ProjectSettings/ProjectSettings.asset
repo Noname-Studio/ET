@@ -148,6 +148,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.DefaultCompany.RestaurantDemo
     Standalone: com.DefaultCompany.RestaurantDemo
+    iPhone: com.DefaultCompany.RestaurantDemo
   buildNumber:
     Standalone: 0
     iPhone: 0

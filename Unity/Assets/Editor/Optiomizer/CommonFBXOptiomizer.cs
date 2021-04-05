@@ -15,15 +15,19 @@ public class CommonFBXOptiomizer
         foreach (var node in objects)
         {
             var path = AssetDatabase.GetAssetPath(node);
-            var modelImpoter = (ModelImporter)AssetImporter.GetAtPath(path);
+            var modelImpoter = (ModelImporter) AssetImporter.GetAtPath(path);
             if (modelImpoter == null)
+            {
                 continue;
+            }
+
             if (modelImpoter.animationCompression != ModelImporterAnimationCompression.Optimal)
             {
                 modelImpoter.animationCompression = ModelImporterAnimationCompression.Optimal;
                 modelImpoter.SaveAndReimport();
             }
         }
+
         AssetDatabase.StopAssetEditing();
         AssetDatabase.StartAssetEditing();
         foreach (var node in objects)
@@ -31,10 +35,11 @@ public class CommonFBXOptiomizer
             var path = AssetDatabase.GetAssetPath(node);
             ExtractAnimationClip(path);
         }
+
         AssetDatabase.StopAssetEditing();
     }
 
-    public static List<AnimationClip> ExtractAnimationClip(string path,string to = "", bool compress = true)
+    public static List<AnimationClip> ExtractAnimationClip(string path, string to = "", bool compress = true)
     {
         var list = new List<AnimationClip>();
         var assets = AssetDatabase.LoadAllAssetsAtPath(path);
@@ -52,36 +57,52 @@ public class CommonFBXOptiomizer
                     {
                         string destPath = null;
                         if (string.IsNullOrEmpty(to))
+                        {
                             destPath = dir + "/" + sourceClip.name.ToLower() + ".anim";
+                        }
                         else
+                        {
                             destPath = to + sourceClip.name.ToLower() + ".anim";
+                        }
+
                         DirectoryInfo dirInfo = new DirectoryInfo(destPath).Parent;
-                        if(dirInfo != null && !dirInfo.Exists)
+                        if (dirInfo != null && !dirInfo.Exists)
+                        {
                             dirInfo.Create();
+                        }
+
                         destClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(destPath);
                         if (destClip == null)
                         {
                             needCreate = true;
                             destClip = new AnimationClip();
-                        }                        
+                        }
+
                         if (needCreate)
                         {
                             AssetDatabase.CreateAsset(destClip, destPath);
                         }
                         else
+                        {
                             EditorUtility.CopySerialized(sourceClip, destClip);
-                        if(compress)
+                        }
+
+                        if (compress)
+                        {
                             CompressAnimation(destClip);
+                        }
                     }
                     catch (Exception e)
                     {
                         Debug.LogError(e);
                         continue;
                     }
+
                     list.Add(destClip);
                 }
             }
         }
+
         return list;
     }
 
@@ -99,6 +120,7 @@ public class CommonFBXOptiomizer
             {
                 continue;
             }
+
             keyFrames = curveDate.curve.keys;
             for (int i = 0; i < keyFrames.Length; i++)
             {
@@ -108,6 +130,7 @@ public class CommonFBXOptiomizer
                 key.outTangent = float.Parse(key.outTangent.ToString("f3"));
                 keyFrames[i] = key;
             }
+
             curveDate.curve.keys = keyFrames;
             theAnimation.SetCurve(curveDate.path, curveDate.type, curveDate.propertyName, curveDate.curve);
         }

@@ -5,42 +5,39 @@ namespace ET
 {
     public class ComponentQueue: Object
     {
-        public string TypeName
-        {
-            get;
-        }
+        public string TypeName { get; }
 
         private readonly Queue<Object> queue = new Queue<Object>();
 
         public ComponentQueue(string typeName)
         {
-            this.TypeName = typeName;
+            TypeName = typeName;
         }
 
         public void Enqueue(Object entity)
         {
-            this.queue.Enqueue(entity);
+            queue.Enqueue(entity);
         }
 
         public Object Dequeue()
         {
-            return this.queue.Dequeue();
+            return queue.Dequeue();
         }
 
         public Object Peek()
         {
-            return this.queue.Peek();
+            return queue.Peek();
         }
 
-        public Queue<Object> Queue => this.queue;
+        public Queue<Object> Queue => queue;
 
-        public int Count => this.queue.Count;
+        public int Count => queue.Count;
 
         public override void Dispose()
         {
-            while (this.queue.Count > 0)
+            while (queue.Count > 0)
             {
-                Object component = this.queue.Dequeue();
+                Object component = queue.Dequeue();
                 component.Dispose();
             }
         }
@@ -68,7 +65,7 @@ namespace ET
         public Object Fetch(Type type)
         {
             Object obj;
-            if (!this.dictionary.TryGetValue(type, out ComponentQueue queue))
+            if (!dictionary.TryGetValue(type, out ComponentQueue queue))
             {
                 obj = (Object) Activator.CreateInstance(type);
             }
@@ -86,7 +83,7 @@ namespace ET
 
         public T Fetch<T>() where T : Object
         {
-            T t = (T) this.Fetch(typeof (T));
+            T t = (T) Fetch(typeof (T));
             return t;
         }
 
@@ -94,7 +91,7 @@ namespace ET
         {
             Type type = obj.GetType();
             ComponentQueue queue;
-            if (!this.dictionary.TryGetValue(type, out queue))
+            if (!dictionary.TryGetValue(type, out queue))
             {
                 queue = new ComponentQueue(type.Name);
 
@@ -105,7 +102,7 @@ namespace ET
                     queue.ViewGO.name = $"{type.Name}s";
                 }
 #endif
-                this.dictionary.Add(type, queue);
+                dictionary.Add(type, queue);
             }
 
 #if UNITY_EDITOR && VIEWGO
@@ -119,22 +116,22 @@ namespace ET
 
         public void Clear()
         {
-            foreach (KeyValuePair<Type, ComponentQueue> kv in this.dictionary)
+            foreach (KeyValuePair<Type, ComponentQueue> kv in dictionary)
             {
                 kv.Value.Dispose();
             }
 
-            this.dictionary.Clear();
+            dictionary.Clear();
         }
 
         public override void Dispose()
         {
-            foreach (KeyValuePair<Type, ComponentQueue> kv in this.dictionary)
+            foreach (KeyValuePair<Type, ComponentQueue> kv in dictionary)
             {
                 kv.Value.Dispose();
             }
 
-            this.dictionary.Clear();
+            dictionary.Clear();
             instance = null;
         }
     }

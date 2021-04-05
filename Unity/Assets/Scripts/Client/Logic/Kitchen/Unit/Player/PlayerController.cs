@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Kitchen
 {
-    public class PlayerController : IUnit
+    public class PlayerController: IUnit
     {
         public List<IBuff> Buff { get; } = new List<IBuff>();
 
@@ -13,7 +13,7 @@ namespace Kitchen
         {
             Moving, //正在移动中
             InDestination, //是否已经抵达终点
-            Error, //目标点已经被修改
+            Error //目标点已经被修改
         }
 
         private InputHandler mInput;
@@ -38,28 +38,30 @@ namespace Kitchen
 
         public PlayerController(PlayerDisplay playerDisplay)
         {
-            mBehaviour = UnityLifeCycleKit.Inst;            
-            mBehaviour.AddUpdate(Update);
+            mBehaviour = UnityLifeCycleKit.Inst;
 
             mDisplay = playerDisplay;
             Animator = playerDisplay.Animator;
-            
+
             //创建操作控制器
             mInput = new InputHandler();
             mInput.Init(this);
-            
+
             //创建操作手
             HandProvider = new HandProvider();
             //一定要先添加左手在添加右手,左手没食物.那么要将右手的食物传递给左手.因为动画拿取一个菜盘的只有左手.没有右手
-            HandProvider.AddHand("Right",mDisplay.Go.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/HoldItem"));
-            HandProvider.AddHand("Left",mDisplay.Go.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand/HoldItem"));
-            
-            UnitManager.Inst.Register(this);
-            //TODO 测试代码
-            //mDisplay.Go.AddModule(new TrailVFX());
-        }
+            HandProvider.AddHand("Right",
+                mDisplay.Go.Find(
+                    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/HoldItem"));
+            HandProvider.AddHand("Left",
+                mDisplay.Go.Find(
+                    "Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand/HoldItem"));
 
+            KitchenRoot.Inst.Units.Register(this);
+        }
+        
         #region 公共方法
+
         /// <summary>
         /// 移动到目标点.如果目标点无法到达则移动至最近的目标点,ref 将把传入的坐标校对为最近的点以方便后续校验坐标是否修改
         /// </summary>
@@ -69,9 +71,12 @@ namespace Kitchen
             mDisplay.MoveCom.SetPath(null);
             mDisplay.MoveCom.canSearch = true;
             mDisplay.MoveCom.isStopped = false;
-            var node = AstarPath.active.GetNearest ( position, NNConstraint.Default );
+            var node = AstarPath.active.GetNearest(position, NNConstraint.Default);
             if (node.node == null)
+            {
                 return;
+            }
+
             position = node.position;
             mDisplay.MoveCom.SetDestination(position);
         }
@@ -85,20 +90,27 @@ namespace Kitchen
             //TODO 当前还未实现人物2D平面移动
             //return MovingState.InDestination;
             if (mDisplay.MoveCom.destination != position)
+            {
                 return MovingState.Error;
+            }
+
             if (mDisplay.MoveCom.IsReached)
+            {
                 return MovingState.InDestination;
+            }
+
             return MovingState.Moving;
         }
 
-        
         #endregion
-        
-        private float Update()
+
+        public void Update()
         {
+            if (KitchenRoot.Inst.IsPause)
+                return;
+            mInput.Update();
             UpdateAnimation();
             HandProvider.Update();
-            return 0;
         }
 
         private void UpdateAnimation()
@@ -108,45 +120,57 @@ namespace Kitchen
             {
                 if (mHandItem.Count == 0)
                 {
-                    if(Animator.PlayingAnimation != "Walk")
+                    if (Animator.PlayingAnimation != "Walk")
+                    {
                         Animator.Play("Walk");
+                    }
                 }
                 else if (mHandItem.Count == 1)
                 {
-                    if(Animator.PlayingAnimation != "HoldingOneWalk")
+                    if (Animator.PlayingAnimation != "HoldingOneWalk")
+                    {
                         Animator.Play("HoldingOneWalk");
+                    }
                 }
                 else if (mHandItem.Count == 2)
                 {
-                    if(Animator.PlayingAnimation != "HoldingTwoWalk")
+                    if (Animator.PlayingAnimation != "HoldingTwoWalk")
+                    {
                         Animator.Play("HoldingTwoWalk");
+                    }
                 }
             }
             else
             {
                 if (mHandItem.Count == 0)
                 {
-                    if(!Animator.PlayingAnimation.StartsWith("Idle"))
+                    if (!Animator.PlayingAnimation.StartsWith("Idle"))
+                    {
                         Animator.Play("Idle");
+                    }
                 }
                 else if (mHandItem.Count == 1)
                 {
-                    if(!Animator.PlayingAnimation.StartsWith("HoldingOneIdle"))
+                    if (!Animator.PlayingAnimation.StartsWith("HoldingOneIdle"))
+                    {
                         Animator.Play("HoldingOneIdle");
+                    }
                 }
                 else if (mHandItem.Count == 2)
                 {
-                    if(Animator.PlayingAnimation != "HoldingTwoIdle")
+                    if (Animator.PlayingAnimation != "HoldingTwoIdle")
+                    {
                         Animator.Play("HoldingTwoIdle");
+                    }
                 }
             }
         }
-        
+
         public void Dispose()
         {
             HandProvider.Dispose();
         }
-        
+
         /// <summary>
         /// 转向目标
         /// </summary>

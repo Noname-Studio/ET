@@ -1,6 +1,7 @@
 ﻿/********************************
   该脚本是自动生成的请勿手动修改
 *********************************/
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -11,7 +12,7 @@ using System.IO;
 
 namespace RestaurantPreview.Config
 {
-    public partial class GlobalConfigProperty : ConfigAssetManager<GlobalConfigProperty>
+    public partial class GlobalConfigProperty
     {
         private int? mInt;
 
@@ -20,13 +21,16 @@ namespace RestaurantPreview.Config
             get
             {
                 if (mInt.HasValue)
-                    return this.mInt.Value;
-                int.TryParse(this.Value, out int result);
-                this.mInt = result;
+                {
+                    return mInt.Value;
+                }
+
+                int.TryParse(Value, out int result);
+                mInt = result;
                 return result;
             }
         }
-        
+
         private string[] mStringArray;
 
         public string[] StringArray
@@ -34,9 +38,12 @@ namespace RestaurantPreview.Config
             get
             {
                 if (mStringArray != null)
+                {
                     return mStringArray;
-                this.mStringArray = this.Value.Split(GameConfig.StringSplit);
-                return this.mStringArray;
+                }
+
+                mStringArray = Value.Split(GameConfig.StringSplit);
+                return mStringArray;
             }
         }
     }

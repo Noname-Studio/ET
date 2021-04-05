@@ -7,17 +7,19 @@ using UnityEngine;
 /// 幻影特效
 /// 由于Unity原版的拖尾特效无法做的十分平滑.而且在拐弯会扭曲原图形.所以用脚本做一个
 /// </summary>
-public class TrailVFX : IUnityModule
+public class TrailVFX: IUnityModule
 {
     /// <summary>
     /// 统计时间
     /// </summary>
     private float mCountingTime { get; set; }
+
     private Vector3 mLastPosition { get; set; }
     public UnityObject BindTarget { get; set; }
     private TrailPool mPool { get; set; }
     private TrailArgs mArgs { get; set; }
     private List<ActiveObject> mActiveObjects { get; set; } = new List<ActiveObject>();
+
     public TrailVFX(TrailArgs args)
     {
         mPool = new TrailPool(() => BindTarget.Clone());
@@ -48,12 +50,16 @@ public class TrailVFX : IUnityModule
                 mActiveObjects.RemoveAt(i);
             }
         }
+
         if (mCountingTime >= mArgs.Intervals)
         {
             while (true)
             {
                 if (mCountingTime - mArgs.Intervals < 0)
+                {
                     break;
+                }
+
                 mCountingTime -= mArgs.Intervals;
                 createTimes++;
             }
@@ -65,6 +71,7 @@ public class TrailVFX : IUnityModule
             mActiveObjects.Add(new ActiveObject(mArgs.LifeTime, obj));
             obj.Position -= dir / i;
         }
+
         return 0;
     }
 
@@ -75,13 +82,19 @@ public class TrailVFX : IUnityModule
 
         public TrailPool(Func<UnityObject> objectGenerator)
         {
-            _objectGenerator = objectGenerator ?? throw new ArgumentNullException(nameof(objectGenerator));
+            _objectGenerator = objectGenerator ?? throw new ArgumentNullException(nameof (objectGenerator));
             _objects = new ConcurrentBag<UnityObject>();
         }
 
-        public UnityObject Get() => _objects.TryTake(out UnityObject item) ? item : _objectGenerator();
+        public UnityObject Get()
+        {
+            return _objects.TryTake(out UnityObject item)? item : _objectGenerator();
+        }
 
-        public void Return(UnityObject item) => _objects.Add(item);
+        public void Return(UnityObject item)
+        {
+            _objects.Add(item);
+        }
     }
 
     private class ActiveObject
@@ -95,17 +108,19 @@ public class TrailVFX : IUnityModule
             Display = display;
         }
     }
-    
+
     public class TrailArgs
     {
         /// <summary>
         /// 生成残影的间隔.间隔的时间越短残影之间的间隙越小
         /// </summary>
         public float Intervals { get; set; }
+
         /// <summary>
         /// 最大残影数量.超出的残影将会被回收到池中
         /// </summary>
         public int MaxNum { get; set; }
+
         /// <summary>
         /// 残影生命周期
         /// </summary>

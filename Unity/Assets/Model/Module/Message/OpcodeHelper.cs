@@ -4,10 +4,7 @@ namespace ET
 {
     public static class OpcodeHelper
     {
-        private static readonly HashSet<ushort> ignoreDebugLogMessageSet = new HashSet<ushort>
-        {
-            
-        };
+        private static readonly HashSet<ushort> ignoreDebugLogMessageSet = new HashSet<ushort> { };
 
         private static bool IsNeedLogMessage(ushort opcode)
         {
@@ -35,17 +32,17 @@ namespace ET
             {
                 return;
             }
-            
+
             Log.ILog.Debug("zone: {0} {1}", zone, message);
         }
-        
+
         public static void LogMsg(ushort opcode, long actorId, object message)
         {
             if (!IsNeedLogMessage(opcode))
             {
                 return;
             }
-            
+
             Log.ILog.Debug("actorId: {0} {1}", actorId, message);
         }
     }

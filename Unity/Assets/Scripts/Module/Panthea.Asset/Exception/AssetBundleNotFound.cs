@@ -5,16 +5,10 @@ using UnityEngine;
 
 namespace Panthea.Asset
 {
-    public class AssetBundleNotFound : Exception
+    public class AssetBundleNotFound: Exception
     {
         private string mPath;
-        public override string Message
-        {
-            get
-            {
-                return "无法从StreamingAssets或Persistent目录下找到{" + mPath + "}文件";
-            }
-        }
+        public override string Message => "无法从StreamingAssets或Persistent目录下找到{" + mPath + "}文件";
 
         public AssetBundleNotFound(string path)
         {

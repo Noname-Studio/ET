@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEndExecute
 {
-    void Execute(bool win);
+    void Execute(KitchenEndState state);
 }

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Shop
 {
-    public partial class View_Shop : GComponent
+    public partial class View_Shop: GComponent
     {
         public Controller ShowPanelType;
         public GButton bg;
@@ -18,7 +18,7 @@ namespace Shop
 
         public static View_Shop CreateInstance()
         {
-            return (View_Shop)UIPackage.CreateObject("Shop", "Shop");
+            return (View_Shop) UIPackage.CreateObject("Shop", "Shop");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -26,12 +26,12 @@ namespace Shop
             base.ConstructFromXML(xml);
 
             ShowPanelType = GetController("ShowPanelType");
-            bg = (GButton)GetChild("bg");
-            PanelType = (GList)GetChild("PanelType");
-            KitchenList = (GList)GetChild("KitchenList");
-            DishesList = (GList)GetChild("DishesList");
-            Close = (GButton)GetChild("Close");
-            MoreCoin = (GButton)GetChild("MoreCoin");
+            bg = (GButton) GetChild("bg");
+            PanelType = (GList) GetChild("PanelType");
+            KitchenList = (GList) GetChild("KitchenList");
+            DishesList = (GList) GetChild("DishesList");
+            Close = (GButton) GetChild("Close");
+            MoreCoin = (GButton) GetChild("MoreCoin");
         }
     }
 }

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_addItemPanel : GComponent
+    public partial class View_addItemPanel: GComponent
     {
         public GLoader icon;
         public GTextField txt;
@@ -13,15 +13,15 @@ namespace GamingUI
 
         public static View_addItemPanel CreateInstance()
         {
-            return (View_addItemPanel)UIPackage.CreateObject("GamingUI", "addItemPanel");
+            return (View_addItemPanel) UIPackage.CreateObject("GamingUI", "addItemPanel");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            icon = (GLoader)GetChild("icon");
-            txt = (GTextField)GetChild("txt");
+            icon = (GLoader) GetChild("icon");
+            txt = (GTextField) GetChild("txt");
         }
     }
 }

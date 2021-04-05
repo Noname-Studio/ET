@@ -11,7 +11,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         ChaoticNeutral,
         LawfulEvil,
         NeutralEvil,
-        ChaoticEvil,
+        ChaoticEvil
     }
 }
 #endif

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_effect_addReward : GComponent
+    public partial class View_effect_addReward: GComponent
     {
         public GLoader coin;
         public GTextField count;
@@ -15,16 +15,16 @@ namespace GamingUI
 
         public static View_effect_addReward CreateInstance()
         {
-            return (View_effect_addReward)UIPackage.CreateObject("GamingUI", "effect_addReward");
+            return (View_effect_addReward) UIPackage.CreateObject("GamingUI", "effect_addReward");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            coin = (GLoader)GetChild("coin");
-            count = (GTextField)GetChild("count");
-            txt = (GTextField)GetChild("txt");
+            coin = (GLoader) GetChild("coin");
+            count = (GTextField) GetChild("count");
+            txt = (GTextField) GetChild("txt");
             t0 = GetTransition("t0");
         }
     }

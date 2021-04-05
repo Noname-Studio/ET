@@ -1,0 +1,10 @@
+{
+  "Breakfast": {
+    "Id": "Breakfast",
+    "PlayerInitializePosition": {
+      "x": -1,
+      "y": 0.01,
+      "z": 1.4
+    }
+  }
+}

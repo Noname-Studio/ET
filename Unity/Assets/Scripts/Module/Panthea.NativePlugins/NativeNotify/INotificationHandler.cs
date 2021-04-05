@@ -23,4 +23,3 @@ namespace Panthea.NativePlugins.Notify
         void ScheduleNotification(NotifyInfo info);
     }
 }
-

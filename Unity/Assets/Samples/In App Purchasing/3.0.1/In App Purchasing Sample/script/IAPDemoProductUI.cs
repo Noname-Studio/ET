@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Purchasing;
 
-public class IAPDemoProductUI : MonoBehaviour
+public class IAPDemoProductUI: MonoBehaviour
 {
     public Button purchaseButton;
     public Button receiptButton;
@@ -28,7 +28,7 @@ public class IAPDemoProductUI : MonoBehaviour
         m_ProductID = p.definition.id;
         m_PurchaseCallback = purchaseCallback;
 
-        statusText.text = p.availableToPurchase ? "Available" : "Unavailable";
+        statusText.text = p.availableToPurchase? "Available" : "Unavailable";
     }
 
     public void SetPendingTime(int secondsRemaining)
@@ -47,6 +47,8 @@ public class IAPDemoProductUI : MonoBehaviour
     public void ReceiptButtonClick()
     {
         if (!string.IsNullOrEmpty(m_Receipt))
+        {
             Debug.Log("Receipt for " + m_ProductID + ": " + m_Receipt);
+        }
     }
 }

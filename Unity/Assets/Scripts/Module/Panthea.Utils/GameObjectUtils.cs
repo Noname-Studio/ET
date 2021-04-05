@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameObjectUtils
 {
-    public static string GetObjPath(Transform root,Transform me)
+    public static string GetObjPath(Transform root, Transform me)
     {
         Transform parent = me;
         StringBuilder path = new StringBuilder(me.name);
@@ -16,10 +16,15 @@ public class GameObjectUtils
             {
                 return path.ToString();
             }
+
             if (parent == null)
+            {
                 return path.ToString();
+            }
             else
+            {
                 path.Insert(0, parent.name + "/");
+            }
         }
     }
 }

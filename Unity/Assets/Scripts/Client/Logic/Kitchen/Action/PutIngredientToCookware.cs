@@ -1,18 +1,19 @@
-
 using System.Collections.Generic;
+using Kitchen;
 
-namespace Kitchen
+namespace Kitchen.Action
 {
-    public class PutIngredientToCookware : IGameAction
+    public class PutIngredientToCookware: IGameAction
     {
         private PlayerController mController;
         private NormalCookware mTarget;
-        public PutIngredientToCookware(PlayerController controller,NormalCookware target)
+
+        public PutIngredientToCookware(PlayerController controller, NormalCookware target)
         {
             mController = controller;
             mTarget = target;
         }
-    
+
         public void Execute()
         {
             List<string> list = new List<string>();
@@ -37,5 +38,4 @@ namespace Kitchen
             return true;
         }
     }
-
 }

@@ -10,61 +10,66 @@ namespace Panthea.Asset
     /// </summary>
     public class AssetBundleCounter
     {
-        private Dictionary<AssetBundleRequest,Dictionary<Object,int>> mCounter = new Dictionary<AssetBundleRequest, Dictionary<Object,int>>();
-        private Dictionary<Object,AssetBundleRequest> mLookup = new Dictionary<Object,AssetBundleRequest>();
+        private Dictionary<AssetBundleRequest, Dictionary<Object, int>> mCounter = new Dictionary<AssetBundleRequest, Dictionary<Object, int>>();
+        private Dictionary<Object, AssetBundleRequest> mLookup = new Dictionary<Object, AssetBundleRequest>();
         private AssetBundlePool mPool;
+
         public AssetBundleCounter(AssetBundlePool pool)
         {
-            this.mPool = pool;
+            mPool = pool;
         }
-    
-        public void AddCounter(Object obj,AssetBundleRequest ab)
+
+        public void AddCounter(Object obj, AssetBundleRequest ab)
         {
             Dictionary<Object, int> dict;
-            if (!this.mCounter.TryGetValue(ab, out dict))
+            if (!mCounter.TryGetValue(ab, out dict))
             {
                 dict = new Dictionary<Object, int>();
-                this.mCounter.Add(ab, dict);
-                this.mLookup.Add(obj, ab);
+                mCounter.Add(ab, dict);
+                mLookup.Add(obj, ab);
             }
 
             if (!dict.ContainsKey(obj))
+            {
                 dict.Add(obj, 1);
+            }
             else
+            {
                 dict[obj]++;
+            }
         }
 
         public void RemoveCounter(Object obj)
         {
-            this.mLookup.TryGetValue(obj, out AssetBundleRequest ab);
+            mLookup.TryGetValue(obj, out AssetBundleRequest ab);
             if (ab != null)
             {
-                if (this.mCounter.TryGetValue(ab, out Dictionary<Object, int> counter))
+                if (mCounter.TryGetValue(ab, out Dictionary<Object, int> counter))
                 {
                     if (counter.ContainsKey(obj))
                     {
                         int result = --counter[obj];
                         if (result == 0)
                         {
-                            this.Internal_RemoveCounter(counter, obj,ab);
+                            Internal_RemoveCounter(counter, obj, ab);
                         }
                     }
                     else
                     {
-                        this.Internal_RemoveCounter(counter,obj,ab);
+                        Internal_RemoveCounter(counter, obj, ab);
                     }
                 }
             }
         }
 
-        private void Internal_RemoveCounter(Dictionary<Object, int> dict,Object obj,AssetBundleRequest ab)
+        private void Internal_RemoveCounter(Dictionary<Object, int> dict, Object obj, AssetBundleRequest ab)
         {
             dict.Remove(obj);
             if (dict.Count == 0)
             {
-                this.mLookup.Remove(obj);
-                this.mCounter.Remove(ab);
-                this.mPool.Release(ab);
+                mLookup.Remove(obj);
+                mCounter.Remove(ab);
+                mPool.Release(ab);
                 Log.Print("Release " + ab.Name);
             }
         }

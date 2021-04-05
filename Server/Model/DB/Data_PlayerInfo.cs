@@ -12,16 +12,16 @@ namespace Model.Module.DB.ActualTable
     }
     public class Data_PlayerInfo : Entity, IDBCollection
     {
-        public string Name = "Player";
-        public short Language = -1;
-        public string Icon;
-        public long GuildId;
+        public string Name { get; set; } = "Player";
+        public short Language { get; set; }= -1;
+        public string Icon { get; set; }
+        public long GuildId { get; set; }
 
-        public List<int> DressUp = new List<int>();
+        public List<int> DressUp { get; } = new List<int>();
         [BsonIgnore]
         public long UnitId { get; set; }
         [BsonIgnore]
         public long ChatId { get; set; }
-        public int CurLevel = 1000000;
+        public int CurLevel { get; set; } = 1000000;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class BigIntegerUtils
 {
- private static List<string> suffixes = new List<string>();
+    private static List<string> suffixes = new List<string>();
 
     /// <summary>
     /// If it's equal to 0, there are only suffixes from an empty string to Q on the suffixes list.
@@ -39,7 +39,10 @@ public static class BigIntegerUtils
     private static string FormatNumberScientificString(string numberString)
     {
         // if number length is smaller than 4, just returns the number
-        if (numberString.Length < 4) return numberString;
+        if (numberString.Length < 4)
+        {
+            return numberString;
+        }
 
         // Exponent counter. E.g. for 1000 it will be 3 and the number will
         // be presented as 1.000e3 because 1000.Length = 4
@@ -59,7 +62,10 @@ public static class BigIntegerUtils
     private static string FormatNumberWithSuffixString(string numberAsString)
     {
         // if number length is smaller than 4, just returns the number
-        if (numberAsString.Length < 4) return numberAsString;
+        if (numberAsString.Length < 4)
+        {
+            return numberAsString;
+        }
 
         // Counts scientific exponent. This will be used to determine which suffix from the 
         // suffixes List should be used. 
@@ -113,10 +119,16 @@ public static class BigIntegerUtils
     private static string GetSuffixForNumber(int suffixIndex)
     {
         // Creates initial suffixes List with an empty string, k, M, B and Q
-        if (suffixes.Count == 0) suffixes = CreateSuffixesList();
+        if (suffixes.Count == 0)
+        {
+            suffixes = CreateSuffixesList();
+        }
 
         // Fills the suffixes list if there's a need to
-        if (suffixes.Count - 1 < suffixIndex) FillSuffixesList(suffixes, suffixIndex);
+        if (suffixes.Count - 1 < suffixIndex)
+        {
+            FillSuffixesList(suffixes, suffixIndex);
+        }
 
         return suffixes[suffixIndex];
     }
@@ -125,7 +137,11 @@ public static class BigIntegerUtils
     {
         var suffixesList = new List<string>
         {
-            "", "k", "M", "B", "Q"
+            "",
+            "k",
+            "M",
+            "B",
+            "Q"
         };
 
         return suffixesList;
@@ -147,10 +163,13 @@ public static class BigIntegerUtils
                 for (int i = 97; i <= 122; i++)
                 {
                     // k excluded because of thousands suffix
-                    if (i == 107) continue;
+                    if (i == 107)
+                    {
+                        continue;
+                    }
 
                     // cache the character a - z
-                    char character = (char)i;
+                    char character = (char) i;
                     suffixesList.Add(char.ToString(character));
                 }
 
@@ -162,7 +181,7 @@ public static class BigIntegerUtils
                 for (var i = 97; i <= 122; i++)
                 {
                     // cache the character a - z
-                    char character = (char)i;
+                    char character = (char) i;
 
                     // placeholder for a generated suffix
                     string generatedSuffix = "";
@@ -183,6 +202,4 @@ public static class BigIntegerUtils
             }
         }
     }
-    
-    
 }

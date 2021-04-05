@@ -19,25 +19,26 @@ namespace ET
 
         // 2. TaskLike Task property.
         [DebuggerHidden]
-        public ETTask Task => this.Tcs.Task;
+        public ETTask Task => Tcs.Task;
 
         // 3. SetException
         [DebuggerHidden]
         public void SetException(Exception exception)
         {
-            this.Tcs.SetException(exception);
+            Tcs.SetException(exception);
         }
 
         // 4. SetResult
         [DebuggerHidden]
         public void SetResult()
         {
-            this.Tcs.SetResult();
+            Tcs.SetResult();
         }
 
         // 5. AwaitOnCompleted
         [DebuggerHidden]
-        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion where TStateMachine : IAsyncStateMachine
+        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion
+                where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
@@ -45,7 +46,8 @@ namespace ET
         // 6. AwaitUnsafeOnCompleted
         [DebuggerHidden]
         [SecuritySafeCritical]
-        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
+        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
+                where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
@@ -78,25 +80,26 @@ namespace ET
 
         // 2. TaskLike Task property.
         [DebuggerHidden]
-        public ETTask<T> Task => this.Tcs.Task;
+        public ETTask<T> Task => Tcs.Task;
 
         // 3. SetException
         [DebuggerHidden]
         public void SetException(Exception exception)
         {
-            this.Tcs.SetException(exception);
+            Tcs.SetException(exception);
         }
 
         // 4. SetResult
         [DebuggerHidden]
         public void SetResult(T ret)
         {
-            this.Tcs.SetResult(ret);
+            Tcs.SetResult(ret);
         }
 
         // 5. AwaitOnCompleted
         [DebuggerHidden]
-        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion where TStateMachine : IAsyncStateMachine
+        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion
+                where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
@@ -104,7 +107,8 @@ namespace ET
         // 6. AwaitUnsafeOnCompleted
         [DebuggerHidden]
         [SecuritySafeCritical]
-        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
+        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
+                where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
         }

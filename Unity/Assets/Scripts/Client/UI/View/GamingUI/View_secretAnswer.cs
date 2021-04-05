@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_secretAnswer : GComponent
+    public partial class View_secretAnswer: GComponent
     {
         public GLoader cus;
         public GLoader dish;
@@ -14,16 +14,16 @@ namespace GamingUI
 
         public static View_secretAnswer CreateInstance()
         {
-            return (View_secretAnswer)UIPackage.CreateObject("GamingUI", "secretAnswer");
+            return (View_secretAnswer) UIPackage.CreateObject("GamingUI", "secretAnswer");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            cus = (GLoader)GetChild("cus");
-            dish = (GLoader)GetChild("dish");
-            food = (GLoader)GetChild("food");
+            cus = (GLoader) GetChild("cus");
+            dish = (GLoader) GetChild("dish");
+            food = (GLoader) GetChild("food");
         }
     }
 }

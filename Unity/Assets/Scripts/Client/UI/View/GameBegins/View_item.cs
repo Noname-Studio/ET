@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_item : GComponent
+    public partial class View_item: GComponent
     {
         public Controller lockcontrol;
         public GLoader icon;
@@ -15,7 +15,7 @@ namespace GameBegins
 
         public static View_item CreateInstance()
         {
-            return (View_item)UIPackage.CreateObject("GameBegins", "item");
+            return (View_item) UIPackage.CreateObject("GameBegins", "item");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,9 +23,9 @@ namespace GameBegins
             base.ConstructFromXML(xml);
 
             lockcontrol = GetController("lockcontrol");
-            icon = (GLoader)GetChild("icon");
-            choice = (View_Choice)GetChild("choice");
-            recommend = (GComponent)GetChild("recommend");
+            icon = (GLoader) GetChild("icon");
+            choice = (View_Choice) GetChild("choice");
+            recommend = (GComponent) GetChild("recommend");
         }
     }
 }

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_EditAvatar : GComponent
+    public partial class View_EditAvatar: GComponent
     {
         public GButton bg;
         public GButton Close;
@@ -15,17 +15,17 @@ namespace Settings
 
         public static View_EditAvatar CreateInstance()
         {
-            return (View_EditAvatar)UIPackage.CreateObject("Settings", "EditAvatar");
+            return (View_EditAvatar) UIPackage.CreateObject("Settings", "EditAvatar");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
-            Close = (GButton)GetChild("Close");
-            Confrim = (GButton)GetChild("Confrim");
-            AvatarList = (GList)GetChild("AvatarList");
+            bg = (GButton) GetChild("bg");
+            Close = (GButton) GetChild("Close");
+            Confrim = (GButton) GetChild("Confrim");
+            AvatarList = (GList) GetChild("AvatarList");
         }
     }
 }

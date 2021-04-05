@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-public partial class DBManager : IDBService
+public partial class DBManager: IDBService
 {
     private static DBManager _inst;
     public static DBManager Inst => _inst ?? (_inst = new DBManager());
     public int Order => -1;
     private List<IDBService> mDBServices = new List<IDBService>();
+
     private DBManager()
     {
         //TODO 这里加入对服务器的判断.然后添加加载DB设置
@@ -15,19 +16,20 @@ public partial class DBManager : IDBService
         //mDBServices.Add(new ServerDB());
     }
 
-    public T Query<T>(string userId = "") where T : DBDefine
+    public T Query<T>() where T : DBDefine
     {
-        return (T) Query(typeof (T), userId);
+        return (T) Query(typeof (T));
     }
-    
-    public DBDefine Query(Type type, string userId = "")
+
+    public DBDefine Query(Type type)
     {
         var service = GetPriorityService();
         if (service == null)
         {
             throw new Exception("你必须注册至少一个DB服务才能查询！！");
         }
-        return service.Query(type,userId);
+
+        return service.Query(type);
     }
 
     private IDBService GetPriorityService()
@@ -49,14 +51,11 @@ public partial class DBManager : IDBService
 
     public void UpdateLocal<T>(T value) where T : DBDefine
     {
-        for (int i = 0; i < mDBServices.Count; i++)
-        {
-            var node = mDBServices[i];
-            if (node is LocalDB)
-                node.Update(value);
-        }
+        var db = GetLocalService();
+        db.Update(value);
+        db.NeedSyncToServer.Add(value.GetType());
     }
-    
+
     public void Update<T>(T value) where T : DBDefine
     {
         for (int i = 0; i < mDBServices.Count; i++)
@@ -64,5 +63,31 @@ public partial class DBManager : IDBService
             var node = mDBServices[i];
             node.Update(value);
         }
+    }
+
+    public void Update()
+    {
+        var db = GetLocalService();
+        foreach (var node in db.NeedSyncToServer)
+        {
+            var result = db.Query(node);
+            Update(result);
+        }
+    }
+
+    private LocalDB GetLocalService()
+    {
+        for (int i = 0; i < mDBServices.Count; i++)
+        {
+            var node = mDBServices[i];
+            if (node is LocalDB db)
+            {
+                return db;
+            }
+        }
+
+        var localDb = new LocalDB();
+        mDBServices.Add(localDb);
+        return localDb;
     }
 }

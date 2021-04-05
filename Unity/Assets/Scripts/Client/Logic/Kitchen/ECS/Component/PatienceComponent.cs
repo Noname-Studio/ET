@@ -2,7 +2,7 @@
 
 namespace Kitchen
 {
-    public class PatienceComponent : IComponent
+    public class PatienceComponent: IComponent
     {
         /// <summary>
         /// 

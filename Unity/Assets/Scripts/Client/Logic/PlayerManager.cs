@@ -1,19 +1,26 @@
 ﻿using Kitchen;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
-public class PlayerManager : IPlayer
+public partial class PlayerManager: IPlayer
 {
     private static PlayerManager mInst;
     public static PlayerManager Inst => mInst ?? (mInst = new PlayerManager());
-    
+    public static long Id { get; set; } = 0;
+
     private MessageKit mMessage;
     private Data_GameRecord mGameRecord;
+
+    /// <summary>
+    /// 当前游玩的餐厅(非最大餐厅)
+    /// </summary>
+    public RestaurantKey PlayingRestaurant { get; set; } = RestaurantKey.Breakfast;
+
     private PlayerManager()
     {
         mGameRecord = DBManager.Inst.Query<Data_GameRecord>();
         mMessage = MessageKit.Inst;
     }
-    
+
     /// <summary>
     /// 当前玩家打至关卡
     /// </summary>
@@ -25,7 +32,7 @@ public class PlayerManager : IPlayer
             return null;
         }
     }
-
+    
     public int GetCoin(RestaurantKey rest = null)
     {
         return ResourcesHelper.GetCoin(rest);
@@ -36,7 +43,7 @@ public class PlayerManager : IPlayer
         return ResourcesHelper.GetGem();
     }
 
-    public void SetCoin(int coin,RestaurantKey rest = null)
+    public void SetCoin(int coin, RestaurantKey rest = null)
     {
         ResourcesHelper.SetGameCoin(coin);
     }

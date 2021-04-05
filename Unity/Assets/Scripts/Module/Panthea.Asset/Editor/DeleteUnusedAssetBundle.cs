@@ -9,29 +9,30 @@ using UnityEditor.Graphs;
 
 namespace Panthea.Editor.Asset
 {
-    public class DeleteUnusedAssetBundle : IBuildTask
+    public class DeleteUnusedAssetBundle: IBuildTask
     {
 #pragma warning disable 649
         [InjectContext(ContextUsage.In)]
-        IBuildParameters m_Parameters;
+        private IBuildParameters m_Parameters;
 
         [InjectContext(ContextUsage.In)]
-        IBundleBuildContent m_Content;
-    
+        private IBundleBuildContent m_Content;
+
 #pragma warning restore 649
-    
+
         public ReturnCode Run()
         {
-            var outputFolder = ((AddressableAssetsBundleBuildParameters) this.m_Parameters).OutputFolder;
-            var allAssetbundle = Directory.GetFiles( outputFolder + "/","*.bundle",SearchOption.AllDirectories);
+            var outputFolder = ((AddressableAssetsBundleBuildParameters) m_Parameters).OutputFolder;
+            var allAssetbundle = Directory.GetFiles(outputFolder + "/", "*.bundle", SearchOption.AllDirectories);
             foreach (var node in allAssetbundle)
             {
                 string path = PathUtils.FormatFilePath(node.Replace(outputFolder + "/", ""));
-                if (!this.m_Content.BundleLayout.ContainsKey(path))
+                if (!m_Content.BundleLayout.ContainsKey(path))
                 {
                     File.Delete(node);
                 }
             }
+
             RemoveEmptyDir(outputFolder + "/");
             return ReturnCode.Success;
         }
@@ -48,19 +49,20 @@ namespace Panthea.Editor.Asset
                     RemoveEmptyDir(node.FullName);
                 }
             }
+
             if ((allFile.Length == 0 || allFile.All(t1 => t1.Extension == ".meta")) && dir.GetDirectories().Length == 0)
             {
                 FileUtil.DeleteFileOrDirectory(PathUtils.FullPathToUnityPath(dir.FullName));
                 var metaPath = dir.FullName + ".meta";
-                if(File.Exists(metaPath))
+                if (File.Exists(metaPath))
+                {
                     FileUtil.DeleteFileOrDirectory(PathUtils.FullPathToUnityPath(metaPath));
+                }
+
                 return;
             }
         }
 
-        public int Version
-        {
-            get { return 1; }
-        }
+        public int Version => 1;
     }
 }

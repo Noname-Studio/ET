@@ -32,7 +32,7 @@ MonoBehaviour:
     mPrice:
       Coin: 0
       Gem: 0
-    mTips: 0
+    mTips: 20
   mBasePatient: 100
   mCookware: {fileID: 11400000, guid: 239c9def5b1cd2e489954f7f937fa078, type: 2}
   mAllIngredients:

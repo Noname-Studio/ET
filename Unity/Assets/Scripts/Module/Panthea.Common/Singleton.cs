@@ -7,12 +7,13 @@ namespace Manager
     {
         public virtual async void OnRelease()
         {
-            
         }
-        
-        public virtual async void OnInit(){}
+
+        public virtual async void OnInit()
+        {
+        }
     }
-    
+
     /// <summary>
     /// 用以标记类会单例类
     /// 便于后期管理和搜查问题
@@ -21,10 +22,11 @@ namespace Manager
     /// 以代替Unity中的Awake
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Singleton<T> : Singleton where T : Singleton
+    public abstract class Singleton<T>: Singleton where T : Singleton
     {
         private static T mInst;
         private static object mLock = new object();
+
         public static T Inst
         {
             get
@@ -33,10 +35,11 @@ namespace Manager
                 {
                     CreateInstance();
                 }
+
                 return mInst;
             }
             //这个做法是不对的但是因为有的存档数据是在Manager里面的.所以不得已设置了可以被set
-            set { mInst = value; }
+            set => mInst = value;
         }
 
         private static void CreateInstance()
@@ -45,13 +48,13 @@ namespace Manager
             {
                 if (mInst == null)
                 {
-                    Type t = typeof(T);
+                    Type t = typeof (T);
                     mInst = (T) t.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)[0].Invoke(null);
                     mInst.OnInit();
                 }
             }
         }
-        
+
         public void Dispose()
         {
             OnRelease();

@@ -307,10 +307,10 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public string Account { get; set; }
+		public string AccessToken { get; set; }
 
 		[ProtoMember(2)]
-		public string Password { get; set; }
+		public int LoginType { get; set; }
 
 	}
 
@@ -479,25 +479,25 @@ namespace ET
 		public string Name { get; set; }
 
 		[ProtoMember(3)]
-		public int Frame { get; set; }
+		public int? Frame { get; set; }
 
 		[ProtoMember(4)]
-		public int Inside { get; set; }
+		public int? Inside { get; set; }
 
 		[ProtoMember(5)]
-		public bool IsPublic { get; set; }
+		public bool? IsPublic { get; set; }
 
 		[ProtoMember(6)]
-		public short Language { get; set; }
+		public short? Language { get; set; }
 
 		[ProtoMember(7)]
 		public string Desc { get; set; }
 
 		[ProtoMember(8)]
-		public int MinLevel { get; set; }
+		public int? MinLevel { get; set; }
 
 		[ProtoMember(9)]
-		public long OwnerId { get; set; }
+		public long? OwnerId { get; set; }
 
 	}
 
@@ -530,10 +530,10 @@ namespace ET
 		public string Desc { get; set; }
 
 		[ProtoMember(4)]
-		public int Inside { get; set; }
+		public int? Inside { get; set; }
 
 		[ProtoMember(5)]
-		public int Frame { get; set; }
+		public int? Frame { get; set; }
 
 	}
 
@@ -634,46 +634,55 @@ namespace ET
 		public string Message { get; set; }
 
 		[ProtoMember(1)]
-		public long Id { get; set; }
+		public long? Id { get; set; }
 
 		[ProtoMember(2)]
 		public string Name { get; set; }
 
 		[ProtoMember(3)]
-		public int Frame { get; set; }
+		public int? Frame { get; set; }
 
 		[ProtoMember(4)]
-		public int Inside { get; set; }
+		public int? Inside { get; set; }
 
 		[ProtoMember(5)]
-		public long CreateTime { get; set; }
+		public long? CreateTime { get; set; }
 
 		[ProtoMember(6)]
-		public bool IsPublic { get; set; }
+		public bool? IsPublic { get; set; }
 
 		[ProtoMember(7)]
-		public short Language { get; set; }
+		public short? Language { get; set; }
 
 		[ProtoMember(8)]
 		public string Desc { get; set; }
 
 		[ProtoMember(9)]
-		public int MinLevel { get; set; }
+		public int? MinLevel { get; set; }
 
 		[ProtoMember(10)]
-		public long OwnerId { get; set; }
+		public long? OwnerId { get; set; }
 
 		[ProtoMember(11)]
-		public List<MemberInfo> Members = new List<MemberInfo>();
+		public int? MaxMemberNum { get; set; }
 
 		[ProtoMember(12)]
-		public List<MemberInfo> RemoveMembers = new List<MemberInfo>();
+		public List<MemberInfo> Members = new List<MemberInfo>();
 
 		[ProtoMember(13)]
-		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
+		public List<int> RemoveMembers = new List<int>();
 
 		[ProtoMember(14)]
-		public int MaxMemberNum { get; set; }
+		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
+
+		[ProtoMember(15)]
+		public List<int> RemoveApplicationList = new List<int>();
+
+		[ProtoMember(16)]
+		public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
+
+		[ProtoMember(17)]
+		public List<int> RemoveAskEnergyList = new List<int>();
 
 	}
 
@@ -725,6 +734,15 @@ namespace ET
 		public string Message { get; set; }
 
 		[ProtoMember(1)]
+		public List<ChatMessageInfo> Value = new List<ChatMessageInfo>();
+
+	}
+
+	[Message(OuterOpcode.ChatMessageInfo)]
+	[ProtoContract]
+	public partial class ChatMessageInfo
+	{
+		[ProtoMember(1)]
 		public long SenderId { get; set; }
 
 		[ProtoMember(2)]
@@ -735,6 +753,62 @@ namespace ET
 
 		[ProtoMember(4)]
 		public long Time { get; set; }
+
+		[ProtoMember(5)]
+		public string SenderHead { get; set; }
+
+	}
+
+	[ResponseType(typeof(M2C_GuildAskEnergyResponse))]
+	[Message(OuterOpcode.C2M_GuildAskEnergyRequest)]
+	[ProtoContract]
+	public partial class C2M_GuildAskEnergyRequest: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_GuildAskEnergyResponse)]
+	[ProtoContract]
+	public partial class M2C_GuildAskEnergyResponse: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(M2C_GuildGiveEnergyResponse))]
+	[Message(OuterOpcode.C2M_GuildGiveEnergyRequest)]
+	[ProtoContract]
+	public partial class C2M_GuildGiveEnergyRequest: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_GuildGiveEnergyResponse)]
+	[ProtoContract]
+	public partial class M2C_GuildGiveEnergyResponse: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
 
 	}
 
@@ -747,6 +821,27 @@ namespace ET
 
 		[ProtoMember(2)]
 		public long Id { get; set; }
+
+	}
+
+	[Message(OuterOpcode.AskEnergyInfo)]
+	[ProtoContract]
+	public partial class AskEnergyInfo
+	{
+		[ProtoMember(1)]
+		public long Time { get; set; }
+
+		[ProtoMember(2)]
+		public long Id { get; set; }
+
+		[ProtoMember(3)]
+		public long Count { get; set; }
+
+		[ProtoMember(4)]
+		public string Head { get; set; }
+
+		[ProtoMember(5)]
+		public string Name { get; set; }
 
 	}
 

@@ -3,10 +3,7 @@
 #if !NOT_CLIENT
     public sealed class AsyncMethodBuilderAttribute: Attribute
     {
-        public Type BuilderType
-        {
-            get;
-        }
+        public Type BuilderType { get; }
 
         public AsyncMethodBuilderAttribute(Type builderType)
         {

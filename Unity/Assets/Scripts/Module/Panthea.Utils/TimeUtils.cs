@@ -12,7 +12,7 @@ public static class TimeUtils
     private static long _utcTimeStamp;
     private static long _baseSystemUpTime;
     private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-    
+
     static TimeUtils()
     {
         if (_utcTimeStamp == 0)
@@ -20,24 +20,25 @@ public static class TimeUtils
             _utcDateTime = DateTime.UtcNow;
             _utcTimeStamp = (long) _utcDateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
-        _baseSystemUpTime = (long)Time.realtimeSinceStartup;
+
+        _baseSystemUpTime = (long) Time.realtimeSinceStartup;
     }
-    
+
     public static async void FetchUtcTime()
     {
-        var request = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+        var request = (HttpWebRequest) WebRequest.Create("http://www.microsoft.com");
         var response = await Task.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null);
         string todaysDates = response.Headers["date"];
-        _utcDateTime = DateTime.ParseExact(todaysDates, 
-            "ddd, dd MMM yyyy HH:mm:ss 'GMT'", 
-            CultureInfo.InvariantCulture.DateTimeFormat, 
+        _utcDateTime = DateTime.ParseExact(todaysDates,
+            "ddd, dd MMM yyyy HH:mm:ss 'GMT'",
+            CultureInfo.InvariantCulture.DateTimeFormat,
             DateTimeStyles.AssumeUniversal);
         _utcDateTime = _utcDateTime.ToUniversalTime();
         _utcTimeStamp = ConvertDateTimeToStamp(_utcDateTime);
         response.Dispose();
         Log.Print("当前UTC时间为:" + _utcDateTime);
     }
-    
+
     /// <summary>
     /// 返回当前UTC时间(全球)
     /// </summary>
@@ -74,7 +75,7 @@ public static class TimeUtils
     {
         return DateTimeOffset.FromUnixTimeSeconds(GetUtcTimeStamp(dt)).DateTime;
     }
-    
+
     /// <summary>
     /// 返回当前UTC时间(本地)
     /// </summary>
@@ -84,7 +85,7 @@ public static class TimeUtils
         long utcTime = GetUtcTimeStamp();
         return ConvertDateTimeToStamp(DateTimeOffset.FromUnixTimeSeconds(utcTime).LocalDateTime);
     }
-    
+
     /// <summary>
     /// 返回当前UTC时间(本地)
     /// </summary>
@@ -94,7 +95,7 @@ public static class TimeUtils
         long utcTime = GetUtcTimeStamp();
         return DateTimeOffset.FromUnixTimeSeconds(utcTime).LocalDateTime;
     }
-    
+
     /// <summary>
     /// 将DateTime转换为UTC时间
     /// </summary>
@@ -113,7 +114,7 @@ public static class TimeUtils
     /// <returns></returns>
     public static DateTime TodayAtZero(this DateTime dt)
     {
-        return new DateTime(dt.Year,dt.Month,dt.Day,0,0,0);
+        return new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
     }
 
     /// <summary>
@@ -129,7 +130,7 @@ public static class TimeUtils
 
     /// <summary>
     /// 给定一个数字和一个转换格式如mm:ss
-    /// 比如 ConvertNumberToTimeString(90,"@"mm\:ss"");
+    /// 比如 ConvertNumberToTimeString(90,@"mm\:ss");
     /// 则返回结果 01:30
     /// </summary>
     /// <param name="seconds"></param>

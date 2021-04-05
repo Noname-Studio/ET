@@ -3,7 +3,7 @@ namespace Kitchen
     /// <summary>
     /// Buff Interface
     /// </summary>
-    public interface IBuff 
+    public interface IBuff
     {
         int ID { get; }
         float Duration { get; } //持续时间
@@ -12,4 +12,3 @@ namespace Kitchen
         void Trigger(IUnit unit);
     }
 }
-

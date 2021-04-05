@@ -153,7 +153,7 @@ namespace ET
             EventSystem.Instance.Awake(component, a, b, c);
             return component;
         }
-        
+
         public static T Create<T, A, B, C, D>(Entity domain, A a, B b, C c, D d, bool isFromPool = false) where T : Entity
         {
             Type type = typeof (T);

@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_EditName : GComponent
+    public partial class View_EditName: GComponent
     {
         public Controller name;
         public GButton bg;
@@ -16,7 +16,7 @@ namespace Settings
 
         public static View_EditName CreateInstance()
         {
-            return (View_EditName)UIPackage.CreateObject("Settings", "EditName");
+            return (View_EditName) UIPackage.CreateObject("Settings", "EditName");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -24,10 +24,10 @@ namespace Settings
             base.ConstructFromXML(xml);
 
             name = GetController("name");
-            bg = (GButton)GetChild("bg");
-            Close = (GButton)GetChild("Close");
-            Input = (GTextInput)GetChild("Input");
-            Confrim = (GButton)GetChild("Confrim");
+            bg = (GButton) GetChild("bg");
+            Close = (GButton) GetChild("Close");
+            Input = (GTextInput) GetChild("Input");
+            Confrim = (GButton) GetChild("Confrim");
         }
     }
 }

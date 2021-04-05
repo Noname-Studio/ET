@@ -20,11 +20,7 @@
 /// These are the constants defined in the Play Games Console for Game Services
 /// Resources.
 ///
-
-
 public static class GPGSIds
 {
-        public const string achievement_hello_world = "CgkIjuyor6kaEAIQAQ"; // <GPGSID>
-
+    public const string achievement_hello_world = "CgkIjuyor6kaEAIQAQ"; // <GPGSID>
 }
-

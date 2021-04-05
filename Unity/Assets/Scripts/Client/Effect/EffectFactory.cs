@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectFactory 
+public class EffectFactory
 {
     public static TEffect Create<TEffect>() where TEffect : IEffect
     {

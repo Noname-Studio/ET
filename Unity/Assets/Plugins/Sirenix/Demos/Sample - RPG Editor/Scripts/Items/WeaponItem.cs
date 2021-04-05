@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    public class WeaponItem : EquipableItem
+    public class WeaponItem: EquipableItem
     {
         [BoxGroup(STATS_BOX_GROUP)]
         public float BaseAttackDamage;
@@ -19,11 +19,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         {
             get
             {
-                return new ItemTypes[]
-                {
-                    ItemTypes.MainHand,
-                    ItemTypes.OffHand
-                };
+                return new ItemTypes[] { ItemTypes.MainHand, ItemTypes.OffHand };
             }
         }
     }

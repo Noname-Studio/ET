@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class PathUtils 
+public class PathUtils
 {
     private static Regex FormatPathRegex = new Regex(@"\/|\/\/|\\|\\\\", RegexOptions.Compiled);
 
@@ -15,7 +15,7 @@ public class PathUtils
         path = FormatPathRegex.Replace(path, "/");
         return path;
     }
-    
+
     /// <summary>
     /// 格式化文件路径
     /// </summary>
@@ -26,18 +26,18 @@ public class PathUtils
         path = FormatFilePath(path);
         return Regex.Replace(path, Application.dataPath, "Assets", RegexOptions.IgnoreCase);
     }
-        
+
     /// <summary>
     /// 格式化文件路径
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    public static string FullPathToAssetbundlePath(string path,string abPath)
+    public static string FullPathToAssetbundlePath(string path, string abPath)
     {
         path = FormatPathRegex.Replace(path, "/");
         return Regex.Replace(path, Application.dataPath + "/" + abPath, "", RegexOptions.IgnoreCase);
     }
-        
+
     public static string RemoveFileExtension(string path)
     {
         string extension = System.IO.Path.GetExtension(path);
@@ -49,7 +49,7 @@ public class PathUtils
 
         return path;
     }
-    
+
     public static string CalculateMD5(string path)
     {
         using (var md5 = MD5.Create())
@@ -61,13 +61,13 @@ public class PathUtils
             }
         }
     }
-    
+
     public static string CreateMD5(string input)
     {
         // Use input string to calculate MD5 hash
-        using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+        using (MD5 md5 = MD5.Create())
         {
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
             byte[] hashBytes = md5.ComputeHash(inputBytes);
 
             // Convert the byte array to hexadecimal string
@@ -76,9 +76,11 @@ public class PathUtils
             {
                 sb.Append(hashBytes[i].ToString("X2"));
             }
+
             return sb.ToString();
         }
     }
+
     /*/// <summary>
     /// 格式化文件路径
     /// </summary>

@@ -8,7 +8,7 @@ namespace ET
 
         public UIEventAttribute(string uiType)
         {
-            this.UIType = uiType;
+            UIType = uiType;
         }
     }
 }

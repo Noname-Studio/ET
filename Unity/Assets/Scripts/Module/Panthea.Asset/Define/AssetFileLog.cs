@@ -8,7 +8,8 @@
         public string[] Dependencies;
         public string[] Files;
         public int Size;
-        public AssetFileLog(uint crc, long version, string path,string[] files,string[] dependencies,int size)
+
+        public AssetFileLog(uint crc, long version, string path, string[] files, string[] dependencies, int size)
         {
             Crc = crc;
             Version = version;

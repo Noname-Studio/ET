@@ -1,4 +1,4 @@
-﻿public static class UnityModuleExt 
+﻿public static class UnityModuleExt
 {
     public static void Dispose(this IUnityModule module)
     {

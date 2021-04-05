@@ -8,10 +8,32 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
     /// </summary>
     public static class ResourcesHelper
     {
+        public static bool SpenPrice(Price price)
+        {
+            if (price.IsFree())
+            {
+                return true;
+            }
+
+            if (price.Coin > 0)
+            {
+                return SpenGameCoin(price.Coin);
+            }
+            else if (price.Gem > 0)
+            {
+                return SpenGem(price.Gem);
+            }
+
+            return false;
+        }
+
         public static int GetCoin(RestaurantKey rest = null)
         {
-            if(rest == null)
+            if (rest == null)
+            {
                 rest = RestaurantKey.This;
+            }
+
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             var coins = gameRecord.Coin;
             return coins;
@@ -28,14 +50,22 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             var coins = gameRecord.Coin;
             if (count > coins)
+            {
                 GainGameCoin(count - coins);
+            }
             else if (count < coins)
+            {
                 SpenGameCoin(coins - count);
+            }
         }
-        
+
         public static void GainGameCoin(int count)
         {
-            if(count == 0) return;
+            if (count == 0)
+            {
+                return;
+            }
+
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             gameRecord.Coin += count;
             MessageKit.Inst.Send(EventKey.GainGameCoin);
@@ -43,7 +73,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
 
         public static bool SpenGameCoin(int count)
         {
-            if(count == 0) return true;
+            if (count == 0)
+            {
+                return true;
+            }
+
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             if (gameRecord.Coin - count < 0)
             {
@@ -52,14 +86,19 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
                 tips.SetContent("这里应该使用特殊的提示面板用于显示和跳转金币的相关获取渠道.");
                 return false;
             }
+
             gameRecord.Coin = Mathf.Max(0, gameRecord.Coin - count);
             MessageKit.Inst.Send(EventKey.SpentGameCoin);
             return true;
         }
-        
+
         public static void GainGem(int count)
         {
-            if(count == 0) return;
+            if (count == 0)
+            {
+                return;
+            }
+
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             gameRecord.Gem += count;
             MessageKit.Inst.Send(EventKey.GainGem);
@@ -67,7 +106,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
 
         public static bool SpenGem(int count)
         {
-            if(count == 0) return true;
+            if (count == 0)
+            {
+                return true;
+            }
+
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             if (gameRecord.Gem - count < 0)
             {
@@ -76,19 +119,24 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
                 tips.SetContent("这里应该使用特殊的提示面板用于显示和跳转点券的相关获取渠道.");
                 return false;
             }
+
             gameRecord.Gem = Mathf.Max(0, gameRecord.Gem - count);
             MessageKit.Inst.Send(EventKey.SpentGem);
             return true;
         }
-        
+
         public static void SetGem(int count)
         {
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             var gem = gameRecord.Gem;
             if (count > gem)
+            {
                 GainGem(count - gem);
+            }
             else if (count < gem)
+            {
                 SpenGem(gem - count);
+            }
         }
     }
 }

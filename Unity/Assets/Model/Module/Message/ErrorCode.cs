@@ -12,7 +12,7 @@ namespace ET
         public const int ERR_DuplicateNames = 110001;
         public const int ERR_JoinedGuild = 110002;
         public const int ERR_MissingGuild = 110003;
-        
+
         public const int ERR_KcpConnectTimeout = 100205;
         public const int ERR_PeerDisconnect = 100208;
         public const int ERR_SocketCantSend = 100209;
@@ -48,7 +48,7 @@ namespace ET
         public const int ERR_ActorLocationSenderTimeout3 = 110318;
         public const int ERR_ActorLocationSenderTimeout4 = 110319;
         public const int ERR_ActorLocationSenderTimeout5 = 110320;
-        
+
         public const int ERR_KcpRouterTimeout = 110401;
         public const int ERR_KcpRouterTooManyPackets = 110402;
         public const int ERR_KcpRouterSame = 110402;
@@ -65,6 +65,7 @@ namespace ET
             {
                 return false;
             }
+
             // ws平台返回错误专用的值
             if (error == -1)
             {
@@ -85,6 +86,7 @@ namespace ET
             {
                 return true;
             }
+
             return false;
         }
     }

@@ -7,15 +7,14 @@ namespace Common
 {
     public partial class View_KitchenPop : GComponent
     {
-        public Controller c1;
-        public Controller c2;
+        public Controller MaxLevel;
+        public Controller Language;
         public GButton bg;
         public GTextField Name;
         public View_kitchenicon iconframe;
         public GImage price_bg;
         public View_green_button UpgradeBtn;
         public GRichTextField price;
-        public View_green_button getFreeBtn;
         public GGroup upgrade;
         public GLoader max_icon;
         public GList AttributeList;
@@ -38,15 +37,14 @@ namespace Common
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetController("c1");
-            c2 = GetController("c2");
+            MaxLevel = GetController("MaxLevel");
+            Language = GetController("Language");
             bg = (GButton)GetChild("bg");
             Name = (GTextField)GetChild("Name");
             iconframe = (View_kitchenicon)GetChild("iconframe");
             price_bg = (GImage)GetChild("price_bg");
             UpgradeBtn = (View_green_button)GetChild("UpgradeBtn");
             price = (GRichTextField)GetChild("price");
-            getFreeBtn = (View_green_button)GetChild("getFreeBtn");
             upgrade = (GGroup)GetChild("upgrade");
             max_icon = (GLoader)GetChild("max_icon");
             AttributeList = (GList)GetChild("AttributeList");

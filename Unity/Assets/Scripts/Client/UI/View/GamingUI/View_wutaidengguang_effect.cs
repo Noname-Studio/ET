@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_wutaidengguang_effect : GComponent
+    public partial class View_wutaidengguang_effect: GComponent
     {
         public Transition t0;
         public const string URL = "ui://dpc3yd4tte9stvz6";
 
         public static View_wutaidengguang_effect CreateInstance()
         {
-            return (View_wutaidengguang_effect)UIPackage.CreateObject("GamingUI", "wutaidengguang_effect");
+            return (View_wutaidengguang_effect) UIPackage.CreateObject("GamingUI", "wutaidengguang_effect");
         }
 
         public override void ConstructFromXML(XML xml)

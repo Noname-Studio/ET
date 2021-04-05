@@ -1,11 +1,10 @@
-﻿public class ItemUpdateTimer : TimerAgent
+﻿public class ItemUpdateTimer: TimerAgent
 {
-    public ItemUpdateTimer() : base(nameof(ItemUpdateTimer), 1)
+    public ItemUpdateTimer(): base(nameof (ItemUpdateTimer), 1)
     {
     }
 
     public override void Run()
     {
-
     }
 }

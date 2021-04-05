@@ -1,7 +1,7 @@
 ﻿using System;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class UIWidget : Attribute
+public class UIWidget: Attribute
 {
     /// <summary>
     ///     自定义层级 (默认为10）
@@ -47,11 +47,16 @@ public class UIWidget : Attribute
     public bool Optimize = true;
 
     /// <summary>
+    ///     是否显示黑底界面
+    /// </summary>
+    public bool Background = false;
+
+    /// <summary>
     ///     默认参数
     /// </summary>
     public static UIWidget Default { get; } = new UIWidget();
 
-    
+
     public virtual UIWidget Clone()
     {
         return new UIWidget
@@ -67,7 +72,7 @@ public class UIWidget : Attribute
 }
 
 [AttributeUsage(AttributeTargets.Class)]
-public class UIBackgroundArgs : Attribute
+public class UIBackgroundArgs: Attribute
 {
     public Type Type { get; }
     public bool FollowMainAnim { get; }
@@ -78,7 +83,7 @@ public class UIBackgroundArgs : Attribute
     }
 }
 
-public class UIWindow : UIWidget
+public class UIWindow: UIWidget
 {
     /// <summary>
     ///     窗口打开时播放的动画(仅IsWindow为true的时候有效)

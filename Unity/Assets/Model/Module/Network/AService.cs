@@ -7,36 +7,36 @@ namespace ET
     public abstract class AService: IDisposable
     {
         public ServiceType ServiceType { get; protected set; }
-        
+
         public ThreadSynchronizationContext ThreadSynchronizationContext;
-        
+
         // localConn放在低32bit
         private long connectIdGenerater = int.MaxValue;
+
         public long CreateConnectChannelId(uint localConn)
         {
-            return (--this.connectIdGenerater << 32) | localConn;
+            return (--connectIdGenerater << 32) | localConn;
         }
-        
+
         public uint CreateRandomLocalConn(Random random)
         {
             return (1u << 30) | random.RandUInt32();
         }
 
-#region 网络线程
-        
+        #region 网络线程
+
         // localConn放在低32bit
         private long acceptIdGenerater = 1;
+
         public long CreateAcceptChannelId(uint localConn)
         {
-            return (++this.acceptIdGenerater << 32) | localConn;
+            return (++acceptIdGenerater << 32) | localConn;
         }
-
-
 
         public abstract void Update();
 
         public abstract void Remove(long id);
-        
+
         public abstract bool IsDispose();
 
         protected abstract void Get(long id, IPEndPoint address);
@@ -44,7 +44,7 @@ namespace ET
         public abstract void Dispose();
 
         protected abstract void Send(long channelId, long actorId, MemoryStream stream);
-        
+
         protected void OnAccept(long channelId, IPEndPoint ipEndPoint)
         {
 #if NET_THREAD
@@ -53,7 +53,7 @@ namespace ET
                 this.AcceptCallback.Invoke(channelId, ipEndPoint);
             });
 #else
-            this.AcceptCallback.Invoke(channelId, ipEndPoint);
+            AcceptCallback.Invoke(channelId, ipEndPoint);
 #endif
         }
 
@@ -65,29 +65,28 @@ namespace ET
                 this.ReadCallback.Invoke(channelId, memoryStream);
             });
 #else
-            this.ReadCallback.Invoke(channelId, memoryStream);
+            ReadCallback.Invoke(channelId, memoryStream);
 #endif
         }
 
         public void OnError(long channelId, int e)
         {
-            this.Remove(channelId);
-            
+            Remove(channelId);
+
 #if NET_THREAD
             ThreadSynchronizationContext.Instance.Post(() =>
             {
                 this.ErrorCallback?.Invoke(channelId, e);
             });
 #else
-            this.ErrorCallback?.Invoke(channelId, e);
+            ErrorCallback?.Invoke(channelId, e);
 #endif
         }
 
-#endregion
+        #endregion
 
+        #region 主线程
 
-#region 主线程
-        
         public Action<long, IPEndPoint> AcceptCallback;
         public Action<long, int> ErrorCallback;
         public Action<long, MemoryStream> ReadCallback;
@@ -97,7 +96,7 @@ namespace ET
 #if NET_THREAD
             this.ThreadSynchronizationContext.Post(this.Dispose);
 #else
-            this.Dispose();
+            Dispose();
 #endif
         }
 
@@ -109,7 +108,7 @@ namespace ET
                 this.Remove(channelId);
             });
 #else
-            this.Remove(channelId);
+            Remove(channelId);
 #endif
         }
 
@@ -121,7 +120,7 @@ namespace ET
                 this.Send(channelId, actorId, stream);
             });
 #else
-            this.Send(channelId, actorId, stream);
+            Send(channelId, actorId, stream);
 #endif
         }
 
@@ -133,11 +132,10 @@ namespace ET
                 this.Get(id, address);
             });
 #else
-            this.Get(id, address);
+            Get(id, address);
 #endif
         }
 
-#endregion
-
+        #endregion
     }
 }

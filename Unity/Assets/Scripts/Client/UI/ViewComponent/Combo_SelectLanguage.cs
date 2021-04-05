@@ -9,21 +9,16 @@ namespace Client.UI.ViewComponent
 
         public string Value
         {
-            get
-            {
-                return Component.value;
-            }
-            set
-            {
-                this.Component.value = value;
-            }
+            get => Component.value;
+            set => Component.value = value;
         }
-        
+
         private static string[] CacheItems;
+
         public Combo_SelectLanguage(GComboBox comboBox)
         {
-            this.Component = comboBox;
-            this.Init();
+            Component = comboBox;
+            Init();
         }
 
         static Combo_SelectLanguage()
@@ -33,13 +28,14 @@ namespace Client.UI.ViewComponent
             {
                 list.Add(node.Name);
             }
+
             CacheItems = list.ToArray();
         }
-        
+
         private void Init()
         {
-            this.Component.items = CacheItems;
-            this.Component.values = CacheItems;
+            Component.items = CacheItems;
+            Component.values = CacheItems;
         }
     }
 }

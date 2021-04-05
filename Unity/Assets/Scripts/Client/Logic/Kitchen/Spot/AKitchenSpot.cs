@@ -6,24 +6,20 @@ using UnityEngine;
 /// </summary>
 public abstract class AKitchenSpot
 {
-    public Vector3 Position
-    {
-        get
-        {
-            return this.Display.Position;
-        }
-    }
+    public Vector3 Position => Display.Position;
 
     /// <summary>
     /// 当前餐位状态
     /// </summary>
     public KitchenSpotState State { get; protected set; } = KitchenSpotState.Free;
+
     /// <summary>
     /// 当前餐位被哪个顾客占据
     /// </summary>
     public ACustomer Customer { get; private set; }
-    
+
     public UnityObject Display { get; }
+
     public AKitchenSpot(UnityObject display)
     {
         Display = display;

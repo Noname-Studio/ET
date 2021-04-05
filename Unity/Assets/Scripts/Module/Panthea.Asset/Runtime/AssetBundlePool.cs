@@ -11,21 +11,24 @@ namespace Panthea.Asset
     /// </summary>
     public class AssetBundlePool
     {
-        private Dictionary<string,AssetBundleRequest> Pool = new Dictionary<string, AssetBundleRequest>();
-        private Dictionary<AssetBundleRequest,string> Lookup = new Dictionary<AssetBundleRequest,string>();
+        private Dictionary<string, AssetBundleRequest> Pool = new Dictionary<string, AssetBundleRequest>();
+        private Dictionary<AssetBundleRequest, string> Lookup = new Dictionary<AssetBundleRequest, string>();
+
         /// <summary>
         /// 等待加载的列表,因为可能在同一帧当中多次请求同一个AB.第二次的时候我们判断是否在等待列表中.如果在的话我们就一直等到等待列表被移除以后返回结果
         /// </summary>
-        private Dictionary<string,UniTaskCompletionSource> WaitList = new Dictionary<string,UniTaskCompletionSource>();
+        private Dictionary<string, UniTaskCompletionSource> WaitList = new Dictionary<string, UniTaskCompletionSource>();
+
         private ABFileTrack mFileLog;
+
         public AssetBundlePool(ABFileTrack filelog)
         {
-            this.mFileLog = filelog;
+            mFileLog = filelog;
         }
-    
+
         private AssetBundleRequest internal_Get(ABFileTrack.RedirectAsset path)
         {
-            if (this.Pool.TryGetValue(path.Info.Path, out AssetBundleRequest value))
+            if (Pool.TryGetValue(path.Info.Path, out AssetBundleRequest value))
             {
                 return value;
             }
@@ -36,26 +39,30 @@ namespace Panthea.Asset
         private List<UniTask> LoadDependencies(ABFileTrack.RedirectAsset path)
         {
             if (path.Info.Dependencies == null || path.Info.Dependencies.Length == 0)
+            {
                 return null;
+            }
+
             List<UniTask> tasks = new List<UniTask>();
             foreach (var node in path.Info.Dependencies)
             {
-                var directPath = this.mFileLog.GetABInfo(node);
+                var directPath = mFileLog.GetABInfo(node);
                 if (directPath == null)
                 {
                     throw new AssetBundleNotFound(node);
                 }
                 else
                 {
-                    tasks.Add(this.GetAsync(directPath));
+                    tasks.Add(GetAsync(directPath));
                 }
             }
+
             return tasks;
         }
-    
+
         private async UniTask<AssetBundleRequest> internal_Load(ABFileTrack.RedirectAsset path)
         {
-            List<UniTask> tasks = this.LoadDependencies(path);
+            List<UniTask> tasks = LoadDependencies(path);
             string address;
             AssetBundleCreateRequest ab;
             if (!path.Include)
@@ -67,42 +74,49 @@ namespace Panthea.Asset
             {
                 ab = AssetBundle.LoadFromFileAsync(AssetsConfig.StreamingAssets + "/" + path.Info.Path);
             }
+
             await ab;
             var assetBundle = ab.assetBundle;
-            var request = new AssetBundleRequest(assetBundle,path.Info);
-            this.Pool.Add(path.Info.Path, request);
-            this.Lookup.Add(request,path.Info.Path);
-            if (this.WaitList.TryGetValue(path.Info.Path, out UniTaskCompletionSource ucs))
+            var request = new AssetBundleRequest(assetBundle, path.Info);
+            Pool.Add(path.Info.Path, request);
+            Lookup.Add(request, path.Info.Path);
+            if (WaitList.TryGetValue(path.Info.Path, out UniTaskCompletionSource ucs))
             {
                 ucs.TrySetResult();
-                this.WaitList.Remove(path.Info.Path);
+                WaitList.Remove(path.Info.Path);
             }
-            if(tasks != null)
-                await UniTask.WhenAll(tasks); 
+
+            if (tasks != null)
+            {
+                await UniTask.WhenAll(tasks);
+            }
+
             return request;
         }
-    
+
         public async UniTask<AssetBundleRequest> GetAsync(ABFileTrack.RedirectAsset abPath)
         {
             try
             {
-                if (this.WaitList.TryGetValue(abPath.Info.Path, out UniTaskCompletionSource waitTask))
+                if (WaitList.TryGetValue(abPath.Info.Path, out UniTaskCompletionSource waitTask))
                 {
                     await waitTask.Task;
                 }
 
-                var ab = this.internal_Get(abPath);
+                var ab = internal_Get(abPath);
                 if (ab != null)
+                {
                     return ab;
+                }
                 else
                 {
                     UniTaskCompletionSource ucs = new UniTaskCompletionSource();
-                    this.WaitList.Add(abPath.Info.Path, ucs);
-                    var task = this.internal_Load(abPath);
+                    WaitList.Add(abPath.Info.Path, ucs);
+                    var task = internal_Load(abPath);
                     return await task;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.LogError(e);
                 return null;
@@ -111,47 +125,49 @@ namespace Panthea.Asset
 
         public AssetBundleRequest GetSync(ABFileTrack.RedirectAsset abPath)
         {
-            var ab = this.internal_Get(abPath);
+            var ab = internal_Get(abPath);
             return ab;
         }
 
         public void Release(ABFileTrack.RedirectAsset path)
         {
-            var ab = this.internal_Get(path);
+            var ab = internal_Get(path);
             if (ab != null)
             {
                 ab.AssetBundle.Unload(true);
-                this.Pool.Remove(path.Info.Path);
-                this.Lookup.Remove(ab);
+                Pool.Remove(path.Info.Path);
+                Lookup.Remove(ab);
             }
         }
-    
+
         public void Release(AssetBundleRequest ab)
         {
             if (ab != null)
             {
-                if (this.Lookup.TryGetValue(ab, out string value))
+                if (Lookup.TryGetValue(ab, out string value))
                 {
-                    this.Lookup.Remove(ab);
-                    this.Pool.Remove(value);
+                    Lookup.Remove(ab);
+                    Pool.Remove(value);
                     ab.Unload(true);
-                }   
+                }
             }
         }
 
         public void UnloadAllAssetBundle()
         {
-            List<AssetBundleRequest> temp = new List<AssetBundleRequest>(this.Lookup.Keys);
+            List<AssetBundleRequest> temp = new List<AssetBundleRequest>(Lookup.Keys);
             foreach (var node in temp)
             {
-                if(!node.Persistence)
-                    this.Release(node);
+                if (!node.Persistence)
+                {
+                    Release(node);
+                }
             }
         }
 
         public Dictionary<string, AssetBundleRequest> GetLoadedAssetBundle()
         {
-            return new Dictionary<string, AssetBundleRequest>(this.Pool);
+            return new Dictionary<string, AssetBundleRequest>(Pool);
         }
     }
 }

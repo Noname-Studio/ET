@@ -5,9 +5,10 @@ using FairyGUI;
 /// <summary>
 /// 屏幕一黑一亮的渐变过度效果
 /// </summary>
-public class FadeScreen : IEffect
+public class FadeScreen: IEffect
 {
     private View_FadeScreen mFadeScreen;
+
     public void Do()
     {
     }

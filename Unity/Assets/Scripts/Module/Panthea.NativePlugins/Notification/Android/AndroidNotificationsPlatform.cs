@@ -7,8 +7,8 @@ namespace NotificationSamples.Android
     /// <summary>
     /// Android implementation of <see cref="IGameNotificationsPlatform"/>.
     /// </summary>
-    public class AndroidNotificationsPlatform : IGameNotificationsPlatform<AndroidGameNotification>,
-        IDisposable
+    public class AndroidNotificationsPlatform: IGameNotificationsPlatform<AndroidGameNotification>,
+            IDisposable
     {
         /// <inheritdoc />
         public event Action<IGameNotification> NotificationReceived;
@@ -35,7 +35,7 @@ namespace NotificationSamples.Android
         {
             if (gameNotification == null)
             {
-                throw new ArgumentNullException(nameof(gameNotification));
+                throw new ArgumentNullException(nameof (gameNotification));
             }
 
             if (gameNotification.Id.HasValue)
@@ -62,13 +62,12 @@ namespace NotificationSamples.Android
         {
             if (gameNotification == null)
             {
-                throw new ArgumentNullException(nameof(gameNotification));
+                throw new ArgumentNullException(nameof (gameNotification));
             }
 
             if (!(gameNotification is AndroidGameNotification androidNotification))
             {
-                throw new InvalidOperationException(
-                    "Notification provided to ScheduleNotification isn't an AndroidGameNotification.");
+                throw new InvalidOperationException("Notification provided to ScheduleNotification isn't an AndroidGameNotification.");
             }
 
             ScheduleNotification(androidNotification);
@@ -80,10 +79,7 @@ namespace NotificationSamples.Android
         /// </summary>
         public AndroidGameNotification CreateNotification()
         {
-            var notification = new AndroidGameNotification()
-            {
-                DeliveredChannel = DefaultChannelId
-            };
+            var notification = new AndroidGameNotification() { DeliveredChannel = DefaultChannelId };
 
             return notification;
         }
@@ -127,12 +123,16 @@ namespace NotificationSamples.Android
         /// <summary>
         /// Does nothing on Android.
         /// </summary>
-        public void OnForeground() {}
+        public void OnForeground()
+        {
+        }
 
         /// <summary>
         /// Does nothing on Android.
         /// </summary>
-        public void OnBackground() {}
+        public void OnBackground()
+        {
+        }
 
         /// <summary>
         /// Unregister delegates.

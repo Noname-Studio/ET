@@ -1,14 +1,17 @@
+using Kitchen.Action;
+using Kitchen;
 using UnityEngine;
 
-namespace Kitchen
+namespace Kitchen.Action
 {
-    public class ClickCookware : IGameAction
+    public class ClickCookware: IGameAction
     {
         private PlayerController Player { get; }
         private ICookware Cookware { get; }
         private Vector3 mPosition;
-        private QueueEventsKit ActionManager { get; } 
-        public ClickCookware(PlayerController player,ICookware cookware)
+        private QueueEventsKit ActionManager { get; }
+
+        public ClickCookware(PlayerController player, ICookware cookware)
         {
             Player = player;
             Cookware = cookware;
@@ -21,7 +24,7 @@ namespace Kitchen
             //先移动到目标点
             Player.MoveToPoint(ref mPosition);
         }
-    
+
         public bool Update()
         {
             var playerState = Player.IsMoving(mPosition);
@@ -38,16 +41,16 @@ namespace Kitchen
                 if (cookwareState == CookwareState.Idle)
                 {
                     ActionManager.AddToTop(new DoCookwareJob(Cookware));
-                    ActionManager.AddToTop(new PutIngredientAndGetFood(Player,Cookware));
+                    ActionManager.AddToTop(new PutIngredientAndGetFood(Player, Cookware));
                 }
                 else if (Cookware.FoodId != null)
                 {
                     //厨具上有食物,主角手上得食材刚好可以放进去,就交换手上和厨具上得物品
-                    ActionManager.AddToTop(new PutIngredientAndGetFood(Player,Cookware));
+                    ActionManager.AddToTop(new PutIngredientAndGetFood(Player, Cookware));
                 }
             }
+
             return true;
         }
     }
-
 }

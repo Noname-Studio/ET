@@ -24,13 +24,14 @@ namespace ET
         {
             Session session = self.GetParent<Session>();
             long timeNow = TimeHelper.ClientNow();
-            
+
             if (timeNow - session.LastRecvTime < 30 * 1000 && timeNow - session.LastSendTime < 30 * 1000)
             {
                 return;
             }
-            
-            Log.Info($"session timeout: {session.Id} {timeNow} {session.LastRecvTime} {session.LastSendTime} {timeNow - session.LastRecvTime} {timeNow - session.LastSendTime}");
+
+            Log.Info(
+                $"session timeout: {session.Id} {timeNow} {session.LastRecvTime} {session.LastSendTime} {timeNow - session.LastRecvTime} {timeNow - session.LastSendTime}");
             session.Error = ErrorCode.ERR_SessionSendOrRecvTimeout;
 
             session.Dispose();

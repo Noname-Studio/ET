@@ -1,38 +1,36 @@
-﻿
-using FairyGUI;
+﻿using FairyGUI;
 
-public class BaseWindow : Window {
-	public UIBase Base { get; private set; }
-    
-	public BaseWindow(UIBase @base)
-	{
-		Base = @base;
-		
-	}
+public class BaseWindow: Window
+{
+    public UIBase Base { get; private set; }
 
-	protected override void OnInit()
-	{
-		base.OnInit();
-	}
+    public BaseWindow(UIBase @base)
+    {
+        Base = @base;
+    }
 
-	protected override void DoShowAnimation()
-	{
-		OnCreate();
-	}
-	
-	protected override void DoHideAnimation()
-	{
-		OnClose();
-		//if (mBackground != null) mBackground.visible = false;
-	}
+    protected override void OnInit()
+    {
+        base.OnInit();
+    }
 
-	public virtual void OnClose()
-	{
-	}
+    protected override void DoShowAnimation()
+    {
+        OnCreate();
+    }
 
-	public virtual void OnCreate()
-	{
-		base.OnShown();
-	}
-	
+    protected override void DoHideAnimation()
+    {
+        OnClose(false);
+        //if (mBackground != null) mBackground.visible = false;
+    }
+
+    public virtual void OnClose(bool forceDestory)
+    {
+    }
+
+    public virtual void OnCreate()
+    {
+        base.OnShown();
+    }
 }

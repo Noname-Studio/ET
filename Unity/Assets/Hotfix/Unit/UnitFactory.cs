@@ -6,15 +6,15 @@ namespace ET
     {
         public static Unit Create(Entity domain, long id)
         {
-	        Unit unit = EntityFactory.CreateWithId<Unit>(domain, id);
-	        
-	        unit.AddComponent<MoveComponent>();
-	        unit.AddComponent<TurnComponent>();
-	        unit.AddComponent<UnitPathComponent>();
+            Unit unit = EntityFactory.CreateWithId<Unit>(domain, id);
 
-	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
-	        
-	        UnitComponent unitComponent = Game.Scene.Get(1).GetComponent<UnitComponent>();
+            unit.AddComponent<MoveComponent>();
+            unit.AddComponent<TurnComponent>();
+            unit.AddComponent<UnitPathComponent>();
+
+            Game.EventSystem.Publish(new EventType.AfterUnitCreate() { Unit = unit });
+
+            UnitComponent unitComponent = Game.Scene.Get(1).GetComponent<UnitComponent>();
             unitComponent.Add(unit);
             return unit;
         }

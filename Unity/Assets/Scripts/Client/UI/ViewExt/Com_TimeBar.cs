@@ -15,18 +15,21 @@ namespace GamingUI
             get => Bar.value;
             set => Bar.value = value;
         }
+
         public double Min
         {
             get => Bar.min;
             set => Bar.min = value;
         }
+
         public double Max
         {
             get => Bar.max;
             set => Bar.max = value;
         }
-        
-        public event Action<double,GProgressBar> ValueChangedCallback;
+
+        public event Action<double, GProgressBar> ValueChangedCallback;
+
         public Com_TimeBar(GProgressBar progressBar)
         {
             Bar = progressBar;
@@ -40,6 +43,7 @@ namespace GamingUI
                 Bar.GetChild("txt").asTextField.text = "0:00";
                 return;
             }
+
             time += Time.unscaledDeltaTime;
             if (time > 1)
             {

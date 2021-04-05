@@ -8,11 +8,11 @@ namespace ET
         {
             // Unit View层
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
+            GameObject bundleGameObject = (GameObject) resourcesComponent.GetAsset("Unit.unity3d", "Unit");
             GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
-	        
+
             GameObject go = UnityEngine.Object.Instantiate(prefab);
-            GameObject.DontDestroyOnLoad(go);
+            UnityEngine.Object.DontDestroyOnLoad(go);
             args.Unit.GameObject = go;
             args.Unit.AddComponent<AnimatorComponent>();
             await ETTask.CompletedTask;

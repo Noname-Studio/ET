@@ -9,7 +9,7 @@ namespace ET
         public override void Awake(NetThreadComponent self)
         {
             NetThreadComponent.Instance = self;
-            
+
 #if NET_THREAD
             self.Thread = new Thread(self.Loop);
             self.ThreadSynchronizationContext = new ThreadSynchronizationContext(self.Thread.ManagedThreadId);
@@ -33,7 +33,7 @@ namespace ET
         }
     }
 #endif
-    
+
     [ObjectSystem]
     public class NetThreadComponentDestroySystem: DestroySystem<NetThreadComponent>
     {
@@ -42,10 +42,10 @@ namespace ET
             self.Stop();
         }
     }
-    
+
     public static class NetThreadComponentSystem
     {
-#region 主线程
+        #region 主线程
 
         public static void Stop(this NetThreadComponent self)
         {
@@ -63,10 +63,11 @@ namespace ET
                 {
                     return;
                 }
+
                 self.Services.Add(kService);
             });
         }
-        
+
         public static void Remove(this NetThreadComponent self, AService kService)
         {
             // 这里要去下一帧删除，避免foreach错误
@@ -76,11 +77,12 @@ namespace ET
                 {
                     return;
                 }
+
                 self.Services.Remove(kService);
             });
         }
 
-#endregion
+        #endregion
 
 #if NET_THREAD
 #region 网络线程
@@ -113,6 +115,5 @@ namespace ET
         }
 #endregion
 #endif
-        
     }
 }

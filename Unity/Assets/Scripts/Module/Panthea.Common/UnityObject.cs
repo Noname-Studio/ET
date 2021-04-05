@@ -19,40 +19,48 @@ public class UnityObject
         /// 通过添加这个接口我们避免AddComponent和GetComponent的时候也需要调用GetComponents生成列表.可以在一定程度提升性能
         /// </summary>
         public bool HasGetComponents = false;
+
         public List<object> Components = new List<object>();
 
         public object First()
         {
             if (Components.Count == 0)
+            {
                 return null;
+            }
+
             return Components[0];
         }
     }
 
     private Transform mCachedTransform = null;
+
     /// <summary>
     /// 禁止暴露这个变量！！
     /// </summary>
-    private Transform Transform {
+    private Transform Transform
+    {
         get
         {
             if (mCachedTransform == null)
+            {
                 mCachedTransform = GameObject.transform;
+            }
+
             return mCachedTransform;
-        } 
+        }
     }
+
     /// <summary>
     /// 禁止暴露这个变量！！
     /// </summary>
     private GameObject GameObject { get; }
 
     private UnityObject mParent;
+
     public UnityObject Parent
     {
-        get
-        {
-            return mParent;
-        }
+        get => mParent;
         set
         {
             mParent = value;
@@ -60,9 +68,10 @@ public class UnityObject
         }
     }
 
-    private Dictionary<Type,WrapComponents> mComponents { get; } = new Dictionary<Type, WrapComponents>();
-    private Dictionary<string,UnityObject> mChild = new Dictionary<string, UnityObject>();
-    private Dictionary<Type,List<IUnityModule>> mModule { get; } = new Dictionary<Type, List<IUnityModule>>();
+    private Dictionary<Type, WrapComponents> mComponents { get; } = new Dictionary<Type, WrapComponents>();
+    private Dictionary<string, UnityObject> mChild = new Dictionary<string, UnityObject>();
+    private Dictionary<Type, List<IUnityModule>> mModule { get; } = new Dictionary<Type, List<IUnityModule>>();
+
     public Vector3 LocalPosition
     {
         get => Transform.localPosition;
@@ -70,26 +79,26 @@ public class UnityObject
     }
 
     private string mName;
+
     public string Name
     {
         get
         {
-            this.mName ??= this.GameObject.name;
-            return this.mName;
+            mName ??= GameObject.name;
+            return mName;
         }
-        set
-        {
-            this.mName = value;
-        }
+        set => mName = value;
     }
-    
+
     public bool Active
     {
         get => GameObject.activeSelf;
         set
         {
-            if(Active != value)
+            if (Active != value)
+            {
                 GameObject.SetActive(value);
+            }
         }
     }
 
@@ -125,16 +134,16 @@ public class UnityObject
 
     public int Layer
     {
-        get => this.GameObject.layer;
-        set => this.GameObject.layer = value;
+        get => GameObject.layer;
+        set => GameObject.layer = value;
     }
-    
+
     public Vector3 LocalEulerAngles
     {
         get => Transform.localEulerAngles;
         set => Transform.localEulerAngles = value;
     }
-    
+
     public Vector3 LocalScale
     {
         get => Transform.localScale;
@@ -144,11 +153,8 @@ public class UnityObject
     /// <summary>
     /// TODO 添加set方法
     /// </summary>
-    public Vector3 LossyScale
-    {
-        get => Transform.lossyScale;
-    }
-    
+    public Vector3 LossyScale => Transform.lossyScale;
+
     public UnityObject(GameObject go)
     {
         GameObject = go;
@@ -161,19 +167,19 @@ public class UnityObject
 
     public Vector3 TransformPoint(Vector3 vec)
     {
-        return this.Transform.TransformPoint(vec);
+        return Transform.TransformPoint(vec);
     }
 
     public Vector3 TransformPoint(float x, float y, float z)
     {
-        return this.Transform.TransformPoint(x, y, z);
+        return Transform.TransformPoint(x, y, z);
     }
-    
+
     public T GetComponent<T>()
     {
-        var type = typeof(T);
+        var type = typeof (T);
         WrapComponents wc = null;
-        if (mComponents.TryGetValue(type,out wc))
+        if (mComponents.TryGetValue(type, out wc))
         {
             return (T) wc.First();
         }
@@ -189,17 +195,18 @@ public class UnityObject
 
     public List<T> GetComponents<T>()
     {
-        var type = typeof(T);
+        var type = typeof (T);
         WrapComponents wc = null;
         List<T> result = new List<T>();
-        if (mComponents.TryGetValue(type,out wc))
+        if (mComponents.TryGetValue(type, out wc))
         {
             if (wc.HasGetComponents)
             {
                 foreach (var node in wc.Components)
                 {
-                    result.Add((T)node);
+                    result.Add((T) node);
                 }
+
                 return result;
             }
             else
@@ -207,29 +214,33 @@ public class UnityObject
                 wc.Components.Clear();
             }
         }
+
         var com = GameObject.GetComponents<T>();
         if (wc == null)
         {
             wc = new WrapComponents();
             mComponents.Add(type, wc);
         }
+
         foreach (var node in com)
         {
             wc.Components.Add(node);
             result.Add(node);
         }
+
         return result;
     }
 
     public T AddComponent<T>() where T : Component
     {
-        var type = typeof(T);
+        var type = typeof (T);
         WrapComponents wc = null;
-        if (!mComponents.TryGetValue(type,out wc))
+        if (!mComponents.TryGetValue(type, out wc))
         {
             wc = new WrapComponents();
             mComponents.Add(type, wc);
         }
+
         var result = GameObject.AddComponent<T>();
         wc.Components.Add(result);
         return result;
@@ -247,6 +258,7 @@ public class UnityObject
                 mChild[path] = obj;
             }
         }
+
         return obj;
     }
 
@@ -254,7 +266,7 @@ public class UnityObject
     {
         transform.parent = Transform;
     }
-    
+
     /// <summary>
     /// 尽量少使用这个函数.因为牵扯的内容过多.所以不做缓存处理.建议代码再自己获取之后自己做好缓存
     /// </summary>
@@ -265,22 +277,30 @@ public class UnityObject
         return GameObject.GetComponentsInChildren<T>(includeInactive);
     }
 
-    public void LookAt(UnityObject target,Vector3? worldUp = null)
+    public void LookAt(UnityObject target, Vector3? worldUp = null)
     {
-        if(worldUp.HasValue)
-            Transform.LookAt(target.Transform,worldUp.Value);
+        if (worldUp.HasValue)
+        {
+            Transform.LookAt(target.Transform, worldUp.Value);
+        }
         else
+        {
             Transform.LookAt(target.Transform);
+        }
     }
-    
-    public void LookAt(Vector3 pos,Vector3? worldUp = null)
+
+    public void LookAt(Vector3 pos, Vector3? worldUp = null)
     {
-        if(worldUp.HasValue)
-            Transform.LookAt(pos,worldUp.Value);
+        if (worldUp.HasValue)
+        {
+            Transform.LookAt(pos, worldUp.Value);
+        }
         else
+        {
             Transform.LookAt(pos);
+        }
     }
-    
+
     public bool Equals(GameObject obj)
     {
         return obj == GameObject;
@@ -296,7 +316,7 @@ public class UnityObject
         Object.Destroy(GameObject);
         return;
     }
-    
+
     public bool IsDisposed()
     {
         return GameObject == null;
@@ -316,35 +336,38 @@ public class UnityObject
     /// <returns></returns>
     public void AddModule<T>(T module) where T : IUnityModule
     {
-        var type = typeof(T);
+        var type = typeof (T);
         List<IUnityModule> modules = null;
-        if (!mModule.TryGetValue(type,out modules))
+        if (!mModule.TryGetValue(type, out modules))
         {
             modules = new List<IUnityModule>();
             mModule.Add(type, modules);
         }
-        
+
         modules.Add(module);
     }
-    
+
     public T GetModule<T>() where T : IUnityModule
     {
-        var type = typeof(T);
+        var type = typeof (T);
         List<IUnityModule> modules = null;
-        if (mModule.TryGetValue(type,out modules))
+        if (mModule.TryGetValue(type, out modules))
         {
             if (modules != null && modules.Count > 0)
-                return (T)modules[0];
+            {
+                return (T) modules[0];
+            }
         }
-        return default(T);
+
+        return default;
     }
 
     public List<T> GetModules<T>() where T : IUnityModule
     {
-        var type = typeof(T);
+        var type = typeof (T);
         List<IUnityModule> modules = null;
         List<T> result = new List<T>();
-        if (mModule.TryGetValue(type,out modules))
+        if (mModule.TryGetValue(type, out modules))
         {
             if (modules != null && modules.Count > 0)
             {
@@ -354,6 +377,7 @@ public class UnityObject
                 }
             }
         }
+
         return result;
     }
 
@@ -361,7 +385,7 @@ public class UnityObject
     {
         var type = module.GetType();
         List<IUnityModule> modules = null;
-        if (mModule.TryGetValue(type,out modules))
+        if (mModule.TryGetValue(type, out modules))
         {
             if (modules != null && modules.Count > 0)
             {

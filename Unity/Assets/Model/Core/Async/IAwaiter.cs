@@ -9,6 +9,6 @@
         Succeeded = 1,
 
         /// <summary>The operation completed with an error.</summary>
-        Faulted = 2,
+        Faulted = 2
     }
 }

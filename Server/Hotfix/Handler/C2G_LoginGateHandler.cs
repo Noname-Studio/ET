@@ -14,8 +14,8 @@ namespace ET
 				return;
 			}
 			
-			string account = scene.GetComponent<GateSessionKeyComponent>().Get(request.Key);
-			if (account == null)
+			long Id = scene.GetComponent<GateSessionKeyComponent>().Get(request.Key);
+			if (Id == 0)
 			{
 				response.Error = ErrorCode.ERR_ConnectGateKeyError;
 				response.Message = "Gate key验证失败!";
@@ -23,12 +23,12 @@ namespace ET
 				return;
 			}
 
-			var Id = GetChecksum(account);
 			var db = Game.Scene.GetComponent<DBComponent>();
-			var playerInfo = await db.Query<Data_PlayerInfo>(Id);
+			var cachePlayer = scene.GetComponent<PlayerComponent>().Get(Id);
+			Data_PlayerInfo playerInfo = cachePlayer ?? await db.Query<Data_PlayerInfo>(Id);
 			if (playerInfo == null)
 			{
-				playerInfo = EntityFactory.Create<Data_PlayerInfo, string>(Game.Scene, account);
+				playerInfo = EntityFactory.Create<Data_PlayerInfo>(Game.Scene);
 				playerInfo.Id = Id;
 			}
 
@@ -41,28 +41,6 @@ namespace ET
 			await ETTask.CompletedTask;
 		}
 		
-		private long GetChecksum(string text)
-		{
-			long sum = 0;
-			byte overflow;
-			for (int i = 0; i < text.Length; i++)
-			{
-				sum = (long)((16 * sum) ^ Convert.ToUInt32(text[i]));
-				overflow = (byte)(sum / 4294967296);
-				sum = sum - overflow * 4294967296;
-				sum = sum ^ overflow;
-			}
-
-			if (sum > 2147483647)
-				sum = sum - 4294967296;
-			else if (sum >= 32768 && sum <= 65535)
-				sum = sum - 65536;
-			else if (sum >= 128 && sum <= 255)
-				sum = sum - 256;
-
-			sum = Math.Abs(sum);
-
-			return sum;
-		}
+		
 	}
 }

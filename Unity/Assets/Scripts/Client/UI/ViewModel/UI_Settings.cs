@@ -5,52 +5,47 @@ using UnityEngine;
 
 namespace Client.UI.ViewModel
 {
-    public class UI_Settings : UIBase<View_setting>
+    public class UI_Settings: UIBase<View_setting>
     {
         private Data_GameRecord GameRecord { get; set; }
         private Preference Prefs { get; set; } = Preference.Inst;
-        public override void OnInit(IUIParams p)
+
+        protected override void OnInit(IUIParams p)
         {
             base.OnInit(p);
-            this.GameRecord = DBManager.Inst.Query<Data_GameRecord>();
-            this.View.WebSite.onClick.Set(this.WebSite_OnClick);
-            this.View.Service.onClick.Set(this.WebSite_OnClick);
-            this.View.FAQ.onClick.Set(this.WebSite_OnClick);
-            this.View.Pet.onClick.Set(this.Pet_OnClick);
-            this.View.Voice.onClick.Set(this.Voice_OnClick);
-            this.View.Music.onClick.Set(this.Music_OnClick);
-            this.View.syncBtn.onClick.Set(this.SyncPlatform_OnClick);
-            this.View.CopyAccount.onClick.Set(this.CopyAccount_OnClick);
+            GameRecord = DBManager.Inst.Query<Data_GameRecord>();
+            View.WebSite.onClick.Set(WebSite_OnClick);
+            View.Service.onClick.Set(WebSite_OnClick);
+            View.FAQ.onClick.Set(WebSite_OnClick);
+            View.Pet.onClick.Set(Pet_OnClick);
+            View.Voice.onClick.Set(Voice_OnClick);
+            View.Music.onClick.Set(Music_OnClick);
+            View.syncBtn.onClick.Set(SyncPlatform_OnClick);
+            View.CopyAccount.onClick.Set(CopyAccount_OnClick);
 
-            this.View.HeadPanel.Name.text = GameRecord.Name;
-            this.View.HeadPanel.EditHead.icon = this.GameRecord.Head;
-            this.View.Voice.selected = this.Prefs.SoundEffectVolume == 1;
-            this.View.Music.selected = this.Prefs.mMusicVolume == 1;
+            View.HeadPanel.Name.text = GameRecord.Name;
+            View.HeadPanel.EditHead.icon = GameRecord.Head;
+            View.Voice.selected = Prefs.SoundEffectVolume == 1;
+            View.Music.selected = Prefs.mMusicVolume == 1;
             InitHeadPanel();
         }
 
         private void InitHeadPanel()
         {
-            this.View.HeadPanel.EditHead.onClick.Add(EditHead_OnClick);
-            this.View.HeadPanel.EditName.onClick.Add(EditName_OnClick);
+            View.HeadPanel.EditHead.onClick.Add(EditHead_OnClick);
+            View.HeadPanel.EditName.onClick.Add(EditName_OnClick);
         }
 
         private void EditName_OnClick()
         {
             var editName = UIKit.Inst.Create<UI_EditName>();
-            editName.OnClose.Set(() =>
-            {
-                this.View.HeadPanel.Name.text = editName.Text;
-            });
+            editName.OnClose.Set(() => { View.HeadPanel.Name.text = editName.Text; });
         }
 
         private void EditHead_OnClick()
         {
             var editHead = UIKit.Inst.Create<UI_EditAvatar>();
-            editHead.OnClose.Set(() =>
-            {
-                this.View.HeadPanel.EditHead.icon = editHead.Url;
-            });
+            editHead.OnClose.Set(() => { View.HeadPanel.EditHead.icon = editHead.Url; });
         }
 
         private void CopyAccount_OnClick()
@@ -67,6 +62,7 @@ namespace Client.UI.ViewModel
                 tips.SetContent(LocalizationProperty.Read("NetworkNotReachable"));
                 return;
             }
+
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>();
             await PlatformLogin.Login();
             networkLoad.CloseMySelf();
@@ -74,12 +70,12 @@ namespace Client.UI.ViewModel
 
         private void Music_OnClick()
         {
-            MediaManager.Inst.MusicVolume = this.View.Music.selected? 0 : 1;
+            MediaManager.Inst.MusicVolume = View.Music.selected? 0 : 1;
         }
 
         private void Voice_OnClick()
         {
-            MediaManager.Inst.SoundEffectVolume = this.View.Voice.selected? 0 : 1;
+            MediaManager.Inst.SoundEffectVolume = View.Voice.selected? 0 : 1;
         }
 
         private void Pet_OnClick()
@@ -92,26 +88,26 @@ namespace Client.UI.ViewModel
             tips.SetContent("暂未实现");
             tips.AddButton(LocalizationProperty.Read("Confirm"));
         }
-        
+
         private string GetAccountInfo(bool isNeedWeb = true)
         {
             var record = DBManager.Inst.Query<Data_GameRecord>();
             var userId = record.id;
-            var breakstr = isNeedWeb ? "<br/>" : "";
-            var account = $"User ID: {userId}"+ breakstr +"\n" +
-                    $"Platform: {Application.platform}"+ breakstr +"\n" +
-                    $"Facebook ID: {""}"+ breakstr +"\n" +
-                    $"Name: {record.Name}"+ breakstr +"\n" +
-                    $"Guild ID: ##{(GuildManager.Inst.Data != null ? GuildManager.Inst.Data.Id.ToString() : "")}"+ breakstr +"\n"+
-                    $"Version: {Application.version}"+ breakstr +"\n" +
-                    $"OS version: {SystemInfo.operatingSystem}"+ breakstr +"\n";
+            var breakstr = isNeedWeb? "<br/>" : "";
+            var account = $"User ID: {userId}" + breakstr + "\n" +
+                    $"Platform: {Application.platform}" + breakstr + "\n" +
+                    $"Facebook ID: {""}" + breakstr + "\n" +
+                    $"Name: {record.Name}" + breakstr + "\n" +
+                    $"Guild ID: ##{(GuildManager.Inst.Data != null? GuildManager.Inst.Data.Id.ToString() : "")}" + breakstr + "\n" +
+                    $"Version: {Application.version}" + breakstr + "\n" +
+                    $"OS version: {SystemInfo.operatingSystem}" + breakstr + "\n";
             return account;
         }
 
-        public override void OnDisable(bool refresh)
+        protected override void OnDisable(bool refresh)
         {
             base.OnDisable(refresh);
-            this.Prefs.Save();
+            Prefs.Save();
         }
     }
 }

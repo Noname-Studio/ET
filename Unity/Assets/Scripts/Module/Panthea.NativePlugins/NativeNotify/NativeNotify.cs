@@ -2,7 +2,7 @@
 
 namespace Panthea.NativePlugins.Notify
 {
-    public class NativeNotify :  INotificationHandler
+    public class NativeNotify: INotificationHandler
     {
         private GameNotificationsManager mNotifications;
 
@@ -10,6 +10,7 @@ namespace Panthea.NativePlugins.Notify
         {
             mNotifications = notifications;
         }
+
         public void ScheduleNotification(NotifyInfo info)
         {
             IGameNotification notification = mNotifications.CreateNotification();
@@ -21,4 +22,3 @@ namespace Panthea.NativePlugins.Notify
         }
     }
 }
-

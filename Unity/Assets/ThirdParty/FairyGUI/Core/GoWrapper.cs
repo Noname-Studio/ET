@@ -36,7 +36,7 @@ namespace FairyGUI
         /// </summary>
         public GoWrapper()
         {
-            _flags |= Flags.SkipBatching;
+            // _flags |= Flags.SkipBatching;
 
             _renderers = new List<RendererInfo>();
             _materialsBackup = new Dictionary<Material, Material>();
@@ -76,6 +76,11 @@ namespace FairyGUI
         /// <param name="cloneMaterial">如果true，则复制材质，否则直接使用sharedMaterial。</param>
         public void SetWrapTarget(GameObject target, bool cloneMaterial)
         {
+            // set Flags.SkipBatching only target not null
+            if (target == null) _flags &= ~Flags.SkipBatching;
+            else _flags |= Flags.SkipBatching;
+            InvalidateBatchingState();
+
             RecoverMaterials();
 
             _cloneMaterial = cloneMaterial;
@@ -301,7 +306,7 @@ namespace FairyGUI
                 if (renderer == null)
                     continue;
 
-                renderer.GetMaterials(helperMaterials);
+                renderer.GetSharedMaterials(helperMaterials);
 
                 int cnt2 = helperMaterials.Count;
                 for (int j = 0; j < cnt2; j++)

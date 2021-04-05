@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_CookwareProgress : GProgressBar
+    public partial class View_CookwareProgress: GProgressBar
     {
         public Controller State;
         public GLoader Fill;
@@ -15,7 +15,7 @@ namespace GamingUI
 
         public static View_CookwareProgress CreateInstance()
         {
-            return (View_CookwareProgress)UIPackage.CreateObject("GamingUI", "CookwareProgress");
+            return (View_CookwareProgress) UIPackage.CreateObject("GamingUI", "CookwareProgress");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -23,8 +23,8 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             State = GetController("State");
-            Fill = (GLoader)GetChild("Fill");
-            Arrow = (GImage)GetChild("Arrow");
+            Fill = (GLoader) GetChild("Fill");
+            Arrow = (GImage) GetChild("Arrow");
             Warning = GetTransition("Warning");
         }
     }

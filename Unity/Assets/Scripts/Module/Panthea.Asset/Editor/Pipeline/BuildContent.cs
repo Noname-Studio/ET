@@ -5,24 +5,24 @@ using UnityEngine;
 
 namespace Panthea.Editor.Asset
 {
-    public class BuildContent : AResPipeline
+    public class BuildContent: AResPipeline
     {
         protected AddressableAssetSettings AddressableBuilder;
 
         public BuildContent(AddressableAssetSettings settings)
         {
-            this.AddressableBuilder = settings;
+            AddressableBuilder = settings;
         }
-    
+
         public override Task Do()
         {
             bool hasBuilderMode = false;
-            for (var index = 0; index < this.AddressableBuilder.DataBuilders.Count; index++)
+            for (var index = 0; index < AddressableBuilder.DataBuilders.Count; index++)
             {
-                var node = this.AddressableBuilder.DataBuilders[index];
+                var node = AddressableBuilder.DataBuilders[index];
                 if (node is XAssetBundleBuildMode)
                 {
-                    this.AddressableBuilder.ActivePlayerDataBuilderIndex = index;
+                    AddressableBuilder.ActivePlayerDataBuilderIndex = index;
                     hasBuilderMode = true;
                     break;
                 }
@@ -33,10 +33,11 @@ namespace Panthea.Editor.Asset
                 XAssetBundleBuildMode asset = ScriptableObject.CreateInstance<XAssetBundleBuildMode>();
                 AssetDatabase.CreateAsset(asset, "Assets/AddressableAssetsData/DataBuilders/XFrameworkBuild.asset");
                 AssetDatabase.SaveAssets();
-                this.AddressableBuilder.AddDataBuilder(asset,false);
-                this.AddressableBuilder.SetDataBuilderAtIndex(0, asset, false);
-                this.AddressableBuilder.ActivePlayerDataBuilderIndex = 0;
+                AddressableBuilder.AddDataBuilder(asset, false);
+                AddressableBuilder.SetDataBuilderAtIndex(0, asset, false);
+                AddressableBuilder.ActivePlayerDataBuilderIndex = 0;
             }
+
             AddressableAssetSettings.BuildPlayerContent();
             return Task.CompletedTask;
         }

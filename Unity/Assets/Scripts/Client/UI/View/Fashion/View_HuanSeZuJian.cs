@@ -5,30 +5,30 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Fashion
 {
-	public partial class View_HuanSeZuJian : GComponent
-	{
-		public GList List;
-		public GButton Down;
-		public GButton Up;
+    public partial class View_HuanSeZuJian: GComponent
+    {
+        public GList List;
+        public GButton Down;
+        public GButton Up;
 
-		public const string URL = "ui://e18f31pokgfn1r";
+        public const string URL = "ui://e18f31pokgfn1r";
 
-		public static View_HuanSeZuJian CreateInstance()
-		{
-			return (View_HuanSeZuJian)UIPackage.CreateObject("Fashion","换色组件");
-		}
+        public static View_HuanSeZuJian CreateInstance()
+        {
+            return (View_HuanSeZuJian) UIPackage.CreateObject("Fashion", "换色组件");
+        }
 
-		public View_HuanSeZuJian()
-		{
-		}
+        public View_HuanSeZuJian()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			List = (GList)this.GetChildAt(1);
-			Down = (GButton)this.GetChildAt(2);
-			Up = (GButton)this.GetChildAt(3);
-		}
-	}
+            List = (GList) GetChildAt(1);
+            Down = (GButton) GetChildAt(2);
+            Up = (GButton) GetChildAt(3);
+        }
+    }
 }

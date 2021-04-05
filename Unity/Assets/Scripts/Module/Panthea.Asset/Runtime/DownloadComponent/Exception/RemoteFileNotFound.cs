@@ -2,9 +2,9 @@
 
 namespace Panthea.Asset
 {
-    public class RemoteFileNotFound : Exception
+    public class RemoteFileNotFound: Exception
     {
-        public RemoteFileNotFound(string message) : base(message)
+        public RemoteFileNotFound(string message): base(message)
         {
         }
     }

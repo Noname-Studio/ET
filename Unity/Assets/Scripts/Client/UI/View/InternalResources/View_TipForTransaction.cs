@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_TipForTransaction : GComponent
+    public partial class View_TipForTransaction: GComponent
     {
         public Controller Transaction;
         public GButton bg;
@@ -17,7 +17,7 @@ namespace InternalResources
 
         public static View_TipForTransaction CreateInstance()
         {
-            return (View_TipForTransaction)UIPackage.CreateObject("InternalResources", "TipForTransaction");
+            return (View_TipForTransaction) UIPackage.CreateObject("InternalResources", "TipForTransaction");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -25,11 +25,11 @@ namespace InternalResources
             base.ConstructFromXML(xml);
 
             Transaction = GetController("Transaction");
-            bg = (GButton)GetChild("bg");
-            ok = (GButton)GetChild("ok");
-            txt = (GTextField)GetChild("txt");
-            number = (GTextField)GetChild("number");
-            icon = (GLoader)GetChild("icon");
+            bg = (GButton) GetChild("bg");
+            ok = (GButton) GetChild("ok");
+            txt = (GTextField) GetChild("txt");
+            number = (GTextField) GetChild("number");
+            icon = (GLoader) GetChild("icon");
         }
     }
 }

@@ -16,10 +16,11 @@ namespace ET
 
         private void OnDrawGizmos()
         {
-            if (this.Path.Count < 2)
+            if (Path.Count < 2)
             {
                 return;
             }
+
             for (int i = 0; i < Path.Count - 1; ++i)
             {
                 Gizmos.DrawLine(Path[i], Path[i + 1]);

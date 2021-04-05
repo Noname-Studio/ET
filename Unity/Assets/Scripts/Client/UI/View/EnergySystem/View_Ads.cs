@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace EnergySystem
 {
-    public partial class View_Ads : GComponent
+    public partial class View_Ads: GComponent
     {
         public Transition t0;
         public const string URL = "ui://yvifr4bbfgktjg";
 
         public static View_Ads CreateInstance()
         {
-            return (View_Ads)UIPackage.CreateObject("EnergySystem", "Ads");
+            return (View_Ads) UIPackage.CreateObject("EnergySystem", "Ads");
         }
 
         public override void ConstructFromXML(XML xml)

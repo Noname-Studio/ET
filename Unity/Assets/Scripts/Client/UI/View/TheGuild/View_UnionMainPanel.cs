@@ -8,12 +8,11 @@ namespace TheGuild
     public partial class View_UnionMainPanel : GComponent
     {
         public Controller c2;
-        public GButton bg;
         public GList Menu;
-        public GLoader Activity;
+        public View_GongHuiHuoDongZuJian Activity;
         public GLoader Chat;
         public GLoader MyUnion;
-        public GLoader MemberHelper;
+        public View_GongHuiChengYuanHuZhu MebmerHelp;
         public GButton Close;
         public GGroup UI;
         public const string URL = "ui://nvat1mjs10fii8";
@@ -28,12 +27,11 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             c2 = GetController("c2");
-            bg = (GButton)GetChild("bg");
             Menu = (GList)GetChild("Menu");
-            Activity = (GLoader)GetChild("Activity");
+            Activity = (View_GongHuiHuoDongZuJian)GetChild("Activity");
             Chat = (GLoader)GetChild("Chat");
             MyUnion = (GLoader)GetChild("MyUnion");
-            MemberHelper = (GLoader)GetChild("MemberHelper");
+            MebmerHelp = (View_GongHuiChengYuanHuZhu)GetChild("MebmerHelp");
             Close = (GButton)GetChild("Close");
             UI = (GGroup)GetChild("UI");
         }

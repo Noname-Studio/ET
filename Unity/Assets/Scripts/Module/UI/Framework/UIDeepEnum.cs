@@ -1,8 +1,8 @@
 ﻿using System;
 
-public enum UIDeepEnum : short
+public enum UIDeepEnum: short
 {
-    Default = 10,
+    Default = 0,
     NetworkLoading = short.MaxValue,
-    GameLoading = short.MaxValue - 1,
+    GameLoading = short.MaxValue - 1
 }

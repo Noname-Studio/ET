@@ -1,13 +1,16 @@
 ﻿using Common;
+using RemoteSaves;
+using RestaurantPreview.Config;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
 namespace Client.UI.ViewModel
 {
-    [UIWindow(Enter = WindowAnimType.Fall,Exit = WindowAnimType.Rise)]
-//[UIBackgroundArgs(typeof())]
-    public class UI_FoodUpgradeTip : UIBase<View_PopdUpgradeFood>
+    [UIWindow(Enter = WindowAnimType.Fall, Exit = WindowAnimType.Rise)]
+    //[UIBackgroundArgs(typeof())]
+    public class UI_FoodUpgradeTip: UIBase<View_PopdUpgradeFood>
     {
-        public class ParamsData : IUIParams
+        public class ParamsData: IUIParams
         {
             public FoodProperty Food;
 
@@ -18,14 +21,14 @@ namespace Client.UI.ViewModel
         }
 
         private ParamsData mArgs;
-    
-        public override void OnInit(IUIParams p)
+
+        protected override void OnInit(IUIParams p)
         {
             base.OnInit(p);
             mArgs = p as ParamsData;
             if (mArgs == null)
             {
-                Debug.LogError($"找不到Type为{nameof(ParamsData)}的参数,或者参数为Null");
+                Debug.LogError($"找不到Type为{nameof (ParamsData)}的参数,或者参数为Null");
                 CloseMySelf();
                 return;
             }
@@ -38,16 +41,56 @@ namespace Client.UI.ViewModel
             var food = mArgs.Food;
             FoodDetailProperty currentLevel = food.CurrentLevel;
             FoodDetailProperty nextLevel = food.NextLevel;
-            View.IsMax.selectedPage = nextLevel == null ? "TRUE" : "FALSE";
+            View.IsMax.selectedPage = nextLevel == null? "TRUE" : "FALSE";
             View.FoodIcon.url = food.Texture;
             View.FoodName.text = food.DisplayName;
             View.From.text = currentLevel.Tips.ToString();
-            View.To.text = nextLevel == null ? "" : nextLevel.Tips.ToString();
+            View.To.text = nextLevel == null? "" : nextLevel.Tips.ToString();
+            if (nextLevel != null)
+            {
+                View.Price.text = nextLevel.Price.IsFree()? LocalizationProperty.Read("Free") : nextLevel.Price.ConvertToString(50, 50);
+            }
+
+            View.Star.RemoveChildrenToPool();
+            for (int i = 0; i < food.LevelCap; i++)
+            {
+                var star = (View_Star) View.Star.AddItemFromPool();
+                if (i < currentLevel.Level)
+                {
+                    star.Active.selectedPage = "TRUE";
+                }
+                else
+                {
+                    star.Active.selectedPage = "FALSE";
+                }
+            }
         }
-    
+
+        private void InitButton()
+        {
+            View.UpgradeButton.onClick.Set(UpgradeButton_OnClick);
+        }
+
+        private void UpgradeButton_OnClick()
+        {
+            var food = mArgs.Food;
+            if (ResourcesHelper.SpenPrice(food.NextLevel.Price))
+            {
+                var dt = Data_FoodFactory.Get(food.RestaurantId);
+                var info = dt.Get(food.Key.Remove(0, 2));
+                info.Level += 1;
+                dt.Set(food.Key, info);
+                DBManager.Inst.UpdateLocal(dt);
+                Message.Send(new FoodUpgradeSuccess(food.Key));
+            }
+
+            CloseMySelf();
+        }
+
         private void InitUI()
         {
             InitState();
+            InitButton();
         }
     }
 }

@@ -21,11 +21,11 @@ namespace Client.UI.ViewModel
                 button.onClick.Add(SelectLevel);
             }*/
         }
-        
+
         //[Conditional("DEVELOPMENT_BUILD"), Conditional("UNITY_EDITOR")]
         private void SelectLevel(EventContext context)
         {
-            var button = (GButton)context.sender;
+            var button = (GButton) context.sender;
             var level = (LevelProperty) button.data;
             InitPanel(level);
         }

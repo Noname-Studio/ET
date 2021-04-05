@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Settings
 {
-    public partial class View_setting : GComponent
+    public partial class View_setting: GComponent
     {
         public GButton bg;
         public GButton Close;
@@ -23,25 +23,25 @@ namespace Settings
 
         public static View_setting CreateInstance()
         {
-            return (View_setting)UIPackage.CreateObject("Settings", "setting");
+            return (View_setting) UIPackage.CreateObject("Settings", "setting");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
-            Close = (GButton)GetChild("Close");
-            HeadPanel = (View_TouXiangZuJian)GetChild("HeadPanel");
-            WebSite = (GButton)GetChild("WebSite");
-            Voice = (GButton)GetChild("Voice");
-            Service = (GButton)GetChild("Service");
-            Music = (GButton)GetChild("Music");
-            Pet = (GButton)GetChild("Pet");
-            FAQ = (GButton)GetChild("FAQ");
-            syncBtn = (View_synchrodata_button)GetChild("syncBtn");
-            CopyAccount = (GButton)GetChild("CopyAccount");
-            copy_ok_tip = (View_copy_ok_tip)GetChild("copy_ok_tip");
+            bg = (GButton) GetChild("bg");
+            Close = (GButton) GetChild("Close");
+            HeadPanel = (View_TouXiangZuJian) GetChild("HeadPanel");
+            WebSite = (GButton) GetChild("WebSite");
+            Voice = (GButton) GetChild("Voice");
+            Service = (GButton) GetChild("Service");
+            Music = (GButton) GetChild("Music");
+            Pet = (GButton) GetChild("Pet");
+            FAQ = (GButton) GetChild("FAQ");
+            syncBtn = (View_synchrodata_button) GetChild("syncBtn");
+            CopyAccount = (GButton) GetChild("CopyAccount");
+            copy_ok_tip = (View_copy_ok_tip) GetChild("copy_ok_tip");
         }
     }
 }

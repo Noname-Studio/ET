@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnityBehaviour : MonoBehaviour
+public class UnityBehaviour: MonoBehaviour
 {
     private static bool ApplicationIsQuitting = false;
 
-    void Start()
+    private void Start()
     {
         UnityLifeCycleKit.Inst = this;
         DontDestroyOnLoad(gameObject);
     }
-    
-    private UnityBehaviour(){  }
+
+    private UnityBehaviour()
+    {
+    }
 
     private void OnDestroy()
     {
@@ -20,6 +22,7 @@ public class UnityBehaviour : MonoBehaviour
     }
 
     #region TimeControl
+
     private int mCountingUpdateNum = 0;
     private int mCountingFixedUpdateNum = 0;
     private int mCountingLateUpdateNum = 0;
@@ -38,7 +41,8 @@ public class UnityBehaviour : MonoBehaviour
     private ulong mGuidCounting;
 
     public event Action ApplicationQuitEvent;
-    public UpdateData AddUpdate(Func<float> func,params object[] args)
+
+    public UpdateData AddUpdate(Func<float> func, params object[] args)
     {
         mCountingUpdateNum++;
         return AddUpdate(mUpdateFunc, func, args);
@@ -58,66 +62,75 @@ public class UnityBehaviour : MonoBehaviour
 
     private UpdateData AddUpdate(List<UpdateData> list, Func<float> func, params object[] args)
     {
-        var data = new UpdateData { Func = func, Args = args,InstanceId = mGuidCounting++};
+        var data = new UpdateData { Func = func, Args = args, InstanceId = mGuidCounting++ };
         list.Add(data);
         return data;
     }
 
     public void RemoveUpdate(Func<float> func)
     {
-            for (int i = 0; i < mCountingUpdateNum; i++)
+        for (int i = 0; i < mCountingUpdateNum; i++)
+        {
+            if (mUpdateFunc[i].Func.Equals(func))
             {
-                if (mUpdateFunc[i].Func.Equals(func))
-                {
-                    mCountingUpdateNum--;
-                    mUpdateFunc.RemoveAt(i);
-                    return;
-                }
+                mCountingUpdateNum--;
+                mUpdateFunc.RemoveAt(i);
+                return;
             }
+        }
     }
 
     public void RemoveFixedUpdate(Func<float> func)
     {
-            for (int i = 0; i < mCountingFixedUpdateNum; i++)
+        for (int i = 0; i < mCountingFixedUpdateNum; i++)
+        {
+            if (mFixedUpdate[i].Func == func)
             {
-                if (mFixedUpdate[i].Func == func)
-                {
-                    mCountingFixedUpdateNum--;
-                    mFixedUpdate.RemoveAt(i);
-                    return;
-                }
+                mCountingFixedUpdateNum--;
+                mFixedUpdate.RemoveAt(i);
+                return;
             }
+        }
     }
 
     public void RemoveLateUpdate(Func<float> func)
     {
-            for (int i = 0; i < mCountingLateUpdateNum; i++)
+        for (int i = 0; i < mCountingLateUpdateNum; i++)
+        {
+            if (mLateUpdate[i].Func == func)
             {
-                if (mLateUpdate[i].Func == func)
-                {
-                    mCountingLateUpdateNum--;
-                    mLateUpdate.RemoveAt(i);
-                    return;
-                }
+                mCountingLateUpdateNum--;
+                mLateUpdate.RemoveAt(i);
+                return;
             }
+        }
     }
 
     public void RemoveUpdate(UpdateData data)
     {
-        if (data?.Func != null) RemoveUpdate(data.Func);
+        if (data?.Func != null)
+        {
+            RemoveUpdate(data.Func);
+        }
     }
 
     public void RemoveFixedUpdate(UpdateData data)
     {
-        if (data?.Func != null) RemoveFixedUpdate(data.Func);
+        if (data?.Func != null)
+        {
+            RemoveFixedUpdate(data.Func);
+        }
     }
 
     public void RemoveLateUpdate(UpdateData data)
     {
-        if (data?.Func != null) RemoveLateUpdate(data.Func);
+        if (data?.Func != null)
+        {
+            RemoveLateUpdate(data.Func);
+        }
     }
 
-    void Update()
+    private void Update()
     {
         UpdateData data;
         for (int i = mCountingUpdateNum - 1; i >= 0; i--)
@@ -129,6 +142,7 @@ public class UnityBehaviour : MonoBehaviour
                 mUpdateFunc[i] = data;
                 continue;
             }
+
             data.Count = data.Func();
             if (data.Count == -1)
             {
@@ -141,7 +155,7 @@ public class UnityBehaviour : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         UpdateData data;
         for (int i = mCountingFixedUpdateNum - 1; i >= 0; i--)
@@ -153,6 +167,7 @@ public class UnityBehaviour : MonoBehaviour
                 mFixedUpdate[i] = data;
                 continue;
             }
+
             data.Count = data.Func();
             if (data.Count == -1)
             {
@@ -165,7 +180,7 @@ public class UnityBehaviour : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         UpdateData data;
         for (int i = mCountingLateUpdateNum - 1; i >= 0; i--)
@@ -177,6 +192,7 @@ public class UnityBehaviour : MonoBehaviour
                 mLateUpdate[i] = data;
                 continue;
             }
+
             data.Count = data.Func();
             if (data.Count == -1)
             {
@@ -188,12 +204,14 @@ public class UnityBehaviour : MonoBehaviour
             }
         }
     }
+
     #endregion
-    
+
     private void OnApplicationQuit()
     {
-        if(this.ApplicationQuitEvent != null)
-            this.ApplicationQuitEvent();
+        if (ApplicationQuitEvent != null)
+        {
+            ApplicationQuitEvent();
+        }
     }
 }
-

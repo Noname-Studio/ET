@@ -51,7 +51,6 @@ namespace Common
             UIObjectFactory.SetPackageItemExtension(View_foodicon.URL, typeof(View_foodicon));
             UIObjectFactory.SetPackageItemExtension(View_GoldExchangeZiSe.URL, typeof(View_GoldExchangeZiSe));
             UIObjectFactory.SetPackageItemExtension(View_SKIP.URL, typeof(View_SKIP));
-            UIObjectFactory.SetPackageItemExtension(View_targetItem.URL, typeof(View_targetItem));
             UIObjectFactory.SetPackageItemExtension(View_BlackBackground.URL, typeof(View_BlackBackground));
             UIObjectFactory.SetPackageItemExtension(View_Animation.URL, typeof(View_Animation));
             UIObjectFactory.SetPackageItemExtension(View_GoldExchange1HuangSe.URL, typeof(View_GoldExchange1HuangSe));
@@ -101,7 +100,6 @@ namespace Common
             UIObjectFactory.SetPackageItemExtension(View_tipboard_autoSize.URL, typeof(View_tipboard_autoSize));
             UIObjectFactory.SetPackageItemExtension(View_RecommendTags_effect.URL, typeof(View_RecommendTags_effect));
             UIObjectFactory.SetPackageItemExtension(View_RongYuZhiZuJian.URL, typeof(View_RongYuZhiZuJian));
-            UIObjectFactory.SetPackageItemExtension(View_HeadPortrait.URL, typeof(View_HeadPortrait));
         }
     }
 }

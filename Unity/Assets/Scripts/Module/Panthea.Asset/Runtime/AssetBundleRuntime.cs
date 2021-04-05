@@ -18,7 +18,7 @@ namespace Panthea.Asset
             mPool = pool;
             mCounter = counter;
         }
-        
+
         public void ReleaseInstance<T>(T TObject) where T : Object
         {
             mCounter.RemoveCounter(TObject);
@@ -47,13 +47,14 @@ namespace Panthea.Asset
         }
 
         #region Async
-        public async UniTask<T> LoadAssetAsync<T>(string path) where T : UnityEngine.Object
+
+        public async UniTask<T> LoadAssetAsync<T>(string path) where T : Object
         {
             var tuple = await Internal_LoadAssetAsync<T>(path);
             return tuple.Item1;
         }
 
-        public async UniTask<Dictionary<string,List<Object>>> LoadAllAssetAsync(string path)
+        public async UniTask<Dictionary<string, List<Object>>> LoadAllAssetAsync(string path)
         {
             var ab = await LoadAssetBundleByABPath(path);
             var allAssets = await ab.LoadAllAssetsAsync();
@@ -84,7 +85,7 @@ namespace Panthea.Asset
             return ab;
         }
 
-        private async UniTask<Tuple<T, AssetBundleRequest>> Internal_LoadAssetAsync<T>(string path) where T : UnityEngine.Object
+        private async UniTask<Tuple<T, AssetBundleRequest>> Internal_LoadAssetAsync<T>(string path) where T : Object
         {
             var ab = await LoadAssetBundleByFilePath(path);
             var asset = await ab.LoadAssetAsync<T>(path);
@@ -98,28 +99,36 @@ namespace Panthea.Asset
             var obj = Object.Instantiate(tuple.Item1, parent);
             var transform = obj.transform;
             if (position.HasValue)
+            {
                 transform.localPosition = position.Value;
+            }
+
             if (rotation.HasValue)
+            {
                 transform.localEulerAngles = rotation.Value;
+            }
+
             mCounter.AddCounter(obj, tuple.Item2);
             return obj;
         }
+
         #endregion
-        
+
         #region Sync
-        public T LoadAssetSync<T>(string path) where T : UnityEngine.Object
+
+        public T LoadAssetSync<T>(string path) where T : Object
         {
             var tuple = Internal_LoadAssetSync<T>(path);
             return tuple.Item1;
         }
 
-        public Dictionary<string,List<Object>> LoadAllAssetSync(string path)
+        public Dictionary<string, List<Object>> LoadAllAssetSync(string path)
         {
             var ab = LoadAssetBundleByABPathSync(path);
             var allAssets = ab.LoadAllAssetsSync();
             return allAssets;
         }
-        
+
         public AssetBundleRequest LoadAssetBundleByFilePathSync(string path)
         {
             var directPath = mFilelog.GetFileInfo(path);
@@ -143,14 +152,15 @@ namespace Panthea.Asset
             var ab = mPool.GetSync(directPath);
             return ab;
         }
-        
-        private Tuple<T, AssetBundleRequest> Internal_LoadAssetSync<T>(string path) where T : UnityEngine.Object
+
+        private Tuple<T, AssetBundleRequest> Internal_LoadAssetSync<T>(string path) where T : Object
         {
             var ab = LoadAssetBundleByFilePathSync(path);
             var asset = ab.LoadAssetSync<T>(path);
             mCounter.AddCounter(asset, ab);
             return new Tuple<T, AssetBundleRequest>(asset, ab);
         }
+
         #endregion
     }
 }

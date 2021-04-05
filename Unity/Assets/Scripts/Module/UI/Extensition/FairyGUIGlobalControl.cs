@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using FairyGUI;
 using UnityEngine;
 
-public class FairyGUIPatch {
+public class FairyGUIPatch
+{
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    static void Init()
+    private static void Init()
     {
         //设定加载指定的GLoader
-        UIObjectFactory.SetLoaderExtension(typeof(XUILoader));
+        UIObjectFactory.SetLoaderExtension(typeof (XUILoader));
     }
 }

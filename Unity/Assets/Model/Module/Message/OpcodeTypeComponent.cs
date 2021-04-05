@@ -25,19 +25,19 @@ namespace ET
     public class OpcodeTypeComponent: Entity
     {
         public static OpcodeTypeComponent Instance;
-        
+
         private HashSet<ushort> outrActorMessage = new HashSet<ushort>();
-        
+
         private readonly Dictionary<ushort, Type> opcodeTypes = new Dictionary<ushort, Type>();
         private readonly Dictionary<Type, ushort> typeOpcodes = new Dictionary<Type, ushort>();
-        
+
         private readonly Dictionary<Type, Type> requestResponse = new Dictionary<Type, Type>();
-        
+
         public void Awake()
         {
-            this.opcodeTypes.Clear();
-            this.typeOpcodes.Clear();
-            this.requestResponse.Clear();
+            opcodeTypes.Clear();
+            typeOpcodes.Clear();
+            requestResponse.Clear();
 
             HashSet<Type> types = Game.EventSystem.GetTypes(typeof (MessageAttribute));
             foreach (Type type in types)
@@ -53,25 +53,24 @@ namespace ET
                 {
                     continue;
                 }
-                
 
-                this.opcodeTypes.Add(messageAttribute.Opcode, type);
-                this.typeOpcodes.Add(type, messageAttribute.Opcode);
+                opcodeTypes.Add(messageAttribute.Opcode, type);
+                typeOpcodes.Add(type, messageAttribute.Opcode);
 
                 if (OpcodeHelper.IsOuterMessage(messageAttribute.Opcode) && typeof (IActorMessage).IsAssignableFrom(type))
                 {
-                    this.outrActorMessage.Add(messageAttribute.Opcode);
+                    outrActorMessage.Add(messageAttribute.Opcode);
                 }
-                
+
                 // 检查request response
                 if (typeof (IRequest).IsAssignableFrom(type))
                 {
                     if (typeof (IActorLocationMessage).IsAssignableFrom(type))
                     {
-                        this.requestResponse.Add(type, typeof(ActorResponse));
+                        requestResponse.Add(type, typeof (ActorResponse));
                         continue;
                     }
-                    
+
                     attrs = type.GetCustomAttributes(typeof (ResponseTypeAttribute), false);
                     if (attrs.Length == 0)
                     {
@@ -80,32 +79,33 @@ namespace ET
                     }
 
                     ResponseTypeAttribute responseTypeAttribute = attrs[0] as ResponseTypeAttribute;
-                    this.requestResponse.Add(type, responseTypeAttribute.Type);
+                    requestResponse.Add(type, responseTypeAttribute.Type);
                 }
             }
         }
 
         public bool IsOutrActorMessage(ushort opcode)
         {
-            return this.outrActorMessage.Contains(opcode);
+            return outrActorMessage.Contains(opcode);
         }
 
         public ushort GetOpcode(Type type)
         {
-            return this.typeOpcodes[type];
+            return typeOpcodes[type];
         }
 
         public Type GetType(ushort opcode)
         {
-            return this.opcodeTypes[opcode];
+            return opcodeTypes[opcode];
         }
 
         public Type GetResponseType(Type request)
         {
-            if (!this.requestResponse.TryGetValue(request, out Type response))
+            if (!requestResponse.TryGetValue(request, out Type response))
             {
                 throw new Exception($"not found response type, request type: {request.GetType().Name}");
             }
+
             return response;
         }
     }

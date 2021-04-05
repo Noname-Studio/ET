@@ -150,7 +150,8 @@ message R2G_GetLoginKey // IActorRequest
 {
     int32 RpcId = 90;
     int64 ActorId = 93;
-    string Account = 1;
+	string AccessToken = 1;	// 帐号
+	int LoginType = 2;//登录类型
 }
 
 message G2R_GetLoginKey // IActorResponse
@@ -184,21 +185,107 @@ message M2G_CreateUnit // IActorResponse
     repeated UnitInfo Units = 2;
 }
 
-//ResponseType CS2G_AddPlayerToChatServer
-message G2CS_AddPlayerToChatServer // IActorRequest
+//ResponseType CS2G_AddGuildToChatServer
+message G2CS_AddGuildToChatServer // IActorRequest
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-    int64 GateSessionId = 1;
+    int64 GuildId = 1;
 }
 
-message CS2G_AddPlayerToChatServer //IActorResponse
+message CS2G_AddGuildToChatServer //IActorResponse
 {
     int32 RpcId = 90;
     int32 Error = 91;
     string Message = 92;
+}
 
+//ResponseType CS2G_RemoveGuildToChatServer
+message G2CS_RemoveGuildToChatServer // IActorRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GuildId = 1;
+}
+
+message CS2G_RemoveGuildToChatServer //IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+//ResponseType CS2G_AddPlayerToChat
+message G2CS_AddPlayerToChat //IActorLocationRequest
+{
+    int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GuildId = 1;
+    int32 Type = 2;//0:世界频道,1:公会频道,2:私聊频道
+}
+
+message CS2G_AddPlayerToChat //IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+//ResponseType CS2G_RemovePlayerFromChat
+message G2CS_RemovePlayerFromChat //IActorLocationRequest
+{
+    int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GuildId = 1;
+    int32 Type = 2;//0:世界频道,1:公会频道,2:私聊频道
+}
+
+message CS2G_RemovePlayerFromChat //IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+//ResponseType CS2G_RegisterPlayerToChat
+message G2CS_RegisterPlayerToChat //IActorRequest
+{
+    int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+    int64 GateSessionId = 1;
+    string Head = 2;
+    string Name = 3;
+    int64 ChatId = 4;
+    int64 PlayerId = 5;
+}
+
+message CS2G_RegisterPlayerToChat //IActorResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    // 自己的unit id
+    int64 UnitId = 1;
+}
+
+//ResponseType CS2G_UnRegisterPlayerToChat
+message G2CS_UnRegisterPlayerToChat //IActorLocationRequest
+{
+    int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message CS2G_UnRegisterPlayerToChat //IActorLocationResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
     // 自己的unit id
     int64 UnitId = 1;
 }
@@ -209,10 +296,7 @@ message G2CS_SendGuildMessage // IActorLocationMessage
 	int32 Error = 91;
 	string Message = 92;
     int64 GuildId = 1;
-	int64 SenderId = 2;
-	string SenderName = 3;
-	string SenderMsg = 4;
-	int64 Time = 5;
+	string SenderMsg = 2;
 }
 
 message G2M_SessionDisconnect // IActorLocationMessage

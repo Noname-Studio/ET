@@ -15,12 +15,12 @@ namespace ET
 
         public void Handle(Session session, object message)
         {
-            this.action.Invoke(session, message);
+            action.Invoke(session, message);
         }
 
         public Type GetMessageType()
         {
-            return this.type;
+            return type;
         }
 
         public Type GetResponseType()

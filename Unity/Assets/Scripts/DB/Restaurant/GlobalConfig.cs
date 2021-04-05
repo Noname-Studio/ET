@@ -1,6 +1,7 @@
 /********************************
   该脚本是自动生成的请勿手动修改
 *********************************/
+
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -11,10 +12,11 @@ using System.IO;
 
 namespace RestaurantPreview.Config
 {
-    public partial class GlobalConfigProperty : ConfigAssetManager<GlobalConfigProperty>
+    public partial class GlobalConfigProperty: IConfig
     {
         private string mId;
         private string mValue;
+
         /// <summary>
         /// Id
         /// </summary>

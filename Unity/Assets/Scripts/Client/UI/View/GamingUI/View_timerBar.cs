@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_timerBar : GProgressBar
+    public partial class View_timerBar: GProgressBar
     {
         public GLoader icon;
         public GImage timer_waring;
@@ -15,16 +15,16 @@ namespace GamingUI
 
         public static View_timerBar CreateInstance()
         {
-            return (View_timerBar)UIPackage.CreateObject("GamingUI", "timerBar");
+            return (View_timerBar) UIPackage.CreateObject("GamingUI", "timerBar");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            icon = (GLoader)GetChild("icon");
-            timer_waring = (GImage)GetChild("timer_waring");
-            txt = (GTextField)GetChild("txt");
+            icon = (GLoader) GetChild("icon");
+            timer_waring = (GImage) GetChild("timer_waring");
+            txt = (GTextField) GetChild("txt");
             t0 = GetTransition("t0");
         }
     }

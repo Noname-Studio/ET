@@ -11,12 +11,12 @@
             public Scene ZoneScene;
             public long Ping;
         }
-        
+
         public struct AfterCreateZoneScene
         {
             public Scene ZoneScene;
         }
-        
+
         public struct AfterCreateLoginScene
         {
             public Scene LoginScene;

@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_Balloon_effect : GComponent
+    public partial class View_Balloon_effect: GComponent
     {
         public Transition t0;
         public const string URL = "ui://fmkyh2ywoge98on";
 
         public static View_Balloon_effect CreateInstance()
         {
-            return (View_Balloon_effect)UIPackage.CreateObject("Main", "Balloon_effect");
+            return (View_Balloon_effect) UIPackage.CreateObject("Main", "Balloon_effect");
         }
 
         public override void ConstructFromXML(XML xml)

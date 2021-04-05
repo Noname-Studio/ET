@@ -8,9 +8,9 @@ namespace ET
         None,
         OnceWaitTimer,
         OnceTimer,
-        RepeatedTimer,
+        RepeatedTimer
     }
-    
+
     [ObjectSystem]
     public class TimerActionAwakeSystem: AwakeSystem<TimerAction, TimerClass, long, object>
     {
@@ -32,7 +32,7 @@ namespace ET
             self.TimerClass = TimerClass.None;
         }
     }
-    
+
     public class TimerAction: Entity
     {
         public TimerClass TimerClass;
@@ -62,11 +62,7 @@ namespace ET
 
     public class TimerComponent: Entity
     {
-        public static TimerComponent Instance
-        {
-            get;
-            set;
-        }
+        public static TimerComponent Instance { get; set; }
 
         /// <summary>
         /// key: time, value: timer id
@@ -82,19 +78,19 @@ namespace ET
 
         public void Update()
         {
-            if (this.TimeId.Count == 0)
+            if (TimeId.Count == 0)
             {
                 return;
             }
 
             long timeNow = TimeHelper.ServerNow();
 
-            if (timeNow < this.minTime)
+            if (timeNow < minTime)
             {
                 return;
             }
 
-            foreach (KeyValuePair<long, List<long>> kv in this.TimeId)
+            foreach (KeyValuePair<long, List<long>> kv in TimeId)
             {
                 long k = kv.Key;
                 if (k > timeNow)
@@ -103,29 +99,30 @@ namespace ET
                     break;
                 }
 
-                this.timeOutTime.Enqueue(k);
+                timeOutTime.Enqueue(k);
             }
 
-            while (this.timeOutTime.Count > 0)
+            while (timeOutTime.Count > 0)
             {
-                long time = this.timeOutTime.Dequeue();
-                foreach (long timerId in this.TimeId[time])
+                long time = timeOutTime.Dequeue();
+                foreach (long timerId in TimeId[time])
                 {
-                    this.timeOutTimerIds.Enqueue(timerId);
+                    timeOutTimerIds.Enqueue(timerId);
                 }
 
-                this.TimeId.Remove(time);
+                TimeId.Remove(time);
             }
 
-            while (this.timeOutTimerIds.Count > 0)
+            while (timeOutTimerIds.Count > 0)
             {
-                long timerId = this.timeOutTimerIds.Dequeue();
+                long timerId = timeOutTimerIds.Dequeue();
 
-                TimerAction timerAction = this.GetChild<TimerAction>(timerId);
+                TimerAction timerAction = GetChild<TimerAction>(timerId);
                 if (timerAction == null)
                 {
                     continue;
                 }
+
                 Run(timerAction);
             }
         }
@@ -137,14 +134,14 @@ namespace ET
                 case TimerClass.OnceWaitTimer:
                 {
                     ETTaskCompletionSource<bool> tcs = timerAction.Callback as ETTaskCompletionSource<bool>;
-                    this.Remove(timerAction.Id);
+                    Remove(timerAction.Id);
                     tcs.SetResult(true);
                     break;
                 }
                 case TimerClass.OnceTimer:
                 {
                     Action action = timerAction.Callback as Action;
-                    this.Remove(timerAction.Id);
+                    Remove(timerAction.Id);
                     action?.Invoke();
                     break;
                 }
@@ -152,19 +149,19 @@ namespace ET
                 {
                     Action action = timerAction.Callback as Action;
                     long tillTime = TimeHelper.ServerNow() + timerAction.Time;
-                    this.AddTimer(tillTime, timerAction);
+                    AddTimer(tillTime, timerAction);
                     action?.Invoke();
                     break;
                 }
             }
         }
-        
+
         private void AddTimer(long tillTime, TimerAction timer)
         {
-            this.TimeId.Add(tillTime, timer.Id);
-            if (tillTime < this.minTime)
+            TimeId.Add(tillTime, timer.Id);
+            if (tillTime < minTime)
             {
-                this.minTime = tillTime;
+                minTime = tillTime;
             }
         }
 
@@ -177,17 +174,17 @@ namespace ET
 
             ETTaskCompletionSource<bool> tcs = new ETTaskCompletionSource<bool>();
             TimerAction timer = EntityFactory.CreateWithParent<TimerAction, TimerClass, long, object>(this, TimerClass.OnceWaitTimer, 0, tcs, true);
-            this.AddTimer(tillTime, timer);
+            AddTimer(tillTime, timer);
             long timerId = timer.Id;
 
             void CancelAction()
             {
-                if (this.Remove(timerId))
+                if (Remove(timerId))
                 {
                     tcs.SetResult(false);
                 }
             }
-            
+
             bool ret;
             try
             {
@@ -196,8 +193,9 @@ namespace ET
             }
             finally
             {
-                cancellationToken?.Remove(CancelAction);    
+                cancellationToken?.Remove(CancelAction);
             }
+
             return ret;
         }
 
@@ -212,17 +210,18 @@ namespace ET
             {
                 return true;
             }
+
             long tillTime = TimeHelper.ServerNow() + time;
 
             ETTaskCompletionSource<bool> tcs = new ETTaskCompletionSource<bool>();
-            
+
             TimerAction timer = EntityFactory.CreateWithParent<TimerAction, TimerClass, long, object>(this, TimerClass.OnceWaitTimer, 0, tcs, true);
-            this.AddTimer(tillTime, timer);
+            AddTimer(tillTime, timer);
             long timerId = timer.Id;
 
             void CancelAction()
             {
-                if (this.Remove(timerId))
+                if (Remove(timerId))
                 {
                     tcs.SetResult(false);
                 }
@@ -236,8 +235,9 @@ namespace ET
             }
             finally
             {
-                cancellationToken?.Remove(CancelAction); 
+                cancellationToken?.Remove(CancelAction);
             }
+
             return ret;
         }
 
@@ -262,8 +262,9 @@ namespace ET
 			}
 #endif
             long tillTime = TimeHelper.ServerNow() + time;
-            TimerAction timer = EntityFactory.CreateWithParent<TimerAction, TimerClass, long, object>(this, TimerClass.RepeatedTimer, time, action, true);
-            this.AddTimer(tillTime, timer);
+            TimerAction timer =
+                    EntityFactory.CreateWithParent<TimerAction, TimerClass, long, object>(this, TimerClass.RepeatedTimer, time, action, true);
+            AddTimer(tillTime, timer);
             return timer.Id;
         }
 
@@ -274,7 +275,7 @@ namespace ET
 
         public void Remove(ref long id)
         {
-            this.Remove(id);
+            Remove(id);
             id = 0;
         }
 
@@ -285,11 +286,12 @@ namespace ET
                 return false;
             }
 
-            TimerAction timerAction = this.GetChild<TimerAction>(id);
+            TimerAction timerAction = GetChild<TimerAction>(id);
             if (timerAction == null)
             {
                 return false;
             }
+
             timerAction.Dispose();
             return true;
         }
@@ -300,8 +302,9 @@ namespace ET
             {
                 Log.Error($"new once time too small: {tillTime}");
             }
+
             TimerAction timer = EntityFactory.CreateWithParent<TimerAction, TimerClass, long, object>(this, TimerClass.OnceTimer, 0, action, true);
-            this.AddTimer(tillTime, timer);
+            AddTimer(tillTime, timer);
             return timer.Id;
         }
     }

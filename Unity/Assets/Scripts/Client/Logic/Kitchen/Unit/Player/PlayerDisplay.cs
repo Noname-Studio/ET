@@ -11,6 +11,7 @@ namespace Kitchen
         public UnityObject Go;
         public AnimatorControl Animator;
         private RuntimeAnimatorController mRAC;
+
         public PlayerDisplay(UnityObject go)
         {
             Go = go;

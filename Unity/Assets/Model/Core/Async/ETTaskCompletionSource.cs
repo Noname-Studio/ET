@@ -23,7 +23,7 @@ namespace ET
         [DebuggerHidden]
         public void UnsafeOnCompleted(Action action)
         {
-            this.continuation = action;
+            continuation = action;
             if (state != AwaiterStatus.Pending)
             {
                 TryInvokeContinuation();
@@ -33,19 +33,19 @@ namespace ET
         [DebuggerHidden]
         public void OnCompleted(Action action)
         {
-            this.UnsafeOnCompleted(action);
+            UnsafeOnCompleted(action);
         }
 
         [DebuggerHidden]
         public void GetResult()
         {
-            switch (this.state)
+            switch (state)
             {
                 case AwaiterStatus.Succeeded:
                     return;
                 case AwaiterStatus.Faulted:
-                    this.exception?.Throw();
-                    this.exception = null;
+                    exception?.Throw();
+                    exception = null;
                     return;
                 default:
                     throw new NotSupportedException("ETTask does not allow call GetResult directly when task not completed. Please use 'await'.");
@@ -55,7 +55,7 @@ namespace ET
         [DebuggerHidden]
         public void SetResult()
         {
-            if (this.TrySetResult())
+            if (TrySetResult())
             {
                 return;
             }
@@ -66,7 +66,7 @@ namespace ET
         [DebuggerHidden]
         public void SetException(Exception e)
         {
-            if (this.TrySetException(e))
+            if (TrySetException(e))
             {
                 return;
             }
@@ -77,36 +77,36 @@ namespace ET
         [DebuggerHidden]
         private void TryInvokeContinuation()
         {
-            this.continuation?.Invoke();
-            this.continuation = null;
+            continuation?.Invoke();
+            continuation = null;
         }
 
         [DebuggerHidden]
         private bool TrySetResult()
         {
-            if (this.state != AwaiterStatus.Pending)
+            if (state != AwaiterStatus.Pending)
             {
                 return false;
             }
 
-            this.state = AwaiterStatus.Succeeded;
+            state = AwaiterStatus.Succeeded;
 
-            this.TryInvokeContinuation();
+            TryInvokeContinuation();
             return true;
         }
 
         [DebuggerHidden]
         private bool TrySetException(Exception e)
         {
-            if (this.state != AwaiterStatus.Pending)
+            if (state != AwaiterStatus.Pending)
             {
                 return false;
             }
 
-            this.state = AwaiterStatus.Faulted;
+            state = AwaiterStatus.Faulted;
 
-            this.exception = ExceptionDispatchInfo.Capture(e);
-            this.TryInvokeContinuation();
+            exception = ExceptionDispatchInfo.Capture(e);
+            TryInvokeContinuation();
             return true;
         }
     }
@@ -130,13 +130,13 @@ namespace ET
         [DebuggerHidden]
         public T GetResult()
         {
-            switch (this.state)
+            switch (state)
             {
                 case AwaiterStatus.Succeeded:
-                    return this.value;
+                    return value;
                 case AwaiterStatus.Faulted:
-                    this.exception?.Throw();
-                    this.exception = null;
+                    exception?.Throw();
+                    exception = null;
                     return default;
                 default:
                     throw new NotSupportedException("ETask does not allow call GetResult directly when task not completed. Please use 'await'.");
@@ -152,7 +152,7 @@ namespace ET
         [DebuggerHidden]
         public void UnsafeOnCompleted(Action action)
         {
-            this.continuation = action;
+            continuation = action;
             if (state != AwaiterStatus.Pending)
             {
                 TryInvokeContinuation();
@@ -162,13 +162,13 @@ namespace ET
         [DebuggerHidden]
         public void OnCompleted(Action action)
         {
-            this.UnsafeOnCompleted(action);
+            UnsafeOnCompleted(action);
         }
 
         [DebuggerHidden]
         public void SetResult(T result)
         {
-            if (this.TrySetResult(result))
+            if (TrySetResult(result))
             {
                 return;
             }
@@ -179,7 +179,7 @@ namespace ET
         [DebuggerHidden]
         public void SetException(Exception e)
         {
-            if (this.TrySetException(e))
+            if (TrySetException(e))
             {
                 return;
             }
@@ -190,37 +190,37 @@ namespace ET
         [DebuggerHidden]
         private void TryInvokeContinuation()
         {
-            this.continuation?.Invoke();
-            this.continuation = null;
+            continuation?.Invoke();
+            continuation = null;
         }
 
         [DebuggerHidden]
         private bool TrySetResult(T result)
         {
-            if (this.state != AwaiterStatus.Pending)
+            if (state != AwaiterStatus.Pending)
             {
                 return false;
             }
 
-            this.state = AwaiterStatus.Succeeded;
+            state = AwaiterStatus.Succeeded;
 
-            this.value = result;
-            this.TryInvokeContinuation();
+            value = result;
+            TryInvokeContinuation();
             return true;
         }
 
         [DebuggerHidden]
         private bool TrySetException(Exception e)
         {
-            if (this.state != AwaiterStatus.Pending)
+            if (state != AwaiterStatus.Pending)
             {
                 return false;
             }
 
-            this.state = AwaiterStatus.Faulted;
+            state = AwaiterStatus.Faulted;
 
-            this.exception = ExceptionDispatchInfo.Capture(e);
-            this.TryInvokeContinuation();
+            exception = ExceptionDispatchInfo.Capture(e);
+            TryInvokeContinuation();
             return true;
         }
     }

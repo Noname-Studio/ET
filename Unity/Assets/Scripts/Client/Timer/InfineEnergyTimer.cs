@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-public class InfineEnergyTimer : TimerAgent
+public class InfineEnergyTimer: TimerAgent
 {
     private long targetTime;
-    public InfineEnergyTimer(string key,int interval) : base(key,interval)
+
+    public InfineEnergyTimer(string key, int interval): base(key, interval)
     {
     }
 
@@ -16,6 +17,8 @@ public class InfineEnergyTimer : TimerAgent
     public override void Run()
     {
         if (TimeUtils.GetUtcTimeStamp() >= targetTime)
+        {
             EnergyManager.Inst.ClearInfine();
+        }
     }
 }

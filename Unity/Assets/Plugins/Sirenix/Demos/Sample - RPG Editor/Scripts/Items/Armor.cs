@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 namespace Sirenix.OdinInspector.Demos.RPGEditor
 {
-    public class Armor : EquipableItem
+    public class Armor: EquipableItem
     {
         [BoxGroup(STATS_BOX_GROUP)]
         public float BaseArmor;
@@ -13,13 +13,7 @@ namespace Sirenix.OdinInspector.Demos.RPGEditor
         {
             get
             {
-                return new ItemTypes[] 
-                {
-                    ItemTypes.Body,
-                    ItemTypes.Head,
-                    ItemTypes.Boots,
-                    ItemTypes.OffHand
-                };
+                return new ItemTypes[] { ItemTypes.Body, ItemTypes.Head, ItemTypes.Boots, ItemTypes.OffHand };
             }
         }
     }

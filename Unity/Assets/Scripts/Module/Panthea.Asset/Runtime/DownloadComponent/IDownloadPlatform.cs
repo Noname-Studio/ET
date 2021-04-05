@@ -8,6 +8,5 @@ namespace Panthea.Asset
         UniTask<DownloadThread> FetchHeader(string path);
         UniTask<string> GetText(string path);
         UniTask<byte[]> GetBytes(string path);
-
     }
 }

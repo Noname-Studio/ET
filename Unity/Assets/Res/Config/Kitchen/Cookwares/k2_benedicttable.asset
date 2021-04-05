@@ -45,7 +45,7 @@ MonoBehaviour:
     mSpineData: {fileID: 11400000, guid: aeec43f3a0ef8094eb86e66a9ca613db, type: 2}
     mEffectPath: {fileID: 0}
     mUnlockLv: 0
-    mTexture: Cookware/Breakfast/part1/k2_benedicttable_11
+    mTexture: Cookware/Breakfast/part1/k2_benedicttable_11.icon
   - mLevel: 2
     mEditorTexture: {fileID: 2800000, guid: e7e9b850e9215494795f76c475108e1f, type: 3}
     mWorkTime: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     mSpineData: {fileID: 11400000, guid: aeec43f3a0ef8094eb86e66a9ca613db, type: 2}
     mEffectPath: {fileID: 0}
     mUnlockLv: 0
-    mTexture: Cookware/Breakfast/part1/k2_benedicttable_12
+    mTexture: Cookware/Breakfast/part1/k2_benedicttable_12.icon
   - mLevel: 3
     mEditorTexture: {fileID: 2800000, guid: 6a1a108ff9eb023448f7ffc4b7f60ba8, type: 3}
     mWorkTime: 0
@@ -69,4 +69,4 @@ MonoBehaviour:
     mSpineData: {fileID: 11400000, guid: aeec43f3a0ef8094eb86e66a9ca613db, type: 2}
     mEffectPath: {fileID: 0}
     mUnlockLv: 0
-    mTexture: Cookware/Breakfast/part1/k2_benedicttable_13
+    mTexture: Cookware/Breakfast/part1/k2_benedicttable_13.icon

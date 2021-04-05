@@ -5,26 +5,26 @@ using FairyGUI.Utils;
 
 namespace UI.Story.Bank
 {
-	public partial class View_effect : GComponent
-	{
-		public Transition t0;
+    public partial class View_effect: GComponent
+    {
+        public Transition t0;
 
-		public const string URL = "ui://yf9s6r30qmjomb";
+        public const string URL = "ui://yf9s6r30qmjomb";
 
-		public static View_effect CreateInstance()
-		{
-			return (View_effect)UIPackage.CreateObject("Bank","effect");
-		}
+        public static View_effect CreateInstance()
+        {
+            return (View_effect) UIPackage.CreateObject("Bank", "effect");
+        }
 
-		public View_effect()
-		{
-		}
+        public View_effect()
+        {
+        }
 
-		public override void ConstructFromXML(XML xml)
-		{
-			base.ConstructFromXML(xml);
+        public override void ConstructFromXML(XML xml)
+        {
+            base.ConstructFromXML(xml);
 
-			t0 = this.GetTransitionAt(0);
-		}
-	}
+            t0 = GetTransitionAt(0);
+        }
+    }
 }

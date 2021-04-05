@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GameBegins
 {
-    public partial class View_KitchenWareComponent : GComponent
+    public partial class View_KitchenWareComponent: GComponent
     {
         public GLoader icon_plate;
         public GLoader icon;
@@ -13,15 +13,15 @@ namespace GameBegins
 
         public static View_KitchenWareComponent CreateInstance()
         {
-            return (View_KitchenWareComponent)UIPackage.CreateObject("GameBegins", "KitchenWareComponent");
+            return (View_KitchenWareComponent) UIPackage.CreateObject("GameBegins", "KitchenWareComponent");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            icon_plate = (GLoader)GetChild("icon_plate");
-            icon = (GLoader)GetChild("icon");
+            icon_plate = (GLoader) GetChild("icon_plate");
+            icon = (GLoader) GetChild("icon");
         }
     }
 }

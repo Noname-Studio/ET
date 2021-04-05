@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Achievement
 {
-    public partial class View_ChengJiu1 : GComponent
+    public partial class View_ChengJiu1: GComponent
     {
         public Controller c1;
         public Controller c2;
@@ -21,7 +21,7 @@ namespace Achievement
 
         public static View_ChengJiu1 CreateInstance()
         {
-            return (View_ChengJiu1)UIPackage.CreateObject("Achievement", "成就1");
+            return (View_ChengJiu1) UIPackage.CreateObject("Achievement", "成就1");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -30,14 +30,14 @@ namespace Achievement
 
             c1 = GetController("c1");
             c2 = GetController("c2");
-            Name = (GTextField)GetChild("Name");
-            Desc = (GTextField)GetChild("Desc");
-            ProgressBar = (GProgressBar)GetChild("ProgressBar");
-            Finish = (GButton)GetChild("Finish");
-            ProgressTitle = (GTextField)GetChild("ProgressTitle");
-            FlyPoint = (GGraph)GetChild("FlyPoint");
-            Icon = (GLoader)GetChild("Icon");
-            Star = (GList)GetChild("Star");
+            Name = (GTextField) GetChild("Name");
+            Desc = (GTextField) GetChild("Desc");
+            ProgressBar = (GProgressBar) GetChild("ProgressBar");
+            Finish = (GButton) GetChild("Finish");
+            ProgressTitle = (GTextField) GetChild("ProgressTitle");
+            FlyPoint = (GGraph) GetChild("FlyPoint");
+            Icon = (GLoader) GetChild("Icon");
+            Star = (GList) GetChild("Star");
         }
     }
 }

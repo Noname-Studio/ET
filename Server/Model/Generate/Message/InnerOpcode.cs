@@ -24,9 +24,19 @@ namespace ET
 		 public const ushort G2R_GetLoginKey = 10020;
 		 public const ushort G2M_CreateUnit = 10021;
 		 public const ushort M2G_CreateUnit = 10022;
-		 public const ushort G2CS_AddPlayerToChatServer = 10023;
-		 public const ushort CS2G_AddPlayerToChatServer = 10024;
-		 public const ushort G2CS_SendGuildMessage = 10025;
-		 public const ushort G2M_SessionDisconnect = 10026;
+		 public const ushort G2CS_AddGuildToChatServer = 10023;
+		 public const ushort CS2G_AddGuildToChatServer = 10024;
+		 public const ushort G2CS_RemoveGuildToChatServer = 10025;
+		 public const ushort CS2G_RemoveGuildToChatServer = 10026;
+		 public const ushort G2CS_AddPlayerToChat = 10027;
+		 public const ushort CS2G_AddPlayerToChat = 10028;
+		 public const ushort G2CS_RemovePlayerFromChat = 10029;
+		 public const ushort CS2G_RemovePlayerFromChat = 10030;
+		 public const ushort G2CS_RegisterPlayerToChat = 10031;
+		 public const ushort CS2G_RegisterPlayerToChat = 10032;
+		 public const ushort G2CS_UnRegisterPlayerToChat = 10033;
+		 public const ushort CS2G_UnRegisterPlayerToChat = 10034;
+		 public const ushort G2CS_SendGuildMessage = 10035;
+		 public const ushort G2M_SessionDisconnect = 10036;
 	}
 }

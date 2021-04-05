@@ -39,7 +39,7 @@ namespace ET
         public virtual void BeginInit()
         {
         }
-        
+
         public virtual void EndInit()
         {
         }

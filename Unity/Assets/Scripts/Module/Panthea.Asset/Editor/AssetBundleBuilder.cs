@@ -10,9 +10,9 @@ namespace Panthea.Editor.Asset
 {
     public class AssetBundleBuilder
     {
-        List<Type> mProcess = new List<Type>();
+        private List<Type> mProcess = new List<Type>();
         private const string mPackPath = AssetsPackPath.Path;
-        Dictionary<string, object> mInject = new Dictionary<string, object>();
+        private Dictionary<string, object> mInject = new Dictionary<string, object>();
 
         public async void Init()
         {
@@ -40,7 +40,10 @@ namespace Panthea.Editor.Asset
 
         private void OnBuildCompleted(AddressableAssetBuildResult result)
         {
-            if (!string.IsNullOrEmpty(result.Error)) throw new Exception(result.Error);
+            if (!string.IsNullOrEmpty(result.Error))
+            {
+                throw new Exception(result.Error);
+            }
         }
 
         public static void Pack()

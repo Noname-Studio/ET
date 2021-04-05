@@ -21,26 +21,14 @@ public partial class AnimatorControl: MonoBehaviour
 
     public Animator Animator
     {
-        get
-        {
-            return (object) mAnimator != null? mAnimator : (mAnimator = GetComponent<Animator>());
-        }
-        private set
-        {
-            mAnimator = value;
-        }
+        get => (object) mAnimator != null? mAnimator : mAnimator = GetComponent<Animator>();
+        private set => mAnimator = value;
     }
 
     public float Speed
     {
-        get
-        {
-            return Animator.speed;
-        }
-        set
-        {
-            Animator.speed = value;
-        }
+        get => Animator.speed;
+        set => Animator.speed = value;
     }
 
     private const string MatchSign = "*";
@@ -65,7 +53,10 @@ public partial class AnimatorControl: MonoBehaviour
         {
             var info = GetBehaviour(0)?.CurrentState?.StateInfo;
             if (info.HasValue)
+            {
                 return HashToName(info.Value.shortNameHash);
+            }
+
             return "";
         }
     }
@@ -118,7 +109,10 @@ public partial class AnimatorControl: MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             if (string.IsNullOrEmpty(stateName[i]))
+            {
                 continue;
+            }
+
             if (stateName[i].Contains(MatchSign))
             {
                 if (stateName[i].Length == 1)
@@ -167,7 +161,10 @@ public partial class AnimatorControl: MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             if (string.IsNullOrEmpty(stateName[i]))
+            {
                 continue;
+            }
+
             if (stateName[i].Contains(MatchSign))
             {
                 if (stateName[i].Length == 1)
@@ -202,7 +199,10 @@ public partial class AnimatorControl: MonoBehaviour
     {
         var state = GetBehaviour(0).RuntimeInfo.FindState(hash);
         if (state != null)
+        {
             return state.Name;
+        }
+
         Log.Error("不存在这个Hash:" + hash);
         return "";
     }
@@ -272,9 +272,15 @@ public partial class AnimatorControl: MonoBehaviour
     public void SetBool(string varName, bool value)
     {
         if (string.IsNullOrEmpty(varName))
+        {
             return;
+        }
+
         Animator.SetBool(varName, value);
-        if (ParametersBoolChange != null) ParametersBoolChange(this, varName, value);
+        if (ParametersBoolChange != null)
+        {
+            ParametersBoolChange(this, varName, value);
+        }
     }
 
     public event Action<AnimatorControl, string, int> ParametersIntegerChange;
@@ -282,9 +288,15 @@ public partial class AnimatorControl: MonoBehaviour
     public void SetInteger(string varName, int value)
     {
         if (string.IsNullOrEmpty(varName))
+        {
             return;
+        }
+
         Animator.SetInteger(varName, value);
-        if (ParametersIntegerChange != null) ParametersIntegerChange(this, varName, value);
+        if (ParametersIntegerChange != null)
+        {
+            ParametersIntegerChange(this, varName, value);
+        }
     }
 
     public event Action<AnimatorControl, string, float> ParametersFloatChange;
@@ -292,9 +304,15 @@ public partial class AnimatorControl: MonoBehaviour
     public void SetFloat(string varName, float value)
     {
         if (string.IsNullOrEmpty(varName))
+        {
             return;
+        }
+
         Animator.SetFloat(varName, value);
-        if (ParametersFloatChange != null) ParametersFloatChange(this, varName, value);
+        if (ParametersFloatChange != null)
+        {
+            ParametersFloatChange(this, varName, value);
+        }
     }
 
     public event Action<AnimatorControl, string> ParametersTriggerChange;
@@ -302,9 +320,15 @@ public partial class AnimatorControl: MonoBehaviour
     public void SetTrigger(string varName)
     {
         if (string.IsNullOrEmpty(varName))
+        {
             return;
+        }
+
         Animator.SetTrigger(varName);
-        if (ParametersTriggerChange != null) ParametersTriggerChange(this, varName);
+        if (ParametersTriggerChange != null)
+        {
+            ParametersTriggerChange(this, varName);
+        }
     }
 
     public bool GetBool(string varName)

@@ -25,7 +25,7 @@ MonoBehaviour:
   mLevel: 1
   mRestaurantId: Breakfast
   mOrderMode: 1
-  mType: 64
+  mType: 68
   mDifType: 1
   mSection: 0
   mCoinLevelEnable: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     AllowUseTrash: 1
     RequiredCoin: 86
     LikeCount: 0
-    FixedTime: 0
+    FixedTime: 100
     LostCustomer: 0
     NumberOfCustomerService: 6
     NumberOfCompletedOrders: 5

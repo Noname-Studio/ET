@@ -31,158 +31,202 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
-namespace Spine.Unity.Editor {
+namespace Spine.Unity.Editor
+{
+    using Editor = UnityEditor.Editor;
+    using Event = UnityEngine.Event;
 
-	using Editor = UnityEditor.Editor;
-	using Event = UnityEngine.Event;
+    [CustomEditor(typeof (PointFollower))]
+    [CanEditMultipleObjects]
+    public class PointFollowerInspector: Editor
+    {
+        private SerializedProperty slotName, pointAttachmentName, skeletonRenderer, followZPosition, followBoneRotation, followSkeletonFlip;
+        private PointFollower targetPointFollower;
+        private bool needsReset;
 
-	[CustomEditor(typeof(PointFollower)), CanEditMultipleObjects]
-	public class PointFollowerInspector : Editor {
-		SerializedProperty slotName, pointAttachmentName, skeletonRenderer, followZPosition, followBoneRotation, followSkeletonFlip;
-		PointFollower targetPointFollower;
-		bool needsReset;
+        #region Context Menu Item
 
-		#region Context Menu Item
-		[MenuItem("CONTEXT/SkeletonRenderer/Add PointFollower GameObject")]
-		static void AddBoneFollowerGameObject (MenuCommand cmd) {
-			var skeletonRenderer = cmd.context as SkeletonRenderer;
-			var go = EditorInstantiation.NewGameObject("PointFollower", true);
-			var t = go.transform;
-			t.SetParent(skeletonRenderer.transform);
-			t.localPosition = Vector3.zero;
+        [MenuItem("CONTEXT/SkeletonRenderer/Add PointFollower GameObject")]
+        private static void AddBoneFollowerGameObject(MenuCommand cmd)
+        {
+            var skeletonRenderer = cmd.context as SkeletonRenderer;
+            var go = EditorInstantiation.NewGameObject("PointFollower", true);
+            var t = go.transform;
+            t.SetParent(skeletonRenderer.transform);
+            t.localPosition = Vector3.zero;
 
-			var f = go.AddComponent<PointFollower>();
-			f.skeletonRenderer = skeletonRenderer;
+            var f = go.AddComponent<PointFollower>();
+            f.skeletonRenderer = skeletonRenderer;
 
-			EditorGUIUtility.PingObject(t);
+            EditorGUIUtility.PingObject(t);
 
-			Undo.RegisterCreatedObjectUndo(go, "Add PointFollower");
-		}
+            Undo.RegisterCreatedObjectUndo(go, "Add PointFollower");
+        }
 
-		// Validate
-		[MenuItem("CONTEXT/SkeletonRenderer/Add PointFollower GameObject", true)]
-		static bool ValidateAddBoneFollowerGameObject (MenuCommand cmd) {
-			var skeletonRenderer = cmd.context as SkeletonRenderer;
-			return skeletonRenderer.valid;
-		}
-		#endregion
+        // Validate
+        [MenuItem("CONTEXT/SkeletonRenderer/Add PointFollower GameObject", true)]
+        private static bool ValidateAddBoneFollowerGameObject(MenuCommand cmd)
+        {
+            var skeletonRenderer = cmd.context as SkeletonRenderer;
+            return skeletonRenderer.valid;
+        }
 
-		void OnEnable () {
-			skeletonRenderer = serializedObject.FindProperty("skeletonRenderer");
-			slotName = serializedObject.FindProperty("slotName");
-			pointAttachmentName = serializedObject.FindProperty("pointAttachmentName");
+        #endregion
 
-			targetPointFollower = (PointFollower)target;
-			if (targetPointFollower.skeletonRenderer != null)
-				targetPointFollower.skeletonRenderer.Initialize(false);
+        private void OnEnable()
+        {
+            skeletonRenderer = serializedObject.FindProperty("skeletonRenderer");
+            slotName = serializedObject.FindProperty("slotName");
+            pointAttachmentName = serializedObject.FindProperty("pointAttachmentName");
 
-			if (!targetPointFollower.IsValid || needsReset) {
-				targetPointFollower.Initialize();
-				targetPointFollower.LateUpdate();
-				needsReset = false;
-				SceneView.RepaintAll();
-			}
-		}
+            targetPointFollower = (PointFollower) target;
+            if (targetPointFollower.skeletonRenderer != null)
+            {
+                targetPointFollower.skeletonRenderer.Initialize(false);
+            }
 
-		public void OnSceneGUI () {
-			var tbf = target as PointFollower;
-			var skeletonRendererComponent = tbf.skeletonRenderer;
-			if (skeletonRendererComponent == null)
-				return;
+            if (!targetPointFollower.IsValid || needsReset)
+            {
+                targetPointFollower.Initialize();
+                targetPointFollower.LateUpdate();
+                needsReset = false;
+                SceneView.RepaintAll();
+            }
+        }
 
-			var skeleton = skeletonRendererComponent.skeleton;
-			var skeletonTransform = skeletonRendererComponent.transform;
+        public void OnSceneGUI()
+        {
+            var tbf = target as PointFollower;
+            var skeletonRendererComponent = tbf.skeletonRenderer;
+            if (skeletonRendererComponent == null)
+            {
+                return;
+            }
 
-			if (string.IsNullOrEmpty(pointAttachmentName.stringValue)) {
-				// Draw all active PointAttachments in the current skin
-				var currentSkin = skeleton.Skin;
-				if (currentSkin != skeleton.Data.DefaultSkin) DrawPointsInSkin(skeleton.Data.DefaultSkin, skeleton, skeletonTransform);
-				if (currentSkin != null) DrawPointsInSkin(currentSkin, skeleton, skeletonTransform);
-			} else {
-				int slotIndex = skeleton.FindSlotIndex(slotName.stringValue);
-				if (slotIndex >= 0) {
-					var slot = skeleton.Slots.Items[slotIndex];
-					var point = skeleton.GetAttachment(slotIndex, pointAttachmentName.stringValue) as PointAttachment;
-					if (point != null) {
-						DrawPointAttachmentWithLabel(point, slot.Bone, skeletonTransform);
-					}
-				}
-			}
-		}
+            var skeleton = skeletonRendererComponent.skeleton;
+            var skeletonTransform = skeletonRendererComponent.transform;
 
-		static void DrawPointsInSkin (Skin skin, Skeleton skeleton, Transform transform) {
-			foreach (var skinEntry in skin.Attachments) {
-				var attachment = skinEntry.Value as PointAttachment;
-				if (attachment != null) {
-					var skinKey = (Skin.SkinEntry)skinEntry.Key;
-					var slot = skeleton.Slots.Items[skinKey.SlotIndex];
-					DrawPointAttachmentWithLabel(attachment, slot.Bone, transform);
-				}
-			}
-		}
+            if (string.IsNullOrEmpty(pointAttachmentName.stringValue))
+            {
+                // Draw all active PointAttachments in the current skin
+                var currentSkin = skeleton.Skin;
+                if (currentSkin != skeleton.Data.DefaultSkin)
+                {
+                    DrawPointsInSkin(skeleton.Data.DefaultSkin, skeleton, skeletonTransform);
+                }
 
-		static void DrawPointAttachmentWithLabel (PointAttachment point, Bone bone, Transform transform) {
-			Vector3 labelOffset = new Vector3(0f, -0.2f, 0f);
-			SpineHandles.DrawPointAttachment(bone, point, transform);
-			Handles.Label(labelOffset + point.GetWorldPosition(bone, transform), point.Name, SpineHandles.PointNameStyle);
-		}
+                if (currentSkin != null)
+                {
+                    DrawPointsInSkin(currentSkin, skeleton, skeletonTransform);
+                }
+            }
+            else
+            {
+                int slotIndex = skeleton.FindSlotIndex(slotName.stringValue);
+                if (slotIndex >= 0)
+                {
+                    var slot = skeleton.Slots.Items[slotIndex];
+                    var point = skeleton.GetAttachment(slotIndex, pointAttachmentName.stringValue) as PointAttachment;
+                    if (point != null)
+                    {
+                        DrawPointAttachmentWithLabel(point, slot.Bone, skeletonTransform);
+                    }
+                }
+            }
+        }
 
-		override public void OnInspectorGUI () {
-			if (serializedObject.isEditingMultipleObjects) {
-				if (needsReset) {
-					needsReset = false;
-					foreach (var o in targets) {
-						var bf = (BoneFollower)o;
-						bf.Initialize();
-						bf.LateUpdate();
-					}
-					SceneView.RepaintAll();
-				}
+        private static void DrawPointsInSkin(Skin skin, Skeleton skeleton, Transform transform)
+        {
+            foreach (var skinEntry in skin.Attachments)
+            {
+                var attachment = skinEntry.Value as PointAttachment;
+                if (attachment != null)
+                {
+                    var skinKey = (Skin.SkinEntry) skinEntry.Key;
+                    var slot = skeleton.Slots.Items[skinKey.SlotIndex];
+                    DrawPointAttachmentWithLabel(attachment, slot.Bone, transform);
+                }
+            }
+        }
 
-				EditorGUI.BeginChangeCheck();
-				DrawDefaultInspector();
-				needsReset |= EditorGUI.EndChangeCheck();
-				return;
-			}
+        private static void DrawPointAttachmentWithLabel(PointAttachment point, Bone bone, Transform transform)
+        {
+            Vector3 labelOffset = new Vector3(0f, -0.2f, 0f);
+            SpineHandles.DrawPointAttachment(bone, point, transform);
+            Handles.Label(labelOffset + point.GetWorldPosition(bone, transform), point.Name, SpineHandles.PointNameStyle);
+        }
 
-			if (needsReset && Event.current.type == EventType.Layout) {
-				targetPointFollower.Initialize();
-				targetPointFollower.LateUpdate();
-				needsReset = false;
-				SceneView.RepaintAll();
-			}
-			serializedObject.Update();
+        public override void OnInspectorGUI()
+        {
+            if (serializedObject.isEditingMultipleObjects)
+            {
+                if (needsReset)
+                {
+                    needsReset = false;
+                    foreach (var o in targets)
+                    {
+                        var bf = (BoneFollower) o;
+                        bf.Initialize();
+                        bf.LateUpdate();
+                    }
 
-			DrawDefaultInspector();
+                    SceneView.RepaintAll();
+                }
 
-			// Find Renderer
-			if (skeletonRenderer.objectReferenceValue == null) {
-				SkeletonRenderer parentRenderer = targetPointFollower.GetComponentInParent<SkeletonRenderer>();
-				if (parentRenderer != null && parentRenderer.gameObject != targetPointFollower.gameObject) {
-					skeletonRenderer.objectReferenceValue = parentRenderer;
-					Debug.Log("Inspector automatically assigned PointFollower.SkeletonRenderer");
-				}
-			}
+                EditorGUI.BeginChangeCheck();
+                DrawDefaultInspector();
+                needsReset |= EditorGUI.EndChangeCheck();
+                return;
+            }
 
-			var skeletonRendererReference = skeletonRenderer.objectReferenceValue as SkeletonRenderer;
-			if (skeletonRendererReference != null) {
-				if (skeletonRendererReference.gameObject == targetPointFollower.gameObject) {
-					skeletonRenderer.objectReferenceValue = null;
-					EditorUtility.DisplayDialog("Invalid assignment.", "PointFollower can only follow a skeleton on a separate GameObject.\n\nCreate a new GameObject for your PointFollower, or choose a SkeletonRenderer from a different GameObject.", "Ok");
-				}
-			}
+            if (needsReset && Event.current.type == EventType.Layout)
+            {
+                targetPointFollower.Initialize();
+                targetPointFollower.LateUpdate();
+                needsReset = false;
+                SceneView.RepaintAll();
+            }
 
-			if (!targetPointFollower.IsValid) {
-				needsReset = true;
-			}
+            serializedObject.Update();
 
-			var current = Event.current;
-			bool wasUndo = (current.type == EventType.ValidateCommand && current.commandName == "UndoRedoPerformed");
-			if (wasUndo)
-				targetPointFollower.Initialize();
+            DrawDefaultInspector();
 
-			serializedObject.ApplyModifiedProperties();
-		}
-	}
+            // Find Renderer
+            if (skeletonRenderer.objectReferenceValue == null)
+            {
+                SkeletonRenderer parentRenderer = targetPointFollower.GetComponentInParent<SkeletonRenderer>();
+                if (parentRenderer != null && parentRenderer.gameObject != targetPointFollower.gameObject)
+                {
+                    skeletonRenderer.objectReferenceValue = parentRenderer;
+                    Debug.Log("Inspector automatically assigned PointFollower.SkeletonRenderer");
+                }
+            }
 
+            var skeletonRendererReference = skeletonRenderer.objectReferenceValue as SkeletonRenderer;
+            if (skeletonRendererReference != null)
+            {
+                if (skeletonRendererReference.gameObject == targetPointFollower.gameObject)
+                {
+                    skeletonRenderer.objectReferenceValue = null;
+                    EditorUtility.DisplayDialog("Invalid assignment.",
+                        "PointFollower can only follow a skeleton on a separate GameObject.\n\nCreate a new GameObject for your PointFollower, or choose a SkeletonRenderer from a different GameObject.",
+                        "Ok");
+                }
+            }
+
+            if (!targetPointFollower.IsValid)
+            {
+                needsReset = true;
+            }
+
+            var current = Event.current;
+            bool wasUndo = current.type == EventType.ValidateCommand && current.commandName == "UndoRedoPerformed";
+            if (wasUndo)
+            {
+                targetPointFollower.Initialize();
+            }
+
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
 }

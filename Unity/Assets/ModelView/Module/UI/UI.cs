@@ -1,91 +1,91 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace ET
 {
-	
-	public class UIAwakeSystem : AwakeSystem<UI, string, GameObject>
-	{
-		public override void Awake(UI self, string name, GameObject gameObject)
-		{
+    public class UIAwakeSystem: AwakeSystem<UI, string, GameObject>
+    {
+        public override void Awake(UI self, string name, GameObject gameObject)
+        {
+            self.Awake(name, gameObject);
+        }
+    }
 
-			self.Awake(name, gameObject);
-		}
-	}
-	
-	public sealed class UI: Entity
-	{
-		public GameObject GameObject;
-		
-		public string Name { get; private set; }
+    public sealed class UI: Entity
+    {
+        public GameObject GameObject;
 
-		public Dictionary<string, UI> nameChildren = new Dictionary<string, UI>();
-		
-		public void Awake(string name, GameObject gameObject)
-		{
-			this.nameChildren.Clear();
-			gameObject.AddComponent<ComponentView>().Component = this;
-			gameObject.layer = LayerMask.NameToLayer(LayerNames.UI);
-			this.Name = name;
-			this.GameObject = gameObject;
-		}
+        public string Name { get; private set; }
 
-		public override void Dispose()
-		{
-			if (this.IsDisposed)
-			{
-				return;
-			}
-			
-			base.Dispose();
+        public Dictionary<string, UI> nameChildren = new Dictionary<string, UI>();
 
-			foreach (UI ui in this.nameChildren.Values)
-			{
-				ui.Dispose();
-			}
-			
-			UnityEngine.Object.Destroy(this.GameObject);
-			this.nameChildren.Clear();
-		}
+        public void Awake(string name, GameObject gameObject)
+        {
+            nameChildren.Clear();
+            gameObject.AddComponent<ComponentView>().Component = this;
+            gameObject.layer = LayerMask.NameToLayer(LayerNames.UI);
+            Name = name;
+            GameObject = gameObject;
+        }
 
-		public void SetAsFirstSibling()
-		{
-			this.GameObject.transform.SetAsFirstSibling();
-		}
+        public override void Dispose()
+        {
+            if (IsDisposed)
+            {
+                return;
+            }
 
-		public void Add(UI ui)
-		{
-			this.nameChildren.Add(ui.Name, ui);
-			ui.Parent = this;
-		}
+            base.Dispose();
 
-		public void Remove(string name)
-		{
-			UI ui;
-			if (!this.nameChildren.TryGetValue(name, out ui))
-			{
-				return;
-			}
-			this.nameChildren.Remove(name);
-			ui.Dispose();
-		}
+            foreach (UI ui in nameChildren.Values)
+            {
+                ui.Dispose();
+            }
 
-		public UI Get(string name)
-		{
-			UI child;
-			if (this.nameChildren.TryGetValue(name, out child))
-			{
-				return child;
-			}
-			GameObject childGameObject = this.GameObject.transform.Find(name)?.gameObject;
-			if (childGameObject == null)
-			{
-				return null;
-			}
-			child = EntityFactory.Create<UI, string, GameObject>(this.Domain, name, childGameObject);
-			this.Add(child);
-			return child;
-		}
-	}
+            UnityEngine.Object.Destroy(GameObject);
+            nameChildren.Clear();
+        }
+
+        public void SetAsFirstSibling()
+        {
+            GameObject.transform.SetAsFirstSibling();
+        }
+
+        public void Add(UI ui)
+        {
+            nameChildren.Add(ui.Name, ui);
+            ui.Parent = this;
+        }
+
+        public void Remove(string name)
+        {
+            UI ui;
+            if (!nameChildren.TryGetValue(name, out ui))
+            {
+                return;
+            }
+
+            nameChildren.Remove(name);
+            ui.Dispose();
+        }
+
+        public UI Get(string name)
+        {
+            UI child;
+            if (nameChildren.TryGetValue(name, out child))
+            {
+                return child;
+            }
+
+            GameObject childGameObject = GameObject.transform.Find(name)?.gameObject;
+            if (childGameObject == null)
+            {
+                return null;
+            }
+
+            child = EntityFactory.Create<UI, string, GameObject>(Domain, name, childGameObject);
+            Add(child);
+            return child;
+        }
+    }
 }

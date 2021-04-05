@@ -4,12 +4,12 @@ using FairyGUI;
 
 namespace Effect
 {
-	public class EffectBinder
-	{
-		[UnityEngine.RuntimeInitializeOnLoadMethod]
-		public static void BindAll()
-		{
-			UIObjectFactory.SetPackageItemExtension(View_FadeScreen.URL, typeof(View_FadeScreen));
-		}
-	}
+    public class EffectBinder
+    {
+        [UnityEngine.RuntimeInitializeOnLoadMethod]
+        public static void BindAll()
+        {
+            UIObjectFactory.SetPackageItemExtension(View_FadeScreen.URL, typeof (View_FadeScreen));
+        }
+    }
 }

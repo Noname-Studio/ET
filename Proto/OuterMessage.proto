@@ -151,8 +151,8 @@ message M2C_Reload // IResponse
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
-	string	Account	 = 1;	// 帐号
-	string	Password = 2;	// 密码
+	string AccessToken = 1;	// 帐号
+	int LoginType = 2;//登录类型
 }
 
 message R2C_Login // IResponse
@@ -227,13 +227,13 @@ message C2M_ModifyGuild //IRequest
 {
 	int32 RpcId = 90;
 	string Name = 2;
-	int32 Frame = 3;
-	int32 Inside = 4;
-	bool IsPublic = 5;
-	int16 Language = 6;
+	int? Frame = 3;
+	int? Inside = 4;
+	bool? IsPublic = 5;
+	short? Language = 6;
 	string Desc = 7;
-	int32 MinLevel = 8;
-	int64 OwnerId = 9;
+	int? MinLevel = 8;
+	long? OwnerId = 9;
 }
 
 message M2C_ModifyGuild // IResponse
@@ -248,8 +248,8 @@ message SearchGuildResult
 	int64 Id = 1;
 	string Name = 2;
 	string Desc = 3;
-	int32 Inside = 4;
-	int32 Frame = 5;
+	int? Inside = 4;
+	int? Frame = 5;
 }
 
 //ResponseType G2C_LoginGate
@@ -296,20 +296,23 @@ message M2C_GuildUpdate // IActorMessage,IActorLocationMessage
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	int64 Id = 1;
+	long? Id = 1;
 	string Name = 2;
-	int32 Frame = 3;
-	int32 Inside = 4;
-	int64 CreateTime = 5;
-	bool IsPublic = 6;
-	int16 Language = 7;
+	int? Frame = 3;
+	int? Inside = 4;
+	long? CreateTime = 5;
+	bool? IsPublic = 6;
+	short? Language = 7;
 	string Desc = 8;
-	int32 MinLevel = 9;
-	int64 OwnerId = 10;
-	repeated MemberInfo Members = 11;
-	repeated MemberInfo RemoveMembers = 12;
-	repeated ApplicationInfo ApplicationList = 13;
-	int32 MaxMemberNum = 14;
+	int? MinLevel = 9;
+	long? OwnerId = 10;
+	int? MaxMemberNum = 11;
+	repeated MemberInfo Members = 12;
+	repeated int RemoveMembers = 13;
+	repeated ApplicationInfo ApplicationList = 14;
+	repeated int RemoveApplicationList = 15;
+	repeated AskEnergyInfo AskEnergyList = 16;
+	repeated int RemoveAskEnergyList = 17;
 }
 
 //ResponseType G2C_ChatMessage
@@ -333,16 +336,58 @@ message CS2C_GuildMessageChanged //IActorMessage
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+	repeated ChatMessageInfo Value = 1;
+}
+
+message ChatMessageInfo
+{
 	int64 SenderId = 1;
 	string SenderName = 2;
 	string SenderMsg = 3;
 	int64 Time = 4;
+	string SenderHead = 5;
+}
+
+//ResponseType M2C_GuildAskEnergyResponse
+message C2M_GuildAskEnergyRequest // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message M2C_GuildAskEnergyResponse //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType M2C_GuildGiveEnergyResponse
+message C2M_GuildGiveEnergyRequest //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+}
+
+message M2C_GuildGiveEnergyResponse //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
 }
 
 message ApplicationInfo
 {
 	int64 Time = 1;
 	int64 Id = 2;
+}
+
+message AskEnergyInfo
+{
+	int64 Time = 1;
+	int64 Id = 2;
+	int64 Count = 3;
+	string Head = 4;
+	string Name = 5;
 }
 
 message MemberInfo

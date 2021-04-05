@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace GamingUI
 {
-    public partial class View_StorageFood : GComponent
+    public partial class View_StorageFood: GComponent
     {
         public Controller c1;
         public GLoader Food1;
@@ -14,7 +14,7 @@ namespace GamingUI
 
         public static View_StorageFood CreateInstance()
         {
-            return (View_StorageFood)UIPackage.CreateObject("GamingUI", "StorageFood");
+            return (View_StorageFood) UIPackage.CreateObject("GamingUI", "StorageFood");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -22,8 +22,8 @@ namespace GamingUI
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            Food1 = (GLoader)GetChild("Food1");
-            Food2 = (GLoader)GetChild("Food2");
+            Food1 = (GLoader) GetChild("Food1");
+            Food2 = (GLoader) GetChild("Food2");
         }
     }
 }

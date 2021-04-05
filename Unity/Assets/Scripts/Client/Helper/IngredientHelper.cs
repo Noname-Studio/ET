@@ -9,7 +9,7 @@
     {
         return key.StartsWith("I_");
     }
-    
+
     public static bool IsFood(BaseIngredient property)
     {
         return property.Key.StartsWith("F_");
