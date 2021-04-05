@@ -135,5 +135,5 @@ namespace Panthea.NativePlugins.Ads
             return Advertisement.isInitialized;
         }
     }
-#endif
 }
+#endif

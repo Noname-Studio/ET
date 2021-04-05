@@ -24,6 +24,7 @@ namespace ET
                 R2C_Login r2CLogin;
                 using (Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address)))
                 {
+                    #if UNITY_ANDROID
                     if (Social.Active is PlayGamesPlatform google)
                     {
                         Log.Error(google.GetIdToken());
@@ -32,11 +33,14 @@ namespace ET
                             AccessToken = google.GetIdToken(), LoginType = (int) LoginType.Google
                         });
                     }
-#if UNITY_IOS
+                    #endif
+                    #if UNITY_IOS
                     else if(Social.Active is GameCenterPlatform gameCenter)
                         r2CLogin = (R2C_Login) await session.Call(new C2R_Login() { AccessToken = "",LoginType = (int)LoginType.GameCenter});
-#endif
+                    #endif
+                    #if UNITY_ANDROID || UNITY_IOS
                     else
+                    #endif
                     {
                         r2CLogin = (R2C_Login) await session.Call(new C2R_Login()
                         {

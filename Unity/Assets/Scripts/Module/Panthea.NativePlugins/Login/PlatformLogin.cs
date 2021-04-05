@@ -38,8 +38,8 @@ namespace Panthea.NativePlugins
             {
                 if (success)
                 {
-                    Log.Print("登录平台成功" + PlayGamesPlatform.Instance.GetUserId());
 #if UNITY_ANDROID
+                    Log.Print("登录平台成功" + PlayGamesPlatform.Instance.GetUserId());
                     AnalyticsKit.Inst.UserSignup(AuthorizationNetwork.Google);
                     PlayGamesPlatform.Instance.GetServerAuthCode();
                     

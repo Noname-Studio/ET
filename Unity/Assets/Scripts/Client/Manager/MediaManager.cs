@@ -222,7 +222,7 @@ public class MediaManager: Singleton<MediaManager>
 #if UNITY_ANDROID || UNITY_IPHONE || REALGAME
         video.url = FindSource(mViedoPath, videoName + prefix);
 #else
-        video.url = AssetBundleConfig.WWWLocalzation + "Movie/" + videoName + prefix;
+        //video.url = AssetsConfig.WWWLocalzation + "Movie/" + videoName + prefix;
 #endif
         video.enabled = true;
 
