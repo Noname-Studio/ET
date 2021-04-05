@@ -44,7 +44,7 @@ namespace ET
                     {
                         r2CLogin = (R2C_Login) await session.Call(new C2R_Login()
                         {
-                            AccessToken = SystemInfo.deviceUniqueIdentifier, LoginType = (int) LoginType.None
+                            AccessToken = SystemInfo.deviceUniqueIdentifier + Application.dataPath, LoginType = (int) LoginType.None
                         });
                     }
                 }
