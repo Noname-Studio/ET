@@ -33,7 +33,7 @@ namespace ET
                     //我们看看会长在不在.如果会长在的话就把申请信息推送给他,不在的话等下次登录的话会跟随Update推送
                     if (guild.OwnerId.HasValue)
                     {
-                        var owner = session.GetComponent<PlayerComponent>().Get(guild.OwnerId.Value);
+                        var owner = PlayerComponent.Instance.Get(guild.OwnerId.Value);
                         if (owner != null)
                         {
                             var update = new M2C_GuildUpdate();
@@ -48,7 +48,7 @@ namespace ET
                     {
                         Hornor = 0,
                         DressUp = player.DressUp,
-                        Icon = player.Icon,
+                        Icon = player.Head,
                         Id = player.Id,
                         JoinTime = DateTime.UtcNow.Ticks,
                         Language = player.Language,

@@ -3,9 +3,9 @@
 namespace ET
 {
     [MessageHandler]
-    public class C2M_GuildAskEnergyHandler : AMRpcHandler<C2M_GuildAskEnergyRequest,M2C_GuildAskEnergyResponse>
+    public class C2M_GuildAskEnergyHandler : AMRpcHandler<C2G_GuildAskEnergyRequest,G2C_GuildAskEnergyResponse>
     {
-        protected override async ETTask Run(Session session, C2M_GuildAskEnergyRequest request, M2C_GuildAskEnergyResponse response, Action reply)
+        protected override async ETTask Run(Session session, C2G_GuildAskEnergyRequest request, G2C_GuildAskEnergyResponse response, Action reply)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace ET
                     Count = 0,
                     Id = player.Id,
                     Time = TimeHelper.ServerNow(),
-                    Head = player.Icon,
+                    Head = player.Head,
                     Name = player.Name
                 };
                 

@@ -47,7 +47,7 @@ namespace ET
                             JoinTime = time,
                             LastLogin = -1,
                             Hornor = 0,
-                            Icon = player.Icon,
+                            Icon = player.Head,
                             Level = player.CurLevel,
                             Language = player.Language,
                             Id = player.Id,

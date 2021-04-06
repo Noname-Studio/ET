@@ -3,9 +3,9 @@
 namespace ET
 {
     [MessageHandler]
-    public class C2M_GuildGiveEnergyHandler : AMRpcHandler<C2M_GuildGiveEnergyRequest,M2C_GuildGiveEnergyResponse>
+    public class C2M_GuildGiveEnergyHandler : AMRpcHandler<C2G_GuildGiveEnergyRequest,G2C_GuildGiveEnergyResponse>
     {
-        protected override async ETTask Run(Session session, C2M_GuildGiveEnergyRequest request, M2C_GuildGiveEnergyResponse response, Action reply)
+        protected override async ETTask Run(Session session, C2G_GuildGiveEnergyRequest request, G2C_GuildGiveEnergyResponse response, Action reply)
         {
             try
             {
