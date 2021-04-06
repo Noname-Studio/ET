@@ -39,7 +39,10 @@ namespace ET
             if (message.Name != null)
                 data.Name = message.Name;
             if (message.ApplicationList != null)
+            {
                 AddChild(message.ApplicationList, data.ApplicationList, (message, data) => message.Id == data.Id);
+                MessageKit.Inst.Send(new GuildApplicationChanged(message.ApplicationList));
+            }
             if (message.RemoveApplicationList != null)
                 RemoveChild(message.RemoveApplicationList, data.ApplicationList,(message, data) => message == data.Id);
             if(message.CreateTime.HasValue)

@@ -23,9 +23,7 @@ namespace ET
 				return;
 			}
 
-			var db = Game.Scene.GetComponent<DBComponent>();
-			var cachePlayer = scene.GetComponent<PlayerComponent>().Get(Id);
-			Data_PlayerInfo playerInfo = cachePlayer ?? await db.Query<Data_PlayerInfo>(Id);
+			Data_PlayerInfo playerInfo = await CacheHelper.Get<Data_PlayerInfo>(Id);
 			if (playerInfo == null)
 			{
 				playerInfo = EntityFactory.Create<Data_PlayerInfo>(Game.Scene);
@@ -35,8 +33,9 @@ namespace ET
 			scene.GetComponent<PlayerComponent>().Add(playerInfo);
 			session.AddComponent<SessionPlayerComponent>().Player = playerInfo;
 			session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
-
-			response.PlayerId = Id;
+			
+			session.Send(new G2C_PlayerUpdate{PlayerId = playerInfo.Id});
+			
 			reply();
 			await ETTask.CompletedTask;
 		}

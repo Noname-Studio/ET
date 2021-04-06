@@ -14,7 +14,7 @@ namespace ET.Server.Chat
         {
             return (CS2G_RegisterPlayerToChat)await ActorMessageSenderComponent.Instance.Call(
                 StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Chat").SceneId,
-                new G2CS_RegisterPlayerToChat { GateSessionId = session.InstanceId,Head = player.Icon,Name = player.Name,PlayerId = player.Id,ChatId = player.ChatId});
+                new G2CS_RegisterPlayerToChat { GateSessionId = session.InstanceId,Head = player.Head,Name = player.Name,PlayerId = player.Id,ChatId = player.ChatId});
         }
         
         public static async ETTask UnRegister(Data_PlayerInfo player)

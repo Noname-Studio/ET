@@ -42,5 +42,10 @@ namespace ET
         {
             return Game.TimeInfo.ServerFrameTime();
         }
+
+        public static long ServerTimeStamp()
+        {
+            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+        }
     }
 }

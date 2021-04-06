@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Model.Module.DB.ActualTable;
 
@@ -52,6 +53,22 @@ namespace ET
 		public Data_PlayerInfo[] GetAll()
 		{
 			return this.idPlayers.Values.ToArray();
+		}
+
+		public Data_PlayerInfo[] RandomGet(int size)
+		{
+			if (size >= idPlayers.Count)
+			{
+				return idPlayers.Values.ToArray();
+			}
+			var array = new Data_PlayerInfo[size];
+			for (int i = 0; i < size; i++)
+			{
+				var result = idPlayers.ElementAt(RandomHelper.RandomNumber(0, idPlayers.Count)).Value;
+				if (!array.Contains(result))
+					array[i] = result;
+			}
+			return array;
 		}
 
 		public override void Dispose()

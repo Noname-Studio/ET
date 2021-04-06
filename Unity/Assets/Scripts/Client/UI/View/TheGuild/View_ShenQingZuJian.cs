@@ -7,7 +7,7 @@ namespace TheGuild
 {
     public partial class View_ShenQingZuJian : GLabel
     {
-        public GButton Ask;
+        public GButton Approve;
         public GButton Ignore;
         public const string URL = "ui://nvat1mjsmivdw1g";
 
@@ -20,7 +20,7 @@ namespace TheGuild
         {
             base.ConstructFromXML(xml);
 
-            Ask = (GButton)GetChild("Ask");
+            Approve = (GButton)GetChild("Approve");
             Ignore = (GButton)GetChild("Ignore");
         }
     }

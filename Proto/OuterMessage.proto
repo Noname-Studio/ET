@@ -265,7 +265,6 @@ message G2C_LoginGate // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	int64 PlayerId = 1;
 }
 
 message PlayerInfo // IMessage
@@ -308,11 +307,11 @@ message M2C_GuildUpdate // IActorMessage,IActorLocationMessage
 	long? OwnerId = 10;
 	int? MaxMemberNum = 11;
 	repeated MemberInfo Members = 12;
-	repeated int RemoveMembers = 13;
+	repeated int64 RemoveMembers = 13;
 	repeated ApplicationInfo ApplicationList = 14;
-	repeated int RemoveApplicationList = 15;
+	repeated int64 RemoveApplicationList = 15;
 	repeated AskEnergyInfo AskEnergyList = 16;
-	repeated int RemoveAskEnergyList = 17;
+	repeated int64 RemoveAskEnergyList = 17;
 }
 
 //ResponseType G2C_ChatMessage
@@ -339,6 +338,114 @@ message CS2C_GuildMessageChanged //IActorMessage
 	repeated ChatMessageInfo Value = 1;
 }
 
+//ResponseType G2C_GuildAskEnergyResponse
+message C2G_GuildAskEnergyRequest // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_GuildAskEnergyResponse //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_GuildGiveEnergyResponse
+message C2G_GuildGiveEnergyRequest //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+}
+
+message G2C_GuildGiveEnergyResponse //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_GuildGetRecommendedPlayers
+message C2G_GuildGetRecommendedPlayers //IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_GuildGetRecommendedPlayers //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RecommendedPlayersInfo Players = 1;
+}
+
+//ResponseType G2C_InvitePlayerJoinGuild
+message C2G_InvitePlayerJoinGuild //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+}
+
+message G2C_InvitePlayerJoinGuild //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_HandleApplication
+message C2G_HandleApplication //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+	bool Approve = 2;
+}
+
+message G2C_HandleApplication //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_HandleGuildInvite
+message C2G_HandleGuildInvite //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+	bool Approve = 2;
+}
+
+message G2C_HandleGuildInvite //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2C_PlayerUpdate //IActorLocationMessage, IMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	long? PlayerId = 1;
+	repeated GuildInviteInfo GuildInviteList = 2;
+}
+
+message GuildInviteInfo
+{
+	string Name = 1;
+	int64 GuildId = 2;
+	int MemberNum = 3;
+}
+
+message RecommendedPlayersInfo
+{
+	int64 Id = 1;
+	string Name = 2;
+	string Head = 3;
+}
+
 message ChatMessageInfo
 {
 	int64 SenderId = 1;
@@ -348,37 +455,12 @@ message ChatMessageInfo
 	string SenderHead = 5;
 }
 
-//ResponseType M2C_GuildAskEnergyResponse
-message C2M_GuildAskEnergyRequest // IRequest
-{
-	int32 RpcId = 90;
-}
-
-message M2C_GuildAskEnergyResponse //IResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-}
-
-//ResponseType M2C_GuildGiveEnergyResponse
-message C2M_GuildGiveEnergyRequest //IRequest
-{
-	int32 RpcId = 90;
-	int64 PlayerId = 1;
-}
-
-message M2C_GuildGiveEnergyResponse //IResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-}
-
 message ApplicationInfo
 {
 	int64 Time = 1;
 	int64 Id = 2;
+	string Name = 2;
+	string Head = 3;
 }
 
 message AskEnergyInfo

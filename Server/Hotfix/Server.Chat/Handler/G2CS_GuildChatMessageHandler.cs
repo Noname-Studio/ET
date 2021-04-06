@@ -17,7 +17,7 @@ namespace ET
                     {
                         new ChatMessageInfo
                         {
-                            Time = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
+                            Time = TimeHelper.ServerTimeStamp(),
                             SenderHead = unit.Head,
                             SenderName = unit.Name,
                             SenderId = unit.PlayerId,

@@ -8,7 +8,6 @@ namespace TheGuild
     public partial class View_GongHuiYaoQingLieBiao : GComponent
     {
         public Controller c1;
-        public GButton bg;
         public GList Menu;
         public GButton Close;
         public GButton Confirm;
@@ -31,7 +30,6 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
             Menu = (GList)GetChild("Menu");
             Close = (GButton)GetChild("Close");
             Confirm = (GButton)GetChild("Confirm");

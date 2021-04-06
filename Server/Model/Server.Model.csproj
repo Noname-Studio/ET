@@ -175,6 +175,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting" Version="2.9.0" />
     <PackageReference Include="NLog" Version="4.5.4" />
     <PackageReference Include="SharpZipLib" Version="1.0.0-alpha2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.2.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThirdParty\Server.ThirdParty.csproj" />

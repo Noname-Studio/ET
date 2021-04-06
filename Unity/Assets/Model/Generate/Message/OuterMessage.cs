@@ -566,9 +566,6 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-		[ProtoMember(1)]
-		public long PlayerId { get; set; }
-
 	}
 
 	[Message(OuterOpcode.PlayerInfo)]
@@ -670,19 +667,19 @@ namespace ET
 		public List<MemberInfo> Members = new List<MemberInfo>();
 
 		[ProtoMember(13)]
-		public List<int> RemoveMembers = new List<int>();
+		public List<long> RemoveMembers = new List<long>();
 
 		[ProtoMember(14)]
 		public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
 
 		[ProtoMember(15)]
-		public List<int> RemoveApplicationList = new List<int>();
+		public List<long> RemoveApplicationList = new List<long>();
 
 		[ProtoMember(16)]
 		public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
 
 		[ProtoMember(17)]
-		public List<int> RemoveAskEnergyList = new List<int>();
+		public List<long> RemoveAskEnergyList = new List<long>();
 
 	}
 
@@ -738,6 +735,228 @@ namespace ET
 
 	}
 
+	[ResponseType(typeof(G2C_GuildAskEnergyResponse))]
+	[Message(OuterOpcode.C2G_GuildAskEnergyRequest)]
+	[ProtoContract]
+	public partial class C2G_GuildAskEnergyRequest: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_GuildAskEnergyResponse)]
+	[ProtoContract]
+	public partial class G2C_GuildAskEnergyResponse: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_GuildGiveEnergyResponse))]
+	[Message(OuterOpcode.C2G_GuildGiveEnergyRequest)]
+	[ProtoContract]
+	public partial class C2G_GuildGiveEnergyRequest: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_GuildGiveEnergyResponse)]
+	[ProtoContract]
+	public partial class G2C_GuildGiveEnergyResponse: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_GuildGetRecommendedPlayers))]
+	[Message(OuterOpcode.C2G_GuildGetRecommendedPlayers)]
+	[ProtoContract]
+	public partial class C2G_GuildGetRecommendedPlayers: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_GuildGetRecommendedPlayers)]
+	[ProtoContract]
+	public partial class G2C_GuildGetRecommendedPlayers: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<RecommendedPlayersInfo> Players = new List<RecommendedPlayersInfo>();
+
+	}
+
+	[ResponseType(typeof(G2C_InvitePlayerJoinGuild))]
+	[Message(OuterOpcode.C2G_InvitePlayerJoinGuild)]
+	[ProtoContract]
+	public partial class C2G_InvitePlayerJoinGuild: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_InvitePlayerJoinGuild)]
+	[ProtoContract]
+	public partial class G2C_InvitePlayerJoinGuild: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_HandleApplication))]
+	[Message(OuterOpcode.C2G_HandleApplication)]
+	[ProtoContract]
+	public partial class C2G_HandleApplication: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+		[ProtoMember(2)]
+		public bool Approve { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_HandleApplication)]
+	[ProtoContract]
+	public partial class G2C_HandleApplication: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_HandleGuildInvite))]
+	[Message(OuterOpcode.C2G_HandleGuildInvite)]
+	[ProtoContract]
+	public partial class C2G_HandleGuildInvite: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+		[ProtoMember(2)]
+		public bool Approve { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_HandleGuildInvite)]
+	[ProtoContract]
+	public partial class G2C_HandleGuildInvite: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_PlayerUpdate)]
+	[ProtoContract]
+	public partial class G2C_PlayerUpdate: IActorLocationMessage, IMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long? PlayerId { get; set; }
+
+		[ProtoMember(2)]
+		public List<GuildInviteInfo> GuildInviteList = new List<GuildInviteInfo>();
+
+	}
+
+	[Message(OuterOpcode.GuildInviteInfo)]
+	[ProtoContract]
+	public partial class GuildInviteInfo
+	{
+		[ProtoMember(1)]
+		public string Name { get; set; }
+
+		[ProtoMember(2)]
+		public long GuildId { get; set; }
+
+		[ProtoMember(3)]
+		public int MemberNum { get; set; }
+
+	}
+
+	[Message(OuterOpcode.RecommendedPlayersInfo)]
+	[ProtoContract]
+	public partial class RecommendedPlayersInfo
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public string Head { get; set; }
+
+	}
+
 	[Message(OuterOpcode.ChatMessageInfo)]
 	[ProtoContract]
 	public partial class ChatMessageInfo
@@ -759,59 +978,6 @@ namespace ET
 
 	}
 
-	[ResponseType(typeof(M2C_GuildAskEnergyResponse))]
-	[Message(OuterOpcode.C2M_GuildAskEnergyRequest)]
-	[ProtoContract]
-	public partial class C2M_GuildAskEnergyRequest: IRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-	}
-
-	[Message(OuterOpcode.M2C_GuildAskEnergyResponse)]
-	[ProtoContract]
-	public partial class M2C_GuildAskEnergyResponse: IResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
-	[ResponseType(typeof(M2C_GuildGiveEnergyResponse))]
-	[Message(OuterOpcode.C2M_GuildGiveEnergyRequest)]
-	[ProtoContract]
-	public partial class C2M_GuildGiveEnergyRequest: IRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(1)]
-		public long PlayerId { get; set; }
-
-	}
-
-	[Message(OuterOpcode.M2C_GuildGiveEnergyResponse)]
-	[ProtoContract]
-	public partial class M2C_GuildGiveEnergyResponse: IResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
 	[Message(OuterOpcode.ApplicationInfo)]
 	[ProtoContract]
 	public partial class ApplicationInfo
@@ -821,6 +987,12 @@ namespace ET
 
 		[ProtoMember(2)]
 		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public string Head { get; set; }
 
 	}
 

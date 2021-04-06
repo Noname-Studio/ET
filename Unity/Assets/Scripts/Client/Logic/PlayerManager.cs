@@ -1,4 +1,6 @@
-﻿using Kitchen;
+﻿using System.Collections.Generic;
+using ET;
+using Kitchen;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
 public partial class PlayerManager: IPlayer
@@ -9,7 +11,7 @@ public partial class PlayerManager: IPlayer
 
     private MessageKit mMessage;
     private Data_GameRecord mGameRecord;
-
+    public List<GuildInviteInfo> GuildInvite { get; } = new List<GuildInviteInfo>();
     /// <summary>
     /// 当前游玩的餐厅(非最大餐厅)
     /// </summary>

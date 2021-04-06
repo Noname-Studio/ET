@@ -137,7 +137,7 @@ namespace Client.UI.ViewModel
             obj.c1.selectedPage = "发送中";
             try
             {
-                await NetworkManager.Inst.Call(new C2M_GuildAskEnergyRequest());
+                await NetworkManager.Inst.Call(new C2G_GuildAskEnergyRequest());
             }
             catch(Exception e)
             {

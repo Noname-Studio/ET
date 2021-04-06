@@ -40,13 +40,24 @@ namespace ET
 		 public const ushort C2G_ChatMessage = 20036;
 		 public const ushort G2C_ChatMessage = 20037;
 		 public const ushort CS2C_GuildMessageChanged = 20038;
-		 public const ushort ChatMessageInfo = 20039;
-		 public const ushort C2M_GuildAskEnergyRequest = 20040;
-		 public const ushort M2C_GuildAskEnergyResponse = 20041;
-		 public const ushort C2M_GuildGiveEnergyRequest = 20042;
-		 public const ushort M2C_GuildGiveEnergyResponse = 20043;
-		 public const ushort ApplicationInfo = 20044;
-		 public const ushort AskEnergyInfo = 20045;
-		 public const ushort MemberInfo = 20046;
+		 public const ushort C2G_GuildAskEnergyRequest = 20039;
+		 public const ushort G2C_GuildAskEnergyResponse = 20040;
+		 public const ushort C2G_GuildGiveEnergyRequest = 20041;
+		 public const ushort G2C_GuildGiveEnergyResponse = 20042;
+		 public const ushort C2G_GuildGetRecommendedPlayers = 20043;
+		 public const ushort G2C_GuildGetRecommendedPlayers = 20044;
+		 public const ushort C2G_InvitePlayerJoinGuild = 20045;
+		 public const ushort G2C_InvitePlayerJoinGuild = 20046;
+		 public const ushort C2G_HandleApplication = 20047;
+		 public const ushort G2C_HandleApplication = 20048;
+		 public const ushort C2G_HandleGuildInvite = 20049;
+		 public const ushort G2C_HandleGuildInvite = 20050;
+		 public const ushort G2C_PlayerUpdate = 20051;
+		 public const ushort GuildInviteInfo = 20052;
+		 public const ushort RecommendedPlayersInfo = 20053;
+		 public const ushort ChatMessageInfo = 20054;
+		 public const ushort ApplicationInfo = 20055;
+		 public const ushort AskEnergyInfo = 20056;
+		 public const ushort MemberInfo = 20057;
 	}
 }

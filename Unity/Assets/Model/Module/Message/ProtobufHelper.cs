@@ -37,6 +37,14 @@ namespace ET
                 return Serializer.Deserialize(type, stream);
             }
         }
+        
+        public static T FromBytes<T>(byte[] bytes, int index, int count)
+        {
+            using (MemoryStream stream = new MemoryStream(bytes, index, count))
+            {
+                return Serializer.Deserialize<T>(stream);
+            }
+        }
 
         public static byte[] ToBytes(object message)
         {

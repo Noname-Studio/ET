@@ -14,7 +14,7 @@ namespace Model.Module.DB.ActualTable
     {
         public string Name { get; set; } = "Player";
         public short Language { get; set; }= -1;
-        public string Icon { get; set; }
+        public string Head { get; set; }
         public long GuildId { get; set; }
 
         public List<int> DressUp { get; } = new List<int>();
@@ -22,6 +22,12 @@ namespace Model.Module.DB.ActualTable
         public long UnitId { get; set; }
         [BsonIgnore]
         public long ChatId { get; set; }
+        /// <summary>
+        /// 标记这个玩家是否是活跃状态,即这个玩家与服务器是否存在连接状态
+        /// </summary>
+        [BsonIgnore]
+        public bool IsActive { get; set; }
         public int CurLevel { get; set; } = 1000000;
+        public long LastLogin { get; set; } = 0;
     }
 }
