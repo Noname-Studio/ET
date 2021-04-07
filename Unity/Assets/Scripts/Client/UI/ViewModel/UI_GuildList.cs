@@ -112,7 +112,8 @@ namespace Client.UI.ViewModel
             {
                 var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
                 Parent.CloseMySelf();
-                UIKit.Inst.Create<UI_JoinedGuild>();
+                if(GuildManager.Inst.IsJoined())//可能只是发送了申请,并没有加入.
+                    UIKit.Inst.Create<UI_JoinedGuild>();
             }
             catch (Exception e)
             {
