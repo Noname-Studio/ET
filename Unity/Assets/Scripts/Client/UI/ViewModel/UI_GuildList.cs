@@ -101,24 +101,26 @@ namespace Client.UI.ViewModel
             item.UnionName.text = data.Name;
             item.UnionDesc.text = data.Desc;
             item.Join.data = data;
-            item.Join.onClick.Set(async t1 =>
-            {
-                var result = (SearchGuildResult) ((GComponent) t1.sender).data;
-                var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
-                try
-                {
-                    var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
-                    Parent.CloseMySelf();
-                    UIKit.Inst.Create<UI_JoinedGuild>();
-                }
-                catch (Exception e)
-                {
-                    UIKit.Inst.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
-                    Log.Error(e.Message);
-                }
+            item.Join.onClick.Set(Join_OnClick);
+        }
 
-                networkLoad.CloseMySelf();
-            });
+        private async void Join_OnClick(EventContext t1)
+        {
+            var result = (SearchGuildResult) ((GComponent) t1.sender).data;
+            var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
+            try
+            {
+                var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
+                Parent.CloseMySelf();
+                UIKit.Inst.Create<UI_JoinedGuild>();
+            }
+            catch (Exception e)
+            {
+                UIKit.Inst.Create<UI_Tips>().SetContent("加入公会失败").AddButton("确定");
+                Log.Error(e.Message);
+            }
+
+            networkLoad.CloseMySelf();
         }
 
         public void RefreshList()
