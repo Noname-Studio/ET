@@ -57,7 +57,6 @@ namespace ET
                 G2C_LoginGate g2CLoginGate = (G2C_LoginGate) await gateSession.Call(
                     new C2G_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId });
                 Log.Info("登陆gate成功!");
-                MessageDispatcherComponent.Instance.Handle(gateSession, OuterOpcode.G2C_LoginGate, g2CLoginGate);
                 G2C_EnterMap g2CEnterMap = await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2G_EnterMap()) as G2C_EnterMap;
 
                 //await Game.EventSystem.Publish(new EventType.LoginFinish() {ZoneScene = zoneScene});
