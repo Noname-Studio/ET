@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Client.Event;
 using TheGuild;
 
 namespace Client.UI.ViewModel
@@ -10,6 +11,21 @@ namespace Client.UI.ViewModel
         protected override void OnEnable(IUIParams p, bool refresh)
         {
             base.OnEnable(p, refresh);
+            MessageKit.Inst.Add<GuildInviteListChanged>(Event_GuildInviteListChanged);
+        }
+
+        protected override void OnDisable(bool refresh)
+        {
+            base.OnDisable(refresh);
+            MessageKit.Inst.Remove<GuildInviteListChanged>(Event_GuildInviteListChanged);
+        }
+
+        private void Event_GuildInviteListChanged(GuildInviteListChanged e)
+        {
+            foreach (var node in e.InviteInfos)
+            {
+                UIKit.Inst.Create<UI_GuildInviteTips>(new UI_GuildInviteTips.ParamsData(node));
+            }
         }
 
         protected override void OnInit(IUIParams p)
@@ -17,6 +33,7 @@ namespace Client.UI.ViewModel
             base.OnInit(p);
             View.c1.onChanged.Add(MenuChanged);
             View.c1.onChanged.Call();
+            Event_GuildInviteListChanged(new GuildInviteListChanged(PlayerManager.Inst.GuildInvite));
         }
 
         private async void MenuChanged()

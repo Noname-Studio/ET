@@ -884,7 +884,7 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
+		public long GuildId { get; set; }
 
 		[ProtoMember(2)]
 		public bool Approve { get; set; }
@@ -939,6 +939,12 @@ namespace ET
 
 		[ProtoMember(3)]
 		public int MemberNum { get; set; }
+
+		[ProtoMember(4)]
+		public int Frame { get; set; }
+
+		[ProtoMember(5)]
+		public int Inside { get; set; }
 
 	}
 

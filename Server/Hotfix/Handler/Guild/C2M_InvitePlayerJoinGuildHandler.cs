@@ -24,7 +24,9 @@ namespace ET
                     {
                         GuildId = guild.Id,
                         Name = guild.Name,
-                        MemberNum = guild.Members.Count
+                        MemberNum = guild.Members.Count,
+                        Frame = guild.Frame.GetValueOrDefault(0),
+                        Inside = guild.Inside.GetValueOrDefault(0),
                     }
                 }
             });

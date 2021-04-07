@@ -412,7 +412,7 @@ message G2C_HandleApplication //IResponse
 message C2G_HandleGuildInvite //IRequest
 {
 	int32 RpcId = 90;
-	int64 PlayerId = 1;
+	int64 GuildId = 1;
 	bool Approve = 2;
 }
 
@@ -437,6 +437,8 @@ message GuildInviteInfo
 	string Name = 1;
 	int64 GuildId = 2;
 	int MemberNum = 3;
+	int32 Frame = 4;
+	int32 Inside = 5;
 }
 
 message RecommendedPlayersInfo
