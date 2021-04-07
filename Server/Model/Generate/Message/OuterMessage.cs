@@ -994,10 +994,10 @@ namespace ET
 		[ProtoMember(2)]
 		public long Id { get; set; }
 
-		[ProtoMember(2)]
+		[ProtoMember(3)]
 		public string Name { get; set; }
 
-		[ProtoMember(3)]
+		[ProtoMember(4)]
 		public string Head { get; set; }
 
 	}
