@@ -35,7 +35,7 @@ namespace ET
 			session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
 			session.AddComponent<SessionInnerVariables>();
 
-			session.Send(new G2C_PlayerUpdate { PlayerId = playerInfo.Id, GuildInviteList = playerInfo.GuildInviteInfos });
+			session.Send(new G2C_PlayerUpdate { PlayerId = playerInfo.Id,GuildId = playerInfo.GuildId,GuildInviteList = playerInfo.GuildInviteInfos });
 			
 			reply();
 			await ETTask.CompletedTask;

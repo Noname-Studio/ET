@@ -29,6 +29,10 @@ namespace Client.UI.ViewModel
             var network = UIKit.Inst.Create<UI_NetworkLoad>();
             await NetworkManager.Inst.Call(new C2G_QuitGuild());
             network.CloseMySelf();
+            if (PlayerManager.GuildId == 0)
+            {
+                UIKit.Inst.Destroy<UI_JoinedGuild>();
+            }
             CloseMySelf();
         }
 

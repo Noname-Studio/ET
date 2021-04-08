@@ -30,9 +30,7 @@ namespace Client.UI.ViewModel
         {
             InitList();
             View.Search.onClick.Add(Search_OnClick);
-
             await FetchGuildList();
-
             RefreshList();
         }
 
@@ -60,8 +58,9 @@ namespace Client.UI.ViewModel
         private void InitList()
         {
             View.List.SetVirtual();
-            View.List.itemRenderer = SearchResultItemRender;
+            View.List.itemRenderer = List_VirtualRenderItem;
             View.List.scrollPane.onPullUpRelease.Set(OnPullUpToRefresh);
+            View.List.onClickItem.Add(List_OnClickItem);
         }
 
         private async void OnPullUpToRefresh()
@@ -92,7 +91,7 @@ namespace Client.UI.ViewModel
             footer.c1.selectedPage = "WaitNet";
         }
 
-        private void SearchResultItemRender(int index, GObject obj)
+        private void List_VirtualRenderItem(int index, GObject obj)
         {
             var item = (View_JiaRuGongHuiZuJian) obj;
             var data = SearchResults[index];
@@ -102,18 +101,38 @@ namespace Client.UI.ViewModel
             item.UnionDesc.text = data.Desc;
             item.Join.data = data;
             item.Join.onClick.Set(Join_OnClick);
+            item.data = data;
         }
 
-        private async void Join_OnClick(EventContext t1)
+        private async void List_OnClickItem(EventContext evt)
         {
-            var result = (SearchGuildResult) ((GComponent) t1.sender).data;
-            var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
+            var result = (SearchGuildResult) ((GComponent) evt.data).data;
+            var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>();
+            try
+            {
+                var response = (G2C_FetchGuildInfo) await Session.Call(new C2G_FecthGuildInfo { GuildId = result.Id });
+                UIKit.Inst.Create<UI_OtherGuildDetail>(new UI_OtherGuildDetail.ParamsData(response));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+            }
+            networkLoad.CloseMySelf();
+        }
+
+        private async void Join_OnClick(EventContext evt)
+        {
+            evt.StopPropagation();
+            var result = (SearchGuildResult) ((GComponent) evt.sender).data;
+            var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>();
             try
             {
                 var response = (M2C_JoinGuild) await Session.Call(new C2M_JoinGuild() { Id = result.Id });
-                Parent.CloseMySelf();
-                if(GuildManager.Inst.IsJoined())//可能只是发送了申请,并没有加入.
+                if (GuildManager.Inst.IsJoined()) //可能只是发送了申请,并没有加入.
+                {
+                    Parent.CloseMySelf();
                     UIKit.Inst.Create<UI_JoinedGuild>();
+                }
             }
             catch (Exception e)
             {

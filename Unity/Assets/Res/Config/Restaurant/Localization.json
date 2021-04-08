@@ -196,5 +196,53 @@
     "Chinese": "购买",
     "Chinese_tw": "购买",
     "English": "购买"
+  },
+  "Public": {
+    "Id": "Public",
+    "Chinese": "(公开)",
+    "Chinese_tw": "(公开)",
+    "English": "(公开)"
+  },
+  "NotPublic": {
+    "Id": "NotPublic",
+    "Chinese": "(不公开)",
+    "Chinese_tw": "(不公开)",
+    "English": "(不公开)"
+  },
+  "X days ago": {
+    "Id": "X days ago",
+    "Chinese": "{0} 天之前",
+    "Chinese_tw": "{0} 天之前",
+    "English": "{0} 天之前"
+  },
+  "X hours ago": {
+    "Id": "X hours ago",
+    "Chinese": "{0} 小时之前",
+    "Chinese_tw": "{0} 小时之前",
+    "English": "{0} 小时之前"
+  },
+  "A week ago": {
+    "Id": "A week ago",
+    "Chinese": "一个星期以前",
+    "Chinese_tw": "一个星期以前",
+    "English": "一个星期以前"
+  },
+  "A month ago": {
+    "Id": "A month ago",
+    "Chinese": "一个月以前",
+    "Chinese_tw": "一个月以前",
+    "English": "一个月以前"
+  },
+  "Half a year ago": {
+    "Id": "Half a year ago",
+    "Chinese": "半年以前",
+    "Chinese_tw": "半年以前",
+    "English": "半年以前"
+  },
+  "A year ago": {
+    "Id": "A year ago",
+    "Chinese": "一年以前",
+    "Chinese_tw": "一年以前",
+    "English": "一年以前"
   }
 }

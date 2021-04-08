@@ -1,7 +1,6 @@
 /********************************
   该脚本是自动生成的请勿手动修改
 *********************************/
-
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,13 +12,12 @@ using DB;
 
 namespace RestaurantPreview.Config
 {
-    public partial class LocalizationProperty: IConfig, ILocalization
+    public partial class LocalizationProperty : IConfig, ILocalization
     {
         private string mId;
         private string mChinese;
         private string mChinese_tw;
         private string mEnglish;
-
         /// <summary>
         /// Id
         /// </summary>
@@ -60,10 +58,7 @@ namespace RestaurantPreview.Config
         {
             var property = Get(id, throwException);
             if (property == null)
-            {
                 return id;
-            }
-
             return property.ToLoc(language);
         }
 

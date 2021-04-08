@@ -12,10 +12,20 @@ namespace ET
         {
             if(message.PlayerId.HasValue)
                 PlayerManager.Id = message.PlayerId.Value;
-            if (message.GuildInviteList != null && message.GuildInviteList.Count > 0)
+            if (message.GuildId.HasValue)
+            {
+                PlayerManager.GuildId = message.GuildId.Value;
+                if (PlayerManager.GuildId == 0)
+                    GuildManager.Inst.Data = null;
+            }
+            if (message.GuildInviteList.Count > 0)
             {
                 PlayerManager.Inst.GuildInvite.AddRange(message.GuildInviteList);
                 MessageKit.Inst.Send(new GuildInviteListChanged(message.GuildInviteList));
+            }
+            else if(message.GuildInviteList == null)
+            {
+                PlayerManager.Inst.GuildInvite.Clear();
             }
             await ETTask.CompletedTask;
         }

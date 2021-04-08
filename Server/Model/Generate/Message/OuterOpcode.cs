@@ -57,11 +57,17 @@ namespace ET
 		 public const ushort G2C_PlayerUpdate = 20053;
 		 public const ushort C2G_QuitGuild = 20054;
 		 public const ushort G2C_QuitGuild = 20055;
-		 public const ushort GuildInviteInfo = 20056;
-		 public const ushort RecommendedPlayersInfo = 20057;
-		 public const ushort ChatMessageInfo = 20058;
-		 public const ushort ApplicationInfo = 20059;
-		 public const ushort AskEnergyInfo = 20060;
-		 public const ushort MemberInfo = 20061;
+		 public const ushort C2G_FecthGuildInfo = 20056;
+		 public const ushort G2C_FetchGuildInfo = 20057;
+		 public const ushort C2G_KickoutFromGuild = 20058;
+		 public const ushort G2C_KickoutFromGuild = 20059;
+		 public const ushort C2G_TransferGuildPresident = 20060;
+		 public const ushort G2C_TransferGuildPresident = 20061;
+		 public const ushort GuildInviteInfo = 20062;
+		 public const ushort RecommendedPlayersInfo = 20063;
+		 public const ushort ChatMessageInfo = 20064;
+		 public const ushort ApplicationInfo = 20065;
+		 public const ushort AskEnergyInfo = 20066;
+		 public const ushort MemberInfo = 20067;
 	}
 }

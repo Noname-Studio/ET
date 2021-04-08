@@ -8,6 +8,7 @@ public partial class PlayerManager: IPlayer
     private static PlayerManager mInst;
     public static PlayerManager Inst => mInst ?? (mInst = new PlayerManager());
     public static long Id { get; set; } = 0;
+    public static long GuildId { get; set; } = 0;
 
     private MessageKit mMessage;
     private Data_GameRecord mGameRecord;

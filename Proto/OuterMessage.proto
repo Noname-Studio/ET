@@ -441,6 +441,7 @@ message G2C_PlayerUpdate //IActorLocationMessage, IMessage
 	string Message = 92;
 	long? PlayerId = 1;
 	repeated GuildInviteInfo GuildInviteList = 2;
+	long? GuildId = 3;
 }
 
 //ResponseType G2C_QuitGuild
@@ -450,6 +451,57 @@ message C2G_QuitGuild //IRequest
 }
 
 message G2C_QuitGuild //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_FetchGuildInfo
+message C2G_FecthGuildInfo //IRequest
+{
+	int32 RpcId = 90;
+	int64 GuildId = 1;
+}
+
+message G2C_FetchGuildInfo //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Name = 1;
+	bool IsPublic = 2;
+	string Desc = 3;
+	int Frame = 4;
+	int Inside = 5;
+	int64 Id = 6;
+	int32 MaxMemberNum = 7;
+	int64 OwnerId = 8;
+	repeated MemberInfo Members = 9;
+}
+
+//ResponseType G2C_KickoutFromGuild
+message C2G_KickoutFromGuild //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+}
+
+message G2C_KickoutFromGuild //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_TransferGuildPresident
+message C2G_TransferGuildPresident //IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1;
+}
+
+message G2C_TransferGuildPresident //IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;

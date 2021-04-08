@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ET;
+using MongoDB.Bson.Serialization.Attributes;
 
 public class Data_Guild : Entity, IDBCollection
 {
@@ -17,6 +18,8 @@ public class Data_Guild : Entity, IDBCollection
     public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
     public long? CreateTime = null;
     public Dictionary<long, MemberInfo> ActivePlayers = new Dictionary<long, MemberInfo>();
+    [BsonIgnore]
+    public int MaxMemberNum { get; set; } = 20;
 
     public M2C_GuildUpdate CreateGuildUpdateProto()
     {
@@ -31,7 +34,7 @@ public class Data_Guild : Entity, IDBCollection
             Language = Language,
             MinLevel = MinLevel,
             OwnerId = OwnerId,
-            MaxMemberNum = 20,
+            MaxMemberNum = MaxMemberNum,
             Frame = Frame
         };
         guildUpdate.Members.AddRange(Members);

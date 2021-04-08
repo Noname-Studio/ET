@@ -944,6 +944,9 @@ namespace ET
 		[ProtoMember(2)]
 		public List<GuildInviteInfo> GuildInviteList = new List<GuildInviteInfo>();
 
+		[ProtoMember(3)]
+		public long? GuildId { get; set; }
+
 	}
 
 	[ResponseType(typeof(G2C_QuitGuild))]
@@ -959,6 +962,117 @@ namespace ET
 	[Message(OuterOpcode.G2C_QuitGuild)]
 	[ProtoContract]
 	public partial class G2C_QuitGuild: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_FetchGuildInfo))]
+	[Message(OuterOpcode.C2G_FecthGuildInfo)]
+	[ProtoContract]
+	public partial class C2G_FecthGuildInfo: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long GuildId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_FetchGuildInfo)]
+	[ProtoContract]
+	public partial class G2C_FetchGuildInfo: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public string Name { get; set; }
+
+		[ProtoMember(2)]
+		public bool IsPublic { get; set; }
+
+		[ProtoMember(3)]
+		public string Desc { get; set; }
+
+		[ProtoMember(4)]
+		public int Frame { get; set; }
+
+		[ProtoMember(5)]
+		public int Inside { get; set; }
+
+		[ProtoMember(6)]
+		public long Id { get; set; }
+
+		[ProtoMember(7)]
+		public int MaxMemberNum { get; set; }
+
+		[ProtoMember(8)]
+		public long OwnerId { get; set; }
+
+		[ProtoMember(9)]
+		public List<MemberInfo> Members = new List<MemberInfo>();
+
+	}
+
+	[ResponseType(typeof(G2C_KickoutFromGuild))]
+	[Message(OuterOpcode.C2G_KickoutFromGuild)]
+	[ProtoContract]
+	public partial class C2G_KickoutFromGuild: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_KickoutFromGuild)]
+	[ProtoContract]
+	public partial class G2C_KickoutFromGuild: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(typeof(G2C_TransferGuildPresident))]
+	[Message(OuterOpcode.C2G_TransferGuildPresident)]
+	[ProtoContract]
+	public partial class C2G_TransferGuildPresident: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_TransferGuildPresident)]
+	[ProtoContract]
+	public partial class G2C_TransferGuildPresident: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }

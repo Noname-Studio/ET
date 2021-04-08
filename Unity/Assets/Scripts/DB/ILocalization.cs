@@ -1,4 +1,7 @@
-﻿namespace DB
+﻿using System;
+using RestaurantPreview.Config;
+
+namespace DB
 {
     public interface ILocalization
     {
@@ -52,6 +55,40 @@
             else if (language.Equals(Language.Italian))
                 return localization.Italian;*/
             return localization.English;
+        }
+    }
+
+    public static class LocalizationHelper
+    {
+        public static string GetTimeString(long timeStamp)
+        {
+            var lastLogin = DateTimeOffset.FromUnixTimeSeconds(timeStamp);
+            var now = DateTimeOffset.UtcNow;
+            var span = now - lastLogin;
+            if (span.TotalHours < 24)
+            {
+                return string.Format(LocalizationProperty.Read("X hours ago"), span.Hours);
+            }
+            if (span.TotalDays < 7)
+            {
+                return string.Format(LocalizationProperty.Read("X days ago"), span.Days);
+            }
+            else if (span.TotalDays < 30)
+            {
+                return LocalizationProperty.Read("A week ago");
+            }
+            else if (span.TotalDays < 180)
+            {
+                return LocalizationProperty.Read("A month ago");
+            }
+            else if (span.TotalDays < 365)
+            {
+                return LocalizationProperty.Read("Half a year ago");
+            }
+            else
+            {
+                return LocalizationProperty.Read("A year ago");
+            }
         }
     }
 }
