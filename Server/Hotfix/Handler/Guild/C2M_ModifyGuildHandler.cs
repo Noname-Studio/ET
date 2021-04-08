@@ -47,11 +47,9 @@ namespace ET
 
             try
             {
-                foreach (var node in guild.Members)
+                foreach (var node in guild.ActivePlayers)
                 {
-                    var member = PlayerComponent.Instance.Get(node.Id);
-                    if(member != null)
-                        MessageHelper.SendToLocationActor(member.UnitId, update);
+                    MessageHelper.SendToLocationActor(node.Key, update);
                 }
             }
             catch(Exception e)

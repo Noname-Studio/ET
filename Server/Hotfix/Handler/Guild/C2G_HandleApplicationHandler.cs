@@ -21,7 +21,7 @@ namespace ET
                     Language = targetPlayer.Language,
                     Name = targetPlayer.Name,
                     DressUp = targetPlayer.DressUp,
-                    LastLogin = targetPlayer.IsActive ? 0 : targetPlayer.LastLogin,
+                    LastLogin = targetPlayer.LastLogin,
                     Hornor = 0,
                     JoinTime = TimeHelper.ServerTimeStamp()
                 };
@@ -30,9 +30,9 @@ namespace ET
                 update.RemoveApplicationList.Add(request.PlayerId);
                 update.Members.Add(newMember);
 
-                foreach (var node in guild.Members)
+                foreach (var node in guild.ActivePlayers)
                 {
-                    ActorLocationSenderComponent.Instance.Send(node.Id, update);
+                    ActorLocationSenderComponent.Instance.Send(node.Key, update);
                 }
                 
                 guild.Members.Add(newMember);

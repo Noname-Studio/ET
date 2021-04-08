@@ -29,7 +29,7 @@ namespace ET
 				playerInfo = EntityFactory.Create<Data_PlayerInfo>(Game.Scene);
 				playerInfo.Id = Id;
 			}
-			playerInfo.IsActive = true;
+			playerInfo.LastLogin = 0;
 			scene.GetComponent<PlayerComponent>().Add(playerInfo);
 			session.AddComponent<SessionPlayerComponent>().Player = playerInfo;
 			session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);

@@ -62,10 +62,9 @@ namespace ET
                     guild.Members.Add(newMember);
                     var update = new M2C_GuildUpdate();
                     update.Members.Add(newMember);
-                    foreach (var node in guild.Members)
+                    foreach (var node in guild.ActivePlayers)
                     {
-                        var member = PlayerComponent.Instance.Get(node.Id);
-                        MessageHelper.SendToLocationActor(member.UnitId, update);
+                        MessageHelper.SendToLocationActor(node.Key, update);
                     }
                     GuildComponent.Instance.MarkDirty(guild);
                 }

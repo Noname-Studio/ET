@@ -132,15 +132,26 @@ message G2C_Test // IMessage
 {
 }
 
-//ResponseType M2C_Reload
-message C2M_Reload // IRequest
+//ResponseType G2C_Reload
+message C2G_Reload // IRequest
 {
 	int32 RpcId = 90;
-	string Account = 1;
-	string Password = 2;
 }
 
-message M2C_Reload // IResponse
+message G2C_Reload // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_SafeShutdown
+message C2G_SafeShutdown // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_SafeShutdown // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;

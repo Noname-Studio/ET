@@ -267,25 +267,44 @@ namespace ET
 	{
 	}
 
-	[ResponseType(typeof(M2C_Reload))]
-	[Message(OuterOpcode.C2M_Reload)]
+	[ResponseType(typeof(G2C_Reload))]
+	[Message(OuterOpcode.C2G_Reload)]
 	[ProtoContract]
-	public partial class C2M_Reload: IRequest
+	public partial class C2G_Reload: IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
-		[ProtoMember(1)]
-		public string Account { get; set; }
+	}
 
-		[ProtoMember(2)]
-		public string Password { get; set; }
+	[Message(OuterOpcode.G2C_Reload)]
+	[ProtoContract]
+	public partial class G2C_Reload: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
 
 	}
 
-	[Message(OuterOpcode.M2C_Reload)]
+	[ResponseType(typeof(G2C_SafeShutdown))]
+	[Message(OuterOpcode.C2G_SafeShutdown)]
 	[ProtoContract]
-	public partial class M2C_Reload: IResponse
+	public partial class C2G_SafeShutdown: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_SafeShutdown)]
+	[ProtoContract]
+	public partial class G2C_SafeShutdown: IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }

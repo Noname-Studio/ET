@@ -25,8 +25,6 @@ namespace Model.Module.DB.ActualTable
         /// <summary>
         /// 标记这个玩家是否是活跃状态,即这个玩家与服务器是否存在连接状态
         /// </summary>
-        [BsonIgnore]
-        public bool IsActive { get; set; }
         public int CurLevel { get; set; } = 1000000;
         public long LastLogin { get; set; } = 0;
     }

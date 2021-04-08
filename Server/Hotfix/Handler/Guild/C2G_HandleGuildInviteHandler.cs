@@ -19,7 +19,7 @@ namespace ET
                     Language = myPlayer.Language,
                     Name = myPlayer.Name,
                     DressUp = myPlayer.DressUp,
-                    LastLogin = myPlayer.IsActive ? 0 : myPlayer.LastLogin,
+                    LastLogin = myPlayer.LastLogin,
                     Hornor = 0,
                     JoinTime = TimeHelper.ServerTimeStamp()
                 };
@@ -28,9 +28,9 @@ namespace ET
                 update.RemoveApplicationList.Add(myPlayer.Id);
                 update.Members.Add(newMember);
 
-                foreach (var node in guild.Members)
+                foreach (var node in guild.ActivePlayers)
                 {
-                    ActorLocationSenderComponent.Instance.Send(node.Id, update);
+                    ActorLocationSenderComponent.Instance.Send(node.Key, update);
                 }
                 
                 guild.ApplicationList.RemoveAll(t1 => t1.Id == myPlayer.Id);

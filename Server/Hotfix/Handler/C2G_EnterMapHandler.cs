@@ -26,10 +26,18 @@ namespace ET
 			
 			if (guild != null)
 			{
+				var member = guild.GetMemberFromId(player.Id);
+				if (member != null)
+				{
+					member.LastLogin = 0;
+				}
+
+				guild.ActivePlayers[player.UnitId] = member;
 				//注册聊天到公会频道
 				await ChatHelper.AddToGuild(guild.Id, player);
 				var proto = guild.CreateGuildUpdateProto();
 				session.Send(proto);
+
 			}
 			reply();
 		}

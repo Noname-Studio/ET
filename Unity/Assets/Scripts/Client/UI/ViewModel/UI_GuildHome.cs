@@ -52,7 +52,7 @@ namespace Client.UI.ViewModel
 
         private void Menu_OnClick()
         {
-            UIKit.Inst.Create<UI_GuildInfoDetail>();
+            UIKit.Inst.Create<UI_GuildDetail>();
         }
 
         private void Edit_OnClick()

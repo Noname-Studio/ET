@@ -16,7 +16,7 @@ public class Data_Guild : Entity, IDBCollection
     public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
     public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
     public long? CreateTime = null;
-
+    public Dictionary<long, MemberInfo> ActivePlayers = new Dictionary<long, MemberInfo>();
 
     public M2C_GuildUpdate CreateGuildUpdateProto()
     {
@@ -39,5 +39,16 @@ public class Data_Guild : Entity, IDBCollection
         guildUpdate.AskEnergyList.AddRange(AskEnergyList);
 
         return guildUpdate;
+    }
+
+    public MemberInfo GetMemberFromId(long playerId)
+    {
+        foreach (var node in Members)
+        {
+            if (node.Id == playerId)
+                return node;
+        }
+
+        return null;
     }
 }

@@ -19,11 +19,9 @@ namespace ET
                         
                         var update = new M2C_GuildUpdate();
                         update.AskEnergyList.Add(guild.AskEnergyList[i]);
-                        foreach (var node in guild.Members)
+                        foreach (var node in guild.ActivePlayers)
                         {
-                            var member = PlayerComponent.Instance.Get(node.Id);
-                            if(member != null)
-                                MessageHelper.SendToLocationActor(member.UnitId, update);
+                            MessageHelper.SendToLocationActor(node.Key, update);
                         }
 
                         break;
