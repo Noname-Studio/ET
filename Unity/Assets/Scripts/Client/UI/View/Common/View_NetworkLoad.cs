@@ -7,7 +7,7 @@ namespace Common
 {
     public partial class View_NetworkLoad : GComponent
     {
-        public GButton bg;
+        public View_loading_effect Circle;
         public const string URL = "ui://ucagdrsioiyqj5";
 
         public static View_NetworkLoad CreateInstance()
@@ -19,7 +19,7 @@ namespace Common
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
+            Circle = (View_loading_effect)GetChild("Circle");
         }
     }
 }

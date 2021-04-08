@@ -11,7 +11,7 @@ public static class GameConfig
     public const string CustomerConfigPath = "Config/Kitchen/Customer/";
     public const string CookwareConfigPath = "Config/Kitchen/Cookwares/";
     public static string PersistentDataPath { get; } = AssetsConfig.PersistentDataPath;
-
+    public const int RestaurantOffset = 1000000;
     public static bool MobileRuntime
     {
         get

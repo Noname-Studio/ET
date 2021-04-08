@@ -53,10 +53,11 @@ namespace Client.UI.ViewModel
 
         private void InitUI()
         {
-            View.c1.onChanged.Add(Callback);
+            View.c1.onChanged.Add(Controller_c1Changed);
+            Controller_c1Changed();
         }
 
-        private void Callback()
+        private void Controller_c1Changed()
         {
             if(View.c1.selectedPage == "邀请列表")
                 InitInviteList();
@@ -66,6 +67,7 @@ namespace Client.UI.ViewModel
 
         private void InitInviteList()
         {
+            View.FriendList.RemoveChildrenToPool();
             foreach (var node in RecommendedPlayersInfos)
             {
                 var item = (View_HaoYouXuanZe_Button)View.FriendList.AddItemFromPool();
@@ -86,6 +88,7 @@ namespace Client.UI.ViewModel
 
         private void InitApplicationList()
         {
+            View.ApplicationList.RemoveChildrenToPool();   
             foreach (ApplicationInfo node in GuildManager.Inst.Data.ApplicationList)
             {
                 NewApplication(node);

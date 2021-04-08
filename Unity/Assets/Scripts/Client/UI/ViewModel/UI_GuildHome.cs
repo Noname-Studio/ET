@@ -42,6 +42,12 @@ namespace Client.UI.ViewModel
             View.NumOfPeople.text = GuildData.Members.Count + "/" + GuildData.MaxMemberNum;
             View.Edit.onClick.Set(Edit_OnClick);
             View.Menu.onClick.Set(Menu_OnClick);
+            View.invite.onClick.Set(Invite_OnClick);
+        }
+
+        private void Invite_OnClick()
+        {
+            UIKit.Inst.Create<UI_GuildApplicationList>();
         }
 
         private void Menu_OnClick()

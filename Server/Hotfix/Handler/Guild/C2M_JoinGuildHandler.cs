@@ -24,21 +24,24 @@ namespace ET
                 if (!(guild.IsPublic ?? true))
                 {
                     var time = DateTime.UtcNow.Ticks;
-                    guild.ApplicationList.Add(new ApplicationInfo
+                    if (guild.ApplicationList.Find(t1 => t1.Id == player.Id) == null)
                     {
-                        Id = player.Id,
-                        Time = time,
-                    });
-                    GuildComponent.Instance.MarkDirty(guild);
-                    //我们看看会长在不在.如果会长在的话就把申请信息推送给他,不在的话等下次登录的话会跟随Update推送
-                    if (guild.OwnerId.HasValue)
-                    {
-                        var owner = PlayerComponent.Instance.Get(guild.OwnerId.Value);
-                        if (owner != null)
+                        guild.ApplicationList.Add(new ApplicationInfo
                         {
-                            var update = new M2C_GuildUpdate();
-                            update.ApplicationList.Add(new ApplicationInfo{Id = player.Id,Time = time});
-                            MessageHelper.SendToLocationActor(owner.UnitId, update);
+                            Id = player.Id,
+                            Time = time,
+                        });
+                        GuildComponent.Instance.MarkDirty(guild);
+                        //我们看看会长在不在.如果会长在的话就把申请信息推送给他,不在的话等下次登录的话会跟随Update推送
+                        if (guild.OwnerId.HasValue)
+                        {
+                            var owner = PlayerComponent.Instance.Get(guild.OwnerId.Value);
+                            if (owner != null)
+                            {
+                                var update = new M2C_GuildUpdate();
+                                update.ApplicationList.Add(new ApplicationInfo{Id = player.Id,Time = time,Head = player.Head,Name = player.Name});
+                                MessageHelper.SendToLocationActor(owner.UnitId, update);
+                            }
                         }
                     }
                 }

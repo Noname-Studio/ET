@@ -1,5 +1,6 @@
 using System.Net;
 using ET.Server.Chat.Component;
+using Model.Module.DB.ActualTable;
 
 namespace ET
 {

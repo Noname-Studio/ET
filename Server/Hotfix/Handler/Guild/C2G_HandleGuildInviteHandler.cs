@@ -8,6 +8,7 @@ namespace ET
         protected override async ETTask Run(Session session, C2G_HandleGuildInvite request, G2C_HandleGuildInvite response, Action reply)
         {
             var myPlayer = session.GetComponent<SessionPlayerComponent>().Player;
+            var guild = GuildComponent.Instance.Get(request.GuildId);
             if (request.Approve)
             {
                 var newMember = new MemberInfo
@@ -22,7 +23,6 @@ namespace ET
                     Hornor = 0,
                     JoinTime = TimeHelper.ServerTimeStamp()
                 };
-                var guild = GuildComponent.Instance.Get(request.GuildId);
                 
                 var update = new M2C_GuildUpdate();
                 update.RemoveApplicationList.Add(myPlayer.Id);
@@ -37,8 +37,10 @@ namespace ET
                 guild.Members.Add(newMember);
                 GuildComponent.Instance.MarkDirty(guild);
                 ActorLocationSenderComponent.Instance.Send(myPlayer.UnitId, guild.CreateGuildUpdateProto());
+                await myPlayer.JoinGuild(guild);
             }
 
+            
             reply();
             await ETTask.CompletedTask;
         }

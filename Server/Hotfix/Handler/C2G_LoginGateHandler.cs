@@ -33,8 +33,9 @@ namespace ET
 			scene.GetComponent<PlayerComponent>().Add(playerInfo);
 			session.AddComponent<SessionPlayerComponent>().Player = playerInfo;
 			session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
-			
-			session.Send(new G2C_PlayerUpdate{PlayerId = playerInfo.Id});
+			session.AddComponent<SessionInnerVariables>();
+
+			session.Send(new G2C_PlayerUpdate { PlayerId = playerInfo.Id, GuildInviteList = playerInfo.GuildInviteInfos });
 			
 			reply();
 			await ETTask.CompletedTask;

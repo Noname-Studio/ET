@@ -246,6 +246,8 @@ namespace Client.UI.ViewModel
         {
             foreach (var node in evt.Message.Value)
             {
+                if (node.SenderId == PlayerManager.Id)
+                    continue;
                 if(!CacheMySendConent.ContainsKey(node.Time))//检测到没有发送过.玩家可能退出了游戏重新进入游戏了
                     AddChatMsg(node);
             }

@@ -6,9 +6,12 @@ namespace ET
     {
         protected override async ETTask Run(Session session, C2G_GuildGetRecommendedPlayers request, G2C_GuildGetRecommendedPlayers response, Action reply)
         {
-            var players = PlayerComponent.Instance.RandomGet(10);
+            var players = PlayerComponent.Instance.GetNotJoinedGuildPlayer(session, 10);
+            var player = session.GetComponent<SessionPlayerComponent>().Player;
             foreach (var node in players)
             {
+                if (node.Id == player.Id)
+                    continue;
                 response.Players.Add(new RecommendedPlayersInfo
                 {
                     Id = node.Id,

@@ -40,7 +40,7 @@ namespace Client.UI.ViewModel
             var guildData = GuildManager.Inst.Data;
             var frame = view.frame.data is int t1? t1 : 0;
             var inside = view.inside.data is int t2? t2 : 0;
-            var level = RestaurantKey.Map(Panel.SelectRestaurant.Value) * 1000000;
+            var level = RestaurantKey.Map(Panel.SelectRestaurant.Value) * GameConfig.RestaurantOffset;
             var language = (short) ((Language) Panel.SelectLanguage.Value).Id;
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>().OutOfTime(5);
 

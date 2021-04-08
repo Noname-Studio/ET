@@ -16,7 +16,7 @@ namespace Model.Module.DB.ActualTable
         public short Language { get; set; }= -1;
         public string Head { get; set; }
         public long GuildId { get; set; }
-
+        public List<GuildInviteInfo> GuildInviteInfos { get; } = new List<GuildInviteInfo>();
         public List<int> DressUp { get; } = new List<int>();
         [BsonIgnore]
         public long UnitId { get; set; }

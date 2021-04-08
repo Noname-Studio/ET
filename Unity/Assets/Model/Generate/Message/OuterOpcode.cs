@@ -53,11 +53,13 @@ namespace ET
 		 public const ushort C2G_HandleGuildInvite = 20049;
 		 public const ushort G2C_HandleGuildInvite = 20050;
 		 public const ushort G2C_PlayerUpdate = 20051;
-		 public const ushort GuildInviteInfo = 20052;
-		 public const ushort RecommendedPlayersInfo = 20053;
-		 public const ushort ChatMessageInfo = 20054;
-		 public const ushort ApplicationInfo = 20055;
-		 public const ushort AskEnergyInfo = 20056;
-		 public const ushort MemberInfo = 20057;
+		 public const ushort C2G_QuitGuild = 20052;
+		 public const ushort G2C_QuitGuild = 20053;
+		 public const ushort GuildInviteInfo = 20054;
+		 public const ushort RecommendedPlayersInfo = 20055;
+		 public const ushort ChatMessageInfo = 20056;
+		 public const ushort ApplicationInfo = 20057;
+		 public const ushort AskEnergyInfo = 20058;
+		 public const ushort MemberInfo = 20059;
 	}
 }

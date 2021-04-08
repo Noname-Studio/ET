@@ -491,7 +491,7 @@ public partial class LevelProperty
 
     private void OnIdChanged()
     {
-        var rest = RestaurantId.Index * 1000000;
+        var rest = RestaurantId.Index * GameConfig.RestaurantOffset;
         mId = rest + mLevel;
         var path = AssetDatabase.GetAssetPath(this);
         var fileName = Path.GetFileNameWithoutExtension(path);

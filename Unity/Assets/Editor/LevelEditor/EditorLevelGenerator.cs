@@ -127,7 +127,7 @@ public class EditorLevelGenerator: ScriptableObject
             //顾客数量
             int customerNumber = Mathf.FloorToInt(CustomerGrowthCurve.Evaluate(level));
 
-            string path = Path + "Levels/" + (RestaurantKey.Map(RestId) * 1000000 + level) + ".asset";
+            string path = Path + "Levels/" + (RestaurantKey.Map(RestId) * GameConfig.RestaurantOffset + level) + ".asset";
             var reflectionType = typeof (LevelProperty);
             LevelProperty levelData = AssetDatabase.LoadAssetAtPath<LevelProperty>(path);
             if (levelData == null)

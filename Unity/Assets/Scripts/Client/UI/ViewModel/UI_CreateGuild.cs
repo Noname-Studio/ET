@@ -55,7 +55,7 @@ namespace Client.UI.ViewModel
             CreateGuildRequest.Frame = (int) View.frame.data;
             CreateGuildRequest.Inside = (int) View.inside.data;
             CreateGuildRequest.Language = (short) ((Language) SelectLanguage.Value).Id;
-            CreateGuildRequest.MinLevel = RestaurantKey.Map(SelectRestaurant.Value) * 1000000;
+            CreateGuildRequest.MinLevel = RestaurantKey.Map(SelectRestaurant.Value) * GameConfig.RestaurantOffset;
             CreateGuildRequest.IsPublic = View.IsPublic.selected;
             CreateGuildRequest.Desc = View.UnionDesc.text;
             var networkLoad = UIKit.Inst.Create<UI_NetworkLoad>();

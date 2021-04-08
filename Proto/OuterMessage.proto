@@ -432,6 +432,19 @@ message G2C_PlayerUpdate //IActorLocationMessage, IMessage
 	repeated GuildInviteInfo GuildInviteList = 2;
 }
 
+//ResponseType G2C_QuitGuild
+message C2G_QuitGuild //IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_QuitGuild //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 message GuildInviteInfo
 {
 	string Name = 1;

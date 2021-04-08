@@ -8,7 +8,8 @@ namespace TheGuild
     public partial class View_GongHuiTuiChu : GComponent
     {
         public Controller c1;
-        public GButton bg;
+        public GButton Confirm;
+        public GButton ThinkAgain;
         public GButton Close;
         public GGroup UI;
         public const string URL = "ui://nvat1mjsdy61dm5";
@@ -23,7 +24,8 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
+            Confirm = (GButton)GetChild("Confirm");
+            ThinkAgain = (GButton)GetChild("ThinkAgain");
             Close = (GButton)GetChild("Close");
             UI = (GGroup)GetChild("UI");
         }
