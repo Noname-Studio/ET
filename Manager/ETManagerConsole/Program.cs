@@ -40,6 +40,14 @@ namespace ETManagerConsole
                             session.Send(new C2G_Reload());
                         }
                     }
+
+                    if (Console.ReadLine() == "SafeClose")
+                    {
+                        using (Session session = kcpComponent.Create(NetworkHelper.ToIPEndPoint("192.168.3.29:50002")))
+                        {
+                            session.Send(new C2G_SafeShutdown());
+                        }
+                    }
                 }
             }
             catch (Exception e)

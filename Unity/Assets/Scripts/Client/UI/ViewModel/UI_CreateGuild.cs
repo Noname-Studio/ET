@@ -62,10 +62,10 @@ namespace Client.UI.ViewModel
             try
             {
                 var response = await mSession.Call(CreateGuildRequest);
-                if (response.Error >= ErrorCode.ERR_LogicError)
+                if (response.Error == ErrorCode.ERR_DuplicateNames)
                 {
                     var tips = UIKit.Inst.Create<UI_Tips>();
-                    tips.SetContent(LocalizationProperty.Read("CreateUnionError"));
+                    tips.SetContent(LocalizationProperty.Read("DuplicateGuildNames"));
                     tips.AddButton(LocalizationProperty.Read("Confirm"));
                 }
                 else
@@ -76,6 +76,9 @@ namespace Client.UI.ViewModel
             catch (Exception e)
             {
                 Log.Error(e);
+                var tips = UIKit.Inst.Create<UI_Tips>();
+                tips.SetContent(LocalizationProperty.Read("CreateUnionError"));
+                tips.AddButton(LocalizationProperty.Read("Confirm"));
             }
             finally
             {

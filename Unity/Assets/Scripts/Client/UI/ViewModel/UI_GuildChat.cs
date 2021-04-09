@@ -155,14 +155,20 @@ namespace Client.UI.ViewModel
         }
 
         /// <summary>
-        /// 通常我们创建消息控件的时候我们是插入在最后的.通过这个方法我们可以根据时间戳给他找到正确的位置进行插入
+        /// 修正聊天列表的位置.如果玩家这时候处于接近底部的聊天内容.那么如果有新的聊天内容加入.则需要滑动到最底部
         /// </summary>
-        /// <param name="com"></param>
-        private void FixedChatViewIndex(GComponent com)
+        private void FixChatViewPosition()
         {
-            
+            if (View.List.IsChildInView(View.List.GetChildAt(View.List.numChildren - 2)))
+            {
+                View.List.scrollPane.ScrollBottom(true);
+            }
         }
         
+        /// <summary>
+        /// 气泡对话 
+        /// </summary>
+        /// <param name="message"></param>
         private void AddChatMsg(ChatMessageInfo message)
         {
             LastMessageTimeStamp = message.Time;
@@ -176,8 +182,13 @@ namespace Client.UI.ViewModel
             if (chatView.GetChild("Desc").width < chatView.GetChild("Name").width)
                 chatView.GetChild("Bubble").width = chatView.GetChild("Name").width + 67;
             chatView.data = message.Time;
+            FixChatViewPosition();
         }
 
+        /// <summary>
+        /// 请求能量
+        /// </summary>
+        /// <param name="info"></param>
         private void AddAskEnergyMsg(AskEnergyInfo info)
         {
             LastMessageTimeStamp = info.Time;
@@ -203,6 +214,7 @@ namespace Client.UI.ViewModel
                 }
                 obj.Time.text = sub.ToString(@"hh\:mm\:ss");
             });
+            FixChatViewPosition();
         }
 
         private TimeSpan Countdown(long time)

@@ -32,6 +32,7 @@ namespace Client.UI.ViewModel
             if (PlayerManager.GuildId == 0)
             {
                 UIKit.Inst.Destroy<UI_JoinedGuild>();
+                UIKit.Inst.Destroy<UI_GuildDetail>();
             }
             CloseMySelf();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using ET.Server.Chat;
 
 namespace ET
 {
@@ -8,7 +9,7 @@ namespace ET
         protected override async ETTask Run(Session session, C2M_JoinGuild request, M2C_JoinGuild response, Action reply)
         {
             var player = session.GetComponent<SessionPlayerComponent>().Player;
-            var guild = await DBComponent.Instance.Query<Data_Guild>(request.Id);
+            var guild = GuildComponent.Instance.Get(request.Id);
             if (guild == null)
             {
                 response.Error = ErrorCode.ERR_MissingGuild;
@@ -32,6 +33,7 @@ namespace ET
                             Time = time,
                         });
                         GuildComponent.Instance.MarkDirty(guild);
+                        var application = new ApplicationInfo { Id = player.Id, Time = time, Head = player.Head, Name = player.Name };
                         //我们看看会长在不在.如果会长在的话就把申请信息推送给他,不在的话等下次登录的话会跟随Update推送
                         if (guild.OwnerId.HasValue)
                         {
@@ -39,14 +41,19 @@ namespace ET
                             if (owner != null)
                             {
                                 var update = new M2C_GuildUpdate();
-                                update.ApplicationList.Add(new ApplicationInfo{Id = player.Id,Time = time,Head = player.Head,Name = player.Name});
+                                update.ApplicationList.Add(application);
                                 MessageHelper.SendToLocationActor(owner.UnitId, update);
+                            }
+                            else
+                            {
+                                guild.ApplicationList.Add(application);
                             }
                         }
                     }
                 }
                 else
                 {
+                    player.GuildId = guild.Id;
                     var newMember = new MemberInfo
                     {
                         Hornor = 0,
@@ -66,7 +73,11 @@ namespace ET
                     {
                         MessageHelper.SendToLocationActor(node.Key, update);
                     }
+                    guild.ActivePlayers.Add(player.UnitId,newMember);
                     GuildComponent.Instance.MarkDirty(guild);
+                    session.Send(guild.CreateGuildUpdateProto());
+                    await ChatHelper.AddToGuild(guild.Id, player);
+                    session.Send(new G2C_PlayerUpdate { GuildId = guild.Id, GuildInviteList = null });
                 }
             }
             reply();

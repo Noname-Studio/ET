@@ -244,5 +244,11 @@
     "Chinese": "一年以前",
     "Chinese_tw": "一年以前",
     "English": "一年以前"
+  },
+  "DuplicateGuildNames": {
+    "Id": "DuplicateGuildNames",
+    "Chinese": "公会名称已存在",
+    "Chinese_tw": "公会名称已存在",
+    "English": "公会名称已存在"
   }
 }

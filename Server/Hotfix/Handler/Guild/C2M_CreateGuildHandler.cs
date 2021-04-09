@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ET.Server.Chat;
 using MongoDB.Libmongocrypt;
 
 namespace ET
@@ -15,6 +16,8 @@ namespace ET
             {
                 response.Error = ErrorCode.ERR_DuplicateNames;
                 response.Message = "名称重复";
+                reply();
+                return;
             }
             else
             {
@@ -42,7 +45,7 @@ namespace ET
                             OwnerId = player.Id,
                             CreateTime = time,
                         };
-                        guild.Members.Add(new MemberInfo
+                        var member = new MemberInfo
                         {
                             JoinTime = time,
                             LastLogin = -1,
@@ -53,11 +56,14 @@ namespace ET
                             Id = player.Id,
                             Name = player.Name,
                             DressUp = player.DressUp,
-                        });
+                        };
+                        guild.Members.Add(member);
                         GuildComponent.Instance.Add(guild);
                         await GuildComponent.Instance.RegisterGuildToChat(guild);
                         player.GuildId = guild.Id;
                         var proto = guild.CreateGuildUpdateProto();
+                        guild.ActivePlayers.Add(player.UnitId, member);
+                        await ChatHelper.AddToGuild(guild.Id, player);
                         session.Send(proto);
                     }
                 }

@@ -29,6 +29,7 @@ namespace ET
         public static async void Update(this GuildComponent self)
         {
             var list = self.dirty.Values.ToList();
+            self.dirty.Clear();
             Log.Info("保存公会数据");
             await DBComponent.Instance.Save(RandomHelper.RandInt64(), list);
         }
@@ -69,6 +70,7 @@ namespace ET
         public static void Remove(this GuildComponent self,long id)
         {
             self.guilds.Remove(id);
+            self.dirty.Remove(id);
         }
 
         public static Data_Guild[] GetAll(this GuildComponent self)
