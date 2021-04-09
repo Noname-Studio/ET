@@ -168,9 +168,11 @@ namespace Client.UI.ViewModel
             LastMessageTimeStamp = message.Time;
             bool isMe = message.SenderId == PlayerManager.Id;
             var chatView = View.List.AddItemFromPool(isMe ? View_PuTongQiPao_You.URL : View_PuTongQiPao_Zuo.URL).asCom;
+            chatView.GetChild("Desc").asTextField.textFormat.font = chatView.GetChild("Name").asTextField.textFormat.font = "Fonts/Source MSFont"; 
             chatView.GetChild("Head").icon = message.SenderHead ?? "ui://Settings/0";
             chatView.GetChild("Desc").text = message.SenderMsg;
             chatView.GetChild("Name").text = message.SenderName;
+            
             if (chatView.GetChild("Desc").width < chatView.GetChild("Name").width)
                 chatView.GetChild("Bubble").width = chatView.GetChild("Name").width + 67;
             chatView.data = message.Time;

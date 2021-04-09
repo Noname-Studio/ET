@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_open_anim_front: GComponent
+    public partial class View_open_anim_front : GComponent
     {
         public View_LoadingProgress Loading;
         public GTextField Title;
@@ -16,15 +16,15 @@ namespace InternalResources
 
         public static View_open_anim_front CreateInstance()
         {
-            return (View_open_anim_front) UIPackage.CreateObject("InternalResources", "open_anim_front");
+            return (View_open_anim_front)UIPackage.CreateObject("InternalResources", "open_anim_front");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Loading = (View_LoadingProgress) GetChild("Loading");
-            Title = (GTextField) GetChild("Title");
+            Loading = (View_LoadingProgress)GetChild("Loading");
+            Title = (GTextField)GetChild("Title");
             t2 = GetTransition("t2");
             t3 = GetTransition("t3");
             t4 = GetTransition("t4");

@@ -17,6 +17,7 @@ public class Data_Guild : Entity, IDBCollection
     public List<ApplicationInfo> ApplicationList = new List<ApplicationInfo>();
     public List<AskEnergyInfo> AskEnergyList = new List<AskEnergyInfo>();
     public long? CreateTime = null;
+    [BsonIgnore]
     public Dictionary<long, MemberInfo> ActivePlayers = new Dictionary<long, MemberInfo>();
     [BsonIgnore]
     public int MaxMemberNum { get; set; } = 20;

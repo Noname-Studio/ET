@@ -36,6 +36,7 @@ namespace Client.UI.ViewModel
                 });
             });
             View.ButtonUp.onClick.Add(EnterGame);
+            Log.Error(View.ButtonUp.GetChild("title").asTextField.textFormat.font);
         }
 
         private async void EnterGame()

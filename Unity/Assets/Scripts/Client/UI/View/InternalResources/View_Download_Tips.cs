@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_Download_Tips: GLabel
+    public partial class View_Download_Tips : GLabel
     {
         public Controller c1;
         public GButton bg;
@@ -16,7 +16,7 @@ namespace InternalResources
 
         public static View_Download_Tips CreateInstance()
         {
-            return (View_Download_Tips) UIPackage.CreateObject("InternalResources", "Download_Tips");
+            return (View_Download_Tips)UIPackage.CreateObject("InternalResources", "Download_Tips");
         }
 
         public override void ConstructFromXML(XML xml)
@@ -24,10 +24,10 @@ namespace InternalResources
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton) GetChild("bg");
-            BG = (GGroup) GetChild("BG");
-            Download = (GButton) GetChild("Download");
-            WaitMinute = (GButton) GetChild("WaitMinute");
+            bg = (GButton)GetChild("bg");
+            BG = (GGroup)GetChild("BG");
+            Download = (GButton)GetChild("Download");
+            WaitMinute = (GButton)GetChild("WaitMinute");
         }
     }
 }

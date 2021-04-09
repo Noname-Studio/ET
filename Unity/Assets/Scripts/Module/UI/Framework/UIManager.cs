@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using FairyGUI;
 using Panthea.Asset;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Profiling;
 using AssetBundleRequest = Panthea.Asset.AssetBundleRequest;
@@ -49,7 +50,12 @@ public class UIManager
         mUnityBehaviour.AddLateUpdate(LateUpdate);
         GRoot.inst.SetContentScaleFactor(1920, 1080, UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
         //加载字体
-        UIConfig.defaultFont = "Fonts/MSFont";
+        //FontManager.RegisterFont(new DynamicFont("Source MSFont", Resources.Load<Font>("Fonts/Source MSFont")),"Source MSFont");
+        UIConfig.defaultFont = "Source MSFont";
+        TMPFont font = new TMPFont();
+        font.name = "MSFont"; //这个名字要和编辑器里字体资源的名字一致
+        font.fontAsset = Resources.Load<TMP_FontAsset>("Fonts/MSFont");
+        FontManager.RegisterFont(font, "MSFont");
 
         if (!GameConfig.MobileRuntime)
         {

@@ -5,21 +5,21 @@ using FairyGUI.Utils;
 
 namespace InternalResources
 {
-    public partial class View_GridDisplay: GComponent
+    public partial class View_GridDisplay : GComponent
     {
         public GList List;
         public const string URL = "ui://97pg0d8fwybbw3w";
 
         public static View_GridDisplay CreateInstance()
         {
-            return (View_GridDisplay) UIPackage.CreateObject("InternalResources", "GridDisplay");
+            return (View_GridDisplay)UIPackage.CreateObject("InternalResources", "GridDisplay");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            List = (GList) GetChild("List");
+            List = (GList)GetChild("List");
         }
     }
 }
