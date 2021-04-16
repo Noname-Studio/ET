@@ -3,12 +3,12 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_Pack: GComponent
+    public partial class View_Pack : GLabel
     {
         public Controller c1;
-        public GLoader packIcon;
+        public GLoader packicon;
         public GLoader prop1icon;
         public GTextField prop1text;
         public GGroup prop1;
@@ -33,48 +33,43 @@ namespace UI.Story.Bank
         public GLoader prop7icon;
         public GTextField prop7text;
         public GGroup prop7;
-
         public const string URL = "ui://yf9s6r30p9humc";
 
         public static View_Pack CreateInstance()
         {
-            return (View_Pack) UIPackage.CreateObject("Bank", "Pack");
-        }
-
-        public View_Pack()
-        {
+            return (View_Pack)UIPackage.CreateObject("Bank", "Pack");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetControllerAt(0);
-            packIcon = (GLoader) GetChildAt(0);
-            prop1icon = (GLoader) GetChildAt(2);
-            prop1text = (GTextField) GetChildAt(4);
-            prop1 = (GGroup) GetChildAt(5);
-            prop0icon = (GLoader) GetChildAt(6);
-            prop0text = (GTextField) GetChildAt(8);
-            prop0 = (GGroup) GetChildAt(9);
-            prop2icon = (GLoader) GetChildAt(10);
-            prop2text = (GTextField) GetChildAt(12);
-            prop2 = (GGroup) GetChildAt(13);
-            prop4icon = (GLoader) GetChildAt(14);
-            prop4text = (GTextField) GetChildAt(16);
-            prop4 = (GGroup) GetChildAt(17);
-            prop3icon = (GLoader) GetChildAt(18);
-            prop3text = (GTextField) GetChildAt(20);
-            prop3 = (GGroup) GetChildAt(21);
-            prop5icon = (GLoader) GetChildAt(22);
-            prop5text = (GTextField) GetChildAt(24);
-            prop5 = (GGroup) GetChildAt(25);
-            prop6icon = (GLoader) GetChildAt(26);
-            prop6text = (GTextField) GetChildAt(28);
-            prop6 = (GGroup) GetChildAt(29);
-            prop7icon = (GLoader) GetChildAt(30);
-            prop7text = (GTextField) GetChildAt(32);
-            prop7 = (GGroup) GetChildAt(33);
+            c1 = GetController("c1");
+            packicon = (GLoader)GetChild("packicon");
+            prop1icon = (GLoader)GetChild("prop1icon");
+            prop1text = (GTextField)GetChild("prop1text");
+            prop1 = (GGroup)GetChild("prop1");
+            prop0icon = (GLoader)GetChild("prop0icon");
+            prop0text = (GTextField)GetChild("prop0text");
+            prop0 = (GGroup)GetChild("prop0");
+            prop2icon = (GLoader)GetChild("prop2icon");
+            prop2text = (GTextField)GetChild("prop2text");
+            prop2 = (GGroup)GetChild("prop2");
+            prop4icon = (GLoader)GetChild("prop4icon");
+            prop4text = (GTextField)GetChild("prop4text");
+            prop4 = (GGroup)GetChild("prop4");
+            prop3icon = (GLoader)GetChild("prop3icon");
+            prop3text = (GTextField)GetChild("prop3text");
+            prop3 = (GGroup)GetChild("prop3");
+            prop5icon = (GLoader)GetChild("prop5icon");
+            prop5text = (GTextField)GetChild("prop5text");
+            prop5 = (GGroup)GetChild("prop5");
+            prop6icon = (GLoader)GetChild("prop6icon");
+            prop6text = (GTextField)GetChild("prop6text");
+            prop6 = (GGroup)GetChild("prop6");
+            prop7icon = (GLoader)GetChild("prop7icon");
+            prop7text = (GTextField)GetChild("prop7text");
+            prop7 = (GGroup)GetChild("prop7");
         }
     }
 }

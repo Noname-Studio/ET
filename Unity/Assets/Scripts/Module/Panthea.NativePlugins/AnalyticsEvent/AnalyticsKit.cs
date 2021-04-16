@@ -561,7 +561,7 @@ namespace Panthea.NativePlugins.Analytics
             return result;
         }
 
-        public AnalyticsResult IAPTransaction(string transactionContext, float price, string itemId, string itemType = null,
+        public AnalyticsResult IAPTransaction(IAPType transactionContext, float price, string itemId, string itemType = null,
         string level = null, string transactionId = null, IDictionary<string, object> eventData = null)
         {
             TempDict.Clear();
@@ -573,7 +573,8 @@ namespace Panthea.NativePlugins.Analytics
                 }
             }
 
-            TempDict.Add("transaction_context", transactionContext);
+            string context = transactionContext.ToString();
+            TempDict.Add("transaction_context", context);
             TempDict.Add("price", price);
             TempDict.Add("item_id", itemId);
             TempDict.Add("item_type", itemType);
@@ -584,7 +585,7 @@ namespace Panthea.NativePlugins.Analytics
                 HandleError("iap_transaction", TempDict);
             }
 
-            AnalyticsResult result = AnalyticsEvent.IAPTransaction(transactionContext, price, itemId, itemType, level, transactionId, eventData);
+            AnalyticsResult result = AnalyticsEvent.IAPTransaction(context, price, itemId, itemType, level, transactionId, eventData);
             if (result != AnalyticsResult.Ok)
             {
                 HandleError("iap_transaction", TempDict);

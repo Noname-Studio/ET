@@ -11,7 +11,7 @@ namespace Client.UI.ViewModel
             base.OnEnable(p, refresh);
             View.ThinkAgain.onClick.Set(ThinkAgain_OnClick);
             View.Confirm.onClick.Set(Confirm_OnClick);
-            if (PlayerManager.Id == GuildManager.Inst.Data.OwnerId)
+            if (PlayerManager.Inst.Id == GuildManager.Inst.Data.OwnerId)
             {
                 if (GuildManager.Inst.Data.Members.Count == 0)
                     View.c1.selectedPage = "LastOne";
@@ -29,7 +29,7 @@ namespace Client.UI.ViewModel
             var network = UIKit.Inst.Create<UI_NetworkLoad>();
             await NetworkManager.Inst.Call(new C2G_QuitGuild());
             network.CloseMySelf();
-            if (PlayerManager.GuildId == 0)
+            if (PlayerManager.Inst.GuildId == 0)
             {
                 UIKit.Inst.Destroy<UI_JoinedGuild>();
                 UIKit.Inst.Destroy<UI_GuildDetail>();

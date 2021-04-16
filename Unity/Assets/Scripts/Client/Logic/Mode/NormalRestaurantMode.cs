@@ -19,5 +19,6 @@ public class NormalRestaurantMode: IRestaurantMode
     private void CreateUI()
     {
         UIKit.Inst.Create<UI_RestaurantMain>();
+        UIKit.Inst.Create<UI_ResourcesBar>();
     }
 }

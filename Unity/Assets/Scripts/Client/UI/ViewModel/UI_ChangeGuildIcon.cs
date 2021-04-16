@@ -7,7 +7,7 @@ using TheGuild;
 
 namespace Client.UI.ViewModel
 {
-    [UIWindow(Enter = WindowAnimType.Fall, Exit = WindowAnimType.Rise)]
+    [UIWindow(Enter = WindowAnimType.Fall, Exit = WindowAnimType.Rise,Background = true)]
     public class UI_ChangeGuildIcon: UIBase<View_HuiZhangZhiZuo>
     {
         private Session mSession { get; set; }
@@ -18,23 +18,28 @@ namespace Client.UI.ViewModel
 
         private string InitFrame { get; set; }
         private string InitInside { get; set; }
-
+        public GuildIconProperty SelectedFrame { get; set; }
+        public GuildIconProperty SelectedInside { get; set; }
         protected override void OnInit(IUIParams p)
         {
             base.OnInit(p);
             if (GuildManager.Inst.IsJoined())
             {
                 var guildData = GuildManager.Inst.Data;
-                InitInside = View.inside.url = GuildIconProperty.Read(guildData.Inside.GetValueOrDefault(GuildIconProperty.DefaultInside.Id))?.Url;
-                InitFrame = View.frame.url = GuildIconProperty.Read(guildData.Frame.GetValueOrDefault(GuildIconProperty.DefaultFrame.Id))?.Url;
+                SelectedInside = GuildIconProperty.Read(guildData.Inside.GetValueOrDefault(GuildIconProperty.DefaultInside.Id));
+                InitInside = View.inside.url = SelectedInside.Url;
+                SelectedFrame = GuildIconProperty.Read(guildData.Frame.GetValueOrDefault(GuildIconProperty.DefaultFrame.Id));
+                InitFrame = View.frame.url = SelectedFrame.Url;
             }
             else
             {
                 var data = GuildIconProperty.DefaultFrame;
+                SelectedFrame = data;
                 InitFrame = View.frame.url = data.Url;
                 View.frame.data = data;
 
                 data = GuildIconProperty.DefaultInside;
+                SelectedInside = data;
                 InitInside = View.inside.url = data.Url;
                 View.inside.data = data;
             }
@@ -119,12 +124,12 @@ namespace Client.UI.ViewModel
             if (property.Type == GuildIconProperty.TypeEnum.Frame)
             {
                 View.frame.url = property.Url;
-                View.frame.data = property.Id;
+                SelectedFrame = property;
             }
             else
             {
                 View.inside.url = property.Url;
-                View.inside.data = property.Id;
+                SelectedInside = property;
             }
         }
 
@@ -140,7 +145,7 @@ namespace Client.UI.ViewModel
                     var button = (GButton) View.List.AddItemFromPool();
                     button.icon = property.Url;
                     button.data = property;
-                    if (InitFrame == property.Url)
+                    if (SelectedFrame.Url == property.Url)
                     {
                         View.List.selectedIndex = i;
                     }
@@ -162,7 +167,7 @@ namespace Client.UI.ViewModel
                     var button = (GButton) View.List.AddItemFromPool();
                     button.icon = property.Url;
                     button.data = property;
-                    if (InitInside == property.Url)
+                    if (SelectedInside.Url == property.Url)
                     {
                         View.List.selectedIndex = i;
                     }

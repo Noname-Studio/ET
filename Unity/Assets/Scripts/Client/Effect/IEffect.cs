@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEffect: IDisposable
+namespace Client.Effect
 {
-    void Do();
-    bool IsPlaying { get; }
+    public interface IEffect: IDisposable
+    {
+        void Do();
+        bool IsPlaying { get; }
+    }
 }

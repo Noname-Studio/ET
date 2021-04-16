@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Client.Effect;
+using Cysharp.Threading.Tasks;
 using Log_in;
 using Panthea.NativePlugins.Ads;
 using UnityEngine;
@@ -40,7 +41,7 @@ namespace Client.UI.ViewModel
 
         private async void EnterGame()
         {
-            var fadeEffect = EffectFactory.Create<FadeScreen>();
+            var fadeEffect = EffectFactory.Create(new FadeScreen());
             await fadeEffect.PlayDark();
             CloseMySelf();
             //这里我们做一些初始化的工作

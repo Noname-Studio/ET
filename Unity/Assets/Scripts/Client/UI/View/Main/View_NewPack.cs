@@ -5,12 +5,10 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_NewPack: GComponent
+    public partial class View_NewPack : GLabel
     {
-        public GButton bg;
-        public GTextField titlename;
-        public GTextField gemnum;
-        public GTextField intimer;
+        public GTextField Gem;
+        public GTextField InfineTime;
         public GButton buy;
         public GButton Close;
         public GTextField RecommondText;
@@ -20,21 +18,19 @@ namespace Main
 
         public static View_NewPack CreateInstance()
         {
-            return (View_NewPack) UIPackage.CreateObject("Main", "NewPack");
+            return (View_NewPack)UIPackage.CreateObject("Main", "NewPack");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton) GetChild("bg");
-            titlename = (GTextField) GetChild("titlename");
-            gemnum = (GTextField) GetChild("gemnum");
-            intimer = (GTextField) GetChild("intimer");
-            buy = (GButton) GetChild("buy");
-            Close = (GButton) GetChild("Close");
-            RecommondText = (GTextField) GetChild("RecommondText");
-            UI = (GGroup) GetChild("UI");
+            Gem = (GTextField)GetChild("Gem");
+            InfineTime = (GTextField)GetChild("InfineTime");
+            buy = (GButton)GetChild("buy");
+            Close = (GButton)GetChild("Close");
+            RecommondText = (GTextField)GetChild("RecommondText");
+            UI = (GGroup)GetChild("UI");
             t0 = GetTransition("t0");
         }
     }

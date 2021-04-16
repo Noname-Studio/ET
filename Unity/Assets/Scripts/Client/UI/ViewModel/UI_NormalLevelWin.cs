@@ -1,6 +1,7 @@
 ﻿using FairyGUI;
 using KitchenUI;
 using Panthea.NativePlugins.Ads;
+using Panthea.NativePlugins.Analytics;
 
 namespace Client.UI.ViewModel
 {
@@ -16,11 +17,16 @@ namespace Client.UI.ViewModel
 
         private async void WatchVideo_OnClick(EventContext context)
         {
-            var result = await AdsKit.Inst.PlayRewardVideoAsync();
-            if (result)
+            var adsCallback = await AdsKit.Inst.PlayRewardVideoAsync();
+            if (adsCallback.result)
             {
                 View.NormalReward.title = (KitchenRoot.Inst.Record.CoinNumber * 2).ToString();
                 View.Watchvideo.visible = false;
+                AnalyticsKit.Inst.AdComplete(true, adsCallback.ToString(), "double coin");
+            }
+            else
+            {
+                AnalyticsKit.Inst.AdComplete(false, adsCallback.ToString(), "double coin");
             }
         }
 

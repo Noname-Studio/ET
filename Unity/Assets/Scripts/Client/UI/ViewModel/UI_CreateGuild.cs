@@ -65,12 +65,22 @@ namespace Client.UI.ViewModel
                 if (response.Error == ErrorCode.ERR_DuplicateNames)
                 {
                     var tips = UIKit.Inst.Create<UI_Tips>();
-                    tips.SetContent(LocalizationProperty.Read("DuplicateGuildNames"));
+                    tips.SetContent(LocalizationProperty.Read("ERR_DuplicateGuildNames"));
+                    tips.AddButton(LocalizationProperty.Read("Confirm"));
+                }
+                else if (response.Error == ErrorCode.ERR_JoinedGuild)
+                {
+                    var tips = UIKit.Inst.Create<UI_Tips>();
+                    tips.SetContent(LocalizationProperty.Read("ERR_JoinedGuild"));
                     tips.AddButton(LocalizationProperty.Read("Confirm"));
                 }
                 else
                 {
                     mParent.CloseMySelf();
+                    if (GuildManager.Inst.IsJoined())
+                    {
+                        UIKit.Inst.Create<UI_JoinedGuild>();
+                    }
                 }
             }
             catch (Exception e)
@@ -101,8 +111,8 @@ namespace Client.UI.ViewModel
         {
             View.frame.url = panel.View.frame.url;
             View.inside.url = panel.View.inside.url;
-            CreateGuildRequest.Frame = (int) panel.View.frame.data;
-            CreateGuildRequest.Inside = (int) panel.View.inside.data;
+            View.frame.data = CreateGuildRequest.Frame = panel.SelectedFrame.Id;
+            View.inside.data = CreateGuildRequest.Inside = panel.SelectedInside.Id;
             return UniTask.CompletedTask;
         }
     }

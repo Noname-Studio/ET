@@ -11,9 +11,6 @@ namespace Panthea.NativePlugins.Ads
 #elif UNITY_ANDROID
         private string gameId { get; } = "4060427";
 #endif
-        private string RewardVideoPlacementId { get; } = "rewardedVideo";
-        private string VideoPlacementId { get; } = "video";
-
         private MessageKit mEventManager { get; }
         private TaskCompletionSource<bool> Tcs { get; set; }
 
@@ -26,7 +23,7 @@ namespace Panthea.NativePlugins.Ads
 
         public void OnUnityAdsReady(string placementId)
         {
-            if (RewardVideoPlacementId == placementId)
+            if (AdsFlag.RewardVideoPlacementId.ToString() == placementId)
             {
                 mEventManager.Send(EventKey.AdsReady);
             }
@@ -69,7 +66,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 还未初始化");
                 return;
             }
-            else if (!AdsKit.Inst.IsReady(RewardVideoPlacementId))
+            else if (!AdsKit.Inst.IsReady(AdsFlag.RewardVideoPlacementId))
             {
                 Log.Error("广告还未准备好");
                 return;
@@ -80,15 +77,15 @@ namespace Panthea.NativePlugins.Ads
                 return;
             }
 
-            Advertisement.Show(RewardVideoPlacementId);
+            Advertisement.Show(AdsFlag.RewardVideoPlacementId.ToString());
         }
 
-        public async Task<bool> PlayRewardVideoAsync()
+        public async Task<(bool result,IAdsHandler handler)> PlayRewardVideoAsync()
         {
             Tcs = new TaskCompletionSource<bool>();
             PlayRewardVideo();
             var result = await Tcs.Task;
-            return result;
+            return (result, this);;
         }
 
         public void PlayVideo()
@@ -98,7 +95,7 @@ namespace Panthea.NativePlugins.Ads
                 Log.Error("Ads 还未初始化");
                 return;
             }
-            else if (!AdsKit.Inst.IsReady(VideoPlacementId))
+            else if (!AdsKit.Inst.IsReady(AdsFlag.RewardVideoPlacementId))
             {
                 Log.Error("广告还未准备好");
                 return;
@@ -109,20 +106,20 @@ namespace Panthea.NativePlugins.Ads
                 return;
             }
 
-            Advertisement.Show(VideoPlacementId);
+            Advertisement.Show(AdsFlag.RewardVideoPlacementId.ToString());
         }
 
-        public async Task<bool> PlayVideoAsync()
+        public async Task<(bool result,IAdsHandler handler)> PlayVideoAsync()
         {
             Tcs = new TaskCompletionSource<bool>();
             PlayVideo();
             var result = await Tcs.Task;
-            return result;
+            return (result, this);
         }
 
-        public bool IsReady(string flag)
+        public bool IsReady(AdsFlag flag)
         {
-            return Advertisement.IsReady(flag);
+            return Advertisement.IsReady(flag.ToString());
         }
 
         public bool IsSupported()

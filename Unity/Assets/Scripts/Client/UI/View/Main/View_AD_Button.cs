@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_AD_Button: GButton
+    public partial class View_AD_Button : GButton
     {
         public GTextField Text;
         public Transition t0;
@@ -13,14 +13,14 @@ namespace Main
 
         public static View_AD_Button CreateInstance()
         {
-            return (View_AD_Button) UIPackage.CreateObject("Main", "AD_Button");
+            return (View_AD_Button)UIPackage.CreateObject("Main", "AD_Button");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Text = (GTextField) GetChild("Text");
+            Text = (GTextField)GetChild("Text");
             t0 = GetTransition("t0");
         }
     }

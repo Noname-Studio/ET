@@ -3,9 +3,9 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_QianDaoKaPian: GButton
+    public partial class View_QianDaoKaPian : GButton
     {
         public Controller c1;
         public GTextField Day;
@@ -14,29 +14,24 @@ namespace UI.Story.Bank
         public GComponent gou;
         public Transition t0;
         public Transition t1;
-
         public const string URL = "ui://yf9s6r30mpckif";
 
         public static View_QianDaoKaPian CreateInstance()
         {
-            return (View_QianDaoKaPian) UIPackage.CreateObject("Bank", "签到卡片");
-        }
-
-        public View_QianDaoKaPian()
-        {
+            return (View_QianDaoKaPian)UIPackage.CreateObject("Bank", "签到卡片");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetControllerAt(0);
-            Day = (GTextField) GetChildAt(6);
-            light = (GComponent) GetChildAt(7);
-            Icon = (GLoader) GetChildAt(8);
-            gou = (GComponent) GetChildAt(10);
-            t0 = GetTransitionAt(0);
-            t1 = GetTransitionAt(1);
+            c1 = GetController("c1");
+            Day = (GTextField)GetChild("Day");
+            light = (GComponent)GetChild("light");
+            Icon = (GLoader)GetChild("Icon");
+            gou = (GComponent)GetChild("gou");
+            t0 = GetTransition("t0");
+            t1 = GetTransition("t1");
         }
     }
 }

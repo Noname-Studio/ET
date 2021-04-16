@@ -1,0 +1,607 @@
+{
+  "breakfastcount_1": {
+    "Id": "breakfastcount_1",
+    "Step": 1,
+    "NextStep": "breakfastcount_2",
+    "Type": "BreakfastCount",
+    "Name": "achieve_name_1001",
+    "Desc": "achieve_des_1001",
+    "Target": 30,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "breakfastcount_2": {
+    "Id": "breakfastcount_2",
+    "Step": 2,
+    "NextStep": "breakfastcount_3",
+    "Type": "BreakfastCount",
+    "Name": "achieve_name_1001",
+    "Desc": "achieve_des_1001",
+    "Target": 60,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "breakfastcount_3": {
+    "Id": "breakfastcount_3",
+    "Step": 3,
+    "Type": "BreakfastCount",
+    "Name": "achieve_name_1001",
+    "Desc": "achieve_des_1001",
+    "Target": 80,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "cafecount_1": {
+    "Id": "cafecount_1",
+    "Step": 1,
+    "NextStep": "cafecount_2",
+    "Type": "CafeCount",
+    "Name": "achieve_name_1002",
+    "Desc": "achieve_des_1002",
+    "Target": 30,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "cafecount_2": {
+    "Id": "cafecount_2",
+    "Step": 2,
+    "NextStep": "cafecount_3",
+    "Type": "CafeCount",
+    "Name": "achieve_name_1002",
+    "Desc": "achieve_des_1002",
+    "Target": 60,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "cafecount_3": {
+    "Id": "cafecount_3",
+    "Step": 3,
+    "Type": "CafeCount",
+    "Name": "achieve_name_1002",
+    "Desc": "achieve_des_1002",
+    "Target": 80,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "combo3_1": {
+    "Id": "combo3_1",
+    "Step": 1,
+    "NextStep": "combo3_2",
+    "Type": "Combo3",
+    "Name": "achieve_name_1003",
+    "Desc": "achieve_des_1003",
+    "Target": 200,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "combo3_2": {
+    "Id": "combo3_2",
+    "Step": 2,
+    "NextStep": "combo3_3",
+    "Type": "Combo3",
+    "Name": "achieve_name_1003",
+    "Desc": "achieve_des_1003",
+    "Target": 2000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "combo3_3": {
+    "Id": "combo3_3",
+    "Step": 3,
+    "Type": "Combo3",
+    "Name": "achieve_name_1003",
+    "Desc": "achieve_des_1003",
+    "Target": 20000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "combo4_1": {
+    "Id": "combo4_1",
+    "Step": 1,
+    "NextStep": "combo4_2",
+    "Type": "Combo4",
+    "Name": "achieve_name_1004",
+    "Desc": "achieve_des_1004",
+    "Target": 150,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "combo4_2": {
+    "Id": "combo4_2",
+    "Step": 2,
+    "NextStep": "combo4_3",
+    "Type": "Combo4",
+    "Name": "achieve_name_1004",
+    "Desc": "achieve_des_1004",
+    "Target": 1000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "combo4_3": {
+    "Id": "combo4_3",
+    "Step": 3,
+    "Type": "Combo4",
+    "Name": "achieve_name_1004",
+    "Desc": "achieve_des_1004",
+    "Target": 10000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "customercount_1": {
+    "Id": "customercount_1",
+    "Step": 1,
+    "NextStep": "customercount_2",
+    "Type": "ServicesCustomerNumber",
+    "Name": "achieve_name_1005",
+    "Desc": "achieve_des_1005",
+    "Target": 500,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "customercount_2": {
+    "Id": "customercount_2",
+    "Step": 2,
+    "NextStep": "customercount_3",
+    "Type": "ServicesCustomerNumber",
+    "Name": "achieve_name_1005",
+    "Desc": "achieve_des_1005",
+    "Target": 5000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "customercount_3": {
+    "Id": "customercount_3",
+    "Step": 3,
+    "Type": "ServicesCustomerNumber",
+    "Name": "achieve_name_1005",
+    "Desc": "achieve_des_1005",
+    "Target": 20000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "praisecount_1": {
+    "Id": "praisecount_1",
+    "Step": 1,
+    "NextStep": "praisecount_2",
+    "Type": "LikeCount",
+    "Name": "achieve_name_1006",
+    "Desc": "achieve_des_1006",
+    "Target": 150,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "praisecount_2": {
+    "Id": "praisecount_2",
+    "Step": 2,
+    "NextStep": "praisecount_3",
+    "Type": "LikeCount",
+    "Name": "achieve_name_1006",
+    "Desc": "achieve_des_1006",
+    "Target": 1000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "praisecount_3": {
+    "Id": "praisecount_3",
+    "Step": 3,
+    "Type": "LikeCount",
+    "Name": "achieve_name_1006",
+    "Desc": "achieve_des_1006",
+    "Target": 10000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "levelwithoutburn_1": {
+    "Id": "levelwithoutburn_1",
+    "Step": 1,
+    "NextStep": "levelwithoutburn_2",
+    "Type": "ConsecutiveLevels.TotalBurnFoodCount",
+    "Name": "achieve_name_1007",
+    "Desc": "achieve_des_1007",
+    "Target": 10,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "levelwithoutburn_2": {
+    "Id": "levelwithoutburn_2",
+    "Step": 2,
+    "NextStep": "levelwithoutburn_3",
+    "Type": "ConsecutiveLevels.TotalBurnFoodCount",
+    "Name": "achieve_name_1007",
+    "Desc": "achieve_des_1007",
+    "Target": 30,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "levelwithoutburn_3": {
+    "Id": "levelwithoutburn_3",
+    "Step": 3,
+    "Type": "ConsecutiveLevels.TotalBurnFoodCount",
+    "Name": "achieve_name_1007",
+    "Desc": "achieve_des_1007",
+    "Target": 100,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "levelwithoutpass_1": {
+    "Id": "levelwithoutpass_1",
+    "Step": 1,
+    "NextStep": "levelwithoutpass_2",
+    "Type": "ConsecutiveLevels.TotalLostCustomerCount",
+    "Name": "achieve_name_1008",
+    "Desc": "achieve_des_1008",
+    "Target": 10,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "levelwithoutpass_2": {
+    "Id": "levelwithoutpass_2",
+    "Step": 2,
+    "NextStep": "levelwithoutpass_3",
+    "Type": "ConsecutiveLevels.TotalLostCustomerCount",
+    "Name": "achieve_name_1008",
+    "Desc": "achieve_des_1008",
+    "Target": 30,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "levelwithoutpass_3": {
+    "Id": "levelwithoutpass_3",
+    "Step": 3,
+    "Type": "ConsecutiveLevels.TotalLostCustomerCount",
+    "Name": "achieve_name_1008",
+    "Desc": "achieve_des_1008",
+    "Target": 100,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "levelwithoutthrow_1": {
+    "Id": "levelwithoutthrow_1",
+    "Step": 1,
+    "NextStep": "levelwithoutthrow_2",
+    "Type": "ConsecutiveLevels.TotalDropFoodCount",
+    "Name": "achieve_name_1009",
+    "Desc": "achieve_des_1009",
+    "Target": 10,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "levelwithoutthrow_2": {
+    "Id": "levelwithoutthrow_2",
+    "Step": 2,
+    "NextStep": "levelwithoutthrow_3",
+    "Type": "ConsecutiveLevels.TotalDropFoodCount",
+    "Name": "achieve_name_1009",
+    "Desc": "achieve_des_1009",
+    "Target": 30,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "levelwithoutthrow_3": {
+    "Id": "levelwithoutthrow_3",
+    "Step": 3,
+    "Type": "ConsecutiveLevels.TotalDropFoodCount",
+    "Name": "achieve_name_1009",
+    "Desc": "achieve_des_1009",
+    "Target": 100,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "levelcombo_1": {
+    "Id": "levelcombo_1",
+    "Step": 1,
+    "NextStep": "levelcombo_2",
+    "Type": "ConsecutiveLevels.TotalLevel",
+    "Name": "achieve_name_1010",
+    "Desc": "achieve_des_1010",
+    "Target": 15,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "levelcombo_2": {
+    "Id": "levelcombo_2",
+    "Step": 2,
+    "NextStep": "levelcombo_3",
+    "Type": "ConsecutiveLevels.TotalLevel",
+    "Name": "achieve_name_1010",
+    "Desc": "achieve_des_1010",
+    "Target": 50,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "levelcombo_3": {
+    "Id": "levelcombo_3",
+    "Step": 3,
+    "Type": "ConsecutiveLevels.TotalLevel",
+    "Name": "achieve_name_1010",
+    "Desc": "achieve_des_1010",
+    "Target": 100,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "tipscount_1": {
+    "Id": "tipscount_1",
+    "Step": 1,
+    "NextStep": "tipscount_2",
+    "Type": "TipsNumber",
+    "Name": "achieve_name_1011",
+    "Desc": "achieve_des_1011",
+    "Target": 10000,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "tipscount_2": {
+    "Id": "tipscount_2",
+    "Step": 2,
+    "NextStep": "tipscount_3",
+    "Type": "TipsNumber",
+    "Name": "achieve_name_1011",
+    "Desc": "achieve_des_1011",
+    "Target": 50000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "tipscount_3": {
+    "Id": "tipscount_3",
+    "Step": 3,
+    "Type": "TipsNumber",
+    "Name": "achieve_name_1011",
+    "Desc": "achieve_des_1011",
+    "Target": 500000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "earncount_1": {
+    "Id": "earncount_1",
+    "Step": 1,
+    "NextStep": "earncount_2",
+    "Type": "CoinNumber",
+    "Name": "achieve_name_1012",
+    "Desc": "achieve_des_1012",
+    "Target": 20000,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "earncount_2": {
+    "Id": "earncount_2",
+    "Step": 2,
+    "NextStep": "earncount_3",
+    "Type": "CoinNumber",
+    "Name": "achieve_name_1012",
+    "Desc": "achieve_des_1012",
+    "Target": 100000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "earncount_3": {
+    "Id": "earncount_3",
+    "Step": 3,
+    "Type": "CoinNumber",
+    "Name": "achieve_name_1012",
+    "Desc": "achieve_des_1012",
+    "Target": 1000000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "upgradecount_1": {
+    "Id": "upgradecount_1",
+    "Step": 1,
+    "NextStep": "upgradecount_2",
+    "Type": "ConsumeCoin",
+    "Name": "achieve_name_1013",
+    "Desc": "achieve_des_1013",
+    "Target": 10000,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "upgradecount_2": {
+    "Id": "upgradecount_2",
+    "Step": 2,
+    "NextStep": "upgradecount_3",
+    "Type": "ConsumeCoin",
+    "Name": "achieve_name_1013",
+    "Desc": "achieve_des_1013",
+    "Target": 100000,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "upgradecount_3": {
+    "Id": "upgradecount_3",
+    "Step": 3,
+    "Type": "ConsumeCoin",
+    "Name": "achieve_name_1013",
+    "Desc": "achieve_des_1013",
+    "Target": 1000000,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "signcount_1": {
+    "Id": "signcount_1",
+    "Step": 1,
+    "NextStep": "signcount_2",
+    "Type": "ConsecutiveLevels.Login",
+    "Name": "achieve_name_1014",
+    "Desc": "achieve_des_1014",
+    "Target": 7,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "signcount_2": {
+    "Id": "signcount_2",
+    "Step": 2,
+    "NextStep": "signcount_3",
+    "Type": "ConsecutiveLevels.Login",
+    "Name": "achieve_name_1014",
+    "Desc": "achieve_des_1014",
+    "Target": 30,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "signcount_3": {
+    "Id": "signcount_3",
+    "Step": 3,
+    "Type": "ConsecutiveLevels.Login",
+    "Name": "achieve_name_1014",
+    "Desc": "achieve_des_1014",
+    "Target": 50,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "joinedGuild": {
+    "Id": "joinedGuild",
+    "Step": 1,
+    "Name": "achieve_name_1015",
+    "Desc": "achieve_des_1015",
+    "Target": 1,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "ParticipateGuildLeague_1": {
+    "Id": "ParticipateGuildLeague_1",
+    "Step": 1,
+    "NextStep": "ParticipateGuildLeague_2",
+    "Type": "ParticipateGuileLeague",
+    "Name": "achieve_name_1016",
+    "Desc": "achieve_des_1016",
+    "Target": 1,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "ParticipateGuildLeague_2": {
+    "Id": "ParticipateGuildLeague_2",
+    "Step": 2,
+    "NextStep": "ParticipateGuildLeague_3",
+    "Type": "ParticipateGuileLeague",
+    "Name": "achieve_name_1016",
+    "Desc": "achieve_des_1016",
+    "Target": 3,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "ParticipateGuildLeague_3": {
+    "Id": "ParticipateGuildLeague_3",
+    "Step": 3,
+    "Type": "ParticipateGuileLeague",
+    "Name": "achieve_name_1016",
+    "Desc": "achieve_des_1016",
+    "Target": 8,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "HaveDressUp_1": {
+    "Id": "HaveDressUp_1",
+    "Step": 1,
+    "NextStep": "HaveDressUp_2",
+    "Type": "DressupCount",
+    "Name": "achieve_name_1017",
+    "Desc": "achieve_des_1017",
+    "Target": 1,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "HaveDressUp_2": {
+    "Id": "HaveDressUp_2",
+    "Step": 2,
+    "NextStep": "HaveDressUp_3",
+    "Type": "DressupCount",
+    "Name": "achieve_name_1017",
+    "Desc": "achieve_des_1017",
+    "Target": 10,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "HaveDressUp_3": {
+    "Id": "HaveDressUp_3",
+    "Step": 3,
+    "Type": "DressupCount",
+    "Name": "achieve_name_1017",
+    "Desc": "achieve_des_1017",
+    "Target": 50,
+    "Reward": {
+      "gem": 30
+    }
+  },
+  "HavePet_1": {
+    "Id": "HavePet_1",
+    "Step": 1,
+    "NextStep": "HavePet_2",
+    "Type": "PetCount",
+    "Name": "achieve_name_1018",
+    "Desc": "achieve_des_1018",
+    "Target": 1,
+    "Reward": {
+      "gem": 10
+    }
+  },
+  "HavePet_2": {
+    "Id": "HavePet_2",
+    "Step": 2,
+    "NextStep": "HavePet_3",
+    "Type": "PetCount",
+    "Name": "achieve_name_1018",
+    "Desc": "achieve_des_1018",
+    "Target": 3,
+    "Reward": {
+      "gem": 20
+    }
+  },
+  "HavePet_3": {
+    "Id": "HavePet_3",
+    "Step": 3,
+    "Type": "PetCount",
+    "Name": "achieve_name_1018",
+    "Desc": "achieve_des_1018",
+    "Target": 8,
+    "Reward": {
+      "gem": 30
+    }
+  }
+}

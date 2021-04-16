@@ -6,7 +6,7 @@ using ET;
 using Module.Panthea.Utils;
 using Newtonsoft.Json;
 
-public class LocalDB: IDBService
+public class LocalDB : IDBService
 {
     private static readonly string mSavePath = GameConfig.PersistentDataPath + "/DB/Local/";
     private const string Extname = ".json";
@@ -37,9 +37,9 @@ public class LocalDB: IDBService
         }
         else
         {
-            if (File.Exists(mSavePath + PlayerManager.Id + "/" + t.Name + Extname))
+            if (File.Exists(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname))
             {
-                var str = FileUtils.ReadAndDecodeAllText(mSavePath + t.Name + Extname);
+                var str = FileUtils.ReadAndDecodeAllText(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname);
                 db = (DBDefine) JsonConvert.DeserializeObject(str, t);
                 mMapping.Add(t, db);
                 return db;
@@ -55,6 +55,6 @@ public class LocalDB: IDBService
     {
         var t = value.GetType();
         var str = JsonConvert.SerializeObject((T) value);
-        FileUtils.EncodeAllTextAndWrite(mSavePath + t.Name + Extname, str);
+        FileUtils.EncodeAllTextAndWrite(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname, str);
     }
 }

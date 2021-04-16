@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectFactory
+namespace Client.Effect
 {
-    public static TEffect Create<TEffect>() where TEffect : IEffect
+    public class EffectFactory
     {
-        return Activator.CreateInstance<TEffect>();
+        public static TEffect Create<TEffect>(TEffect effect) where TEffect : IEffect
+        {
+            effect.Do();
+            return effect;
+        }
     }
 }

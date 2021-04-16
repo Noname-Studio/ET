@@ -5,12 +5,10 @@ using FairyGUI.Utils;
 
 namespace Common
 {
-    public partial class View_tipsprop : GComponent
+    public partial class View_tipsprop : GLabel
     {
-        public GButton bg;
         public GList PropList;
         public GButton Confirm;
-        public GTextField Title;
         public Transition t0;
         public Transition t1;
         public Transition t2;
@@ -25,10 +23,8 @@ namespace Common
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
             PropList = (GList)GetChild("PropList");
             Confirm = (GButton)GetChild("Confirm");
-            Title = (GTextField)GetChild("Title");
             t0 = GetTransition("t0");
             t1 = GetTransition("t1");
             t2 = GetTransition("t2");

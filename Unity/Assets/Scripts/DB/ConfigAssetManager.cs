@@ -26,8 +26,8 @@ namespace Config.ConfigCore
     /// <typeparam name="T"></typeparam>
     public abstract class ConfigAssetManager<T>: IConfig where T : IConfig
     {
-        protected static Dictionary<int, T> IntKeyValue = new Dictionary<int, T>();
-        protected static Dictionary<string, T> StringKeyValue = new Dictionary<string, T>();
+        protected static Dictionary<int, T> IntKeyValue;
+        protected static Dictionary<string, T> StringKeyValue;
         private static Type Type;
 
         /// <summary>
@@ -64,7 +64,8 @@ namespace Config.ConfigCore
             }
             else
             {
-                StringKeyValue = JsonConvert.DeserializeObject<Dictionary<string, T>>(json);
+                StringKeyValue = new Dictionary<string, T>(StringComparer.OrdinalIgnoreCase);
+                JsonConvert.PopulateObject(json, StringKeyValue);
                 if (method != null)
                 {
                     if (method.ReturnType == typeof (Task))

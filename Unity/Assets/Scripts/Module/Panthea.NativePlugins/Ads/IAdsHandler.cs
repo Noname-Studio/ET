@@ -8,10 +8,10 @@ namespace Panthea.NativePlugins.Ads
     public interface IAdsHandler
     {
         void PlayRewardVideo();
-        Task<bool> PlayRewardVideoAsync();
+        Task<(bool result,IAdsHandler handler)> PlayRewardVideoAsync();
         void PlayVideo();
-        Task<bool> PlayVideoAsync();
-        bool IsReady(string flag);
+        Task<(bool result,IAdsHandler handler)> PlayVideoAsync();
+        bool IsReady(AdsFlag flag);
         bool IsSupported();
         bool IsInitialized();
     }

@@ -36,6 +36,8 @@ public class RestaurantKey
     public static RestaurantKey Unknown = new RestaurantKey(nameof (Unknown), 0, "无");
     public static RestaurantKey FoodTruck = new RestaurantKey(nameof (FoodTruck), 1, "快餐车");
     public static RestaurantKey Breakfast = new RestaurantKey(nameof (Breakfast), 2, "早餐厅");
+    public static RestaurantKey Cafe = new RestaurantKey(nameof (Cafe), 3, "咖啡厅");
+
 
     public static RestaurantKey This
     {

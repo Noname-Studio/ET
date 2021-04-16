@@ -1,7 +1,6 @@
 /********************************
   该脚本是自动生成的请勿手动修改
 *********************************/
-
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -12,20 +11,23 @@ using System.IO;
 
 namespace RestaurantPreview.Config
 {
-    public partial class PropProperty: IConfig
+    public partial class PropProperty : IConfig
     {
         public enum TypeEnum
         {
-            Level
+            Level,
+            None,
+            Res,
+            InTheLevel,
         }
 
         private string mId;
-        private string mLoc;
+        private string mName;
         private string mIcon;
         private Price mPrice;
         private int mUnlock;
         private TypeEnum mType;
-
+        private string mDesc;
         /// <summary>
         /// Id
         /// </summary>
@@ -36,12 +38,12 @@ namespace RestaurantPreview.Config
         }
 
         /// <summary>
-        /// 本地化Key
+        /// 名称
         /// </summary>
-        public string Loc
+        public string Name
         {
-            get => mLoc;
-            set => mLoc = value;
+            get => mName;
+            set => mName = value;
         }
 
         /// <summary>
@@ -78,6 +80,15 @@ namespace RestaurantPreview.Config
         {
             get => mType;
             set => mType = value;
+        }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Desc
+        {
+            get => mDesc;
+            set => mDesc = value;
         }
 
         public static PropProperty Read(string id, bool throwException = true)

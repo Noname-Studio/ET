@@ -7,7 +7,6 @@ namespace TheGuild
 {
     public partial class View_GongHuiHuoDongShuoMing : GComponent
     {
-        public GButton bg;
         public GButton Close;
         public GList HelpList;
         public const string URL = "ui://nvat1mjslbjnkx";
@@ -21,7 +20,6 @@ namespace TheGuild
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
             Close = (GButton)GetChild("Close");
             HelpList = (GList)GetChild("HelpList");
         }

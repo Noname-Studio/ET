@@ -5,6 +5,20 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DefineConstants>TRACECOREAPP;SERVER;NOT_CLIENTCOREAPP</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="NLog.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NLog" Version="4.5.4" />
+    </ItemGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\..\Server\Hotfix\Server.Hotfix.csproj" />
       <ProjectReference Include="..\..\Server\Model\Server.Model.csproj" />

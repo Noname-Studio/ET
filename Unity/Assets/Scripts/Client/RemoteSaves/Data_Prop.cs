@@ -6,10 +6,19 @@ public class Data_Prop: DBDefine
     public int DoubleCoin { get; set; } = 1;
     public int FirePower { get; set; } = 1;
     public int ComboHelper { get; set; } = 1;
+    public int SecondChance { get; set; } = 1;
+    public int Add3Cus { get; set; } = 1;
+    public int Add30Sec { get; set; } = 1;
+    public int InfinitePatient { get; set; } = 1;
+
     private Action<int> SetExtinguisher { get; }
     private Action<int> SetDoubleCoin { get; }
     private Action<int> SetFirePower { get; }
     private Action<int> SetComboHelper { get; }
+    public Action<int> SetSecondChance { get; } 
+    public Action<int> SetAdd3Cus { get; }
+    public Action<int> SetAdd30Sec { get; }
+    public Action<int> SetInfinitePatient { get;  }
 
     public Data_Prop()
     {
@@ -17,6 +26,10 @@ public class Data_Prop: DBDefine
         SetDoubleCoin = i => DoubleCoin = i;
         SetFirePower = i => FirePower = i;
         SetComboHelper = i => ComboHelper = i;
+        SetSecondChance = i => SecondChance = i;
+        SetAdd3Cus = i => Add3Cus = i;
+        SetAdd30Sec = i => Add30Sec = i;
+        SetInfinitePatient = i => InfinitePatient = i;
     }
 
     private Action<int> GetSetAction(string key)
@@ -37,7 +50,22 @@ public class Data_Prop: DBDefine
         {
             return SetComboHelper;
         }
-
+        else if (key == nameof (SecondChance))
+        {
+            return SetSecondChance;
+        }
+        else if (key == nameof (Add3Cus))
+        {
+            return SetAdd3Cus;
+        }
+        else if (key == nameof (Add30Sec))
+        {
+            return SetAdd30Sec;
+        }
+        else if (key == nameof (InfinitePatient))
+        {
+            return SetInfinitePatient;
+        }
         return null;
     }
 
@@ -59,7 +87,22 @@ public class Data_Prop: DBDefine
         {
             return ComboHelper;
         }
-
+        else if (key == nameof(SecondChance))
+        {
+            return SecondChance;
+        }
+        else if (key == nameof (Add3Cus))
+        {
+            return Add3Cus;
+        }
+        else if (key == nameof(Add30Sec))
+        {
+            return Add30Sec;
+        }
+        else if (key == nameof (InfinitePatient))
+        {
+            return InfinitePatient;
+        }
         return 0;
     }
 

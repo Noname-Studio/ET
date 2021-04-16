@@ -3,13 +3,17 @@
 namespace ET
 {
     [MessageHandler]
-    public class C2G_SafeShutdownHandler : AMRpcHandler<C2G_SafeShutdown,G2C_SafeShutdown>
+    public class C2G_SafeShutdownHandler : AMHandler<C2G_SafeShutdown>
     {
-        protected override async ETTask Run(Session session, C2G_SafeShutdown request, G2C_SafeShutdown response, Action reply)
+        protected override async ETVoid Run(Session session, C2G_SafeShutdown request)
         {
-            var kcp = session.DomainScene().GetComponent<NetKcpComponent>();
-            kcp.Dispose();
-            reply();
+            var scene = session.DomainScene();
+            Game.FrameFinishCallback.Add(() =>
+            {
+                scene.Dispose();
+                TimerComponent.Instance.Dispose();
+                Log.Error("安全关闭");
+            });
             await ETTask.CompletedTask;
         }
     }

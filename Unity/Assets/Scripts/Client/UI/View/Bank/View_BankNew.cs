@@ -3,12 +3,11 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_BankNew: GComponent
+    public partial class View_BankNew : GComponent
     {
-        public Controller c1;
-        public GGroup BG;
+        public Controller Page;
         public GList Menu;
         public GTextField ItemDesc;
         public View_effect Effect;
@@ -21,50 +20,38 @@ namespace UI.Story.Bank
         public GTextField OwnCount;
         public View_gift DiamondExt;
         public GButton Buy;
-        public GButton buy_prop;
         public GTextField InfineTime;
         public GGroup InfineGroup;
-        public GList DiamondList;
-        public GList GiftList;
-        public GList PropList;
+        public GList List;
         public GButton Close;
-
         public const string URL = "ui://yf9s6r30qmjolw";
 
         public static View_BankNew CreateInstance()
         {
-            return (View_BankNew) UIPackage.CreateObject("Bank", "BankNew");
-        }
-
-        public View_BankNew()
-        {
+            return (View_BankNew)UIPackage.CreateObject("Bank", "BankNew");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetControllerAt(0);
-            BG = (GGroup) GetChildAt(9);
-            Menu = (GList) GetChildAt(14);
-            ItemDesc = (GTextField) GetChildAt(17);
-            Effect = (View_effect) GetChildAt(18);
-            Detail = (View_Pack) GetChildAt(19);
-            ItemName2 = (GTextField) GetChildAt(20);
-            ItemIcon = (GLoader) GetChildAt(21);
-            NumShadow = (GImage) GetChildAt(22);
-            ItemName = (GTextField) GetChildAt(23);
-            OwnCountFrame = (GImage) GetChildAt(24);
-            OwnCount = (GTextField) GetChildAt(25);
-            DiamondExt = (View_gift) GetChildAt(26);
-            Buy = (GButton) GetChildAt(27);
-            buy_prop = (GButton) GetChildAt(28);
-            InfineTime = (GTextField) GetChildAt(30);
-            InfineGroup = (GGroup) GetChildAt(32);
-            DiamondList = (GList) GetChildAt(34);
-            GiftList = (GList) GetChildAt(35);
-            PropList = (GList) GetChildAt(36);
-            Close = (GButton) GetChildAt(37);
+            Page = GetController("Page");
+            Menu = (GList)GetChild("Menu");
+            ItemDesc = (GTextField)GetChild("ItemDesc");
+            Effect = (View_effect)GetChild("Effect");
+            Detail = (View_Pack)GetChild("Detail");
+            ItemName2 = (GTextField)GetChild("ItemName2");
+            ItemIcon = (GLoader)GetChild("ItemIcon");
+            NumShadow = (GImage)GetChild("NumShadow");
+            ItemName = (GTextField)GetChild("ItemName");
+            OwnCountFrame = (GImage)GetChild("OwnCountFrame");
+            OwnCount = (GTextField)GetChild("OwnCount");
+            DiamondExt = (View_gift)GetChild("DiamondExt");
+            Buy = (GButton)GetChild("Buy");
+            InfineTime = (GTextField)GetChild("InfineTime");
+            InfineGroup = (GGroup)GetChild("InfineGroup");
+            List = (GList)GetChild("List");
+            Close = (GButton)GetChild("Close");
         }
     }
 }

@@ -6,12 +6,14 @@ using Config.ConfigCore;
 using Cysharp.Threading.Tasks;
 using ET;
 using FairyGUI;
+using Newtonsoft.Json;
 using Panthea.Asset;
 using Panthea.NativePlugins;
 using RestaurantPreview.Config;
 #if UNITY_ANDROID || UNITY_IOS
 using NotificationSamples;
 using Panthea.NativePlugins.Ads;
+using Panthea.NativePlugins.IAP;
 using Panthea.NativePlugins.Notify;
 #endif
 using UnityEngine;
@@ -22,11 +24,8 @@ using Stage = FairyGUI.Stage;
 
 public class GameEntry: MonoBehaviour
 {
-    public static GameEntry inst;
-
     private void Start()
     {
-        inst = this;
         //Todo 先放在这里
         {
             if (Application.isEditor)
@@ -54,11 +53,19 @@ public class GameEntry: MonoBehaviour
         await RegisterGameConfigure();
         await RegisterUIModule();
         RegisterNetworkModule();
+        RegisterIAP();
         await RegisterDatabaseSaveSystem();
+        RegisterGameLogicSystem();
         //开始游戏
         await UniTask.SwitchToMainThread();
 
         UIKit.Inst.Create<UI_FirstGameLoading>();
+    }
+    
+    //初始化游戏内系统
+    private void RegisterGameLogicSystem()
+    {
+        EnergyManager.Inst.Init();
     }
 
     /// <summary>
@@ -156,7 +163,9 @@ public class GameEntry: MonoBehaviour
             ConfigAssetManager<GuildIconProperty>.Load("Config/Restaurant/GuildIcon"),
             ConfigAssetManager<GlobalConfigProperty>.Load("Config/Restaurant/GlobalConfig"),
             ConfigAssetManager<PropProperty>.Load("Config/Restaurant/Prop"),
-            ConfigAssetManager<StandaloneKitchenConfigProperty>.Load("Config/Kitchen/StandaloneKitchenConfig")
+            ConfigAssetManager<StandaloneKitchenConfigProperty>.Load("Config/Kitchen/StandaloneKitchenConfig"),
+            ConfigAssetManager<IAPProperty>.Load("Config/Restaurant/IAP"),
+            ConfigAssetManager<AchievementProperty>.Load("Config/Restaurant/Achievement")
 
         };
         await UniTask.WhenAll(tasks);
@@ -170,6 +179,21 @@ public class GameEntry: MonoBehaviour
 #if UNITY_IOS || UNITY_ANDROID
         AdsKit.Initialize(new UnityAds());
 #endif
+    }
+
+    /// <summary>
+    /// 注册支付模块
+    /// </summary>
+    private void RegisterIAP()
+    {
+        var dict = new Dictionary<string, ProductType>();
+        foreach (var node in IAPProperty.ReadDict())
+        {
+            dict.Add(node.Key,node.Value.ProductType);
+        }
+
+        IAPKit.Initialize(new UnityIAP());
+        IAPKit.Inst.ReloadConfig(dict);
     }
 
     /// <summary>

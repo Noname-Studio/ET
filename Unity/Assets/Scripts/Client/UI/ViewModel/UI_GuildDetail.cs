@@ -81,7 +81,7 @@ namespace Client.UI.ViewModel
                 return;
             var button = (GButton) evt.data;
             var memberInfo = (MemberInfo) (button).data;
-            if (memberInfo.Id == PlayerManager.Id)
+            if (memberInfo.Id == PlayerManager.Inst.Id)
                 return;
             View.SelectTip.KickOut.data = memberInfo;
             View.SelectTip.Transfer.data = memberInfo;

@@ -31,7 +31,10 @@ namespace ET
             var list = self.dirty.Values.ToList();
             self.dirty.Clear();
             Log.Info("保存公会数据");
-            await DBComponent.Instance.Save(RandomHelper.RandInt64(), list);
+            if (list.Count > 0)
+            {
+                await DBComponent.Instance.Save(RandomHelper.RandInt64(), list);
+            }
         }
         
         public static void MarkDirty(this GuildComponent self, Data_Guild guild)

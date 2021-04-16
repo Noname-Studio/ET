@@ -5,21 +5,21 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_RestaurantJump_button: GButton
+    public partial class View_RestaurantJump_button : GButton
     {
         public GLabel Mask;
         public const string URL = "ui://fmkyh2ywslfx8nk";
 
         public static View_RestaurantJump_button CreateInstance()
         {
-            return (View_RestaurantJump_button) UIPackage.CreateObject("Main", "RestaurantJump_button");
+            return (View_RestaurantJump_button)UIPackage.CreateObject("Main", "RestaurantJump_button");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Mask = (GLabel) GetChild("Mask");
+            Mask = (GLabel)GetChild("Mask");
         }
     }
 }

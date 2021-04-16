@@ -1,6 +1,6 @@
 ﻿public abstract class TimerAgent
 {
-    private TimerKit mTimerKit;
+    private TimerKit mTimerKit { get; } = TimerKit.Inst;
 
     /// <summary>
     /// 不要去修改这个值！！！

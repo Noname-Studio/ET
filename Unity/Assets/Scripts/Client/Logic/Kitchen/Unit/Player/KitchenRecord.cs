@@ -24,6 +24,10 @@ namespace Kitchen
         {
             if (level <= 2)
                 return;
+            else if (level == 3)
+                Combo3++;
+            else if (level == 4)
+                Combo4++;
             //这里播放特效
             CoinNumber += level * 10;
         }
@@ -42,7 +46,9 @@ namespace Kitchen
         private int mLostCustomerCount;
         private int mDropFoodCount;
         private float mPlayTime;
-
+        private int mTipsNumber;
+        public int Combo3 { get; private set; }
+        public int Combo4 { get; private set; }
         /// <summary>
         /// 服务食物数量
         /// </summary>
@@ -92,6 +98,21 @@ namespace Kitchen
                 {
                     var oldValue = mCoinNumber;
                     mCoinNumber = value;
+                    NotifyPropertyChanged(oldValue, value);
+                }
+            }
+        }
+
+        public int TipsNumber
+        {
+            get => mTipsNumber;
+            set
+            {
+                //钱是不可能退的.这辈子都不可能退的.进了我的钱包就是我得了
+                if (mTipsNumber < value)
+                {
+                    var oldValue = mTipsNumber;
+                    mTipsNumber = value;
                     NotifyPropertyChanged(oldValue, value);
                 }
             }
@@ -197,6 +218,7 @@ namespace Kitchen
             mLostCustomerCount = 0;
             mDropFoodCount = 0;
             mPlayTime = 0;
+            mTipsNumber = 0;
         }
     }
 }

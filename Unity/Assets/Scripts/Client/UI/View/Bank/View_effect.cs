@@ -3,28 +3,23 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_effect: GComponent
+    public partial class View_effect : GComponent
     {
         public Transition t0;
-
         public const string URL = "ui://yf9s6r30qmjomb";
 
         public static View_effect CreateInstance()
         {
-            return (View_effect) UIPackage.CreateObject("Bank", "effect");
-        }
-
-        public View_effect()
-        {
+            return (View_effect)UIPackage.CreateObject("Bank", "effect");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            t0 = GetTransitionAt(0);
+            t0 = GetTransition("t0");
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Common
             UIObjectFactory.SetPackageItemExtension(View_ChallengeTip.URL, typeof(View_ChallengeTip));
             UIObjectFactory.SetPackageItemExtension(View_PopdUpgradeFood.URL, typeof(View_PopdUpgradeFood));
             UIObjectFactory.SetPackageItemExtension(View_NormalReward.URL, typeof(View_NormalReward));
-            UIObjectFactory.SetPackageItemExtension(View_GameTitle.URL, typeof(View_GameTitle));
+            UIObjectFactory.SetPackageItemExtension(View_ResourcesBar.URL, typeof(View_ResourcesBar));
             UIObjectFactory.SetPackageItemExtension(View_TipForNpcGift.URL, typeof(View_TipForNpcGift));
             UIObjectFactory.SetPackageItemExtension(View_gift_team.URL, typeof(View_gift_team));
             UIObjectFactory.SetPackageItemExtension(View_GoldExchang1Huang2.URL, typeof(View_GoldExchang1Huang2));

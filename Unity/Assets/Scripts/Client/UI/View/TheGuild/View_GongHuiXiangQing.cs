@@ -8,7 +8,6 @@ namespace TheGuild
     public partial class View_GongHuiXiangQing : GComponent
     {
         public Controller c1;
-        public GButton bg;
         public GLoader frame;
         public GLoader inside;
         public GTextField Name;
@@ -34,7 +33,6 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
             frame = (GLoader)GetChild("frame");
             inside = (GLoader)GetChild("inside");
             Name = (GTextField)GetChild("Name");

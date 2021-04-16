@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ET;
 using Kitchen;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
@@ -7,9 +9,9 @@ public partial class PlayerManager: IPlayer
 {
     private static PlayerManager mInst;
     public static PlayerManager Inst => mInst ?? (mInst = new PlayerManager());
-    public static long Id { get; set; } = 0;
-    public static long GuildId { get; set; } = 0;
-
+    public long Id { get; set; } = 0;
+    public long GuildId { get; set; } = 0;
+    public List<string> AchievementList { get; } = new List<string>();
     private MessageKit mMessage;
     private Data_GameRecord mGameRecord;
     public List<GuildInviteInfo> GuildInvite { get; } = new List<GuildInviteInfo>();
@@ -31,8 +33,19 @@ public partial class PlayerManager: IPlayer
     {
         get
         {
-            return KitchenDataHelper.LoadLevel(mGameRecord.Level);
-            return null;
+            int value;
+            if (mGameRecord.Level.TryGetValue(RestaurantKey.This.Key, out value))
+                return KitchenDataHelper.LoadLevel(value);
+            try
+            {
+                var @default = mGameRecord.Level.First();
+                return KitchenDataHelper.LoadLevel(@default.Value);
+            }
+            catch(Exception e)
+            {
+                Log.Error(e);
+                return null;
+            }
         }
     }
     

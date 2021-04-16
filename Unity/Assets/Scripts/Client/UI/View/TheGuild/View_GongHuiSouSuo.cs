@@ -7,7 +7,6 @@ namespace TheGuild
 {
     public partial class View_GongHuiSouSuo : GComponent
     {
-        public GButton bg;
         public GButton Search;
         public GComboBox UnionLangSelect;
         public GComboBox To;
@@ -25,7 +24,6 @@ namespace TheGuild
         {
             base.ConstructFromXML(xml);
 
-            bg = (GButton)GetChild("bg");
             Search = (GButton)GetChild("Search");
             UnionLangSelect = (GComboBox)GetChild("UnionLangSelect");
             To = (GComboBox)GetChild("To");

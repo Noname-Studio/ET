@@ -70,5 +70,9 @@
   "LevelConsumeEnergy": {
     "Id": "LevelConsumeEnergy",
     "Value": "1"
+  },
+  "WatchVideoGetGemNum": {
+    "Id": "WatchVideoGetGemNum",
+    "Value": "2"
   }
 }

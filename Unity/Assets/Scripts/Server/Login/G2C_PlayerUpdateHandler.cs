@@ -11,11 +11,11 @@ namespace ET
         protected override async ETVoid Run(Session session, G2C_PlayerUpdate message)
         {
             if(message.PlayerId.HasValue)
-                PlayerManager.Id = message.PlayerId.Value;
+                PlayerManager.Inst.Id = message.PlayerId.Value;
             if (message.GuildId.HasValue)
             {
-                PlayerManager.GuildId = message.GuildId.Value;
-                if (PlayerManager.GuildId == 0)
+                PlayerManager.Inst.GuildId = message.GuildId.Value;
+                if (PlayerManager.Inst.GuildId == 0)
                     GuildManager.Inst.Data = null;
             }
             if (message.GuildInviteList.Count > 0)

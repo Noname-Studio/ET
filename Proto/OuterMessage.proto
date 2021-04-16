@@ -442,6 +442,7 @@ message G2C_PlayerUpdate //IActorLocationMessage, IMessage
 	long? PlayerId = 1;
 	repeated GuildInviteInfo GuildInviteList = 2;
 	long? GuildId = 3;
+	repeated string AchievementList = 4;
 }
 
 //ResponseType G2C_QuitGuild

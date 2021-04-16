@@ -40,6 +40,6 @@ public class GuildManager: Singleton<GuildManager>
     {
         if (IsJoined() == false)
             return false;
-        return Data.OwnerId == PlayerManager.Id;
+        return Data.OwnerId == PlayerManager.Inst.Id;
     }
 }

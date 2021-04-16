@@ -8,7 +8,6 @@ namespace TheGuild
     public partial class View_GongHuiChengYuanChaKan : GComponent
     {
         public Controller isAdmin;
-        public GButton bg;
         public GButton Head;
         public GTextField Rest;
         public GTextField Level;
@@ -30,7 +29,6 @@ namespace TheGuild
             base.ConstructFromXML(xml);
 
             isAdmin = GetController("isAdmin");
-            bg = (GButton)GetChild("bg");
             Head = (GButton)GetChild("Head");
             Rest = (GTextField)GetChild("Rest");
             Level = (GTextField)GetChild("Level");

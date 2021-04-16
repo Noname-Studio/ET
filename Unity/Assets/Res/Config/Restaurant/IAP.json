@@ -1,0 +1,213 @@
+{
+  "gem10": {
+    "Id": "gem10",
+    "Name": "gem10",
+    "Icon": "ui://Bank/1钻石",
+    "OriginNum": 25,
+    "CurrentNum": 25,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": false,
+    "Content": {
+      "gem": 25
+    }
+  },
+  "gem11": {
+    "Id": "gem11",
+    "Name": "gem11",
+    "Icon": "ui://Bank/2钻石",
+    "OriginNum": 125,
+    "CurrentNum": 150,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": false,
+    "Content": {
+      "gem": 150
+    }
+  },
+  "gem12": {
+    "Id": "gem12",
+    "Name": "gem12",
+    "Icon": "ui://Bank/3钻石",
+    "OriginNum": 250,
+    "CurrentNum": 325,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 325,
+      "InfiniteEnergry": 1800
+    }
+  },
+  "gem13": {
+    "Id": "gem13",
+    "Name": "gem13",
+    "Icon": "ui://Bank/4钻石",
+    "OriginNum": 625,
+    "CurrentNum": 850,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 850,
+      "InfiniteEnergry": 3600
+    }
+  },
+  "gem14": {
+    "Id": "gem14",
+    "Name": "gem14",
+    "Icon": "ui://Bank/5钻石",
+    "OriginNum": 1250,
+    "CurrentNum": 1750,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 1750,
+      "InfiniteEnergry": 3600
+    }
+  },
+  "gem15": {
+    "Id": "gem15",
+    "Name": "gem15",
+    "Icon": "ui://Bank/6钻石",
+    "OriginNum": 2500,
+    "CurrentNum": 3600,
+    "Categories": "gem",
+    "ProductType": "Consumable",
+    "Recommend": false,
+    "Content": {
+      "gem": 3600,
+      "InfiniteEnergry": 7200
+    }
+  },
+  "pack1": {
+    "Id": "pack1",
+    "Name": "pack1",
+    "Icon": "ui://Bank/pack00",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "pack",
+    "ProductType": "Consumable",
+    "Recommend": false,
+    "Content": {
+      "gem": 25,
+      "Add30Sec": 1,
+      "DoubleCoin": 1,
+      "InfinitePatient": 1
+    }
+  },
+  "pack2": {
+    "Id": "pack2",
+    "Name": "pack2",
+    "Icon": "ui://Bank/pack01",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "pack",
+    "ProductType": "Consumable",
+    "Recommend": false,
+    "Content": {
+      "gem": 150,
+      "Add3Cus": 1,
+      "Add30Sec": 1,
+      "DoubleCoin": 1,
+      "FirePower": 1,
+      "Extinguisher": 1,
+      "InfinitePatient": 1
+    }
+  },
+  "pack3": {
+    "Id": "pack3",
+    "Name": "pack3",
+    "Icon": "ui://Bank/pack02",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "pack",
+    "ProductType": "Consumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 300,
+      "Add3Cus": 2,
+      "Add30Sec": 2,
+      "SecondChance": 2,
+      "DoubleCoin": 1,
+      "FirePower": 1,
+      "Extinguisher": 1,
+      "InfinitePatient": 1
+    }
+  },
+  "pack4": {
+    "Id": "pack4",
+    "Name": "pack4",
+    "Icon": "ui://Bank/pack03",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "pack",
+    "ProductType": "Consumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 850,
+      "Add3Cus": 4,
+      "Add30Sec": 4,
+      "SecondChance": 4,
+      "DoubleCoin": 4,
+      "FirePower": 4,
+      "Extinguisher": 4,
+      "InfinitePatient": 4
+    }
+  },
+  "starter_pack1": {
+    "Id": "starter_pack1",
+    "Name": "starter_pack1",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "starterpack",
+    "ProductType": "NonConsumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 50,
+      "Add3Cus": 1,
+      "Add30Sec": 1,
+      "DoubleCoin": 1,
+      "FirePower": 1,
+      "Extinguisher": 1,
+      "InfinitePatient": 1,
+      "InfiniteEnergry": 3600
+    }
+  },
+  "starter_pack2": {
+    "Id": "starter_pack2",
+    "Name": "starter_pack2",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "starterpack",
+    "ProductType": "NonConsumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 15,
+      "Add3Cus": 1,
+      "Add30Sec": 1,
+      "DoubleCoin": 1,
+      "FirePower": 1,
+      "Extinguisher": 1,
+      "InfinitePatient": 1,
+      "InfiniteEnergry": 3600
+    }
+  },
+  "christmas_pack": {
+    "Id": "christmas_pack",
+    "Name": "christmas_pack",
+    "OriginNum": 1,
+    "CurrentNum": 1,
+    "Categories": "pack",
+    "ProductType": "NonConsumable",
+    "Recommend": true,
+    "Content": {
+      "gem": 200,
+      "Add3Cus": 2,
+      "Add30Sec": 2,
+      "SecondChance": 2,
+      "InfiniteEnergry": 7200
+    }
+  }
+}

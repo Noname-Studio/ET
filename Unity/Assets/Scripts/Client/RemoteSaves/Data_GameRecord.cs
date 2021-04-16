@@ -28,13 +28,16 @@ public class Data_GameRecord: DBDefine
         set => mCoin[1] = value;
     }
 
-    public int Gem = 10; //点券
+    public int Gem { get; set; } = 10; //点券
     public int ArriveRestaurant { get; set; } = 2; //到达餐厅
-    public int Level { get; set; } = 2000001; //关卡
+    public Dictionary<string,int> Level { get; } = new Dictionary<string, int>{{RestaurantKey.Breakfast.Key,2000001}}; //关卡
     public int InfineEnergy { get; set; } = -1;
     public int Energy { get; set; } = 5;
     public int MaxEnergy { get; set; } = 5;
     public long CosumeEnergy { get; set; } = -1;
     public string Name { get; set; } = "Player";
     public string Head { get; set; } = "ui://Settings/0";
+    public List<int> Dressup { get; } = new List<int>();
+    public List<int> Pet { get; } = new List<int>();
+
 }

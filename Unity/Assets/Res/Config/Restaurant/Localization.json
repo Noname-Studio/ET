@@ -245,10 +245,394 @@
     "Chinese_tw": "一年以前",
     "English": "一年以前"
   },
-  "DuplicateGuildNames": {
-    "Id": "DuplicateGuildNames",
+  "ERR_DuplicateGuildNames": {
+    "Id": "ERR_DuplicateGuildNames",
     "Chinese": "公会名称已存在",
     "Chinese_tw": "公会名称已存在",
     "English": "公会名称已存在"
+  },
+  "ERR_JoinedGuild": {
+    "Id": "ERR_JoinedGuild",
+    "Chinese": "已经加入过公会",
+    "Chinese_tw": "已经加入过公会",
+    "English": "已经加入过公会"
+  },
+  "FreeToGetGem": {
+    "Id": "FreeToGetGem",
+    "Chinese": "免费获得钻石",
+    "Chinese_tw": "免费获得钻石",
+    "English": "免费获得钻石"
+  },
+  "InfiniteEnergry": {
+    "Id": "InfiniteEnergry",
+    "Chinese": "无限体力",
+    "Chinese_tw": "无限体力",
+    "English": "无限体力"
+  },
+  "Gem": {
+    "Id": "Gem",
+    "Chinese": "钻石",
+    "Chinese_tw": "钻石",
+    "English": "钻石"
+  },
+  "Coin": {
+    "Id": "Coin",
+    "Chinese": "金币",
+    "Chinese_tw": "金币",
+    "English": "金币"
+  },
+  "SecondChance": {
+    "Id": "SecondChance",
+    "Chinese": "二次机会",
+    "Chinese_tw": "二次机会",
+    "English": "二次机会"
+  },
+  "Add3Cus": {
+    "Id": "Add3Cus",
+    "Chinese": "额外3名顾客",
+    "Chinese_tw": "额外3名顾客",
+    "English": "额外3名顾客"
+  },
+  "Add30Sec": {
+    "Id": "Add30Sec",
+    "Chinese": "延续关卡30秒",
+    "Chinese_tw": "延续关卡30秒",
+    "English": "延续关卡30秒"
+  },
+  "InfinitePatient": {
+    "Id": "InfinitePatient",
+    "Chinese": "无限耐心",
+    "Chinese_tw": "无限耐心",
+    "English": "无限耐心"
+  },
+  "Unlock": {
+    "Id": "Unlock",
+    "Chinese": "未解锁",
+    "Chinese_tw": "未解锁",
+    "English": "未解锁"
+  },
+  "gem10": {
+    "Id": "gem10",
+    "Chinese": "钻石 x25",
+    "Chinese_tw": "钻石 x25",
+    "English": "钻石 x25"
+  },
+  "gem11": {
+    "Id": "gem11",
+    "Chinese": "钻石 x150",
+    "Chinese_tw": "钻石 x150",
+    "English": "钻石 x150"
+  },
+  "gem12": {
+    "Id": "gem12",
+    "Chinese": "钻石 x250",
+    "Chinese_tw": "钻石 x250",
+    "English": "钻石 x250"
+  },
+  "gem13": {
+    "Id": "gem13",
+    "Chinese": "钻石 x850",
+    "Chinese_tw": "钻石 x850",
+    "English": "钻石 x850"
+  },
+  "gem14": {
+    "Id": "gem14",
+    "Chinese": "钻石 x1750",
+    "Chinese_tw": "钻石 x1750",
+    "English": "钻石 x1750"
+  },
+  "gem15": {
+    "Id": "gem15",
+    "Chinese": "钻石 x3600",
+    "Chinese_tw": "钻石 x3600",
+    "English": "钻石 x3600"
+  },
+  "pack1": {
+    "Id": "pack1",
+    "Chinese": "学徒礼包",
+    "Chinese_tw": "学徒礼包",
+    "English": "学徒礼包"
+  },
+  "pack2": {
+    "Id": "pack2",
+    "Chinese": "入门厨师礼包",
+    "Chinese_tw": "入门厨师礼包",
+    "English": "入门厨师礼包"
+  },
+  "pack3": {
+    "Id": "pack3",
+    "Chinese": "中级厨师礼包",
+    "Chinese_tw": "中级厨师礼包",
+    "English": "中级厨师礼包"
+  },
+  "pack4": {
+    "Id": "pack4",
+    "Chinese": "高级厨师礼包",
+    "Chinese_tw": "高级厨师礼包",
+    "English": "高级厨师礼包"
+  },
+  "starter_pack1": {
+    "Id": "starter_pack1",
+    "Chinese": "新手礼包",
+    "Chinese_tw": "新手礼包",
+    "English": "新手礼包"
+  },
+  "starter_pack2": {
+    "Id": "starter_pack2",
+    "Chinese": "新手礼包",
+    "Chinese_tw": "新手礼包",
+    "English": "新手礼包"
+  },
+  "christmas_pack": {
+    "Id": "christmas_pack",
+    "Chinese": "圣诞节礼包",
+    "Chinese_tw": "圣诞节礼包",
+    "English": "圣诞节礼包"
+  },
+  "Extinguisher": {
+    "Id": "Extinguisher",
+    "Chinese": "灭火器",
+    "Chinese_tw": "灭火器",
+    "English": "灭火器"
+  },
+  "DoubleCoin": {
+    "Id": "DoubleCoin",
+    "Chinese": "双倍金币",
+    "Chinese_tw": "双倍金币",
+    "English": "双倍金币"
+  },
+  "FirePower": {
+    "Id": "FirePower",
+    "Chinese": "稳定火力",
+    "Chinese_tw": "稳定火力",
+    "English": "稳定火力"
+  },
+  "ComboHelper": {
+    "Id": "ComboHelper",
+    "Chinese": "助连器",
+    "Chinese_tw": "助连器",
+    "English": "助连器"
+  },
+  "Minute": {
+    "Id": "Minute",
+    "Chinese": "分钟",
+    "Chinese_tw": "分钟",
+    "English": "分钟"
+  },
+  "achieve_name_1001": {
+    "Id": "achieve_name_1001",
+    "Chinese": "制霸早餐厅",
+    "Chinese_tw": "制霸早餐廳",
+    "English": "Winner of Breakfast restaurant"
+  },
+  "achieve_name_1002": {
+    "Id": "achieve_name_1002",
+    "Chinese": "制霸咖啡馆",
+    "Chinese_tw": "制霸咖啡館",
+    "English": "Winner of Cafe"
+  },
+  "achieve_name_1003": {
+    "Id": "achieve_name_1003",
+    "Chinese": "三连上菜",
+    "Chinese_tw": "三連上菜",
+    "English": "3x combo serving"
+  },
+  "achieve_name_1004": {
+    "Id": "achieve_name_1004",
+    "Chinese": "四连上菜",
+    "Chinese_tw": "四連上菜",
+    "English": "3x combo serving"
+  },
+  "achieve_name_1005": {
+    "Id": "achieve_name_1005",
+    "Chinese": "宾客如云",
+    "Chinese_tw": "賓客如雲",
+    "English": "Full House"
+  },
+  "achieve_name_1006": {
+    "Id": "achieve_name_1006",
+    "Chinese": "万人迷",
+    "Chinese_tw": "萬人迷",
+    "English": "Customer Magnet"
+  },
+  "achieve_name_1007": {
+    "Id": "achieve_name_1007",
+    "Chinese": "挑战--火力掌控",
+    "Chinese_tw": "挑戰--火力掌控",
+    "English": "Challenge-Fire Control"
+  },
+  "achieve_name_1008": {
+    "Id": "achieve_name_1008",
+    "Chinese": "挑战--完美服务",
+    "Chinese_tw": "挑戰--完美服務",
+    "English": "Challenge-Perfect Service"
+  },
+  "achieve_name_1009": {
+    "Id": "achieve_name_1009",
+    "Chinese": "挑战--绝不浪费",
+    "Chinese_tw": "挑戰--絕不浪費",
+    "English": "Challenge-No Waste"
+  },
+  "achieve_name_1010": {
+    "Id": "achieve_name_1010",
+    "Chinese": "挑战--连续通关",
+    "Chinese_tw": "挑戰--連續通關",
+    "English": "Challenge-Combo Clearance"
+  },
+  "achieve_name_1011": {
+    "Id": "achieve_name_1011",
+    "Chinese": "小费达人",
+    "Chinese_tw": "小費達人",
+    "English": "King of Tips"
+  },
+  "achieve_name_1012": {
+    "Id": "achieve_name_1012",
+    "Chinese": "财源滚滚",
+    "Chinese_tw": "財源滾滾",
+    "English": "Cash-Printing Machine"
+  },
+  "achieve_name_1013": {
+    "Id": "achieve_name_1013",
+    "Chinese": "有钱人",
+    "Chinese_tw": "有錢人",
+    "English": "Billionaire Mind"
+  },
+  "achieve_name_1014": {
+    "Id": "achieve_name_1014",
+    "Chinese": "忠实粉丝",
+    "Chinese_tw": "忠實粉絲",
+    "English": "Die-hard Fan"
+  },
+  "achieve_name_1015": {
+    "Id": "achieve_name_1015",
+    "Chinese": "新的开始",
+    "Chinese_tw": "新的开始",
+    "English": "新的开始"
+  },
+  "achieve_name_1016": {
+    "Id": "achieve_name_1016",
+    "Chinese": "联赛狂人",
+    "Chinese_tw": "联赛狂人",
+    "English": "联赛狂人"
+  },
+  "achieve_name_1017": {
+    "Id": "achieve_name_1017",
+    "Chinese": "品味时尚",
+    "Chinese_tw": "品味时尚",
+    "English": "品味时尚"
+  },
+  "achieve_name_1018": {
+    "Id": "achieve_name_1018",
+    "Chinese": "富有爱心",
+    "Chinese_tw": "富有爱心",
+    "English": "富有爱心"
+  },
+  "achieve_des_1001": {
+    "Id": "achieve_des_1001",
+    "Chinese": "通关早餐厅关卡{0}关",
+    "Chinese_tw": "通關早餐廳關卡{0}關",
+    "English": "Finish {0} levels of the Breakfast Resturant"
+  },
+  "achieve_des_1002": {
+    "Id": "achieve_des_1002",
+    "Chinese": "通关咖啡馆关卡{0}关",
+    "Chinese_tw": "通關咖啡館關卡120關",
+    "English": "Finish {0} levels of the Cafe"
+  },
+  "achieve_des_1003": {
+    "Id": "achieve_des_1003",
+    "Chinese": "完成{0}次连连上菜*3",
+    "Chinese_tw": "完成{0}次連連上菜*3",
+    "English": "Make {0} full order x3 combos"
+  },
+  "achieve_des_1004": {
+    "Id": "achieve_des_1004",
+    "Chinese": "完成{0}次连连上菜*4",
+    "Chinese_tw": "完成{0}次連連上菜*4",
+    "English": "Make {0} full order x4 combos"
+  },
+  "achieve_des_1005": {
+    "Id": "achieve_des_1005",
+    "Chinese": "累计服务顾客人数{0}",
+    "Chinese_tw": "累計服務顧客人數{0}",
+    "English": "Serve {0} customers"
+  },
+  "achieve_des_1006": {
+    "Id": "achieve_des_1006",
+    "Chinese": "累计集赞数量{0}",
+    "Chinese_tw": "累計集贊數量{0}",
+    "English": "{0} likes received"
+  },
+  "achieve_des_1007": {
+    "Id": "achieve_des_1007",
+    "Chinese": "连续过{0}关不烧焦",
+    "Chinese_tw": "連續過{0}關不燒焦",
+    "English": "Pass {0} levels consecutively without burning anything"
+  },
+  "achieve_des_1008": {
+    "Id": "achieve_des_1008",
+    "Chinese": "连续过{0}关不流失",
+    "Chinese_tw": "連續過{0}關不流失",
+    "English": "Pass {0} levels consecutively without losing customers"
+  },
+  "achieve_des_1009": {
+    "Id": "achieve_des_1009",
+    "Chinese": "连续过{0}关不丢垃圾",
+    "Chinese_tw": "連續過{0}關不丟垃圾",
+    "English": "Pass {0} levels consecutively without disposing food"
+  },
+  "achieve_des_1010": {
+    "Id": "achieve_des_1010",
+    "Chinese": "连续通关{0}关",
+    "Chinese_tw": "連續通關{0}關",
+    "English": "Pass {0} levels consecutively"
+  },
+  "achieve_des_1011": {
+    "Id": "achieve_des_1011",
+    "Chinese": "累计赚取小费{0}",
+    "Chinese_tw": "累計賺取小費{0}",
+    "English": "Earn {0} coins for tips"
+  },
+  "achieve_des_1012": {
+    "Id": "achieve_des_1012",
+    "Chinese": "累计赚取现金{0}",
+    "Chinese_tw": "累計賺取現金{0}",
+    "English": "Earn {0} coins"
+  },
+  "achieve_des_1013": {
+    "Id": "achieve_des_1013",
+    "Chinese": "累计消耗现金{0}",
+    "Chinese_tw": "累計消耗現金{0}",
+    "English": "Spend {0} coins"
+  },
+  "achieve_des_1014": {
+    "Id": "achieve_des_1014",
+    "Chinese": "连续登录{0}天",
+    "Chinese_tw": "連續登錄{0}天",
+    "English": "Play the game for {0} consecutive days"
+  },
+  "achieve_des_1015": {
+    "Id": "achieve_des_1015",
+    "Chinese": "加入一个公会",
+    "Chinese_tw": "加入一个公会",
+    "English": "加入一个公会"
+  },
+  "achieve_des_1016": {
+    "Id": "achieve_des_1016",
+    "Chinese": "参与{0}次公会联赛",
+    "Chinese_tw": "参与{1}次公会联赛",
+    "English": "参与{0}次公会联赛"
+  },
+  "achieve_des_1017": {
+    "Id": "achieve_des_1017",
+    "Chinese": "拥有{0}套装扮",
+    "Chinese_tw": "拥有{0}套装扮",
+    "English": "拥有{0}套装扮"
+  },
+  "achieve_des_1018": {
+    "Id": "achieve_des_1018",
+    "Chinese": "拥有{0}只宠物",
+    "Chinese_tw": "拥有{0}只宠物",
+    "English": "拥有{0}只宠物"
   }
 }

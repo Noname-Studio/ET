@@ -123,7 +123,7 @@ namespace Client.UI.ViewModel
                 SenderMsg = View.Input.text,
                 Time = time,
                 SenderHead = gameRecord.Head,
-                SenderId = PlayerManager.Id,
+                SenderId = PlayerManager.Inst.Id,
                 SenderName = gameRecord.Name
             };
             AddChatMsg(info);
@@ -133,7 +133,7 @@ namespace Client.UI.ViewModel
         
         private async void RequestEnergy_OnClick()
         {
-            View_HaoYouGuKeZhiYuanQiPao obj = GetRequestEnergyMsg(PlayerManager.Id);
+            View_HaoYouGuKeZhiYuanQiPao obj = GetRequestEnergyMsg(PlayerManager.Inst.Id);
             obj.c1.selectedPage = "发送中";
             try
             {
@@ -172,7 +172,7 @@ namespace Client.UI.ViewModel
         private void AddChatMsg(ChatMessageInfo message)
         {
             LastMessageTimeStamp = message.Time;
-            bool isMe = message.SenderId == PlayerManager.Id;
+            bool isMe = message.SenderId == PlayerManager.Inst.Id;
             var chatView = View.List.AddItemFromPool(isMe ? View_PuTongQiPao_You.URL : View_PuTongQiPao_Zuo.URL).asCom;
             chatView.GetChild("Desc").asTextField.textFormat.font = chatView.GetChild("Name").asTextField.textFormat.font = "Fonts/Source MSFont"; 
             chatView.GetChild("Head").icon = message.SenderHead ?? "ui://Settings/0";
@@ -194,7 +194,7 @@ namespace Client.UI.ViewModel
             LastMessageTimeStamp = info.Time;
             string key = info.Id.ToString();
             var obj = GetRequestEnergyMsg(info.Id);
-            if (info.Id == PlayerManager.Id)
+            if (info.Id == PlayerManager.Inst.Id)
                 obj.c1.selectedPage = "自己";
             obj.Name.text = obj.Name2.text = info.Name;
             obj.Head.icon = info.Head;
@@ -260,7 +260,7 @@ namespace Client.UI.ViewModel
         {
             foreach (var node in evt.Message.Value)
             {
-                if (node.SenderId == PlayerManager.Id)
+                if (node.SenderId == PlayerManager.Inst.Id)
                     continue;
                 if(!CacheMySendConent.ContainsKey(node.Time))//检测到没有发送过.玩家可能退出了游戏重新进入游戏了
                     AddChatMsg(node);

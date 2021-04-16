@@ -12,6 +12,9 @@ public class MessageKit
     private readonly Dictionary<Type, EventDelegate> mHandleDispatcher = new Dictionary<Type, EventDelegate>();
     private readonly Dictionary<Delegate, EventDelegate> mHandleDispatcherLookup = new Dictionary<Delegate, EventDelegate>();
     private readonly Dictionary<EventKey, List<Action>> mEmptyKeyDispatcher = new Dictionary<EventKey, List<Action>>();
+    private readonly Dictionary<EventKey, List<Action<object>>> mAdvanceKeyHandlerDispatcher = new Dictionary<EventKey, List<Action<object>>>();
+
+    
     private static MessageKit _inst;
     public static MessageKit Inst => _inst ??= new MessageKit();
 
@@ -38,6 +41,18 @@ public class MessageKit
         {
             mHandleDispatcher[type] = internalDelegate;
         }
+    }
+    
+    public void Add(EventKey key,Action<object> action)
+    {
+        List<Action<object>> list;
+        if (!mAdvanceKeyHandlerDispatcher.TryGetValue(key, out list))
+        {
+            list = new List<Action<object>>();
+            mAdvanceKeyHandlerDispatcher.Add(key, list);
+        }
+
+        list.Add(action);
     }
 
     public void Add(EventKey key, Action action)
@@ -81,6 +96,15 @@ public class MessageKit
             list.Remove(action);
         }
     }
+    
+    public void Remove(EventKey key, Action<object> action)
+    {
+        List<Action<object>> list;
+        if (mAdvanceKeyHandlerDispatcher.TryGetValue(key, out list))
+        {
+            list.Remove(action);
+        }
+    }
 
     public void Send<T>(T value) where T : IEventHandle
     {
@@ -101,6 +125,19 @@ public class MessageKit
             {
                 var node = list[index];
                 node();
+            }
+        }
+    }
+    
+    public void Send(EventKey key,object value)
+    {
+        List<Action<object>> list;
+        if (mAdvanceKeyHandlerDispatcher.TryGetValue(key, out list))
+        {
+            for (var index = 0; index < list.Count; index++)
+            {
+                var node = list[index];
+                node(value);
             }
         }
     }

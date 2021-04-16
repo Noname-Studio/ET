@@ -1,4 +1,5 @@
-﻿using Client.UI.ViewModel;
+﻿using Client.Event;
+using Client.UI.ViewModel;
 using RestaurantPreview.Config;
 
 namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
@@ -67,8 +68,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             }
 
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
+            int temp = gameRecord.Coin;
             gameRecord.Coin += count;
             MessageKit.Inst.Send(EventKey.GainGameCoin);
+            MessageKit.Inst.Send(new CoinChanged(temp,gameRecord.Coin));
+            DBManager.Inst.Update(gameRecord);
         }
 
         public static bool SpenGameCoin(int count)
@@ -87,8 +91,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
                 return false;
             }
 
+            int temp = gameRecord.Coin;
             gameRecord.Coin = Mathf.Max(0, gameRecord.Coin - count);
             MessageKit.Inst.Send(EventKey.SpentGameCoin);
+            MessageKit.Inst.Send(new CoinChanged(temp,gameRecord.Coin));
+            DBManager.Inst.Update(gameRecord);
             return true;
         }
 
@@ -100,8 +107,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             }
 
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
+            int temp = gameRecord.Gem;
             gameRecord.Gem += count;
             MessageKit.Inst.Send(EventKey.GainGem);
+            MessageKit.Inst.Send(new GemChanged(temp,gameRecord.Gem));
+            DBManager.Inst.Update(gameRecord);
         }
 
         public static bool SpenGem(int count)
@@ -120,8 +130,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
                 return false;
             }
 
+            int temp = gameRecord.Gem;
             gameRecord.Gem = Mathf.Max(0, gameRecord.Gem - count);
             MessageKit.Inst.Send(EventKey.SpentGem);
+            MessageKit.Inst.Send(new GemChanged(temp,gameRecord.Gem));
+            DBManager.Inst.Update(gameRecord);
             return true;
         }
 

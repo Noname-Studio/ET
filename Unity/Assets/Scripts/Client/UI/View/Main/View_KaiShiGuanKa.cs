@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace Main
 {
-    public partial class View_KaiShiGuanKa: GButton
+    public partial class View_KaiShiGuanKa : GButton
     {
         public Controller Hard;
         public Transition t0;
@@ -13,7 +13,7 @@ namespace Main
 
         public static View_KaiShiGuanKa CreateInstance()
         {
-            return (View_KaiShiGuanKa) UIPackage.CreateObject("Main", "开始关卡");
+            return (View_KaiShiGuanKa)UIPackage.CreateObject("Main", "开始关卡");
         }
 
         public override void ConstructFromXML(XML xml)

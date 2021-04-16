@@ -35,4 +35,7 @@ public struct EventKey
     public static readonly EventKey LevelComplete = new EventKey(nameof (LevelComplete));
     public static readonly EventKey RestartLevel = new EventKey(nameof (RestartLevel));
     public static readonly EventKey GuildAskEnergyChanged = new EventKey(nameof (GuildAskEnergyChanged));
+    public static readonly EventKey IAPPurchaseSuccess = new EventKey(nameof (IAPPurchaseSuccess));
+    public static readonly EventKey IAPPurchaseFailed = new EventKey(nameof (IAPPurchaseFailed));
+
 }

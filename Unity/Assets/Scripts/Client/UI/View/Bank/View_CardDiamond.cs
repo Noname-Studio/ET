@@ -3,9 +3,9 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_CardDiamond: GButton
+    public partial class View_CardDiamond : GButton
     {
         public GRichTextField Num;
         public GRichTextField Additive;
@@ -16,31 +16,26 @@ namespace UI.Story.Bank
         public GLabel recommend;
         public GButton Buy;
         public Transition ads_effect;
-
         public const string URL = "ui://yf9s6r30qmjom0";
 
         public static View_CardDiamond CreateInstance()
         {
-            return (View_CardDiamond) UIPackage.CreateObject("Bank", "CardDiamond");
-        }
-
-        public View_CardDiamond()
-        {
+            return (View_CardDiamond)UIPackage.CreateObject("Bank", "CardDiamond");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            Num = (GRichTextField) GetChildAt(6);
-            Additive = (GRichTextField) GetChildAt(9);
-            Offer = (GGroup) GetChildAt(10);
-            InfineTime = (GTextField) GetChildAt(12);
-            InfineGroup = (GGroup) GetChildAt(14);
-            Price = (GTextField) GetChildAt(15);
-            recommend = (GLabel) GetChildAt(16);
-            Buy = (GButton) GetChildAt(17);
-            ads_effect = GetTransitionAt(0);
+            Num = (GRichTextField)GetChild("Num");
+            Additive = (GRichTextField)GetChild("Additive");
+            Offer = (GGroup)GetChild("Offer");
+            InfineTime = (GTextField)GetChild("InfineTime");
+            InfineGroup = (GGroup)GetChild("InfineGroup");
+            Price = (GTextField)GetChild("Price");
+            recommend = (GLabel)GetChild("recommend");
+            Buy = (GButton)GetChild("Buy");
+            ads_effect = GetTransition("ads_effect");
         }
     }
 }

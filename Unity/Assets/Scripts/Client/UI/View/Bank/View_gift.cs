@@ -3,34 +3,27 @@
 using FairyGUI;
 using FairyGUI.Utils;
 
-namespace UI.Story.Bank
+namespace Bank
 {
-    public partial class View_gift: GComponent
+    public partial class View_gift : GLabel
     {
         public Controller c1;
-        public GTextField Num;
         public Transition t0;
         public Transition t1;
-
         public const string URL = "ui://yf9s6r30skkaje";
 
         public static View_gift CreateInstance()
         {
-            return (View_gift) UIPackage.CreateObject("Bank", "gift");
-        }
-
-        public View_gift()
-        {
+            return (View_gift)UIPackage.CreateObject("Bank", "gift");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            c1 = GetControllerAt(0);
-            Num = (GTextField) GetChildAt(4);
-            t0 = GetTransitionAt(0);
-            t1 = GetTransitionAt(1);
+            c1 = GetController("c1");
+            t0 = GetTransition("t0");
+            t1 = GetTransition("t1");
         }
     }
 }

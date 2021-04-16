@@ -181,6 +181,9 @@ public class XUILoader: GLoader
     public void WrapComponent(GComponent com)
     {
         ((Container) displayObject).AddChild(com.displayObject);
-        UpdateLayout();
+        com.SetXY((int)((this.width - com.width) / 2), (int)((this.height - com.height) / 2), true);
+
+        //UpdateLayout();
+        //UpdateGear(7);
     }
 }
