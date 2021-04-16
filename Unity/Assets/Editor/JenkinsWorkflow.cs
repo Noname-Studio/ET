@@ -55,10 +55,11 @@ public class JenkinsWorkflow: Editor
 
     public class CommandParams
     {
+        public string OutputPath;
         public string Platform;
-        public bool isCompress;
-        public bool isMono;
+        public bool IsCompress;
         public string BundleName;
+        public bool IsMono;
     }
 
     [MenuItem("Tools/Test")]
@@ -71,24 +72,16 @@ public class JenkinsWorkflow: Editor
     {
         try
         {
-            var line = Environment.GetCommandLineArgs();
-
-            //命令行传递的参数从第9个开始
-            for (var index = 0; index < line.Length; index++)
-            {
-                var node = line[index];
-                Console.WriteLine($"[{index}]:{node}");
-            }
-
+            var line = string.Concat(Environment.GetCommandLineArgs());
             var args = new CommandParams();
-            var regex = Regex.Matches(line[9], @"\[.*?\]+");
+            var regex = Regex.Matches(line, @"\[(.*?)\]");
             var type = typeof (CommandParams);
             foreach (Match node in regex)
             {
                 var s = node.Value.TrimStart('[').TrimEnd(']').Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
                 var fieldName = s[0];
                 var fieldValue = s[1];
-
+                Debug.Log(fieldName + " = " + fieldValue);
                 var field = type.GetField(fieldName);
                 var fieldType = field.FieldType;
                 if (fieldType == typeof (string))
@@ -102,36 +95,10 @@ public class JenkinsWorkflow: Editor
             }
 
             EditorUserBuildSettings.compressFilesInPackage = true;
-            //PlayerSettings.stripEngineCode = true;
-            //PlayerSettings.strippingLevel = 
             EditorUserBuildSettings.development = true;
             EditorUserBuildSettings.allowDebugging = true;
             PlayerSettings.stripEngineCode = false;
             PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.Disabled);
-            ExecuteProcessTerminal($"+x Upload.sh", "chmod", GetBasePath + "S3Sync/");
-            //打开Scene场景然后把控制台添加进去
-            //EditorSceneManager.OpenScene("Assets/Scenes/Load.unity",OpenSceneMode.Single);
-            //var ingameDebug = GameObject.Find("IngameDebugConsole");
-            //if (ingameDebug == null)
-            //{
-            //	var asset = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Plugins/IngameDebugConsole/IngameDebugConsole.prefab");
-            //	Instantiate(asset);
-            //}
-            //
-            //EditorSceneManager.SaveOpenScenes();
-
-            if (args.isCompress) //是否压缩包体
-            {
-                Debug.Log("开启压缩");
-                var str = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, str + ";UseSplitAB");
-            }
-            else
-            {
-                Debug.Log("关闭压缩");
-                var str = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, str.Replace("UseSplitAB;", ""));
-            }
 
             if (!string.IsNullOrEmpty(args.BundleName))
             {
@@ -162,14 +129,11 @@ public class JenkinsWorkflow: Editor
     public static void CommandLineBuildAndroid(CommandParams args)
     {
         string androidAB = Application.streamingAssetsPath + "/Android/";
-        string localServerAB = "/Users/donny/ApacheResources/Resources/Android/";
+        string localServerAB = "/Users/developer/Apache/resources/android";
         if (EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android))
         {
-            EditorApplication.ExecuteMenuItem("Assets/Play Services Resolver/Android Resolver/Force Resolve");
             EditorApplication.ExecuteMenuItem("Assets/Play Services Resolver/Android Resolver/Resolve");
-
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-            if (args.isMono)
+            if (args.IsMono)
             {
                 Debug.Log("打包Mono");
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
@@ -177,32 +141,20 @@ public class JenkinsWorkflow: Editor
             else
             {
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
-            }
-
-            PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);
-            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
-            var osxPath = Application.streamingAssetsPath + "/OSX/";
-            if (Directory.Exists(osxPath))
-            {
-                Directory.Delete(osxPath, true);
+                PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);
             }
 
             AssetBundleBuilder.Pack();
-            var exportPath = GetBasePath + "AndroidProject";
-            //删除掉文件夹避免冗余
-            /*if(Directory.Exists(exportPath))
-                Directory.Delete(exportPath,true);*/
+            var exportPath = args.OutputPath;
             Directory.CreateDirectory(exportPath);
             //拷贝文件到服务器路径,并且把文件提交服务器
             if (Directory.Exists(androidAB))
             {
-                /*if(Directory.Exists(localServerAB))
-                    Directory.Delete(localServerAB,true);*/
                 Debug.Log("上传AB文件到本地服务器");
                 DirectoryCopy(androidAB, localServerAB, true);
             }
 
-            if (args.isCompress)
+            if (args.IsCompress)
             {
                 Debug.Log("清除多余的AB文件");
                 //AssetBundleEditor.ClearAB();
@@ -211,11 +163,6 @@ public class JenkinsWorkflow: Editor
             Debug.Log("开始打包App");
             //生成谷歌项目
             var options = BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.CompressWithLz4HC | BuildOptions.Development;
-            if (!args.isMono)
-            {
-                PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
-            }
-
             var result = BuildPipeline.BuildPlayer(GetBuildScenes(), exportPath, BuildTarget.Android, options);
             Debug.Log(result);
             Debug.Log("Build Complete Path:" + exportPath);
@@ -250,7 +197,7 @@ public class JenkinsWorkflow: Editor
                 DirectoryCopy(iosAB, localServerAB, true);
             }
 
-            if (args.isCompress)
+            if (args.IsCompress)
             {
                 Debug.Log("清除多余的AB文件");
                 //AssetBundleEditor.ClearAB();
