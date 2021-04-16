@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using Panthea.Editor.Asset;
+using Unity.Collections;
 using UnityEditor;
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
@@ -148,6 +149,7 @@ public class JenkinsWorkflow: Editor
             Application.SetStackTraceLogType(LogType.Exception,StackTraceLogType.Full);
             Application.SetStackTraceLogType(LogType.Log,StackTraceLogType.Full);
             Application.SetStackTraceLogType(LogType.Warning,StackTraceLogType.Full);
+            NativeLeakDetection.Mode = NativeLeakDetectionMode.EnabledWithStackTrace;
             AssetBundleBuilder.Pack();
             var exportPath = args.OutputPath;
             Directory.CreateDirectory(exportPath);
