@@ -162,10 +162,21 @@ public class JenkinsWorkflow: Editor
 
             Debug.Log("开始打包App");
             //生成谷歌项目
-            var options = BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.CompressWithLz4HC | BuildOptions.Development;
-            var result = BuildPipeline.BuildPlayer(GetBuildScenes(), exportPath, BuildTarget.Android, options);
-            Debug.Log(result);
+            try
+            {
+                var options = BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.CompressWithLz4HC | BuildOptions.Development;
+                var result = BuildPipeline.BuildPlayer(GetBuildScenes(), exportPath, BuildTarget.Android, options);
+                Debug.Log(result);
+            }
+            catch (Exception e)
+            {
+                UnityEngine.Debug.LogError(e);
+                EditorApplication.Exit( 1 );
+                throw;
+            }
+
             Debug.Log("Build Complete Path:" + exportPath);
+            EditorApplication.Exit( 0 );
         }
     }
 
