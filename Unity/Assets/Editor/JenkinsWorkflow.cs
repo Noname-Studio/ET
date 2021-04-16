@@ -143,7 +143,11 @@ public class JenkinsWorkflow: Editor
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
                 PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);
             }
-
+            Application.SetStackTraceLogType(LogType.Error,StackTraceLogType.Full);
+            Application.SetStackTraceLogType(LogType.Assert,StackTraceLogType.Full);
+            Application.SetStackTraceLogType(LogType.Exception,StackTraceLogType.Full);
+            Application.SetStackTraceLogType(LogType.Log,StackTraceLogType.Full);
+            Application.SetStackTraceLogType(LogType.Warning,StackTraceLogType.Full);
             AssetBundleBuilder.Pack();
             var exportPath = args.OutputPath;
             Directory.CreateDirectory(exportPath);
