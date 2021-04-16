@@ -170,7 +170,7 @@ public class JenkinsWorkflow: Editor
             //生成谷歌项目
             try
             {
-                var options = BuildOptions.AcceptExternalModificationsToPlayer | BuildOptions.CompressWithLz4HC | BuildOptions.Development;
+                var options = BuildOptions.CompressWithLz4HC | BuildOptions.Development;
                 var result = BuildPipeline.BuildPlayer(GetBuildScenes(), exportPath, BuildTarget.Android, options);
                 Debug.Log(result);
             }
