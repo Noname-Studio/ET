@@ -10,8 +10,11 @@ namespace ET
     {
         protected override async ETVoid Run(Session session, G2C_PlayerUpdate message)
         {
-            if(message.PlayerId.HasValue)
+            if (message.PlayerId.HasValue)
+            {
                 PlayerManager.Inst.Id = message.PlayerId.Value;
+                DBManager.Inst.UserId = message.PlayerId.Value;
+            }
             if (message.GuildId.HasValue)
             {
                 PlayerManager.Inst.GuildId = message.GuildId.Value;

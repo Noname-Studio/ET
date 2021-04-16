@@ -8,7 +8,7 @@ public partial class DBManager: IDBService
     public static DBManager Inst => _inst ?? (_inst = new DBManager());
     public int Order => -1;
     private List<IDBService> mDBServices = new List<IDBService>();
-
+    public long UserId { get; set; } = 0;
     private DBManager()
     {
         //TODO 这里加入对服务器的判断.然后添加加载DB设置

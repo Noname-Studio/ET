@@ -37,9 +37,9 @@ public class LocalDB : IDBService
         }
         else
         {
-            if (File.Exists(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname))
+            if (File.Exists(mSavePath + DBManager.Inst.UserId + "/" + t.Name + Extname))
             {
-                var str = FileUtils.ReadAndDecodeAllText(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname);
+                var str = FileUtils.ReadAndDecodeAllText(mSavePath + DBManager.Inst.UserId + "/" + t.Name + Extname);
                 db = (DBDefine) JsonConvert.DeserializeObject(str, t);
                 mMapping.Add(t, db);
                 return db;
@@ -55,6 +55,6 @@ public class LocalDB : IDBService
     {
         var t = value.GetType();
         var str = JsonConvert.SerializeObject((T) value);
-        FileUtils.EncodeAllTextAndWrite(mSavePath + PlayerManager.Inst.Id + "/" + t.Name + Extname, str);
+        FileUtils.EncodeAllTextAndWrite(mSavePath + DBManager.Inst.UserId + "/" + t.Name + Extname, str);
     }
 }
