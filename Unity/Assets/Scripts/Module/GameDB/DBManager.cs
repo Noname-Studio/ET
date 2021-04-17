@@ -8,6 +8,9 @@ public partial class DBManager: IDBService
     public static DBManager Inst => _inst ?? (_inst = new DBManager());
     public int Order => -1;
     private List<IDBService> mDBServices = new List<IDBService>();
+    /// <summary>
+    /// 我们不能使用PlayerManager.Inst.Id,因为PlayerManager有部分内容依赖了DB.使用PlayerManager.Id可能会引发无限循环的Bug
+    /// </summary>
     public long UserId { get; set; } = 0;
     private DBManager()
     {

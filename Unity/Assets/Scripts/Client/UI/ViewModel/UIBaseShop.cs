@@ -50,7 +50,7 @@ namespace Client.UI.ViewModel
 
             if (node.LevelCap == currentProperty.Level || nextLevel == null)
             {
-                if (currentProperty.UnlockLv > Player.CurrentLevels.LevelId)
+                if (currentProperty.UnlockLv > Player.CurrentLevel.LevelId)
                 {
                     item.GetController("State").selectedPage = "Lock";
                     item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.Texture;
@@ -61,7 +61,7 @@ namespace Client.UI.ViewModel
                     item.GetController("State").selectedPage = "MaxLevel";
                 }
             }
-            else if (nextLevel.UnlockLv > Player.CurrentLevels.LevelId)
+            else if (nextLevel.UnlockLv > Player.CurrentLevel.LevelId)
             {
                 item.GetController("State").selectedPage = "Lock";
                 item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.Texture;
@@ -135,7 +135,7 @@ namespace Client.UI.ViewModel
             {
                 item.State.selectedPage = "MaxLevel";
             }
-            else if (nextLevel.UnlockLv > Player.CurrentLevels.Id)
+            else if (nextLevel.UnlockLv > Player.CurrentLevel.Id)
             {
                 item.State.selectedPage = "Lock";
                 item.icon = currentProperty.Level == 1? "ui://Shop/box" : currentProperty.Texture;
@@ -194,13 +194,13 @@ namespace Client.UI.ViewModel
                 }
 
                 var level = food.NextLevel;
-                if (level != null && level.UnlockLv > Player.CurrentLevels.LevelId)
+                if (level != null && level.UnlockLv > Player.CurrentLevel.LevelId)
                 {
                     lockList.Add(food);
                 }
                 else if (level == null)
                 {
-                    if (food.CurrentLevel.UnlockLv > Player.CurrentLevels.LevelId)
+                    if (food.CurrentLevel.UnlockLv > Player.CurrentLevel.LevelId)
                     {
                         lockList.Add(food);
                     }
@@ -238,13 +238,13 @@ namespace Client.UI.ViewModel
                 }
 
                 var level = cookware.NextLevel;
-                if (level != null && level.UnlockLv > Player.CurrentLevels.LevelId)
+                if (level != null && level.UnlockLv > Player.CurrentLevel.LevelId)
                 {
                     lockList.Add(cookware);
                 }
                 else if (level == null)
                 {
-                    if (cookware.CurrentLevel.UnlockLv > Player.CurrentLevels.LevelId)
+                    if (cookware.CurrentLevel.UnlockLv > Player.CurrentLevel.LevelId)
                     {
                         lockList.Add(cookware);
                     }

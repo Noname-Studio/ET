@@ -80,7 +80,7 @@ namespace Client.UI.ViewModel
         {
             HashSet<FoodProperty> foodSet = new HashSet<FoodProperty>();
             HashSet<CookwareProperty> cookwareSet = new HashSet<CookwareProperty>();
-            foreach (var node in Player.CurrentLevels.Orders)
+            foreach (var node in Player.CurrentLevel.Orders)
             {
                 foreach (var food in node.Foods)
                 {

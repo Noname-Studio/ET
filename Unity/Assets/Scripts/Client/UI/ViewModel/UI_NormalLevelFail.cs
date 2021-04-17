@@ -1,4 +1,5 @@
-﻿using KitchenUI;
+﻿using Kitchen.Action;
+using KitchenUI;
 
 namespace Client.UI.ViewModel
 {
@@ -13,6 +14,7 @@ namespace Client.UI.ViewModel
 
         private void Exit_OnClick()
         {
+            QueueEventsKit.Inst.AddToBottom(new FailedRecord());
             KRManager.Inst.BackPrevMode();
             CloseMySelf();
         }

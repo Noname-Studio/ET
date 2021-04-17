@@ -1,5 +1,7 @@
 ﻿using Achievement;
+using FairyGUI;
 using RestaurantPreview.Config;
+using UnityEngine;
 
 namespace Client.UI.ViewModel
 {
@@ -28,7 +30,7 @@ namespace Client.UI.ViewModel
                     continue;
                 if (!PlayerManager.Inst.AchievementList.Contains(node.Key))
                 {
-                    var cur = analytics.Get(value.Type);
+                    var cur = Mathf.Clamp((int) (value.Type != null? analytics.Get(value.Type) : 0), 0, to);
                     item = (View_ChengJiu1) View.List.AddItemFromPool();
                     item.IconPage.selectedIndex = value.Step - 1;
                     item.ProgressBar.value = cur;
@@ -59,16 +61,19 @@ namespace Client.UI.ViewModel
                     item.State.selectedPage = "完成成就";
                 }
                 item.text = LocalizationProperty.Read(value.Name);
-                item.Desc.text = string.Format(LocalizationProperty.Read(value.Desc), to.ToString("N"));
+                item.Desc.text = string.Format(LocalizationProperty.Read(value.Desc), to.ToString("N0"));
                 item.data = value;
                 item.name = value.Type;
+                item.Finish.data = value;
                 item.Finish.onClick.Set(Receive_OnClick);
             }
         }
 
-        private void Receive_OnClick()
+        private void Receive_OnClick(EventContext evt)
         {
-            //TODO 领取成就
+            var button = (GButton) evt.sender;
+            AchievementProperty data = (AchievementProperty) button.data;
+            UI_PropRewardTips.Pop(data.Reward);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace RestaurantPreview.Config
         private string mName;
         private string mDesc;
         private int mTarget;
-        private Price mReward;
+        private Dictionary<string, int> mReward;
         /// <summary>
         /// 成就ID
         /// </summary>
@@ -117,7 +117,7 @@ namespace RestaurantPreview.Config
         /// <summary>
         /// 成就奖励
         /// </summary>
-        public Price Reward
+        public Dictionary<string, int> Reward
         {
             get => mReward;
             set => mReward = value;

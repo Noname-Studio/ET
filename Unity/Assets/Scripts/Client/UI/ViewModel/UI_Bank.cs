@@ -121,7 +121,7 @@ public class UI_Bank : UIBase<View_BankNew>
             if (node.Value.Type == PropProperty.TypeEnum.Level || node.Value.Type == PropProperty.TypeEnum.InTheLevel)
             {
                 var item = (View_CardProp)View.List.AddItemFromPool(View_CardProp.URL);
-                if (PlayerManager.Inst.CurrentLevels.Id < value.Unlock)
+                if (PlayerManager.Inst.CurrentLevel.Id < value.Unlock)
                 {
                     item.enabled = false;
                     item.Desc.text = LocalizationProperty.Read("Unlock");

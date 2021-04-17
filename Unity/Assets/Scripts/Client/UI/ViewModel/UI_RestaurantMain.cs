@@ -49,6 +49,7 @@ namespace Client.UI.ViewModel
             View.Shop.onClick.Set(Shop_OnClick);
             View.LeftList.onClickItem.Set(LeftList_OnClickItem);
             View.RightList.onClickItem.Set(RightList_ItemOnClick);
+            View.More.com.list.onClickItem.Add(MoreList_ItemOnClick);
             InitRightList();
         }
 
@@ -62,7 +63,7 @@ namespace Client.UI.ViewModel
                 Event_AdsReady();
             }
 
-            if (PlayerManager.Inst.CurrentLevels.Id < 2 * GameConfig.RestaurantOffset + 50 && IAPKit.Inst.InitializationComplete)
+            if (PlayerManager.Inst.CurrentLevel.Id < 2 * GameConfig.RestaurantOffset + 50 && IAPKit.Inst.InitializationComplete)
             {
                 if (!IAPKit.Inst.HasPurchased("starter_pack1"))
                 {
@@ -148,6 +149,16 @@ namespace Client.UI.ViewModel
                 AnalyticsKit.Inst.AdComplete(false, adsCallback.handler.ToString(), "Free Gem");
             }
         }
+
+        private void Achievement_onClick()
+        {
+            UIKit.Inst.Create<UI_Achievement>();
+        }
+
+        private void Mail_onClick()
+        {
+            UIKit.Inst.Create<UI_Mail>();
+        }
         
         private void LeftList_OnClickItem(EventContext context)
         {
@@ -156,13 +167,22 @@ namespace Client.UI.ViewModel
                 Bank_OnClick();
         }
 
-        private void RightList_ItemOnClick(EventContext evt)
+        private void RightList_ItemOnClick(EventContext context)
         {
-            var clicker = (GObject) evt.data;
+            var clicker = (GObject) context.data;
             if (clicker.name == "AD")
                 AdsButton_onClick();
             else if (clicker.name == "starter_pack")
                 Pack_OnClick((IAPProperty) clicker.data);
+        }
+        
+        private void MoreList_ItemOnClick(EventContext context)
+        {
+            var clicker = (GObject) context.data;
+            if (clicker.name == "achievement")
+                Achievement_onClick();
+            else if(clicker.name == "message")
+                Mail_onClick();
         }
     }
 }

@@ -35,7 +35,11 @@ public class Data_Analytics : DBDefine
     public int Combo3 { get; set; }
     public int Combo4 { get; set; }
     public int TipsNumber { get; set; }
-    public ConsecutiveLevelsData ConsecutiveLevels { get; }
+    /// <summary>
+    /// 加入过的公会数量
+    /// </summary>
+    public int JoinedGuildNumber { get; set; }
+    public ConsecutiveLevelsData ConsecutiveLevels { get; } = new ConsecutiveLevelsData();
     public int BreakfastCount
     {
         get
@@ -101,7 +105,12 @@ public class Data_Analytics : DBDefine
         GetMappings.Add("ConsecutiveLevels.LostCustomerCount", analytics => analytics.ConsecutiveLevels.LostCustomerCount);
         GetMappings.Add("ConsecutiveLevels.Level", analytics => analytics.ConsecutiveLevels.Level);
         GetMappings.Add("ConsecutiveLevels.Login", analytics => analytics.ConsecutiveLevels.Login);
-        
+        GetMappings.Add("BreakfastCount", analytics => analytics.BreakfastCount);
+        GetMappings.Add("DressupCount", analytics => analytics.DressupCount);
+        GetMappings.Add("CafeCount", analytics => analytics.CafeCount);
+        GetMappings.Add("PetCount", analytics => analytics.PetCount);
+        GetMappings.Add("JoinedGuildNumber", analytics => analytics.JoinedGuildNumber);
+
         SetMappings.Add("ServicesOrderNumber", (analytics,t1) => analytics.ServicesOrderNumber = (int)t1);
         SetMappings.Add("LikeCount", (analytics,t1) => analytics.LikeCount = (int)t1);
         SetMappings.Add("CoinNumber", (analytics,t1) => analytics.CoinNumber = (int)t1);
@@ -125,6 +134,7 @@ public class Data_Analytics : DBDefine
         SetMappings.Add("ConsecutiveLevels.LostCustomerCount", (analytics,t1) => analytics.ConsecutiveLevels.LostCustomerCount = (int)t1);
         SetMappings.Add("ConsecutiveLevels.Level", (analytics,t1) => analytics.ConsecutiveLevels.Level = (int)t1);
         SetMappings.Add("ConsecutiveLevels.Login", (analytics,t1) => analytics.ConsecutiveLevels.Login = (int)t1);
+        SetMappings.Add("JoinedGuildNumber", (analytics,t1) => analytics.JoinedGuildNumber = (int) t1);
     }
     
     public void Set(string key, double value)

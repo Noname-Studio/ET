@@ -54,6 +54,7 @@ public class EndOfNormalLevel: IEndExecute
         QueueEventsKit.Inst.AddToBottom(new PauseKitchenLogic());
         QueueEventsKit.Inst.AddToBottom(new MakeAllCustomersLeave());
         QueueEventsKit.Inst.AddToBottom(new PlayAnimation(PlayerController, "Win", true));
+        QueueEventsKit.Inst.AddToBottom(new WinRecord());
         QueueEventsKit.Inst.AddToBottom(new CreateUI<UI_NormalLevelWin>());
     }
 

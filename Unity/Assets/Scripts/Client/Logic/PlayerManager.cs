@@ -29,7 +29,7 @@ public partial class PlayerManager: IPlayer
     /// <summary>
     /// 当前玩家打至关卡
     /// </summary>
-    public LevelProperty CurrentLevels
+    public LevelProperty CurrentLevel
     {
         get
         {

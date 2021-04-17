@@ -27,7 +27,7 @@ namespace Client.UI.ViewModel
             base.OnInit(p);
             InitEditor();
             GameRecord = DBManager.Inst.Query<Data_GameRecord>();
-            LevelProperty = await AssetsLocator.Load<LevelProperty>(GameConfig.LevelConfigPath + GameRecord.Level);
+            LevelProperty = PlayerManager.Inst.CurrentLevel;
             InitPanel(LevelProperty);
             InitUI();
         }
