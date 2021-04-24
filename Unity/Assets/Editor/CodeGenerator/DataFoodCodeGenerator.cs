@@ -112,6 +112,9 @@ public partial class Data_Food_[@Suffix] : Data_Food_DBDefine
                 continue;
             }
 
+            if (property.LevelCap <= 1)
+                continue;
+
             writer[rest].Variable.AppendLine($"    /*[Key({indexCounter[rest] + 5})]*/ public Data_Food_Info {variable}" + " { get; set; }");
             writer[rest].GetDelegate
                     .AppendLine($"         GetMappings.Add(\"{variable}\", (t) => t.{variable} ?? (t.{variable} = new Data_Food_Info()));");

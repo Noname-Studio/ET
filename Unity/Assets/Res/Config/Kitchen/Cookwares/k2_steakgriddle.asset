@@ -28,12 +28,7 @@ MonoBehaviour:
   mFoodKey:
   - {fileID: 11400000, guid: 49a2bc99d40f649449d05531f237dfe6, type: 2}
   mFunType: 0
-  mDisPosList:
-  - Start: 0
-    End: 0
-    Pos: {x: -0.86, y: 0.93, z: 0}
-    mLevel: 0
-    mRestaurant: Breakfast
+  mDisPosList: []
   mLevels:
   - mLevel: 1
     mEditorTexture: {fileID: 2800000, guid: 3e939bfa114c2bd46b07ce1f9b2fc24d, type: 3}

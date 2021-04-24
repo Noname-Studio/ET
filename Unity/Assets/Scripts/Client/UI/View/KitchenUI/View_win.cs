@@ -9,6 +9,7 @@ namespace KitchenUI
     {
         public Controller c1;
         public Controller style;
+        public Controller HasAd;
         public GButton bg;
         public GButton Confirm;
         public GButton Watchvideo;
@@ -16,7 +17,6 @@ namespace KitchenUI
         public View_add_cupcake_effect addCake;
         public GTextField guildScore;
         public GButton Guild;
-        public GComponent honor;
         public GLabel NormalReward;
         public const string URL = "ui://y66af8yddb14is";
 
@@ -31,6 +31,7 @@ namespace KitchenUI
 
             c1 = GetController("c1");
             style = GetController("style");
+            HasAd = GetController("HasAd");
             bg = (GButton)GetChild("bg");
             Confirm = (GButton)GetChild("Confirm");
             Watchvideo = (GButton)GetChild("Watchvideo");
@@ -38,7 +39,6 @@ namespace KitchenUI
             addCake = (View_add_cupcake_effect)GetChild("addCake");
             guildScore = (GTextField)GetChild("guildScore");
             Guild = (GButton)GetChild("Guild");
-            honor = (GComponent)GetChild("honor");
             NormalReward = (GLabel)GetChild("NormalReward");
         }
     }

@@ -90,7 +90,7 @@ public class EditLevelWindow: OdinMenuEditorWindow
             return null;
         }).SortMenuItemsByName();
 
-        tree.AddAllAssetsAtPath("食材", "Assets/Res/Config/Kitchen/Ingredient/", typeof (IngredientProperty), true, true).AddIcons(t1 =>
+        /*tree.AddAllAssetsAtPath("食材", "Assets/Res/Config/Kitchen/Ingredient/", typeof (IngredientProperty), true, true).AddIcons(t1 =>
         {
             var value = t1.Value as IngredientProperty;
             if (value != null)
@@ -100,7 +100,7 @@ public class EditLevelWindow: OdinMenuEditorWindow
             }
 
             return null;
-        });
+        });*/
 
         dupFilter.Clear();
         foreach (string node in Directory.GetFiles(Application.dataPath + "/Res/Config/Kitchen/Cookwares/", "*", SearchOption.TopDirectoryOnly))
@@ -149,7 +149,7 @@ public class EditLevelWindow: OdinMenuEditorWindow
         });
 
         tree.EnumerateTree().Where(x => x.Value as ScriptableObject).ForEach(AddDragHandles);
-        tree.SortMenuItemsByName();
+        //tree.SortMenuItemsByName();
 
         /*// Adds all characters.
 
@@ -203,13 +203,13 @@ public class EditLevelWindow: OdinMenuEditorWindow
                 });
             }
 
-            if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建食材")))
+            /*if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建食材")))
             {
                 ScriptableObjectCreator.ShowDialog<IngredientProperty>("Assets/Res/Config/Kitchen/Ingredient", obj =>
                 {
                     TrySelectMenuItemWithObject(obj); // Selects the newly created item in the editor
                 });
-            }
+            }*/
 
             if (SirenixEditorGUI.ToolbarButton(new GUIContent("创建厨具")))
             {

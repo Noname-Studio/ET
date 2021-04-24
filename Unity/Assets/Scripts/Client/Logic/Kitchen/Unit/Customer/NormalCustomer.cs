@@ -46,7 +46,8 @@ public class NormalCustomer: ACustomer
 
     private void Wait()
     {
-        Components.Set(PatienceCom = new PatienceComponent(100, KitchenRoot.Inst.LevelProperty.WaitingDecay.Rate));
+        var decay = KitchenRoot.Inst.LevelProperty.WaitingDecay;
+        Components.Set(PatienceCom = new PatienceComponent(100, decay.Rate, decay.Interval));
         mOrder = new UI_Order((View_Order) ((KitchenNormalSpot) Spot).OrderUI.ui);
         mOrder.Visible = true;
         mOrder.RefreshUI(Order);

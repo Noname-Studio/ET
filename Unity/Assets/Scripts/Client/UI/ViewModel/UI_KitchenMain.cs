@@ -46,6 +46,10 @@ namespace Client.UI.ViewModel
             {
                 View.ScoreBar.value = record.ServicesOrderNumber;
             }
+            else if (LevelProperty.Type.HasFlag(LevelType.NumberOfCustomerService))
+            {
+                View.ScoreBar.value = record.ServicesCustomerNumber;
+            }
             else if (LevelProperty.Type.HasFlag(LevelType.Coin))
             {
                 View.ScoreBar.value = record.CoinNumber;
@@ -97,9 +101,14 @@ namespace Client.UI.ViewModel
             if (LevelProperty.Type.HasFlag(LevelType.Coin))
             {
                 View.ScoreBar.c1.selectedPage = "Coin";
-                View.ScoreBar.max = req.NumberOfCompletedOrders;
+                View.ScoreBar.max = req.RequiredCoin;
             }
 
+            if (LevelProperty.Type.HasFlag(LevelType.NumberOfCustomerService))
+            {
+                View.ScoreBar.c1.selectedPage = "Foods";
+                View.ScoreBar.max = req.NumberOfCustomerService;
+            }
             View.ScoreBar.value = 0;
         }
 

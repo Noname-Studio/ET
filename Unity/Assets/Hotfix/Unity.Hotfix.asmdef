@@ -5,7 +5,8 @@
         "Unity.Model",
         "Unity.ThirdParty",
         "UniTask",
-        "GooglePlayGames"
+        "GooglePlayGames",
+        "PlayFab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

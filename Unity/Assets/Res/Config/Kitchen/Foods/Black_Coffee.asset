@@ -23,24 +23,26 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: 71a61446f79b542a8904b74c2cdb2064, type: 3}
   mKey: F_Black_Coffee
-  mTexture: Image/Food/Breakfast/tex_black_coffee
   mRestId: Breakfast
   mWaitTime: 0
-  mEditorCookware: {fileID: 11400000, guid: b4cf746fc3a556546a0869e97c61f371, type: 2}
-  mEditorFinalIngredients: []
   mLevels:
-  - mLevel: 1
+  - mEditorTexture: {fileID: 2800000, guid: 71a61446f79b542a8904b74c2cdb2064, type: 3}
+    mLevel: 1
     mUnlockLv: 3
     mPrice:
       Coin: 50
       Gem: 0
     mTips: 10
-  - mLevel: 2
+    mTexture: Image/Food/Breakfast/tex_black_coffee
+  - mEditorTexture: {fileID: 2800000, guid: 71a61446f79b542a8904b74c2cdb2064, type: 3}
+    mLevel: 2
     mUnlockLv: 3
     mPrice:
       Coin: 100
       Gem: 0
     mTips: 15
+    mTexture: Image/Food/Breakfast/tex_black_coffee
   mBasePatient: 100
-  mCookware: k2_coffee_machine
+  mCookware: {fileID: 11400000, guid: b4cf746fc3a556546a0869e97c61f371, type: 2}
   mAllIngredients: []
+  mPositions: []

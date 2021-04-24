@@ -9,7 +9,6 @@ namespace Common
     {
         public Controller MaxLevel;
         public Controller Language;
-        public GButton bg;
         public GTextField Name;
         public View_kitchenicon iconframe;
         public GImage price_bg;
@@ -39,7 +38,6 @@ namespace Common
 
             MaxLevel = GetController("MaxLevel");
             Language = GetController("Language");
-            bg = (GButton)GetChild("bg");
             Name = (GTextField)GetChild("Name");
             iconframe = (View_kitchenicon)GetChild("iconframe");
             price_bg = (GImage)GetChild("price_bg");

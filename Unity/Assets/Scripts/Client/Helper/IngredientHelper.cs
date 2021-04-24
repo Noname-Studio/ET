@@ -10,12 +10,12 @@
         return key.StartsWith("I_");
     }
 
-    public static bool IsFood(BaseIngredient property)
+    public static bool IsFood(FoodProperty property)
     {
         return property.Key.StartsWith("F_");
     }
 
-    public static bool IsIngredient(BaseIngredient property)
+    public static bool IsIngredient(FoodProperty property)
     {
         return property.Key.StartsWith("I_");
     }

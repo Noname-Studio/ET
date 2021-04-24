@@ -25,69 +25,45 @@ MonoBehaviour:
   mLevel: 5
   mRestaurantId: Breakfast
   mOrderMode: 1
-  mType: 2
+  mType: 10
   mDifType: 1
-  mSection: 0
-  mCoinLevelEnable: 1
-  mMaxOrder: 0
+  mMaxCustomerNumber: 2
   mRequirements:
     AllowBurn: 1
     AllowLostCustomer: 1
     AllowUseTrash: 1
-    RequiredCoin: 43
+    RequiredCoin: 240
     LikeCount: 0
-    FixedTime: 0
+    FixedTime: 80
     LostCustomer: 0
     NumberOfCustomerService: 6
     NumberOfCompletedOrders: 5
   mOrders:
-  - mCustomer: Feeder
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Black_Coffee
-    EDITOR_Customer: {fileID: 11400000, guid: d5b83cef20a534c4789257fa576cdddc, type: 2}
-    EDITOR_Foods:
+    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
+    mFoods:
     - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
-  - mCustomer: OfficeLady
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Caesar_Salad
-    - F_Caesar_Salad
-    EDITOR_Customer: {fileID: 11400000, guid: 430e8efc946445a419056b772685912f, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
-    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
-  - mCustomer: StudentGirl
+    - {fileID: 11400000, guid: 7e657d6623b7d624b90be525222962be, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Toast
-    EDITOR_Customer: {fileID: 11400000, guid: 86666d10bba19c04daaea8d60619a348, type: 2}
-    EDITOR_Foods:
+    - {fileID: 11400000, guid: 04a900ca0826b934f82d5e491c9490ff, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
+    mFoods:
     - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
-  - mCustomer: Thief
+    - {fileID: 11400000, guid: 8d34ae689c3e0b242b051e4207fc0157, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Black_Coffee
-    - F_Bacon
-    EDITOR_Customer: {fileID: 11400000, guid: 940e2135f3fd1f04285530b3ffdb3654, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
-    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
-  - mCustomer: StudentGirl
-    mFoods:
-    - F_Caesar_Salad
-    EDITOR_Customer: {fileID: 11400000, guid: 86666d10bba19c04daaea8d60619a348, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
-  - mCustomer: SailorMan
-    mFoods:
-    - F_Black_Coffee
-    - F_Bacon
-    EDITOR_Customer: {fileID: 11400000, guid: 2026d07361d9504458392dfcffb12ec4, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
-    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
+    - {fileID: 0}
   mRewards: []
   mSecretCustomers: []
   mOrderInterval:
-    Min: 1.8467574
-    Max: 2.770136
+    Min: 1.9325802
+    Max: 2.8988702
   mLitterInterval:
     Min: 0
     Max: 0
@@ -96,11 +72,10 @@ MonoBehaviour:
     Rate: 0
     Limit: 0
   mWaitingDecay:
-    Interval: 1
-    Rate: 7.66213
-    Limit: 7.66213
+    Interval: 0.5
+    Rate: 1
+    Limit: 0.01
   mFirstArrivals: []
-  mMaxCustomerNumber: 2
   mCookingDecay:
     Interval: 0
     Rate: 0

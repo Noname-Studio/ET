@@ -31,7 +31,8 @@ namespace Client.Manager
         {
             get
             {
-                return "192.168.3.29:50002";
+                return "35.237.211.93:7585";
+                //return "192.168.3.29:10002";
             }
         }
         public void Init()

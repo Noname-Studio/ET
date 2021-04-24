@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5ccd9f92bdf7f4d8293c91fffef1e7, type: 3}
-  m_Name: LongBread
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
+  m_Name: Egg
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,12 +21,25 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  mEditorTexture: {fileID: 2800000, guid: a9973aa14aad84ccbab6a3ed8bd2a396, type: 3}
-  mKey: I_LongBread
-  mTexture: Image/Ingredient/tex_long_bread
-  mDisPosList:
+  mEditorTexture: {fileID: 2800000, guid: d51b5da3b35284c429b3274d33560b4b, type: 3}
+  mKey: F_Egg
+  mRestId: Breakfast
+  mWaitTime: 0
+  mLevels:
+  - mEditorTexture: {fileID: 2800000, guid: d51b5da3b35284c429b3274d33560b4b, type: 3}
+    mLevel: 1
+    mUnlockLv: 0
+    mTips: 0
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTexture: Image/Ingredient/tex_egg
+  mBasePatient: 100
+  mCookware: {fileID: 0}
+  mAllIngredients: []
+  mPositions:
   - Start: 0
     End: 0
-    Pos: {x: -2.42, y: 1.51, z: 0}
+    Pos: {x: -1.23, y: 0.43, z: 1.44}
     mLevel: 0
     mRestaurant: Breakfast

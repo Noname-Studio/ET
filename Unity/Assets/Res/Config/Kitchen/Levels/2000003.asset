@@ -25,57 +25,40 @@ MonoBehaviour:
   mLevel: 3
   mRestaurantId: Breakfast
   mOrderMode: 1
-  mType: 8
+  mType: 12
   mDifType: 1
-  mSection: 0
-  mCoinLevelEnable: 1
-  mMaxOrder: 0
+  mMaxCustomerNumber: 1
   mRequirements:
     AllowBurn: 1
     AllowLostCustomer: 1
     AllowUseTrash: 1
-    RequiredCoin: 89
+    RequiredCoin: 86
     LikeCount: 0
-    FixedTime: 0
+    FixedTime: 60
     LostCustomer: 0
-    NumberOfCustomerService: 6
+    NumberOfCustomerService: 5
     NumberOfCompletedOrders: 5
   mOrders:
-  - mCustomer: Journalist
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Omelette
-    EDITOR_Customer: {fileID: 11400000, guid: 6b3e3ca87fa1baa469536ec1d1800153, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 0997e57ce6d5b0145bee864995f1c309, type: 2}
-  - mCustomer: OfficeLady
+    - {fileID: 11400000, guid: 7e657d6623b7d624b90be525222962be, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Bacon
-    EDITOR_Customer: {fileID: 11400000, guid: 430e8efc946445a419056b772685912f, type: 2}
-    EDITOR_Foods:
     - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
-  - mCustomer: ModelGirl
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Fried_Eggs
-    EDITOR_Customer: {fileID: 11400000, guid: 582bf839be83ba14c85b136da20fca04, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 8d34ae689c3e0b242b051e4207fc0157, type: 2}
-  - mCustomer: FatMan
+    - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Iced_Coffee
-    EDITOR_Customer: {fileID: 11400000, guid: c39663f59e9fe2d4694c26ef387894b3, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: b5d4d7bc082272645a8f9a4e2d37d7ca, type: 2}
-  - mCustomer: GenerousMan
+    - {fileID: 11400000, guid: 04a900ca0826b934f82d5e491c9490ff, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Bacon
-    EDITOR_Customer: {fileID: 11400000, guid: 4bb2101571385b44aa8c50b2cc2e1915, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
   mRewards: []
   mSecretCustomers: []
   mOrderInterval:
-    Min: 1.86
-    Max: 2.79
+    Min: 1.9325802
+    Max: 2.8988702
   mLitterInterval:
     Min: 0
     Max: 0
@@ -84,11 +67,10 @@ MonoBehaviour:
     Rate: 0
     Limit: 0
   mWaitingDecay:
-    Interval: 1
-    Rate: 7
-    Limit: 7
+    Interval: 0.5
+    Rate: 1
+    Limit: 0.01
   mFirstArrivals: []
-  mMaxCustomerNumber: 2
   mCookingDecay:
     Interval: 0
     Rate: 0

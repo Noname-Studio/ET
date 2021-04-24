@@ -23,26 +23,27 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
   mKey: F_Bacon
-  mTexture: Image/Food/Breakfast/tex_bacon
   mRestId: Breakfast
   mWaitTime: 0
-  mEditorCookware: {fileID: 11400000, guid: 07f92347c5077874b970d3bc2d8f1a48, type: 2}
-  mEditorFinalIngredients:
-  - {fileID: 11400000, guid: ad8bf79d89b62d140bfbf392f65e048b, type: 2}
   mLevels:
-  - mLevel: 1
+  - mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
+    mLevel: 1
     mUnlockLv: 0
-    mPrice:
-      Coin: 100
-      Gem: 0
     mTips: 20
-  - mLevel: 2
+    mPrice:
+      Coin: 80
+      Gem: 0
+    mTexture: Image/Food/Breakfast/tex_bacon
+  - mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
+    mLevel: 2
     mUnlockLv: 0
+    mTips: 30
     mPrice:
       Coin: 300
       Gem: 0
-    mTips: 30
+    mTexture: Image/Food/Breakfast/tex_bacon
   mBasePatient: 100
-  mCookware: k2_grillPan
+  mCookware: {fileID: 11400000, guid: 07f92347c5077874b970d3bc2d8f1a48, type: 2}
   mAllIngredients:
-  - I_SmokedMeat
+  - {fileID: 11400000, guid: ab33c96177d89f34886803312fae5bd1, type: 2}
+  mPositions: []

@@ -123,12 +123,11 @@ public class MediaManager: Singleton<MediaManager>
         set => mPlayPitch = value;
     }
 
-    public override void OnInit()
+    public void Init()
     {
         mPlayPitch = 1.0f;
         mMusicVolume = Prefs.mMusicVolume;
         Stage.inst.soundVolume = mSoundEffectVolume = Prefs.SoundEffectVolume;
-        base.OnInit();
 
         //注册Update用于清理回收池
         UnityLifeCycleKit.Inst.AddUpdate(XUpdate);

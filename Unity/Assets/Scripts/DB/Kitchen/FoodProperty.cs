@@ -15,33 +15,52 @@ using UnityEditor;
 [Serializable]
 public partial class FoodDetailProperty
 {
+#if UNITY_EDITOR
+    [HorizontalGroup("信息")]
+    [SerializeField]
+    [HideLabel]
+    [OnValueChanged("SetTexture")]
+    [PreviewField(55, ObjectFieldAlignment.Left)]
+    private Texture mEditorTexture; // 静态图片材质
+#endif
+    
+    [VerticalGroup("信息/右")]
+    [HorizontalGroup("信息")]
     [SerializeField]
     [ReadOnly]
     [LabelText("等级")]
     private int mLevel;
 
+    //[VerticalGroup("vertical")]
+    [HorizontalGroup("信息")]
+    [VerticalGroup("信息/右")]
     [SerializeField]
     [LabelText("解锁等级")]
     [HideInInlineEditors]
     private int mUnlockLv;
-
+    [SerializeField]
+    [LabelText("价格")]
+    [HideInInlineEditors]
+    [HorizontalGroup("信息")]
+    [VerticalGroup("信息/右")]
+    private int mTips; // 默认的小费数额
+    
     [FormerlySerializedAs("mPriceList")]
     [SerializeField]
     [LabelText("升级消耗")]
     [HideInInlineEditors]
-    [BoxGroup("杂项")]
+    //[BoxGroup("杂项")]
     private Price mPrice = new Price(); //升级消耗
 
     [SerializeField]
-    [LabelText("小费")]
-    [HideInInlineEditors]
-    [BoxGroup("杂项")]
-    private int mTips; // 默认的小费数额
-
+    [HideInInspector]
+    private string mTexture;
+    
     public int Tips => mTips;
     public Price Price => mPrice;
     public int Level => mLevel;
     public int UnlockLv => mUnlockLv;
+    public string Texture => mTexture;
 }
 
 /// <summary>
@@ -51,7 +70,7 @@ public partial class FoodDetailProperty
 [Serializable]
 [InlineProperty]
 [InlineEditor(Expanded = true)]
-public partial class FoodProperty: BaseIngredient
+public partial class FoodProperty: SerializedScriptableObject
 {
     public const string FOOD_KEY_BURN = "Burn food";
     public const string FOOD_KEY_ANY = "anyfood";
@@ -72,6 +91,26 @@ public partial class FoodProperty: BaseIngredient
             return mTempLevels = new ReadOnlyCollection<FoodDetailProperty>(mLevels);
         }
     }
+    
+    [BoxGroup("基础信息")]
+    [HorizontalGroup("基础信息/Split", LabelWidth = 50)]
+    [VerticalGroup("基础信息/Split/Left")]
+#if UNITY_EDITOR
+    [SerializeField]
+    [HideLabel]
+    [PreviewField(55, ObjectFieldAlignment.Left)]
+    //[DisableInInlineEditors]
+    [ReadOnly]
+    protected Texture mEditorTexture; // 纹理名称
+#endif
+    [SerializeField]
+    [LabelText("Key")]
+    [HideInInlineEditors]
+    [ReadOnly]
+    [VerticalGroup("基础信息/Split/Right")]
+    protected string mKey; // 食物名称键值
+
+    public string Key => mKey;
 
     [SerializeField]
     [LabelText("餐厅Key")]
@@ -83,6 +122,7 @@ public partial class FoodProperty: BaseIngredient
     [SerializeField]
     [LabelText("顾客等待时间")]
     [HideInInlineEditors]
+    [PropertyTooltip("顾客的菜单中有这个菜的时候.耐心下落速度会乘以这个数值")]
     private float mWaitTime; // 默认等待时间
 
     [SerializeField]
@@ -105,8 +145,16 @@ public partial class FoodProperty: BaseIngredient
     [SerializeField]
     [LabelText("烹饪所需食材")]
     [HideInInlineEditors]
-    private List<BaseIngredient> mAllIngredients = new List<BaseIngredient>(); // 最终烹饪所需要的食材/食物
+    private List<FoodProperty> mAllIngredients = new List<FoodProperty>(); // 最终烹饪所需要的食材/食物
+    
+    [SerializeField]
+    [LabelText("食材摆放位置")]
+    [HideInInlineEditors]
+    private List<ReachItemDPosition> mPositions = new List<ReachItemDPosition>(); // 解析后的厨具显示位置
 
+    public List<ReachItemDPosition> Positions => mPositions;
+
+    [NonSerialized]
     private int mLevelCap = -1;
 
     public int LevelCap
@@ -126,7 +174,7 @@ public partial class FoodProperty: BaseIngredient
 
     public RestaurantKey RestaurantId => RestaurantKey.Wrap(mRestId);
 
-    public List<BaseIngredient> AllIngredients => mAllIngredients;
+    public List<FoodProperty> AllIngredients => mAllIngredients;
 
     public string DisplayName => LocalizationProperty.Read("Food_" + Key);
 
@@ -141,6 +189,10 @@ public partial class FoodProperty: BaseIngredient
     {
         get
         {
+            if (LevelCap == 1)//无法升级的食物默认都返回0.
+            {
+                return Levels[0];
+            }
             var food = Data_FoodFactory.Get(Key, RestaurantId);
             if (food == null)
             {
@@ -214,6 +266,11 @@ public partial class FoodProperty
     {
         base.OnBeforeSerialize();
         mKey = "F_" + name;
+        if (Levels.Count > 0)
+        {
+            mEditorTexture = (Texture) typeof (FoodDetailProperty).GetField("mEditorTexture", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .GetValue(Levels[0]);
+        }
     }
 
     private void OnEnable()
@@ -230,19 +287,7 @@ public partial class FoodProperty
             detailProperty.GetField("mLevel", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(node, index + 1);
         }
     }
-
-    private void SetTexture()
-    {
-        if (mEditorTexture != null)
-        {
-            mTexture = PathUtils.RemoveFileExtension(AssetDatabase.GetAssetPath(mEditorTexture).Replace("Assets/Res/", ""));
-        }
-        else
-        {
-            mTexture = null;
-        }
-    }
-
+    
     private void SetCookware()
     {
         CookwareModify(true);
@@ -256,7 +301,7 @@ public partial class FoodProperty
     {
         if (mBeforeChangedCookware != null)
         {
-            var cookware = AssetDatabase.LoadAssetAtPath<CookwareProperty>("Assets/Res/DB/Kitchen/Cookwares/" + mBeforeChangedCookware.Key +
+            var cookware = AssetDatabase.LoadAssetAtPath<CookwareProperty>("Assets/Res/Config/Kitchen/Cookwares/" + mBeforeChangedCookware.Key +
                 ".asset");
             var list =
                     cookware.GetType().GetField("mFoodKey", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(cookware) as List<FoodProperty>;
@@ -278,6 +323,21 @@ public partial class FoodProperty
             }
 
             EditorUtility.SetDirty(cookware);
+        }
+    }
+}
+
+public partial class FoodDetailProperty
+{
+    private void SetTexture()
+    {
+        if (mEditorTexture != null)
+        {
+            mTexture = PathUtils.RemoveFileExtension(AssetDatabase.GetAssetPath(mEditorTexture).Replace("Assets/Res/", ""));
+        }
+        else
+        {
+            mTexture = null;
         }
     }
 }

@@ -23,28 +23,28 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: b2ae73c74161547b5ac44475c0ab728d, type: 3}
   mKey: F_Caesar_Salad
-  mTexture: Image/Food/Breakfast/tex_caesar_salad
   mRestId: Breakfast
   mWaitTime: 0
-  mEditorCookware: {fileID: 11400000, guid: 303b7fcfec478e042a14148b43cd5d6c, type: 2}
-  mEditorFinalIngredients:
-  - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
-  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
   mLevels:
-  - mLevel: 1
-    mUnlockLv: 5
+  - mEditorTexture: {fileID: 2800000, guid: b2ae73c74161547b5ac44475c0ab728d, type: 3}
+    mLevel: 1
+    mUnlockLv: 1
+    mTips: 40
     mPrice:
-      Coin: 0
+      Coin: 100
       Gem: 0
-    mTips: 8
-  - mLevel: 2
-    mUnlockLv: 5
+    mTexture: Image/Food/Breakfast/tex_caesar_salad
+  - mEditorTexture: {fileID: 2800000, guid: b2ae73c74161547b5ac44475c0ab728d, type: 3}
+    mLevel: 2
+    mUnlockLv: 1
+    mTips: 50
     mPrice:
-      Coin: 0
+      Coin: 300
       Gem: 0
-    mTips: 15
+    mTexture: Image/Food/Breakfast/tex_caesar_salad
   mBasePatient: 100
-  mCookware: k2_cuttingboard
+  mCookware: {fileID: 11400000, guid: 303b7fcfec478e042a14148b43cd5d6c, type: 2}
   mAllIngredients:
-  - F_Toast
-  - F_Bacon
+  - {fileID: 11400000, guid: af448508cd34f984daa17364ede7a92c, type: 2}
+  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
+  mPositions: []

@@ -25,65 +25,40 @@ MonoBehaviour:
   mLevel: 2
   mRestaurantId: Breakfast
   mOrderMode: 1
-  mType: 8
+  mType: 68
   mDifType: 1
-  mSection: 0
-  mCoinLevelEnable: 1
-  mMaxOrder: 0
+  mMaxCustomerNumber: 1
   mRequirements:
     AllowBurn: 1
     AllowLostCustomer: 1
     AllowUseTrash: 1
-    RequiredCoin: 34
+    RequiredCoin: 86
     LikeCount: 0
-    FixedTime: 0
+    FixedTime: 60
     LostCustomer: 0
     NumberOfCustomerService: 6
     NumberOfCompletedOrders: 5
   mOrders:
-  - mCustomer: FatMan
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Milkshake
-    EDITOR_Customer: {fileID: 11400000, guid: c39663f59e9fe2d4694c26ef387894b3, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: c94b66222f4c15c4d9f1d291613135d5, type: 2}
-  - mCustomer: Feeder
+    - {fileID: 11400000, guid: d50f1c33a8d6e2e449dc892b7528226f, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Steak_With_Tamato
-    EDITOR_Customer: {fileID: 11400000, guid: d5b83cef20a534c4789257fa576cdddc, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 69c3a7e668b2e6e4990c21ae7164e97c, type: 2}
-  - mCustomer: Journalist
+    - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_ClamSoup
-    EDITOR_Customer: {fileID: 11400000, guid: 6b3e3ca87fa1baa469536ec1d1800153, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 7f50ce81794930647a24b7f61ee67ea8, type: 2}
-  - mCustomer: Magician
+    - {fileID: 11400000, guid: 04a900ca0826b934f82d5e491c9490ff, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Fried_Broccoli
-    EDITOR_Customer: {fileID: 11400000, guid: dcf812c8ccc7f2f43a5b8a75940ad15e, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: cb1000fc4bc01c84485d496c9336e75a, type: 2}
-  - mCustomer: FriendGirl
+    - {fileID: 11400000, guid: 7e657d6623b7d624b90be525222962be, type: 2}
+  - mCustomer: {fileID: 11400000, guid: a90e284f67e0a5047b5a852b4c584ccd, type: 2}
     mFoods:
-    - F_Fried_Steak
-    EDITOR_Customer: {fileID: 11400000, guid: 46d8024b5a7e52245854c009ea2c2d23, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: 49a2bc99d40f649449d05531f237dfe6, type: 2}
-  - mCustomer: SailorMan
-    mFoods:
-    - F_Baked_Potato
-    - F_Steak_Sandwich
-    EDITOR_Customer: {fileID: 11400000, guid: 2026d07361d9504458392dfcffb12ec4, type: 2}
-    EDITOR_Foods:
-    - {fileID: 11400000, guid: e99b83d7d007b914bb4393ab717a2339, type: 2}
-    - {fileID: 11400000, guid: c2eff24040060f94ba812a553bbf2671, type: 2}
+    - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
   mRewards: []
   mSecretCustomers: []
   mOrderInterval:
-    Min: 1.8851603
-    Max: 2.8277407
+    Min: 1.9325802
+    Max: 2.8988702
   mLitterInterval:
     Min: 0
     Max: 0
@@ -92,11 +67,10 @@ MonoBehaviour:
     Rate: 0
     Limit: 0
   mWaitingDecay:
-    Interval: 1
-    Rate: 5.7419815
-    Limit: 5.7419815
+    Interval: 0.5
+    Rate: 1
+    Limit: 0.01
   mFirstArrivals: []
-  mMaxCustomerNumber: 2
   mCookingDecay:
     Interval: 0
     Rate: 0

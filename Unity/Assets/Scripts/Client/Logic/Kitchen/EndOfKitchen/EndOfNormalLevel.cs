@@ -53,18 +53,20 @@ public class EndOfNormalLevel: IEndExecute
         QueueEventsKit.Inst.Clear();
         QueueEventsKit.Inst.AddToBottom(new PauseKitchenLogic());
         QueueEventsKit.Inst.AddToBottom(new MakeAllCustomersLeave());
+        QueueEventsKit.Inst.AddToBottom(new EmptyHand(PlayerController));
         QueueEventsKit.Inst.AddToBottom(new PlayAnimation(PlayerController, "Win", true));
         QueueEventsKit.Inst.AddToBottom(new WinRecord());
         QueueEventsKit.Inst.AddToBottom(new CreateUI<UI_NormalLevelWin>());
     }
 
-    private async void Restart()
+    private void Restart()
     {
         Log.Print("重新开始关卡"); 
         AnalyticsEvent.LevelFail(LevelProperty.RestaurantId.Key, LevelProperty.LevelId);
         QueueEventsKit.Inst.Clear();
         QueueEventsKit.Inst.AddToBottom(new PauseKitchenLogic());
         QueueEventsKit.Inst.AddToBottom(new MakeAllCustomersLeave());
+        QueueEventsKit.Inst.AddToBottom(new EmptyHand(PlayerController));
         QueueEventsKit.Inst.AddToBottom(new PlayAnimation(PlayerController, "Lose", true));
         QueueEventsKit.Inst.AddToBottom(new ResetKitchen());
         QueueEventsKit.Inst.AddToBottom(new CreateUI<UI_EnterLevelPanel>());

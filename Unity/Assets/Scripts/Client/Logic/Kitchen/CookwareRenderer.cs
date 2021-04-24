@@ -87,7 +87,7 @@ namespace Kitchen
 
             var property = KitchenDataHelper.LoadFood(id);
             mCookResult.View.Plate.url = "Image/Food/plate1_1";
-            mCookResult.View.Food.url = property.Texture;
+            mCookResult.View.Food.url = property.CurrentLevel.Texture;
             mCookResult.View.visible = true;
             RefreshCount();
         }

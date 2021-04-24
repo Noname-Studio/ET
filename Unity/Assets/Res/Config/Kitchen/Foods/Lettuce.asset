@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5ccd9f92bdf7f4d8293c91fffef1e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 413fc4fe293cd524cba1e2002fbc041b, type: 3}
   m_Name: Lettuce
   m_EditorClassIdentifier: 
   serializationData:
@@ -22,11 +22,19 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: e67611f0e711c421392f02a255259865, type: 3}
-  mKey: I_Lettuce
-  mTexture: Image/Ingredient/tex_lettuce
-  mDisPosList:
-  - Start: 0
-    End: 0
-    Pos: {x: 4.86, y: -1.44, z: 0}
-    mLevel: 0
-    mRestaurant: Breakfast
+  mKey: F_Lettuce
+  mRestId: Breakfast
+  mWaitTime: 0
+  mLevels:
+  - mEditorTexture: {fileID: 2800000, guid: e67611f0e711c421392f02a255259865, type: 3}
+    mLevel: 1
+    mUnlockLv: 0
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 0
+    mTexture: Image/Ingredient/tex_lettuce
+  mBasePatient: 100
+  mCookware: {fileID: 0}
+  mAllIngredients: []
+  mPositions: []

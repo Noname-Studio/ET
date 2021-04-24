@@ -23,12 +23,18 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: 378bde90e904e9f4b944798fbfdb37ae, type: 3}
   mKey: F_BurnedFood
-  mTexture: Image/Food/tex_burn_food
   mRestId: FoodTruck
   mWaitTime: 0
-  mEditorCookware: {fileID: 0}
-  mEditorFinalIngredients: []
-  mLevels: []
+  mLevels:
+  - mEditorTexture: {fileID: 2800000, guid: 378bde90e904e9f4b944798fbfdb37ae, type: 3}
+    mLevel: 1
+    mUnlockLv: 0
+    mPrice:
+      Coin: 0
+      Gem: 0
+    mTips: 0
+    mTexture: Image/Food/tex_burn_food
   mBasePatient: 100
-  mCookware: 
+  mCookware: {fileID: 0}
   mAllIngredients: []
+  mPositions: []

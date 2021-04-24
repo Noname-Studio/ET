@@ -9,7 +9,6 @@ namespace Common
     {
         public Controller IsMax;
         public Controller c1;
-        public GButton bg;
         public View_yellow_light_circle icon_light;
         public GLoader Plane;
         public GLoader FoodIcon;
@@ -40,7 +39,6 @@ namespace Common
 
             IsMax = GetController("IsMax");
             c1 = GetController("c1");
-            bg = (GButton)GetChild("bg");
             icon_light = (View_yellow_light_circle)GetChild("icon_light");
             Plane = (GLoader)GetChild("Plane");
             FoodIcon = (GLoader)GetChild("FoodIcon");

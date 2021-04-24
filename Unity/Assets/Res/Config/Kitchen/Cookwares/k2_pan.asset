@@ -26,12 +26,12 @@ MonoBehaviour:
   EDITORKey: pan
   mRestId: Breakfast
   mFoodKey:
-  - {fileID: 11400000, guid: cb1000fc4bc01c84485d496c9336e75a, type: 2}
+  - {fileID: 11400000, guid: 8d34ae689c3e0b242b051e4207fc0157, type: 2}
   mFunType: 0
   mDisPosList:
   - Start: 0
     End: 0
-    Pos: {x: -3.66, y: 1.41, z: 2.25}
+    Pos: {x: -3.07, y: -1.64, z: 0.94}
     mLevel: 0
     mRestaurant: Breakfast
   mLevels:

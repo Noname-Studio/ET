@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Client.Manager;
 using Client.UI.ViewModel;
@@ -65,7 +67,10 @@ public class GameEntry: MonoBehaviour
     //初始化游戏内系统
     private void RegisterGameLogicSystem()
     {
+        //初始化体力管理器
         EnergyManager.Inst.Init();
+        //初始化多媒体播放器
+        MediaManager.Inst.Init();
     }
 
     /// <summary>
@@ -201,15 +206,22 @@ public class GameEntry: MonoBehaviour
     /// </summary>
     private void RegisterNotify()
     {
+        try
+        {
 #if UNITY_ANDROID || UNITY_IOS
-        const string ChannelId = "RestaurantTest";
-        var manager = gameObject.AddComponent<GameNotificationsManager>();
-        manager.Mode = GameNotificationsManager.OperatingMode.QueueClearAndReschedule;
-        var channel = new GameNotificationChannel(ChannelId, "Default Game Channel", "Generic notifications");
-        manager.Initialize(channel);
-        var nativeNotify = new NativeNotify(manager);
-        NotificationKit.Initialize(nativeNotify);
+            const string ChannelId = "RestaurantTest";
+            var manager = gameObject.AddComponent<GameNotificationsManager>();
+            manager.Mode = GameNotificationsManager.OperatingMode.QueueClearAndReschedule;
+            var channel = new GameNotificationChannel(ChannelId, "Default Game Channel", "Generic notifications");
+            manager.Initialize(channel);
+            var nativeNotify = new NativeNotify(manager);
+            NotificationKit.Initialize(nativeNotify);
 #endif
+        }
+        catch(Exception e)
+        {
+            Log.Error("开启消息推送功能失败:" + e);
+        }
     }
 
     /// <summary>

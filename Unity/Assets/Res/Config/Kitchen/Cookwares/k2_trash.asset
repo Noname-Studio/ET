@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7293ddc51191c784684f9ed78e81594d, type: 3}
-  m_Name: k0_trash
+  m_Name: k2_trash
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -30,7 +30,7 @@ MonoBehaviour:
   mDisPosList:
   - Start: 0
     End: 0
-    Pos: {x: -0.06, y: 0.22, z: 0.67}
+    Pos: {x: -0.06, y: -0.6700001, z: 0.22}
     mLevel: 0
     mRestaurant: Breakfast
   mLevels:

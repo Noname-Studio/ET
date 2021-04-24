@@ -20,16 +20,6 @@ namespace Kitchen
             return AssetsKit.Inst.Load<FoodProperty>(GameConfig.FoodConfigPath + key).AsTask().Result;
         }
 
-        public static IngredientProperty LoadIngredient(string key)
-        {
-            if (key.StartsWith("I_"))
-            {
-                key = key.Remove(0, 2);
-            }
-
-            return AssetsKit.Inst.Load<IngredientProperty>(GameConfig.IngredientConfigPath + key).AsTask().Result;
-        }
-
         public static CookwareProperty LoadCookware(string id)
         {
             return AssetsKit.Inst.Load<CookwareProperty>(GameConfig.CookwareConfigPath + id).AsTask().Result;

@@ -1,9 +1,11 @@
 {
     "name": "Unity.Model",
+    "rootNamespace": "",
     "references": [
         "Unity.ThirdParty",
         "Panthea.Asset",
-        "Panthea.Common"
+        "Panthea.Common",
+        "PlayFab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

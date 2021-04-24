@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
 namespace Client.UI.ViewModel
 {
+    [UIWindow(Enter = WindowAnimType.Fall, Exit = WindowAnimType.Rise,Background = true)]
     public class UI_CookwareUpgradeTip: UIBase<View_KitchenPop>
     {
         public class ParamsData: IUIParams
@@ -135,6 +136,7 @@ namespace Client.UI.ViewModel
             {
                 var star = (View_Star) View.Star.AddItemFromPool();
                 if (i < Detail.Level)
+                    
                 {
                     star.Active.selectedPage = "TRUE";
                 }
@@ -148,12 +150,11 @@ namespace Client.UI.ViewModel
         private void Upgrade_OnClick()
         {
             var prop = Arg.Property;
-            if (ResourcesHelper.SpenPrice(prop.NextLevel.Price))
+            if (ResourcesHelper.SpenPrice(Detail.Price,false))
             {
                 Data_Cookware_Info dt = Data_CookwareFactory.Get(prop.Key, prop.RestaurantId);
                 dt.Level += 1;
                 Data_CookwareFactory.Set(prop.Key, prop.RestaurantId, dt);
-                DBManager.Inst.UpdateLocal(dt);
                 Message.Send(new CookwareUpgradeSuccess(prop.Key));
             }
 

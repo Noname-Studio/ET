@@ -27,7 +27,7 @@ namespace ET
         {
             ServiceType = serviceType;
             ThreadSynchronizationContext = threadSynchronizationContext;
-
+            Log.Info("注册服务器成功:" + ipEndPoint);
             acceptor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             acceptor.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             innArgs.Completed += OnComplete;
@@ -39,6 +39,7 @@ namespace ET
 
         private void OnComplete(object sender, SocketAsyncEventArgs e)
         {
+            Log.Info("Server Init Complete");
             switch (e.LastOperation)
             {
                 case SocketAsyncOperation.Accept:
@@ -75,7 +76,7 @@ namespace ET
                 TChannel channel = new TChannel(id, acceptSocket, this);
                 idChannels.Add(channel.Id, channel);
                 long channelId = channel.Id;
-
+                Log.Info("收到客户端的连接请求:" + id);
                 OnAccept(channelId, channel.RemoteAddress);
             }
             catch (Exception exception)

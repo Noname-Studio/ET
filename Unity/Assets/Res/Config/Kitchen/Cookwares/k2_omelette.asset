@@ -31,7 +31,7 @@ MonoBehaviour:
   - Start: 0
     End: 0
     Pos: {x: 3.48, y: -2.32, z: 0}
-    mLevel: 0
+    mLevel: 999
     mRestaurant: Breakfast
   mLevels:
   - mLevel: 1

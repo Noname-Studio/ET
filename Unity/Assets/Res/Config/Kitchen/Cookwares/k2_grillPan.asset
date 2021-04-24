@@ -25,12 +25,13 @@ MonoBehaviour:
   mKey: k2_grillPan
   EDITORKey: grillPan
   mRestId: Breakfast
-  mFoodKey: []
+  mFoodKey:
+  - {fileID: 11400000, guid: 9709d7dc1aa10064284e356158a12ded, type: 2}
   mFunType: 0
   mDisPosList:
   - Start: 0
-    End: 0
-    Pos: {x: -2.75, y: -2.49, z: 0}
+    End: 30
+    Pos: {x: -2.7, y: -0.32, z: 0.83}
     mLevel: 0
     mRestaurant: Breakfast
   mLevels:

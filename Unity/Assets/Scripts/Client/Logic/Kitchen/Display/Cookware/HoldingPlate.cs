@@ -59,15 +59,7 @@ namespace Kitchen
         private async UniTaskVoid Internal_PutIn(string food)
         {
             mCookResult.View.Plate.url = "Image/Food/plate1_1";
-            if (IngredientHelper.IsFood(food))
-            {
-                mCookResult.View.Food.url = KitchenDataHelper.LoadFood(food).Texture;
-            }
-            else
-            {
-                mCookResult.View.Food.url = KitchenDataHelper.LoadIngredient(food).Texture;
-            }
-
+            mCookResult.View.Food.url = KitchenDataHelper.LoadFood(food).CurrentLevel.Texture;
             mCookResult.View.visible = true;
             await UniTask.NextFrame();
             FoodId = food;

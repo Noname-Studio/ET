@@ -102,6 +102,10 @@ namespace Kitchen
             return MovingState.Moving;
         }
 
+        public void StopMove()
+        {
+            mDisplay.MoveCom.isStopped = true;
+        }
         #endregion
 
         public void Update()

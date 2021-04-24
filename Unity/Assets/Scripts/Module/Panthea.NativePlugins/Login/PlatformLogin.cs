@@ -23,6 +23,7 @@ namespace Panthea.NativePlugins
             TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
 #if UNITY_ANDROID
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+                    .AddOauthScope("profile")
                     .RequestEmail()
                     .RequestServerAuthCode(false)
                     .RequestIdToken()
@@ -41,8 +42,6 @@ namespace Panthea.NativePlugins
 #if UNITY_ANDROID
                     Log.Print("登录平台成功" + PlayGamesPlatform.Instance.GetUserId());
                     AnalyticsKit.Inst.UserSignup(AuthorizationNetwork.Google);
-                    PlayGamesPlatform.Instance.GetServerAuthCode();
-                    
 #elif UNITY_IOS
                     AnalyticsKit.Inst.UserSignup(AuthorizationNetwork.GameCenter);
 #endif

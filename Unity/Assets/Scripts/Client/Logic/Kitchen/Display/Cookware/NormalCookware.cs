@@ -58,7 +58,7 @@ namespace Kitchen
         /// <summary>
         /// 避免重复New List 我们这里把GetRequirement的需求条件编程类变量而不是局部变量
         /// </summary>
-        private HashSet<BaseIngredient> mRequirement = new HashSet<BaseIngredient>();
+        private HashSet<FoodProperty> mRequirement = new HashSet<FoodProperty>();
 
         public NormalCookware(CookwareProperty property, UnityObject display, IAnimation animation)
         {
@@ -171,7 +171,7 @@ namespace Kitchen
             WorkingFoodId = foodKey;
         }
 
-        private HashSet<BaseIngredient> GetRequirement()
+        private HashSet<FoodProperty> GetRequirement()
         {
             string key = null;
             return GetRequirement(ref key);
@@ -182,7 +182,7 @@ namespace Kitchen
         /// </summary>
         /// <param name="foodKey">返回食物key</param>
         /// <returns></returns>
-        private HashSet<BaseIngredient> GetRequirement(ref string foodKey)
+        private HashSet<FoodProperty> GetRequirement(ref string foodKey)
         {
             if (mRequirement.Count > 0)
             {
@@ -237,7 +237,7 @@ namespace Kitchen
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        private int Overlap(IList<string> from, IList<BaseIngredient> to)
+        private int Overlap(IList<string> from, IList<FoodProperty> to)
         {
             int count = from.Count;
             int count2 = to.Count;

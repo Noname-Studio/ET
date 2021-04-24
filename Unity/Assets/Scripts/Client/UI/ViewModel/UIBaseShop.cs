@@ -53,7 +53,7 @@ namespace Client.UI.ViewModel
                 if (currentProperty.UnlockLv > Player.CurrentLevel.LevelId)
                 {
                     item.GetController("State").selectedPage = "Lock";
-                    item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.Texture;
+                    item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.CurrentLevel.Texture;
                     item.title = string.Format(LocalizationProperty.Read("UnLockAtLevel"), nextLevel.UnlockLv);
                 }
                 else
@@ -64,16 +64,16 @@ namespace Client.UI.ViewModel
             else if (nextLevel.UnlockLv > Player.CurrentLevel.LevelId)
             {
                 item.GetController("State").selectedPage = "Lock";
-                item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.Texture;
+                item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.CurrentLevel.Texture;
                 item.title = string.Format(LocalizationProperty.Read("UnLockAtLevel"), nextLevel.UnlockLv);
             }
             else
             {
                 item.GetController("State").selectedPage = "CanUpgrade";
-                item.title = !nextLevel.Price.IsFree()? nextLevel.Price.ConvertToString(50, 50) : LocalizationProperty.Read("Free");
+                item.title = !currentProperty.Price.IsFree()? currentProperty.Price.ConvertToString(50, 50) : LocalizationProperty.Read("Free");
             }
 
-            item.icon = node.Texture;
+            item.icon = node.CurrentLevel.Texture;
             var starList = item.GetChild("Star").asList;
             starList.RemoveChildrenToPool();
             for (int i = 0; i < node.LevelCap; i++)
@@ -143,7 +143,7 @@ namespace Client.UI.ViewModel
             else
             {
                 item.State.selectedPage = "CanUpgrade";
-                item.title = !nextLevel.Price.IsFree()? nextLevel.Price.ConvertToString(50, 50) : LocalizationProperty.Read("Free");
+                item.title = !currentProperty.Price.IsFree()? currentProperty.Price.ConvertToString(50, 50) : LocalizationProperty.Read("Free");
             }
 
             item.icon = currentProperty.Texture;
@@ -189,6 +189,11 @@ namespace Client.UI.ViewModel
             foreach (FoodProperty food in foods)
             {
                 if (food.RestaurantId != Restaurant)
+                {
+                    continue;
+                }
+
+                if (food.Levels.Count <= 1)
                 {
                     continue;
                 }

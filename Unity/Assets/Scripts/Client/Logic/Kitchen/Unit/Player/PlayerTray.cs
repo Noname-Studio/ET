@@ -80,15 +80,15 @@ namespace Kitchen
             Tray.SetTexture(plate.Result);
             if (mType == ItemType.Ingedient)
             {
-                var property = KitchenDataHelper.LoadIngredient(id);
-                var food = AssetsKit.Inst.Load<Texture>(property.Texture).AsTask();
+                var property = KitchenDataHelper.LoadFood(id);
+                var food = AssetsKit.Inst.Load<Texture>(property.CurrentLevel.Texture).AsTask();
                 await food;
                 Food.SetTexture(food.Result);
             }
             else if (mType == ItemType.Food)
             {
                 var property = KitchenDataHelper.LoadFood(id);
-                var food = AssetsKit.Inst.Load<Texture>(property.Texture).AsTask();
+                var food = AssetsKit.Inst.Load<Texture>(property.CurrentLevel.Texture).AsTask();
                 await food;
                 Food.SetTexture(food.Result);
             }

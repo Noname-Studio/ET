@@ -25,8 +25,8 @@ namespace Client.UI.ViewModel
 
             View.HeadPanel.Name.text = GameRecord.Name;
             View.HeadPanel.EditHead.icon = GameRecord.Head;
-            View.Voice.selected = Prefs.SoundEffectVolume == 1;
-            View.Music.selected = Prefs.mMusicVolume == 1;
+            View.Voice.selected = Prefs.SoundEffectVolume == 0;
+            View.Music.selected = Prefs.mMusicVolume == 0;
             InitHeadPanel();
         }
 
@@ -71,11 +71,13 @@ namespace Client.UI.ViewModel
         private void Music_OnClick()
         {
             MediaManager.Inst.MusicVolume = View.Music.selected? 0 : 1;
+            Prefs.MusicVolume = MediaManager.Inst.MusicVolume;
         }
 
         private void Voice_OnClick()
         {
             MediaManager.Inst.SoundEffectVolume = View.Voice.selected? 0 : 1;
+            Prefs.SoundEffectVolume = MediaManager.Inst.SoundEffectVolume;
         }
 
         private void Pet_OnClick()

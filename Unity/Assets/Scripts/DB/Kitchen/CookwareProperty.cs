@@ -149,6 +149,7 @@ public partial class CookwareProperty: SerializedScriptableObject
     private string mRestId;
 
     [SerializeField]
+    [HideInInlineEditors]
     private List<FoodProperty> mFoodKey = new List<FoodProperty>();
 
     [SerializeField]

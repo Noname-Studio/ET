@@ -104,12 +104,12 @@ public class FoodPreview: MyPreview
     public override Type Type => typeof (FoodProperty);
 }
 
-[CustomEditor(typeof (IngredientProperty))]
+/*[CustomEditor(typeof (IngredientProperty))]
 [CanEditMultipleObjects]
 public class IngredientPreview: MyPreview
 {
     public override Type Type => typeof (IngredientProperty);
-}
+}*/
 
 [CustomEditor(typeof (CustomerProperty))]
 [CanEditMultipleObjects]

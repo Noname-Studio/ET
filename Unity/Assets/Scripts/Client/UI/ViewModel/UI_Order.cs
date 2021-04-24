@@ -53,7 +53,7 @@ namespace Client.UI.ViewModel
                     continue;
                 }
 
-                display.icon = properties[i].Texture;
+                display.icon = properties[i].CurrentLevel.Texture;
             }
         }
     }

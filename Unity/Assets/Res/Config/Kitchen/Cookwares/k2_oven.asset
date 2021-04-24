@@ -26,19 +26,18 @@ MonoBehaviour:
   EDITORKey: oven
   mRestId: Breakfast
   mFoodKey:
-  - {fileID: 11400000, guid: 04a900ca0826b934f82d5e491c9490ff, type: 2}
   - {fileID: 11400000, guid: c2eff24040060f94ba812a553bbf2671, type: 2}
   mFunType: 0
   mDisPosList:
   - Start: 0
     End: 0
     Pos: {x: 0.11, y: 0.46, z: 3.2}
-    mLevel: 0
+    mLevel: 999
     mRestaurant: Breakfast
   - Start: 0
     End: 0
     Pos: {x: -0.06, y: 0.5, z: 2.15}
-    mLevel: 0
+    mLevel: 999
     mRestaurant: Breakfast
   mLevels:
   - mLevel: 1

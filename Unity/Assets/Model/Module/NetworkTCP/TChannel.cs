@@ -173,7 +173,6 @@ namespace ET
             }
 
             SocketAsyncEventArgs e = (SocketAsyncEventArgs) o;
-
             if (e.SocketError != SocketError.Success)
             {
                 OnError((int) e.SocketError);
@@ -251,7 +250,6 @@ namespace ET
 
             if (e.BytesTransferred == 0)
             {
-                //断开连接都时候字节都是0.所以不要打印
                 OnError(ErrorCode.ERR_PeerDisconnect);
                 return;
             }

@@ -23,28 +23,28 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: bca00d22e49024f7d9f5ede7b67c49e0, type: 3}
   mKey: F_Avocado_Bacon
-  mTexture: Image/Food/Breakfast/tex_avocado_bacon
   mRestId: Breakfast
   mWaitTime: 0
-  mEditorCookware: {fileID: 11400000, guid: bbf2ced122c989945b9201a681c0638d, type: 2}
-  mEditorFinalIngredients:
-  - {fileID: 11400000, guid: 238db647b0ad46a4891106b77020b7ed, type: 2}
-  - {fileID: 11400000, guid: ad8bf79d89b62d140bfbf392f65e048b, type: 2}
   mLevels:
-  - mLevel: 1
+  - mEditorTexture: {fileID: 2800000, guid: bca00d22e49024f7d9f5ede7b67c49e0, type: 3}
+    mLevel: 1
     mUnlockLv: 110
     mPrice:
       Coin: 800
       Gem: 0
     mTips: 20
-  - mLevel: 2
+    mTexture: Image/Food/Breakfast/tex_avocado_bacon
+  - mEditorTexture: {fileID: 2800000, guid: bca00d22e49024f7d9f5ede7b67c49e0, type: 3}
+    mLevel: 2
     mUnlockLv: 110
     mPrice:
       Coin: 1600
       Gem: 0
     mTips: 40
+    mTexture: Image/Food/Breakfast/tex_avocado_bacon
   mBasePatient: 100
-  mCookware: k2_oven
+  mCookware: {fileID: 0}
   mAllIngredients:
-  - I_Avocado
-  - I_SmokedMeat
+  - {fileID: 0}
+  - {fileID: 0}
+  mPositions: []

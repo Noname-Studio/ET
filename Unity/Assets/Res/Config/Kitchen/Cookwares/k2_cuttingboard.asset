@@ -25,7 +25,8 @@ MonoBehaviour:
   mKey: k2_cuttingboard
   EDITORKey: cuttingboard
   mRestId: Breakfast
-  mFoodKey: []
+  mFoodKey:
+  - {fileID: 11400000, guid: 8b5466c2d39688b4cbe871f0c3b540be, type: 2}
   mFunType: 0
   mDisPosList:
   - Start: 0

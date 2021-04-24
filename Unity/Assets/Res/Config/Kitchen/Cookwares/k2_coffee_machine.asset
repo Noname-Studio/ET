@@ -25,12 +25,13 @@ MonoBehaviour:
   mKey: k2_coffee_machine
   EDITORKey: coffee_machine
   mRestId: Breakfast
-  mFoodKey: []
+  mFoodKey:
+  - {fileID: 11400000, guid: c8edd8b942fcc034399e17d4136b8065, type: 2}
   mFunType: 0
   mDisPosList:
   - Start: 0
     End: 0
-    Pos: {x: 1.88, y: 1.56, z: 4}
+    Pos: {x: 0.75, y: -3.43, z: 0.88}
     mLevel: 0
     mRestaurant: Breakfast
   mLevels:

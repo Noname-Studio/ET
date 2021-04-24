@@ -288,19 +288,18 @@ public partial class LevelProperty: SerializedScriptableObject
     private DifficultType mDifType = DifficultType.MiddleLevel;
 
     [SerializeField]
-    [LabelText("阶段")]
+    [LabelText("最大顾客数量")]
     [VerticalGroup("常用/Split/基础设定/Left")]
-    private int mSection; //属于本餐厅第几个阶段的关卡 动态计算得出
+    private int mMaxCustomerNumber = 0;
+    //[SerializeField]
+    //[LabelText("阶段")]
+    //[VerticalGroup("常用/Split/基础设定/Left")]
+    //private int mSection; //属于本餐厅第几个阶段的关卡 动态计算得出
 
-    [SerializeField]
-    [LabelText("刷金币关卡")]
-    [VerticalGroup("常用/Split/基础设定/Left")]
-    private bool mCoinLevelEnable = true;
-
-    [SerializeField]
-    [LabelText("同时存在的最大订单数")]
-    [VerticalGroup("常用/Split/基础设定/Left")]
-    private int mMaxOrder;
+    //[SerializeField]
+    //[LabelText("刷金币关卡")]
+    //[VerticalGroup("常用/Split/基础设定/Left")]
+    //private bool mCoinLevelEnable = true;
 
     [SerializeField]
     [FoldoutGroup("过关条件", Expanded = true)]
@@ -351,11 +350,7 @@ public partial class LevelProperty: SerializedScriptableObject
     [BoxGroup("顾客基础设定")]
     [FoldoutGroup("顾客基础设定/首次出现顾客的时间")]
     private List<float> mFirstArrivals = new List<float>(); // 首次出现顾客的时间
-
-    [SerializeField]
-    [HideLabel]
-    [BoxGroup("顾客基础设定/最大顾客数量")]
-    private int mMaxCustomerNumber = 0;
+    
     //[SerializeField, BoxGroup("厨具损坏的间隔"), HideLabel] private RangeInt mBrokenInterval = new RangeInt(0, 0); // 厨具损坏的间隔
 
     [SerializeField]
@@ -405,8 +400,6 @@ public partial class LevelProperty: SerializedScriptableObject
 
     public ComboConfig ComboCfg => mComboCfg;
 
-    public int MaxOrder => mMaxOrder;
-
     public List<float> FirstArrivals => mFirstArrivals;
 
     public RangeFloat OrderInterval => mOrderInterval;
@@ -431,9 +424,9 @@ public partial class LevelProperty: SerializedScriptableObject
 
     public Requirements Requirements => mRequirements;
 
-    public int Section => mSection;
+    /*public int Section => mSection;
 
-    public bool CoinLevelEnable => mCoinLevelEnable;
+    public bool CoinLevelEnable => mCoinLevelEnable;*/
 
     public string Comments => mComments;
 

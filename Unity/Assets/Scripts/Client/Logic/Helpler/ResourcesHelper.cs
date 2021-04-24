@@ -9,7 +9,7 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
     /// </summary>
     public static class ResourcesHelper
     {
-        public static bool SpenPrice(Price price)
+        public static bool SpenPrice(Price price,bool updateDB = true)
         {
             if (price.IsFree())
             {
@@ -18,11 +18,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
 
             if (price.Coin > 0)
             {
-                return SpenGameCoin(price.Coin);
+                return SpenGameCoin(price.Coin,updateDB);
             }
             else if (price.Gem > 0)
             {
-                return SpenGem(price.Gem);
+                return SpenGem(price.Gem,updateDB);
             }
 
             return false;
@@ -46,21 +46,21 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             return gameRecord.Gem;
         }
 
-        public static void SetGameCoin(int count)
+        public static void SetGameCoin(int count,bool updateDB = true)
         {
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             var coins = gameRecord.Coin;
             if (count > coins)
             {
-                GainGameCoin(count - coins);
+                GainGameCoin(count - coins,updateDB);
             }
             else if (count < coins)
             {
-                SpenGameCoin(coins - count);
+                SpenGameCoin(coins - count,updateDB);
             }
         }
 
-        public static void GainGameCoin(int count)
+        public static void GainGameCoin(int count,bool updateDB = true)
         {
             if (count == 0)
             {
@@ -72,10 +72,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             gameRecord.Coin += count;
             MessageKit.Inst.Send(EventKey.GainGameCoin);
             MessageKit.Inst.Send(new CoinChanged(temp,gameRecord.Coin));
-            DBManager.Inst.Update(gameRecord);
+            if(updateDB)
+                DBManager.Inst.Update(gameRecord);
         }
 
-        public static bool SpenGameCoin(int count)
+        public static bool SpenGameCoin(int count,bool updateDB = true)
         {
             if (count == 0)
             {
@@ -95,11 +96,12 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             gameRecord.Coin = Mathf.Max(0, gameRecord.Coin - count);
             MessageKit.Inst.Send(EventKey.SpentGameCoin);
             MessageKit.Inst.Send(new CoinChanged(temp,gameRecord.Coin));
-            DBManager.Inst.Update(gameRecord);
+            if(updateDB)
+                DBManager.Inst.Update(gameRecord);
             return true;
         }
 
-        public static void GainGem(int count)
+        public static void GainGem(int count,bool updateDB = true)
         {
             if (count == 0)
             {
@@ -111,10 +113,11 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             gameRecord.Gem += count;
             MessageKit.Inst.Send(EventKey.GainGem);
             MessageKit.Inst.Send(new GemChanged(temp,gameRecord.Gem));
-            DBManager.Inst.Update(gameRecord);
+            if(updateDB)
+                DBManager.Inst.Update(gameRecord);
         }
 
-        public static bool SpenGem(int count)
+        public static bool SpenGem(int count, bool updateDB = true)
         {
             if (count == 0)
             {
@@ -134,21 +137,22 @@ namespace UnityEngine.Experimental.Rendering.Client.Logic.Helpler
             gameRecord.Gem = Mathf.Max(0, gameRecord.Gem - count);
             MessageKit.Inst.Send(EventKey.SpentGem);
             MessageKit.Inst.Send(new GemChanged(temp,gameRecord.Gem));
-            DBManager.Inst.Update(gameRecord);
+            if(updateDB)
+                DBManager.Inst.Update(gameRecord);
             return true;
         }
 
-        public static void SetGem(int count)
+        public static void SetGem(int count,bool updateDB = true)
         {
             var gameRecord = DBManager.Inst.Query<Data_GameRecord>();
             var gem = gameRecord.Gem;
             if (count > gem)
             {
-                GainGem(count - gem);
+                GainGem(count - gem,updateDB);
             }
             else if (count < gem)
             {
-                SpenGem(gem - count);
+                SpenGem(gem - count,updateDB);
             }
         }
     }

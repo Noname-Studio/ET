@@ -33,19 +33,11 @@ namespace Kitchen
             {
                 var node = list[i];
                 var loader = Ui.View.GetChild("Food" + (i + 1)).asLoader;
-                BaseIngredient ingredient = null;
-                if (IngredientHelper.IsFood(node))
-                {
-                    ingredient = KitchenDataHelper.LoadFood(node);
-                }
-                else if (IngredientHelper.IsIngredient(node))
-                {
-                    ingredient = KitchenDataHelper.LoadIngredient(node);
-                }
-
+                FoodProperty ingredient = null;
+                ingredient = KitchenDataHelper.LoadFood(node);
                 if (ingredient != null)
                 {
-                    loader.url = ingredient.Texture;
+                    loader.url = ingredient.CurrentLevel.Texture;
                 }
             }
         }

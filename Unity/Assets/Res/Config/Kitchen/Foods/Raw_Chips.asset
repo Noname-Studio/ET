@@ -23,20 +23,18 @@ MonoBehaviour:
     SerializationNodes: []
   mEditorTexture: {fileID: 2800000, guid: 455c99f5462ea444386417d82da13fa6, type: 3}
   mKey: F_Raw_Chips
-  mTexture: Image/Food/FoodTruck/tex_raw_potato_strips
   mRestId: Breakfast
   mWaitTime: 0
-  mEditorCookware: {fileID: 11400000, guid: 303b7fcfec478e042a14148b43cd5d6c, type: 2}
-  mEditorFinalIngredients:
-  - {fileID: 11400000, guid: 0fa34274cbe6ed84abf4cb752220b597, type: 2}
   mLevels:
-  - mLevel: 1
+  - mEditorTexture: {fileID: 2800000, guid: 455c99f5462ea444386417d82da13fa6, type: 3}
+    mLevel: 1
     mUnlockLv: 0
     mPrice:
-      Coin: 0
+      Coin: 10
       Gem: 0
     mTips: 0
+    mTexture: Image/Food/FoodTruck/tex_raw_potato_strips
   mBasePatient: 100
-  mCookware: k2_cuttingboard
-  mAllIngredients:
-  - I_Potato
+  mCookware: {fileID: 0}
+  mAllIngredients: []
+  mPositions: []

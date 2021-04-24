@@ -6,13 +6,13 @@ namespace Kitchen
 {
     public class IngredientDisplay: IDisplay
     {
-        private IngredientProperty Property;
+        private FoodProperty Property;
         public Type Type => GetType();
         public IAnimation Animation { get; set; }
         public UnityObject Display { get; }
         public string FoodId { get; }
 
-        public IngredientDisplay(UnityObject display, IngredientProperty property)
+        public IngredientDisplay(UnityObject display, FoodProperty property)
         {
             Display = display;
             Property = property;

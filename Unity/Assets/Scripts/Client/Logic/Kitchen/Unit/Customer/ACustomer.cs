@@ -1,7 +1,4 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Kitchen
 {
@@ -56,7 +53,6 @@ namespace Kitchen
         /// </summary>
         public virtual void OnExit()
         {
-            KitchenRoot.Inst.Record.ServicesCustomerNumber++;
             var patience = Components.Get<PatienceComponent>();
             if (patience != null)
             {
@@ -64,6 +60,8 @@ namespace Kitchen
                 {
                     KitchenRoot.Inst.Record.LikeCount++;
                 }
+                if(patience.Value > 0)
+                    KitchenRoot.Inst.Record.ServicesCustomerNumber++;
             }
         }
 
