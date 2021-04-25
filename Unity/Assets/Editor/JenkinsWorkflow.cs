@@ -194,7 +194,7 @@ public class JenkinsWorkflow: Editor
             try
             {
                 BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-                buildPlayerOptions.options = BuildOptions.CompressWithLz4HC | BuildOptions.Development;
+                buildPlayerOptions.options = BuildOptions.CompressWithLz4HC | BuildOptions.Development | BuildOptions.WaitForPlayerConnection;
                 buildPlayerOptions.locationPathName = exportPath;
                 buildPlayerOptions.target = BuildTarget.Android;
                 buildPlayerOptions.scenes = GetBuildScenes(); 
