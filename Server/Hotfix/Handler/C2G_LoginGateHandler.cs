@@ -23,11 +23,11 @@ namespace ET
 				return;
 			}
 
-			Data_PlayerInfo playerInfo = await CacheHelper.Get<Data_PlayerInfo>(Id);
+			Data_PlayerInfo playerInfo = await CacheHelper.Get<Data_PlayerInfo>(request.Key);
 			if (playerInfo == null)
 			{
 				playerInfo = EntityFactory.Create<Data_PlayerInfo>(Game.Scene);
-				playerInfo.Id = Id;
+				playerInfo.Id = request.Key;
 			}
 			playerInfo.LastLogin = 0;
 			scene.GetComponent<PlayerComponent>().Add(playerInfo);

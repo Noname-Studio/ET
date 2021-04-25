@@ -1,7 +1,10 @@
 
 
+using System;
 using System.IO;
 using System.Net;
+using Agones;
+using ET.ThirdParty;
 using Google.Apis.Auth.OAuth2;
 
 namespace ET
@@ -35,7 +38,6 @@ namespace ET
 
             Game.Scene.AddComponent<NetThreadComponent>();
             Game.Scene.AddComponent<NetInnerComponent, IPEndPoint>(processConfig.InnerIPPort);
-            
             var processScenes = StartSceneConfigCategory.Instance.GetByProcess(Game.Options.Process);
             foreach (StartSceneConfig startConfig in processScenes)
             {
@@ -48,6 +50,29 @@ namespace ET
             }
 
             await GuildComponent.Instance.RegisterAllGuildToChat();
+            if (Game.Options.Develop != 1)
+            {
+                var agones = new AgonesSDK();
+                Log.Info("Connecting to the SDK Server...");
+                bool ok = false;
+                try
+                {
+                    ok = await agones.ConnectAsync();
+                    if (ok == false)
+                        throw new Exception("Ok == false");
+                }
+                catch(Exception e)
+                {
+                    Log.Error(e);
+                    Log.Info("初始化服务器失败");
+                    Environment.Exit(0);
+                    return;
+                }
+                Log.Info("...Connected to SDK Server");
+                var status = await agones.ReadyAsync();
+                Log.Info(status.Detail);
+                Game.Scene.AddComponent<AgonesComponent, AgonesSDK>(agones);
+            }
         }
     }
 }

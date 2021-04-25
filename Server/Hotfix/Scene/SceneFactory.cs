@@ -35,7 +35,7 @@ namespace ET
                     break;
                 case SceneType.Map:
                     scene.AddComponent<UnitComponent>();
-                    scene.AddComponent<RecastPathComponent>();
+                    //scene.AddComponent<RecastPathComponent>();
                     break;
                 case SceneType.Chat:
                     scene.AddComponent<ChatChannelComponent>();

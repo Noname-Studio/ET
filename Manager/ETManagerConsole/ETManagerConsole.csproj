@@ -9,6 +9,10 @@
       <DefineConstants>TRACECOREAPP;SERVER;NOT_CLIENTCOREAPP</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
     <ItemGroup>
       <None Update="NLog.config">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

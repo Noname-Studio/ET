@@ -5,8 +5,10 @@
     <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
+    <DefineConstants>TRACE2_0;SERVER;NOT_CLIENT</DefineConstants>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE2_0;SERVER;NOT_CLIENT</DefineConstants>
@@ -170,8 +172,10 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="AgonesSDK" Version="1.13.0" />
     <PackageReference Include="CommandLineParser" Version="2.2.1" />
     <PackageReference Include="Google.Apis.Auth" Version="1.51.0" />
+    <PackageReference Include="Grpc.Core" Version="2.37.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting" Version="2.9.0" />
     <PackageReference Include="NLog" Version="4.5.4" />
     <PackageReference Include="SharpZipLib" Version="1.0.0-alpha2" />

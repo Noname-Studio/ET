@@ -1,0 +1,35 @@
+apiVersion: "agones.dev/v1"
+kind: GameServer
+metadata:
+  generateName: "unity-simple-server-"
+spec:
+  health:
+    disabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 5
+    failureThreshold: 3
+  ports:
+  - name: Realm
+    portPolicy: Dynamic
+    containerPort: 7000
+    protocol: TCP
+  - name: Gate
+    portPolicy: Dynamic
+    containerPort: 7001
+    protocol: TCP
+  - name: Internal
+    portPolicy: Dynamic
+    containerPort: 7500
+    protocol: TCP
+  template:
+    spec:
+      containers:
+      - name: unity-simple-server
+        image: gcr.io/api-project-14492525/unity-simple-server:debug
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "128m"
+          limits:
+            memory: "512Mi"
+            cpu: "128m"

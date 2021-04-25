@@ -13,6 +13,7 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>TRACE;SERVER;FEAT_SAFE</DefineConstants>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
+        <PackageReference Include="MongoDB.Driver" Version="2.12.2" />
     </ItemGroup>
 
     <ItemGroup>

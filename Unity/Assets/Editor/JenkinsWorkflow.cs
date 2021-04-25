@@ -8,6 +8,7 @@ using Panthea.Editor.Asset;
 using Unity.Collections;
 using UnityEditor;
 using UnityEditor.Android;
+using UnityEditor.Build.Reporting;
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 #endif
@@ -68,12 +69,20 @@ public class JenkinsWorkflow: Editor
     [MenuItem("Tools/Test")]
     public static void XXX()
     {
-        if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
+        /*if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
             AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath.TrimEnd('/');
         else
             AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
         var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
-        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
+        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);*/
+        CommandLineBuildAndroid(new CommandParams
+        {
+            Platform = "Android",
+            BundleName = "Dev",
+            IsCompress = false,
+            IsMono = true,
+            OutputPath = "build/Android/dev.apk"
+        });
     }
 
     public static void CommandLineExtenral()
@@ -173,9 +182,24 @@ public class JenkinsWorkflow: Editor
             //生成谷歌项目
             try
             {
-                var options = BuildOptions.CompressWithLz4HC | BuildOptions.Development;
-                var result = BuildPipeline.BuildPlayer(GetBuildScenes(), exportPath, BuildTarget.Android, options);
-                Debug.Log(result);
+                BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+                buildPlayerOptions.options = BuildOptions.CompressWithLz4HC | BuildOptions.Development;
+                buildPlayerOptions.locationPathName = exportPath;
+                buildPlayerOptions.target = BuildTarget.Android;
+                buildPlayerOptions.scenes = GetBuildScenes(); 
+                
+                BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                BuildSummary summary = report.summary;
+
+                if (summary.result == BuildResult.Succeeded)
+                {
+                    Debug.Log("Build succeeded: " + summary.totalSize + " bytes");
+                }
+
+                if (summary.result == BuildResult.Failed)
+                {
+                    Debug.Log("Build failed");
+                }
             }
             catch (Exception e)
             {
@@ -185,7 +209,7 @@ public class JenkinsWorkflow: Editor
             }
 
             Debug.Log("Build Complete Path:" + exportPath);
-            EditorApplication.Exit( 0 );
+            //EditorApplication.Exit( 0 );
         }
     }
 
