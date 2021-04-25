@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using ET;
 using Panthea.Editor.Asset;
 using Unity.Collections;
 using UnityEditor;
@@ -76,14 +77,18 @@ public class JenkinsWorkflow: Editor
             AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
         var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
         getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);*/
-        CommandLineBuildAndroid(new CommandParams
+        /*CommandLineBuildAndroid(new CommandParams
         {
             Platform = "Android",
             BundleName = "Dev",
             IsCompress = false,
             IsMono = true,
             OutputPath = "build/Android/dev.apk"
-        });
+        });*/
+        Debug.Log(EditorUserBuildSettings.compressFilesInPackage);
+        Debug.Log(EditorUserBuildSettings.development);
+        Debug.Log(EditorUserBuildSettings.allowDebugging);
+        Debug.Log(PlayerSettings.stripEngineCode);
     }
 
     public static void CommandLineExtenral()
@@ -110,11 +115,9 @@ public class JenkinsWorkflow: Editor
             }
         }
 
-        EditorUserBuildSettings.compressFilesInPackage = true;
-        EditorUserBuildSettings.development = true;
-        EditorUserBuildSettings.allowDebugging = true;
-        PlayerSettings.stripEngineCode = false;
-        PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.Disabled);
+        //EditorUserBuildSettings.compressFilesInPackage = true;
+        //EditorUserBuildSettings.development = true;
+        //EditorUserBuildSettings.allowDebugging = true;
 
         if (!string.IsNullOrEmpty(args.BundleName))
         {
@@ -162,11 +165,13 @@ public class JenkinsWorkflow: Editor
             {
                 Debug.Log("打包Mono");
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
+                PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.Disabled);
             }
             else
             {
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
                 PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);
+                PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.High);
             }
             AssetBundleBuilder.Pack();
             var exportPath = args.OutputPath;
@@ -215,7 +220,7 @@ public class JenkinsWorkflow: Editor
             }
 
             Debug.Log("Build Complete Path:" + exportPath);
-            EditorApplication.Exit( 0 );
+            //EditorApplication.Exit( 0 );
         }
     }
 
