@@ -145,6 +145,7 @@ public class JenkinsWorkflow: Editor
             AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
         var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
         getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
+        Debug.LogError("改变JAVA_HOME路径");
         //
         if (EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android))
         {
