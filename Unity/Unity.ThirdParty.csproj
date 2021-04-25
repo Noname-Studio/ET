@@ -396,6 +396,9 @@
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
  </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.Serialization.Config">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
  </Reference>
@@ -467,6 +470,18 @@
  </Reference>
  <Reference Include="MongoDB.Bson">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/MongoDB.Bson.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.164.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.PackageManagerResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.164.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.164.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.164.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
