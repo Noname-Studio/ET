@@ -1,5 +1,5 @@
 ﻿using UnityEditor;
-using UnityEditor.AddressableAssets;
+//using UnityEditor.AddressableAssets;
 using UnityEditor.Experimental;
 
 namespace Panthea.Editor.Asset
@@ -10,7 +10,7 @@ namespace Panthea.Editor.Asset
 
         protected override void OnAssetsModified(string[] changedAssets, string[] addedAssets, string[] deletedAssets, AssetMoveInfo[] movedAssets)
         {
-            var settings = AddressableAssetSettingsDefaultObject.GetSettings(false);
+            /*var settings = AddressableAssetSettingsDefaultObject.GetSettings(false);
             foreach (var node in movedAssets)
             {
                 var source = node.sourceAssetPath;
@@ -22,7 +22,7 @@ namespace Panthea.Editor.Asset
                         settings.RemoveAssetEntry(AssetDatabase.AssetPathToGUID(destination), false);
                     }
                 }
-            }
+            }*/
         }
     }
 }

@@ -4,7 +4,6 @@ using Force.Crc32;
 using Newtonsoft.Json;
 using Panthea.Asset;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Build.DataBuilders;
 using UnityEditor.Build.Pipeline;
 using UnityEditor.Build.Pipeline.Injector;
 using UnityEditor.Build.Pipeline.Interfaces;
@@ -38,7 +37,7 @@ namespace Panthea.Editor.Asset
 
         public ReturnCode Run()
         {
-            var outputFolder = ((AddressableAssetsBundleBuildParameters) m_Parameters).OutputFolder;
+            var outputFolder = BuildPreference.Instance.OutputPath;
 
             foreach (var node in m_Content.BundleLayout)
             {

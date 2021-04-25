@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Build;
+//using UnityEditor.AddressableAssets;
+//using UnityEditor.AddressableAssets.Build;
 using UnityEngine;
 
 namespace Panthea.Editor.Asset
@@ -16,12 +16,12 @@ namespace Panthea.Editor.Asset
 
         public async void Init()
         {
-            BuildScript.buildCompleted -= OnBuildCompleted;
-            BuildScript.buildCompleted += OnBuildCompleted;
+            //BuildScript.buildCompleted -= OnBuildCompleted;
+            //BuildScript.buildCompleted += OnBuildCompleted;
 
             mInject.Add("inject", mInject);
             mInject.Add("packPath", mPackPath);
-            mInject.Add("settings", AddressableAssetSettingsDefaultObject.GetSettings(true));
+            //mInject.Add("settings", AddressableAssetSettingsDefaultObject.GetSettings(true));
 
             //收集所有的需要打包的文件
             AddProcess<CollectAllAssets>();
@@ -32,19 +32,19 @@ namespace Panthea.Editor.Asset
             //打包内容
             AddProcess<BuildContent>();
             //压缩内容
-            AddProcess<ZipAssets>();
+            //AddProcess<ZipAssets>();
             //提交服务器
             //mProcess.Add(typeof(UploadS3));
             await DoPipeline();
         }
 
-        private void OnBuildCompleted(AddressableAssetBuildResult result)
+        /*private void OnBuildCompleted(AddressableAssetBuildResult result)
         {
             if (!string.IsNullOrEmpty(result.Error))
             {
                 throw new Exception(result.Error);
             }
-        }
+        }*/
 
         public static void Pack()
         {
@@ -97,7 +97,7 @@ namespace Panthea.Editor.Asset
             }
             finally
             {
-                BuildScript.buildCompleted -= OnBuildCompleted;
+                //BuildScript.buildCompleted -= OnBuildCompleted;
             }
         }
     }

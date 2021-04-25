@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using NPOI.SS.Formula.Functions;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings;
-using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEngine;
 
 namespace Panthea.Editor.Asset
@@ -14,13 +11,11 @@ namespace Panthea.Editor.Asset
     {
         public string PackPath;
         protected List<string> BuildFiles;
-        protected AddressableAssetSettings AddressableBuilder;
 
-        public BuildGroup(string packPath, List<string> buildFiles, AddressableAssetSettings settings)
+        public BuildGroup(string packPath, List<string> buildFiles)
         {
             PackPath = packPath;
             BuildFiles = buildFiles;
-            AddressableBuilder = settings;
         }
 
         public override Task Do()
@@ -41,7 +36,7 @@ namespace Panthea.Editor.Asset
 
                     list.Add(node);
                 }
-
+#if ENABLE_ADDRESSABLE
                 var schemas = new List<AddressableAssetGroupSchema>();
                 //var contentUpdate = ScriptableObject.CreateInstance<ContentUpdateGroupSchema>();
                 var bundle = ScriptableObject.CreateInstance<BundledAssetGroupSchema>();
@@ -104,6 +99,44 @@ namespace Panthea.Editor.Asset
 #endif
                     }
                 }
+                #else
+                var preference = BuildPreference.Instance;
+                foreach (var node in mapping)
+                {
+                    if (node.Value.Count == 0)
+                    {
+                        continue;
+                    }
+#if DEBUG_ADDRESSABLE
+            Debug.Log("Create Group :" + node);
+#endif
+                    var group = preference.FindGroup(node.Key);
+                    if (group == null)
+                    {
+                        group = ScriptableObject.CreateInstance<BuildObject>();
+                        group.name = node.Key;
+                        preference.AddGroup(group);
+                    }
+                    @group.Files.Clear();
+                    foreach (var file in node.Value)
+                    {
+                        @group.Files.Add(new BuildObject.BuildFileKeyValue(Path.GetFileNameWithoutExtension(file).ToLower(),
+                            AssetDatabase.AssetPathToGUID(PathUtils.FullPathToUnityPath(file))));
+                    }
+                }
+                for (int index = preference.Groups.Count - 1; index >= 0; index--)
+                {
+                    var node = preference.Groups[index];
+                    if (!mapping.ContainsKey(node.name.Replace("-", "/")))
+                    {
+                        preference.RemoveGroup(node);
+#if DEBUG_ADDRESSABLE
+                        Debug.Log("Remove Group " + node.Name);
+#endif
+                    }
+                }
+#endif
+                
             }
             catch (Exception e)
             {

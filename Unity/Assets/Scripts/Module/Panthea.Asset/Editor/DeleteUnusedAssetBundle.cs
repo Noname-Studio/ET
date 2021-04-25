@@ -1,11 +1,9 @@
 ﻿using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Build.DataBuilders;
 using UnityEditor.Build.Pipeline;
 using UnityEditor.Build.Pipeline.Injector;
 using UnityEditor.Build.Pipeline.Interfaces;
-using UnityEditor.Graphs;
 
 namespace Panthea.Editor.Asset
 {
@@ -22,7 +20,7 @@ namespace Panthea.Editor.Asset
 
         public ReturnCode Run()
         {
-            var outputFolder = ((AddressableAssetsBundleBuildParameters) m_Parameters).OutputFolder;
+            var outputFolder = BuildPreference.Instance.OutputPath;
             var allAssetbundle = Directory.GetFiles(outputFolder + "/", "*.bundle", SearchOption.AllDirectories);
             foreach (var node in allAssetbundle)
             {

@@ -61,7 +61,6 @@ namespace Client.UI.ViewModel
                     IAssetsLocator assetsLocator = AssetsKit.Inst;
                     var customer = await assetsLocator.LoadAll(GameConfig.CustomerConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.FoodConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
-                    await assetsLocator.LoadAll(GameConfig.IngredientConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.LevelConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.CookwareConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.Load<GameObject>("Model/Roles/Lisa/Lisa"); //加载人物
