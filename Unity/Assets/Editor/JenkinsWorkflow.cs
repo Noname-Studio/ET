@@ -155,7 +155,7 @@ public class JenkinsWorkflow: Editor
             }
             AssetBundleBuilder.Pack();
             var exportPath = args.OutputPath;
-            Directory.CreateDirectory(exportPath);
+            //Directory.CreateDirectory(exportPath);
             //拷贝文件到服务器路径,并且把文件提交服务器
             if (Directory.Exists(androidAB))
             {
