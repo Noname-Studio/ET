@@ -9,6 +9,7 @@ using Unity.Collections;
 using UnityEditor;
 using UnityEditor.Android;
 using UnityEditor.Build.Reporting;
+using UnityEditor.Compilation;
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 #endif
@@ -149,6 +150,11 @@ public class JenkinsWorkflow: Editor
         getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
         Debug.LogError("改变JAVA_HOME路径");
         //
+        
+        //不知道是和什么插件冲突了.似乎需要强制编译一下才能正常打包
+        CompilationPipeline.RequestScriptCompilation();
+        //
+        
         if (EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android))
         {
             EditorApplication.ExecuteMenuItem("Assets/Play Services Resolver/Android Resolver/Resolve");
