@@ -48,7 +48,7 @@ namespace Spine.Unity.Editor
         private static int wasPreferencesAssetCreated = 0;
 #endif
 
-        public const string SPINE_SETTINGS_ASSET_PATH = "Assets/Editor/SpineSettings.asset";
+        public const string SPINE_SETTINGS_ASSET_PATH = "Assets/ThirdParty/Spine/Editor/spine-unity/Editor/SpineSettings.asset";
 
 #if SPINE_TK2D
 		internal const float DEFAULT_DEFAULT_SCALE = 1f;
