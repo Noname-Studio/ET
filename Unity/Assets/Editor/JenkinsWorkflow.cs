@@ -68,18 +68,12 @@ public class JenkinsWorkflow: Editor
     [MenuItem("Tools/Test")]
     public static void XXX()
     {
-        //if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
-        //    AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath.TrimEnd('/');
-        //else
-        //    AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
-        foreach (var node in typeof (UnityEditor.Android.AndroidDevice).Assembly.GetTypes())
-        {
-            if(node.Name.StartsWith("AndroidJava"))
-                Debug.Log(node.FullName);
-        }
-        var g = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
-        var x = g.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
-        ExecuteProcessTerminal($"{PlayerSettings.bundleVersion}", GetBasePath + "S3Sync/Upload.bat", GetBasePath + "S3Sync/");
+        if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
+            AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath.TrimEnd('/');
+        else
+            AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
+        var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
+        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
     }
 
     public static void CommandLineExtenral()
@@ -145,6 +139,10 @@ public class JenkinsWorkflow: Editor
         string androidAB = Application.streamingAssetsPath + "/Android/";
         string localServerAB = "/Users/developer/Apache/resources/android";
         //这里我们重置Java HOME 路径.Unity有Bug.在2020 版本中无法重定向路径.
+        if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
+            AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath.TrimEnd('/');
+        else
+            AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
         var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
         getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
         //
@@ -161,7 +159,7 @@ public class JenkinsWorkflow: Editor
                 PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
                 PlayerSettings.SetIncrementalIl2CppBuild(BuildTargetGroup.Android, true);
             }
-            AssetBundleBuilder.Pack();
+            //AssetBundleBuilder.Pack();
             var exportPath = args.OutputPath;
             //Directory.CreateDirectory(exportPath);
             //拷贝文件到服务器路径,并且把文件提交服务器
@@ -171,6 +169,8 @@ public class JenkinsWorkflow: Editor
                 DirectoryCopy(androidAB, localServerAB, true);
             }
 
+            Directory.Delete(Application.streamingAssetsPath);
+            Directory.Delete(Application.dataPath + "/AddressableAssetsData");
             if (args.IsCompress)
             {
                 Debug.Log("清除多余的AB文件");
