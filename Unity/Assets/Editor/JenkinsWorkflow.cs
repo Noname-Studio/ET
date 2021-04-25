@@ -209,7 +209,7 @@ public class JenkinsWorkflow: Editor
             }
 
             Debug.Log("Build Complete Path:" + exportPath);
-            //EditorApplication.Exit( 0 );
+            EditorApplication.Exit( 0 );
         }
     }
 

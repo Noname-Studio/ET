@@ -318,14 +318,8 @@
  <Reference Include="Sirenix.OdinInspector.Attributes">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
  </Reference>
- <Reference Include="Google.VersionHandler">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
- </Reference>
  <Reference Include="Sirenix.Serialization.Config">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
- </Reference>
- <Reference Include="Google.PackageManagerResolver_v1.2.162">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="System.Runtime.CompilerServices.Unsafe">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -348,9 +342,6 @@
  <Reference Include="System.Buffers">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/System.Buffers.dll</HintPath>
  </Reference>
- <Reference Include="Google.IOSResolver_v1.2.162">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.162.dll</HintPath>
- </Reference>
  <Reference Include="Sirenix.Utilities">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
  </Reference>
@@ -362,9 +353,6 @@
  </Reference>
  <Reference Include="Sirenix.Serialization">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.162">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="NPOI.OpenXmlFormats">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Editor/npoi/NPOI.OpenXmlFormats.dll</HintPath>
@@ -386,9 +374,6 @@
  </Reference>
  <Reference Include="DOTween">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.demigiant.dotween@1.2.42/DOTween/Plugins/DOTween.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.162">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.162.dll</HintPath>
  </Reference>
  <Reference Include="NPOI">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Editor/npoi/NPOI.dll</HintPath>
