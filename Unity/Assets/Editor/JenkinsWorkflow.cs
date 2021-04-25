@@ -78,59 +78,52 @@ public class JenkinsWorkflow: Editor
 
     public static void CommandLineExtenral()
     {
-        try
+        var line = string.Concat(Environment.GetCommandLineArgs());
+        var args = new CommandParams();
+        var regex = Regex.Matches(line, @"\[(.*?)\]");
+        var type = typeof (CommandParams);
+        foreach (Match node in regex)
         {
-            var line = string.Concat(Environment.GetCommandLineArgs());
-            var args = new CommandParams();
-            var regex = Regex.Matches(line, @"\[(.*?)\]");
-            var type = typeof (CommandParams);
-            foreach (Match node in regex)
+            var s = node.Value.TrimStart('[').TrimEnd(']').Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
+            var fieldName = s[0];
+            var fieldValue = s[1];
+            Debug.Log(fieldName + " = " + fieldValue);
+            var field = type.GetField(fieldName);
+            var fieldType = field.FieldType;
+            if (fieldType == typeof (string))
             {
-                var s = node.Value.TrimStart('[').TrimEnd(']').Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                var fieldName = s[0];
-                var fieldValue = s[1];
-                Debug.Log(fieldName + " = " + fieldValue);
-                var field = type.GetField(fieldName);
-                var fieldType = field.FieldType;
-                if (fieldType == typeof (string))
-                {
-                    field.SetValue(args, fieldValue);
-                }
-                else if (fieldType == typeof (bool))
-                {
-                    field.SetValue(args, bool.Parse(fieldValue));
-                }
+                field.SetValue(args, fieldValue);
             }
-
-            EditorUserBuildSettings.compressFilesInPackage = true;
-            EditorUserBuildSettings.development = true;
-            EditorUserBuildSettings.allowDebugging = true;
-            PlayerSettings.stripEngineCode = false;
-            PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.Disabled);
-
-            if (!string.IsNullOrEmpty(args.BundleName))
+            else if (fieldType == typeof (bool))
             {
-                PlayerSettings.bundleVersion = args.BundleName;
-            }
-            else
-            {
-                PlayerSettings.bundleVersion = "Dev";
-            }
-
-            if (string.Equals(args.Platform, "IOS", StringComparison.OrdinalIgnoreCase))
-            {
-                Debug.Log("!!!!!打包IPA");
-                CommandLineBuildIPA(args);
-            }
-            else if (args.Platform == "Android")
-            {
-                Debug.Log("!!!!!打包Android");
-                CommandLineBuildAndroid(args);
+                field.SetValue(args, bool.Parse(fieldValue));
             }
         }
-        catch (Exception e)
+
+        EditorUserBuildSettings.compressFilesInPackage = true;
+        EditorUserBuildSettings.development = true;
+        EditorUserBuildSettings.allowDebugging = true;
+        PlayerSettings.stripEngineCode = false;
+        PlayerSettings.SetManagedStrippingLevel(BuildTargetGroup.Android, ManagedStrippingLevel.Disabled);
+
+        if (!string.IsNullOrEmpty(args.BundleName))
         {
-            Debug.LogError("打包失败" + e);
+            PlayerSettings.bundleVersion = args.BundleName;
+        }
+        else
+        {
+            PlayerSettings.bundleVersion = "Dev";
+        }
+
+        if (string.Equals(args.Platform, "IOS", StringComparison.OrdinalIgnoreCase))
+        {
+            Debug.Log("!!!!!打包IPA");
+            CommandLineBuildIPA(args);
+        }
+        else if (args.Platform == "Android")
+        {
+            Debug.Log("!!!!!打包Android");
+            CommandLineBuildAndroid(args);
         }
     }
 
@@ -170,8 +163,8 @@ public class JenkinsWorkflow: Editor
                 DirectoryCopy(androidAB, localServerAB, true);
             }
 
-            Directory.Delete(Application.streamingAssetsPath);
-            Directory.Delete(Application.dataPath + "/AddressableAssetsData");
+            Directory.Delete(Application.streamingAssetsPath,true);
+            Directory.Delete(Application.dataPath + "/AddressableAssetsData",true);
             if (args.IsCompress)
             {
                 Debug.Log("清除多余的AB文件");
