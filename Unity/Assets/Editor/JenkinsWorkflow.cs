@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Panthea.Editor.Asset;
 using Unity.Collections;
 using UnityEditor;
+using UnityEditor.Android;
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 #endif
@@ -66,6 +68,17 @@ public class JenkinsWorkflow: Editor
     [MenuItem("Tools/Test")]
     public static void XXX()
     {
+        //if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
+        //    AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath.TrimEnd('/');
+        //else
+        //    AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
+        foreach (var node in typeof (UnityEditor.Android.AndroidDevice).Assembly.GetTypes())
+        {
+            if(node.Name.StartsWith("AndroidJava"))
+                Debug.Log(node.FullName);
+        }
+        var g = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
+        var x = g.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
         ExecuteProcessTerminal($"{PlayerSettings.bundleVersion}", GetBasePath + "S3Sync/Upload.bat", GetBasePath + "S3Sync/");
     }
 
@@ -131,6 +144,10 @@ public class JenkinsWorkflow: Editor
     {
         string androidAB = Application.streamingAssetsPath + "/Android/";
         string localServerAB = "/Users/developer/Apache/resources/android";
+        //这里我们重置Java HOME 路径.Unity有Bug.在2020 版本中无法重定向路径.
+        var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
+        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);
+        //
         if (EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android))
         {
             EditorApplication.ExecuteMenuItem("Assets/Play Services Resolver/Android Resolver/Resolve");
