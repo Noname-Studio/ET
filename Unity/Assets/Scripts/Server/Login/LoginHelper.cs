@@ -19,7 +19,7 @@ namespace ET
     {
         public static async UniTask Login(Scene zoneScene, string address)
         {
-            try
+            /*try
             {
                 // 创建一个ETModel层的Session
                 UniTaskCompletionSource<bool> tcs = new UniTaskCompletionSource<bool>();
@@ -94,7 +94,7 @@ namespace ET
                 });
                 var result = await tcs.Task;
                 if (!result)
-                    return;*/
+                    return;#1#
                 using (Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address)))
                 {
                     if (!Application.isEditor)
@@ -138,7 +138,7 @@ namespace ET
             catch (Exception e)
             {
                 Log.Error(e);
-            }
+            }*/
         }
     }
 }
