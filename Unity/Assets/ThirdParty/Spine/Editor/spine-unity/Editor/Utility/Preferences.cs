@@ -59,7 +59,7 @@ namespace Spine.Unity.Editor
 #if NEW_PREFERENCES_SETTINGS_PROVIDER
         private static class SpineSettingsProviderRegistration
         {
-            [SettingsProvider]
+            /*[SettingsProvider]
             public static SettingsProvider CreateSpineSettingsProvider()
             {
                 var provider = new SettingsProvider("Spine", SettingsScope.User)
@@ -80,7 +80,7 @@ namespace Spine.Unity.Editor
                     keywords = new HashSet<string>(new[] { "Spine", "Preferences", "Skeleton", "Default", "Mix", "Duration" })
                 };
                 return provider;
-            }
+            }*/
         }
 #else
 		// Preferences entry point
