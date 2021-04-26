@@ -41,7 +41,7 @@ using System.Threading;
 
 namespace Spine.Unity.Editor
 {
-    public class SpinePreferences: ScriptableObject
+    public class SpinePreferences //: ScriptableObject
     {
 #if NEW_PREFERENCES_SETTINGS_PROVIDER
         private static int wasPreferencesDirCreated = 0;
@@ -110,7 +110,7 @@ namespace Spine.Unity.Editor
 
         internal static SpinePreferences GetOrCreateSettings()
         {
-            var settings = AssetDatabase.LoadAssetAtPath<SpinePreferences>(SPINE_SETTINGS_ASSET_PATH);
+            var settings = new SpinePreferences();
             /*
             if (settings == null)
             {
