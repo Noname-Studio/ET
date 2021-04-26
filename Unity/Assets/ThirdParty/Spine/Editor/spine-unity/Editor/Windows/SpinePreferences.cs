@@ -27,13 +27,13 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-#if UNITY_2017_2_OR_NEWER
+//#if UNITY_2017_2_OR_NEWER
 #define NEWPLAYMODECALLBACKS
-#endif
+//#endif
 
-#if UNITY_2018_3_OR_NEWER
+//#if UNITY_2018_3_OR_NEWER
 #define NEW_PREFERENCES_SETTINGS_PROVIDER
-#endif
+//#endif
 
 using UnityEngine;
 using UnityEditor;
