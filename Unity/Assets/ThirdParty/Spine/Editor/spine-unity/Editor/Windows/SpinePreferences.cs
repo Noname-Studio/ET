@@ -27,13 +27,13 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-//#if UNITY_2017_2_OR_NEWER
+#if UNITY_2017_2_OR_NEWER
 #define NEWPLAYMODECALLBACKS
-//#endif
+#endif
 
-//#if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
 #define NEW_PREFERENCES_SETTINGS_PROVIDER
-//#endif
+#endif
 
 using UnityEngine;
 using UnityEditor;
@@ -107,11 +107,10 @@ namespace Spine.Unity.Editor
         {
             GetOrCreateSettings();
         }
-
         internal static SpinePreferences GetOrCreateSettings()
         {
             var settings = AssetDatabase.LoadAssetAtPath<SpinePreferences>(SPINE_SETTINGS_ASSET_PATH);
-            if (settings == null)
+            /*if (settings == null)
             {
                 settings = CreateInstance<SpinePreferences>();
                 SpineEditorUtilities.OldPreferences.CopyOldToNewPreferences(ref settings);
@@ -127,7 +126,7 @@ namespace Spine.Unity.Editor
                 {
                     AssetDatabase.CreateAsset(settings, SPINE_SETTINGS_ASSET_PATH);
                 }
-            }
+            }*/
 
             return settings;
         }
