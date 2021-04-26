@@ -111,6 +111,7 @@ namespace Spine.Unity.Editor
         internal static SpinePreferences GetOrCreateSettings()
         {
             var settings = AssetDatabase.LoadAssetAtPath<SpinePreferences>(SPINE_SETTINGS_ASSET_PATH);
+            /*
             if (settings == null)
             {
                 settings = CreateInstance<SpinePreferences>();
@@ -128,6 +129,7 @@ namespace Spine.Unity.Editor
                     AssetDatabase.CreateAsset(settings, SPINE_SETTINGS_ASSET_PATH);
                 }
             }
+            */
 
             return settings;
         }
