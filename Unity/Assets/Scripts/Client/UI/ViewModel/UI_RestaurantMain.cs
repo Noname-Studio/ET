@@ -63,7 +63,7 @@ namespace Client.UI.ViewModel
                 Event_AdsReady();
             }
 
-            if (PlayerManager.Inst.CurrentLevel.Id < 2 * GameConfig.RestaurantOffset + 50 && IAPKit.Inst.InitializationComplete)
+            if (PlayerManager.Inst.CurrentLevel < RestaurantKey.Breakfast.Index * GameConfig.RestaurantOffset + 50 && IAPKit.Inst.InitializationComplete)
             {
                 if (!IAPKit.Inst.HasPurchased("starter_pack1"))
                 {

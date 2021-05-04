@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FairyGUI;
 using Kitchen;
+using RestaurantPreview.Config;
 using Shop;
 
 namespace Client.UI.ViewModel
@@ -23,7 +24,7 @@ namespace Client.UI.ViewModel
         }
 
         private PlayerManager Player { get; }
-        private HashSet<object> ItemList => new HashSet<object>();
+        private HashSet<object> ItemList { get; } = new HashSet<object>();
         private const int ListColumn = 4;
         public ParamsData Arg { get; set; }
 
@@ -43,7 +44,7 @@ namespace Client.UI.ViewModel
                 return;
             }
 
-            Restaurant = Arg.level.RestaurantId;
+            Restaurant = Arg.level.Restaurant;
             QuickMode();
             InitData();
             InitList();
@@ -80,16 +81,13 @@ namespace Client.UI.ViewModel
         {
             HashSet<FoodProperty> foodSet = new HashSet<FoodProperty>();
             HashSet<CookwareProperty> cookwareSet = new HashSet<CookwareProperty>();
-            foreach (var node in Player.CurrentLevel.Orders)
+            foreach (var food in FoodProperty.ReadDict())
             {
-                foreach (var food in node.Foods)
+                if (food.Value.Restaurant == RestaurantKey.This)
                 {
-                    if (food != null)
-                    {
-                        foodSet.Add(food);
-                    }
-
-                    var cookware = food.Cookware;
+                    FoodProperty data = food.Value;
+                    foodSet.Add(data);
+                    var cookware = CookwareProperty.Read(data.Cookware);
                     if (cookware != null)
                     {
                         cookwareSet.Add(cookware);

@@ -19,7 +19,7 @@ namespace Client.UI.ViewModel
             base.OnInit(p);
             View.Back.onClick.Set(Back_OnClick);
             View.Restart.onClick.Set(Restart_OnClick);
-            View.Rest.text = LocalizationProperty.Read(LevelProperty.RestaurantId.Key);
+            View.Rest.text = LocalizationProperty.Read(LevelProperty.Restaurant.Key);
             View.Level.text = LocalizationProperty.Read("Level X");
             View.Exit.onClick.Set(Exit_OnClick);
         }

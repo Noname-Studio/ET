@@ -35,23 +35,18 @@ namespace GamingUI
             Bar = progressBar;
         }
 
-        public void Update()
+        public void Update(float value)
         {
-            if (Bar.value <= 0)
+            if (value <= 0)
             {
                 Bar.value = 0;
                 Bar.GetChild("txt").asTextField.text = "0:00";
                 return;
             }
 
-            time += Time.unscaledDeltaTime;
-            if (time > 1)
-            {
-                Bar.value -= time;
-                ValueChangedCallback(Bar.value, Bar);
-                time = 0;
-                Bar.GetChild("txt").asTextField.text = TimeUtils.ConvertNumberToTimeString(Bar.value, @"m\:ss");
-            }
+            Bar.value = value;
+            ValueChangedCallback(value, Bar);
+            Bar.GetChild("txt").asTextField.text = TimeUtils.ConvertNumberToTimeString(Bar.value, @"m\:ss");
         }
     }
 }

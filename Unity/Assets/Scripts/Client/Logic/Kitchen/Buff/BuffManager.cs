@@ -17,7 +17,7 @@ namespace Kitchen
             }
         }
         
-        public void Apply(IUnit unit,IBuff buff)
+        public void Apply(IUnit unit,ABuff buff)
         {
             if (!CheckConditionVaild(unit, buff)) return;
             unit.Buff.Add(buff);
@@ -38,13 +38,13 @@ namespace Kitchen
         {
             if (unit.Buff == null)
             {
-                Logger.LogError("该单位不支持添加Debuff");
+                Log.Error("该单位不支持添加Debuff");
                 return false;
             }
 
             if (buff == null)
             {
-                Logger.LogError("Buff不能为Null");
+                Log.Error("Buff不能为Null");
                 return false;
             }
 

@@ -305,3 +305,17 @@ message G2M_SessionDisconnect // IActorLocationMessage
     int64 ActorId = 94;
 }
 
+message Manager2G_Reload // IActorMessage
+{
+	int32 RpcId = 90;
+}
+
+message Manager2G_SafeShutdown // IActorMessage
+{
+	int32 RpcId = 90;
+}
+
+message Manager2G_VersionChanged // IActorMessage
+{
+	int32 RpcId = 90;
+}

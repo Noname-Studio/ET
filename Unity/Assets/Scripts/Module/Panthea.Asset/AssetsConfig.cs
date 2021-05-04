@@ -5,10 +5,9 @@ namespace Panthea.Asset
     public class AssetsConfig
     {
         private static string mStreamingAssets;
-        public static string StreamingAssets => mStreamingAssets ?? (mStreamingAssets = Application.streamingAssetsPath);
+        public static string StreamingAssets => mStreamingAssets ??= Application.streamingAssetsPath;
 
-        public static string AssetBundleStreamingAssets =>
-                (mStreamingAssets ?? (mStreamingAssets = Application.streamingAssetsPath)) + "/" + Platform;
+        public static string AssetBundleStreamingAssets => (mStreamingAssets ??= Application.streamingAssetsPath) + "/" + Platform;
 
         private static string mPersistentDataPath;
 
@@ -17,7 +16,7 @@ namespace Panthea.Asset
             get
             {
 #if DEVELOPMENT_BUILD
-                return mPersistentDataPath ?? (mPersistentDataPath = Application.persistentDataPath);
+                return mPersistentDataPath ??= Application.persistentDataPath;
 #elif UNITY_ANDROID && !UNITY_EDITOR
             if (mPersistentDataPath == null)
             {
@@ -38,7 +37,7 @@ namespace Panthea.Asset
 
         public const string Suffix = ".bundle";
 
-        public static string AssetBundlePersistentDataPath => PersistentDataPath + "/assetbundles";
+        public static string AssetBundlePersistentDataPath => PersistentDataPath + "/resources/";
 
         public static string Platform
         {

@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+﻿/*using Cysharp.Threading.Tasks;
 using Panthea.Asset;
 using UnityEngine;
 
@@ -6,15 +6,16 @@ namespace Panthea.Asset
 {
     public class S3Download: IDownloadPlatform
     {
-        private IDownloadHandler mDownloadHandler;
-        private const string WEB_CONTENT_HOST = "https://dum5uv7xb9d66.cloudfront.net/";
+        private IDownloadHandler mDownloadHandler { get; }
+        private string Host { get; }
         private readonly string mRelativePath;
         private readonly string mSavePath;
         private static readonly string Version = Application.version;
         private static readonly string Platform = AssetsConfig.Platform;
 
-        public S3Download(string relativePath, string savePath, IDownloadHandler downloadHandler)
+        public S3Download(string host, string relativePath, string savePath, IDownloadHandler downloadHandler)
         {
+            Host = host;
             mRelativePath = relativePath;
             mSavePath = savePath;
             mDownloadHandler = downloadHandler;
@@ -22,7 +23,7 @@ namespace Panthea.Asset
 
         private string FormatUrl(string path)
         {
-            string url = WEB_CONTENT_HOST + mRelativePath + Version + "/" + Platform + "/" + path;
+            string url = Host + mRelativePath + Version + "/" + Platform + "/" + path;
             return url;
         }
 
@@ -64,4 +65,4 @@ namespace Panthea.Asset
             return await mDownloadHandler.GetBytes(url);
         }
     }
-}
+}*/

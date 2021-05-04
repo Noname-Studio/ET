@@ -17,7 +17,7 @@ namespace Kitchen
             OrderObject = display.Find("Order");
             OrderPosition = OrderObject.Position;
             OrderUI = OrderObject.GetComponent<UIPanel>();
-            OrderUI.CreateUI();
+            //OrderUI.CreateUI();
             OrderUI.ui.scale = new Vector2(0.4f, 0.4f);
             OrderUI.transform.eulerAngles = new Vector3(30, 135, 0);
             OrderUI.ui.visible = false;

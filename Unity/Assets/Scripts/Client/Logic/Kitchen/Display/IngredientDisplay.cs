@@ -1,4 +1,5 @@
 using System;
+using RestaurantPreview.Config;
 using Spine.Unity;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace Kitchen
         {
             Display = display;
             Property = property;
-            FoodId = property.Key;
+            FoodId = property.Id;
         }
 
         public void Dispose()

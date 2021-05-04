@@ -94,9 +94,9 @@ namespace Kitchen.Action
             for (var index = 0; index < order.Count; index++)
             {
                 var node = order[index];
-                if (mHoldFood.Contains(node.Key))
+                if (mHoldFood.Contains(node))
                 {
-                    orderList.Add(node.Key);
+                    orderList.Add(node);
                 }
             }
 

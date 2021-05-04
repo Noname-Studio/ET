@@ -39,10 +39,10 @@ namespace Client.UI.ViewModel
 
         private void RefreshFoodItem(FoodProperty node, GButton item)
         {
-            item.name = node.Key;
-            FoodDetailProperty currentProperty = node.CurrentLevel;
+            item.name = node.Id;
+            FoodProperty.FoodDetailProperty currentProperty = node.CurrentLevel;
 
-            FoodDetailProperty nextLevel = null;
+            FoodProperty.FoodDetailProperty nextLevel = null;
             if (node.Levels.Count > currentProperty.Level) //Level 是从 1 开始的
             {
                 nextLevel = node.Levels[currentProperty.Level];
@@ -50,7 +50,7 @@ namespace Client.UI.ViewModel
 
             if (node.LevelCap == currentProperty.Level || nextLevel == null)
             {
-                if (currentProperty.UnlockLv > Player.CurrentLevel.LevelId)
+                if (currentProperty.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
                 {
                     item.GetController("State").selectedPage = "Lock";
                     item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.CurrentLevel.Texture;
@@ -61,7 +61,7 @@ namespace Client.UI.ViewModel
                     item.GetController("State").selectedPage = "MaxLevel";
                 }
             }
-            else if (nextLevel.UnlockLv > Player.CurrentLevel.LevelId)
+            else if (nextLevel.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
             {
                 item.GetController("State").selectedPage = "Lock";
                 item.icon = currentProperty.Level == 1? "ui://Shop/box" : node.CurrentLevel.Texture;
@@ -123,9 +123,9 @@ namespace Client.UI.ViewModel
 
         private void RefreshCookwareItem(CookwareProperty node, View_KitchenItem item)
         {
-            item.name = node.Key;
-            CookwareDetailProperty currentProperty = node.CurrentLevel;
-            CookwareDetailProperty nextLevel = null;
+            item.name = node.Id;
+            CookwareProperty.CookwareDetailProperty currentProperty = node.CurrentLevel;
+            CookwareProperty.CookwareDetailProperty nextLevel = null;
             if (node.Levels.Count > currentProperty.Level) //Level 是从 1 开始的
             {
                 nextLevel = node.Levels[currentProperty.Level];
@@ -135,7 +135,7 @@ namespace Client.UI.ViewModel
             {
                 item.State.selectedPage = "MaxLevel";
             }
-            else if (nextLevel.UnlockLv > Player.CurrentLevel.Id)
+            else if (nextLevel.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
             {
                 item.State.selectedPage = "Lock";
                 item.icon = currentProperty.Level == 1? "ui://Shop/box" : currentProperty.Texture;
@@ -188,7 +188,7 @@ namespace Client.UI.ViewModel
             List<FoodProperty> maxLevelList = new List<FoodProperty>();
             foreach (FoodProperty food in foods)
             {
-                if (food.RestaurantId != Restaurant)
+                if (food.Restaurant != Restaurant)
                 {
                     continue;
                 }
@@ -199,13 +199,13 @@ namespace Client.UI.ViewModel
                 }
 
                 var level = food.NextLevel;
-                if (level != null && level.UnlockLv > Player.CurrentLevel.LevelId)
+                if (level != null && level.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
                 {
                     lockList.Add(food);
                 }
                 else if (level == null)
                 {
-                    if (food.CurrentLevel.UnlockLv > Player.CurrentLevel.LevelId)
+                    if (food.CurrentLevel.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
                     {
                         lockList.Add(food);
                     }
@@ -220,9 +220,9 @@ namespace Client.UI.ViewModel
                 }
             }
 
-            lockList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
-            unlockList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
-            maxLevelList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
+            lockList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
+            unlockList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
+            maxLevelList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
             summary.AddRange(unlockList);
             summary.AddRange(lockList);
             summary.AddRange(maxLevelList);
@@ -237,19 +237,24 @@ namespace Client.UI.ViewModel
             List<CookwareProperty> maxLevelList = new List<CookwareProperty>();
             foreach (CookwareProperty cookware in cookwares)
             {
-                if (cookware.RestaurantId != Restaurant)
+                if (cookware.Restaurant != Restaurant)
+                {
+                    continue;
+                }
+
+                if (cookware.LevelCap == 1)
                 {
                     continue;
                 }
 
                 var level = cookware.NextLevel;
-                if (level != null && level.UnlockLv > Player.CurrentLevel.LevelId)
+                if (level != null && level.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
                 {
                     lockList.Add(cookware);
                 }
                 else if (level == null)
                 {
-                    if (cookware.CurrentLevel.UnlockLv > Player.CurrentLevel.LevelId)
+                    if (cookware.CurrentLevel.UnlockLv > LevelProperty.GetLevelId(Player.CurrentLevel))
                     {
                         lockList.Add(cookware);
                     }
@@ -264,9 +269,9 @@ namespace Client.UI.ViewModel
                 }
             }
 
-            lockList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
-            unlockList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
-            maxLevelList.Sort((t1, t2) => string.CompareOrdinal(t1.Key, t2.Key));
+            lockList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
+            unlockList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
+            maxLevelList.Sort((t1, t2) => string.CompareOrdinal(t1.Id, t2.Id));
             summary.AddRange(unlockList);
             summary.AddRange(lockList);
             summary.AddRange(maxLevelList);

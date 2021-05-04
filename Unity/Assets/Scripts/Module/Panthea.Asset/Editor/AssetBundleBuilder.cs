@@ -34,7 +34,7 @@ namespace Panthea.Editor.Asset
             //压缩内容
             //AddProcess<ZipAssets>();
             //提交服务器
-            //mProcess.Add(typeof(UploadS3));
+            mProcess.Add(typeof(UploadTencentCos));
             await DoPipeline();
         }
 

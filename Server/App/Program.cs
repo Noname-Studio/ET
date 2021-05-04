@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
 using System.Threading;
 using CommandLine;
 using NLog;
@@ -9,6 +11,15 @@ namespace ET
 	{
 		private static void Main(string[] args)
 		{
+			var host = Dns.GetHostEntry(Dns.GetHostName());
+			foreach (var ip in host.AddressList)
+			{
+				if (ip.AddressFamily == AddressFamily.InterNetwork)
+				{
+				}
+
+				Log.Info(ip.ToString());
+			}
 			foreach (var node in args)
 			{
 				Log.Error("参数:" + node);
@@ -27,14 +38,10 @@ namespace ET
 				Parser.Default.ParseArguments<Options>(args)
 						.WithNotParsed(error => throw new Exception($"命令行格式错误!"))
 						.WithParsed(o => { options = o; });
-				if (int.TryParse(Environment.GetEnvironmentVariable("IsDevelop"), out var value))
-				{
-					options.Develop = value;
-				}
 				Game.Options = options;
 				LogManager.Configuration.Variables["appIdFormat"] = $"{Game.Scene.Id:0000}";
 				Log.Info($"server start........................ {Game.Scene.Id}");
-				Log.Info("调试模式:" + (options.Develop == 1? "开" : "关"));
+				Log.Info("调试模式:" + (options.Develop? "开" : "关"));
 				Game.EventSystem.Publish(new EventType.AppStart());
 
 				while (true)

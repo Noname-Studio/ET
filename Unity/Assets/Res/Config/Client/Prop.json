@@ -1,0 +1,114 @@
+{
+  "灭火器": {
+    "Id": "灭火器",
+    "Name": "灭火器",
+    "Icon": "ui://Common/icon_never_burn",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 1000001,
+    "Type": "Level",
+    "Desc": "Extinguisher"
+  },
+  "双倍金币": {
+    "Id": "双倍金币",
+    "Name": "双倍金币",
+    "Icon": "ui://Common/icon_double_coin",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 1000001,
+    "Type": "Level",
+    "Desc": "DoubleCoin"
+  },
+  "稳定火力": {
+    "Id": "稳定火力",
+    "Name": "稳定火力",
+    "Icon": "ui://Common/icon_cookfast",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 1000001,
+    "Type": "Level",
+    "Desc": "FirePower"
+  },
+  "助连器": {
+    "Id": "助连器",
+    "Name": "助连器",
+    "Icon": "ui://Common/icon_combo_helper",
+    "Price": {
+      "gem": 10
+    },
+    "Unlock": 1000001,
+    "Type": "Level",
+    "Desc": "ComboHelper"
+  },
+  "无限体力": {
+    "Id": "无限体力",
+    "Name": "无限体力",
+    "Icon": "ui://Common/无限体力",
+    "Unlock": 0,
+    "Type": "None",
+    "Desc": "InfiniteEnergry"
+  },
+  "钻石": {
+    "Id": "钻石",
+    "Name": "钻石",
+    "Icon": "ui://Common/钻石",
+    "Unlock": 0,
+    "Type": "Res",
+    "Desc": "Gem"
+  },
+  "金币": {
+    "Id": "金币",
+    "Name": "金币",
+    "Icon": "ui://Common/coin_icon",
+    "Unlock": 0,
+    "Type": "Res",
+    "Desc": "Coin"
+  },
+  "2次机会": {
+    "Id": "2次机会",
+    "Name": "2次机会",
+    "Icon": "ui://Common/icon_sec_chance",
+    "Price": {
+      "gem": 40
+    },
+    "Unlock": 1000001,
+    "Type": "InTheLevel",
+    "Desc": "SecondChance"
+  },
+  "增加3名顾客": {
+    "Id": "增加3名顾客",
+    "Name": "增加3名顾客",
+    "Icon": "ui://Common/icon_add_guest",
+    "Price": {
+      "gem": 40
+    },
+    "Unlock": 1000001,
+    "Type": "InTheLevel",
+    "Desc": "Add3Cus"
+  },
+  "延续关卡30秒": {
+    "Id": "延续关卡30秒",
+    "Name": "延续关卡30秒",
+    "Icon": "ui://Common/icon_add_time",
+    "Price": {
+      "gem": 40
+    },
+    "Unlock": 1000001,
+    "Type": "InTheLevel",
+    "Desc": "Add30Sec"
+  },
+  "无限耐心": {
+    "Id": "无限耐心",
+    "Name": "无限耐心",
+    "Icon": "ui://Common/icon_timer_stop",
+    "Price": {
+      "gem": 27
+    },
+    "Unlock": 1000001,
+    "Type": "InTheLevel",
+    "Desc": "InfinitePatient"
+  }
+}

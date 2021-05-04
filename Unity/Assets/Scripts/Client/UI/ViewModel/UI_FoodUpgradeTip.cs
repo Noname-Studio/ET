@@ -1,6 +1,5 @@
 ﻿using Client.Effect;
 using Common;
-using RemoteSaves;
 using RestaurantPreview.Config;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
@@ -40,8 +39,8 @@ namespace Client.UI.ViewModel
         private void InitState()
         {
             var food = mArgs.Food;
-            FoodDetailProperty currentLevel = food.CurrentLevel;
-            FoodDetailProperty nextLevel = food.NextLevel;
+            FoodProperty.FoodDetailProperty currentLevel = food.CurrentLevel;
+            FoodProperty.FoodDetailProperty nextLevel = food.NextLevel;
             View.IsMax.selectedPage = nextLevel == null? "TRUE" : "FALSE";
             View.FoodIcon.url = food.CurrentLevel.Texture;
             View.FoodName.text = food.DisplayName;
@@ -78,16 +77,15 @@ namespace Client.UI.ViewModel
             var price = food.CurrentLevel.Price;
             if (ResourcesHelper.SpenPrice(price,false))
             {
-                var dt = Data_FoodFactory.Get(food.RestaurantId);
-                var info = dt.Get(food.Key.Remove(0, 2));
+                var dt = DBManager.Inst.Query<Data_Food>();
+                var info = dt.Get(food);
                 info.Level += 1;
-                dt.Set(food.Key, info);
-                Message.Send(new FoodUpgradeSuccess(food.Key));
+                Message.Send(new FoodUpgradeSuccess(food.Id));
+                if(price.Coin > 0)
+                    EffectFactory.Create(new ResourcesBarValueChanged(-price.Coin, ResourcesBarValueChanged.ResourceType.Coin));
+                if (price.Gem > 0)
+                    EffectFactory.Create(new ResourcesBarValueChanged(-price.Gem, ResourcesBarValueChanged.ResourceType.Gem));
             }
-            if(price.Coin > 0)
-                EffectFactory.Create(new ResourcesBarValueChanged(-price.Coin, ResourcesBarValueChanged.ResourceType.Coin));
-            if (price.Gem > 0)
-                EffectFactory.Create(new ResourcesBarValueChanged(-price.Gem, ResourcesBarValueChanged.ResourceType.Gem));
             CloseMySelf();
         }
 

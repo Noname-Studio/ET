@@ -1,3 +1,5 @@
+using RestaurantPreview.Config;
+
 namespace Kitchen
 {
     public abstract class ACustomerGenerator
@@ -18,6 +20,6 @@ namespace Kitchen
         /// 每当活跃时间发生改变时执行.
         /// 你可以理解为只有有空闲位置出现的时候会被执行
         /// </summary>
-        public abstract CustomerOrder Run();
+        public abstract LevelProperty.CustomerOrder Run(float decay);
     }
 }

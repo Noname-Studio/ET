@@ -7,7 +7,7 @@ namespace Kitchen
 {
     public class PlayerController: IUnit
     {
-        public List<IBuff> Buff { get; } = new List<IBuff>();
+        public List<ABuff> Buff { get; } = new List<ABuff>();
 
         public enum MovingState
         {

@@ -1,5 +1,0 @@
-﻿厨房ID,厨房显示(预设体),场景模型(美术提供),场景坐标,餐厅式样,服务员模型,服务员初始速度,食材图集名称,场景氛围：粒子或龙骨动画,节日氛围：粒子或龙骨动画,工会场景模型,工会场景氛围：粒子或龙骨动画
-Id,kitchen_layout,scene_model,scene_pos,kitchen_styles,role_model,role_speed,ing_atlas_name,environment,festival_envir,guild_scene,guild_envir
-int,string,List<string>,Vector3,List<string>,string,float,string,"Dictionary<string,string>","Dictionary<string,string>",string,"Dictionary<string,string>"
-1,layout_foodtruck,Model/Kitchen/FoodTruck/C0,,style1,Model/Roles/lisaStory/lisaForStory,2.4,ing_sprite_atlas0,,,,
-2,layout_breakfast-demo1,Model/Kitchen/Breakfast/C1,,"style1,style2,style3",Model/Roles/lisaStory/lisaForStory,2.6,,,,,

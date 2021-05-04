@@ -14,7 +14,7 @@ namespace Client.UI.ViewModel
         private KRManager KrManager { get; }
         private Data_GameRecord GameRecord { get; set; }
         private LevelProperty LevelProperty { get; set; }
-        private List<string> UsedProp { get; } = new List<string>();
+        private HashSet<string> UsedProp { get; } = new HashSet<string>();
 
         public UI_EnterLevelPanel()
         {
@@ -27,7 +27,13 @@ namespace Client.UI.ViewModel
             base.OnInit(p);
             InitEditor();
             GameRecord = DBManager.Inst.Query<Data_GameRecord>();
-            LevelProperty = PlayerManager.Inst.CurrentLevel;
+            var level = LevelProperty.Read(PlayerManager.Inst.CurrentLevel);
+            if (level == null)
+            {
+                //level找不到.我们开始随机一些关卡.
+                //Todo
+            }
+            LevelProperty = level;
             InitPanel(LevelProperty);
             InitUI();
         }
@@ -52,7 +58,7 @@ namespace Client.UI.ViewModel
 
         private void Shop_OnClick()
         {
-            Manager.Create<UI_QuickShop>();
+            Manager.Create<UI_QuickShop>(new UI_QuickShop.ParamsData(LevelProperty));
         }
 
         private void Play_OnClick()
@@ -76,46 +82,46 @@ namespace Client.UI.ViewModel
         {
             LevelProperty = level;
             View.Level.text = string.Format(LocalizationProperty.Read("Level X"), level.LevelId);
-            View.Restaurant.text = LocalizationProperty.Read(level.RestaurantId.Key);
+            View.Restaurant.text = LocalizationProperty.Read(level.Restaurant.Key);
             InitTarget(level);
             InitProp(level);
         }
 
         private void InitTarget(LevelProperty level)
         {
-            if (level.Type.HasFlag(LevelType.FixedTime))
+            if (level.LevelType.HasFlag(LevelProperty.LevelTypeFlags.固定时间))
             {
                 var target = (GLabel) View.MainTarget.AddItemFromPool();
                 target.icon = "ui://Common/沙漏拷贝";
                 target.text = TimeUtils.ConvertNumberToTimeString(level.Requirements.FixedTime, @"mm\:ss");
             }
 
-            if (level.Type.HasFlag(LevelType.Coin))
+            if (level.LevelType.HasFlag(LevelProperty.LevelTypeFlags.收集金币))
             {
                 var target = (GLabel) View.MainTarget.AddItemFromPool();
                 target.icon = "ui://Common/coin_icon";
                 target.text = "X " + level.Requirements.RequiredCoin;
             }
 
-            if (level.Type.HasFlag(LevelType.LikeCount))
+            if (level.LevelType.HasFlag(LevelProperty.LevelTypeFlags.点赞数量))
             {
                 var target = (GLabel) View.MainTarget.AddItemFromPool();
                 target.icon = "ui://Common/icon_great";
                 target.text = "X " + level.Requirements.LikeCount;
             }
 
-            if (level.Type.HasFlag(LevelType.NumberOfCompletedOrders))
+            if (level.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务订单))
             {
                 var target = (GLabel) View.MainTarget.AddItemFromPool();
                 target.icon = "ui://Common/icon_any_dish";
                 target.text = "X " + level.Requirements.NumberOfCompletedOrders;
             }
 
-            if (level.Type.HasFlag(LevelType.NumberOfCustomerService))
+            if (level.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务顾客))
             {
                 var target = (GLabel) View.MainTarget.AddItemFromPool();
                 target.icon = "ui://Common/icon_any_cus";
-                target.text = "X " + level.Requirements.NumberOfCompletedOrders;
+                target.text = "X " + level.Requirements.NumberOfCustomerService;
             }
 
             bool subVisable = false;
@@ -146,6 +152,7 @@ namespace Client.UI.ViewModel
         private void InitProp(LevelProperty level)
         {
             var propMgr = DBManager.Inst.Query<Data_Prop>();
+            View.Prop.onClickItem.Add(PropItem_OnClick);
             foreach (var node in PropProperty.ReadDict().Values)
             {
                 if (node.Type == PropProperty.TypeEnum.Level)
@@ -156,18 +163,16 @@ namespace Client.UI.ViewModel
                     {
                         button.IsLock.selectedPage = "FALSE";
                         button.icon = node.Icon;
-                        var num = propMgr.GetNumByKey(node.Id);
+                        var num = propMgr.Get(node.Id).Count;
                         if (num > 0)
                         {
-                            button.choice.title = propMgr.GetNumByKey(node.Id).ToString();
+                            button.choice.title = propMgr.Get(node.Id).Count.ToString();
                             button.choice.Plus.visible = false;
-                            button.onClick.Remove(UseProp_OnClick);
                         }
                         else
                         {
                             button.choice.title = "";
                             button.choice.Plus.visible = true;
-                            button.onClick.Add(BuyProp_OnClick);
                         }
                     }
                     else
@@ -178,23 +183,34 @@ namespace Client.UI.ViewModel
             }
         }
 
-        private void UseProp_OnClick(EventContext evt)
+        private void PropItem_OnClick(EventContext context)
         {
-            var component = (GComponent) evt.sender;
+            var component = (GButton) context.data;
             var property = (PropProperty) component.data;
-            UsedProp.Add(property.Id);
+            var propMgr = DBManager.Inst.Query<Data_Prop>();
+            var num = propMgr.Get(property.Id).Count;
+            if (num > 0)
+                UseProp_OnClick(property,component.selected);
+            else
+                BuyProp_OnClick(property);
         }
 
-        private void BuyProp_OnClick(EventContext evt)
+        private void UseProp_OnClick(PropProperty prop,bool selected)
         {
-            var component = (GComponent) evt.sender;
-            var property = (PropProperty) component.data;
+            if (selected)
+                UsedProp.Add(prop.Id);
+            else
+                UsedProp.Remove(prop.Id);
+        }
+
+        private void BuyProp_OnClick(PropProperty prop)
+        {
             var tips = UIKit.Inst.Create<UI_Tips>();
             var propMgr = DBManager.Inst.Query<Data_Prop>();
-            tips.SetContent($"使用{property.Price.Gem}钻石购买道具");
+            tips.SetContent($"使用{prop.Price.Gem}钻石购买道具");
             tips.AddButton(LocalizationProperty.Read("Confirm"), uiTips =>
             {
-                propMgr.IncrementNumByKey(property.Id);
+                propMgr.Get(prop.Id).Count++;
                 DBManager.Inst.Update(propMgr);
             });
             tips.AddButton(LocalizationProperty.Read("Cancel"));

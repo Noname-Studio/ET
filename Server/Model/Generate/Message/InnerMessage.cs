@@ -655,4 +655,31 @@ namespace ET
 
 	}
 
+	[Message(InnerOpcode.Manager2G_Reload)]
+	[ProtoContract]
+	public partial class Manager2G_Reload: IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.Manager2G_SafeShutdown)]
+	[ProtoContract]
+	public partial class Manager2G_SafeShutdown: IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.Manager2G_VersionChanged)]
+	[ProtoContract]
+	public partial class Manager2G_VersionChanged: IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
 }

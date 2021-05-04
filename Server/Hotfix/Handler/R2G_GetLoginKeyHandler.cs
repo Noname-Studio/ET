@@ -11,7 +11,7 @@ namespace ET
 		{
 			long account = 0;
 			//在这里我们校验一下第三方登录是否正确
-			if (Game.Options.Develop == 0)
+			if (Game.Options.Develop)
 			{
 				if (request.LoginType == (int)LoginType.Google)
 				{

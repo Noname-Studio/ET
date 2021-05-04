@@ -68,7 +68,7 @@ public class JenkinsWorkflow: Editor
         public bool IsMono;
     }
 
-    [MenuItem("Tools/Test")]
+    /*[MenuItem("Tools/Test")]
     public static void XXX()
     {
         /*if(AndroidExternalToolsSettings.jdkRootPath.EndsWith("/"))
@@ -76,7 +76,7 @@ public class JenkinsWorkflow: Editor
         else
             AndroidExternalToolsSettings.jdkRootPath = AndroidExternalToolsSettings.jdkRootPath + "/";
         var getJavaTools = typeof (UnityEditor.Android.AndroidDevice).Assembly.GetType("UnityEditor.Android.AndroidJavaTools");
-        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);*/
+        getJavaTools.GetMethod("GetInstanceOrThrow",BindingFlags.Public | BindingFlags.Static).Invoke(null,null);#1#
         /*CommandLineBuildAndroid(new CommandParams
         {
             Platform = "Android",
@@ -84,12 +84,12 @@ public class JenkinsWorkflow: Editor
             IsCompress = false,
             IsMono = true,
             OutputPath = "build/Android/dev.apk"
-        });*/
+        });#1#
         Debug.Log(EditorUserBuildSettings.compressFilesInPackage);
         Debug.Log(EditorUserBuildSettings.development);
         Debug.Log(EditorUserBuildSettings.allowDebugging);
         Debug.Log(PlayerSettings.stripEngineCode);
-    }
+    }*/
 
     public static void CommandLineExtenral()
     {

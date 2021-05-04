@@ -39,7 +39,6 @@ namespace ET
 
         private void OnComplete(object sender, SocketAsyncEventArgs e)
         {
-            Log.Info("Server Init Complete");
             switch (e.LastOperation)
             {
                 case SocketAsyncOperation.Accept:

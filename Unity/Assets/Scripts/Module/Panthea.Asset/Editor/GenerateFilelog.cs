@@ -54,7 +54,7 @@ namespace Panthea.Editor.Asset
                 var fileInfo = new FileInfo(filePath);
                 var crc = Crc32CAlgorithm.Compute(filePath);
                 var dependencies = m_Results.BundleInfos[node.Key].Dependencies;
-                mSave.Add(node.Key, new AssetFileLog(crc, TimeUtils.GetUtcTimeStamp(), node.Key, files, dependencies, (int) fileInfo.Length));
+                mSave.Add(node.Key, new AssetFileLog(crc, TimeUtils.GetUtcTimeStamp(), node.Key, files, dependencies));
             }
 
             var json = JsonConvert.SerializeObject(mSave);

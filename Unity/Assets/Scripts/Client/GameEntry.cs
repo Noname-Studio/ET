@@ -123,8 +123,10 @@ public class GameEntry: MonoBehaviour
             //注册需要使用的下载工具
             var downloader = new UnityWebDownloader();
             //注册确切使用的下载服务器
-            var downloadPlatform = new S3Download("public/game_res/assetbundle/TestNewSystem/",
-                AssetsConfig.AssetBundlePersistentDataPath + "/", downloader);
+            var downloadPlatform = new CosDownload(
+                "https://restaurant-cn-1253480967.cos.ap-guangzhou.myqcloud.com/resources/" + AssetsConfig.Platform + "/",
+                AssetsConfig.AssetBundlePersistentDataPath + "/",
+                AssetsConfig.PersistentDataPath + "/resources/");
             //使AssetsManager支持下载功能(只是注册S3Download只是注册了服务,但是并没有开启下载功能)
             var abDownloader = new AssetBundleDownloader(fileTrack, downloadPlatform);
 
@@ -159,19 +161,25 @@ public class GameEntry: MonoBehaviour
     /// 注册游戏数据表
     /// </summary>
     /// <returns></returns>
-    private async UniTask RegisterGameConfigure()
+    private static async UniTask RegisterGameConfigure()
     {
+        NetJsonExtConverter.RegisterAll();
+        //因为下面有的表需要用到这个表.我们不能放在下面的队列中让他们并发执行.这可能导致错过这个表
+        await ConfigAssetManager<CookwareProperty>.Load("Config/Client/Cookware");
         var tasks = new List<UniTask>
         {
             //ConfigAssetManager<ItemProperty>.Load(assetsManager, "DB/Item"),
-            ConfigAssetManager<LocalizationProperty>.Load("Config/Restaurant/Localization"),
-            ConfigAssetManager<GuildIconProperty>.Load("Config/Restaurant/GuildIcon"),
-            ConfigAssetManager<GlobalConfigProperty>.Load("Config/Restaurant/GlobalConfig"),
-            ConfigAssetManager<PropProperty>.Load("Config/Restaurant/Prop"),
-            ConfigAssetManager<StandaloneKitchenConfigProperty>.Load("Config/Kitchen/StandaloneKitchenConfig"),
-            ConfigAssetManager<IAPProperty>.Load("Config/Restaurant/IAP"),
-            ConfigAssetManager<AchievementProperty>.Load("Config/Restaurant/Achievement")
-
+            ConfigAssetManager<LocalizationProperty>.Load("Config/Client/Localization"),
+            ConfigAssetManager<GuildIconProperty>.Load("Config/Client/GuildIcon"),
+            ConfigAssetManager<GlobalConfigProperty>.Load("Config/Client/GlobalConfig"),
+            ConfigAssetManager<PropProperty>.Load("Config/Client/Prop"),
+            ConfigAssetManager<RestaurantProperty>.Load("Config/Client/Restaurant"),
+            ConfigAssetManager<IAPProperty>.Load("Config/Client/IAP"),
+            ConfigAssetManager<FoodProperty>.Load("Config/Client/Food"),
+            ConfigAssetManager<AchievementProperty>.Load("Config/Client/Achievement"),
+            ConfigAssetManager<LevelProperty>.Load("Config/Client/Level"),
+            ConfigAssetManager<CustomerProperty>.Load("Config/Client/Customer"),
+            ConfigAssetManager<BuffProperty>.Load("Config/Client/Buff"),
         };
         await UniTask.WhenAll(tasks);
     }

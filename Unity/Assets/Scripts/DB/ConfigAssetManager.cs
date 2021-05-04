@@ -38,12 +38,20 @@ namespace Config.ConfigCore
         public static async UniTask Load(string path)
         {
             Type = typeof (T);
-            string json;
-            json = (await AssetsKit.Inst.Load<TextAsset>(path)).text;
-            if (string.IsNullOrEmpty(json))
+            string json = null;
+            try
             {
-                return;
+                json = (await AssetsKit.Inst.Load<TextAsset>(path)).text;
+                if (string.IsNullOrEmpty(json))
+                {
+                    return;
+                }
             }
+            catch(Exception e)
+            {
+                throw new Exception("找不到文件:" + path + "\n" + e);
+            }
+
 
             bool isInt = Type.GetProperty("Id").PropertyType == typeof (int);
             var method = Type.GetMethod("PostPipeline", BindingFlags.NonPublic | BindingFlags.Static);
@@ -136,11 +144,11 @@ namespace Config.ConfigCore
         {
             if (Values == null)
             {
-                if (IntKeyValue.Count != 0)
+                if (IntKeyValue != null && IntKeyValue.Count != 0)
                 {
                     Values = IntKeyValue.Values.ToList();
                 }
-                else if (StringKeyValue.Count != 0)
+                else if (StringKeyValue != null && StringKeyValue.Count != 0)
                 {
                     Values = StringKeyValue.Values.ToList();
                 }

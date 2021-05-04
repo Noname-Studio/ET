@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Panthea.Asset;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 namespace Kitchen
@@ -53,7 +54,6 @@ namespace Kitchen
         }
 
         public string Item { get; private set; }
-        private ItemType mType;
         private Display Tray;
 
         private Display Food;
@@ -73,32 +73,20 @@ namespace Kitchen
         public async UniTaskVoid Hold(string id)
         {
             Item = id;
-            mType = id.StartsWith("F_")? ItemType.Food : ItemType.Ingedient;
             Tray.SetActive(true);
             Food.SetActive(true);
             var plate = AssetsKit.Inst.Load<Texture>("Image/Food/plate1_1").AsTask();
             Tray.SetTexture(plate.Result);
-            if (mType == ItemType.Ingedient)
-            {
-                var property = KitchenDataHelper.LoadFood(id);
-                var food = AssetsKit.Inst.Load<Texture>(property.CurrentLevel.Texture).AsTask();
-                await food;
-                Food.SetTexture(food.Result);
-            }
-            else if (mType == ItemType.Food)
-            {
-                var property = KitchenDataHelper.LoadFood(id);
-                var food = AssetsKit.Inst.Load<Texture>(property.CurrentLevel.Texture).AsTask();
-                await food;
-                Food.SetTexture(food.Result);
-            }
+            var property = FoodProperty.Read(id);
+            var food = AssetsKit.Inst.Load<Texture>(property.CurrentLevel.Texture).AsTask();
+            await food;
+            Food.SetTexture(food.Result);
         }
 
         public string Take()
         {
             var item = Item;
             Item = null;
-            mType = ItemType.None;
             Tray.SetActive(false);
             Food.SetActive(false);
             return item;

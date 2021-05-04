@@ -1,5 +1,6 @@
 using Client.UI.ViewModel;
 using FairyGUI;
+using RestaurantPreview.Config;
 using Spine.Unity;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Kitchen
     {
         private readonly NormalCookware mDisplay;
         private readonly CookwareProperty mProperty;
-        private readonly CookwareDetailProperty mCookwareDetail;
+        private readonly CookwareProperty.CookwareDetailProperty mCookwareDetail;
         private readonly UI_CookwareProgress mCookwareProgress;
         private UI_CookFood mCookResult;
         private float mWorkTime;
@@ -85,7 +86,7 @@ namespace Kitchen
                 return;
             }
 
-            var property = KitchenDataHelper.LoadFood(id);
+            var property = FoodProperty.Read(id);
             mCookResult.View.Plate.url = "Image/Food/plate1_1";
             mCookResult.View.Food.url = property.CurrentLevel.Texture;
             mCookResult.View.visible = true;
@@ -104,19 +105,19 @@ namespace Kitchen
             if (mState == CookwareState.Work)
             {
                 mWorkTime += Time.unscaledDeltaTime;
-                mCookwareProgress.SetFill(mWorkTime / mCookwareDetail.WorkTime);
-                if (mWorkTime >= mCookwareDetail.WorkTime)
+                mCookwareProgress.SetFill(mWorkTime / mDisplay.WorkTime);
+                if (mWorkTime >= mDisplay.WorkTime)
                 {
                     mDisplay.FinishWork();
                 }
             }
             else if (mState == CookwareState.Burning)
             {
-                if (mCookwareDetail.BurnTime != 0)
+                if (mDisplay.BurnTime > 0)
                 {
                     mBurnTime += Time.unscaledDeltaTime;
-                    mCookwareProgress.SetFill(mBurnTime / mCookwareDetail.BurnTime);
-                    if (mBurnTime >= mCookwareDetail.BurnTime)
+                    mCookwareProgress.SetFill(mBurnTime / mDisplay.BurnTime);
+                    if (mBurnTime >= mDisplay.BurnTime)
                     {
                         mDisplay.BurntFood();
                     }

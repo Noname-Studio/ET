@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Client.Effect;
 using Common;
-using RemoteSaves;
 using RestaurantPreview.Config;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
@@ -20,7 +20,7 @@ namespace Client.UI.ViewModel
         }
 
         private ParamsData Arg { get; set; }
-        private CookwareDetailProperty Detail { get; set; }
+        private CookwareProperty.CookwareDetailProperty Detail { get; set; }
 
         protected override void OnInit(IUIParams p)
         {
@@ -152,10 +152,14 @@ namespace Client.UI.ViewModel
             var prop = Arg.Property;
             if (ResourcesHelper.SpenPrice(Detail.Price,false))
             {
-                Data_Cookware_Info dt = Data_CookwareFactory.Get(prop.Key, prop.RestaurantId);
-                dt.Level += 1;
-                Data_CookwareFactory.Set(prop.Key, prop.RestaurantId, dt);
-                Message.Send(new CookwareUpgradeSuccess(prop.Key));
+                Data_Cookware dt = DBManager.Inst.Query<Data_Cookware>();
+                var info = dt.Get(prop);
+                info.Level += 1;
+                Message.Send(new CookwareUpgradeSuccess(prop.Id));
+                if(Detail.Price.Coin > 0)
+                    EffectFactory.Create(new ResourcesBarValueChanged(-Detail.Price.Coin, ResourcesBarValueChanged.ResourceType.Coin));
+                if (Detail.Price.Gem > 0)
+                    EffectFactory.Create(new ResourcesBarValueChanged(-Detail.Price.Gem, ResourcesBarValueChanged.ResourceType.Gem));
             }
 
             CloseMySelf();

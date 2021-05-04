@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using RestaurantPreview.Config;
 
 namespace Kitchen
 {
@@ -7,18 +8,18 @@ namespace Kitchen
         public AKitchenSpot Spot { get; }
         public UnityObject Display { get; }
         public AnimatorControl Animator { get; }
-        protected CustomerOrder Property { get; }
-        public ObservableCollection<FoodProperty> Order { get; }
+        protected LevelProperty.CustomerOrder Property { get; }
+        public ObservableCollection<string> Order { get; }
         public CustomerState State { get; protected set; } = CustomerState.Enter;
         public ComponentContainer Components { get; } = new ComponentContainer();
 
-        public ACustomer(UnityObject display, AKitchenSpot spot, CustomerOrder property)
+        public ACustomer(UnityObject display, AKitchenSpot spot, LevelProperty.CustomerOrder property)
         {
             Spot = spot;
             Display = display;
             Animator = Display.AddComponent<AnimatorControl>();
             Property = property;
-            Order = new ObservableCollection<FoodProperty>(Property.Foods);
+            Order = new ObservableCollection<string>(Property.Foods);
         }
 
         public void RemoveOrder(string key)
@@ -26,11 +27,17 @@ namespace Kitchen
             for (var index = 0; index < Order.Count; index++)
             {
                 var node = Order[index];
-                if (node.Key == key)
+                if (node == key)
                 {
+                    var property = FoodProperty.Read(node);
+                    if (property == null)
+                    {
+                        Log.Error("找不到食物ID:" + node);
+                        continue;
+                    }
                     KitchenRoot.Inst.Record.ServicesOrderNumber++;
                     //交一份食物给一分钱
-                    KitchenRoot.Inst.Record.CoinNumber += node.CurrentLevel.Tips;
+                    KitchenRoot.Inst.Record.CoinNumber += property.CurrentLevel.Tips;
                     Order.Remove(node);
                     break;
                 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using RemoteSaves;
-
 public class Data_Analytics : DBDefine
 {
     /// <summary>
@@ -49,14 +47,14 @@ public class Data_Analytics : DBDefine
         }
     }
     
-    public int CafeCount
+    /*public int CafeCount
     {
         get
         {
             DBManager.Inst.Query<Data_GameRecord>().Level.TryGetValue(RestaurantKey.FoodTruck.Key,out var value);
             return value / GameConfig.RestaurantOffset;
         }
-    }
+    }*/
 
     public int DressupCount
     {
@@ -107,7 +105,7 @@ public class Data_Analytics : DBDefine
         GetMappings.Add("ConsecutiveLevels.Login", analytics => analytics.ConsecutiveLevels.Login);
         GetMappings.Add("BreakfastCount", analytics => analytics.BreakfastCount);
         GetMappings.Add("DressupCount", analytics => analytics.DressupCount);
-        GetMappings.Add("CafeCount", analytics => analytics.CafeCount);
+        //GetMappings.Add("CafeCount", analytics => analytics.CafeCount);
         GetMappings.Add("PetCount", analytics => analytics.PetCount);
         GetMappings.Add("JoinedGuildNumber", analytics => analytics.JoinedGuildNumber);
 

@@ -4,6 +4,7 @@ using Client.UI.ViewModel;
 using Cysharp.Threading.Tasks;
 using FairyGUI;
 using Manager;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 /// <summary>
@@ -24,7 +25,7 @@ public class KRManager: Singleton<KRManager>
     /// <summary>
     /// 切换显示到后厨场景
     /// </summary>
-    public async UniTask SwitchToKitchen<T>(LevelProperty property, List<string> usedProp, bool visible = true) where T : IKitchenMode
+    public async UniTask SwitchToKitchen<T>(LevelProperty property, HashSet<string> usedProp, bool visible = true) where T : IKitchenMode
     {
         try
         {

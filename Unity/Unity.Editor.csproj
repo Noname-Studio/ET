@@ -52,26 +52,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\CodeGenerator\DataFoodCodeGenerator.cs" />
-     <Compile Include="Assets\Editor\CodeGenerator\DataCookwareCodeGenerator.cs" />
      <Compile Include="Assets\Editor\Optiomizer\StorySceneFBXOptiomizer.cs" />
+     <Compile Include="Assets\Editor\ReloadConfigAssetProcessor.cs" />
      <Compile Include="Assets\Editor\Proto2CsEditor\InnerProto2CS.cs" />
      <Compile Include="Assets\Editor\Helper\MongoHelper.cs" />
      <Compile Include="Assets\Editor\Proto2CsEditor\Proto2CSEditor.cs" />
      <Compile Include="Assets\Editor\XcodeProjectBuildPost.cs" />
      <Compile Include="Assets\Editor\JenkinsWorkflow.cs" />
-     <Compile Include="Assets\Editor\LevelEditor\KitchenDataPreview.cs" />
      <Compile Include="Assets\Editor\ExcelExporterEditor\ExcelExporterEditor.cs" />
-     <Compile Include="Assets\Editor\ScriptableObjectCreator.cs" />
-     <Compile Include="Assets\Editor\ServerCommandLineEditor\ServerCommandLineEditor.cs" />
      <Compile Include="Assets\Editor\Helper\EditorResHelper.cs" />
      <Compile Include="Assets\Editor\Strip\ShaderStrip.cs" />
-     <Compile Include="Assets\Editor\LevelEditor\EditLevelWindow.cs" />
-     <Compile Include="Assets\Editor\LevelEditor\EditorLevelGenerator.cs" />
      <Compile Include="Assets\Editor\MinistonePreferences.cs" />
      <Compile Include="Assets\Editor\RsyncEditor\RsyncEditor.cs" />
      <Compile Include="Assets\Editor\KeystoreHelper.cs" />
-     <Compile Include="Assets\Editor\LevelEditor\Example.cs" />
      <Compile Include="Assets\Editor\RsyncEditor\RsyncConfig.cs" />
      <Compile Include="Assets\Editor\Optiomizer\CommonFBXOptiomizer.cs" />
      <None Include="Assets\Editor\Unity.Editor.asmdef" />
@@ -309,6 +302,9 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.164.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.analytics@3.5.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
@@ -327,11 +323,17 @@
  <Reference Include="System.Runtime.CompilerServices.Unsafe">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.collections@0.7.0-preview.2/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
  </Reference>
+ <Reference Include="Google.JarResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.164.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.Utilities.Editor">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.analytics@3.5.3/Unity.Analytics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.164.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Burst.Unsafe">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.burst@1.3.0/Unity.Burst.Unsafe.dll</HintPath>
@@ -384,6 +386,9 @@
  <Reference Include="System.Memory">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/System.Memory.dll</HintPath>
  </Reference>
+ <Reference Include="Google.PackageManagerResolver_v1.2.164">
+ <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.164.dll</HintPath>
+ </Reference>
  <Reference Include="Sirenix.OdinInspector.Editor">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
  </Reference>
@@ -392,18 +397,6 @@
  </Reference>
  <Reference Include="MongoDB.Bson">
  <HintPath>C:/Dev/Project/ET/Unity/Assets/Plugins/MongoDB.Bson.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.164">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.164.dll</HintPath>
- </Reference>
- <Reference Include="Google.PackageManagerResolver_v1.2.164">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.164.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver_v1.2.164">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.164.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.164">
- <HintPath>C:/Dev/Project/ET/Unity/Assets/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.164.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Dev/Project/ET/Unity/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>

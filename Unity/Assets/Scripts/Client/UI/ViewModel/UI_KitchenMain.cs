@@ -3,6 +3,8 @@ using System.ComponentModel;
 using FairyGUI;
 using GamingUI;
 using Kitchen;
+using RestaurantPreview.Config;
+using UnityEngine;
 
 namespace Client.UI.ViewModel
 {
@@ -10,6 +12,7 @@ namespace Client.UI.ViewModel
     {
         private LevelProperty LevelProperty { get; }
         private Com_TimeBar TimeBar { get; set; }
+        private KitchenRecord Record { get; } = KitchenRoot.Inst.Record;
 
         public UI_KitchenMain()
         {
@@ -19,40 +22,47 @@ namespace Client.UI.ViewModel
         protected override void OnInit(IUIParams p)
         {
             base.OnInit(p);
-            TimeBar = new Com_TimeBar(View.TimeBar);
-            TimeBar.Max = TimeBar.Value = LevelProperty.Requirements.FixedTime;
-            TimeBar.ValueChangedCallback += (d, bar) =>
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.固定时间))
             {
-                if (bar is View_timerBar b && !b.t0.playing)
+                TimeBar = new Com_TimeBar(View.TimeBar);
+                TimeBar.Max = TimeBar.Value = LevelProperty.Requirements.FixedTime;
+                TimeBar.ValueChangedCallback += (d, bar) =>
                 {
-                    if (d < 15)
+                    if (bar is View_timerBar b && !b.t0.playing)
                     {
-                        b.t0.Play();
+                        if (d < 15)
+                        {
+                            b.t0.Play();
+                        }
                     }
-                }
-            };
+                };
+            }
+            else
+            {
+                View.TimeBar.visible = false;
+            }
+
             KitchenRoot.Inst.Record.PropertyChanged += RecordChanged;
             RegisterButtonClick();
         }
 
         private void RecordChanged(object sender, PropertyChangedEventArgs e)
         {
-            var record = KitchenRoot.Inst.Record;
-            if (LevelProperty.Type.HasFlag(LevelType.LikeCount))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.点赞数量))
             {
-                View.ScoreBar.value = record.LikeCount;
+                View.ScoreBar.value = Record.LikeCount;
             }
-            else if (LevelProperty.Type.HasFlag(LevelType.NumberOfCompletedOrders))
+            else if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务订单))
             {
-                View.ScoreBar.value = record.ServicesOrderNumber;
+                View.ScoreBar.value = Record.ServicesOrderNumber;
             }
-            else if (LevelProperty.Type.HasFlag(LevelType.NumberOfCustomerService))
+            else if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务顾客))
             {
-                View.ScoreBar.value = record.ServicesCustomerNumber;
+                View.ScoreBar.value = Record.ServicesCustomerNumber;
             }
-            else if (LevelProperty.Type.HasFlag(LevelType.Coin))
+            else if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.收集金币))
             {
-                View.ScoreBar.value = record.CoinNumber;
+                View.ScoreBar.value = Record.CoinNumber;
             }
         }
 
@@ -81,30 +91,30 @@ namespace Client.UI.ViewModel
         private void InitRequirement()
         {
             var req = LevelProperty.Requirements;
-            if (LevelProperty.Type.HasFlag(LevelType.FixedTime))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.固定时间))
             {
                 View.TimeBar.max = req.FixedTime;
             }
 
-            if (LevelProperty.Type.HasFlag(LevelType.LikeCount))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.点赞数量))
             {
                 View.ScoreBar.c1.selectedPage = "Praise";
                 View.ScoreBar.max = req.LikeCount;
             }
 
-            if (LevelProperty.Type.HasFlag(LevelType.NumberOfCompletedOrders))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务订单))
             {
                 View.ScoreBar.c1.selectedPage = "Foods";
                 View.ScoreBar.max = req.NumberOfCompletedOrders;
             }
 
-            if (LevelProperty.Type.HasFlag(LevelType.Coin))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.收集金币))
             {
                 View.ScoreBar.c1.selectedPage = "Coin";
                 View.ScoreBar.max = req.RequiredCoin;
             }
 
-            if (LevelProperty.Type.HasFlag(LevelType.NumberOfCustomerService))
+            if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务顾客))
             {
                 View.ScoreBar.c1.selectedPage = "Foods";
                 View.ScoreBar.max = req.NumberOfCustomerService;
@@ -180,14 +190,14 @@ namespace Client.UI.ViewModel
         /// </summary>
         public void ShowFoodProcess(string key)
         {
-            var foodProperty = KitchenDataHelper.LoadFood(key);
+            var foodProperty = FoodProperty.Read(key);
             ShowFoodProcess(foodProperty);
         }
 
         public override void Update()
         {
             View.ComboBar.Update();
-            TimeBar.Update();
+            TimeBar?.Update(Mathf.CeilToInt(LevelProperty.Requirements.FixedTime - Record.PlayTime));
         }
     }
 }

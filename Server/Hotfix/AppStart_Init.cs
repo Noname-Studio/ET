@@ -1,11 +1,6 @@
-
-
-using System;
-using System.IO;
 using System.Net;
-using Agones;
-using ET.ThirdParty;
-using Google.Apis.Auth.OAuth2;
+using Config.ConfigCore;
+using RestaurantPreview.Config;
 
 namespace ET
 {
@@ -14,7 +9,7 @@ namespace ET
         protected override async ETTask Run(EventType.AppStart args)
         {
             Game.Scene.AddComponent<ConfigComponent>();
-            
+            ConfigAssetManager<DrawReward_FriendPointProperty>.Load("DrawReward_FriendPoint.json");
             ConfigComponent.GetAllConfigBytes = LoadConfigHelper.LoadAllConfigBytes;
             await ConfigComponent.Instance.LoadAsync();
 
@@ -50,29 +45,6 @@ namespace ET
             }
 
             await GuildComponent.Instance.RegisterAllGuildToChat();
-            if (Game.Options.Develop != 1)
-            {
-                var agones = new AgonesSDK();
-                Log.Info("Connecting to the SDK Server...");
-                bool ok = false;
-                try
-                {
-                    ok = await agones.ConnectAsync();
-                    if (ok == false)
-                        throw new Exception("Ok == false");
-                }
-                catch(Exception e)
-                {
-                    Log.Error(e);
-                    Log.Info("初始化服务器失败");
-                    Environment.Exit(0);
-                    return;
-                }
-                Log.Info("...Connected to SDK Server");
-                var status = await agones.ReadyAsync();
-                Log.Info(status.Detail);
-                Game.Scene.AddComponent<AgonesComponent, AgonesSDK>(agones);
-            }
         }
     }
 }

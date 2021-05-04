@@ -20,6 +20,7 @@ namespace Client.Effect
         public FadeScreen()
         {
             mFadeScreen = View_FadeScreen.CreateInstance();
+            mFadeScreen.MakeFullScreen();
             GRoot.inst.AddChild(mFadeScreen);
             mFadeScreen.sortingOrder = int.MaxValue;
         }

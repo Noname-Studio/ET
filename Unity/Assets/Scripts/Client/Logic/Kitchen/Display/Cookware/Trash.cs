@@ -38,6 +38,7 @@ namespace Kitchen
             }
 
             result.Add(list[0]);
+            KitchenRoot.Inst.Record.DropFoodCount++;
             return result;
         }
 

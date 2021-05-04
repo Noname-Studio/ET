@@ -31,8 +31,8 @@ namespace Client.Manager
         {
             get
             {
-                return "35.237.211.93:7585";
-                //return "192.168.3.29:10002";
+                return "82.156.218.129:7000";
+                //return "192.168.0.105:7000";
             }
         }
         public void Init()
@@ -67,6 +67,7 @@ namespace Client.Manager
                 }
                 return IsConnect;
             }
+            MessageKit.Inst.Send(EventKey.StartConnectToServer);
             Connecting = true;
             try
             {
@@ -77,14 +78,19 @@ namespace Client.Manager
                     await LoginHelper.Login(scene, GateIP);
                     Session = scene.GetComponent<SessionComponent>().Session;
                     Connecting = false;
+                    MessageKit.Inst.Send(EventKey.ConnectionSucceeded);
                     return true;
                 }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                MessageKit.Inst.Send(EventKey.ConnectionFailure);
             }
             finally
             {
                 Connecting = false;
             }
-
             return false;
         }
 

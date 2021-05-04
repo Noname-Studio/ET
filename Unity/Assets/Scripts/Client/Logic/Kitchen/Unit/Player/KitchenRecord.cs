@@ -4,40 +4,6 @@ namespace Kitchen
 {
     public class KitchenRecord: NotifyObject
     {
-        public KitchenRecord()
-        { 
-            MessageKit.Inst.Add<ComboLevelUp>(Event_ComboLevelUp);
-            MessageKit.Inst.Add<MaxCombo>(Event_ComboLevelUp);
-        }
-
-        private void Event_ComboLevelUp(MaxCombo e)
-        {
-            Event_ComboLevelUp(e.Level);
-        }
-
-        private void Event_ComboLevelUp(ComboLevelUp e)
-        {
-            Event_ComboLevelUp(e.Level);
-        }
-
-        private void Event_ComboLevelUp(int level)
-        {
-            if (level <= 2)
-                return;
-            else if (level == 3)
-                Combo3++;
-            else if (level == 4)
-                Combo4++;
-            //这里播放特效
-            CoinNumber += level * 10;
-        }
-
-        public void Dispose()
-        {
-            MessageKit.Inst.Remove<ComboLevelUp>(Event_ComboLevelUp);
-            MessageKit.Inst.Remove<MaxCombo>(Event_ComboLevelUp);
-        }
-
         private int mServicesOrderNumber;
         private int mLikeCount;
         private int mCoinNumber;
@@ -47,8 +13,45 @@ namespace Kitchen
         private int mDropFoodCount;
         private float mPlayTime;
         private int mTipsNumber;
-        public int Combo3 { get; private set; }
-        public int Combo4 { get; private set; }
+        private int mCombo3;
+        private int mCombo4;
+
+        /// <summary>
+        /// 3连击次数
+        /// </summary>
+        public int Combo3
+        {
+            get => mCombo3;
+            set
+            {
+                //连击达成次数不能下降.只能上升
+                if (mCombo3 < value)
+                {
+                    var oldValue = mCombo3;
+                    mCombo3 = value;
+                    NotifyPropertyChanged(oldValue, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 4连击次数
+        /// </summary>
+        public int Combo4
+        {
+            get => mCombo4;
+            set
+            {
+                //连击达成次数不能下降.只能上升
+                if (mCombo4 < value)
+                {
+                    var oldValue = mCombo4;
+                    mCombo4 = value;
+                    NotifyPropertyChanged(oldValue, value);
+                }
+            }
+        }
+
         /// <summary>
         /// 服务食物数量
         /// </summary>

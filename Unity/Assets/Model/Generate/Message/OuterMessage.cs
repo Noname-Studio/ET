@@ -267,53 +267,21 @@ namespace ET
 	{
 	}
 
-	[ResponseType(typeof(G2C_Reload))]
 	[Message(OuterOpcode.C2G_Reload)]
 	[ProtoContract]
-	public partial class C2G_Reload: IRequest
+	public partial class C2G_Reload: IMessage
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 	}
 
-	[Message(OuterOpcode.G2C_Reload)]
-	[ProtoContract]
-	public partial class G2C_Reload: IResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
-	[ResponseType(typeof(G2C_SafeShutdown))]
 	[Message(OuterOpcode.C2G_SafeShutdown)]
 	[ProtoContract]
-	public partial class C2G_SafeShutdown: IRequest
+	public partial class C2G_SafeShutdown: IMessage
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
-
-	}
-
-	[Message(OuterOpcode.G2C_SafeShutdown)]
-	[ProtoContract]
-	public partial class G2C_SafeShutdown: IResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
 
 	}
 
@@ -947,6 +915,9 @@ namespace ET
 		[ProtoMember(3)]
 		public long? GuildId { get; set; }
 
+		[ProtoMember(4)]
+		public List<string> AchievementList = new List<string>();
+
 	}
 
 	[ResponseType(typeof(G2C_QuitGuild))]
@@ -1082,6 +1053,55 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_VersionChanged)]
+	[ProtoContract]
+	public partial class G2C_VersionChanged: IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.C2G_ChangeVersion)]
+	[ProtoContract]
+	public partial class C2G_ChangeVersion: IMessage
+	{
+	}
+
+	[ResponseType(typeof(G2C_DrawReward))]
+	[Message(OuterOpcode.C2G_DrawReward)]
+	[ProtoContract]
+	public partial class C2G_DrawReward: IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Type { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_DrawReward)]
+	[ProtoContract]
+	public partial class G2C_DrawReward: IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public string Reward { get; set; }
+
+		[ProtoMember(2)]
+		public int Number { get; set; }
 
 	}
 

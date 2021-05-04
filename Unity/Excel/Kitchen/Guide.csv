@@ -1,4 +1,0 @@
-﻿指引ID,指引名字,"是否自动继续1,0",是否点击特定区域,是否需要跳过,显示文本
-Id,Key,auto_nexts,need_taprects,need_skips,content_key
-int,string,List<bool>,List<bool>,List<bool>,string
-9001,Intro2Orders,1,0,0,

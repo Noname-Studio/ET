@@ -1,5 +1,6 @@
 ﻿using Client.UI.ViewModel;
 using FairyGUI;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 namespace Kitchen
@@ -33,8 +34,7 @@ namespace Kitchen
             {
                 var node = list[i];
                 var loader = Ui.View.GetChild("Food" + (i + 1)).asLoader;
-                FoodProperty ingredient = null;
-                ingredient = KitchenDataHelper.LoadFood(node);
+                FoodProperty ingredient = FoodProperty.Read(node);
                 if (ingredient != null)
                 {
                     loader.url = ingredient.CurrentLevel.Texture;

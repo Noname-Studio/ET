@@ -37,5 +37,7 @@ public struct EventKey
     public static readonly EventKey GuildAskEnergyChanged = new EventKey(nameof (GuildAskEnergyChanged));
     public static readonly EventKey IAPPurchaseSuccess = new EventKey(nameof (IAPPurchaseSuccess));
     public static readonly EventKey IAPPurchaseFailed = new EventKey(nameof (IAPPurchaseFailed));
-
+    public static readonly EventKey StartConnectToServer = new EventKey(nameof (StartConnectToServer));
+    public static readonly EventKey ConnectionFailure = new EventKey(nameof (ConnectionFailure));
+    public static readonly EventKey ConnectionSucceeded = new EventKey(nameof (ConnectionSucceeded));
 }

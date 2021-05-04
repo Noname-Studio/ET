@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Client.UI.ViewModel;
 using Cysharp.Threading.Tasks;
 using Kitchen;
 using Kitchen.Provider;
+using RestaurantPreview.Config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -44,10 +46,15 @@ public class KitchenRoot: IDisposable
     /// 给予餐厅可以连击的能力
     /// </summary>
     public ComboProvider ComboProvider { get; private set; }
+
+    public Dictionary<string, int> UsedProp { get; } = new Dictionary<string, int>();
+    /// <summary>
+    /// 
+    /// </summary>
+    public DecayProvider DecayProvider { get; private set; }
     public UnitManager Units { get; } = new UnitManager();
     
     public LevelProperty LevelProperty { get; }
-    public KitchenConfigProperty KitchenConfig { get; }
     private UIManager UiManager { get; }
     public Camera MainCamera { get; }
     public static KitchenRoot Inst { get; set; }
@@ -62,13 +69,17 @@ public class KitchenRoot: IDisposable
         IsPause = false;
     }
     
-    public KitchenRoot(LevelProperty property, KitchenConfigProperty kitchenConfig)
+    public KitchenRoot(LevelProperty property,HashSet<string> usedProp)
     {
         UiManager = UIKit.Inst;
-        KitchenConfig = kitchenConfig;
         Inst = this;
         MainCamera = Camera.main;
         LevelProperty = property;
+        var prop = DBManager.Inst.Query<Data_Prop>();
+        foreach (var node in usedProp)
+        {
+            UsedProp.Add(node, prop.Get(node).Level);
+        }
         Initialize().Forget();
     }
 
@@ -82,6 +93,7 @@ public class KitchenRoot: IDisposable
         InitSpotsProvider();
         InitCustomerGeneratorProvider();
         InitEndOfKitchenProvider();
+        InitDecayProvider();
         InitOtherProvider();
         //我们UI最后在初始化
         InitUI();
@@ -116,9 +128,20 @@ public class KitchenRoot: IDisposable
     /// <returns></returns>
     private void InitCustomerGeneratorProvider()
     {
-        CustomerProvider = new CustomerProvider(SpotProvider, LevelProperty);
+        if (LevelProperty.LevelType.HasFlag(LevelProperty.LevelTypeFlags.服务顾客))
+            CustomerProvider = new CustomerProvider(SpotProvider, LevelProperty, -1);//LevelProperty.Requirements.NumberOfCustomerService);
+        else
+            CustomerProvider = new CustomerProvider(SpotProvider, LevelProperty, -1);
         var normalCustomerGenerator = new NormalCustomerGenerator(LevelProperty);
         CustomerProvider.AddGenerator(normalCustomerGenerator);
+    }
+
+    /// <summary>
+    /// 初始化衰减支持
+    /// </summary>
+    private void InitDecayProvider()
+    {
+        DecayProvider = new DecayProvider(LevelProperty);
     }
 
     /// <summary>
@@ -129,7 +152,7 @@ public class KitchenRoot: IDisposable
         EndOfKitchenProvider =
                 new EndOfKitchenProvider(new EndOfNormalLevel(LevelProperty, Units.GetPlayer()), LevelProperty);
     }
-    
+
     private void InitOtherProvider()
     {
         ComboProvider = new ComboProvider();
@@ -152,6 +175,7 @@ public class KitchenRoot: IDisposable
         Record.PlayTime += Time.deltaTime;
         EndOfKitchenProvider.Update();
         CustomerProvider.Update();
+        DecayProvider.Update();
         return 0;
     }
 

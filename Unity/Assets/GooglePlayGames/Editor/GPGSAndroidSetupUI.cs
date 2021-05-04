@@ -115,7 +115,7 @@ namespace GooglePlayGames.Editor
                 GPGSUtil.CheckAndFixVersionedAssestsPaths();
                 AssetDatabase.Refresh();
 
-                /*Google.VersionHandler.VerboseLoggingEnabled = true;
+                Google.VersionHandler.VerboseLoggingEnabled = true;
                 Google.VersionHandler.UpdateVersionedAssets(forceUpdate: true);
                 Google.VersionHandler.Enabled = true;
                 AssetDatabase.Refresh();
@@ -129,7 +129,7 @@ namespace GooglePlayGames.Editor
                 return PerformSetup(
                     clientId,
                     GPGSProjectSettings.Instance.Get(GPGSUtil.APPIDKEY),
-                    nearbySvcId);*/
+                    nearbySvcId);
             }
 
             return false;

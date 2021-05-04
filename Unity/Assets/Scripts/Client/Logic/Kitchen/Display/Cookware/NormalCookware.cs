@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using RestaurantPreview.Config;
 
 namespace Kitchen
 {
@@ -13,7 +14,7 @@ namespace Kitchen
         public IAnimation Animation { get; }
         public UnityObject Display { get; }
         public CookwareProperty Property { get; }
-        public CookwareDetailProperty CookwareDetail { get; }
+        public CookwareProperty.CookwareDetailProperty CookwareDetail { get; }
 
         private List<FoodProperty> mMakeFoodProperty;
 
@@ -53,17 +54,29 @@ namespace Kitchen
         private string WorkingFoodId { get; set; }
 
         public PlacedIngredients PlacedIngredients { get; }
+        
+        /// <summary>
+        /// 我们把这个属性从Config中独立出来.这样我们Buff进行修改的时候就改这里就行了.不能修改Config
+        /// </summary>
+        public float BurnTime { get; set; }
+        /// <summary>
+        /// 我们把这个属性从Config中独立出来.这样我们Buff进行修改的时候就改这里就行了.不能修改Config
+        /// </summary>
+        public float WorkTime { get; set; }
         private readonly PlacedRenderer mPlacedRenderer;
 
         /// <summary>
         /// 避免重复New List 我们这里把GetRequirement的需求条件编程类变量而不是局部变量
         /// </summary>
-        private HashSet<FoodProperty> mRequirement = new HashSet<FoodProperty>();
+        private HashSet<string> mRequirement = new HashSet<string>();
 
+        public BuffContainer Buffs = new BuffContainer();
         public NormalCookware(CookwareProperty property, UnityObject display, IAnimation animation)
         {
             Property = property;
             CookwareDetail = property.CurrentLevel;
+            BurnTime = CookwareDetail.BurnTime;
+            WorkTime = CookwareDetail.WorkTime;
             Display = display;
             Animation = animation;
             mRenderer = new CookwareRenderer(this);
@@ -106,21 +119,21 @@ namespace Kitchen
             List<string> put = null;
             foreach (var req in list)
             {
-                if (ingredients.Contains(req.Key))
+                if (ingredients.Contains(req))
                 {
                     if (put == null)
                     {
                         put = new List<string>();
                     }
 
-                    if (PlacedIngredients.List.Contains(req.Key))
+                    if (PlacedIngredients.List.Contains(req))
                     {
                         //厨具里面已经有这个食材了.我们不需要添加这个食材了
                         continue;
                     }
 
-                    put.Add(req.Key);
-                    PlacedIngredients.Add(req.Key);
+                    put.Add(req);
+                    PlacedIngredients.Add(req);
                 }
             }
 
@@ -171,7 +184,7 @@ namespace Kitchen
             WorkingFoodId = foodKey;
         }
 
-        private HashSet<FoodProperty> GetRequirement()
+        private HashSet<string> GetRequirement()
         {
             string key = null;
             return GetRequirement(ref key);
@@ -182,7 +195,7 @@ namespace Kitchen
         /// </summary>
         /// <param name="foodKey">返回食物key</param>
         /// <returns></returns>
-        private HashSet<FoodProperty> GetRequirement(ref string foodKey)
+        private HashSet<string> GetRequirement(ref string foodKey)
         {
             if (mRequirement.Count > 0)
             {
@@ -223,7 +236,7 @@ namespace Kitchen
                 if (pass)
                 {
                     mRequirement.Clear();
-                    foodKey = node.Key;
+                    foodKey = node.Id;
                     return mRequirement;
                 }
             }
@@ -237,7 +250,7 @@ namespace Kitchen
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        private int Overlap(IList<string> from, IList<FoodProperty> to)
+        private int Overlap(IList<string> from, IList<string> to)
         {
             int count = from.Count;
             int count2 = to.Count;
@@ -248,7 +261,7 @@ namespace Kitchen
                 for (int j = 0; j < count2; j++)
                 {
                     var b = to[j];
-                    if (b != null && a == b.Key)
+                    if (b != null && a == b)
                     {
                         result++;
                     }
@@ -269,7 +282,7 @@ namespace Kitchen
             FoodCount = CookwareDetail.MakeCount;
             WorkingFoodId = null;
             State = CookwareState.Done;
-            if (CookwareDetail.BurnTime > 0)
+            if (BurnTime > 0)
             {
                 StartBurn();
             }
@@ -294,11 +307,13 @@ namespace Kitchen
             Animation.AnimationName = "5burn";
             FoodId = "F_BurnedFood"; //烧焦食物ID
             State = CookwareState.Burned;
+            KitchenRoot.Inst.Record.BurnFoodCount++;
         }
 
         public void Update()
         {
             mRenderer.Update();
+            Buffs.Update();
         }
     }
 }

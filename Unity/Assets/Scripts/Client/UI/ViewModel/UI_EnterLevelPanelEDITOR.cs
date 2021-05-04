@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using FairyGUI;
 using Panthea.Asset;
+using RestaurantPreview.Config;
 
 namespace Client.UI.ViewModel
 {

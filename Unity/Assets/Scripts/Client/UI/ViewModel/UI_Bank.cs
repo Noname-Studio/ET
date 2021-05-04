@@ -121,7 +121,7 @@ public class UI_Bank : UIBase<View_BankNew>
             if (node.Value.Type == PropProperty.TypeEnum.Level || node.Value.Type == PropProperty.TypeEnum.InTheLevel)
             {
                 var item = (View_CardProp)View.List.AddItemFromPool(View_CardProp.URL);
-                if (PlayerManager.Inst.CurrentLevel.Id < value.Unlock)
+                if (PlayerManager.Inst.CurrentLevel < value.Unlock)
                 {
                     item.enabled = false;
                     item.Desc.text = LocalizationProperty.Read("Unlock");
@@ -146,7 +146,7 @@ public class UI_Bank : UIBase<View_BankNew>
         var data = (PropProperty)clicker.data;
         if (ResourcesHelper.SpenPrice(data.Price))
         {
-            DBManager.Inst.Query<Data_Prop>().IncrementNumByKey(data.Id);
+            DBManager.Inst.Query<Data_Prop>().Get(data.Id).Count++;
             AnalyticsKit.Inst.StoreItemClick(StoreType.Soft, data.Id, LocalizationProperty.Read(data.Name));
             EffectFactory.Create(new ResourcesBarValueChanged(-data.Price.Gem, ResourcesBarValueChanged.ResourceType.Gem));
             View.List.onClickItem.Call(clicker);
@@ -242,7 +242,7 @@ public class UI_Bank : UIBase<View_BankNew>
         var db = DBManager.Inst.Query<Data_Prop>();
         View.ItemName2.text = LocalizationProperty.Read(property.Name);
         View.ItemDesc.text = LocalizationProperty.Read(property.Desc);
-        View.OwnCount.SetVar("count",db.GetNumByKey(property.Id).ToString()).FlushVars();
+        View.OwnCount.SetVar("count",db.Get(property.Id).Count.ToString()).FlushVars();
         View.ItemIcon.url = property.Icon;
         View.ItemName.text = "x 1";
         View.Buy.data = property;

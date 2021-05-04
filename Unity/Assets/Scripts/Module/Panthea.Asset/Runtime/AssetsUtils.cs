@@ -10,16 +10,6 @@ namespace Panthea.Asset
         /// 检查文件完整性
         /// </summary>
         /// <returns></returns>
-        public static bool CheckIntegrity(DownloadThread thread)
-        {
-            var crc32 = Crc32CAlgorithm.Compute(thread.WritePath);
-            return crc32 == thread.Crc;
-        }
-
-        /// <summary>
-        /// 检查文件完整性
-        /// </summary>
-        /// <returns></returns>
         public static bool CheckIntegrity(string file, uint compareCrc)
         {
             Stream stream;

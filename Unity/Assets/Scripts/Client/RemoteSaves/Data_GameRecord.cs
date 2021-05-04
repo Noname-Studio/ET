@@ -29,8 +29,8 @@ public class Data_GameRecord: DBDefine
     }
 
     public int Gem { get; set; } = 10; //点券
-    public int ArriveRestaurant { get; set; } = 2; //到达餐厅
-    public Dictionary<string,int> Level { get; } = new Dictionary<string, int>{{RestaurantKey.Breakfast.Key,2000001}}; //关卡
+    public int ArriveRestaurant { get; set; } = 1; //到达餐厅
+    public Dictionary<string,int> Level { get; } = new Dictionary<string, int>{{RestaurantKey.Breakfast.Key,1000001}}; //关卡
     public int InfineEnergy { get; set; } = -1;
     public int Energy { get; set; } = 5;
     public int MaxEnergy { get; set; } = 5;

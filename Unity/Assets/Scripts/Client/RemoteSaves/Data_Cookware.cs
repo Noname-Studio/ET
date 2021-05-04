@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ProtoBuf;
+using RestaurantPreview.Config;
 
 //因为MPC生成代码必须要使用公用变量.所以下方的Info变量都必须是Public否则无法生成代码
 public class Data_Cookware: DBDefine
@@ -10,43 +11,23 @@ public class Data_Cookware: DBDefine
         public int Level;
     }
 
-    public Info K2_GrillPan { get; set; }
-    public Info K2_Toastoven { get; set; }
-    public Info K2_Coffee_Machine { get; set; }
-    public Info K2_HoldingPlate { get; set; }
+    public Dictionary<string, Info> Levels = new Dictionary<string, Info>();
 
-    private Dictionary<string, Func<Data_Cookware, Info>> GetMappings = new Dictionary<string, Func<Data_Cookware, Info>>();
-    private Dictionary<string, Action<Data_Cookware, Info>> SetMappings = new Dictionary<string, Action<Data_Cookware, Info>>();
-
-    public Data_Cookware()
+    public Info Get(string key, RestaurantKey restaurantKey)
     {
-        var properties = GetType().GetProperties();
-        foreach (var node in properties)
+        if (!Levels.TryGetValue(key, out var value))
         {
-            var getter = (Func<Data_Cookware, Info>) node.GetMethod.CreateDelegate(typeof (Func<Data_Cookware, Info>));
-            GetMappings.Add(node.Name, getter);
-            var setter = (Action<Data_Cookware, Info>) node.SetMethod.CreateDelegate(typeof (Action<Data_Cookware, Info>));
-            SetMappings.Add(node.Name, setter);
+            Levels.Add(key, value = new Info());
         }
+        return value;
     }
-
-    public void Set(string key, Info info)
+    
+    public Info Get(CookwareProperty property)
     {
-        Action<Data_Cookware, Info> setter;
-        if (SetMappings.TryGetValue(key, out setter))
+        if (!Levels.TryGetValue(property.Id, out var value))
         {
-            setter(this, info);
+            Levels.Add(property.Id, value = new Info());
         }
-    }
-
-    public Info Get(string key)
-    {
-        Func<Data_Cookware, Info> getter;
-        if (GetMappings.TryGetValue(key, out getter))
-        {
-            return getter(this);
-        }
-
-        return null;
+        return value;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ET;
 using Kitchen;
+using RestaurantPreview.Config;
 using UnityEngine.Experimental.Rendering.Client.Logic.Helpler;
 
 public partial class PlayerManager: IPlayer
@@ -29,22 +30,24 @@ public partial class PlayerManager: IPlayer
     /// <summary>
     /// 当前玩家打至关卡
     /// </summary>
-    public LevelProperty CurrentLevel
+    public int CurrentLevel
     {
         get
         {
             int value;
             if (mGameRecord.Level.TryGetValue(RestaurantKey.This.Key, out value))
-                return KitchenDataHelper.LoadLevel(value);
+            {
+                return value;
+            }
             try
             {
                 var @default = mGameRecord.Level.First();
-                return KitchenDataHelper.LoadLevel(@default.Value);
+                return @default.Value;
             }
             catch(Exception e)
             {
                 Log.Error(e);
-                return null;
+                return 0;
             }
         }
     }

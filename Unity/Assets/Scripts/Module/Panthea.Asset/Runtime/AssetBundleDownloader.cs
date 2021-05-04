@@ -107,28 +107,20 @@ namespace Panthea.Asset
         {
             IDownloadPlatform service = mDownloadServices;
             int tryTimes = 0;
-            var thread = await service.FetchHeader(path);
-            var existPath = HasExist(path);
-            if (!string.IsNullOrEmpty(existPath))
-            {
-                if (AssetsUtils.CheckIntegrity(existPath, thread.Crc))
-                {
-                    await mFilelogContext.Update(path);
-                    return;
-                }
-            }
 
             while (tryTimes++ < 5)
             {
                 try
                 {
-                    await service.Download(thread);
-                    if (!AssetsUtils.CheckIntegrity(thread))
+                    var result = await service.Download(path);
+                    if (result.RemoteCrc32 > 0)//这里我们防止有些文件没有标记Crc导致玩家永远无法过去的问题
                     {
-                        Log.Error($"文件{thread.WritePath}下载不完整.重新下载");
-                        continue;
+                        if (!AssetsUtils.CheckIntegrity(result.WritePath,result.RemoteCrc32))
+                        {
+                            Log.Error($"文件{result.WritePath}下载不完整.重新下载");
+                            continue;
+                        }
                     }
-
                     Log.Print(path + "    下载完毕");
                     await mFilelogContext.Update(path);
                     break;

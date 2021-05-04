@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FairyGUI;
 using Kitchen;
+using RestaurantPreview.Config;
 using Shop;
 
 namespace Client.UI.ViewModel
@@ -107,12 +108,7 @@ namespace Client.UI.ViewModel
             var summary = GetSortCookwareList(CachedCookwareProp);
             foreach (var cookware in summary)
             {
-                if (cookware.RestaurantId != Arg.Restaurant)
-                {
-                    continue;
-                }
-
-                if (cookware.FunType == CookwareFuncType.Misc)
+                if (cookware.Restaurant != Arg.Restaurant)
                 {
                     continue;
                 }

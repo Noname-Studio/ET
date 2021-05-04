@@ -7,6 +7,7 @@ namespace Common
 {
     public partial class View_loading_effect : GComponent
     {
+        public Controller State;
         public Transition t0;
         public const string URL = "ui://ucagdrsi9m1ew1s";
 
@@ -19,6 +20,7 @@ namespace Common
         {
             base.ConstructFromXML(xml);
 
+            State = GetController("State");
             t0 = GetTransition("t0");
         }
     }

@@ -10,7 +10,7 @@ namespace Client.UI.ViewModel
         {
             set
             {
-                GTween.To(View.Bar.fillAmount, value / 100f, 0.3f).SetTarget(View.Bar);
+                GTween.To(View.Bar.fillAmount, value / 100f, 2f).SetTarget(View.Bar);
                 View.Bar.fillAmount = value / 100f;
                 if (value > 60)
                 {

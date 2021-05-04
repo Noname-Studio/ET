@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Kitchen;
 using Panthea.Asset;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 public class NormalKitchenMode: IKitchenMode
 {
     private LevelProperty LevelProperty { get; }
     private KitchenRoot KRoot { get; set; }
-
-    public NormalKitchenMode(LevelProperty property, List<string> usedProp)
+    private HashSet<string> UsedProp { get; }
+    public NormalKitchenMode(LevelProperty property, HashSet<string> usedProp)
     {
         LevelProperty = property;
+        UsedProp = usedProp;
     }
 
     public async UniTask Enter()
     {
         try
         {
-            //加载后厨全局配置表
-            var config = await AssetsKit.Inst.Load<KitchenConfigProperty>("Config/Kitchen/KitchenConfig");
-            KRoot = new KitchenRoot(LevelProperty, config);
+            KRoot = new KitchenRoot(LevelProperty,UsedProp);
         }
         catch (Exception e)
         {

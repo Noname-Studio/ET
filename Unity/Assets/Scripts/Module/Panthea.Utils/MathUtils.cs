@@ -15,6 +15,11 @@ public static class MathUtils
     /// <returns></returns>
     public static List<T> WeightMath<T>(List<T> list, Func<T, int> outInt, int nums, int? seed = null)
     {
+        if (seed.HasValue)
+        {
+            Random.InitState(seed.Value);
+        }
+
         if (list == null || list.Count <= 0 || nums == 0)
         {
             return new List<T>();
@@ -33,11 +38,6 @@ public static class MathUtils
         List<KeyValuePair<int, T>> keyList = new List<KeyValuePair<int, T>>();
         for (int i = 0; i < listCount; i++)
         {
-            if (seed.HasValue)
-            {
-                Random.InitState(seed.Value);
-            }
-
             var random = Random.Range(1, totalWeight);
             var value = list[i];
             keyList.Add(new KeyValuePair<int, T>(outInt(value) + random, value));

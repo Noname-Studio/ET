@@ -6,6 +6,7 @@ using ET;
 using InternalResources;
 using Panthea.Asset;
 using Panthea.NativePlugins;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 namespace Client.UI.ViewModel
@@ -59,7 +60,6 @@ namespace Client.UI.ViewModel
                 try
                 {
                     IAssetsLocator assetsLocator = AssetsKit.Inst;
-                    var customer = await assetsLocator.LoadAll(GameConfig.CustomerConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.FoodConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.LevelConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
                     await assetsLocator.LoadAll(GameConfig.CookwareConfigPath.TrimEnd('/') + AssetsConfig.Suffix);
@@ -67,16 +67,9 @@ namespace Client.UI.ViewModel
                     await assetsLocator.Load<RuntimeAnimatorController>("Model/Roles/Lisa/Kitchen"); //加载后厨人物动画
                     await assetsLocator.Load<Texture>("Image/Food/plate1_1"); //加载人物托盘
                     //Todo 暂时把加载顾客写在这里
-                    foreach (var node in customer)
+                    foreach (var node in CustomerProperty.ReadDict())
                     {
-                        foreach (var obj in node.Value)
-                        {
-                            var customerProperty = obj as CustomerProperty;
-                            if (customerProperty != null)
-                            {
-                                await assetsLocator.Load<GameObject>(customerProperty.ModelPath);
-                            }
-                        }
+                        await assetsLocator.Load<GameObject>(node.Value.ModelPath);
                     }
                 }
                 catch (Exception e)

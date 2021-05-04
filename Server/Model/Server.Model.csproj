@@ -100,6 +100,9 @@
     <Compile Remove="Module\Config\**" />
     <EmbeddedResource Remove="Module\Config\**" />
     <None Remove="Module\Config\**" />
+    <None Update="Config\Assets\DrawReward_FriendPoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Unity\Assets\Model\Module\Message\AMHandler.cs" Link="Module\Message\AMHandler.cs" />
@@ -172,7 +175,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="AgonesSDK" Version="1.13.0" />
     <PackageReference Include="CommandLineParser" Version="2.2.1" />
     <PackageReference Include="Google.Apis.Auth" Version="1.51.0" />
     <PackageReference Include="Grpc.Core" Version="2.37.0" />

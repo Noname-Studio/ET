@@ -1,0 +1,2466 @@
+{
+  "1000001": {
+    "Id": 1000001,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "70",
+    "FixedTime": "40",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000002": {
+    "Id": 1000002,
+    "Restaurant": "早餐厅",
+    "LevelType": "服务订单,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "0",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "6",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000003": {
+    "Id": 1000003,
+    "Restaurant": "早餐厅",
+    "LevelType": "服务顾客,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "0",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "6",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000004": {
+    "Id": 1000004,
+    "Restaurant": "早餐厅",
+    "LevelType": "点赞数量,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "FALSE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "0",
+    "FixedTime": "100",
+    "LikeCount": "10",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000005": {
+    "Id": 1000005,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "FALSE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000006": {
+    "Id": 1000006,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000007": {
+    "Id": 1000007,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000008": {
+    "Id": 1000008,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000009": {
+    "Id": 1000009,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000010": {
+    "Id": 1000010,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000011": {
+    "Id": 1000011,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000012": {
+    "Id": 1000012,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000013": {
+    "Id": 1000013,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000014": {
+    "Id": 1000014,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000015": {
+    "Id": 1000015,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000016": {
+    "Id": 1000016,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000017": {
+    "Id": 1000017,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000018": {
+    "Id": 1000018,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000019": {
+    "Id": 1000019,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000020": {
+    "Id": 1000020,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000021": {
+    "Id": 1000021,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000022": {
+    "Id": 1000022,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000023": {
+    "Id": 1000023,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000024": {
+    "Id": 1000024,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000025": {
+    "Id": 1000025,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000026": {
+    "Id": 1000026,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000027": {
+    "Id": 1000027,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000028": {
+    "Id": 1000028,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000029": {
+    "Id": 1000029,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000030": {
+    "Id": 1000030,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000031": {
+    "Id": 1000031,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000032": {
+    "Id": 1000032,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000033": {
+    "Id": 1000033,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000034": {
+    "Id": 1000034,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000035": {
+    "Id": 1000035,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000036": {
+    "Id": 1000036,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000037": {
+    "Id": 1000037,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000038": {
+    "Id": 1000038,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000039": {
+    "Id": 1000039,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000040": {
+    "Id": 1000040,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000041": {
+    "Id": 1000041,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000042": {
+    "Id": 1000042,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000043": {
+    "Id": 1000043,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000044": {
+    "Id": 1000044,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000045": {
+    "Id": 1000045,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000046": {
+    "Id": 1000046,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000047": {
+    "Id": 1000047,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000048": {
+    "Id": 1000048,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000049": {
+    "Id": 1000049,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000050": {
+    "Id": 1000050,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000051": {
+    "Id": 1000051,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000052": {
+    "Id": 1000052,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000053": {
+    "Id": 1000053,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000054": {
+    "Id": 1000054,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000055": {
+    "Id": 1000055,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000056": {
+    "Id": 1000056,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000057": {
+    "Id": 1000057,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000058": {
+    "Id": 1000058,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000059": {
+    "Id": 1000059,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000060": {
+    "Id": 1000060,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000061": {
+    "Id": 1000061,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000062": {
+    "Id": 1000062,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000063": {
+    "Id": 1000063,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000064": {
+    "Id": 1000064,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000065": {
+    "Id": 1000065,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000066": {
+    "Id": 1000066,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000067": {
+    "Id": 1000067,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000068": {
+    "Id": 1000068,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000069": {
+    "Id": 1000069,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000070": {
+    "Id": 1000070,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000071": {
+    "Id": 1000071,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000072": {
+    "Id": 1000072,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000073": {
+    "Id": 1000073,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000074": {
+    "Id": 1000074,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000075": {
+    "Id": 1000075,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000076": {
+    "Id": 1000076,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  },
+  "1000077": {
+    "Id": 1000077,
+    "Restaurant": "早餐厅",
+    "LevelType": "收集金币,固定时间",
+    "MaxCustomerNumber": 1,
+    "Orders": "[培根]\n[黑咖啡]\n[松饼]\n[烤芦笋]\n[吐司]",
+    "AllowBurn": "TRUE",
+    "AllowLostCustomer": "TRUE",
+    "AllowUseTrash": "TRUE",
+    "RequireCoin": "80",
+    "FixedTime": "60",
+    "LikeCount": "0",
+    "NumberOfCustomerService": "0",
+    "NumberOfCompletedOrders": "0",
+    "OrderInterval": [
+      2,
+      3
+    ],
+    "OrderDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "WaitingDecay": {
+      "Interval": 0,
+      "Rate": 0,
+      "Limit": 0
+    },
+    "Combo": {
+      "Gain": 3
+    }
+  }
+}

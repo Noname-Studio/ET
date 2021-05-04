@@ -1,42 +1,29 @@
 ﻿using System;
+using Newtonsoft.Json;
+using NPOI.SS.Formula.Functions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 [Serializable]
 public class RestaurantKey
 {
-    [SerializeField]
-    [HideInInspector]
     private string mKey;
-
-    [SerializeField]
-    [HideInInspector]
     private int mIndex;
-
+    private string mId;
     public string Key => mKey;
     public int Index => mIndex;
-
-#if UNITY_EDITOR
-    /// <summary>
-    /// 注释(用于编辑器内部显示)
-    /// </summary>
-    private string Comment { get; set; }
-#endif
-
-    private RestaurantKey(string key, int index, string comment)
+    public string Id => mId;
+    private RestaurantKey(string key, int index,string id)
     {
         mKey = key;
         mIndex = index;
-
-#if UNITY_EDITOR
-        Comment = comment;
-#endif
+        mId = id;
     }
 
-    public static RestaurantKey Unknown = new RestaurantKey(nameof (Unknown), 0, "无");
-    public static RestaurantKey FoodTruck = new RestaurantKey(nameof (FoodTruck), 1, "快餐车");
-    public static RestaurantKey Breakfast = new RestaurantKey(nameof (Breakfast), 2, "早餐厅");
-    public static RestaurantKey Cafe = new RestaurantKey(nameof (Cafe), 3, "咖啡厅");
+    public static RestaurantKey Unknown = new RestaurantKey("无", 0,"Unknown");
+    //public static RestaurantKey FoodTruck = new RestaurantKey("快餐车", 1,"FoodTruck");
+    public static RestaurantKey Breakfast = new RestaurantKey("早餐厅", 1,"Breakfast");
+    //public static RestaurantKey Cafe = new RestaurantKey("咖啡厅", 3, "Cafe");
 
 
     public static RestaurantKey This
@@ -56,7 +43,7 @@ public class RestaurantKey
         }
     }
 
-    public static RestaurantKey[] All = { FoodTruck, Breakfast };
+    public static RestaurantKey[] All = { Breakfast };
 
     public static string Map(int id)
     {
@@ -123,10 +110,10 @@ public class RestaurantKey
     public static ValueDropdownList<string> EDITOR_RESTAURANTSELECT()
     {
         var dropdown = new ValueDropdownList<string>();
-        dropdown.Add(Unknown.Comment, Unknown.Key);
+        dropdown.Add(Unknown.Key, Unknown.Key);
         foreach (var node in All)
         {
-            dropdown.Add(node.Comment, node.Key);
+            dropdown.Add(node.Key, node.Key);
         }
 
         return dropdown;

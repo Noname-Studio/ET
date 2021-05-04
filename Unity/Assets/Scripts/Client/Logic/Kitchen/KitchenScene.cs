@@ -34,9 +34,10 @@ public class KitchenScene
         {
             foreach (var property in node.Foods)
             {
-                if (!FoodList.Contains(property))
+                var data = FoodProperty.Read(property);
+                if (!FoodList.Contains(data))
                 {
-                    FoodList.Add(property);
+                    FoodList.Add(data);
                 }
             }
         }
@@ -44,13 +45,17 @@ public class KitchenScene
         for (int i = 0; i < FoodList.Count; i++)
         {
             var food = FoodList[i];
+            if (food == null)
+            {
+                throw new Exception("关卡ID:" + LevelProperty.Id + "  出错,存在一个未知的食物配置");
+            }
             var ingredients = food.AllIngredients;
             for (int j = 0; j < ingredients.Count; j++)
             {
-                FoodProperty node = ingredients[j];
+                FoodProperty node = FoodProperty.Read(ingredients[j]);
                 if (node == null)
                 {
-                    throw new Exception("食物:" + food.Key + "的食材丢失,检查编辑器的食材列表");
+                    throw new Exception("食物:" + food.Id + "的食材丢失,检查编辑器的食材列表");
                 }
                 if (!FoodList.Contains(node))
                 {
@@ -88,46 +93,22 @@ public class KitchenScene
         {
             try
             {
-                var disPosList = node.Positions;
-                bool hasCreate = false;
-                foreach (var pos in disPosList)
+                var pos = node.Position;
+                if (pos.HasValue)
                 {
-                    if (LevelProperty.LevelId >= pos.Start && LevelProperty.LevelId <= pos.End)
-                    {
-                        if (pos.Restaurant == LevelProperty.RestaurantId)
-                        {
-                            await CreateIngredients(node, pos);
-                            hasCreate = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (hasCreate == false) //没有找到匹配项.尝试查找默认项
-                {
-                    foreach (var pos in disPosList)
-                    {
-                        if (pos.Start == 0 && pos.End == 0)
-                        {
-                            if (pos.Restaurant == LevelProperty.RestaurantId)
-                            {
-                                await CreateIngredients(node, pos);
-                                break;
-                            }
-                        }
-                    }
+                    await CreateIngredients(node, pos.Value);
                 }
             }
             catch (Exception e)
             {
-                Debug.LogError("创建" + node.Key + "发生错误\n" + e);
+                Debug.LogError("创建" + node.Id + "发生错误\n" + e);
             }
         }
     }
 
-    private async UniTask CreateIngredients(FoodProperty node, ReachItemDPosition pos)
+    private async UniTask CreateIngredients(FoodProperty node, Vector3 pos)
     {
-        var obj = new UnityObject(new GameObject(node.Key));
+        var obj = new UnityObject(new GameObject(node.Id));
         var parent = mBaseScene.Find("Food");
         if (parent == null)
         {
@@ -140,7 +121,7 @@ public class KitchenScene
         renderer.sprite = tex;
         obj.AddComponent<BoxCollider>();
         mIngredientDisplays[node] = new IngredientDisplay(obj, node);
-        obj.LocalPosition = pos.Pos;
+        obj.LocalPosition = pos;
         obj.EulerAngles = new Vector3(30, 135, 0);
         obj.LocalScale = new Vector3(0.4f, 0.4f);
         obj.Layer = LayerHelper.IngoreNav;
@@ -173,44 +154,24 @@ public class KitchenScene
         HashSet<string> alreadyCreate = new HashSet<string>();
         foreach (var foodProperty in FoodList)
         {
-            if (foodProperty is FoodProperty food)
+            var cookware = foodProperty.Cookware;
+            if (cookware != null && !alreadyCreate.Contains(cookware))
             {
-                var cookware = food.Cookware;
-                if (cookware != null && !alreadyCreate.Contains(cookware.Key))
+                alreadyCreate.Add(cookware);
+                var data = CookwareProperty.Read(cookware);
+                var detail = data.CurrentLevel;
+                foreach (var pos in detail.Position)
                 {
-                    alreadyCreate.Add(cookware.Key);
-                    var disPosList = cookware.DisPosList;
-                    var detail = cookware.CurrentLevel;
-                    bool hasCreate = false;
-                    foreach (var pos in disPosList)
-                    {
-                        if (LevelProperty.LevelId >= pos.Start && LevelProperty.LevelId <= pos.End)
+                    await CreateCookware(data, pos, detail,
+                        (animation, o, property) =>
                         {
-                            if (pos.Restaurant == LevelProperty.RestaurantId && detail.Level >= pos.Level)
-                            {
-                                await CreateCookware(cookware, pos, detail,
-                                    (animation, o, property) =>
-                                            new NormalCookware(property, o, new SpineAnimation(animation)));
-                                hasCreate = true;
-                            }
-                        }
-                    }
-
-                    if (hasCreate == false) //没有找到匹配项.尝试查找默认项
-                    {
-                        foreach (var pos in disPosList)
-                        {
-                            if (pos.Start == 0 && pos.End == 0)
-                            {
-                                if (pos.Restaurant == LevelProperty.RestaurantId && detail.Level >= pos.Level)
-                                {
-                                    await CreateCookware(cookware, pos, detail,
-                                        (animation, o, property) =>
-                                                new NormalCookware(property, o, new SpineAnimation(animation)));
-                                }
-                            }
-                        }
-                    }
+                            var cookware = new NormalCookware(property, o, new SpineAnimation(animation));
+                            if (KitchenRoot.Inst.UsedProp.TryGetValue("灭火器", out var buff1))
+                                cookware.Buffs.Add(new SlowerBurnRate(cookware, BuffProperty.Read("灭火器_" + buff1)));
+                            if (KitchenRoot.Inst.UsedProp.TryGetValue("稳定火力", out var buff2))
+                                cookware.Buffs.Add(new FasterCook(cookware, BuffProperty.Read("稳定火力_" + buff2)));
+                            return cookware;
+                        });
                 }
             }
         }
@@ -223,19 +184,15 @@ public class KitchenScene
     {
         try
         {
-            var trash = KitchenDataHelper.LoadCookware("k" + LevelProperty.RestaurantId.Index + "_trash");
-            var disPosList = trash.DisPosList;
+            var trash = CookwareProperty.Read("K" + LevelProperty.Restaurant.Index + "垃圾桶");
+            if (trash == null)
+                return;
+            var disPosList = trash.CurrentLevel.Position;
             foreach (var pos in disPosList)
             {
-                if (LevelProperty.Id >= pos.Start && LevelProperty.Id <= pos.End || pos.Start == 0 && pos.End == 0)
-                {
-                    if (pos.Restaurant == LevelProperty.RestaurantId)
-                    {
-                        await CreateCookware(trash, pos, trash.CurrentLevel, (animation, o, property) =>
-                                new Trash(o, new SpineAnimation(animation)));
-                        return;
-                    }
-                }
+                await CreateCookware(trash, pos, trash.CurrentLevel, (animation, o, property) =>
+                        new Trash(o, new SpineAnimation(animation)));
+                return;
             }
         }
         catch (Exception e)
@@ -251,18 +208,14 @@ public class KitchenScene
     {
         try
         {
-            var trash = KitchenDataHelper.LoadCookware("k" + LevelProperty.RestaurantId.Index + "_holding_plate");
-            var disPosList = trash.DisPosList;
+            var holdingPlate = CookwareProperty.Read("K" + LevelProperty.Restaurant.Index + "置物架");
+            if (holdingPlate == null)
+                return;
+            var disPosList = holdingPlate.CurrentLevel.Position;
             foreach (var pos in disPosList)
             {
-                if (LevelProperty.Id >= pos.Start && LevelProperty.Id <= pos.End || pos.Start == 0 && pos.End == 0)
-                {
-                    if (pos.Restaurant == LevelProperty.RestaurantId)
-                    {
-                        await CreateCookware(trash, pos, trash.CurrentLevel, (animation, o, property) =>
-                                new HoldingPlate(o, new SpineAnimation(animation)));
-                    }
-                }
+                await CreateCookware(holdingPlate, pos, holdingPlate.CurrentLevel, (animation, o, property) =>
+                        new HoldingPlate(o, new SpineAnimation(animation)));
             }
         }
         catch (Exception e)
@@ -271,12 +224,13 @@ public class KitchenScene
         }
     }
 
-    private async UniTask CreateCookware(CookwareProperty cookware, ReachItemDPosition pos, CookwareDetailProperty detail,
+    private async UniTask CreateCookware(CookwareProperty cookware, Vector3 pos, CookwareProperty.CookwareDetailProperty detail,
     Func<SkeletonAnimation, UnityObject, CookwareProperty, ICookware> registy)
     {
         try
         {
-            SkeletonAnimation runtimeSkeletonAnimation = SkeletonAnimation.NewSkeletonAnimationGameObject(detail.SpineData);
+            var spineData = await AssetsKit.Inst.Load<SkeletonDataAsset>(detail.SpineData);
+            SkeletonAnimation runtimeSkeletonAnimation = SkeletonAnimation.NewSkeletonAnimationGameObject(spineData);
             UnityObject obj = new UnityObject(runtimeSkeletonAnimation.gameObject);
             var parent = mBaseScene.Find("Cookware");
             if (parent == null)
@@ -285,7 +239,7 @@ public class KitchenScene
             }
 
             obj.Parent = parent;
-            obj.LocalPosition = pos.Pos;
+            obj.LocalPosition = pos;
             obj.EulerAngles = new Vector3(30, 135, 0);
             obj.LocalScale = new Vector3(0.4f, 0.4f, 0.4f);
             obj.Layer = LayerHelper.IngoreNav;
@@ -321,7 +275,7 @@ public class KitchenScene
         }
         catch (Exception e)
         {
-            Debug.LogError("创建厨具" + cookware.Key + "失败\n" + e);
+            Debug.LogError("创建厨具" + cookware.Id + "失败\n" + e);
         }
     }
 
@@ -339,7 +293,7 @@ public class KitchenScene
 
     private void ResetPlayer()
     {
-        Player.Position = StandaloneKitchenConfigProperty.Read(LevelProperty.RestaurantId.Key).PlayerInitializePosition;
+        Player.Position = RestaurantProperty.Read(LevelProperty.Restaurant.Key).PlayerInitializePosition;
         Player.HandProvider.Clear();
     }
 
@@ -398,7 +352,7 @@ public class KitchenScene
         {
             foreach (var cookware in node.Value)
             {
-                if (node.Key.Key == key)
+                if (node.Key.Id == key)
                 {
                     return cookware;
                 }
@@ -454,7 +408,7 @@ public class KitchenScene
             return null;
         }
 
-        var foodId = property.Key;
+        var foodId = property.Id;
         foreach (var node in mIngredientDisplays.Values)
         {
             if (node.FoodId == foodId)
@@ -475,7 +429,7 @@ public class KitchenScene
 
         foreach (var node in mIngredientDisplays)
         {
-            if (node.Key.Key == key)
+            if (node.Key.Id == key)
             {
                 return node.Value;
             }

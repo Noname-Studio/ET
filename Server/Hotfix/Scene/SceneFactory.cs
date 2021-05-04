@@ -22,6 +22,9 @@ namespace ET
 
             switch (scene.SceneType)
             {
+                case SceneType.Manager:
+                    scene.AddComponent<NetKcpComponent, IPEndPoint>(startSceneConfig.OuterIPPort);
+                    break;
                 case SceneType.Realm:
                     scene.AddComponent<NetKcpComponent, IPEndPoint>(startSceneConfig.OuterIPPort);
                     break;

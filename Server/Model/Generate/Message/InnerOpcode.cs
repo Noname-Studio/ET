@@ -38,5 +38,8 @@ namespace ET
 		 public const ushort CS2G_UnRegisterPlayerToChat = 10034;
 		 public const ushort G2CS_SendGuildMessage = 10035;
 		 public const ushort G2M_SessionDisconnect = 10036;
+		 public const ushort Manager2G_Reload = 10037;
+		 public const ushort Manager2G_SafeShutdown = 10038;
+		 public const ushort Manager2G_VersionChanged = 10039;
 	}
 }

@@ -67,7 +67,7 @@ namespace Panthea.Asset
             //因为DownloadHandlerFile是直接写入本地的我们不需要操作Stream自己写入.
             //我们这里把本地写入的文件找出来
             //thread.WritePath;
-            return new DownloadResult { RemoteCrc32 = thread.Crc, WritePath = thread.WritePath };
+            return new DownloadResult(thread.WritePath, thread.Crc);
         }
 
         public async UniTask<string> GetText(string url)

@@ -1,0 +1,235 @@
+{
+  "K1班尼迪克板": {
+    "Id": "K1班尼迪克板",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1咖啡机": {
+    "Id": "K1咖啡机",
+    "Restaurant": "早餐厅",
+    "WorkTime1": "9",
+    "MakeCount1": "1",
+    "WorkTime2": "6",
+    "MakeCount2": "2",
+    "WorkTime3": "3",
+    "MakeCount3": "3",
+    "Position1": [
+      "0.75",
+      -3.43,
+      "0.88"
+    ],
+    "Position2": [
+      "0.75",
+      -3.43,
+      "0.88"
+    ],
+    "Position3": [
+      "0.75",
+      -3.43,
+      "0.88"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_coffee_machine_11_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_coffee_machine_11.icon"
+  },
+  "K1切菜板": {
+    "Id": "K1切菜板",
+    "Restaurant": "早餐厅",
+    "WorkTime1": "9",
+    "MakeCount1": "1",
+    "WorkTime2": "6",
+    "MakeCount2": "1",
+    "WorkTime3": "3",
+    "Position1": [
+      2.13,
+      -2.13,
+      "0.83"
+    ],
+    "Position2": [
+      2.13,
+      -2.13,
+      "0.83"
+    ],
+    "Position3": [
+      2.13,
+      -2.13,
+      "0.83"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_cuttingboard_11_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_cuttingboard_11.icon"
+  },
+  "K1烤盘": {
+    "Id": "K1烤盘",
+    "Restaurant": "早餐厅",
+    "WorkTime1": "9",
+    "BurnTime1": "16",
+    "MakeCount1": "1",
+    "WorkTime2": "6",
+    "BurnTime2": "12",
+    "MakeCount2": "1",
+    "WorkTime3": "3",
+    "BurnTime3": "9",
+    "Position1": [
+      -2.7,
+      "-0.32",
+      "0.83"
+    ],
+    "Position2": [
+      -2.7,
+      "-0.32",
+      "0.83"
+    ],
+    "Position3": [
+      -2.7,
+      "-0.32",
+      "0.83"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_grillpan_11_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_grillpan_11.icon"
+  },
+  "K1保鲜柜": {
+    "Id": "K1保鲜柜",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1奶昔机": {
+    "Id": "K1奶昔机",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1蒸蛋机": {
+    "Id": "K1蒸蛋机",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1烤箱": {
+    "Id": "K1烤箱",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1平底锅": {
+    "Id": "K1平底锅",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1荷包蛋": {
+    "Id": "K1荷包蛋",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1煎锅": {
+    "Id": "K1煎锅",
+    "Restaurant": "早餐厅",
+    "WorkTime1": "9",
+    "BurnTime1": "16",
+    "MakeCount1": "1",
+    "WorkTime2": "6",
+    "BurnTime2": "12",
+    "MakeCount2": "1",
+    "WorkTime3": "3",
+    "BurnTime3": "9",
+    "Position1": [
+      -3.07,
+      -1.64,
+      "0.94"
+    ],
+    "Position2": [
+      -3.07,
+      -1.64,
+      "0.94"
+    ],
+    "Position3": [
+      -3.07,
+      -1.64,
+      "0.94"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_pan_11_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_pan_11.icon"
+  },
+  "K1切肉板": {
+    "Id": "K1切肉板",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1烤架": {
+    "Id": "K1烤架",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1桌布": {
+    "Id": "K1桌布",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1面包机": {
+    "Id": "K1面包机",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1三明治板": {
+    "Id": "K1三明治板",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "1"
+  },
+  "K1置物架": {
+    "Id": "K1置物架",
+    "Restaurant": "早餐厅",
+    "MakeCount1": "1",
+    "MakeCount2": "2",
+    "Position1": [
+      "0.55",
+      -2.75,
+      "0.97"
+    ],
+    "Position2": [
+      "0.55",
+      -2.75,
+      "0.97",
+      "0.52",
+      -2.15,
+      "0.93"
+    ],
+    "Position3": [
+      "0.55",
+      -2.75,
+      "0.97",
+      "0.52",
+      -2.15,
+      "0.93"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_holdingplate_11_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_holdingplate_11.icon"
+  },
+  "K1垃圾桶": {
+    "Id": "K1垃圾桶",
+    "Restaurant": "早餐厅",
+    "Position1": [
+      "-0.06",
+      "-0.67",
+      "0.22"
+    ],
+    "Position2": [
+      "-0.06",
+      "-0.67",
+      "0.22"
+    ],
+    "Position3": [
+      "-0.06",
+      "-0.67",
+      "0.22"
+    ],
+    "SpineData": "Cookware/Breakfast/k2_trash_SkeletonData",
+    "Texture": "Cookware/Breakfast/k2_trash"
+  }
+}

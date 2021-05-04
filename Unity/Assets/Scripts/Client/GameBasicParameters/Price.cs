@@ -27,7 +27,7 @@ public class Price
         if (Coin > 0)
         {
             SB.Append(
-                $"<img src='ui://Common/coin_icon{PlayerManager.Inst.CurrentLevel.RestaurantId.Index}' width='{width}' height='{height}'/>{Coin}");
+                $"<img src='ui://Common/coin_icon2' width='{width}' height='{height}'/>{Coin}");
         }
         else if (Gem > 0)
         {

@@ -3,6 +3,7 @@ using Client.UI.ViewModel;
 using FairyGUI;
 using GamingUI;
 using Kitchen;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 /// <summary>
@@ -20,8 +21,9 @@ public class NormalCustomer: ACustomer
     private UI_PatienceProgress PatienceProgress;
     private UI_Order mOrder;
 
-    public NormalCustomer(UnityObject display, KitchenNormalSpot spot, CustomerOrder property): base(display, spot, property)
+    public NormalCustomer(UnityObject display, KitchenNormalSpot spot, LevelProperty.CustomerOrder property): base(display, spot, property)
     {
+        display.Active = true;
         Components.Set(MoveCom = new CustomerMoveComponent(4, Display));
         KitchenRoot.Inst.Units.Register(this);
         OnEnter();
@@ -47,7 +49,7 @@ public class NormalCustomer: ACustomer
     private void Wait()
     {
         var decay = KitchenRoot.Inst.LevelProperty.WaitingDecay;
-        Components.Set(PatienceCom = new PatienceComponent(100, decay.Rate, decay.Interval));
+        Components.Set(PatienceCom = new PatienceComponent(1));
         mOrder = new UI_Order((View_Order) ((KitchenNormalSpot) Spot).OrderUI.ui);
         mOrder.Visible = true;
         mOrder.RefreshUI(Order);
@@ -108,6 +110,7 @@ public class NormalCustomer: ACustomer
             {
                 if (State != CustomerState.Exit)
                 {
+                    KitchenRoot.Inst.Record.LostCustomerCount++;
                     OnExit();
                 }
             }

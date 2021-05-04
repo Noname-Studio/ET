@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
-    SerializedBytes: 
+    SerializedBytes: []
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -26,24 +26,18 @@ MonoBehaviour:
   mRestId: Breakfast
   mWaitTime: 0
   mLevels:
-  - mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
-    mLevel: 1
-    mUnlockLv: 0
-    mTips: 20
-    mPrice:
+  - {mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}, mLevel: 1, mUnlockLv: 0, mTips: 20, mPrice:
       Coin: 80
       Gem: 0
-    mTexture: Image/Food/Breakfast/tex_bacon
-  - mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}
-    mLevel: 2
-    mUnlockLv: 0
-    mTips: 30
-    mPrice:
+, mTexture: Image/Food/Breakfast/tex_bacon}
+  - {mEditorTexture: {fileID: 2800000, guid: 6d67e5d14dacc4147adcf55c148e3f3f, type: 3}, mLevel: 2, mUnlockLv: 0, mTips: 30, mPrice:
       Coin: 300
       Gem: 0
-    mTexture: Image/Food/Breakfast/tex_bacon
+, mTexture: Image/Food/Breakfast/tex_bacon}
   mBasePatient: 100
   mCookware: {fileID: 11400000, guid: 07f92347c5077874b970d3bc2d8f1a48, type: 2}
   mAllIngredients:
   - {fileID: 11400000, guid: ab33c96177d89f34886803312fae5bd1, type: 2}
   mPositions: []
+  mBeforeChangedCookware: {fileID: 11400000, guid: 07f92347c5077874b970d3bc2d8f1a48,
+    type: 2}

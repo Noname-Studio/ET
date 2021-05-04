@@ -13,7 +13,7 @@ namespace ETManagerConsole
         {
             get
             {
-                return "192.168.3.29:50003";
+                return "192.168.0.109:5000";
             }
         }
         private static void Main(string[] args)
@@ -79,7 +79,7 @@ namespace ETManagerConsole
                             {
                                 using (Session gateSession = kcpComponent.Create(NetworkHelper.ToIPEndPoint(GateIP)))
                                 {
-                                    await gateSession.Call(new C2G_Reload());
+                                    gateSession.Send(new C2G_Reload());
                                 }
                             }
 
@@ -87,7 +87,7 @@ namespace ETManagerConsole
                             {
                                 using (Session gateSession = kcpComponent.Create(NetworkHelper.ToIPEndPoint(GateIP)))
                                 {
-                                    await gateSession.Call(new C2G_SafeShutdown());
+                                    gateSession.Send(new C2G_SafeShutdown());
                                 }
                             }
                         }

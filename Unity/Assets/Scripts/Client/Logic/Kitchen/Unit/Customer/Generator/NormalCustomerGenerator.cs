@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 namespace Kitchen
@@ -9,7 +10,7 @@ namespace Kitchen
     public class NormalCustomerGenerator: ACustomerGenerator
     {
         //固定时间抵达顾客.只有这些都抵达了才会计算时间到达顾客
-        private List<KeyValuePair<float, CustomerOrder>> mFixedTimes = new List<KeyValuePair<float, CustomerOrder>>();
+        private List<KeyValuePair<float, LevelProperty.CustomerOrder>> mFixedTimes = new List<KeyValuePair<float, LevelProperty.CustomerOrder>>();
 
         //下次顾客抵达时间
         private float mNextTime = 0;
@@ -22,14 +23,14 @@ namespace Kitchen
             foreach (var node in levelProperty.FirstArrivals)
             {
                 var customer = GetRecyleCustomer();
-                mFixedTimes.Add(new KeyValuePair<float, CustomerOrder>(node, customer));
+                mFixedTimes.Add(new KeyValuePair<float, LevelProperty.CustomerOrder>(node, customer));
                 mNextTime = node;
             }
 
             mNextTime += Random.Range(levelProperty.OrderInterval.Min, levelProperty.OrderInterval.Max);
         }
 
-        public override CustomerOrder Run()
+        public override LevelProperty.CustomerOrder Run(float decay)
         {
             if (mFixedTimes.Count > 0)
             {
@@ -45,14 +46,14 @@ namespace Kitchen
             }
             else if (ActiveTime >= mNextTime)
             {
-                mNextTime = ActiveTime + Random.Range(LevelProperty.OrderInterval.Min, LevelProperty.OrderInterval.Max);
+                mNextTime = ActiveTime + Random.Range(LevelProperty.OrderInterval.Min - decay, LevelProperty.OrderInterval.Max - decay);
                 return GetRecyleCustomer();
             }
 
             return null;
         }
 
-        private CustomerOrder GetRecyleCustomer()
+        private LevelProperty.CustomerOrder GetRecyleCustomer()
         {
             if (mOrderIndex >= LevelProperty.Orders.Count)
             {

@@ -1,16 +1,16 @@
 ﻿using System.ComponentModel;
 using FairyGUI;
 using Kitchen;
+using RestaurantPreview.Config;
 using UnityEngine;
 
 namespace GamingUI
 {
     public partial class View_ContinuousService
     {
-        private KitchenConfigProperty KitchenGlobalConfig { get; }
         private GProgressBar IntervalProgress { get; set; }
         private GProgressBar ComboTimesProgress { get; set; }
-
+        private KitchenRecord Record { get; set; }
         public override void ConstructFromResource()
         {
             base.ConstructFromResource();
@@ -26,14 +26,14 @@ namespace GamingUI
 
         public View_ContinuousService()
         {
-            KitchenGlobalConfig = KitchenRoot.Inst.KitchenConfig;
-            KitchenRoot.Inst.Record.PropertyChanged += RegisterDataUpdate;
+            Record = KitchenRoot.Inst.Record;
+            Record.PropertyChanged += RegisterDataUpdate;
         }
 
         public override void Dispose()
         {
             base.Dispose();
-            KitchenRoot.Inst.Record.PropertyChanged -= RegisterDataUpdate;
+            Record.PropertyChanged -= RegisterDataUpdate;
         }
 
         private void RegisterDataUpdate(object sender, PropertyChangedEventArgs e)
@@ -44,9 +44,16 @@ namespace GamingUI
                 if (args != null)
                 {
                     ComboTimesProgress.value += args.NewValue - args.OldValue;
-                    if (ComboTimesProgress.value == ComboTimesProgress.max)
+                    if (ComboTimesProgress.value == 3)
+                    {
+                        Record.Combo3++;
+                        Record.TipsNumber += Mathf.CeilToInt(KitchenRoot.Inst.LevelProperty.Combo.Gain * 3);
+                    }
+                    if (ComboTimesProgress.value == 4)
                     {
                         WhenMaxCombo();
+                        Record.Combo4++;
+                        Record.TipsNumber += Mathf.CeilToInt(KitchenRoot.Inst.LevelProperty.Combo.Gain * 4);
                     }
                     else
                     {
@@ -69,11 +76,10 @@ namespace GamingUI
 
         public void Update()
         {
-            IntervalProgress.value -= KitchenGlobalConfig.ComboLoseSpeed * Time.deltaTime;
+            IntervalProgress.value -= GlobalConfigProperty.Read("ComboLoseSpeed").Int * Time.deltaTime;
             if (IntervalProgress.value <= 0)
             {
                 ComboTimesProgress.value = 0;
-                MessageKit.Inst.Send(EventKey.AdsFailed);
             }
         }
     }

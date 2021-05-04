@@ -91,7 +91,7 @@ public class UI_PropRewardTips : UIBase<View_tipsprop>
         
             if (prop.Type == PropProperty.TypeEnum.Level || prop.Type == PropProperty.TypeEnum.InTheLevel )
             {
-                DBManager.Inst.Query<Data_Prop>().IncrementNumByKey(prop.Id, node.Value);
+                DBManager.Inst.Query<Data_Prop>().Get(prop.Id).Count += node.Value;
             }
         
             if (prop.Id == GameConfig.InfiniteEnergyPropKey)

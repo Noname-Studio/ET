@@ -51,7 +51,7 @@
             analytics.ConsecutiveLevels.Level += 1;
             if (analytics.ConsecutiveLevels.Level > analytics.ConsecutiveLevels.TotalLevel)
                 analytics.ConsecutiveLevels.TotalLevel = analytics.ConsecutiveLevels.Level;
-            game.Level[KitchenRoot.Inst.LevelProperty.RestaurantId.Key] = KitchenRoot.Inst.LevelProperty.Id + 1;
+            game.Level[KitchenRoot.Inst.LevelProperty.Restaurant.Key] = KitchenRoot.Inst.LevelProperty.Id + 1;
             DBManager.Inst.Update(game);
             DBManager.Inst.Update(analytics);
         }
